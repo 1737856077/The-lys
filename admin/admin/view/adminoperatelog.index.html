@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户管理-操作日志</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+</head>
+
+<body>
+<div class="cont_title">　您当前的位置：后台管理&nbsp;-&nbsp; 系统管理员&nbsp;-&nbsp; 操作记录</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        
+     	<table class="listtable">
+            	<tr class="tr1">
+                	<td colspan="3" class="tit">操作记录</td>
+                    <td  class="tit"></td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdtit">ID</td>
+                    <td class="tdtit">操作者</td>
+                    <td class="tdtit">描述</td>
+                    <td class="tdtit">IP</td>
+                   <td class="tdtit">时间</td>
+                </tr>
+               {foreach $List as $value}
+                    <tr class="tr1" >
+                        <td class="tdlist">{$value['id']}</td>
+                        <td class="tdlist">{$value['admin_name']}</td>
+                        <td class="tdlist">{$value['content']}</td>
+                        <td class="tdlist">{$value['create_ip']}</td>
+                        <td class="tdlist">{$value['create_time']|date='Y-m-d H:i:s',###}</td>
+                    </tr>
+                    
+                {/foreach}
+                {if count($List) eq 0}
+                    <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                        <td colspan="5">暂无相关记录！ </td>
+                    </tr>
+                {/if}
+            </table>
+           <div style="text-align:right; padding-right:40px;">
+            {$page}
+           </div>
+            
+        </div>
+    
+    </div>
+    
+ 
+</div>
+
+
+</body>
+</html>

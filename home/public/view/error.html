@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>错误处理</title>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+</head>
+
+<body>
+<div class="menus_r">
+        		<div class="maps">
+                </div>
+                <!--column end-->    
+                <div class="clas_box">
+                	<div class="class_con" style="text-align:center; font-size:24px; font-weight:bold; width:100%;">
+                        <?php switch ($code) {?>
+                        <?php case 1:?>
+                        <!--<h1>:)</h1>-->
+                        <?php echo(strip_tags($msg));?>
+                        <?php break;?>
+                        <?php case 0:?>
+                        <!--<h1>:(</h1>-->
+                        <?php echo(strip_tags($msg));?>
+                        <?php break;?>
+                    <?php } ?>
+                    </div>
+
+                    <div class="de_y" style="text-align:center; width:100%; margin:20px 0px; ">
+                    	<div style="background:#00b6ea; width:300px; height:30px; line-height:30px; margin:auto; color:#fff;">
+                    	 <a id="href" href="<?php echo($url);?>" style="color:#fff;" >页面自动跳转  　等待时间：<b id="wait"><?php echo($wait);?></b>秒</a>
+                         </div>
+                    </div>
+                    
+                </div>
+                <!-- classify end -->   
+			
+</div>
+    <script type="text/javascript">
+        (function(){
+            var wait = document.getElementById('wait'),
+                href = document.getElementById('href').href;
+            var interval = setInterval(function(){
+                var time = --wait.innerHTML;
+                if(time <= 0) {
+                    location.href = href;
+                    clearInterval(interval);
+                };
+            }, 1000);
+        })();
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>首页-统计报表</title>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index_census.css"/>
+    <script src="__STATIC__/js/Highcharts/code/highcharts.js"></script>
+	<script src="__STATIC__/js/Highcharts/code/modules/data.js"></script>
+    <script src="__STATIC__/js/Highcharts/code/modules/drilldown.js"></script>
+    <script src="__STATIC__/js/Highcharts/code/modules/exporting.js"></script>
+</head>
+<body  style="background-color:#f1f1f1">
+<div class="census_top">
+	<div class="census_top_one">
+    	<div class="census_top_one_ins"><label>小区统计</label><span>{$countVillage}</span></div>
+        <div class="census_top_one_ins"><label>用户统计</label><span>{$countVillageVuildingRoom}</span></div>
+    </div>
+    <div class="census_top_one">
+    	<div class="census_top_one_ins"><label>缴费总金额</label><span>￥{$sumBillDetailsTotalAmount}</span></div>
+        <div class="census_top_one_ins"><label>已缴金额</label><span>￥{$sumBillDetailsTotalAmountYJ}</span></div>
+    </div>
+    <div class="census_top_one">
+    	<div class="census_top_one_ins"><label>未缴金额</label><span>￥{$sumBillDetailsTotalAmountWJ}</span></div>
+        <div class="census_top_one_ins"><label>逾期金额</label><span>￥{$sumBillDetailsTotalAmountYQ}</span></div>
+    </div>
+</div>
+
+<div class="census_centre">
+	<div class="census_centrel">
+    	<div class="census_centrel_one">
+            <div class="census_centrel_one_title">缴费类型统计</div>
+            <div class="census_centrel_one_list" id="container"></div>
+        </div>
+        <div class="census_centrel_one">
+        	<div class="census_centrel_one_title">缴费状态统计</div>
+            <div class="census_centrel_one_list" id="container_jfzt"></div>
+        </div>	
+    </div>	
+    
+    <div class="census_centrer">
+    	<div class="census_centrer_title">小区分布地图</div>
+        <div class="census_centrer_list"><img src="__STATIC__/images/map_cn_icon.png" class="img_map_cn"/></div>
+    </div>
+</div>
+
+<div class="census_foot"></div>
+       
+<script type="text/javascript">
+
+//缴费类型统计 begin
+Highcharts.chart('container', {
+	exporting: {  
+            enabled:false  
+	},  
+	credits: {
+     enabled: false
+	},			 
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: ''
+    },
+    /*subtitle: {
+        text: 'Click the slices to view versions. Source: netmarketshare.com.'
+    },*/
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}: {point.y:.2f}‰'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}‰</b> of total<br/>'
+    },
+    series: [{
+        name: '缴费类型',
+        colorByPoint: true,
+        data: [{foreach $listSystemConfig as $key=>$val}{
+            name: '{$val.title}',
+            y: {$val.sumTotalAmountBL},
+        },{/foreach}]
+    }],
+    
+});
+
+//缴费类型统计 end
+//缴费状态统计 BEGIN
+Highcharts.chart('container_jfzt', {
+	exporting: {  
+            enabled:false  
+	},  
+	credits: {
+     enabled: false
+	},
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: ''
+    },
+    xAxis: {
+        categories: [{foreach $listSystemConfig as $key=>$val}'{$val.title}',{/foreach}]
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: ''
+        }
+    },
+    legend: {
+        reversed: true
+    },
+    plotOptions: {
+        series: {
+            stacking: 'normal'
+        }
+    },
+    series: [{
+        name: '缴费率',
+        data: [{foreach $listSystemConfig as $key=>$val}{$val.AmountFateJFL},{/foreach}]
+    },]
+});
+//缴费状态统计 END
+		</script>        
+</body>
+</html>

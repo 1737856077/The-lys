@@ -1,0 +1,14 @@
+#
+# robots.txt for lianyufit.com liuqingyan 2018-03-13
+#
+User-agent: *
+Disallow: /admin/
+Disallow: /extend/
+Disallow: /public/
+Disallow: /runtime/
+Disallow: /static/
+Disallow: /thinkphp/
+Disallow: /vendor/
+Disallow: /admin.php
+Disallow: /config.php
+Disallow: /database.php

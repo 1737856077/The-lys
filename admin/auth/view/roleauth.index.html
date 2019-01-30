@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>权限管理-系统角色-编辑权限</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/city.js"></script>
+</head>
+<style type="text/css">
+    .bagcolor{ font-weight: bold;}
+    .ulbfb100{ width: 96%; padding: 0px 2%;}
+    .ulbfb100 li{ width: 200px; float: left;}
+</style>
+<body>
+<div class="cont_title">　你当前的位置：权限管理 -<a href="{:url('systemrole/index')}">系统角色</a>-编辑权限</div>
+
+<div class="con">
+
+    <div class="conlist">
+
+        <form  method="post" action="__URL__/editinfo/action/save" id="form_save">
+            <input type="hidden" name="role_id" id="role_id" value="{$getoneSystemRole['role_id']}" />
+            <table class="listtable">
+                <tr class="tr1">
+                    <td  class="tit">[{$getoneSystemRole['title']}]编辑权限　</td>
+                </tr>
+                {foreach $List as $value}
+                <tr class="tr1">
+                    <td class="tdlist bagcolor">{$value['title']}&nbsp;</td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdlist">
+                        <ul class="ulbfb100">
+                            {foreach $value['list'] as $val}
+                            <li>
+                                <label for="node_id_{$val['node_id']}">
+                                    <input type="checkbox" name="node_id[]" id="node_id_{$val['node_id']}"
+                                           value="{$val['node_id']}" {:in_array($val['node_id'],$role_node_ids) ? 'checked' : ''} /> {$val['title']}
+                                </label>
+                            </li>
+                             {/foreach}
+                         </ul>
+                            &nbsp;
+                     </td>
+                 </tr>
+                {/foreach}
+                <tr class="tr1">
+                    <td class="tdlist" >
+                        <input type="hidden" name="checkclass" id="checkclass" value="1" />
+                        <input type="submit"  value="更新权限" class="buttomorger"  onClick="checkclassfun('21');" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+</div>
+</body>
+</html>

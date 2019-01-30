@@ -1,0 +1,28 @@
+@charset "utf-8";
+/**
+ * @[在线排版系统] zaixianpaiban system Information Technology Co., Ltd.
+ * @desc:首页-统计报表样式
+ * @author:liuqingyan[Leaya] liuqingyan0308@163.com
+ * $Id:index_census.css 2018-04-17 14:25:00 $
+ */
+
+.census_top{ height:70px; width:98%; float:left; padding:1%; color:#FFF; background-color:#FFF;}
+.census_top_one{height:50px; width:29.5%; float:left; margin:0px 10px 0px 10px; background-color:#4abbd9; padding:10px;}
+.census_top_one_in{height:50px; width:30%;float:left; }
+.census_top_one_in lable{ font-size:16px; width:100%; float:left; }
+.census_top_one_in span{ font-size:24px; color:#FC0; width:100%; float:left; }
+.census_top_one_ins{height:50px; width:50%;float:left; }
+.census_top_one_ins lable{ font-size:16px; width:100%; float:left; }
+.census_top_one_ins span{ font-size:24px; color:#FC0; width:100%; float:left; }
+
+.census_centre{ height:300px; width:98%; float:left; padding:1%;}
+.census_centrel{width:31.5%; float:left; margin:0px 10px 0px 10px;}
+.census_centrel_one{height:300px; width:100%; background-color:#fff; float:left; margin-bottom:10px;}
+.census_centrel_one_title{ height:40px; line-height:40px; text-align:center; width:100%; float:left; background-color:#4abbd9; color:#FFF;}
+.census_centrel_one_list{height:270px; width:100%; float:left;}
+
+.census_centrer{width:64.5%; float:left; margin:0px 10px 0px 10px; background-color:#fff;}
+.census_centrer_title{ height:40px; line-height:40px; text-align:center; width:100%; float:left; background-color:#4abbd9; color:#FFF;}
+.census_centrer_list{height:570px; width:100%; float:left;}
+.census_centrer_list .img_map_cn{height:570px; width:100%; }
+.census_foot{ height:100px; width:100%; float:left;}
