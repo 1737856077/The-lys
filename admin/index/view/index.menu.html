@@ -50,7 +50,9 @@
                          {if auth('admin/admin/modifypwd')}
                          <li><a href="__ROOT__/admin.php/admin/admin/modifypwd" target="mainframe">修改密码　</a></li>
                          {/if}
-                         <li><a href="#" target="mainframe">分享注册　</a></li>
+                         {if auth('admin/adminshare/index')}
+                         <li><a href="__ROOT__/admin.php/admin/adminshare/index" target="mainframe">分享注册　</a></li>
+                         {/if}
                      </ul>
                      <hr>
                  </li>
@@ -59,7 +61,9 @@
                  <li class="tab">
                     <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">安全管理</a><em></em></div>
                     <ul class="ct" style="display:none;">
-                        <li><a href="#" target="mainframe">修改密码　</a></li>
+                        {if auth('admin/admin/modifypwd')}
+                        <li><a href="__ROOT__/admin.php/admin/admin/modifypwd" target="mainframe">修改密码　</a></li>
+                        {/if}
                         <li><a href="#" target="mainframe">fdsdfdsfsfdsf　</a></li>
                     </ul>
                     <hr>

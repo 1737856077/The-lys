@@ -34,7 +34,7 @@ class CommonBase  extends Controller
 
         //查看是否是合法域名
         $_getServerHost=$this->GetServerHost();
-        $_authHost=array('suyuan.localhost',
+        $_authHost=array('zxpaiban.localhost',
             '127.0.0.1');
         if(!in_array($_getServerHost,$_authHost)){
             echo '未授权域名';
