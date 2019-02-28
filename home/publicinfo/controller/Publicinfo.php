@@ -1,6 +1,6 @@
 <?php
 /**
- * @[溯源系统] Shanghai 51upstar Information Technology Co., Ltd.
+ * @[在线排版系统] Shanghai 51upstar Information Technology Co., Ltd.
  * @desc:网站前台-公用信息类
  * @author:liuqingyan[Leaya] liuqingyan0308@163.com
  * $Id:Publicinfo.php 2018-07-22 19:31:00 $
