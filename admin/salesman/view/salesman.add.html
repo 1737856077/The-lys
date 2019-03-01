@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/salesman_add.js"></script>
 </head>
 
@@ -30,9 +31,37 @@
                 	<td colspan="2" class="tit">添加</td>
                 </tr>
                <tr class="tr1">
-                    <td class="tdl">业务员名称<span style="color:#f00;">*</span></td>
+                    <td class="tdl">用户名<span style="color:#f00;">*</span></td>
                     <td class="tdr" style="padding-top:5px;">
                         <input name="name" id="name" type="text" onBlur="onBlur_name()" value="" />　<span class="showErrorMessage" id="span_name"></span>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">密码</td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="pwd" id="pwd" type="text" value="" />　说明：为空默认为123456<span class="showErrorMessage" id="span_pwd"></span>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">性别<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <select name="sex">
+                            <option value="0" selected>男</option>
+                            <option value="1">女</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">入职日期<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input type="text" name="job_in_time" id="job_in_time" size="20"  maxlength="10" value="{:date('Y-m-d')}" class="Wdate" onClick="WdatePicker()"  />　
+                        示例：2018-01-01<span class="showErrorMessage" id="span_job_in_time"></span>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">分成比例<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="divide_into" id="divide_into" type="text" onBlur="onBlur_divide_into()" value="10" />%　示例：10%<span class="showErrorMessage" id="span_divide_into"></span>
                     </td>
                 </tr>
                 <tr class="tr1">

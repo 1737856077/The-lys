@@ -27,7 +27,9 @@
                         <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
 					
 					<td   class="tdlist">
-
+                        {if auth('salesman/salesman/add') }
+                        <a href="__URL__/add"><input type="button"  value="添加业务员" class="buttomorger100" /> </a>
+                        {/if}
                     </td>
                     </tr>
 				</table>
@@ -39,10 +41,10 @@
                     </tr>
                     <tr class="tr1">
                         <td class="tdtit">ID</td>
-                        <td class="tdtit">名称</td>
-                        <td class="tdtit">联系电话</td>
-                        <td class="tdtit">授权商家</td>
-                        <td class="tdtit">描述</td>                       
+                        <td class="tdtit">用户名</td>
+                        <td class="tdtit">性别</td>
+                        <td class="tdtit">入职日期</td>
+                        <td class="tdtit">分成比例</td>
                         <td class="tdtit">状态</td>
                         <td class="tdtit">操作</td>
                     </tr>
@@ -50,13 +52,9 @@
                 	<tr class="tr1">
                     	<td class="tdlist">{$value['admin_id']}&nbsp;</td>
                         <td class="tdlist">{$value['name']}&nbsp;</td>
-                        <td class="tdlist">{$value['tel']}&nbsp;</td>
-                        <td class="tdlist">共{$value['count_business']}个商家<br />
-                            {foreach $value['listBusiness'] as $k=>$v}
-                            {$k+1}、{$v.name}[{$v.data_desc}]<br />
-                            {/foreach}
-                        </td>
-                        <td class="tdlist">{$value['data_desc']}&nbsp;</td>
+                        <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
+                        <td class="tdlist">{$value['job_in_time']}</td>
+                        <td class="tdlist">{$value['divide_into']}%</td>
                         <td class="tdlist">
                             {if auth('salesman/salesman/editinfo') }
                                 {if $value['job_status'] eq 0}
@@ -73,13 +71,9 @@
                             {/if}
                         </td>
                         <td class="tdlist">
-                            {if auth('salesman/salesmanbusiness/index') }
-                                [<a href="{:url('salesmanbusiness/index')}?salesman_id={$value['admin_id']}&{$paramUrl}">授权商家</a>]
+                            {if auth('salesman/salesman/edit') }
+                                [<a href="{:url('salesman/edit')}?id={$value['admin_id']}&{$paramUrl}">编辑</a>]
                             {/if}
-                            {if auth('salesman/salesmanbusiness/info') }
-                                [<a href="{:url('salesmanbusiness/info')}?salesman_id={$value['admin_id']}&{$paramUrl}">查看授权商家</a>]
-                            {/if}
-
                         </td>
                     </tr>
 				{/foreach}

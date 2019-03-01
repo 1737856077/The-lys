@@ -18,9 +18,7 @@
     
     	<div class="conlist">
         <form name="form1" method="get" action="__URL__/index">
-     	<table class="listtable">
-        
-                   
+     	    <table class="listtable">
                     <tr class="tr1">
 						<td  colspan="7" class="tdlist">查询：
                         业务员名称 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
@@ -34,62 +32,51 @@
                     </td>
 					
 					<td   class="tdlist">
-                    
                     </td>
                     </tr>
-				</table>
-                 </form> 
+			</table>
+        </form>
         <form  method="post" action="__URL__/editinfo/action/save?{$paramUrl}">        
 				<table class="listtable">
                     <tr class="tr1">
-                        <td colspan="9" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
+                        <td colspan="7" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
                     </tr>
                     <tr class="tr1">
                         <td class="tdtit">序号</td>
                         <td class="tdtit">业务员</td>
-                        <td class="tdtit">联系电话</td>
-                        <td class="tdtit">小区总数</td>
-                        <td class="tdtit">总金额</td>     
-                        <!-- <td class="tdtit">已支付</td>  
-                                        <td class="tdtit">未支付</td>     -->                
-                        <td class="tdtit">日期</td>
-                        <td class="tdtit">操作</td>
+                        <td class="tdtit">姓别</td>
+                        <td class="tdtit">分成比例</td>
+                        <td class="tdtit">推广人数</td>
+                        <td class="tdtit">分成</td>
+                        <td class="tdtit">时间</td>
                     </tr>
                    {foreach $List as $value}
                 	<tr class="tr1">
                     	<td class="tdlist">{$value['admin_id']}&nbsp;</td>
                         <td class="tdlist">{$value['name']}&nbsp;</td>
-                        <td class="tdlist">{$value['tel']}&nbsp;</td>
-                        <td class="tdlist">{$value['count_village']}</td>
-                        <td class="tdlist">{$value['sum_BillEntryAmount']}&nbsp;</td>
-                        <!-- <td class="tdlist">{$value['sum_BillEntryAmountYZF']}&nbsp;</td>
-                        <td class="tdlist">{$value['sum_BillEntryAmountWZF']}&nbsp;</td> -->
+                        <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
+                        <td class="tdlist">{$value['divide_into']}</td>
+                        <td class="tdlist">{$value['count_village']}&nbsp;</td>
+                        <td class="tdlist">{$value['sum_BillEntryAmountYZF']}</td>
                         <td class="tdlist">
                             {$SearchBeginTime} ~ {$SearchEndTime}
-                        </td>
-                        <td class="tdlist">
-                         
-               			<!-- [<a href="__URL__/edit/id/{$value['admin_id']}?{$paramUrl}">详细</a>]  -->
-                        &nbsp;
                         </td>
                     </tr>
 				{/foreach}
                 
                 {if $count eq 0}
                     <tr class="tr1">
-                    	<td colspan="9" class="tdlist">暂无相关记录！ </td>
+                    	<td colspan="7" class="tdlist">暂无相关记录！ </td>
                     </tr>
                 {/if}
                 <tr class="tr1">
-                        <td class="tdlist">总统计</td>
+                        <td class="tdlist">订单总金额</td>
                         <td class="tdlist"></td>
                         <td class="tdlist"></td>
                         <td class="tdlist"></td>
-                        <td class="tdlist">{$data['sumTotal']}</td>    
-                        <!-- <td class="tdlist">{$data['sumTotalYZF']}</td>  
-                                           <td class="tdlist">{$data['sumTotalWZF']}</td>   -->                   
+                        <td class="tdlist"></td>
+                        <td class="tdlist">{$data['sumTotalYZF']}</td>
                         <td class="tdlist">{$SearchBeginTime} ~ {$SearchEndTime}</td>
-                        <td class="tdlist"></td>
                     </tr>
             </table>
             <div style="text-align:right; padding-right:40px;">

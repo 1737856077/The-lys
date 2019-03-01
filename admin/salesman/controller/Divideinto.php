@@ -27,15 +27,15 @@ class Divideinto extends CommonAdmin
         $SearchEndTime = isset($param['SearchEndTime']) ? $param['SearchEndTime'] : '' ;
 
         $ModelSalesman=Db::name('admin');
-        $ModelSalesmanVillage=Db::name('salesman_village');
-        $ModelBillDetails=Db::name('bill_details');
+        $ModelSalesmanVillage=Db::name('member');
+        $ModelBillDetails=Db::name('order');
 
         //加入权限 begin
         $_whereIn=[];
         $_whereInSalesman=[];//当前业务员
         //业务员
         if(Session::get('admin_data_type')=='1' and Session::get('admin_role_id')=='2'){
-            $_whereIn['village_uuid']=['in', $this->CommVillageUUIDs];
+            $_whereIn['member_id']=['in', $this->CommBusinesIDs];
             $_whereInSalesman['admin_id']=['in', intval(Session::get('adminid'))];
         }
         //加入权限 end
@@ -72,8 +72,8 @@ class Divideinto extends CommonAdmin
         $show=$List->render();
 
         foreach($List as $arr){
-            //统计业务小区信息
-            $listSalesmanVillage=$ModelSalesmanVillage->where("salesman_id='$arr[admin_id]'")->select();
+            //统计业务会员信息
+            $listSalesmanVillage=$ModelSalesmanVillage->where("from_user_id='$arr[admin_id]'")->select();
             $arr['count_village']=count($listSalesmanVillage);
             $arr['sum_BillEntryAmount']=0.00;
             $arr['sum_BillEntryAmountYZF']=0.00;
@@ -82,25 +82,25 @@ class Divideinto extends CommonAdmin
             if(count($listSalesmanVillage)){
                 $_village_uuids=array();
                 foreach($listSalesmanVillage as $k=>$v){
-                    $_village_uuids[$k]=$v['village_uuid'];
+                    $_village_uuids[$k]=$v['member_id'];
                 }
                 $_village_uuids=implode("','",$_village_uuids);
                 //总金额
-                $sumBillEntryAmount=$ModelBillDetails->where("village_uuid IN ('$_village_uuids') ")
+                $sumBillEntryAmount=$ModelBillDetails->where("member_id IN ('$_village_uuids') ")
                     ->where($_where_bill_details)
-                    ->sum('bill_entry_amount');
+                    ->sum('score_real_pay');
                 $arr['sum_BillEntryAmount']=$sumBillEntryAmount;
-                //已支付
-                $sumBillEntryAmountYZF=$ModelBillDetails->where("village_uuid IN ('$_village_uuids') 
-                                                           AND bill_status='FINISH_PAYMENT' ")
+                //已支付(业务员的分成应得)
+                $sumBillEntryAmountYZF=$ModelBillDetails->where("member_id IN ('$_village_uuids') 
+                                                           AND pay_status='1' ")
                     ->where($_where_bill_details)
-                    ->sum('bill_entry_amount');
-                $arr['sum_BillEntryAmountYZF']=$sumBillEntryAmountYZF;
+                    ->sum('score_real_pay');
+                $arr['sum_BillEntryAmountYZF']=price($sumBillEntryAmountYZF*($arr['divide_into']*0.01));
                 //未支付
-                $sumBillEntryAmountWZF=$ModelBillDetails->where("village_uuid IN ('$_village_uuids') 
-                                                           AND bill_status!='FINISH_PAYMENT' ")
+                $sumBillEntryAmountWZF=$ModelBillDetails->where("member_id IN ('$_village_uuids') 
+                                                           AND pay_status!='0' ")
                     ->where($_where_bill_details)
-                    ->sum('bill_entry_amount');
+                    ->sum('score_real_pay');
                 $arr['sum_BillEntryAmountWZF']=$sumBillEntryAmountWZF;
 
             }
@@ -112,17 +112,17 @@ class Divideinto extends CommonAdmin
         //总金额
         $sumTotal=$ModelBillDetails->where($_where_bill_details)
             ->where($_whereIn)
-            ->sum('bill_entry_amount');
+            ->sum('score_real_pay');
         //已支付
-        $sumTotalYZF=$ModelBillDetails->where(" bill_status='FINISH_PAYMENT' ")
+        $sumTotalYZF=$ModelBillDetails->where(" pay_status='1' ")
             ->where($_where_bill_details)
             ->where($_whereIn)
-            ->sum('bill_entry_amount');
+            ->sum('score_real_pay');
         //未支付
-        $sumTotalWZF=$ModelBillDetails->where(" bill_status!='FINISH_PAYMENT' ")
+        $sumTotalWZF=$ModelBillDetails->where(" pay_status!='1' ")
             ->where($_where_bill_details)
             ->where($_whereIn)
-            ->sum('bill_entry_amount');
+            ->sum('score_real_pay');
 
         $data=array(
             "sumTotal"=>price($sumTotal),

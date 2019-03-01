@@ -33,7 +33,6 @@ class Salesman extends CommonAdmin
         $this->assign("SearchTel",$SearchTel);
 
         $ModelSalesman=Db::name('admin');
-        $ModelSalesmanBusiness=Db::name('salesman_business');
 
         //加入权限 begin
         $_whereInSalesman=[];//当前业务员
@@ -60,20 +59,20 @@ class Salesman extends CommonAdmin
         $show=$List->render();
 
         foreach($List as $key=>$arr){
-            //统计业务员的商家总数
-            $countSalesmanBusiness=$ModelSalesmanBusiness->where("salesman_id='$arr[admin_id]'")->count();
-            $arr['count_business']=$countSalesmanBusiness;
-
-            //查询所管理的商家
-            $_BusinessIDs=$_listBusiness=array();
-            $_listSalesmanBusiness=$ModelSalesmanBusiness->where("salesman_id='$arr[admin_id]'")->select();
-            foreach ($_listSalesmanBusiness as $k=>$v){
-                $_BusinessIDs[]=$v['business_id'];
-            }
-            if(count($_BusinessIDs)){
-                $_listBusiness=$ModelSalesman->whereIn('admin_id',$_BusinessIDs)->select();
-            }
-            $arr['listBusiness']=$_listBusiness;
+//            //统计业务员的商家总数
+//            $countSalesmanBusiness=$ModelSalesmanBusiness->where("salesman_id='$arr[admin_id]'")->count();
+//            $arr['count_business']=$countSalesmanBusiness;
+//
+//            //查询所管理的商家
+//            $_BusinessIDs=$_listBusiness=array();
+//            $_listSalesmanBusiness=$ModelSalesmanBusiness->where("salesman_id='$arr[admin_id]'")->select();
+//            foreach ($_listSalesmanBusiness as $k=>$v){
+//                $_BusinessIDs[]=$v['business_id'];
+//            }
+//            if(count($_BusinessIDs)){
+//                $_listBusiness=$ModelSalesman->whereIn('admin_id',$_BusinessIDs)->select();
+//            }
+//            $arr['listBusiness']=$_listBusiness;
 
             $resultArr[]=$arr;
         }
@@ -97,16 +96,20 @@ class Salesman extends CommonAdmin
      */
     public function insert(){
         $param = $this->request->post();
-        $ModelSalesman=Db::name('salesman');
+        $ModelSalesman=Db::name('admin');
 
         $name=htmlspecialchars(isset($param['name']) ? trim($param['name']) : '');
+        $pwd=htmlspecialchars(isset($param['pwd']) ? trim($param['pwd']) : '');
+        $pwd = md5(empty($pwd) ? '123456' : $pwd );
+        $sex=intval(isset($param['sex']) ? trim($param['sex']) : '0');
+        $job_in_time=isset($param['job_in_time']) ? trim($param['job_in_time']) : '2019-01-01';
+        $divide_into=intval(isset($param['divide_into']) ? trim($param['divide_into']) : '0');
         $tel=htmlspecialchars(isset($param['tel']) ? trim($param['tel']) : '');
-        $pwd='';
         $data_status=isset($param['data_status']) ? intval($param['data_status']) : 0 ;
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
         $gettime=time();
 
-        if(empty($name) or empty($tel)   ){
+        if(empty($name)  or empty($tel)  ){
             echo '<script language="javascript">alert("必填项不能为空！");history.go(-1);</script>';
             exit;
         }
@@ -117,10 +120,16 @@ class Salesman extends CommonAdmin
             exit;
         }
 
-        $data=array('salesman_id'=>my_returnUUID(),
+        $data=array(
             'name'=>$name,
             'pwd'=>$pwd,
+            'sex'=>$sex,
+            'job_in_time'=>$job_in_time,
+            'divide_into'=>$divide_into,
             'tel'=>$tel,
+            'role_id'=>2,
+            'job_status'=>1,
+            'data_desc'=>$data_desc,
             'data_status'=>$data_status,
             'create_time'=>$gettime,
             'update_time'=>$gettime,
@@ -139,8 +148,8 @@ class Salesman extends CommonAdmin
         $param = $this->request->param();
         $id=isset($param['id']) ? htmlspecialchars($param['id']) : '' ;
         if(empty($id)){echo 'paramer error!';exit;}
-        $ModelSalesman=Db::name('salesman');
-        $getone=$ModelSalesman->where("salesman_id='$id'")->find();
+        $ModelSalesman=Db::name('admin');
+        $getone=$ModelSalesman->where("admin_id='$id'")->find();
 
         $this->assign("getone",$getone);
         return $this->fetch();
@@ -151,26 +160,36 @@ class Salesman extends CommonAdmin
      */
     public function update(){
         $param = $this->request->post();
-        $ModelSalesman=Db::name('salesman');
+        $ModelSalesman=Db::name('admin');
 
         $salesman_id=htmlspecialchars(isset($param['salesman_id']) ? trim($param['salesman_id']) : '');
+        $pwd=htmlspecialchars(isset($param['pwd']) ? trim($param['pwd']) : '');
+        $sex=intval(isset($param['sex']) ? trim($param['sex']) : '0');
+        $job_in_time=isset($param['job_in_time']) ? trim($param['job_in_time']) : '';
+        $divide_into=intval(isset($param['divide_into']) ? trim($param['divide_into']) : '0');
         $tel=htmlspecialchars(isset($param['tel']) ? trim($param['tel']) : '');
         $data_status=isset($param['data_status']) ? intval($param['data_status']) : 0 ;
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
         $gettime=time();
 
-        if(empty($salesman_id) or empty($tel)  ){
+        if(empty($salesman_id)  or empty($job_in_time) or empty($tel)   ){
             echo '<script language="javascript">alert("必填项不能为空！");history.go(-1);</script>';
             exit;
         }
         $data=array(
             'tel'=>$tel,
+            'sex'=>$sex,
+            'job_in_time'=>$job_in_time,
+            'divide_into'=>$divide_into,
             'data_status'=>$data_status,
             'data_desc'=>$data_desc,
             'update_time'=>$gettime,
         );
+        if(!empty($pwd)){
+            $data['pwd']=md5($pwd);
+        }
 
-        $ReturnID=$ModelSalesman->where("salesman_id='$salesman_id'")->update($data);
+        $ReturnID=$ModelSalesman->where("admin_id='$salesman_id'")->update($data);
 
         $this->success("操作成功",url("salesman/index"),3);
         exit;
