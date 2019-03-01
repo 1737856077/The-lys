@@ -1,0 +1,23 @@
+在线排版插件：
+https://jgraph.github.io/mxgraph/
+
+https://www.jgraph.com/
+
+
+
+页面参考：https://www.goodmes.com/labelprint
+
+注册：淘得科技
+用户名：15601628091
+密码：qingyan
+
+https://www.goodmes.com/labelprint/ 
+看看/ 看看能不能扒这个公司的 能的话下载下来用他们 插件也可以
+
+https://blog.csdn.net/sunhuaqiang1/article/details/51296972
+官网:http://www.jgraph.com/
+Demo:http://jgraph.github.io/mxgraph/javascript/index.html
+API:http://jgraph.github.io/mxgraph/docs/js-api/files/index-txt.html
+
+中文版使用手册 :http://www.mxgraph.cn/doc/mxgraph/
+
