@@ -82,11 +82,11 @@ class CommonBase  extends Controller
             $getoneAdminCommonBase=Db::name('admin')->where('admin_id='.intval(Session::get('adminid')))->find();
             //业务员
             if($getoneAdminCommonBase['role_id']==2){
-//取得关联小区
-                $this->listCommSalesmanBusiness=Db::name('salesman_business')->where('salesman_id='.intval(Session::get('adminid')))
+                //取得关联小区
+                $this->listCommSalesmanBusiness=Db::name('member')->where('from_user_id='.intval(Session::get('adminid')))
                     ->select();
                 foreach ($this->listCommSalesmanVillage as $key=>$val){
-                    $this->CommBusinesIDs[]=$val['business_id'];
+                    $this->CommBusinesIDs[]=$val['member_id'];
                 }
                 $this->assign("listCommSalesmanBusiness",$this->listCommSalesmanBusiness);
                 $this->assign("CommBusinesIDs",$this->CommBusinesIDs);

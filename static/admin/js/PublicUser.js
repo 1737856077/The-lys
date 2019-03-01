@@ -1,5 +1,5 @@
 /**
- * @[练遇_后台管理系统] Shanghai Lianyu Information Technology Co., Ltd.
+ * @[在线排版系统] Shanghai 51upstar Information Technology Co., Ltd.
  * @author:liuqingyan[Leaya] liuqingyan0308@gmail.com
  * $Id:PublicUser.css 2018-01-27 17:53:00 $
  */

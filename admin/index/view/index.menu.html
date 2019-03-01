@@ -114,13 +114,15 @@
 
                  {if auth('salesman/salesman/index') or  auth('salesman/divideinto/index') }
                  <li class="tab">
-                     <div class="list_cc list_back"><i></i><a href="javascript:vivo(0)">业务人员</a><em></em></div>
+                     <div class="list_cc list_back"><i></i><a href="javascript:vivo(0)">业务员管理</a><em></em></div>
                      <ul class="ct" style="display:none;">
                          {if auth('salesman/salesman/index')}
                          <li><a href="__ROOT__/admin.php/salesman/salesman/index" target="mainframe">资料管理</a></li>
                          {/if}
-                         <li><a href="#" target="mainframe">扩广分成　</a></li>
-                        <li><a href="#" target="mainframe">业务统计　</a></li>
+                         {if auth('salesman/divideinto/index')}
+                         <li><a href="__ROOT__/admin.php/salesman/divideinto/index" target="mainframe">业务员分成　</a></li>
+                         {/if}
+                        <!--<li><a href="#" target="mainframe">业务统计　</a></li>-->
                      </ul>
                      <hr>
                  </li>
@@ -129,8 +131,12 @@
                  <li class="tab">
                     <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">客户管理</a><em></em></div>
                     <ul class="ct" style="display:none;">
+                        {if auth('salesman/salesman/index')}
                         <li><a href="#" target="mainframe">客户列表（0）　</a></li>
+                        {/if}
+                        {if auth('salesman/divideinto/index')}
                         <li><a href="#" target="mainframe">资料管理　</a></li>
+                        {/if}
                         <li><a href="#" target="mainframe">财务往来　</a></li>
                         <li><a href="#" target="mainframe">统计报表　</a></li>
                     </ul>
