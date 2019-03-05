@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>二维码管理-二维码列表</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+</head>
+
+<body>
+    <div class="cont_title">　你当前的位置：二维码管理 -二维码列表</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <form name="form1" method="get" action="__URL__/index">
+     	<table class="listtable">
+                    <tr class="tr1">
+                        <td  colspan="8" class="tdlist">查询：
+                            产品名称 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
+                            <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" />
+                        </td>
+                        <td  class="tdlist">
+                            {if auth('qrcode/createqrcode/add') }
+                            <a href="{:url('createqrcode/add')}"><input type="button" name="" class="buttomorger"  value="生成二维码" /></a>
+                            {/if}
+                        </td>
+                    </tr>
+				</table>
+                 </form> 
+        <form  method="post" action="__URL__/editinfo/action/save?{$paramUrl}">        
+				<table class="listtable">
+                    <tr class="tr1">
+                        <td colspan="9" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdtit">ID</td>
+                        <td class="tdtit">产品名称</td>
+                        <td class="tdtit">批次名称</td>
+                        <td class="tdtit">上市时间</td>
+                        <td class="tdtit">码开始数值</td>
+                        <td class="tdtit">码结束数值</td>
+                        <td class="tdtit">产品码数量</td>
+                        <td class="tdtit">所属用户</td>
+                        <td class="tdtit">操作</td>
+                    </tr>
+                   {foreach $List as $value}
+                	<tr class="tr1">
+                    	<td class="tdlist">{$value['id']}&nbsp;</td>
+                        <td class="tdlist">{$value['product_title']}&nbsp;</td>
+                        <td class="tdlist">{$value['title']}&nbsp;</td>
+                        <td class="tdlist">{:date('Y-m-d',$value['market_time'])}&nbsp;</td>
+                        <td class="tdlist">{$value['product_code_begin']}&nbsp;</td>
+                        <td class="tdlist">{$value['product_code_end']}&nbsp;</td>
+                        <td class="tdlist">{$value['product_code_num']}&nbsp;</td>
+                        <td class="tdlist">{$value['admin_name']}&nbsp;</td>
+                        <td class="tdlist">
+                            {if $value['data_type'] neq 2}
+                                {if auth('qrcode/productcodeinfo/index') }
+                                [<a href="{:url('productcodeinfo/index')}?product_code_id={$value['product_code_id']}">二维码详细列表</a>]
+                                {/if}
+                            {/if}
+                        </td>
+                    </tr>
+				    {/foreach}
+                
+                {if $count eq 0}
+                    <tr class="tr1">
+                    	<td colspan="9" class="tdlist">暂无相关记录！ </td>
+                    </tr>
+                {/if}
+                
+            </table>
+            <div style="text-align:right; padding-right:40px;">
+            {$page}
+           </div>
+           </form> 
+            
+        </div>
+    
+    </div>
+    
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿@charset "utf-8";
+.lastname{ font-size: 0.24rem; color: #378304; line-height: 0.5rem !important;}
+.lastname i{background-color: #378304;display: inline-block;height: 0.14rem;margin-top: 0.2rem;vertical-align: top;width: 0.02rem; margin-left: 0.08rem;}
+.topsMianBox{ width: 7.5rem; height: 9.46rem;}
+.topsMianBox img{ display: block; width: 100%; height: 100%;}
+.optionsListBox{display: block;height: 2.15rem;margin: -0.9rem auto 0;position: relative; width: 6.4rem;z-index: 9;}
+.optionsListBox li{background-color: #ffffff;border: 0.05rem solid #fbc92c;border-radius: 0.8rem;color: #3c3c3c;float: left; font-size: 0.26rem;line-height: 0.6rem; margin-right: 0.2rem;padding-bottom: 0.1rem; text-align: center;width: 1.44rem;z-index: 9;}
+.optionsListBox li:last-child{ margin: 0;}
+.optionsListBox li i{ width: 1.34rem; height: 1.34rem; display: block; border-radius: 50%;}
+.optionsListBox li i img{ display: block; width: 100%;}
+.optionsListBox li.on{ background-color: #fbc92c;}
+.titles{background-color: #4e835a;color: #378304;font-size: 0.32rem;height: 0.02rem;margin: 0.5rem auto;text-align: center;width: 5.2rem;}
+.titles span{background-color: #ffffff;display: block;height: 0.48rem;line-height: 0.48rem; margin: 0 auto;position: relative;top: -0.24rem;width: 2rem;}
+.productListBox{ width: 7.5rem;}
+.productListBox li{color: #333333;font-size: 0.24rem;padding: 0.1rem 0.1rem 0.1rem 2.6rem;position: relative;}
+.productListBox li span{ position: absolute; left: 0; width: 2.5rem;text-align: right;}
+.maintableBox{ width: 4.25rem; border: 0.02rem solid #cccccc;border-collapse: collapse;margin: 0 auto;}
+.maintableBox td,.maintableBox th{border: 0.02rem solid #cccccc;color: #333333;font-size: 0.24rem;line-height: 0.56rem;padding: 0 0.2rem;}
+.maintableBox th{ color: #378304;font-weight: 500;text-align: left;}
+.maintableBox tr td:nth-child(1),.maintableBox tr th:nth-child(1){ text-align: right;}
+.recipesBox .foodsImgBox{ width: 7.25rem; height: 4.7rem; display: block; margin: 0 auto;}
+.recipesBox .foodsImgBox img{ display: block; width: 100%;}
+.recipesBox .foodesName{ font-size: 0.3rem;color: #333333; text-align: center; line-height: 1rem;}
+.foodeTableBox{ width: 4.5rem; display: block; margin: 0 auto;}
+.foodeTableBox table{width:100%; border: 0.02rem solid #cccccc;border-collapse: collapse;margin: 0 auto; font-size: 0.24rem; color: #555555;}
+.foodeTableBox table td{border: 0.02rem solid #cccccc;line-height: 0.5rem;padding: 0 0.2rem;}
+.foodeTableBox table td span{ color: #333333; display: inline-block; width: 0.9rem;}
+.foodeTableBox table tr td:nth-child(1) span{width: 0.7rem}
+.practicesBox{ width: 6rem; display:block; margin: 0.2rem auto; font-size: 0.24rem; color: #555555;}
+.practicesBox p{ line-height: 0.42rem;}
+
+.originsMainBox .enterpriseList{ width: 5.25rem; display: block; margin: 0.1rem auto;}
+.originsMainBox .enterpriseList li{color: #555555;font-size: 0.24rem;padding: 0.05rem 0.1rem 0.05rem 1.5rem;position: relative;}
+.originsMainBox .enterpriseList li span{ position: absolute; left: 0; text-align: right; color: #333333;width: 1.5rem;}
+.enterpriseBox .weixinBox{ width: 2.83rem; height: 2.83rem; display: block; margin: 0.1rem auto;}
+.enterpriseBox .weixinBox img{ display: block; width: 100%;}
+.enterpriseBox .tips{ font-size: 0.24rem; color: #555555; text-align: center;line-height: 0.6rem;}
+.productsBox,.recipesBox,.originsMainBox,.enterpriseBox{padding: 0.05rem 0 0.1rem 0;}
+.recipesBox,.originsMainBox,.enterpriseBox{ display: none;}

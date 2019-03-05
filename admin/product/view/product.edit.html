@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>产品管理-产品列表</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUploadImg.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/template_add.js"></script>
+</head>
+
+
+<body>
+<div class="container">
+
+    <div class="cont_title">　你当前的位置：产品管理 - <a href="__URL__/index">产品列表</a> - 编辑</div>
+
+    <div class="con">
+
+        <div class="conlist">
+            <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">
+                <input type="hidden" name="product_id" value="{$getone.product_id}" />.
+                <table class="listtable">
+                    <tr class="tr1">
+                        <td colspan="2" class="tit">编辑</td>
+                    </tr>
+                    <tr class="tr1">
+                        <td  class="tdl">产品名称:<span style="color:#f00;">*</span></td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="title" id="title" size="60"  maxlength="32"
+                                   onKeyPress="return noStrs(event);" onBlur="onBlur_title()"
+                                   value="{$getone.title}"
+                            />
+                            <span id="span_title" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1"  >
+                        <td class="tdl" style="border-bottom:none;"></td>
+                        <td class="tdr" style="padding-top:5px; border-bottom:none;">
+                            <div class="class_con" id="div_new_img_link_url">
+                                <label for="">&nbsp;</label>
+                                <img src="" height="70" width="90" alt="" id="news_img_link_url" />
+                            </div>
+                            <div class="class_con" style="display:none;">
+                                <label for="">&nbsp;</label>
+                                <div  id="div_new_img_link_url_news"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">图片：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="{:config('upload_config.max_size')}" />
+                            <input type="hidden" name="oldIMAGES" value="{$getone['images']}" />
+                            <input type="file" name="IMAGES" id="IMAGES"
+                                   onChange="previewImage(this,'div_new_img_link_url','news_img_link_url','div_new_img_link_url_news');OnBlur_images(); " />
+                            <span  style="color:#0000FF;">图片格式：{:config('upload_config.file_ext')}</span>
+                            {if $getone['images'] neq '' }
+                            　<a href="__STATIC__/uploads/product/{$getone['images']}" target="_blank"><img src="__STATIC__/uploads/product/{$getone['images']}" width="100" height="100" /></a>
+                                {if auth('product/product/delimg') }
+                                <a href="__URL__/delimg/id/{$getone['product_id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
+                                {/if}
+                            {/if}
+                            <span id="spanIMAGES" style="color:#f00;"></span></td>
+                    </tr>
+                    <tr class="tr1">
+                        <td  class="tdl">产品模版</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <select name="product_template_id">
+                                {foreach $list_product_template as $value}
+                                <option value="{$value['product_template_id']}" {if $getone.product_template_id eq $value['product_template_id'] }selected{/if}>{$value['title']}</option>
+                                {/foreach}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">状态：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="radio" name="data_status" value="0" {if $getone.data_status eq 0 }checked{/if} />不显示　
+                            <input type="radio" name="data_status" value="1" {if $getone.data_status eq 1 }checked{/if} />显示&nbsp;
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">描述：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60">{$getone.data_desc}</textarea>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl"></td>
+                        <td class="tdr" style="padding-top:5px; position:relative;">
+                            <input type="submit" name="Submit" value="提交"  class="buttomorger" />　
+                            <input type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" />
+
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

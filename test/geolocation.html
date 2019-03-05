@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <style>
+            * {margin: 0; padding: 0; border: 0;}
+            body {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            #geoPage, #markPage {
+                position: relative;
+            }
+        </style>
+        <title>蝌蚪溯源-取得访问者的地址信息</title>
+    </head>
+<body>
+<iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no"
+        src="https://apis.map.qq.com/tools/geolocation?key=U6RBZ-A23WR-NW7WW-WZXHK-H6MNJ-HGBQU&referer=myapp&effect=zoom"></iframe>
+
+<script type="text/JavaScript">
+    var loc;
+    var isMapInit = false;
+    window.addEventListener('message', function(event) {
+        loc = event.data; 
+        console.log('location', loc);
+
+        if(loc  && loc.module == 'geolocation') {
+            var markUrl = 'https://apis.map.qq.com/tools/poimarker' +
+                    '?marker=coord:' + loc.lat + ',' + loc.lng +
+                    ';title:蝌蚪溯源;addr:' + (loc.addr || loc.city) +
+                    '&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp';
+            document.getElementById('markPage').src = markUrl;
+        } else {
+            // console.log('');
+        }
+    }, false);
+    document.getElementById("geoPage").contentWindow.postMessage('getLocation', '*');
+    setTimeout(function() {
+        if(!loc) {
+            document.getElementById("geoPage")
+                    .contentWindow.postMessage('getLocation.robust', '*');
+        }
+    }, 5000); 
+</script>
+<iframe id="markPage" width="100%" height="70%" frameborder=0 scrolling="no" src=""></iframe>
+</body>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>溯源查询-{$getoneProduct['title']}-{:config('custom_config.WebConfig_Name')}</title>
+		<script type="text/javascript" src="__STATIC__/home/images_cake/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="__STATIC__/home/images_cake/js/mobile.js"></script>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_cake/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_cake/css/style.css" />
+		<style>
+			#wrapper {height: 100vh;-webkit-overflow-scrolling: touch;overflow-y: scroll;overflow-x: hidden;width: 7.5rem;display: block;margin: 0 auto; background-color:#FFFFFF;}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+		<div class="traceabilityBox">
+			<!--<<列表内容-->
+				<p class="titles">源奶加工</p>
+				<ul>
+					<li><span>Anchor芝士</span>Anchor芝士来自于新西兰安佳，口感香浓，具有丰富的营养价值</li>
+					<li><span>奶油，奶酪</span>卡特基奶酪</li>
+					<li><span>土鸡蛋</span>农家土鸡蛋</li>
+					<li><span>砂糖</span>细砂糖</li>
+					<li><span>美国蔓越莓干</span>蔓越莓是美国原产的浆果，具有独特的酸味，不含脂肪，含钠低</li>
+					<li><span>采购人</span>王帅</li>
+				</ul>
+				<p class="titles">溶解奶酪</p>
+				<ul>
+					<li><span>溶解奶酪</span>将奶酪提前取出，温室软化</li>
+					<li><span>制作乳酪馅</span>将软化的奶酪加上细砂糖用打蛋器打至松软，呈羽毛状后，打入一颗鸡蛋，搅打均匀后，再加入红桑梅果酱和蔓越莓果肉，搅拌均匀，最后加入奶油搅匀</li>
+					<li><span>装点蛋糕</span>在蛋糕顶摆放蔓越莓果肉和杏仁片</li>
+					<li><span>加工负责人</span>高寒</li>
+				</ul>
+				<p class="titles">包装</p>
+				<ul>
+					<li><span>打包员</span>小王</li>
+					<li><span>配送人</span>小刘</li>
+					<li><span>联系方式</span>156****8091</li>
+					<li><span>负责人</span>王主管</li>
+				</ul>
+			<!--列表内容>>-->
+			<!--<<底部占位-->
+			<div style="height: 1.5rem;">	
+			<!--底部占位-->	
+			<!--<<底部区域-->
+			<div class="footerListBox">
+				<a href="__URL__/index?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">产品</a>
+				<a href="__URL__/cake_fangwei?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">真伪</a>
+				<a class="on" href="__URL__/cake_suyuan?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">溯源</a>
+			</div>	
+			<!--底部区域>>-->	
+			<div>
+			<!--内容区>>-->
+		</div>
+	</body>
+</html>

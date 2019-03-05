@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>仿伪查询-结果页面</title>
+    <link rel="stylesheet" href="__STATIC__/home/images_scsg/swiper.css">
+    <link rel="stylesheet" href="__STATIC__/home/images_scsg/base.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/images_scsg/result.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/images_scsg/map.css">
+</head>
+<style type="text/css">
+.top-times{height: 150px; width: 100%; background-color: #f75c2f; text-align: center;}
+.top-times img{ margin: 0px auto; width: 20%; margin-top: 40px;}
+.top-times_p{ text-align: left; padding: 15px; line-height: 1.7em;}
+.top-times-no{height: 150px; width: 100%; background-color: #fff; text-align: center;}
+.top-times-no img{ margin: 0px auto; width: 20%; margin-top: 40px;}
+</style>
+<body>
+{if empty($getoneProductCodeInfo) }
+<div class="top-times">
+        <img src="__STATIC__/home/images_scsg/qrsearch-no.png" alt="" style="display: inline;">
+</div>
+<p class="top-times_p">你所查询的防伪码不存在，防伪码应是不含空格的数字与字母编码，请再次核实且谨防假冒！</p>
+{else}
+<div class="top-times-no">
+    <img src="__STATIC__/home/images_scsg/zheng-pin.png" alt="" style="display: inline;">
+</div>
+{/if}
+</body>
+
+</html>

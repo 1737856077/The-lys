@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>权限管理-系统角色-编辑</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/systemrole_add.js"></script>
+</head>
+
+
+<body>
+<div class="container">
+	
+    <div class="cont_title">　你当前的位置：权限管理 - <a href="__URL__/index">系统角色</a> - 编辑</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">
+            <input type="hidden" name="role_id" value="{$getone['role_id']}" />
+        	<table class="listtable">
+            	<tr class="tr1">
+                	<td colspan="2" class="tit">编辑</td>
+                </tr>
+               <tr class="tr1">
+                    <td  class="tdl">名称:<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input type="text" name="title" id="title" size="60"  maxlength="100" onBlur="onBlur_title()"
+                               onKeyPress="return noStrs(event);" value="{$getone['title']}"  />
+                        <span id="span_title" style="color:#f00;"></span>
+                    </td>
+                </tr>
+                    <tr class="tr1">
+						<td class="tdl">状态：</td>
+						<td class="tdr" style="padding-top:5px;">
+                            <input type="radio" name="data_status" value="0" {if $getone['data_status'] eq 0}checked{/if} />冻结　
+                            <input type="radio" name="data_status" value="1" {if $getone['data_status'] eq 1}checked{/if} />正常&nbsp;
+                        </td>
+					</tr>
+
+                  <tr class="tr1">
+						<td class="tdl">描述：</td>
+						<td class="tdr" style="padding-top:5px;">
+                            <textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60">{$getone['data_desc']}</textarea>
+                        </td>
+				  </tr>
+                 
+                <tr class="tr1">
+                	<td class="tdl"></td>
+                    <td class="tdr" style="padding-top:5px; position:relative;">
+                    <input type="submit" name="Submit" value="提交"  class="buttomorger" />　 
+                    <input type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" /> 
+                    
+                 </td>
+               </tr>
+            </table>
+     
+      </form>      
+        </div>
+    
+    </div>
+    
+    
+</div>
+
+
+</body>
+</html>

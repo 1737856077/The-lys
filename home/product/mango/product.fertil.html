@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title></title>
+<link rel="stylesheet" href="__STATIC__/home/images_mango/css/common.css">
+<link rel="stylesheet" href="__STATIC__/home/images_mango/css/index.css">
+<link rel="stylesheet" href="__STATIC__/home/images_mango/css/children.css">
+<!--<link rel="stylesheet" href="css/swiper-3.4.2.min.css">-->
+<script src="__STATIC__/home/images_mango/js/index.js"></script>
+<script src="__STATIC__/home/images_mango/js/main_style.js"></script>
+<script src="__STATIC__/home/images_mango/js/jquery-1.11.3.min.js"></script>
+<style>
+    	#wrapper {height: 100vh;-webkit-overflow-scrolling: touch;overflow-y: scroll;overflow-x: hidden;max-width: 7.5rem;display: block;margin: 0 auto;}
+    </style>
+<script>
+        $(function(){
+            function GetRequest() {
+                var url = location.search; //获取url中"?"符后的字串
+
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+
+//        （1）调用
+
+            var a=GetRequest();
+            var index_1=a['id'];
+            $('.fetil-grow-infor').hide();
+            if(index_1==1){
+//            alert('111');
+                $('#lay01').show();
+                $('#lay02').hide();
+                $(document).attr("title","施肥数据");
+            }else if (index_1==2){
+//            alert('222');
+                $('#lay01').hide().css('display','none');
+                $('#lay02').show().css('display','block');
+                $(document).attr("title","农药数据");
+//            $('#lay02').css
+            }
+        });
+
+
+    </script>
+</head>
+<body>
+<div id="wrapper">
+  <div class="index-com-box">
+    <!--头部信息-->
+    <div class="header-box"> <a href="javascript:history.go(-1);">
+      <div class="back-box"> </div>
+      </a>
+      <div class="header-tit small-tit">海南贵妃芒</div>
+      <!--<div class="moreInf-box">-->
+      <!--</div>-->
+    </div>
+    <!--logo图标-->
+    <div class="logo-box"> <img src="__STATIC__/home/images_mango/images/logo.png" alt="" class="logo-img">
+      <p class="logo-text">Green Wish</p>
+    </div>
+    <div class="grow-box">
+      <div class="grow-one-box">
+        <div class="grow-progress">
+          <img src="__STATIC__/home/images_mango/images/dashed_01.png" alt="" class="dashed-img01">
+          <img src="__STATIC__/home/images_mango/images/icon-mango.png" alt="" class="icon_mango">
+          <img src="__STATIC__/home/images_mango/images/dashed_02.png" alt="" class="dashed-img02">
+          <img src="__STATIC__/home/images_mango/images/icon-mango.png" alt="" class="icon_mango">
+          <img src="__STATIC__/home/images_mango/images/dashed_02.png" alt="" class="dashed-img02">
+          <img src="__STATIC__/home/images_mango/images/icon-mango.png" alt="" class="icon_mango">
+          <img src="__STATIC__/home/images_mango/images/dashed_01.png" alt="" class="dashed-img01">
+        </div>
+        <!--施肥数据-->
+        <div class="fetil-grow-infor" id="lay01" style="display: block">
+          <div class="grow-infor">
+            <div class="grow-time">2018.05.23</div>
+            <ul class="grow-infor-box">
+              <li>
+                <div class="grow-infor-title">肥料名称</div>
+                <div class="grow-infor-text">腐熟鸡粪</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">类型</div>
+                <div class="grow-infor-text">有机肥</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">用量</div>
+                <div class="grow-infor-text">200KG/亩</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">品牌</div>
+                <div class="grow-infor-text">其他</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">供应商</div>
+                <div class="grow-infor-text">农家自供</div>
+              </li>
+            </ul>
+            <div class="grow-right-box"></div>
+          </div>
+          <div class="grow-infor">
+            <div class="grow-time">2018.05.14</div>
+            <ul class="grow-infor-box">
+              <li>
+                <div class="grow-infor-title">肥料名称</div>
+                <div class="grow-infor-text">甘蔗渣</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">类型</div>
+                <div class="grow-infor-text">有机肥</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">用量</div>
+                <div class="grow-infor-text">500KG/亩</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">品牌</div>
+                <div class="grow-infor-text">其他</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">供应商</div>
+                <div class="grow-infor-text">农家自供</div>
+              </li>
+            </ul>
+            <div class="grow-right-box"></div>
+          </div>
+          <div class="grow-infor">
+            <div class="grow-time">2018.04.23</div>
+            <ul class="grow-infor-box">
+              <li>
+                <div class="grow-infor-title">肥料名称</div>
+                <div class="grow-infor-text">蘑菇渣</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">类型</div>
+                <div class="grow-infor-text">有机肥</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">用量</div>
+                <div class="grow-infor-text">200KG/亩</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">品牌</div>
+                <div class="grow-infor-text">其他</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">供应商</div>
+                <div class="grow-infor-text">农家自供</div>
+              </li>
+            </ul>
+            <div class="grow-right-box"></div>
+          </div>
+          <div class="grow-infor">
+            <div class="grow-time">2018.03.14</div>
+            <ul class="grow-infor-box">
+              <li>
+                <div class="grow-infor-title">肥料名称</div>
+                <div class="grow-infor-text">尿素</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">类型</div>
+                <div class="grow-infor-text">化肥</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">用量</div>
+                <div class="grow-infor-text">15KG/亩</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">品牌</div>
+                <div class="grow-infor-text">河池</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">供应商</div>
+                <div class="grow-infor-text">广西河池化工股份有限公司</div>
+              </li>
+            </ul>
+            <div class="grow-right-box"></div>
+          </div>
+        </div>
+        <!--农药数据-->
+        <div class="fetil-grow-infor" id="lay02" style="display: none">
+          <div class="grow-infor">
+            <div class="grow-time">2018.05.23</div>
+            <ul class="grow-infor-box">
+              <li>
+                <div class="grow-infor-title">农药名称</div>
+                <div class="grow-infor-text">杀虫双</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">类型</div>
+                <div class="grow-infor-text">杀虫</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">用量</div>
+                <div class="grow-infor-text">50ml/亩</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">品牌</div>
+                <div class="grow-infor-text">井岗</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">供应商</div>
+                <div class="grow-infor-text">安徽省自辉农业</div>
+              </li>
+            </ul>
+            <div class="grow-right-box"></div>
+          </div>
+          <div class="grow-infor">
+            <div class="grow-time">2018.05.14</div>
+            <ul class="grow-infor-box">
+              <li>
+                <div class="grow-infor-title">农药名称</div>
+                <div class="grow-infor-text">灭多威</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">类型</div>
+                <div class="grow-infor-text">杀虫</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">用量</div>
+                <div class="grow-infor-text">60ml/亩</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">品牌</div>
+                <div class="grow-infor-text">百威</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">供应商</div>
+                <div class="grow-infor-text">安徽省自辉农业</div>
+              </li>
+            </ul>
+            <div class="grow-right-box"></div>
+          </div>
+          <div class="grow-infor">
+            <div class="grow-time">2018.04.23</div>
+            <ul class="grow-infor-box">
+              <li>
+                <div class="grow-infor-title">农药名称</div>
+                <div class="grow-infor-text">灭多威</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">类型</div>
+                <div class="grow-infor-text">杀虫</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">用量</div>
+                <div class="grow-infor-text">40ml/亩</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">品牌</div>
+                <div class="grow-infor-text">百威</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">供应商</div>
+                <div class="grow-infor-text">寿光农产品研发公司</div>
+              </li>
+            </ul>
+            <div class="grow-right-box"></div>
+          </div>
+          <div class="grow-infor">
+            <div class="grow-time">2018.03.14</div>
+            <ul class="grow-infor-box">
+              <li>
+                <div class="grow-infor-title">农药名称</div>
+                <div class="grow-infor-text">杀虫丹</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">类型</div>
+                <div class="grow-infor-text">杀虫</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">用量</div>
+                <div class="grow-infor-text">50ml/亩</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">品牌</div>
+                <div class="grow-infor-text">河池</div>
+              </li>
+              <li>
+                <div class="grow-infor-title">供应商</div>
+                <div class="grow-infor-text">广西河池化工股份有限公司</div>
+              </li>
+            </ul>
+            <div class="grow-right-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+
+</script>
+</html>

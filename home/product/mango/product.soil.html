@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title>土壤成分</title>
+<link rel="stylesheet" href="__STATIC__/home/images_mango/css/common.css">
+<link rel="stylesheet" href="__STATIC__/home/images_mango/css/index.css">
+<link rel="stylesheet" href="__STATIC__/home/images_mango/css/children.css">
+<!--<link rel="stylesheet" href="css/swiper-3.4.2.min.css">-->
+<script src="__STATIC__/home/images_mango/js/index.js"></script>
+<script src="__STATIC__/home/images_mango/js/main_style.js"></script>
+<script src="__STATIC__/home/images_mango/js/jquery-1.11.3.min.js"></script>
+<script src="__STATIC__/home/images_mango/js/echarts.min.js"></script>
+<script src="__STATIC__/home/images_mango/js/divresize.js"></script>
+<style>
+    	#wrapper {height: 100vh;-webkit-overflow-scrolling: touch;overflow-y: scroll;overflow-x: hidden;max-width: 7.5rem;display: block;margin: 0 auto;}
+    </style>
+</head>
+<body>
+<div id="wrapper">
+  <div class="index-com-box soil">
+    <!--头部信息-->
+    <div class="header-box"> <a href="javascript:history.go(-1);">
+      <div class="back-box"> </div>
+      </a>
+      <div class="header-tit small-tit">海南贵妃芒</div>
+      <!--<div class="moreInf-box">-->
+      <!--</div>-->
+    </div>
+    <!--logo图标-->
+    <div class="logo-box"> <img src="__STATIC__/home/images_mango/images/logo.png" alt="" class="logo-img">
+      <p class="logo-text">Green Wish</p>
+    </div>
+    <!--土壤的数据列表-->
+    <div class="soil-box">
+      <div class="soil-table-box">
+        <div id="1" class="layout-cont">
+          <div class="headerBox" id="headerText"> </div>
+          <div class="contentEchartBox">
+            <div id="gauging" style="width: 100%;min-height:3.24rem;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="soil-table-box">
+        <div id="2" class="layout-cont">
+          <div class="headerBox" id="header2"> </div>
+          <div class="contentEchartBox">
+            <div id="content2" style="width: 100%;min-height:3.24rem;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="soil-table-box">
+        <div id="3" class="layout-cont">
+          <div class="headerBox" id="header3"> </div>
+          <div class="contentEchartBox">
+            <div id="content3" style="width: 100%;min-height:3.24rem;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="soil-table-box">
+        <div id="4" class="layout-cont">
+          <div class="headerBox" id="header4"> 室外空气湿度(%) </div>
+          <div class="contentEchartBox">
+            <div id="content4" style="width: 100%;min-height:3.24rem;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="soil-table-box">
+        <div id="5" class="layout-cont">
+          <div class="headerBox" id="header5"> 光照度(h) </div>
+          <div class="contentEchartBox">
+            <div id="content5" style="width: 100%;min-height:3.24rem;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+    $(function () {
+        var soilText01 = ['有机物', '矿物质', '空气', '水分'], soilNum = ['5.2%', '33.6%', '25.2%-32.1%', '23.2%-29.1%'];
+//        土壤固体
+        function state() {
+            $('#headerText').html('土壤固体');
+            myChart = echarts.init(document.getElementById('gauging'));
+            var sizess = parseInt($('html').css('fontSize'));
+//            alert(sizess);
+            var sizes = parseInt(sizess * 0.24);
+            var rightSizes = parseInt(sizess * 0.2);
+            if (sizes < 14) {
+                sizes = 14;
+            }
+            if (rightSizes < 11) {
+                sizes = 11;
+            }
+
+            option = {
+                tooltip: {},
+                legend: {
+                    show: false
+                },
+                grid: {
+                    top: '8%',
+                    left: '3%',
+                    right: '4%',
+                    bottom: '5%',
+                    containLabel: true
+                },
+
+                xAxis: {
+                    show: false
+//
+                },
+                yAxis: [{
+                    type: 'category',
+                    data: soilText01,
+                    position: 'left',
+                    nameTextStyle: {
+                        color: '#333',
+//                        fontWeight: '600',
+//                        fontSize: sizes,
+//                        padding:[0,10,0,0]
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: true,
+                        margin: sizes,
+                        textStyle: {
+                            color: '#333',
+//                            fontWeight: '600',
+                            fontSize: sizes,
+
+                        }
+                    }
+                },
+                    {
+                        type: 'category',
+                        data: soilNum,
+                        position: 'right',
+                        nameTextStyle: {
+                            color: '#333',
+                            fontWeight: '600',
+                            fontSize: sizes
+                        },
+                        axisLine: {
+                            show: false
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#333',
+                                fontWeight: '600',
+                                fontSize: rightSizes
+                            }
+                        }
+                    }
+                ],
+                series: [
+                    {
+//                        name: '',
+                        type: 'bar',
+                        data: [5, 33, 25, 23],
+                        itemStyle: {
+                            emphasis: {
+                                barBorderRadius: [60, 60, 60, 60],
+                                color: '#efc206'
+                            },
+
+//                            normal: {
+//                                //柱形图圆角，初始化效果
+//                                barBorderRadius: [60, 60, 60, 60],
+//                                color: '#a8bc47'
+//                            }
+                            normal: {
+                                barBorderRadius: [60, 60, 60, 60],
+                                //颜色渐变
+//                                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+//                                    offset: 0,
+//                                    color: '#eb8b38'
+//                                }, {
+//                                    offset: 1,
+//                                    color: '#fecc01'
+//                                }]),
+
+                                // 随机显示
+                                //color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);},
+                                // 挨个显示
+                                color: function (params) {
+                                    var colorList = ['#eb8e35', '#55b491', '#e34d45', '#836297', '#f9f121', '#b916d7', '#f628cd', '#d81111', '#d81111'];
+                                    return colorList[params.dataIndex]
+                                },
+                            }
+                        }
+                    }
+
+                ]
+            };
+
+// 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        }
+        state();
+
+//土壤成分
+        var data2 = ['蒙脱石', '石英', '白云母', '石英', '赤铜石', '重硅石'], data02 = [5000, 3000, 6000, 8000, 5000, 4200];
+
+        function state1() {
+            $('#header2').html('土壤成分');
+            myChart1 = echarts.init(document.getElementById('content2'));
+            var sizess = parseInt($('html').css('fontSize'));
+            var sizes = parseInt(sizess * 0.18);
+            var linew=parseInt(sizess * 0.01);
+            var barSizes = parseInt(sizess * 0.3);
+//            alert(sizes)
+            if (sizes < 14) {
+                sizes = 14;
+            }
+            if(linew < 1) {
+                sizes = 1;
+            }
+            if(barSizes < 20) {
+                barSizes = 20;
+            }
+
+            option = {
+                tooltip: {},
+                legend: {
+                    show: false
+//                    data: ['2011年', '2012年']
+                },
+                grid: {
+                    top: '8%',
+//                    left: '3%',
+//                    right: '4%',
+                    bottom: '5%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    splitLine: {
+                        show: false
+                    },
+                    data: data2,
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontSize: sizes
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f3c91a',
+                            width: linew + 2
+                        }
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    //// 控制网格线是否显示
+                    splitLine: {
+                        show: 'true',
+                        //  改变轴线颜色
+                        lineStyle: {
+                            color: '#aaaaaa',
+                            type: 'dashed'
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f3c91a',
+                            width: linew + 2
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#999',
+                            fontSize: sizes
+                        }
+                    }
+
+                },
+                series: [
+                    {
+                        name: '土壤成分',
+                        type: 'bar',
+                        data: data02,
+                        barWidth: barSizes,
+                        itemStyle: {
+                            emphasis: {
+                                barBorderRadius: [60, 60, 0, 0],
+                                color: '#a8bc47'
+                            },
+                            normal: {
+                                barBorderRadius: [60, 60, 0, 0],
+                                color: function (params) {
+                                    var colorList = ['#c77910', '#ec8f39', '#e34d47', '#846498', '#458f9a', '#59b691', '#f6ca35', '#8eac75', '#d81111'];
+                                    return colorList[params.dataIndex]
+                                },
+                                //颜色渐变
+//                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+//                                    offset: 0,
+//                                    color: '#afe0ff'
+//                                },
+//                                    {
+//                                    offset: 1,
+//                                    color: '#5A91E1'
+//                                }
+//                                ])
+                            }
+                        }
+                    },
+                ]
+
+            };
+
+
+// 使用刚指定的配置项和数据显示图表。
+            myChart1.setOption(option);
+        }
+
+        state1();
+        //        室内空气湿度(%)
+        var data3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                data3min = [0, 8, 1, 10, 4, 10, 8, 15, 10, 20, 15, 5, 0],
+                data3max = [0, 10, 18, 30, 15, 35, 20, 50, 30, 50, 40, 20, 0],
+                dataAve = [0, 6, 12, 25, 10, 30, 10, 40, 25, 40, 30, 15, 0];
+
+        function state2() {
+            $('#header3').html('室外温度(%)');
+            myChart3 = echarts.init(document.getElementById('content3'));
+            var sizess = parseInt($('html').css('fontSize'));
+//            alert(sizess);
+            var linew = parseInt(sizess * 0.01);
+            var sizes = parseInt(sizess * 0.16);
+            if (sizes < 12) {
+                sizes = 12;
+            }
+            if (linew < 1) {
+                linew = 1;
+            }
+            option = {
+                tooltip: {},
+                legend: {
+                    show: true,
+                    x: 'center',
+                    y: 'bottom',
+                    data: [
+                        {
+                            name: '最大值',
+                            textStyle: {
+                                fontSize: sizes,
+                                color: '#666'
+                            },
+                            icon: 'stack'
+                        },
+                        {
+                            name: '最小值',
+                            textStyle: {
+                                fontSize: sizes,
+                                color: '#666'
+                            },
+                            icon: 'stack'
+                        },
+                        {
+                            name: '平均值',
+                            textStyle: {
+                                fontSize: sizes,
+                                color: '#666'
+                            },
+                            icon: 'stack'
+                        }
+                    ]
+                },
+
+                grid: {
+                    top: '8%',
+//                    left: '3%',
+//                    right: '4%',
+                    bottom: '13%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#aaaaaa',
+                            type: 'dashed',
+                            width: linew+2
+                        }
+                    },
+                    data: data3,
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontSize: sizes
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f3c91a',
+                            width: linew + 2
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                },
+                yAxis: {
+                    type: 'value',
+                    //// 控制网格线是否显示
+                    splitLine: {
+                        show: 'true',
+                        //  改变轴线颜色
+                        lineStyle: {
+                            color: '#aaaaaa',
+                            type: 'dashed',
+                            width: linew
+                        }
+                    },
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontSize: sizes
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f3c91a',
+                            width: linew + 2
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+
+                },
+                series: [
+                    {
+                        name: '最大值',
+                        type: 'line',
+                        data: data3max,
+                        areaStyle: {normal: {}},
+                        smooth: true,
+                        symbol: 'none',
+                        itemStyle: {
+                            normal: {
+                                color: '#ed3f5f'
+
+                            }
+                        }
+                    },
+                    {
+                        name: '最小值',
+                        type: 'line',
+                        data: data3min,
+                        smooth: true,
+                        symbol: 'none',
+                        areaStyle: {normal: {}},
+                        itemStyle: {
+                            normal: {
+                                color: '#52ddcd'
+
+                            }
+                        }
+                    },
+                    {
+                        name: '平均值',
+                        type: 'line',
+                        data: dataAve,
+                        smooth: true,
+                        symbol: 'none',
+                        areaStyle: {normal: {}},
+                        itemStyle: {
+                            normal: {
+                                color: '#d9da29'
+
+                            }
+                        }
+                    }
+                ]
+
+            };
+
+// 使用刚指定的配置项和数据显示图表。
+            myChart3.setOption(option);
+        }
+
+        state2();
+        //        室外空气湿度(%)
+        var data3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                data3min = [0, 8, 1, 10, 4, 10, 8, 15, 10, 20, 15, 5, 0],
+                data3max = [0, 10, 18, 30, 15, 35, 20, 50, 30, 50, 40, 20, 0],
+                dataAve = [0, 6, 12, 25, 10, 30, 10, 40, 25, 40, 30, 15, 0];
+
+        function state3() {
+//            $('#header3').html('室外温度(%)');
+            myChart3 = echarts.init(document.getElementById('content4'));
+            var sizess = parseInt($('html').css('fontSize'));
+//            alert(sizess);
+            var linew = parseInt(sizess * 0.01);
+            var sizes = parseInt(sizess * 0.16);
+            if (sizes < 12) {
+                sizes = 12;
+            }
+            if (linew < 1) {
+                linew = 1;
+            }
+            option = {
+                tooltip: {},
+                legend: {
+                    show: true,
+                    x: 'center',
+                    y: 'bottom',
+                    data: [
+                        {
+                            name: '最大值',
+                            textStyle: {
+                                fontSize: sizes,
+                                color: '#666'
+                            },
+                            icon: 'stack'
+                        },
+                        {
+                            name: '平均值',
+                            icon: 'stack',
+                            textStyle: {
+                                color: '#666',
+                                fontSize: sizes
+                            }
+                        },
+                        {
+                            name: '最小值',
+                            textStyle: {
+                                color: '#666',
+                                fontSize: sizes
+                            },
+                            icon: 'stack'
+
+
+                        }
+
+                    ]
+                },
+                grid: {
+                    top: '8%',
+//                    left: '3%',
+//                    right: '4%',
+                    bottom: '14%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#aaaaaa',
+                            type: 'dashed',
+                            width: linew
+                        }
+                    },
+                    data: data3,
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontSize: sizes
+                        }
+                    },
+//                    x轴
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f3c91a',
+                            width: linew + 2
+                        }
+                    },
+//                    x轴刻度
+                    axisTick: {
+                        show: false
+                    },
+                },
+                yAxis: {
+                    type: 'value',
+                    //// 控制网格线是否显示
+                    splitLine: {
+                        show: 'true',
+                        //  改变轴线颜色
+                        lineStyle: {
+                            color: '#aaaaaa',
+                            type: 'dashed',
+                            width: linew
+                        }
+                    },
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontSize: sizes
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f3c91a',
+                            width: linew + 2
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+
+                },
+                series: [
+                    {
+                        name: '最大值',
+                        type: 'line',
+                        data: data3max,
+                        areaStyle: {normal: {}},
+                        smooth: true,
+                        symbol: 'none',
+                        itemStyle: {
+                            normal: {
+                                color: '#fed941'
+
+                            }
+                        }
+
+                    },
+                    {
+                        name: '最小值',
+                        type: 'line',
+                        data: data3min,
+                        smooth: true,
+                        symbol: 'none',
+                        areaStyle: {normal: {}},
+                        itemStyle: {
+                            normal: {
+                                color: '#64f2ca'
+
+                            }
+                        }
+                    },
+                    {
+                        name: '平均值',
+                        type: 'line',
+                        data: dataAve,
+                        smooth: true,
+                        symbol: 'none',
+                        areaStyle: {normal: {}},
+                        itemStyle: {
+                            normal: {
+                                color: '#fdb388'
+
+                            }
+                        }
+                    }
+                ]
+
+            };
+
+// 使用刚指定的配置项和数据显示图表。
+            myChart3.setOption(option);
+        }
+
+        state3();
+//        光照度(h)
+        var data4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                data4min = [0, 1, 10, 4, 10, 8, 15, 10, 20, 15, 5, 0],
+                data4max = [10, 18, 30, 15, 35, 20, 50, 30, 50, 40, 20, 0],
+                data4Ave = [6, 12, 25, 10, 30, 10, 40, 25, 40, 30, 15, 0];
+
+        function state4() {
+//
+            myChart4 = echarts.init(document.getElementById('content5'));
+            var sizess = parseInt($('html').css('fontSize'));
+//            alert(sizess);
+            var linew = parseInt(sizess * 0.01);
+            var sizes = parseInt(sizess * 0.16);
+//            alert(sizes)
+            if (sizes < 14) {
+                sizes = 14;
+            }
+            if (linew < 1) {
+                linew = 1;
+            }
+            option = {
+                tooltip: {},
+                legend: {
+                    show: true,
+                    left:'center',
+                    bottom:0,
+//                    padding: 10,
+                    data: [
+                        {
+                            name: '最高值',
+                            icon: 'stack',
+                            textStyle: {
+                                color: '#666',
+                                fontSize: sizes
+                            }
+
+                        },
+                        {
+                            name: '平均值',
+                            icon: 'stack',
+                            textStyle: {
+                                color: '#666',
+                                fontSize: sizes
+                            },
+
+
+                        },
+                        {
+                            name: '最低值',
+                            icon: 'stack',
+                            textStyle: {
+                                color: '#666',
+                                fontSize: sizes
+                            },
+
+
+                        }
+
+                    ]
+                },
+                grid: {
+                    top:'8%',
+//                    left: '3%',
+//                    right: '4%',
+                    bottom: '14%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: data4,
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#aaaaaa',
+                            type: 'dashed',
+                            width: linew
+                        }
+                    },
+                    // x轴的字体样式
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontSize: sizes
+                        }
+                    },
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f3c91a',
+                            width: linew + 2
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+
+                },
+                yAxis: {
+                    type: 'value',
+                    //// 控制网格线是否显示
+                    splitLine: {
+                        show: 'true',
+                        //  改变轴线颜色
+                        lineStyle: {
+                            color: '#aaaaaa',
+                            type: 'dashed',
+                            width: linew
+                        }
+                    },
+//                    y轴
+                    axisLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f3c91a',
+                            width: linew + 2
+                        }
+                    },
+//                    刻度
+                    axisTick: {
+                        show: false
+                    },
+                    // y轴的字体样式
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontSize: sizes
+                        }
+                    },
+                },
+                series: [
+                    {
+                        name: '最高值',
+                        type: 'line',
+                        data: data4max,
+//                        areaStyle: {normal: {}},
+                        smooth: false,
+                        symbol: 'none',
+                        itemStyle: {
+                            normal: {
+                                color: '#e86645'
+
+                            }
+                        }
+
+                    },
+                    {
+                        name: '最低值',
+                        type: 'line',
+                        data: data4min,
+                        symbol: 'none',
+                        smooth: false,
+//                        areaStyle: {normal: {}},
+                        itemStyle: {
+                            normal: {
+                                color: '#e3288d'
+
+                            }
+                        }
+                    },
+                    {
+                        name: '平均值',
+                        type: 'line',
+                        data: data4Ave,
+                        symbol: 'none',
+                        smooth: false,
+//                        areaStyle: {normal: {}},
+                        itemStyle: {
+                            normal: {
+                                color: '#4acdbd'
+
+                            }
+                        }
+                    }
+                ]
+
+            };
+
+// 使用刚指定的配置项和数据显示图表。
+            myChart4.setOption(option);
+        }
+
+        state4();
+
+
+    })
+
+
+</script>
+</html>

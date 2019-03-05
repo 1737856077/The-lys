@@ -1,0 +1,66 @@
+﻿@charset "utf-8";
+.indexsPageBox{ background-image: url(../images/indexBg01.jpg); background-repeat: no-repeat; background-size: 7.5rem;min-height: 100vh;}
+.topsNavigationBox{ padding: 0.97rem 0 0.5rem 0;}
+.topsNavigationBox li{background-size: 100% auto; font-size: 0.28rem;color: #ffffff;height: 1.2rem;background-image: url(../images/optionBtn.png);background-position: center;width: 1.2rem;margin: 0 0.3rem;float: left;line-height: 1.18rem;text-align: center;}
+.topsNavigationBox li a{ display: block; color: #ffffff;text-shadow:0.02rem 0.02rem 0.02rem #333;}
+.productTextBox{ width: 6.8rem; display: block; margin: 0 auto; padding-bottom: 0.5rem;}
+.productTextBox .titles{ font-size: 0.36rem; color: #7f2303; line-height: 1rem; padding-bottom: 0.1rem;text-align: center;}
+.productTextBox .textList li{ font-size:0.24rem; color: #000000; line-height: 0.42rem; padding: 0.1rem 0.1rem 0.1rem 1.9rem; position: relative;}
+.productTextBox .textList li span{ position: absolute; width: 1.6rem; text-align: right; top: 0.1rem; left: 0; color: #7f2303;}
+
+
+.authenticityBox{background-image: url(../images/indexBg03.jpg); background-repeat: no-repeat; background-size: 7.5rem;min-height: 100vh; background-position: bottom;}
+.authenticityBox .lightColorBox{ background-color: rgba(255,255,255,0.1); padding-top: 0.65rem; padding-bottom: 0.2rem;}
+.authenticityBox .lightColorBox .imgsBox{display: block; width: 1.2rem; height: 1.1rem; margin: 0 auto;}
+.authenticityBox .lightColorBox .texts{ font-size: 0.48rem; color: #fefffe; text-align: center; line-height: 1.1rem;}
+.shadowsBox{ display: block; width: 7.5rem; margin: 0 auto;}
+
+.headsMainBox{ width: 7.5rem; position: fixed; left: 50%; height: 0.88rem;top: 0; font-size: 0.36rem; color: #fefffe; background-color: #ce5d02; padding: 0 0.88rem; margin-left: -3.75rem; text-align: center; line-height: 0.88rem; z-index: 9;}
+.headsMainBox a,.headsMainBox .jumpsBtn{ background-image: url("../images/left_arrs.png");background-position: center center;background-repeat: no-repeat;background-size: 0.3rem 0.45rem;display: block;height: 0.88rem;left: 0;position: absolute;top: 0;width: 0.88rem;}
+.headsMainBox span{border-bottom: 0.03rem solid #ce5d02;display: inline-block;font-size: 0.3rem;height: 0.88rem;margin: 0 0.4rem;vertical-align: top;}
+.headsMainBox span.on{ border-bottom: 0.03rem solid #FFFFFF;}
+
+.traceaMainBox{background-image: url(../images/indexBg03.jpg); background-repeat: no-repeat; background-size: 7.5rem;min-height: 100vh; background-position: bottom;padding-bottom: 1rem;}
+.traceaMainBox .textMainListBox{ border-radius: 0.2rem;box-shadow: 0 0 0.1rem rgba(102,102,102,0.4); overflow: hidden; margin: 0.25rem; width: 7rem; background-color: #f6b033;}
+.traceaMainBox .textMainListBox .titles{ background-color: #ec9000; font-size: 0.26rem; color: #fefffe; line-height: 0.72rem; text-align: center;}
+.traceaMainBox .textMainListBox .textsList li{ font-size: 0.24rem; padding: 0.1rem 0.3rem 0.1rem 1.5rem; position: relative; line-height: 0.4rem; min-height: 0.6rem; color: #333333;}
+.traceaMainBox .textMainListBox .textsList li span{ position: absolute; width: 1.3rem; display: block; left: 0; top: 0.1rem; text-align: right; color: #7f2303;}
+.traceaMainBox .textMainListBox .textsList li i{ display: inline-block; border: 0.03rem solid #ffffff;margin-right: 0.1rem;vertical-align: top;margin-bottom: 0.1rem;}
+.traceaMainBox .textMainListBox .textsList li i:last-child{margin-right: 0;}
+.traceaMainBox .textMainListBox .textsList li i img{ display: block; width: 1.58rem; }
+.traceaMainBox .textMainListBox .textListUlBox ul:nth-child(even){ background-color: #ffa415;}
+
+.afterserviceBox .textsBox{ width: 7rem; padding: 0 0.3rem; margin: 0.28rem auto; background-color: #f6b033; border-radius: 0.1rem; overflow: hidden;box-shadow: 0 0 0.1rem rgba(102,102,102,0.4);}
+.afterserviceBox .textsBox .textsLine{ font-size: 0.24rem; color: #333333; padding: 0.2rem 0; border-bottom: 0.02rem solid #ec9000;overflow:hidden;}
+.afterserviceBox .textsBox .foodsBox{font-size: 0.24rem; line-height: 0.66rem; color: #7f2303;}
+.afterserviceBox .textsBox .foodsBox i{ float: right; color: #000000;}
+.afterserviceBox .withoutsLine{display: block;height: 0.48rem;margin: 0.4rem auto;width: 2.7rem;color: #333333;display: block;font-size: 0.24rem;line-height: 0.48rem;text-align: center; width: 100%;}
+
+.appealBtn{ width: 5.3rem; height: 0.9rem; background-color: #ce5d02; font-size: 0.3rem; color: #ffffff; text-align: center; line-height: 0.9rem; border-radius: 0.1rem; position: fixed; bottom: 0.3rem; left: 50%; margin-left: -2.65rem;}
+.afterMainBox{ padding-top: 1.4rem; display: none;}
+.afterMainBox i{ width: 1.9rem; display: block; margin: 0 auto;}
+.afterMainBox i img{ display: block; width: 100%;}
+.afterMainBox p{font-size: 0.3rem; color: #ffffff; line-height: 1.1rem; text-align: center;}
+.looksDetails{ display: none;}
+.looksDetails .personalTextBox{font-size: 0.24rem;background-color: #f6b033; padding:0.15rem 0.25rem;}
+.looksDetails .personalTextBox p{ padding: 0.05rem 0;}
+.looksDetails .personalTextBox .names{color: #333333;}
+.looksDetails .personalTextBox .address{color: #7f2303;}
+
+.looksDetails .problemsBox{ background-color: #f6b033; padding: 0.1rem 0.35rem 0.2rem 0.35rem; width: 7rem; margin:0 auto 0.25rem auto ; border-radius: 0.1rem;box-shadow: 0 0 0.1rem rgba(102,102,102,0.4);}
+.looksDetails .problemsBox .tites{color: #7f2303; font-size: 0.3rem; line-height: 0.4rem; padding: 0.1rem 0 0.15rem 0;}
+.looksDetails .problemsBox .texts{ font-size: 0.24rem; color: #333333; line-height: 0.36rem;}
+.looksDetails .problemsBox.handlesBox{ background-color: #ce5d02;}
+.looksDetails .problemsBox.handlesBox .tites,.looksDetails .problemsBox.handlesBox .texts{ color: #ffffff;}
+
+.afterListBox{ background-color: #ffffff; width: 7.5rem; position: fixed; bottom: 0; margin-left: -3.75rem; left: 50%; padding-bottom: 1px; display: none; z-index: 100;}
+.afterListBox .titles{ font-size: 0.3rem; color: #333333; line-height: 0.88rem; padding: 0 0.88rem 0 0.33rem; border-bottom: 0.02rem solid #dddddd; position: relative;}
+.afterListBox .titles span{ width: 0.88rem; height: 0.88rem; display: inline-block; background-image: url(../images/closeMain.png);background-size: 0.34rem; background-repeat: no-repeat; background-position: center; position: absolute; right: 0;}
+.afterListBox .inputListBox li{ padding: 0.1rem 0.5rem 0.1rem 1.7rem; font-size: 0.24rem; color: #666666; min-height: 0.6rem; line-height: 0.6rem; position: relative;}
+.afterListBox .inputListBox li input[type=text]{ display:block; width: 100%; padding: 0 0.15rem; border: 0.02rem solid #dddddd; height: 0.6rem; font-size: 0.24rem; border-radius: 0.08rem;}
+.afterListBox .inputListBox li span{ position: absolute; left: 0; width: 1.5rem; text-align: right; color: #333333;}
+.afterListBox .inputListBox li textarea{ height: 1.3rem;display:block; width: 100%; padding:0.1rem 0.15rem; border: 0.02rem solid #dddddd;font-size: 0.24rem; border-radius: 0.08rem; resize: none; }
+.afterListBox .inputListBox li label{background-image: url("../images/radios.png");background-position: left center;background-repeat: no-repeat;background-size: 0.26rem auto;padding:0 0.6rem 0 0.4rem;}
+.afterListBox .inputListBox li label.on{background-image: url("../images/radios_ckbtn.png");}
+.afterListBox .inputListBox li label input{ display: none;}
+.afterListBox .submissionBtn{ z-index:100;background-color: #ce5d02;border-radius: 0.1rem; color: #ffffff;display: block;font-size: 0.3rem;height: 0.88rem;line-height: 0.88rem;margin: 0.3rem auto;text-align: center;width: 6.8rem;}

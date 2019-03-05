@@ -1,0 +1,226 @@
+﻿<html>
+<head>
+<meta charset="UTF-8">
+<title>渝皆果-万州血橙追溯信息</title>
+<link rel="stylesheet" href="__STATIC__/home/images_orangered/css/swiper-3.4.2.min.css" />
+<link rel="stylesheet" href="__STATIC__/home/images_orangered/css/ui.css">
+<link rel="stylesheet" href="__STATIC__/home/images_orangered/css/index.css">
+<link rel="stylesheet" href="__STATIC__/home/images_orangered/css/ui.progress-bar.css">
+<link rel="stylesheet" href="__STATIC__/home/images_orangered/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="__STATIC__/home/images_orangered/css/zoomify.min.css">
+<link rel="stylesheet" href="__STATIC__/home/images_orangered/css/style.css">
+</head>
+<body>
+<form name="formGetLoaction" id="formGetLoaction" style="display: none;">
+  <input type="hidden" name="getLoaction_productCodeInfoId" id="getLoaction_productCodeInfoId" value="{$getoneProductCodeInfo['product_code_info_id']}" />
+  <input type="hidden" name="getLoaction_sn" id="getLoaction_sn" value="{$sn}" />
+</form>
+<iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no" style="display: none;"
+        src="https://apis.map.qq.com/tools/geolocation?key=U6RBZ-A23WR-NW7WW-WZXHK-H6MNJ-HGBQU&referer=myapp&effect=zoom"></iframe>
+<script src="__STATIC__/home/js/PublicUser.js"></script>
+<script src="__STATIC__/js/getlocation.js"></script>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div id="slide1" name="slide1" class="swiper-slide slide1">
+      <div id="container">
+        <div class="content">
+          <h1>{:config('custom_config.WebConfig_Name')}</h1>
+        </div>
+        <!-- Progress bar -->
+        <div id="progress_bar" class="ui-progress-bar ui-container">
+          <div class="ui-progress" style="width: 99%;"> <span class="ui-label" style="display:none;">系统正在查询...<b class="value">99%</b></span> </div>
+        </div>
+        <!-- /Progress bar -->
+        <div class="content" id="main_content" style="display: none;">
+          <p>查询完毕,产品识别中...</p>
+        </div>
+        <script src="__STATIC__/home/images_orangered/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script src="__STATIC__/home/images_orangered/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script src="__STATIC__/home/images_orangered/js/progress.js" type="text/javascript" charset="utf-8"></script>
+      </div>
+      <div class="rollPic" id="delay3" style="visibility:hidden"> <img src="__STATIC__/home/images_orangered/images/page1-1-1.png" alt="" class="Rotation roll_1"> <img src="__STATIC__/home/images_orangered/images/page1_circle_03.png" alt="" class="Rotation roll_3"> <img src="__STATIC__/home/images_orangered/images/page1-1-2.png" alt="" class="Rotation roll_2"> <img src="__STATIC__/home/images_orangered/images/lizi.gif" alt="" class="roll_1_2"> <img src="__STATIC__/home/images_orangered/images/juzi.png" alt="" class="change"> </div>
+      <div class="countDown" id="delay" style="visibility:hidden">渝皆果正品溯源万州血橙</div>
+      <div id="showDown" class="showDown">
+        <div class="down" id="delay2" style="visibility:hidden">
+          <p>了解详情</p>
+          <img src="__STATIC__/home/images_orangered/images/page3_jian1.png" alt=""> </div>
+      </div>
+    </div>
+    <div id="slide2" name="slide2" class="swiper-slide slide2">
+      <div class="top" style="z-index: 99999;"> <img src="__STATIC__/home/images_orangered/images/logo.png" alt="" class="pro_logo"> </div>
+      <div class="grow">
+        <div>产品信息</div>
+      </div>
+      <div class="rollPic"> <img src="__STATIC__/home/images_orangered/images/page2_circle_01.png" alt="" class="Rotation roll_1"> <img src="__STATIC__/home/images_orangered/images/page2_circle_02.png" alt="" class="Rotation roll_3"> <img src="__STATIC__/home/images_orangered/images/page2_circle_03.png" alt="" class="Rotation roll_2"> <img src="__STATIC__/home/images_orangered/images/page2_circle_04.png" alt="" class="Rotation roll_1_2"> <img src="__STATIC__/home/images_orangered/images/juzi.png" alt="" class="change"> <img src="__STATIC__/home/images_orangered/images/page1-5.png" alt="" class="change2"> <img src="__STATIC__/home/images_orangered/images/zhishipai.png" alt="" class="change3"> </div>
+      <div class="down2">
+        <p>了解生长基地和生长过程</p>
+        <img src="__STATIC__/home/images_orangered/images/page3_jian1.png" alt=""> </div>
+    </div>
+    <div id="slide3" name="slide3" class="swiper-slide slide3">
+      <div class="top" style="z-index: 99999;"> <img src="__STATIC__/home/images_orangered/images/logo.png" alt="" class="pro_logo"> </div>
+      <div class="grow">
+        <div>生长基地</div>
+      </div>
+      <div id="jdjxc">
+        <div id="imgRolling">
+          <ul class="imagebg" id="imagebg">
+            <li data-sPic="__STATIC__/home/images_orangered/images/small1.jpg"> <img src="__STATIC__/home/images_orangered/images/big1.png"> </li>
+            <li data-sPic="__STATIC__/home/images_orangered/images/small2.jpg"> <img src="__STATIC__/home/images_orangered/images/big2.png"> </li>
+            <li data-sPic="__STATIC__/home/images_orangered/images/small3.jpg"> <img src="__STATIC__/home/images_orangered/images/big3.png"> </li>
+            <li data-sPic="__STATIC__/home/images_orangered/images/small4.jpg"> <img src="__STATIC__/home/images_orangered/images/big4.png"> </li>
+            <li data-sPic="__STATIC__/home/images_orangered/images/small5.jpg"> <img src="__STATIC__/home/images_orangered/images/big5.png"> </li>
+            <li data-sPic="__STATIC__/home/images_orangered/images/small6.jpg"> <img src="__STATIC__/home/images_orangered/images/big6.png"> </li>
+            <li data-sPic="__STATIC__/home/images_orangered/images/small7.jpg"> <img src="__STATIC__/home/images_orangered/images/big7.png"> </li>
+          </ul>
+          <div class="scrollbg">
+            <div class="scroll"> <a id="left_btn" class="pre" href="javascript:void(0)"></a>
+              <div class="present" id="present"></div>
+              <div class="outScroll_pic">
+                <ul class="scroll_img cls" id="small_pic">
+                </ul>
+              </div>
+              <a id="right_btn" class="next" href="javascript:void(0)"></a> </div>
+          </div>
+          <img src="__STATIC__/home/images_orangered/images/zhishipai2.png" alt="" style="margin: 0 auto;width: 100%;padding: 1rem;">
+          <div class="down3">
+            <p>生长过程以及农场介绍</p>
+            <img src="__STATIC__/home/images_orangered/images/page3_jian1.png" alt=""> </div>
+        </div>
+        <script type="text/javascript" src="__STATIC__/home/images_orangered/js/imgSlider.js"></script>
+      </div>
+    </div>
+    <div id="slide4" name="slide4" class="swiper-slide slide4">
+      <div class="top" style="z-index: 99999;"> <img src="__STATIC__/home/images_orangered/images/logo.png" alt="" class="pro_logo"> </div>
+      <div class="grow">
+        <div>生长过程</div>
+      </div>
+      <div class="container">
+        <div class="examples">
+          <div class="row">
+            <div class="example  col-xs-6 col-md-6">
+              <p><img src="__STATIC__/home/images_orangered/images/1.jpg" class="img-rounded" alt=""></p>
+            </div>
+            <div class="example col-xs-6 col-md-6">
+              <p><img src="__STATIC__/home/images_orangered/images/2.jpg" class="img-rounded" alt=""></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="example  col-xs-6 col-md-6">
+              <p><img src="__STATIC__/home/images_orangered/images/3.jpg" class="img-rounded" alt=""></p>
+            </div>
+            <div class="example col-xs-6 col-md-6">
+              <p><img src="__STATIC__/home/images_orangered/images/4.jpg" class="img-rounded" alt=""></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="__STATIC__/home/images_orangered/images/zhishi.png" alt="" style="margin: 0 auto;width: 100%;padding: 1rem;">
+      <div class="down3">
+        <p>溯源流程</p>
+        <img src="__STATIC__/home/images_orangered/images/page3_jian1.png" alt=""> </div>
+      <script src="__STATIC__/home/images_orangered/js/zoomify.min.js"></script>
+      <script type="text/javascript">
+	$('.example img').zoomify();
+</script>
+    </div>
+    <div id="slide5" name="slide5" class="swiper-slide slide5">
+      <div class="top" style="z-index: 99999;"> <img src="__STATIC__/home/images_orangered/images/logo.png" alt="" class="pro_logo"> </div>
+      <div class="grow">
+        <div>溯源流程</div>
+      </div>
+      <div class="buy-list">
+        <ul class="clearfix">
+          <li class="animated fadeInUp delay1">
+            <div class="imgbox">
+              <p class="img1 animated fadeInLeft delay1">01</p>
+              <img src="__STATIC__/home/images_orangered/images/process-1.png" alt="" class="img2 animated scale-tosmall delay1"></div>
+            <p class="animated fadeInUp delay2">采摘</p>
+          </li>
+          <li class="animated fadeInUp delay2">
+            <div class="imgbox">
+              <p class="img1 animated fadeInLeft delay2">02</p>
+              <img src="__STATIC__/home/images_orangered/images/process-2.png" alt="" class="img2 animated scale-tosmall delay2"></div>
+            <p class="animated fadeInUp delay3">选果</p>
+          </li>
+          <li class="animated fadeInUp delay3">
+            <div class="imgbox">
+              <p class="img1 animated fadeInLeft delay3">03</p>
+              <img src="__STATIC__/home/images_orangered/images/process-3.png" alt="" class="img2 animated scale-tosmall delay3"></div>
+            <p class="animated fadeInUp delay4">贴标</p>
+          </li>
+          <li class="animated fadeInUp delay4">
+            <div class="imgbox">
+              <p class="img1 animated fadeInLeft delay4">04</p>
+              <img src="__STATIC__/home/images_orangered/images/process-4.png" alt="" class="img2 animated scale-tosmall delay4"></div>
+            <p class="animated fadeInUp delay5">包装</p>
+          </li>
+          <li class="animated fadeInUp delay5">
+            <div class="imgbox">
+              <p class="img1 animated fadeInLeft delay5">05</p>
+              <img src="__STATIC__/home/images_orangered/images/process-5.png" alt="" class="img2 animated scale-tosmall delay5"></div>
+            <p class="animated fadeInUp delay6">发货</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="slide6" name="slide6"  class="swiper-slide slide6">
+      <div class="top" style="z-index: 99999;"> <img src="__STATIC__/home/images_orangered/images/logo.png" alt="" class="pro_logo"> </div>
+      <div class="grow">
+        <div>购买渠道</div>
+      </div>
+      <div class="buy-product animated fadeInUp" style="text-align:center;"><img src="__STATIC__/home/images_orangered/images/juzi.png" alt=""></div>
+      <div class="buy-h2"><span class="animated fadeInUp">购买渠道</span></div>
+      <div class="buy-way">
+        <ul class="clearfix">
+          <li><a href="https://shop577836392.m.taobao.com/" target="blank" class="animated scale-tobig hinge2 delay1 ui-link"> <img src="__STATIC__/home/images_orangered/images/taobao.png" alt=""></a> </li>
+        </ul>
+      </div>
+    </div>
+    <div id="slide7" name="slide7" class="swiper-slide slide7">
+      <div class="contact-egg animated fadeInDown"> <img src="__STATIC__/home/images_orangered/images/dada.png"> </div>
+      <div class="contact-star"> <span style="width: 100%;">&nbsp;</span> </div>
+      <div class="contact-success">五星推荐</div>
+      <div class="contact-text">感谢您的关注，您的支持，让我们做的更好。</div>
+      <div class="contact-info">
+        <div class="">渝皆果，有态度的新鲜水果服务商！<br />
+          渝皆果是一家基于互联网技术的现代鲜果服务供应商，<br />
+          提供高品质鲜果产品和个性化鲜果服务。有多年水果经<br />
+          营经验，精选全国鲜果美食，搭建从产地到消费者之间<br />
+          的直供平台，自建冷库，冷链物流，便利宅送。主营中<br />
+          高端精品国产时令水果。渝皆果承诺每天发出的水果是<br />
+          新鲜、优质的；同时采用多种便捷的支付方式和快速的<br />
+          生鲜配送体系，通过先进的互联网技术进行订单的实时<br />
+          跟踪，给予顾客舒适，便捷，高质量的购物环境！<br />
+          <img src="__STATIC__/home/images_orangered/images/wx.png" alt="" style="margin: 0 auto;width:100px;padding: 1rem;width:40%"><br />
+          <p style="margin:0 auto;">微信购买</p>
+          <div class="tel">联系电话:13658227270</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="nav">
+    <li class="active"><a href="#slide1"><i class="ui-nav ico-nav1">&nbsp;</i>产品溯源</a></li>
+    <li><a href="#slide5"><i class="ui-nav ico-nav2">&nbsp;</i>溯源流程</a> </li>
+    <li><a href="#slide6"><i class="ui-nav ico-nav3">&nbsp;</i>立即购买</a></li>
+    <li><a href="#slide7"><i class="ui-nav ico-nav4">&nbsp;</i>联系我们</a></li>
+  </ul>
+</div>
+<script src="__STATIC__/home/images_orangered/js/swiper-3.4.2.min.js"></script>
+</body>
+<script>  
+        var swiper = new Swiper(".swiper-container", {  
+            direction: "vertical",  
+        });  
+		setTimeout(function(){document.getElementById("container").style.display="none";},6000);
+		setTimeout("delay.style.visibility='visible'",6000);
+		setTimeout("delay3.style.visibility='visible'",6000);
+		setTimeout("delay2.style.visibility='visible'",6000);
+		$(document).ready(function(){
+        $("ul li").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+            getData($(this).val());
+        });
+    });
+
+    </script>
+</html>

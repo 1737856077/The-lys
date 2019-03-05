@@ -1,0 +1,399 @@
+.index-com-box {
+    font-size: 0.24rem;
+    background: url('../images/index_bg.png') no-repeat top left;
+    -webkit-background-size: 100% 5rem;
+    background-size: 100% 5rem;
+}
+
+.header-box {
+    height: 0.88rem;
+    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */ /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+    padding: 0 0.3rem;
+    line-height: 0.88rem;
+}
+
+.back-box, .moreInf-box {
+    width: 0.64rem;
+    height: 0.64rem;
+    border-radius: 50%;
+    box-shadow: 0 0 0.2rem #e6e6e6;
+}
+
+.back-box {
+    background: #fff url('../images/icon_back.png') no-repeat center center;
+    -webkit-background-size: 0.48rem;
+    background-size: 0.48rem;
+}
+
+.moreInf-box {
+    background: #fff url('../images/icon_more.png') no-repeat center center;
+    -webkit-background-size: 0.48rem;
+    background-size: 0.48rem;
+}
+
+.header-tit {
+    width: 100%;
+    font-size: 0.32rem;
+    font-weight: 700;
+    text-align: center;
+}
+.small-tit.header-tit{
+    width: 82%;
+}
+
+/*logo小图片*/
+.logo-box {
+    /*width: 2.46rem;*/
+    /*height: 2.3rem;*/
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+.logo-box .logo-img {
+    width: 1rem;
+    height: 1.45rem;
+}
+
+.logo-box .logo-text {
+    font-size: 0.4rem;
+    color: #507335;
+}
+
+/*底部tab-bar信息*/
+.tabbar-box {
+    background-color: #ffffff;
+    border-top: 0.01rem solid #e9e9e9;
+    bottom: 0;
+    box-shadow: 0 -0.02rem 0 #eee;
+    font-size: 0.2rem;
+    left: 50%;
+    margin-left: -3.75rem;
+    padding: 0.14rem 0;
+    position: fixed;
+    width: 7.5rem;
+}
+
+.tabbar-box ul {
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+}
+
+.tabbar-box ul li {
+    width: 25%;
+    text-align: center;
+}
+
+.tabbar-box ul li a i {
+    width: 0.45rem;
+    height: 0.45rem;
+    display: block;
+    margin: 0 auto 0.08rem;
+
+}
+
+.tabbar-box ul li a.on {
+    color: #84b740;
+}
+
+.tabbar-box ul li a i.icon01 {
+    background: url('../images/icon_ind.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+.tabbar-box ul li a.on i.icon01 {
+    background: url('../images/icon_ind_active.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+.tabbar-box ul li a i.icon02 {
+    background: url('../images/icon_true.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+.tabbar-box ul li a.on i.icon02 {
+    background: url('../images/icon_true_active.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+.tabbar-box ul li a i.icon03 {
+    background: url('../images/icon_sour.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+.tabbar-box ul li a.on i.icon03 {
+    background: url('../images/icon_sour_active.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+.tabbar-box ul li a i.icon04 {
+    background: url('../images/icon_shop.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+.tabbar-box ul li a.on i.icon04 {
+    background: url('../images/icon_shop_active.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+
+/*首页数据*/
+.pro-img-box {
+    /*padding-top: 0.15rem;*/
+    text-align: center;
+}
+
+.pro-img {
+    width: 7.38rem;
+    height: 4.57rem;
+    /*box-shadow: 0 0 0.2rem #e6e6e6 ;*/
+}
+
+/*商品信息*/
+.index-infor-box {
+    padding: 0 0.3rem;
+}
+
+.pro-inf-box {
+    line-height: 0.48rem;
+    border-bottom: 0.01rem solid #cccccc;
+    padding-bottom: 0.15rem;
+    margin-bottom: 0.25rem;
+    /*color:#333;*/
+}
+
+.pro-inf-box:last-child {
+    border-bottom: 0;
+}
+
+.pro-inf-box .pro-inf-title {
+    font-size: 0.32rem;
+    font-weight: bold;
+    line-height: 0.6rem;
+}
+
+.product-infor {
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+    color: #636363;
+}
+
+.product-infor .pro-infor-tit {
+    width: 35%;
+}
+
+.product-infor .pro-infor-con {
+    width: 65%;
+    text-align: right;
+}
+
+/*溯源*/
+.trueFalse-box {
+    padding: 0.5rem 0.3rem 0.5rem;
+}
+
+.source-cord-box {
+    width: 99%;
+    height: auto;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.15rem #e6e6e6;
+    background-color: #fff;
+    padding: 0.22rem 0.3rem;
+}
+
+.source-cord-box .source-cord {
+    line-height: 0.4rem;
+    font-size: 0.2rem;
+}
+
+.source-cord-box .source-cord-infor {
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+}
+
+.source-cord-box .source-cord-infor .source-cord-num {
+    width: 50%;
+    /*height: 1.24rem;*/
+    text-align: center;
+}
+
+.source-cord-box .source-cord-infor .source-cord-num .num {
+    font-size: 0.5rem;
+    color: #efc206;
+}
+
+.source-cord-box .source-cord-infor .source-cord-num .tip {
+    font-size: 0.36rem;
+    color: #efc206;
+}
+
+.source-cord-box .source-cord-infor .source-num-text {
+    font-size: 0.24rem;
+}
+
+.trueFalse-infor-box {
+    padding-top: 0.26rem;
+}
+
+.trueFalse-infor-title {
+    font-size: 0.3rem;
+    font-weight: bold;
+    line-height: 0.6rem;
+}
+
+.trueFalse-infor-content li {
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+    line-height: 0.48rem;
+}
+
+.trueFalse-infor-content li .trueFal-infor-tit {
+    width: 35%;
+
+}
+
+.trueFalse-infor-content li .trueFal-infor-con {
+    width: 65%;
+    text-align: right;
+}
+
+/*溯源*/
+.source-box {
+    padding: 0.4rem 0 0 0;
+}
+
+.source-box .navBtn-box {
+
+}
+
+.source-box .navBtn-box img {
+    width: 49%;
+
+}
+
+.sour-infor-box {
+
+}
+
+.sour-infor-box .sour-infor-title {
+    font-size: 0.32rem;
+    font-weight: bold;
+    padding: 0 0.3rem;
+    text-align: center;
+    /*line-height: 0.6rem;*/
+}
+
+.sour-infor-box .sell-infor-tit {
+    padding: 0.2rem 0.3rem 0;
+    line-height: 0.46rem;
+    font-size: 0.26rem;
+    font-weight: 600;
+}
+
+.sour-infor-box .sell-infor-img img {
+    width: 32%;
+}
+.sell-infor{
+    padding: 0 0.3rem;
+}
+
+.sell-infor li:last-child{
+    padding-bottom: 0.1rem;
+    border-bottom: 0.01rem solid #cccccc;
+}
+.sell-infor li {
+
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+    line-height: 0.44rem;
+
+}
+
+.sell-infor li .sellInfor-tit {
+    width: 35%;
+}
+
+
+.sell-infor li .sell-infor-con {
+    text-align: right;
+    width: 65%;
+}
+
+
+/*订购*/
+.shop-img-box{
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items:center;
+    padding-top: 0.25rem;
+}
+.shop-img-box .jingdong-shop{
+    width: 50%;
+    text-align: center;
+}
+.shop-img-box .jingdong-shop img{
+    width: 100%;
+}
+.shop-img-box .jingdong-shop .jD-text{
+    font-size:0.3rem;
+    line-height:0.5rem;
+    padding-bottom:0.2rem;
+}
+.shop-img-box .jingdong-shop .btn-shop{
+width: 1.9rem;
+    height: 0.5rem;
+    display: inline-block;
+    background: url('../images/shop-btn.png') no-repeat center;
+    -webkit-background-size:cover;
+    background-size:100%;
+    
+}
+
+
+

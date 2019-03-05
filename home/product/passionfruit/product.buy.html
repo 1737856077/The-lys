@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>在线订购</title>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/idangerous.swiper.css" />
+		
+		<script src="__STATIC__/home/images_passionfruit/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/home/images_passionfruit/js/mobile.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="__STATIC__/home/images_passionfruit/js/idangerous.swiper.min.js"></script>
+	</head>
+	<style type="text/css">
+		/*滑屏插件*/
+		.swiper-container {
+			width: 7.5rem;
+			height: 7.5rem;
+			display:block;
+			overflow: hidden;
+			position: relative;
+		}
+		.swiper-slide img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			border-bottom-left-radius:50%;
+			border-bottom-right-radius:50%;
+		}
+		#wrapper{height:100vh;-webkit-overflow-scrolling:touch;overflow-y:scroll; max-width: 7.5rem; display: block; margin: 0 auto;}
+	</style>
+	<body>
+		<div id="wrapper">
+			<!--轮播图-->
+			<div class="layout-banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner01.jpg" /></div>
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner02.jpg" /></div>
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner02.jpg" /></div>
+					</div>
+					<div class="pagination "></div>
+				</div>
+			</div>
+			<!--轮播图-->
+			<!--导航栏-->
+			<div class="layout-navbox">
+				<ul>
+					<li><a href="__URL__/index?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon01"></i>公司简介</a></li>
+					<li><a href="__URL__/passionfruit_product?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon02"></i>产品信息</a></li>
+					<li><a class="on" href="__URL__/passionfruit_buy?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon03"></i>在线订购</a></li>
+					<li><a href="__URL__/passionfruit_notice?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon04"></i>温馨提示</a></li>
+					<li><a href="__URL__/passionfruit_orgin?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon05"></i>全程溯源</a></li>
+				  </ul>
+			</div>
+			<!--导航栏-->
+			<!--主内容区-->
+			<div class="layout-container">
+				<div class="order">
+					<div class="content"><img src="__STATIC__/home/images_passionfruit/images/logo01.png"/></div>
+					<div class="content right"><span class="title">去天猫店订购</span><a href="https://www.tmall.com/"><span class="title btn">立即订购</span></a></div>
+				</div>
+				<div class="order">
+					<div class="content"><img src="__STATIC__/home/images_passionfruit/images/logo02.png"/></div>
+					<div class="content right"><span class="title">去京东店订购</span><a href="https://www.jd.com/"><span class="title btn">立即订购</span></a></div>
+				</div>
+			</div>
+			<!--主内容区-->
+		</div>
+	</body>
+</html>
+<script>
+	var mySwiper = new Swiper('.swiper-container', {
+		paginationClickable: true,
+		loop: true,
+		autoplay: 5000,
+		grabCursor: true,
+		autoplayDisableOnInteraction: false,
+		speed: 300,
+		pagination : '.pagination',
+		
+	})
+</script>

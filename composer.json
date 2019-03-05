@@ -1,0 +1,9 @@
+{
+    "require": {
+        "monolog/monolog": "1.0.*",
+	"topthink/think-worker": "^1.0",
+	"topthink/think-image": "^1.0",
+	"workerman/workerman-for-win": "3.5.*"
+	
+    }
+}

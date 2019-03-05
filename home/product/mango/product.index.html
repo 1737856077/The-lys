@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>海南贵妃芒</title>
+    <link rel="stylesheet" href="__STATIC__/home/images_mango/css/common.css">
+    <link rel="stylesheet" href="__STATIC__/home/images_mango/css/index.css">
+
+    <!--<link rel="stylesheet" href="css/swiper-3.4.2.min.css">-->
+    <script src="__STATIC__/home/images_mango/js/index.js"></script>
+    <script src="__STATIC__/home/images_mango/js/main_style.js"></script>
+    <script src="__STATIC__/home/images_mango/js/jquery-1.11.3.min.js"></script>
+    <!--<script src="js/swiper-3.4.2.min.js"></script>-->
+    <style>
+    	#wrapper {height: 100vh;-webkit-overflow-scrolling: touch;overflow-y: scroll;overflow-x: hidden;max-width: 7.5rem;left: 50%; display: block;margin-left: -3.75rem; position: absolute;top: 0; bottom: 0; width: 100%;}
+    </style>
+</head>
+<body>
+<form name="formGetLoaction" id="formGetLoaction" style="display: none;">
+    <input type="hidden" name="getLoaction_productCodeInfoId" id="getLoaction_productCodeInfoId" value="{$getoneProductCodeInfo['product_code_info_id']}" />
+    <input type="hidden" name="getLoaction_sn" id="getLoaction_sn" value="{$sn}" />
+</form>
+<iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no" style="display: none;"
+        src="https://apis.map.qq.com/tools/geolocation?key=U6RBZ-A23WR-NW7WW-WZXHK-H6MNJ-HGBQU&referer=myapp&effect=zoom"></iframe>
+<script src="__STATIC__/home/js/PublicUser.js"></script>
+<script src="__STATIC__/js/getlocation.js"></script>
+<div id="wrapper">
+<!--芒果信息-->
+<!--<div class="index-header-bg"></div>-->
+<div class="index-com-box">
+    <!--头部信息-->
+    <div class="header-box">
+        <!--<a href="javascript:history.go(-1)">-->
+            <!--<div class="back-box">-->
+            <!--</div>-->
+        <!--</a>-->
+        <div class="header-tit">海南贵妃芒</div>
+        <!--<div class="moreInf-box">-->
+        <!--</div>-->
+    </div>
+    <!--logo图标-->
+    <div class="logo-box">
+        <img src="__STATIC__/home/images_mango/images/logo.png" alt="" class="logo-img">
+        <p class="logo-text">Green Wish</p>
+    </div>
+    <!--【【首页模块-->
+    <div class="index-box lay" id="lay01" style="display:block ">
+        <!--商品图片-->
+        <div class="pro-img-box">
+            <img src="__STATIC__/home/images_mango/images/index-head.png" alt="" class="pro-img">
+        </div>
+
+        <!--商品信息-->
+        <div class="index-infor-box">
+            <!--产品信息-->
+            <div class="pro-inf-box">
+                <div class="pro-inf-title">产品信息</div>
+                <ul>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">产品名称</div>
+                        <div class="pro-infor-con">海南贵妃芒</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">产品码</div>
+                        <div class="pro-infor-con">65454965845463214561</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">产地</div>
+                        <div class="pro-infor-con">中国海南海口凤翔西路138号</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">水果种类</div>
+                        <div class="pro-infor-con">芒果</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">重量</div>
+                        <div class="pro-infor-con">3500g</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">包装方式</div>
+                        <div class="pro-infor-con">散装</div>
+                    </li>
+                </ul>
+            </div>
+            <!--营养含量表-->
+            <div class="pro-inf-box">
+                <div class="pro-inf-title">营养含量表</div>
+                <ul>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">热量 (千卡)</div>
+                        <div class="pro-infor-con">25</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">蛋白质 (克)</div>
+                        <div class="pro-infor-con">0.6</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">脂肪 (克)</div>
+                        <div class="pro-infor-con">0.1</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">碳水化合物 (克)</div>
+                        <div class="pro-infor-con">5.5</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">膳食纤维 (克)</div>
+                        <div class="pro-infor-con">0.3</div>
+                    </li>
+                    <li style="height:0.3rem">
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">胡萝卜A (微克)</div>
+                        <div class="pro-infor-con">75</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">胡萝卜素 (微克)</div>
+                        <div class="pro-infor-con">0.2</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">视黄醇当量 (微克)</div>
+                        <div class="pro-infor-con">93.3</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">硫胺素 (毫克)</div>
+                        <div class="pro-infor-con">0.02</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">核黄素 (毫克)</div>
+                        <div class="pro-infor-con">0.03</div>
+                    </li>
+                    <li style="height:0.3rem"></li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">烟酸 (毫克)</div>
+                        <div class="pro-infor-con">0.2</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">维生素C (毫克)</div>
+                        <div class="pro-infor-con">6</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">维生素E (毫克)</div>
+                        <div class="pro-infor-con">0.10</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">胆固醇 (毫克)</div>
+                        <div class="pro-infor-con">0</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">钾 (毫克)</div>
+                        <div class="pro-infor-con">87</div>
+                    </li>
+                    <li style="height:0.3rem"></li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">钠 (毫克)</div>
+                        <div class="pro-infor-con">32</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">钙 (毫克)</div>
+                        <div class="pro-infor-con">8</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">镁 (毫克)</div>
+                        <div class="pro-infor-con">8</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">铁 (毫克)</div>
+                        <div class="pro-infor-con">0.3</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">锰 (毫克)</div>
+                        <div class="pro-infor-con">0.05</div>
+                    </li>
+                    <li style="height:0.3rem"></li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">锌 (毫克)</div>
+                        <div class="pro-infor-con">0.1</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">铜 (毫克)</div>
+                        <div class="pro-infor-con">0.05</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">磷 (毫克)</div>
+                        <div class="pro-infor-con">9</div>
+                    </li>
+                    <li class="product-infor">
+                        <div class="pro-infor-tit">硒 (毫克)</div>
+                        <div class="pro-infor-con">0.17</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--首页模块】】-->
+    <!--【【真伪-->
+    <div class="trueFalse-box lay" id="lay02" style="display: none">
+        <!--溯源码验证-->
+        <div class="source-cord-box">
+            <div class="source-cord">溯源码:<span>65456123183212345682</span></div>
+            <div class="source-cord-infor">
+                <div class="source-cord-num">
+                    <div class="source-num"><span class="num">32</span>次</div>
+                    <div class="source-num-text">当前为止查询次数</div>
+                </div>
+                <div class="source-cord-num">
+                    <div class="source-num"><span class="tip">已失效</span></div>
+                    <div class="source-num-text">首次真伪查询</div>
+                </div>
+            </div>
+        </div>
+        <!--真伪返回信息-->
+        <div class="trueFalse-infor-box">
+            <div class="trueFalse-infor-title">
+                真伪认证
+            </div>
+            <ul class="trueFalse-infor-content">
+                <li>
+                    <div class="trueFal-infor-tit">首次扫描</div>
+                    <div class="trueFal-infor-con">2016-06-28 10:30</div>
+                </li>
+                <li>
+                    <div class="trueFal-infor-tit">扫描地点</div>
+                    <div class="trueFal-infor-con">北京市大兴区经济技术开发区</div>
+                </li>
+                <li>
+                    <div class="trueFal-infor-tit">查询客户端</div>
+                    <div class="trueFal-infor-con">微信</div>
+                </li>
+                <li>
+                    <div class="trueFal-infor-tit">查询网址</div>
+                    <div class="trueFal-infor-con">联通</div>
+                </li>
+                <li>
+                    <div class="trueFal-infor-tit">系统环境</div>
+                    <div class="trueFal-infor-con">联通</div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!--真伪】】-->
+
+    <!--【【溯源-->
+    <div class="source-box lay" id="lay03" style="display: none">
+        <!--图片导航按钮-->
+        <div class="navBtn-box">
+            <a href="__URL__/mango_grow.html"><img src="__STATIC__/home/images_mango/images/grow_btn.png" alt=""> </a>
+            <a href="__URL__/mango_soil.html"><img src="__STATIC__/home/images_mango/images/soil_btn.png" alt=""> </a>
+            <a href="__URL__/mango_fertil.html?id=1"><img src="__STATIC__/home/images_mango/images/fertil_btn.png" alt=""> </a>
+            <a href="__URL__/mango_fertil.html?id=2"><img src="__STATIC__/home/images_mango/images/pesticide_btn.png" alt=""></a>
+        </div>
+        <!--溯源信息-->
+        <div class="sour-infor-box">
+            <div class="sour-infor-title">溯源信息</div>
+            <!--销售商-->
+            <div class="sell-infor-box">
+                <div class="sell-infor-tit">销售商</div>
+                <div class="sell-infor-img">
+                    <img src="__STATIC__/home/images_mango/images/sour_shop01.png" alt="">
+                    <img src="__STATIC__/home/images_mango/images/sour_shop02.png" alt="">
+                    <img src="__STATIC__/home/images_mango/images/sour_shop03.png" alt="">
+                </div>
+                <ul class="sell-infor">
+                    <li>
+                        <div class="sellInfor-tit">入库时间</div>
+                        <div class="sell-infor-con">2016-06-25</div>
+                    </li>
+                    <li>
+                        <div class="sellInfor-tit">销售单位</div>
+                        <div class="sell-infor-con">果婆婆</div>
+                    </li>
+                    <li>
+                        <div class="sellInfor-tit">销售地点</div>
+                        <div class="sell-infor-con">山东菏泽</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="sell-infor-box">
+                <div class="sell-infor-tit">生产商</div>
+                <div class="sell-infor-img">
+                    <img src="__STATIC__/home/images_mango/images/sour_pro01.png" alt="">
+                    <img src="__STATIC__/home/images_mango/images/sour_pro02.png" alt="">
+                    <img src="__STATIC__/home/images_mango/images/sour_pro03.png" alt="">
+                </div>
+                <ul class="sell-infor">
+                    <li>
+                        <div class="sellInfor-tit">出库时间</div>
+                        <div class="sell-infor-con">2016-06-21</div>
+                    </li>
+                    <li>
+                        <div class="sellInfor-tit">生产单位</div>
+                        <div class="sell-infor-con">海南田亲种植基地</div>
+                    </li>
+                    <li>
+                        <div class="sellInfor-tit">销售地点</div>
+                        <div class="sell-infor-con">中国海南海口凤翔西路138号</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!--溯源】】-->
+    <!--【【订购-->
+    <div class="shop-box lay" id="lay04" style="display: none">
+        <div class="shop-img-box">
+            <div class="jingdong-shop">
+                <img src="__STATIC__/home/images_mango/images/jingdong.png" alt="">
+                <div class="jD-text">去京东店铺购买</div>
+                <a href="https://www.jd.com/"><i class="btn-shop"></i></a>
+            </div>
+            <div class="jingdong-shop">
+                <img src="__STATIC__/home/images_mango/images/tianmao.png" alt="">
+                <div class="jD-text">去天猫店铺购买</div>
+                <a href="https://www.tmall.com/" class=""><i class="btn-shop"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--订购】】-->
+    <!--占位空格-->
+    <div style="height:1.11rem"></div>
+    <!--底部tabbar栏-->
+    <div class="tabbar-box">
+        <ul class="tabbar-footer">
+            <li>
+                <a href="javascript:void(0)" class="on" id="laybtn01" onClick="lays(1);">
+                    <i class="icon01"></i>产品</a>
+            </li>
+            <li class="secondIcon"><a href="javascript:void(0)" id="laybtn02" onClick="lays(2);">
+                <i class="icon02"></i>真伪</a></li>
+            <li>
+                <a href="javascript:void(0)" id="laybtn03" onClick="lays(3);">
+                    <i class="icon03"></i>溯源</a>
+            </li>
+            <li><a href="javascript:void(0)" id="laybtn04" onClick="lays(4);">
+                <i class="icon04"></i>订购</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+</body>
+
+<script>
+    // 下边点击按钮 切换div
+    $(function() {
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+//        （1）调用
+
+        var a = GetRequest();
+        var  id= a['id'];
+        if(id !=undefined){
+            lays(id);
+        }
+
+
+    })
+    function lays(id) {
+    	$("html,body,#wrapper").scrollTop(0);
+        $(".tabbar-footer li a").removeClass("on");
+        $("#laybtn0" + id).addClass("on");
+        $('.lay').hide();
+        $("#lay0" + id).show();
+//        if (id == 2) {
+//            $("#lay02").show();
+//        } else if (id == 3) {
+//
+//            $("#lay03").show();
+//        } else if (id == 1) {
+//            $(".tableContent11").show();
+//
+//        } else if (id == 4) {
+//            $('.swiper-container').hide();
+//
+//        }
+    }
+</script>
+</html>

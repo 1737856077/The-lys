@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>权限管理-系统节点</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/city.js"></script>
+</head>
+<style type="text/css">
+    .bagcolor{ font-weight: bold;}
+</style>
+<body>
+<div class="cont_title">　你当前的位置：权限管理 -系统节点</div>
+
+<div class="con">
+
+    <div class="conlist">
+
+        <form  method="post" action="__URL__/editinfo/action/save" id="form_save">
+            <table class="listtable">
+                <tr class="tr1">
+                    <td colspan="4" class="tit">列表　</td>
+                    <td   class="tdlist">
+                        <a href="__URL__/add">{if auth('auth/systemnode/add') }<input type="button" name="" class="buttomorger"  value="添加" />{/if}</a>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdtit"><input type="checkbox" id="chkAll" name="chkAll" onClick="CheckAll(this.form)" value="checkbox" />ID</td>
+                    <td class="tdtit">名称</td>
+                    <td class="tdtit">路径</td>
+                    <td class="tdtit">状态</td>
+                    <td class="tdtit">操作</td>
+                </tr>
+                {foreach $List as $value}
+                <tr class="tr1">
+                    <td class="tdlist bagcolor"><input type="checkbox" name="sqt[]" value="{$value['node_id']}" />{$value['node_id']}&nbsp;</td>
+                    <td class="tdlist bagcolor">{$value['title']}&nbsp;</td>
+                    <td class="tdlist bagcolor">&nbsp;</td>
+                    <td class="tdlist bagcolor">
+                    {if auth('auth/systemnode/editinfo') }
+                        {if $value['data_status'] eq 0}
+                        <a href="__URL__/editinfo/action/checkStatus/id/{$value['node_id']}/Status/1" ><font color="#ff0000">未审</font></a>
+                        {else}
+                        <a href="__URL__/editinfo/action/checkStatus/id/{$value['node_id']}/Status/0" ><font color="#006600">已审</font></a>
+                        {/if}
+                     {else}
+                        {if $value['data_status'] eq 0}
+                        <font color="#ff0000">未审</font>
+                        {else}
+                        <font color="#006600">已审</font>
+                        {/if}
+                     {/if}
+                    </td>
+                    <td class="tdlist bagcolor">
+                        {if auth('auth/systemnode/edit') }
+                        [<a href="__URL__/edit/id/{$value['node_id']}">编辑</a>]
+                        {/if}
+                    </td>
+                </tr>
+                    {foreach $value['list'] as $val}
+                    <tr class="tr1">
+                        <td class="tdlist"><input type="checkbox" name="sqt[]" value="{$val['node_id']}" />{$val['node_id']}&nbsp;</td>
+                        <td class="tdlist">|-- {$val['title']}&nbsp;</td>
+                        <td class="tdlist">{$val['content']}&nbsp;</td>
+                        <td class="tdlist">
+                            {if auth('auth/systemnode/editinfo') }
+                                {if $val['data_status'] eq 0}
+                                <a href="__URL__/editinfo/action/checkStatus/id/{$val['node_id']}/Status/1" ><font color="#ff0000">未审</font></a>
+                                {else}
+                                <a href="__URL__/editinfo/action/checkStatus/id/{$val['node_id']}/Status/0" ><font color="#006600">已审</font></a>
+                                {/if}
+                            {else}
+                                {if $val['data_status'] eq 0}
+                                <font color="#ff0000">未审</font>
+                                {else}
+                                <font color="#006600">已审</font>
+                                {/if}
+                            {/if}
+                        </td>
+                        <td class="tdlist">
+                            {if auth('auth/systemnode/edit') }
+                            [<a href="__URL__/edit/id/{$val['node_id']}">编辑</a>]
+                            {/if}
+                        </td>
+                    </tr>
+                    {/foreach}
+                {/foreach}
+
+                {if $count eq 0}
+                <tr class="tr1">
+                    <td colspan="5" class="tdlist">暂无相关记录！ </td>
+                </tr>
+                {/if}
+                <tr class="tr1">
+                    <td colspan="5" class="tdlist" >
+                        <input type="hidden" name="checkclass" id="checkclass" value="1" />
+                        {if auth('auth/systemnode/editinfo') }
+                        <input type="submit" class="buttomorger"   value="审核通过" onClick="checkclassfun('5');document.getElementById('form_save').action='__URL__/editinfo/action/save';"/>
+                        <input type="submit" class="buttomorger"  value="取消审核"  onClick="checkclassfun('6');document.getElementById('form_save').action='__URL__/editinfo/action/save';" />
+                        {/if}
+                    </td>
+
+                </tr>
+            </table>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="__STATIC__/admin/css/product_info.css">
+  <title>{$getoneWebConfig.web_name}</title>
+</head>
+
+<body>
+<!--<header><img src="__STATIC__/images/header.jpg" alt="" /> </header>-->
+<section class="banner"><img src="__STATIC__/images/banner.jpg" alt="" /></section>
+<section class="content">
+    <p class="cp_title">产品详细信息</p>
+    {if $code==1}
+    <div class="one">
+        <div class="one_left">
+            <img src="__STATIC__/uploads/{if !empty($getoneProduct.images)}product/{$getoneProduct.images}{else/}default.jpg{/if}" alt="" />
+        </div>
+        <div class="one_right">
+            <ul>
+                <li>产品名称：{$getoneProduct.title}</li>
+                {foreach $listProductContent as $key=>$value}
+                    {if $key<4}
+                    <li>{$value.title}：{$value.content}</li>
+                    {/if}
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+    {else/}
+    <div class="one_error">
+        查询信息不存在或已删除！
+    </div>
+    {/if}
+
+    <div class="two">
+        <ul>
+            {foreach $listProductContent as $key=>$value}
+            {if $key>3}
+            <li>{$value.title}：{$value.content}</li>
+            {/if}
+            {/foreach}
+            <li>信息提供者名称：{$getoneWebConfig.web_name}</li>
+            <li>信息提供者地址：{$getoneWebConfig.company_dizhi}</li>
+            <li>信息提供者电话：{$getoneWebConfig.web_dianhua}</li>
+            <li>&nbsp;</li>
+        </ul>
+    </div>
+</section>
+</body>
+
+</html>

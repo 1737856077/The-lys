@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>温馨提示</title>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/idangerous.swiper.css" />
+		
+		<script src="__STATIC__/home/images_passionfruit/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/home/images_passionfruit/js/mobile.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="__STATIC__/home/images_passionfruit/js/idangerous.swiper.min.js"></script>
+	</head>
+	<style type="text/css">
+		/*滑屏插件*/
+		.swiper-container {
+			width: 7.5rem;
+			height: 7.5rem;
+			display:block;
+			overflow: hidden;
+			position: relative;
+		}
+		
+		.swiper-slide img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			border-bottom-left-radius:50%;
+			border-bottom-right-radius:50%;
+		}
+		#wrapper{height:100vh;-webkit-overflow-scrolling:touch;overflow-y:scroll; max-width: 7.5rem; display: block; margin: 0 auto;}
+	</style>
+	<body>
+		<div id="wrapper">
+			<!--轮播图-->
+			<div class="layout-banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner01.jpg" /></div>
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner02.jpg" /></div>
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner02.jpg" /></div>
+					</div>
+					<div class="pagination "></div>
+				</div>
+			</div>
+			<!--轮播图-->
+			<!--导航栏-->
+			<div class="layout-navbox">
+				<ul>
+					<li><a href="__URL__/index?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon01"></i>公司简介</a></li>
+					<li><a href="__URL__/passionfruit_product?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon02"></i>产品信息</a></li>
+					<li><a href="__URL__/passionfruit_buy?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon03"></i>在线订购</a></li>
+					<li><a class="on" href="__URL__/passionfruit_notice?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon04"></i>温馨提示</a></li>
+					<li><a href="__URL__/passionfruit_orgin?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon05"></i>全程溯源</a></li>
+				</ul>
+			</div>
+			<!--导航栏-->
+			<!--主内容区-->
+			<div class="layout-container">
+				<div class="notice">
+					<p class="maintitle">会变脸的黄金百香果</p>
+					<p class="maintitle level">表皮越皱越好吃</p>
+					<div class="notice-information">
+						<span class="promptBox">
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic08.jpg"/></i>
+							<i class="text">此时的我还未成熟还需要放置一段时间</i>
+							<i class="text text02">青皮果子：刚摘的果子，表皮青，口感酸，可以多放置几天</i>
+						</span>
+						<span class="direction you"></span>
+						<span class="promptBox">
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic09.jpg"/></i>
+							<i class="text">表皮开始转黄色，外壳较硬，比较酸哦</i>
+							<i class="text text02">青黄果子：果皮青黄时，口感偏酸，想更甜再等待一下</i>
+						</span>
+						<span class="direction xia"></span>
+						<span class="promptBox">
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic10.jpg"/></i>
+							<i class="text">此时品尝味更佳</i>
+							<i class="text text02">皱皮果子：皮皱果子不是坏哦，切开果肉好，酸甜适中香气四溢</i>
+						</span>
+						<span class="direction zuo"></span>
+						<span class="promptBox">
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic11.jpg"/></i>
+							<i class="text">表皮金黄色外壳硬酸甜着急的已经可以吃起来</i>
+							<i class="text text02">金黄果子：口感似芭乐香浓，想更甜再等待下，酸酸甜甜</i>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--主内容区-->
+		</div>
+	</body>
+</html>
+<script>
+	var mySwiper = new Swiper('.swiper-container', {
+		paginationClickable: true,
+		loop: true,
+		autoplay: 5000,
+		grabCursor: true,
+		autoplayDisableOnInteraction: false,
+		speed: 300,
+		pagination : '.pagination',
+		
+	})
+</script>

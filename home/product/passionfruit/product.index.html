@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>公司简介-{$getoneProduct.title}-蝌蚪溯源系统</title>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/idangerous.swiper.css" />
+		
+		<script src="__STATIC__/home/images_passionfruit/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/home/images_passionfruit/js/mobile.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="__STATIC__/home/images_passionfruit/js/idangerous.swiper.min.js"></script>
+	</head>
+	<style type="text/css">
+		/*滑屏插件*/
+		.swiper-container {
+			width: 7.5rem;
+			height: 7.5rem;
+			display:block;
+			overflow: hidden;
+			position: relative;
+		}
+		.swiper-slide img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			border-bottom-left-radius:50%;
+			border-bottom-right-radius:50%;
+		}
+		#wrapper{height:100vh;-webkit-overflow-scrolling:touch;overflow-y:scroll; max-width: 7.5rem; display: block; margin: 0 auto;}
+	</style>
+	<body>
+	<form name="formGetLoaction" id="formGetLoaction" style="display: none;">
+		<input type="hidden" name="getLoaction_productCodeInfoId" id="getLoaction_productCodeInfoId" value="{$getoneProductCodeInfo['product_code_info_id']}" />
+		<input type="hidden" name="getLoaction_sn" id="getLoaction_sn" value="{$sn}" />
+	</form>
+	<iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no" style="display: none;"
+			src="https://apis.map.qq.com/tools/geolocation?key=U6RBZ-A23WR-NW7WW-WZXHK-H6MNJ-HGBQU&referer=myapp&effect=zoom"></iframe>
+	<script src="__STATIC__/home/js/PublicUser.js"></script>
+	<script src="__STATIC__/js/getlocation.js"></script>
+		<div id="wrapper">
+			<!--轮播图-->
+			<div class="layout-banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner01.jpg" /></div>
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner02.jpg" /></div>
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner02.jpg" /></div>
+					</div>
+					<div class="pagination "></div>
+				</div>
+			</div>
+			<!--轮播图-->
+			<!--导航栏-->
+			<div class="layout-navbox">
+				<ul>
+				  	<li><a class="on" href="__URL__/index?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon01"></i>公司简介</a></li>
+				  	<li><a href="__URL__/passionfruit_product?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon02"></i>产品信息</a></li>
+				  	<li><a href="__URL__/passionfruit_buy?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon03"></i>在线订购</a></li>
+				  	<li><a href="__URL__/passionfruit_notice?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon04"></i>温馨提示</a></li>
+				  	<li><a href="__URL__/passionfruit_orgin?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon05"></i>全程溯源</a></li>
+				</ul>
+			</div>
+			<!--导航栏-->
+			<!--主内容区-->
+			<div class="layout-container">
+				<div class="profile">
+						<span class="text1">贵州秋实农业发展有限公司成立于2017年，贵州秋实农业发展有限公司成立于2012年，于2017年3月9日正式在新三板挂牌</span><span class="text1"><img src="__STATIC__/home/images_passionfruit/images/pic01.jpg"/></span>
+					<span class="pb30">贵州秋实农业发展有限公司是一家专门从事热带水果的种植、收购、预选分解、加工包装、冷藏运输、销售配送、休闲农业和产业化服务为一体的热带水果企业，创建有自己的“热带水果专家”品牌。</span>
+					<span class="pb30">目前，贵州秋实农业发展有限公司再保亭县六弓乡创建了200亩的优质百香果示范种植园，现帮扶121户精准扶贫农户，同时为周边乡村的50户农户创造工作的机会。预计未来，指山公司将在保亭县建设标准化百香果示范种植园3000亩，同时指导帮扶带动农户种植面价3万亩，打造保亭县百香果种植新产业，有效带动促进农民增产增收。</span>
+				</div>
+				
+			</div>
+			<!--主内容区-->
+		</div>
+	</body>
+</html>
+<script>
+	var mySwiper = new Swiper('.swiper-container', {
+		paginationClickable: true,
+		loop: true,
+		autoplay: 5000,
+		grabCursor: true,
+		autoplayDisableOnInteraction: false,
+		speed: 300,
+		pagination : '.pagination',
+		
+	})
+</script>

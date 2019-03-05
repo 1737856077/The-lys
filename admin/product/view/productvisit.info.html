@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>产品管理-产品列表-溯源统计</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+</head>
+
+<body>
+<div class="cont_title">　你当前的位置：产品管理-<a href="{:url('product/index')}">产品列表</a>-<a href="{:url('productvisit/index')}?product_id={$getoneProduct['product_id']}">溯源统计</a>-查看溯源详细</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <table class="listtable">  
+                    <tr class="tr1">
+						<td  class="tdtit">产品名称</td>
+						<td   class="tdlist" colspan="6"  >{$getoneProduct.title}</td>
+                    </tr>
+            <tr class="tr1">
+                <td  class="tdtit">溯源省份</td>
+                <td   class="tdlist" colspan="6"  >{$province}</td>
+            </tr>
+				</table>
+            <table class="listtable">
+                <tr class="tr1">
+                    <td colspan="6" class="tit">列表　</td>
+                </tr>
+                    <tr class="tr1">
+                        <td class="tdtit">序号</td>
+                        <td class="tdtit">省份</td>
+                        <td class="tdtit">城市</td>
+                        <td class="tdtit">区、镇</td>
+                        <td class="tdtit">详细地址</td>
+                        <td class="tdtit">时间</td>
+                    </tr>
+                   {foreach $list as $key=>$value}
+                	<tr class="tr1">
+                    	<td class="tdlist">{$value['id']}&nbsp;</td>
+                        <td class="tdlist">{$value['province']}&nbsp;</td>
+                        <td class="tdlist">{$value['city']}&nbsp;</td>
+                        <td class="tdlist">{$value['district']}&nbsp;</td>
+                        <td class="tdlist">{$value['addr']}&nbsp;</td>
+                        <td class="tdlist">{$value['create_time']|date='Y-m-d H:i:s',###}&nbsp;</td>
+                    </tr>
+				    {/foreach}
+                    <tr class="tr1">
+                        <td colspan="6" class="tdtit" style="text-align: right; padding-right: 20px;">总溯源{$count}次</td>
+                    </tr>
+                    {if count($list) eq 0}
+                    <tr class="tr1">
+                            <td colspan="6" class="tdlist">暂无相关溯源记录！ </td>
+                    </tr>
+                    {/if}
+
+            </table>
+            <div style="text-align:right; padding-right:40px;">
+                {$page}
+            </div>
+        </div>
+    
+    </div>
+
+</div>
+</body>
+</html>

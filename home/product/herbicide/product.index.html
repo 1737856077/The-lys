@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>云南勐牛生物技术有限公司溯源信息查询</title>
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/css/common.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/css/style.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/font_icon/iconfont.css">
+<script src="__STATIC__/home/images_herbicide/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="__STATIC__/home/images_herbicide/js/mobile.js" type="text/javascript" charset="utf-8"></script>
+<style>
+#wrapper {
+	height: 100vh;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: scroll;
+}
+</style>
+</head>
+
+<body>
+<form name="formGetLoaction" id="formGetLoaction" style="display: none;">
+  <input type="hidden" name="getLoaction_productCodeInfoId" id="getLoaction_productCodeInfoId" value="{$getoneProductCodeInfo['product_code_info_id']}" />
+  <input type="hidden" name="getLoaction_sn" id="getLoaction_sn" value="{$sn}" />
+</form>
+<iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no" style="display: none;"
+        src="https://apis.map.qq.com/tools/geolocation?key=U6RBZ-A23WR-NW7WW-WZXHK-H6MNJ-HGBQU&referer=myapp&effect=zoom"></iframe>
+<script src="__STATIC__/home/js/PublicUser.js"></script>
+<script src="__STATIC__/js/getlocation.js"></script>
+<div id="wrapper"> 
+  
+  <!--主内容区-->
+  
+  <div class="layout-mianContantBox">
+    <div class="infomationBox"> 
+      
+      <!--顶部圆圈-->
+      
+      <div class="topimgBox">
+        <div class="image01"><img src="__STATIC__/home/images_herbicide/img/jpg01.jpg" /></div>
+        <div class="image02"><img src="__STATIC__/home/images_herbicide/img/jpg02.jpg" /></div>
+        <div class="image03"><img src="__STATIC__/home/images_herbicide/img/jpg03.jpg" /></div>
+        <div class="image04"><img src="__STATIC__/home/images_herbicide/img/jpg04.jpg"></div>
+      </div>
+      
+      <!--标题-->
+      
+      <div class="Contant-title"> 云南勐牛生物技术有限公司 </div>
+      <div class="Contant-info">
+        <div class="infomation-left"></div>
+        <div class="infomation-right">
+          <ul>
+            <a href="__URL__/herbicide_produce?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">
+            <li>产品信息</li>
+            </a> <a href="__URL__/herbicide_xinxi?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">
+            <li>溯源信息</li>
+            </a> <a href="__URL__/herbicide_about?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">
+            <li>公司介绍</li>
+            </a> <a href="__URL__/herbicide_us?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">
+            <li>联系我们</li>
+            </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--主内容区--> 
+  
+</div>
+</body>
+</html>

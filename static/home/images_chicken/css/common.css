@@ -1,0 +1,47 @@
+﻿@charset "utf-8";
+* {
+    box-sizing: border-box;
+}
+*::after, *::before {
+    box-sizing: border-box;
+}
+body{background:none no-repeat;margin:0;padding:0;-webkit-tap-highlight-color:rgba(0,0,0,0);letter-spacing:0.02rem;max-height:999999px; min-height: 1px;}
+html{background:#f5f5f5;color:#666; line-height:1.5;font-family:Source Han Sans,Microsoft YaHei;letter-spacing:0.02rem;}
+div,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,p,span,i,a{margin:0px;padding:0px;list-style-image:none;list-style-type:none;max-height:999999px; min-height: 1px;}
+div,ul,li,dl,dt,dd,p,form,input,textarea{font-family:Helvetica Neue,Helvetica,Roboto,Segoe UI,Arial,sans-serif,Microsoft YaHei;}
+a,a:visited{color:#666;text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+input,textarea,a{outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+i,em{font-style: normal;}
+input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none;}
+textarea{-webkit-appearance: none;}
+/*清除浮动*/
+.clear{clear:both;}
+.clearfix{_zoom:1}
+.clearfix:after{content:"";display:block;height:0;clear:both}
+*+html .clearfix{overflow:hidden}
+/*遮罩层*/
+#overlay{position:fixed;width:100%;height:100%;background-color:#000;filter:alpha(opacity=30);-moz-opacity:0.3;opacity:0.3;z-index:99;display:none;top:0; left: 0;}
+
+/*常用结构*/
+.layout-headBox{background-color: #669933;color: #000;font-size: 0.36rem;height: 0.88rem;left: 0;line-height: 0.88rem;padding: 0 0.5rem;position: fixed; text-align: center;top: 0;width: 100%;z-index: 95;}
+.layout-headBox .iconfont{ width: 0.5rem; height: 0.88rem; position: absolute; left: 0; font-size: 0.36rem; color: #000;}
+.layout-headmainBox{ height: 0.88rem;}
+.swiper-container .pagination {bottom: 0.1rem;position: absolute;text-align: center;width: 100%;z-index: 20;height: 0.12rem;}
+.swiper-container .swiper-pagination-switch {background: #f5f5f5 none repeat scroll 0 0;border: 0.01rem solid #e2e2e2;border-radius: 0.06rem;cursor: pointer;display: inline-block;height: 0.12rem;margin: 0 0.08rem;opacity: 0.8;width: 0.12rem;vertical-align: top;transition: all 1s;-moz-transition: all 1s;-webkit-transition: all 1s;-o-transition: all 1s;}
+.swiper-container .swiper-active-switch {background: #fff;opacity:1; width: 0.3rem;}
+.layout-footerBox{ z-index: 9; height: 0.98rem; border-top: 0.01rem solid #e2e2e2; position: fixed; bottom: 0; left: 0; width: 100%;background-color: #ffffff;}
+.layout-footerBox li{width: 20%; float: left; height: 0.97rem;}
+.layout-footerBox li a{color: #cccccc;display: block;font-size: 0.24rem;height: 100%;line-height: 1.3;padding-top: 0.6rem;position: relative;text-align: center;}
+.layout-footerBox li a.on{ color: #000;}
+.layout-footerBox li a i{height: 0.6rem;left: 50%;margin-left: -0.3rem;position: absolute;top: 0;width: 0.6rem;background-repeat: no-repeat;background-position: center;background-size: 0.55rem;}
+.layout-footerBox li a i.icon01{ background-image: url(../images/icon01.jpg);}
+.layout-footerBox li a.on i.icon01{ background-image:url(../images/icon01-2.jpg) ;}
+.layout-footerBox li a i.icon02{ background-image: url(../images/icon02.jpg);}
+.layout-footerBox li a.on i.icon02{ background-image:url(../images/icon02-2.jpg) ;}
+.layout-footerBox li a i.icon03{ background-image: url(../images/icon03.jpg);}
+.layout-footerBox li a.on i.icon03{ background-image:url(../images/icon03-2.jpg) ;}
+.layout-footerBox li a i.icon04{ background-image: url(../images/icon04.jpg);}
+.layout-footerBox li a.on i.icon04{ background-image:url(../images/icon04-2.jpg) ;}
+.layout-footerBox li a i.icon05{ background-image: url(../images/icon05.jpg);}
+.layout-footerBox li a.on i.icon05{ background-image:url(../images/icon05-2.jpg) ;}
+.layout-footeraminBox{ height: 0.98rem;}

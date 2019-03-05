@@ -1,0 +1,167 @@
+/*生长*/
+.grow-box {
+    margin-top: 0.3rem;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    padding: 0.6rem 0.2rem 0;
+}
+
+.grow-box .grow-one-box {
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+}
+
+.grow-one-box .grow-progress {
+    padding: 0.4rem 0 0 5%;
+    width: 10%;
+}
+ .grow-progress img.dashed-img01{
+    height: 2rem;
+}
+ .grow-progress img.dashed-img02{
+    height: 3.9rem;
+}
+.grow-progress img.dashed-img02.grow-dashed{
+    height: 4.45rem;
+}
+
+.grow-one-box .grow-progress .icon_mango {
+    height: 0.4rem;
+}
+
+.grow-time {
+    background: url('../images/grTime-bg.png') no-repeat center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    color: #333;
+    width: 2rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    text-align: center;
+    position: absolute;
+    top: -0.12rem;
+    left: -0.8rem;
+}
+
+.grow-img {
+    width: 90%;
+    position: relative;
+}
+.grow-img img {
+    width: 100%;
+    height: auto;
+}
+.grow-img .grow-infor-box li {
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+    line-height: 0.46rem;
+}
+
+.grow-img .grow-infor-box li .grow-infor-title {
+    font-size: 0.28rem;
+    width: 1.6rem;
+
+    padding-left: 0.1rem;
+}
+
+.grow-img .grow-infor-box li .grow-infor-text {
+    font-size: 0.24rem;
+    color: #666;
+    padding-left: 0.2rem;
+}
+
+.grow-img .grow-infor-box {
+    padding-bottom: 0.5rem;
+}
+
+
+/*施肥--农药*/
+.fetil-grow-infor{
+    width: 90%
+}
+.grow-infor{
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+    padding:0.66rem 0 0.85rem 4%;
+    width: 100%;
+    position: relative;
+}
+
+.grow-infor .grow-infor-box{
+    background-color: #fff;
+    width: 90%;
+    border-radius: 0.2rem 0 0 0.2rem;
+    height:3.05rem;
+    box-shadow: 0 0 0.6rem #ddd;
+    border:0.01rem solid #f2f2f2;
+    padding-top:0.15rem;
+}
+.grow-infor .grow-right-box{
+    width: 4%;
+    background-color: #fdd944;
+    height:3.05rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+
+}
+.grow-infor .grow-infor-box li{
+display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    align-items: center;
+    line-height:0.56rem;
+    padding-left:0.46rem;
+}
+
+.grow-infor .grow-infor-box li .grow-infor-title{
+    width: 30%;
+    font-size:0.28rem;
+}
+.grow-infor .grow-infor-box li .grow-infor-text{
+    width: 68%;
+    font-size:0.24rem;
+    color:#666;
+
+}
+
+
+/*土壤成分*/
+.soil.index-com-box{
+    -webkit-background-size:cover;
+    background-size:cover;
+}
+.soil-box{
+    padding:0.1rem 0.3rem 0.57rem;
+}
+.soil-table-box{
+    padding-top:0.2rem;
+
+}
+.soil-table-box .layout-cont{
+    width: 100%;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.45rem #999 ;
+    background-color: #fff;
+    padding:0.2rem;
+}
+.headerBox{
+    font-size:0.32rem;
+    font-weight:bold;
+    line-height:0.6rem;
+}

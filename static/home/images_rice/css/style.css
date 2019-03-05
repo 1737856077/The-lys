@@ -1,0 +1,52 @@
+﻿@charset "utf-8";
+.indexMainBox{min-height: 100vh;background-image: url(../images/fooerbanner.png); background-size: 7.5rem; background-position: bottom; background-repeat: no-repeat;padding:0.15rem 0 1.5rem 0;}
+.indexMainBox .bannersBox{display: block; width: 7.5rem;}
+.indexMainBox .bannersBox img{ display: block; width: 100%;}
+.indexMainBox .navigationsBox{ width: 7.5rem; display: block; height: 4.3rem; background-image: url(../images/navigationBox.png); background-size: 7.5rem; position: relative;}
+.indexMainBox .navigationsBox>a{ display: block; position: absolute; width: 1.9rem; height: 1.9rem;}
+.indexMainBox .navigationsBox>a:nth-child(1){left: 1.55rem; top:0.07rem;}
+.indexMainBox .navigationsBox>a:nth-child(2){left: 4.15rem; top:0.07rem;}
+.indexMainBox .navigationsBox>a:nth-child(3){left: 0.45rem; top: 2.25rem;}
+.indexMainBox .navigationsBox>a:nth-child(4){left: 2.85rem; top: 2.25rem;}
+.indexMainBox .navigationsBox>a:nth-child(5){left: 5.26rem; top: 2.25rem;}
+
+.testimgsMainBox{background-color: rgba(255,255,255,0.3); min-height: 100vh;background-image: url(../images/fooerbanner.png); background-size: 7.5rem; background-position: bottom; background-repeat: no-repeat;padding-bottom: 1.5rem;}
+.testimgsMainBox .presentationBox{ width: 6.7rem;display: block; margin: 0 auto; padding-top: 0.4rem;}
+.testimgsMainBox .presentationBox .titles{ font-size: 0.3rem; color: #377d39; text-align: center; line-height: 0.7rem;}
+.testimgsMainBox .presentationBox .picsMainBox{ border: 0.04rem solid #377d39; border-radius: 0.03rem;}
+.testimgsMainBox .presentationBox .picsMainBox img{ display: block; width: 100%;}
+
+.headNavigationBox{background-color:rgba(255,255,255,0.7);border-bottom: 0.02rem solid #999;color: #333;font-size: 0.32rem;height: 0.88rem; left: 50%;line-height: 0.88rem;margin-left: -3.75rem;position: fixed;text-align: center;top: 0;width: 7.5rem;z-index: 9;}
+.headNavigationBox a{ display: block; position: absolute; left: 0; top: 0; width: 1.2rem; height: 0.88rem; background-image:  url(../images/arrleft.png); background-size: 0.42rem; background-repeat:no-repeat;background-position: center;}
+.copyrightBox{text-shadow:0.02rem 0.02rem 0.02rem #ffffff; width: 6.7rem; display: block; margin: 0.25rem auto; height: 0.54rem; line-height: 0.54rem; font-size: 0.3rem; color: #377d39; padding-left: 2.3rem; position: relative;letter-spacing: 0rem;}
+.copyrightBox span{ width: 2.3rem; padding-left: 0.3rem; color: #ffffff; position: absolute; left: 0; background-image: url(../images/supportBox.png); background-size:100% ;text-shadow:none;}
+
+.productPics{width: 7.5rem;}
+.productPics img{ display: block; width: 100%;}
+.productsBox{ width:6.7rem;display: block; margin: -0.3rem auto 0 auto;}
+.productsBox .titles{color: #377d39;font-size: 0.28rem;line-height: 0.4rem;padding-bottom: 0.05rem;text-align: right;}
+.productsBox .productTextList{ border-top: 0.02rem solid #377d39;border-bottom: 0.02rem solid #377d39;padding: 0.1rem 0;}
+.productsBox .productTextList li{ padding:  0.05rem 0.1rem 0.05rem 1.6rem; position: relative; font-size: 0.24rem; color: #4c4c4c;}
+.productsBox .productTextList li span{left: 0; top: 0.05rem; position: absolute;}
+
+.introductionBox .titles{ color: #377d39;font-size: 0.28rem;line-height: 0.6rem; margin: 0.2rem auto 0; text-align: left;width: 6.7rem;}
+.introductionBox .textsMainBox{ padding: 0.1rem 0; border-top: 0.02rem solid #377d39;border-bottom: 0.02rem solid #377d39; width: 6.7rem; display: block; margin: 0 auto;}
+.introductionBox .textsMainBox p{ font-size: 0.28rem; color: #4c4c4c;text-indent:2em; padding: 0.05rem 0;}
+
+.traceabilityMainBox{ background-color: rgba(255,255,255,0.6); min-height: 100vh;padding-bottom: 0.1rem;}
+.traceabilityMainBox>.titles{font-size: 0.28rem; color: #377d39; width: 6.7rem; display: block; margin:0.1rem auto;}
+.traceabilityMainBox .traceabilityBox{ padding: 0.1rem 0;width: 6.7rem; display: block; margin: 0 auto; border-top: 0.02rem solid #377d39; border-bottom: 0.02rem solid #377d39;font-size: 0.24rem; color: #333333;}
+.traceabilityMainBox .traceabilityBox .traceabilityText{margin-left: 0.4rem;}
+.traceabilityMainBox .traceabilityBox .traceabilityText .titles{ position:relative;padding-top: 0.05rem;border-left: 0.02rem dashed #377d39;color: #377d39;font-size: 0.28rem;line-height: 0.6rem;padding-left: 0.3rem;}
+.traceabilityMainBox .traceabilityBox .traceabilityText .titles i{ background-image: url(../images/radios.png); width: 0.33rem; height: 0.33rem; position: absolute; left: -0.17rem; top: 0.22rem;background-size: 0.33rem;}
+.traceabilityMainBox .traceabilityBox .traceabilityText ul{padding-bottom: 0.1rem;}
+.traceabilityMainBox .traceabilityBox .traceabilityText ul li{border-left: 0.02rem dashed #377d39;padding: 0.05rem 0.1rem 0.05rem 1.8rem;position: relative;}
+.traceabilityMainBox .traceabilityBox .traceabilityText ul li span{ position: absolute; left: 0.3rem; top: 0.05rem;}
+.traceabilityMainBox .traceabilityBox .traceabilityText .lines{ height: 0.02rem; background-color: #cccccc; margin-left: 0.3rem;}
+.traceabilityMainBox .traceabilityBox .traceabilityText:nth-child(1) .titles{border-left:0.02rem dashed transparent;}
+.traceabilityMainBox .traceabilityBox .traceabilityText:nth-child(1) .titles i{background-image: url(../images/radios_tops.png); height: 0.6rem; top: 0.05rem;left: -0.18rem;}
+.traceabilityMainBox .traceabilityBox .traceabilityText:last-child .titles {border-left:0.02rem dashed transparent;}
+.traceabilityMainBox .traceabilityBox .traceabilityText:last-child .titles i{background-image: url("../images/radios_bottoms.png");height: 0.6rem;left: -0.18rem; top: -0.07rem;}
+.traceabilityMainBox .traceabilityBox .traceabilityText:last-child .lines{display: none;}
+.traceabilityMainBox .traceabilityBox .traceabilityText:last-child ul li{ border: 0;}
+

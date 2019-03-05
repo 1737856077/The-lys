@@ -1,0 +1,49 @@
+@charset "utf-8";
+img{border:0;vertical-align: bottom;}
+ul{list-style:none;}
+a{color:#333;text-decoration:none;cursor:pointer}
+a:hover{text-decoration:none}
+
+/**顶部**/
+.verification{background:#fff}
+.verification-img{width:100%;background:#55e3a8;text-align:center;padding:10% 0}
+.verification-img img{width:45%}
+.verification-txt{padding:10px;text-indent:1em;line-height:20px}
+
+/**信息模块**/
+.item{width:96%;margin:11px auto;border-radius:5px;}
+
+.item-title{font-size:14px;font-weight:bold;position: relative;height:50px;line-height:50px;padding:0 10px;border-bottom: 1px solid #b3b3b3;box-shadow: 0px 2px 1px 0px #DDDADA;background: #fff;border-radius: 4px;margin-bottom: 1px;}
+.item-title-arrow{background: #fff;border-bottom:none}
+.item-title-img{width:20px;vertical-align: middle;}
+.item-content{display:none;/* width: 97%; */margin: auto;background: #fff;padding-bottom: 10px;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;box-shadow: 0px 2px 1px 0px #DDDADA;}
+.Shadow{}
+
+.item-title .icon{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    width: 12px;
+    height: 6px;
+    margin: auto;
+    background: url(icons-1.png) no-repeat left top;
+    background-size: 100%;
+}
+.item-title-arrow .icon{
+    background-position: 0 82%;
+}
+.item-title-arrowUp .icon{
+    background-position: 0 100%;
+}
+/*图片垂直居中*/
+.verticalAlign{ vertical-align:middle; display:inline-block; height:100%; width:1px; margin-left:-1px;}
+.textSpan{vertical-align:middle;}
+
+/*产品*/
+.proList{width: 298px;margin: 0 auto;padding-bottom: 10px;  }
+.proItem{float:left;margin-left: 16px;margin-top: 12px;text-align: center;}
+.proImgWrap{position:relative;width:125px;height:100px;overflow: hidden;}
+.proImgWrap img{position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;}
+
+.proInfo{margin-top: 5px; }

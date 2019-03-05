@@ -1,0 +1,293 @@
+
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>东篱土鸡-蝌蚪溯源系统</title>
+		<script type="text/javascript" src="__STATIC__/home/images_chicken/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="__STATIC__/home/images_chicken/js/mobile.js"></script>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_chicken/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_chicken/css/style.css" />
+		<style>
+			#wrapper{height:100vh;-webkit-overflow-scrolling:touch;overflow-y:scroll; overflow-x:hidden; width: 7.5rem; display: block; margin: 0 auto; background-color: #FFFFFF;}
+		</style>
+
+	</head>
+
+	<body>
+	<form name="formGetLoaction" id="formGetLoaction" style="display: none;">
+		<input type="hidden" name="getLoaction_productCodeInfoId" id="getLoaction_productCodeInfoId" value="{$getoneProductCodeInfo['product_code_info_id']}" />
+		<input type="hidden" name="getLoaction_sn" id="getLoaction_sn" value="{$sn}" />
+	</form>
+	<iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no" style="display: none;"
+			src="https://apis.map.qq.com/tools/geolocation?key=U6RBZ-A23WR-NW7WW-WZXHK-H6MNJ-HGBQU&referer=myapp&effect=zoom"></iframe>
+	<script src="__STATIC__/home/js/PublicUser.js"></script>
+	<script src="__STATIC__/js/getlocation.js"></script>
+		<div id="wrapper">
+		<!--<<内容区-->
+			<!--<<顶部图片区-->
+				<div class="topsMianBox">
+					<img src="__STATIC__/home/images_chicken/images/topBox.jpg">
+				</div>	
+			<!--顶部图片区>>-->
+			<!--<<切换按钮区域-->
+				<ul class="optionsListBox">
+					<li id="list1" class="optionsList on" onClick="onshows(1)"><i><img src="__STATIC__/home/images_chicken/images/List01.png"></i>产品</li>
+					<li id="list2" class="optionsList" onClick="onshows(2)"><i><img src="__STATIC__/home/images_chicken/images/List02.png"></i>食谱</li>
+					<li id="list3" class="optionsList" onClick="onshows(3)"><i><img src="__STATIC__/home/images_chicken/images/List03.png"></i>溯源</li>
+					<li id="list4" class="optionsList" onClick="onshows(4)"><i><img src="__STATIC__/home/images_chicken/images/List04.png"></i>公司</li>
+				</ul>	
+			<!--切换按钮区域>>-->
+			<!--<<产品区域-->
+				<div class="productsBox">
+					<p class="titles"><span>产品信息</span></p>
+					<ul class="productListBox">
+						<li><span>商品名称：</span>东篱土鸡</li>
+						<li><span>特产品类：</span>清远鸡</li>
+						<li><span>产品溯源码：</span>10002000000220</li>
+					    <li><span>孵化日期：</span>2018-06-06</li>
+					    <li><span>生长周期：</span>180天</li>
+					    <li><span>生长环境：</span>山林</li>
+					    <li><span>放养时常：</span>2880小时</li>
+					    <li><span>净含量：</span>1500g</li>
+					    <li><span>包装方式：</span>食用农产品</li>
+					    <li><span>生鲜储存温度：</span>-18℃～-20℃</li>
+					    <li><span>产地：</span>安徽省安庆市宿松县下仓镇长安村5号</li>
+					</ul>
+					<p class="titles"><span>营养成分</span></p>
+					<table class="maintableBox" cellspacing="0" cellpadding="0" width="100%" border="0">
+						<tr>
+							<th>营养成分</th>
+							<th>含量</th>
+						</tr>
+						<tr>
+							<td>热量</td>
+							<td>167000(大卡)</td>
+						</tr>
+						<tr>
+							<td>钾</td>
+							<td>340(毫克)</td>
+						</tr>
+						<tr>
+							<td>胆固醇</td>
+							<td>187(毫克)</td>
+						</tr>
+						<tr>
+							<td>磷</td>
+							<td>160(毫克)</td>
+						</tr>
+						<tr>
+							<td>钠</td>
+							<td>72.4(毫克)</td>
+						</tr>
+						<tr>
+							<td>维生素A</td>
+							<td>42(微克)</td>
+						</tr>
+						<tr>
+							<td>蛋白质</td>
+							<td>18500(克)</td>
+						</tr>
+						<tr>
+							<td>钙</td>
+							<td>17(毫克)</td>
+						</tr>
+						<tr>
+							<td>脂肪</td>
+							<td>9600(克)</td>
+						</tr>
+						<tr>
+							<td>镁</td>
+							<td>7(毫克)</td>
+						</tr>
+						<tr>
+							<td>硒</td>
+							<td>5.4(微克)</td>
+						</tr>
+						<tr>
+							<td>烟酸</td>
+							<td>5(毫克)</td>
+						</tr>
+						<tr>
+							<td>维生素C</td>
+							<td>3(毫克)</td>
+						</tr>
+						<tr>
+							<td>碳水化合物</td>
+							<td>1400(克)</td>
+						</tr>
+						<tr>
+							<td>锌</td>
+							<td>1.29(毫克)</td>
+						</tr>
+						<tr>
+							<td>铁</td>
+							<td>0.9(毫克)</td>
+						</tr>
+						<tr>
+							<td>维生素E</td>
+							<td>0.2(毫克)</td>
+						</tr>
+						<tr>
+							<td>铜</td>
+							<td>0.08(毫克)</td>
+						</tr>
+						<tr>
+							<td>维生素B2</td>
+							<td>0.08(毫克)</td>
+						</tr>
+						<tr>
+							<td>维生素B1</td>
+							<td>0.07(毫克)</td>
+						</tr>
+					</table>
+				</div>
+			<!--产品区域>>-->
+			<!--<<食谱区域-->
+				<div class="recipesBox">
+					<p class="titles"><span>推荐食谱</span></p>
+					<div class="foodsImgBox">
+						<img src="__STATIC__/home/images_chicken/images/foods01.jpg">
+					</div>
+					<p class="foodesName">红烧鸡块</p>
+					<div class="foodeTableBox">
+						<p class="lastname">食材用料<i></i></p>
+						<table cellspacing="0" cellpadding="0" width="100%" border="0">
+							<tr>
+								<td><span>葱姜</span>适量</td>
+								<td><span>老抽</span>适量</td>
+							</tr>
+							<tr>
+								<td><span>孜然</span>少许</td>
+								<td><span>大鸡腿</span>2只</td>
+							</tr>
+							<tr>
+								<td><span>八角</span>2个</td>
+								<td><span>料酒</span>适量</td>
+							</tr>
+							<tr>
+								<td><span>桂皮</span>一片</td>
+								<td><span>青红椒</span>适量</td>
+							</tr>
+							<tr>
+								<td><span>冰糖</span>少许</td>
+								<td><span>蚝油</span>少许</td>
+							</tr>
+							<tr>
+								<td><span>生抽</span>适量</td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+					<div class="practicesBox">
+						<p class="lastname">做法<i></i></p>
+						<p>1.鸡腿切成块用料酒腌制半小时。</p>
+						<p>2.青红椒切块备用。</p>
+						<p>3.香料准备好，葱打结，孜然少许，桂皮一小块，八角两个，生姜两块。</p>
+						<p>4.腌好的鸡块沥干水分，锅中放适量油，下入鸡块煸炒至鸡肉变白。</p>
+						<p>5.加入适量生抽，少许老抽，少许蚝油，加水。</p>
+						<p>6.放入香料和葱，中小火焖15分钟左右。</p>
+						<p>7.加入少许冰糖。</p>
+						<p>8.加入青红椒翻炒两下，出锅即可。</p>
+					</div>
+					
+					<div class="foodsImgBox">
+						<img src="__STATIC__/home/images_chicken/images/foods02.jpg">
+					</div>
+					
+					<p class="foodesName">宫保鸡丁</p>
+					<div class="foodeTableBox">
+						<p class="lastname">食材用料<i></i></p>
+						<table cellspacing="0" cellpadding="0" width="100%" border="0">
+							<tr>
+								<td>鸡胸肉<span>适量</span></td>
+								<td>芹菜<span>适量</span></td>
+							</tr>
+							<tr>
+								<td>花生米<span>适量</span></td>
+								<td>辣椒<span>6个</span></td>
+							</tr>
+							<tr>
+								<td>胡萝卜<span>适量</span></td>
+								<td>食用油<span>30克</span></td>
+							</tr>
+							<tr>
+								<td>料酒<span>2勺</span></td>
+								<td>生抽<span>2勺</span></td>
+							</tr>
+							<tr>
+								<td>盐<span>适量</span></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+					
+					<div class="practicesBox">
+						<p class="lastname">做法<i></i></p>
+						<p>1.鸡胸肉洗净，配料切丁</p>
+						<p>2.把鸡肉切丁</p>
+						<p>3.加两勺生抽、一勺料酒、一勺淀粉抓匀，腌制15分钟</p>
+						<p>4.锅烧热后放油30克，放入腌好的鸡肉翻炒，变色后盛出</p>
+						<p>5.放胡萝卜芹菜，辣椒爆香</p>
+						<p>6.放入鸡丁，一勺料酒，适量盐开大火翻炒，加入事先炒好的花生米 ，起锅装盘。</p>
+					</div>
+					
+				</div>
+			<!--食谱区域>>-->	
+			<!--<<溯源区域-->
+				<div class="originsMainBox">
+					<p class="titles"><span>溯源信息</span></p>
+					<ul class="enterpriseList">
+						<li><span>企业名称：</span>宿松宜安畜牧业发展有限公司</li>
+						<li><span>服务热线：</span>0556-700000000</li>
+						<li><span>企业官网：</span>http://www.kedousuyuan.com/</li>
+						<li><span>办公地址：</span>安徽省安庆市宿松县下仓镇长安村5号</li>
+					</ul>
+				</div>
+			<!--溯源区域>>-->	
+			<!--<<公司区域-->
+				<div class="enterpriseBox">
+					<p class="titles"><span>公司简介</span></p>
+					<div class="weixinBox">
+						<img src="__STATIC__/home/images_chicken/images/weixin.jpg">
+					</div>
+					<p class="tips">扫一扫关注微信公众号</p>
+				</div>
+			<!--公司区域>>-->	
+		<!--内容区>>-->
+		</div>
+		<script>
+			 function onshows(id){
+			 	var heights=parseInt($("html").css("font-size"))*8.5;
+			 	if(id==1){
+			 		$(".optionsList").removeClass('on');
+			 		$(".recipesBox,.originsMainBox,.enterpriseBox").hide();
+			 		$("#list"+id).addClass('on');
+                    $(".productsBox").show();
+			 	    $('#wrapper').scrollTop(heights); 
+			 	}else if(id==2){
+			 		$(".optionsList").removeClass('on');
+			 		$(".productsBox,.originsMainBox,.enterpriseBox").hide();
+			 		$("#list"+id).addClass('on');
+                    $(".recipesBox").show();
+			 	    $('#wrapper').scrollTop(heights); 
+			 	}else if(id==3){
+			 		$(".optionsList").removeClass('on');
+			 		$(".productsBox,.recipesBox,.enterpriseBox").hide();
+			 		$("#list"+id).addClass('on');
+                    $(".originsMainBox").show();
+			 	    $('#wrapper').scrollTop(heights); 
+			 	}else if(id==4){
+			 		$(".optionsList").removeClass('on');
+			 		$(".productsBox,.originsMainBox,.recipesBox").hide();
+			 		$("#list"+id).addClass('on');
+                    $(".enterpriseBox").show();
+			 	    $('#wrapper').scrollTop(heights); 
+			 	}
+			 }
+		</script>
+	</body>
+
+</html>

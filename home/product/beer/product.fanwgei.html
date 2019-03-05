@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title>{$getoneProduct['title']}-防伪查询-{:config('custom_config.WebConfig_Name')}</title>
+<script type="text/javascript" src="__STATIC__/home/images_beer/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__STATIC__/home/images_beer/js/mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_beer/css/common.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_beer/css/style.css" />
+<style>
+			#wrapper {height: 100vh;-webkit-overflow-scrolling: touch;overflow-y: scroll;overflow-x: hidden;width: 7.5rem;display: block;margin: 0 auto; background-color:#f49c00;}
+		</style>
+</head>
+<body>
+<div id="wrapper">
+<div class="authenticityBox">
+<!--<<头部-->
+<div class="headsMainBox"> <a href="javascript:history.go(-1);"></a> 真伪认证 </div>
+<div style="height: 0.88rem;"></div>
+<!--头部>>-->
+<!--<<顶部淡色区-->
+<div class="lightColorBox"> <img class="imgsBox" src="__STATIC__/home/images_beer/images/warning.png">
+  <p class="texts">{if $getoneProductCodeInfo['code_cipher_query_total']<=1}有效{else/}已失效{/if}</p>
+</div>
+<!--顶部淡色区>>-->
+<!--<<阴影-->
+<img class="shadowsBox" src="__STATIC__/home/images_beer/images/bottoms_img.png">
+<!--阴影>>-->
+<!--<<产品内容区域-->
+<div class="productTextBox">
+  <ul class="textList">
+    <li><span>溯源码</span>{$getoneProductCodeInfo['code_cipher']}</li>
+    <li><span>首次扫描</span>{:date('Y-m-d H:i:s',$getoneProductCodeInfo['code_cipher_query_time'])}</li>
+    <li><span>当前查询次数</span>{$getoneProductCodeInfo['code_cipher_query_total']}次</li>
+    <li><span>扫描地点</span>郑州市金水区</li>
+    <li><span>查询客户端</span>{$getoneProductCodeInfoQueryRecord['query_client']}</li>
+    <li><span>查询网络</span>联通</li>
+    <li><span>系统环境</span>{$getoneProductCodeInfoQueryRecord['query_system']}</li>
+  </ul>
+</div>
+<!--产品内容区域>>-->
+<div>
+  <!--内容区>>-->
+</div>
+</body>
+</html>

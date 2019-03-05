@@ -1,0 +1,124 @@
+
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>{$getoneProduct.title}-{:config('custom_config.WebConfig_Name')}</title>
+		<script type="text/javascript" src="__STATIC__/home/images_cake/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="__STATIC__/home/images_cake/js/mobile.js"></script>
+		<script type="text/javascript" src="__STATIC__/home/images_cake/js/idangerous.swiper.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_cake/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_cake/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_cake/css/idangerous.swiper.css" />
+		<style>
+            #wrapper {height: 100vh;-webkit-overflow-scrolling: touch;overflow-y: scroll;overflow-x: hidden;width: 7.5rem;display: block;margin: 0 auto; background-color: #ffffff;}
+			.swiper-container {width: 7.5rem;height: 3rem;display: block;overflow: hidden;box-shadow: 0 0 0.4rem rgba(0,0,0,0.4);position: relative;}
+			.swiper-slide img {width: 100%;height: 100%;display: block;}
+			.pagination{ bottom: 0.15rem;height: 0.2rem;position: absolute;text-align: center;width: 100%;}
+			.pagination .swiper-pagination-switch{background-color: #f6d262;border-radius: 0.03rem;display: inline-block;height: 0.06rem;margin: 0 0.04rem;vertical-align: top;width: 0.06rem;transition: width 1s;-moz-transition: width 1s;-webkit-transition: width 1s;-o-transition: width 1s;}
+			.pagination .swiper-active-switch{ width: 0.35rem; border-radius: 0.03rem;}
+		</style>
+
+	</head>
+
+	<body>
+	<form name="formGetLoaction" id="formGetLoaction" style="display: none;">
+		<input type="hidden" name="getLoaction_productCodeInfoId" id="getLoaction_productCodeInfoId" value="{$getoneProductCodeInfo['product_code_info_id']}" />
+		<input type="hidden" name="getLoaction_sn" id="getLoaction_sn" value="{$sn}" />
+	</form>
+	<iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no" style="display: none;"
+			src="https://apis.map.qq.com/tools/geolocation?key=U6RBZ-A23WR-NW7WW-WZXHK-H6MNJ-HGBQU&referer=myapp&effect=zoom"></iframe>
+	<script src="__STATIC__/home/js/PublicUser.js"></script>
+	<script src="__STATIC__/js/getlocation.js"></script>
+		<div id="wrapper">
+			<!--<<内容区-->
+			<div class="indexsPageBox">
+				<!--<<轮播图-->
+				<div style="padding:0.2rem 0;">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide"><img src="__STATIC__/home/images_cake/images/banners01.jpg" /></div>
+							<div class="swiper-slide"><img src="__STATIC__/home/images_cake/images/banners02.jpg" /></div>
+							<div class="swiper-slide"><img src="__STATIC__/home/images_cake/images/banners03.jpg" /></div>
+						</div>
+						<div class="pagination"></div>
+					</div>
+				</div>
+				<!--轮播图>>-->
+				<!--<<商品信息-->
+				<div class="categoryGoodsBox">
+					<ul>
+						<li><span>[商品名称]：</span>{$getoneProduct.title}</li>
+						<li><span>[商品编号]：</span>{$getoneProduct.product_code}</li>
+						{foreach $listProductContent as $key=>$value}
+						<li><span>[{$value.title}]：</span>{$value.content}</li>
+						{/foreach}
+						<li><span>[营养成分]：</span></li>
+					</ul>
+				</div>
+				<!--商品信息>>-->
+				<!--<<营养成分-->
+				<div class="nutritionListBox">
+					<table cellspacing="0" cellpadding="0" width="100%" border="0">
+						<tr>
+							<th>项目</th>
+							<th>每100g</th>
+							<th>营养素参考值</th>
+						</tr>
+						<tr>
+							<td>能量</td>
+							<td>1158kj</td>
+							<td>14%</td>
+						</tr>
+						<tr>
+							<td>蛋白质</td>
+							<td>8.8g</td>
+							<td>15%</td>
+						</tr>
+						<tr>
+							<td>脂肪</td>
+							<td>21.5g</td>
+							<td>36%</td>
+						</tr>
+						<tr>
+							<td>碳水化合物</td>
+							<td>12.1g</td>
+							<td>4%</td>
+						</tr>
+						<tr>
+							<td>钠</td>
+							<td>12.1mg</td>
+							<td>4%</td>
+						</tr>
+					</table>
+				</div>
+				<!--营养成分>>-->
+				<!--<<底部占位-->
+				<div style="height: 1.5rem;">
+					<!--底部占位-->
+					<!--<<底部区域-->
+					<div class="footerListBox">
+						<a class="on" href="__URL__/index?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">产品</a>
+						<a href="__URL__/cake_fangwei?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">真伪</a>
+						<a href="__URL__/cake_suyuan?code_info_id={$getoneProductCodeInfo['product_code_info_id']}">溯源</a>
+					</div>
+					<!--底部区域>>-->
+					<div>
+						<!--内容区>>-->
+					</div>
+					<script>
+						var mySwiper = new Swiper('.swiper-container', {
+							pagination: '.pagination',
+							paginationClickable: true,
+							loop: true,
+							autoplay: 5000,
+							grabCursor: true,
+							autoplayDisableOnInteraction: false,
+							speed: 300,
+						})
+					</script>
+	</body>
+
+</html>

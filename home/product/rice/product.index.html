@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<title>稻花香大米-蝌蚪溯源系统</title>
+<script type="text/javascript" src="__STATIC__/home/images_rice/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__STATIC__/home/images_rice/js/mobile.js"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_rice/css/common.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_rice/css/style.css" />
+<style>
+            #wrapper {height: 100vh;-webkit-overflow-scrolling: touch;overflow-y: scroll;overflow-x: hidden;width: 7.5rem;display: block;margin: 0 auto; background-color: #FFFFFF;background-image: url(__STATIC__/home/images_rice/images/bg01.jpg); background-size: cover;}
+		</style>
+</head>
+<body>
+<form name="formGetLoaction" id="formGetLoaction" style="display: none;">
+    <input type="hidden" name="getLoaction_productCodeInfoId" id="getLoaction_productCodeInfoId" value="{$getoneProductCodeInfo['product_code_info_id']}" />
+    <input type="hidden" name="getLoaction_sn" id="getLoaction_sn" value="{$sn}" />
+</form>
+<iframe id="geoPage" width="100%" height="30%" frameborder=0 scrolling="no" style="display: none;"
+        src="https://apis.map.qq.com/tools/geolocation?key=U6RBZ-A23WR-NW7WW-WZXHK-H6MNJ-HGBQU&referer=myapp&effect=zoom"></iframe>
+<script src="__STATIC__/home/js/PublicUser.js"></script>
+<script src="__STATIC__/js/getlocation.js"></script>
+<div id="wrapper">
+  <!--<<内容区-->
+  <div class="indexMainBox"> <i class="bannersBox"><img src="__STATIC__/home/images_rice/images/ricebanner.png"></i>
+    <div class="navigationsBox">
+        <a href="__URL__/rice_jiance"></a>
+        <a href="__URL__/rice_product"></a>
+        <a href="https://m.jd.com/"></a>
+        <a href="__URL__/rice_jianjie"></a>
+        <a href="__URL__/rice_zhuisu"></a>
+    </div>
+  </div>
+  <!--内容区>>-->
+</div>
+</body>
+</html>

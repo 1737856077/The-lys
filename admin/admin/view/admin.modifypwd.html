@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>修改密码</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/Admin.js"></script>
+</head>
+<body>
+<div class="container">
+	
+    <div class="cont_title">　你当前的位置：后台管理 &nbsp;-&nbsp; 修改密码</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <form action="__URL__/modifypwdupdate" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit_modifypwd();" autocomplete="off">
+                <input type="hidden" name="admin_id" value="{$getoneAdmin['admin_id']}" /> 
+                <input type="hidden" name="type" value="2" /> 
+        	<table class="listtable">
+            	<tr class="tr1">
+                	<td colspan="2" class="tit">修改密码</td>
+                </tr>
+               
+               <tr class="tr1">
+                    <td class="tdl">用户名<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        {$getoneAdmin['name']}
+                    </td>
+                </tr>
+                <tr  class="tr1">
+                    <td class="tdl">老密码<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;"><input name="adminpwd1" id="adminpwd1" type="password" onBlur="Onblur_adminpwd1()" value="" />　<span class="showErrorMessage" id="span_adminpwd1"></span></td>
+                </tr>
+                <tr  class="tr1">
+                    <td class="tdl">新密码<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;"><input name="adminpwd2" id="adminpwd2" type="password" onBlur="Onblur_adminpwd2()" />　<span class="showErrorMessage" id="span_adminpwd2"></span></td>
+                </tr>
+               <tr  class="tr1">
+                    <td class="tdl">确认新密码<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;"><input name="adminpwd3" id="adminpwd3" type="password" onBlur="Onblur_adminpwd3()" />　<span class="showErrorMessage" id="span_adminpwd3"></span></td>
+                </tr>
+                <tr class="tr1">
+                	<td class="tdl"></td>
+                 <td class="tdr" style="padding-top:5px;">
+                  <input type="submit" name="Submit" value="提交"  class="buttomorger" />　 
+                  <input type="button" name="button" value="返回"  class="buttomorger" onClick="javascript:history.go(-1);" /> 
+                 </td>
+               </tr>
+            </table>
+     
+      </form>      
+        </div>
+    
+    </div>
+    
+    
+</div>
+
+
+</body>
+</html>
+
+
+

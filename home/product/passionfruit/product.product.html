@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>产品信息</title>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_passionfruit/css/idangerous.swiper.css" />
+		
+		<script src="__STATIC__/home/images_passionfruit/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/home/images_passionfruit/js/mobile.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="__STATIC__/home/images_passionfruit/js/idangerous.swiper.min.js"></script>
+	</head>
+	<style type="text/css">
+		/*滑屏插件*/
+		.swiper-container {
+			width: 7.5rem;
+			height: 7.5rem;
+			display:block;
+			overflow: hidden;
+			position: relative;
+		}
+		.swiper-slide img {
+			width: 100%;
+			height: 100%;
+			display: block;
+			border-bottom-left-radius:50%;
+			border-bottom-right-radius:50%;
+		}
+		#wrapper{height:100vh;-webkit-overflow-scrolling:touch;overflow-y:scroll; max-width: 7.5rem; display: block; margin: 0 auto;}
+	</style>
+	<body>
+		<div id="wrapper">
+			<!--轮播图-->
+			<div class="layout-banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner01.jpg" /></div>
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner02.jpg" /></div>
+						<div class="swiper-slide"><img src="__STATIC__/home/images_passionfruit/images/banner02.jpg" /></div>
+					</div>
+					<div class="pagination "></div>
+				</div>
+			</div>
+			<!--轮播图-->
+			<!--导航栏-->
+			<div class="layout-navbox">
+				<ul>
+					<li><a href="__URL__/index?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon01"></i>公司简介</a></li>
+					<li><a class="on" href="__URL__/passionfruit_product?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon02"></i>产品信息</a></li>
+					<li><a href="__URL__/passionfruit_buy?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon03"></i>在线订购</a></li>
+					<li><a href="__URL__/passionfruit_notice?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon04"></i>温馨提示</a></li>
+					<li><a href="__URL__/passionfruit_orgin?code_info_id={$getoneProductCodeInfo['product_code_info_id']}"><i class="icon05"></i>全程溯源</a></li>
+				</ul>
+			</div>
+			<!--导航栏-->
+			<!--主内容区-->
+			<div class="layout-container">
+				<p class="company-name">贵州秋实农业发展有限公司<span class="line"></span></p>
+				<table border="0" cellspacing="0" cellpadding="0" width="100%" class="table01">
+					<tr><th>商品名称</th><td>秋实百香果</td></tr>
+					<tr><th>品牌</th><td>秋实</td></tr>
+					<tr><th>水果种类</th><td>百香果</td></tr>
+					<tr><th>系列</th><td>黄金百香果</td></tr>
+					<tr><th>储存方法</th><td>低温储存</td></tr>
+					<tr><th>保质期</th><td>10天</td></tr>
+					<tr><th>净含量</th><td>2500g</td></tr>
+					<tr><th>营养成分</th><td>百香果的果汁色、香、味、营养极佳，富含人体必须的17种氨基酸及多种维生素、微量元素等160多种有益成分，适合生产果汁、果冻、果露、果酱等产品，具有消除疲劳、提神醒酒、降脂降压、消炎祛斑、护肤养颜等神奇功效</td></tr>
+					<tr><th>食用方法</th>
+						<td>
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic02.jpg"/>百香果酱</i>
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic03.jpg"/>百香果蛋糕</i>
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic04.jpg"/>百香果茶</i>
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic05.jpg"/>百香果金桔饮</i>
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic06.jpg"/>百香果冰棒</i>
+							<i class="picsBox"><img src="__STATIC__/home/images_passionfruit/images/pic07.jpg"/>百香果蛋挞</i>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--主内容区-->
+		</div>
+	</body>
+</html>
+<script>
+	var mySwiper = new Swiper('.swiper-container', {
+		paginationClickable: true,
+		loop: true,
+		autoplay: 5000,
+		grabCursor: true,
+		autoplayDisableOnInteraction: false,
+		speed: 300,
+		pagination : '.pagination',
+		
+	})
+</script>

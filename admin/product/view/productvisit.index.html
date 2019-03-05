@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>产品管理-产品列表-溯源统计</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/city.js"></script>
+</head>
+
+<body>
+    <div class="cont_title">　你当前的位置：产品管理-<a href="{:url('product/index')}">产品列表</a>-溯源统计</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <table class="listtable">  
+                    <tr class="tr1">
+						<td  class="tdtit">产品名称</td>
+						<td   class="tdlist"  colspan="7" style="float:left;">{$getoneProduct.title}</td>
+                    </tr>
+                    <tr class="tr1" style="display: none;">
+                        <td  class="tdtit">查询</td>
+                        <td  colspan="7" class="tdlist">
+                            地区 <select name="ProvinceID" id="ProvinceID" onChange="GetProvinceID(this.value)">
+                                <option value="">省份</option>
+                                {$ProvinceIDHtml}
+                            </select>　
+                            <select name="CityID" id="CityID" onChange="GetCityID(this.value)">
+                                <option value="">地级市</option>
+                                {$CityIDHtml}
+                            </select>
+                            <select name="DistrictID" id="DistrictID" >
+                                <option value="">区县</option>
+                                {$DistrictIDHtml}
+                            </select>
+                            <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" />
+                        </td>
+                    </tr>
+				</table>
+            <table class="listtable">
+                <tr class="tr1">
+                    <td colspan="4" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
+                </tr>
+                    <tr class="tr1">
+                        <td class="tdtit">序号</td>
+                        <td class="tdtit">省份</td>
+                        <td class="tdtit">溯源数</td>
+                        <td class="tdtit">操作</td>
+                    </tr>
+                   {foreach $list as $key=>$value}
+                	<tr class="tr1">
+                    	<td class="tdlist">{$key+1}&nbsp;</td>
+                        <td class="tdlist">{$value['province']}&nbsp;</td>
+                        <td class="tdlist">{$value['total']}&nbsp;</td>
+                        <td class="tdlist">
+                            {if auth('product/productvisit/info') }
+               			    [<a href="__URL__/info/id/{$value['product_id']}/province/{$value['province']}">查看溯源详细</a>]&nbsp;
+                            {/if}
+                        </td>
+                    </tr>
+				    {/foreach}
+                    <tr class="tr1">
+                        <td colspan="4" class="tdtit" style="text-align: right; padding-right: 20px;">总溯源{$count}次</td>
+                    </tr>
+                    {if count($list) eq 0}
+                    <tr class="tr1">
+                            <td colspan="4" class="tdlist">暂无相关溯源记录！ </td>
+                    </tr>
+                    {/if}
+
+            </table>
+        </div>
+    
+    </div>
+
+</div>
+</body>
+</html>

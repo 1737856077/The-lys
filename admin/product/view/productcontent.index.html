@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>产品管理-产品列表-产品内容列表</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+</head>
+
+<body>
+    <div class="cont_title">　你当前的位置：产品管理-<a href="{:url('product/index')}">产品列表</a>-产品内容列表</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <table class="listtable">  
+                    <tr class="tr1">
+						<td  class="tdtit">产品名称</td>
+						<td   class="tdlist"  colspan="5" style="float:left;">{$getoneProduct.title}</td>
+                        <td   class="tdlist">
+                            {if auth('product/productcontent/add') }
+                            <a href="__URL__/add?product_id={$getoneProduct.product_id}"><input type="button" name="" class="buttomorger"  value="添加" /></a>
+                            {/if}
+                        </td>
+                    </tr>
+				</table>
+            <form  method="post" action="__URL__/savesort/action/save?product_id={$getoneProduct.product_id}">
+            <table class="listtable">
+                    <tr class="tr1">
+                        <td class="tdtit">序号</td>
+                        <td class="tdtit">属性名称</td>
+                        <td class="tdtit">属性内容</td>
+                        <td class="tdtit">是否是图片</td>
+                        <td class="tdtit">排序</td>
+                        <td class="tdtit">状态</td>
+                        <td class="tdtit">操作</td>
+                    </tr>
+                   {foreach $list as $value}
+                	<tr class="tr1">
+                    	<td class="tdlist">{$value['id']}&nbsp;</td>
+                        <td class="tdlist">{$value['title']}&nbsp;</td>
+                        <td class="tdlist">{$value['content']}&nbsp;</td>
+                        <td class="tdlist">{:$value['is_image']=='1' ? '是' : '否'}&nbsp;</td>
+                        <td class="tdlist">
+                            <input type="hidden" name="IDs[]"   value="{$value['product_content_id']}" />
+                            <input type="text" name="SortRank[{$value['product_content_id']}]"  size="5" value="{$value['data_sort']}" onkeypress="return noNumbers(event);" />&nbsp;
+                        </td>
+                        <td class="tdlist">
+                            {if auth('product/productcontent/editinfo') }
+                                {if $value['data_status'] eq 0}
+                                <a href="__URL__/editinfo/action/checkStatus/id/{$value['product_content_id']}/Status/1" ><font color="#ff0000">不显示</font></a>
+                                {else}
+                                <a href="__URL__/editinfo/action/checkStatus/id/{$value['product_content_id']}/Status/0" ><font color="#006600">显示</font></a>
+                                {/if}
+                            {else}
+                                {if $value['data_status'] eq 0}
+                                <font color="#ff0000">不显示</font>
+                                {else}
+                                <font color="#006600">显示</font>
+                                {/if}
+                            {/if}
+                        </td>
+                        <td class="tdlist">
+                            {if auth('product/productcontent/edit') }
+               			    [<a href="__URL__/edit/id/{$value['product_content_id']}">编辑</a>]&nbsp;
+                            {/if}
+                        </td>
+                    </tr>
+				    {/foreach}
+                
+                    {if count($list) eq 0}
+                    <tr class="tr1">
+                            <td colspan="7" class="tdlist">暂无相关记录！ </td>
+                    </tr>
+                    {/if}
+                <tr class="tr1">
+                    <td colspan="7" class="tdlist" >
+                        <input type="hidden" name="checkclass" id="checkclass" value="1" />
+                        {if auth('product/productcontent/savesort') }
+                        <input type="submit"  value="排序" class="buttomorger"  onClick="checkclassfun('3');" />
+                        {/if}
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    
+    </div>
+
+</div>
+</body>
+</html>
