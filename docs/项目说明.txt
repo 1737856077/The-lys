@@ -1,0 +1,7 @@
+
+一、本地环境说明
+   A、使用suyuan.localhost虚拟域名进行访问；
+二、本地访问地址
+	A、后台访问地址：http://suyuan.localhost/admin.php
+	用户名：admin
+	密码：123456
