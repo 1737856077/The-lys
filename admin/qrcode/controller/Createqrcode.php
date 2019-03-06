@@ -77,7 +77,7 @@ class Createqrcode extends CommonBase
         $market_time=strtotime($market_time);
         //提交类型(0:普通提交；1：生成并下载(TXT)；)
         $actionType=isset($param['actionType']) ? intval($param['actionType']) : 0;
-        if($actionType == 1){
+        if($actionType == 1 or $actionType == 2){
             Header("Content-type: application/octet-stream");
             Header("Accept-Ranges: bytes");
         }
@@ -166,7 +166,6 @@ class Createqrcode extends CommonBase
             $_qrurl_data=$qrurl_data.$_compress_code;
             $filename = $PNG_TEMP_DIR.'sy'.md5($_qrurl_data.'|'.$errorCorrectionLevel.'|'.$matrixPointSize).'.png';
 
-            $str=$_qrurl_data;
             //产品暗码(16位，大写)
             $_code_cipher=substr(md5($product_id.my_returnUUID()),8,16);
             $_code_cipher=strtoupper($_code_cipher);
@@ -185,7 +184,14 @@ class Createqrcode extends CommonBase
                 'update_time'=>$gettime,
             );
             $data_product_code_info['images']='';
-            if($actionType == 1){
+            if($actionType == 1) {
+                $str=$_qrurl_data;
+            }else if($actionType == 2){
+                $str=$_code_cipher;
+            }else{
+                $str=$_qrurl_data;
+            }
+            if($actionType == 1 or $actionType == 2){
                 $data_product_code_info['qr_open_time']=$gettime;
                 $data_product_code_info['data_status']=1;
             }
@@ -201,20 +207,20 @@ class Createqrcode extends CommonBase
             }
             //2018-12-10 改成查询时生成
             //$_msg=QRcode::png($_qrurl_data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
-            $fileContent.=$str."\r\n";
+            $fileContent .= $str . "\r\n";
         }
         //二维码生成处理 end
         Db::commit();//提交事务
-        if($actionType == 1){
-            $filename = $title.'_'.$product_code_num.".txt";
+        if($actionType == 1 or $actionType == 2) {
+            $filename = $title . '_' . $product_code_num . ".txt";
             $encoded_filename = urlencode($filename);
             $encoded_filename = str_replace("+", "%20", $encoded_filename);
-            if (preg_match("/MSIE/", $_SERVER['HTTP_USER_AGENT']) ) {
+            if (preg_match("/MSIE/", $_SERVER['HTTP_USER_AGENT'])) {
                 header('Content-Disposition:  attachment; filename="' . $encoded_filename . '"');
             } elseif (preg_match("/Firefox/", $_SERVER['HTTP_USER_AGENT'])) {
-                header('Content-Disposition: attachment; filename*="utf8' .  $filename . '"');
+                header('Content-Disposition: attachment; filename*="utf8' . $filename . '"');
             } else {
-                header('Content-Disposition: attachment; filename="' .  $filename . '"');
+                header('Content-Disposition: attachment; filename="' . $filename . '"');
             }
             echo "$fileContent";
         }else {

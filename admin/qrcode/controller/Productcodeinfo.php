@@ -168,6 +168,7 @@ class Productcodeinfo extends CommonBase
         $param = $this->request->param();
         //查询
         $product_code_id = isset($param['product_code_id']) ? trim(htmlspecialchars(urldecode($param['product_code_id']))) : '' ;
+        $actionType = isset($param['actionType']) ? intval($param['actionType']) : '1' ;
         if(empty($product_code_id)){echo 'param error!';exit;}
         Header("Content-type: application/octet-stream");
         Header("Accept-Ranges: bytes");
@@ -187,7 +188,11 @@ class Productcodeinfo extends CommonBase
         $fileContent='';
         foreach ($list as $key=>$value){
             $_qrurl_data=$qrurl_data.$value['compress_code'];
-            $str=$_qrurl_data;
+            if($actionType == 2){
+                $str = $value['code_cipher'];
+            }else {
+                $str = $_qrurl_data;
+            }
             $fileContent.=$str."\r\n";
         }
 
