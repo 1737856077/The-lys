@@ -1,0 +1,97 @@
+{
+	data: {
+		//累计溯源企业
+		totalCompany：32323,
+		//溯源产品个数
+		totalProducts: 43343443,
+		// 柱状图，每月溯源产品或增长率数据
+		visitlog: [{
+			value: 335,
+			name: '1月',
+		},
+		{
+			value: 310,
+			name: '2月',
+		},
+		{
+			value: 234,
+			name: '3月',
+		},
+		{
+			value: 135,
+			name: '4月',
+		},
+		......]，
+		//实时预警
+		warningInfo: [{
+			name: 'xx公司产品疑似被窜货',
+		},
+		{
+			name: 'xx公司产品疑似被窜货',
+		},
+		{
+			name: 'xx公司产品疑似被窜货',
+		},
+		{
+			name: 'xx公司产品疑似被窜货',
+		},
+		],
+		//地区排行
+		areaData: [{
+			name: '广东',
+			value: ‘343’
+		},
+		{
+			name: '河南',
+			value: ‘343’
+		},
+		{
+			name: '山东',
+			value: ‘343’
+		},
+		{
+			name: '四川',
+			value: ‘456’
+		},
+		]
+		// 扫码产品排行
+		productData: [{
+			name: 'xxxx产品'
+		},
+		{
+			name: 'xxxx产品'
+		},
+		{
+			name: 'xxxx产品'
+		},
+		{
+			name: 'xxxx产品'
+		},
+		{
+			name: 'xxxx产品'
+		}],
+		//扫码记录
+		scanlog: [{
+			name: 'xx公司xx产品被验证'
+		},
+		{
+			name: 'xx公司xx产品被验证'
+		},
+		{
+			name: 'xx公司xx产品被验证'
+		},
+		{
+			name: 'xx公司xx产品被验证'
+		}],
+		//月份扫码记录,曲线图
+		scanData: [{
+			name: '1月',
+			value: 3433
+		},
+		{
+			name: '2月',
+			value: 3433
+		}],
+		//todos:食品安全聚焦，暂不确定
+	}
+}
