@@ -21,20 +21,23 @@
                 <tr class="tr1">
                     <td  colspan="7" class="tdlist">查询：
                         用户名 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
-                        性别 <select name="SearchSex" id="SearchSex">
-                            <option value="">请选择</option>
-                            <option value="0" {if $SearchSex eq 0 }selected{/if} >男</option>
-                            <option value="1" {if $SearchSex eq 1 }selected{/if} >女</option>
-                        </select>　</td>
+                        手机号 <input type="text" name="SearchMobile" id="SearchMobile" value="{$SearchMobile}" />　
+                        公司名称 <input type="text" name="SearchCompanyName" id="SearchCompanyName" value="{$SearchCompanyName}" />　
+                    </td>
                     <td   class="tdlist">
                     </td>
                 </tr>
                 <tr class="tr1">
-                    <td  colspan="7" class="tdlist">　　　
+                    <td  colspan="7" class="tdlist">　　
+                        性别 <select name="SearchSex" id="SearchSex">
+                            <option value="">请选择</option>
+                            <option value="0" {if $SearchSex=='0' }selected{/if} >男</option>
+                            <option value="1" {if $SearchSex=='1' }selected{/if} >女</option>
+                        </select>　　
                         角色 <select name="SearchIsVip" id="SearchIsVip">
                             <option value="">请选择</option>
-                            <option value="0" {if $SearchIsVip eq 0 }selected{/if} >普通用户</option>
-                            <option value="1" {if $SearchIsVip eq 1 }selected{/if} >VIP用户</option>
+                            <option value="0" {if $SearchIsVip=='0' }selected{/if} >普通用户</option>
+                            <option value="1" {if $SearchIsVip=='1' }selected{/if} >VIP用户</option>
                         </select>　
                         邮箱 <input type="text" name="SearchEmail" id="SearchEmail" value="{$SearchEmail}" />　
                         <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
@@ -51,6 +54,8 @@
                 <tr class="tr1">
                     <td class="tdtit">ID</td>
                     <td class="tdtit">用户名</td>
+                    <td class="tdtit">手机</td>
+                    <td class="tdtit">公司名称</td>
                     <td class="tdtit">角色</td>
                     <td class="tdtit">性别</td>
                     <td class="tdtit">邮箱</td>
@@ -59,7 +64,9 @@
                 {foreach $List as $value}
                 <tr class="tr1">
                     <td class="tdlist">{$value['member_id']}&nbsp;</td>
-                    <td class="tdlist">{$value['name']}&nbsp;</td>
+                    <td class="tdlist">{$value['username']}&nbsp;</td>
+                    <td class="tdlist">{$value['mobile']}&nbsp;</td>
+                    <td class="tdlist">{$value['company_name']}&nbsp;</td>
                     <td class="tdlist">{:$value['is_vip']===1 ? 'VIP用户' : '普通用户'}&nbsp;</td>
                     <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
                     <td class="tdlist">{$value['email']}</td>

@@ -131,8 +131,8 @@
                  <li class="tab">
                     <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">客户管理</a><em></em></div>
                     <ul class="ct" style="display:none;">
-                        {if auth('salesman/salesman/index')}
-                        <li><a href="#" target="mainframe">客户列表（0）　</a></li>
+                        {if auth('member/member/index')}
+                        <li><a href="/admin.php/member/member/index" target="mainframe">客户列表　</a></li>
                         {/if}
                         {if auth('salesman/divideinto/index')}
                         <li><a href="#" target="mainframe">资料管理　</a></li>

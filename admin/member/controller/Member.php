@@ -28,23 +28,33 @@ class Member extends CommonAdmin
         $SearchIsVip = isset($param['SearchIsVip']) ? $param['SearchIsVip'] : '' ;
         $SearchEmail = isset($param['SearchEmail']) ? $param['SearchEmail'] : '' ;
         $SearchEmail=urldecode($SearchEmail);
+        $SearchMobile = isset($param['SearchMobile']) ? $param['SearchMobile'] : '' ;
+        $SearchMobile=urldecode($SearchMobile);
+        $SearchCompanyName = isset($param['SearchCompanyName']) ? $param['SearchCompanyName'] : '' ;
+        $SearchCompanyName=urldecode($SearchCompanyName);
         $paramUrl='';
         $paramUrl.='SearchTitle='.$SearchTitle;
         $paramUrl.='&SearchSex='.$SearchSex;
         $paramUrl.='&SearchIsVip='.$SearchIsVip;
         $paramUrl.='&SearchEmail='.$SearchEmail;
+        $paramUrl.='&SearchMobile='.$SearchMobile;
+        $paramUrl.='&SearchCompanyName='.$SearchCompanyName;
         $this->assign("SearchTitle",$SearchTitle);
         $this->assign("SearchSex",$SearchSex);
         $this->assign("SearchIsVip",$SearchIsVip);
         $this->assign("SearchEmail",$SearchEmail);
+        $this->assign("SearchMobile",$SearchMobile);
+        $this->assign("SearchCompanyName",$SearchCompanyName);
 
-        $ModelSalesman=Db::name('admin');
+        $ModelSalesman=Db::name('member');
 
-        $_where="1 AND role_id=2";
-        if(!empty($SearchTitle)){ $_where.=" AND name LIKE '%".urldecode($SearchTitle)."%'"; }
+        $_where="1";
+        if(!empty($SearchTitle)){ $_where.=" AND username LIKE '%".urldecode($SearchTitle)."%'"; }
         if($SearchSex == '0' or $SearchSex == '1'){$_where.=" AND sex='$SearchSex'";}
         if($SearchIsVip == '0' or $SearchIsVip == '1'){$_where.=" AND is_vip='$SearchIsVip'";}
         if(!empty($SearchEmail)){ $_where.=" AND email LIKE '%".urldecode($SearchEmail)."%'"; }
+        if(!empty($SearchMobile)){ $_where.=" AND mobile LIKE '%".urldecode($SearchMobile)."%'"; }
+        if(!empty($SearchCompanyName)){ $_where.=" AND company_name LIKE '%".urldecode($SearchCompanyName)."%'"; }
 
         if($_where=='1'){$_where='';}
         $count = $ModelSalesman->where($_where)
