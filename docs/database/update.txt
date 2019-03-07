@@ -7,4 +7,5 @@ ADD  `listing_province` VARCHAR( 64 ) NULL AFTER  `listing_nation` ,
 ADD  `listing_city` VARCHAR( 64 ) NULL AFTER  `listing_province` ,
 ADD  `listing_district` VARCHAR( 64 ) NULL AFTER  `listing_city`;
 
+ALTER TABLE  `sy_product_code_info_query_record` ADD  `sn` VARCHAR( 32 ) NULL AFTER  `query_system`;
 
