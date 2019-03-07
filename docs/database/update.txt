@@ -1,0 +1,10 @@
+
+/*===×·¼Ó×Ö¶Î 2019-03-07==*/
+ALTER TABLE  `sy_region` ADD  `lng` VARCHAR( 16 ) NULL AFTER  `area_type` ,
+ADD  `lat` VARCHAR( 16 ) NULL AFTER  `lng`;
+ALTER TABLE  `sy_product_code` ADD  `listing_nation` VARCHAR( 64 ) NULL AFTER  `product_code_num` ,
+ADD  `listing_province` VARCHAR( 64 ) NULL AFTER  `listing_nation` ,
+ADD  `listing_city` VARCHAR( 64 ) NULL AFTER  `listing_province` ,
+ADD  `listing_district` VARCHAR( 64 ) NULL AFTER  `listing_city`;
+
+
