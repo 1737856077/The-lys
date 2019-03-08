@@ -74,6 +74,9 @@
                         {if auth('member/member/edit') }
                         [<a href="{:url('member/edit')}?id={$value['member_id']}&{$paramUrl}">编辑</a>]
                         {/if}
+                        {if auth('member/member/info') }
+                        [<a href="{:url('member/info')}?id={$value['member_id']}&{$paramUrl}">详细</a>]
+                        {/if}
                     </td>
                 </tr>
                 {/foreach}

@@ -124,4 +124,21 @@ class Member extends CommonAdmin
         $this->success("操作成功",url("member/index"),3);
         exit;
     }
+
+    /**
+     * @desc : 详细
+     */
+    public function info(){
+        $param = $this->request->param();
+        $id=isset($param['id']) ? htmlspecialchars($param['id']) : '' ;
+        if(empty($id)){echo 'paramer error!';exit;}
+        $ModelMember=Db::name('member');
+        $ModelAdmin=Db::name('admin');
+        $getone=$ModelMember->where("member_id='$id'")->find();
+        $getoneAdmin=$ModelAdmin->where("admin_id='$getone[from_user_id]'")->find();
+
+        $this->assign("getone",$getone);
+        $this->assign("getoneAdmin",$getoneAdmin);
+        return $this->fetch();
+    }
 }
