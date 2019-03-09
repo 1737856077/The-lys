@@ -101,30 +101,25 @@
                     </tr>
                     <tr class="tr1">
                         <td class="td1">
-                            地址:
-                            <select id="sheng">
+                            上市区域：
+                        </td>
+                        <td class="tdr">
+                            <select id="sheng" name="sheng">
                                 <option>请选择省份</option>
                                 {volist name="region" id="vo"}
-                                <option value='{$vo.area_code}' name='sheng'>{$vo.area_name}</option>
+                                <option value='{$vo.area_code}'>{$vo.area_name}</option>
                                 {/volist}
                             </select>
-                        </td>
-                        <td class="td1">
-                            <select id="city">
-                                <option value="" seleted="seleted">请选择城市</option>
+                            <select id="city"  name="city">
+                                <option value="">请选择城市</option>
                             </select>
-                            <select id="qu">
+                            <select id="qu"  name="qu">
                                 <option value="">请选择区</option>
                             </select>
-                            <select id="jie">
+                            <select id="jie"  name="jie">
                                 <option value="">请选择街道</option>
                             </select>
-
                         </td>
-                        <td class="">
-
-                        </td>
-
                     </tr>
                     <tr class="tr1">
                         <td class="tdl">描述：</td>

@@ -73,6 +73,10 @@ class Createqrcode extends CommonBase
         $product_code_num=htmlspecialchars(isset($param['product_code_num']) ? intval($param['product_code_num']) : 1);
         $market_time=isset($param['market_time']) ? trim($param['market_time']) : date('Y-m-d');
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
+        $listing_nation=htmlspecialchars(isset($param['sheng']) ? trim($param['sheng']) : '');
+        $listing_province=htmlspecialchars(isset($param['city']) ? trim($param['city']) : '');
+        $listing_city=htmlspecialchars(isset($param['qu']) ? trim($param['qu']) : '');
+        $listing_district=htmlspecialchars(isset($param['jie']) ? trim($param['jie']) : '');
         $gettime=time();
         $admin_id=Session::get('adminid') ;
         $market_time=strtotime($market_time);
@@ -121,6 +125,10 @@ class Createqrcode extends CommonBase
             'product_code_begin'=>1,
             'product_code_end'=>$product_code_num,
             'product_code_num'=>$product_code_num,
+            'listing_nation'=>$listing_nation,
+            'listing_province'=>$listing_province,
+            'listing_city'=>$listing_city,
+            'listing_district'=>$listing_district,
             'admin_id'=>$admin_id,
             'data_desc'=>$data_desc,
             'create_time'=>$gettime,
