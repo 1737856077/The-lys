@@ -49,7 +49,8 @@ class Createqrcode extends CommonBase
             ->where($_whereIn)
             ->order('create_time DESC')
             ->select();
-
+        $region = Db::name('region')->where('area_type',2)->field('area_name,area_code')->select();
+        $this->assign('region',$region);
         $this->assign("listProduct",$listProduct);
         return $this->fetch();
     }
@@ -231,6 +232,19 @@ class Createqrcode extends CommonBase
             }
         }
         exit;
+    }
+    /**
+     * @描述：查询省下面的市
+     */
+    public function shi()
+    {
+        $param = $this->request->post();
+       $shi = Db::name('region')
+           ->where('area_parent_id',$param['shi'])
+           ->field('area_name,area_code')
+           ->select();
+       return json($shi);
+
     }
 
 }

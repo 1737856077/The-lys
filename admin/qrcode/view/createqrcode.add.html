@@ -10,12 +10,20 @@
     <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script language="javascript" type="text/javascript" src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
+    <script language="javascript" type="text/javascript"
+            src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/PublicUploadImg.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/createqrcode_add.js"></script>
 </head>
 <style type="text/css">
-    .btn_public_orgin{ height: 30px; line-height: 30px; text-align: center; background-color:#aa5500; color: #ffffff; padding: 0px 10px; }
+    .btn_public_orgin {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #aa5500;
+        color: #ffffff;
+        padding: 0px 10px;
+    }
 </style>
 <body>
 <div class="container">
@@ -25,14 +33,15 @@
     <div class="con">
 
         <div class="conlist">
-            <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">
-                <input type="hidden" name="actionType" id="actionType" value="0" />
+            <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1"
+                  onSubmit="javascript:return subfun();">
+                <input type="hidden" name="actionType" id="actionType" value="0"/>
                 <table class="listtable">
                     <tr class="tr1">
                         <td colspan="2" class="tit">生成二维码</td>
                     </tr>
                     <tr class="tr1">
-                        <td  class="tdl">产品:<span style="color:#f00;">*</span></td>
+                        <td class="tdl">产品:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
                             <select name="product_id">
                                 {foreach $listProduct as $value}
@@ -43,14 +52,15 @@
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td  class="tdl">批次名称:<span style="color:#f00;">*</span></td>
+                        <td class="tdl">批次名称:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="title" id="title" size="60"  maxlength="32"  onKeyPress="return noStrs(event);" onBlur="onBlur_title()"  />
+                            <input type="text" name="title" id="title" size="60" maxlength="32"
+                                   onKeyPress="return noStrs(event);" onBlur="onBlur_title()"/>
                             <span id="span_title" style="color:#f00;"></span>
                         </td>
                     </tr>
                     <tr class="tr1" style="display: none;">
-                        <td  class="tdl">纠错级别:</td>
+                        <td class="tdl">纠错级别:</td>
                         <td class="tdr" style="padding-top:5px;">
                             <select name="level">
                                 <option value="L" selected>L - smallest</option>
@@ -61,7 +71,7 @@
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td  class="tdl">尺寸:</td>
+                        <td class="tdl">尺寸:</td>
                         <td class="tdr" style="padding-top:5px;">
                             <select name="size">
                                 {for start="1" end="10" step="1"}
@@ -71,11 +81,11 @@
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td class="tdl" >二维码数量：</td>
-                        <td class="tdr" style="padding-top:5px;" >
-                            <input type="text" name="product_code_num" id="product_code_num"  size="8"
+                        <td class="tdl">二维码数量：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="product_code_num" id="product_code_num" size="8"
                                    maxlength="12" onkeypress="return noNumbers(event);"
-                                   value="1" />
+                                   value="1"/>
                             说明：当数量小于等0时， 自动处理为1
                         </td>
 
@@ -83,31 +93,64 @@
                     <tr class="tr1">
                         <td class="tdl">上市时间：</td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="market_time" id="market_time" size="20"  maxlength="10" value="{:date('Y-m-d')}" class="Wdate"
-                                   onClick="WdatePicker()" />
+                            <input type="text" name="market_time" id="market_time" size="20" maxlength="10"
+                                   value="{:date('Y-m-d')}" class="Wdate"
+                                   onClick="WdatePicker()"/>
                             说明：当上市时间为空，默认为生成二维码的日期
                         </td>
                     </tr>
                     <tr class="tr1">
+                        <td class="td1">
+                            地址:
+                            <select id="sheng">
+                                <option>请选择省份</option>
+                                {volist name="region" id="vo"}
+                                <option value='{$vo.area_code}' name='sheng'>{$vo.area_name}</option>
+                                {/volist}
+                            </select>
+                        </td>
+                        <td class="td1">
+                            <select id="city">
+                                <option value="" seleted="seleted">请选择城市</option>
+                            </select>
+                            <select id="qu">
+                                <option value="">请选择区</option>
+                            </select>
+                            <select id="jie">
+                                <option value="">请选择街道</option>
+                            </select>
+
+                        </td>
+                        <td class="">
+
+                        </td>
+
+                    </tr>
+                    <tr class="tr1">
                         <td class="tdl">描述：</td>
                         <td class="tdr" style="padding-top:5px;">
-                            <textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60"></textarea>
+                            <textarea name="data_desc" rows="5" id="data_desc" onKeyPress="return noStrs(event);"
+                                      cols="60"></textarea>
                         </td>
                     </tr>
                     <tr class="tr1">
                         <td class="tdl">备注：</td>
                         <td class="tdr" style="padding-top:5px;">
-                            A、提交：普通生成方式，二维码需要手动开启，方有效；<br />
+                            A、提交：普通生成方式，二维码需要手动开启，方有效；<br/>
                             B、生成并下载(TXT)：快速生成方式，二维码自动为开启状态；
                         </td>
                     </tr>
                     <tr class="tr1">
                         <td class="tdl"></td>
                         <td class="tdr" style="padding-top:5px; position:relative;">
-                            <input type="submit" name="Submit" value="提交"  class="btn_public_orgin" onclick="document.getElementById('form1').target='';document.getElementById('actionType').value ='0';" />　
-                            <input type="submit" name="Submit" value="明码生成并下载(TXT)"  class="btn_public_orgin" onclick="document.getElementById('form1').target='_blank';document.getElementById('actionType').value ='1';" />　
-                            <input type="submit" name="Submit" value="暗码生成并下载(TXT)"  class="btn_public_orgin" onclick="document.getElementById('form1').target='_blank';document.getElementById('actionType').value ='2';" />　
-                            <input type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" />
+                            <input type="submit" name="Submit" value="提交" class="btn_public_orgin"
+                                   onclick="document.getElementById('form1').target='';document.getElementById('actionType').value ='0';"/>　
+                            <input type="submit" name="Submit" value="明码生成并下载(TXT)" class="btn_public_orgin"
+                                   onclick="document.getElementById('form1').target='_blank';document.getElementById('actionType').value ='1';"/>　
+                            <input type="submit" name="Submit" value="暗码生成并下载(TXT)" class="btn_public_orgin"
+                                   onclick="document.getElementById('form1').target='_blank';document.getElementById('actionType').value ='2';"/>　
+                            <input type="button" name="button" value="返回" class="buttomgray"
+                                   onClick="javascript:history.go(-1);"/>
 
                         </td>
                     </tr>
@@ -120,7 +163,73 @@
 
 
 </div>
+<script>
 
+    $("#sheng").change(function () {
+        var sheng = $('#sheng').val();
+        $.ajax({
+            type: 'post',
+            url: '__URL__/shi',
+            data: 'shi=' + $('#sheng').val(),
+            dataType: "json",
+            success: function (data) {
+                var option = "", shi = '';
+                for (var i = 0; i < data.length; i++) {
+                    if (shi == '') shi = data[i];
+                    option += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
+                }
+                $("#city").html(option);
+                set_qu(sheng, shi);
+            }
+        })
+        $("#city").change(function () {
+            var sheng = $('#sheng').val();
+            var shi = this.value;
+            set_qu(sheng, shi);
+
+        })
+
+        function set_qu(sheng, shi) {
+
+            $.ajax({
+                type: 'post',
+                url: '__URL__/shi',
+                data: {'shi': sheng, 'shi': shi},
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    for (i = 0; i < data.length; i++) {
+                        html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
+                    }
+                    $('#qu').html(html);
+                }
+            })
+        }
+
+        $("#qu").change(function () {
+            var shi = $('#qu').val();
+            var shi = this.value;
+            set_qu1(shi);
+
+        })
+
+        function set_qu1(shi) {
+
+            $.ajax({
+                type: 'post',
+                url: '__URL__/shi',
+                data: {'shi': shi},
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    for (i = 0; i < data.length; i++) {
+                        html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
+                    }
+                    $('#jie').html(html);
+                }
+            })
+        }
+    })</script>
 
 </body>
 </html>
