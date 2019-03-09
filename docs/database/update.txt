@@ -8,7 +8,7 @@ ADD  `listing_city` VARCHAR( 64 ) NULL AFTER  `listing_province` ,
 ADD  `listing_district` VARCHAR( 64 ) NULL AFTER  `listing_city`;
 
 ALTER TABLE  `sy_product_code_info_query_record` ADD  `sn` VARCHAR( 32 ) NULL AFTER  `query_system`;
-ALTER TABLE  `sy_product_code_info_visit_record` ADD  `is_listing_area` TINYINT( 1 ) null default '0' AFTER  `sn`;
+ALTER TABLE `sy_product_code_info_visit_record` ADD `is_listing_area` TINYINT(1) NULL DEFAULT '0' AFTER `sn`; 
 
 
 

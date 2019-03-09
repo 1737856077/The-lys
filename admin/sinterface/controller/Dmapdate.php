@@ -20,7 +20,7 @@ class Dmapdate extends CommonBase
     public function index()
     {
         $data = [];
-        $code = 1;
+        $code = 0;
         $msg = '';
         $data['code'] = $code;
         $data['msg'] = $msg;

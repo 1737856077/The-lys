@@ -20,7 +20,7 @@ class Dscanrecord extends CommonBase
     public function index()
     {
         $data = [];
-        $code = 1;
+        $code = 0;
         $msg = '';
         $product = Db::name('product ')
             ->alias('a')
@@ -32,13 +32,13 @@ class Dscanrecord extends CommonBase
             $data['code'] = $code;
             $data['msg'] =$msg;
         } else {
-            $data['code'] = 0;
+            $data['code'] = 1;
             $data['msg'] = '错误';
             return $data;
         }
         $scanlog =[];
         foreach ($product as $value) {
-            $scanlog['scanlog'][] = array($value['name'] . '公司' . $value['title'] . '产品被验证');
+            $scanlog['scanlog'][] = array('name'=>$value['name'] . '公司' . $value['title'] . '产品被验证');
         }
         $data['data'] = $scanlog;
         return json($data);

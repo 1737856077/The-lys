@@ -20,7 +20,7 @@ class Dscanrank extends CommonBase
          * @@描述:地区扫码排行接口
          */
         $data = [];
-        $code = 1;
+        $code = 0;
         $msg = '';
         //地区排行榜
         $Dscanrank = Db::name('product_code_info_visit_record')

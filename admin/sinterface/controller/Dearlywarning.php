@@ -20,7 +20,7 @@ class Dearlywarning extends CommonBase
     public function index()
     {
         $data = [];
-        $code = 1;
+        $code = 0;
         $msg = '';
         $dearlywarning = Db::name('product_code_info_visit_record ')
             ->where('is_listing_area', 1)
@@ -31,9 +31,12 @@ class Dearlywarning extends CommonBase
             ->select();
         $data['code'] = $code;
         $data['msg'] = $msg;
+        $data['data']=['warningInfo'=>[]];
+        $warningInfo=[];
         foreach ($dearlywarning as $k => $v) {
-            $data['data'][] = array($v['name'] . '公司产品疑似被窜货');
+            $warningInfo[] = array('name'=>$v['name'] . '公司产品疑似被窜货');
         }
+        $data['data']['warningInfo']=$warningInfo;
         return json($data);
     }
 }
