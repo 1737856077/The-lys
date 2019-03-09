@@ -169,11 +169,13 @@
             dataType: "json",
             success: function (data) {
                 var option = "", shi = '';
+
                 for (var i = 0; i < data.length; i++) {
                     if (shi == '') shi = data[i];
+
                     option += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
                 }
-                $("#city").html(option);
+                $("#city").append(option);
                 set_qu(sheng, shi);
             }
         })
@@ -196,7 +198,7 @@
                     for (i = 0; i < data.length; i++) {
                         html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
                     }
-                    $('#qu').html(html);
+                    $('#qu').append(html);
                 }
             })
         }
@@ -220,7 +222,7 @@
                     for (i = 0; i < data.length; i++) {
                         html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
                     }
-                    $('#jie').html(html);
+                    $('#jie').append(html);
                 }
             })
         }
