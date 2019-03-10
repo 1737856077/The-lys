@@ -78,11 +78,11 @@
         <table border="0" cellspacing="0" cellpadding="0" width="100%" class="table01 bor-top">
           <tr>
             <th>生产时间:</th>
-            <td>2019年1月5日</td>
+            <td>{:$getoneProductCode['manufacture_date'] == 0 ? date('Y年m月d日',$getoneProductCode['market_time']) : date('Y年m月d日',$getoneProductCode['manufacture_date']) }</td>
           </tr>
           <tr>
             <th>生产批次:</th>
-            <td>201901051203</td>
+            <td>{$getoneProductCode['title']}</td>
           </tr>
           <tr>
             <th>生产班组:</th>

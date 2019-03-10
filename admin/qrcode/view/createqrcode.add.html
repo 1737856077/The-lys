@@ -52,11 +52,19 @@
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td class="tdl">批次名称:<span style="color:#f00;">*</span></td>
+                        <td class="tdl">生产批次:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
                             <input type="text" name="title" id="title" size="60" maxlength="32"
                                    onKeyPress="return noStrs(event);" onBlur="onBlur_title()"/>
                             <span id="span_title" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">生产日期：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="manufacture_date" id="manufacture_date" size="20" maxlength="10"
+                                   value="{:date('Y-m-d')}" class="Wdate"
+                                   onClick="WdatePicker()"/>
                         </td>
                     </tr>
                     <tr class="tr1" style="display: none;">
@@ -169,7 +177,12 @@
             dataType: "json",
             success: function (data) {
                 var option = "", shi = '';
-
+                document.getElementById("city").options.length = 0;
+                document.getElementById("city").add(new Option("请选择城市",""));
+                document.getElementById("qu").options.length = 0;
+                document.getElementById("qu").add(new Option("请选择区",""));
+                document.getElementById("jie").options.length = 0;
+                document.getElementById("jie").add(new Option("请选择街道",""));
                 for (var i = 0; i < data.length; i++) {
                     if (shi == '') shi = data[i];
 
@@ -194,6 +207,10 @@
                 data: {'shi': sheng, 'shi': shi},
                 dataType: "json",
                 success: function (data) {
+                    document.getElementById("qu").options.length = 0;
+                    document.getElementById("qu").add(new Option("请选择区",""));
+                    document.getElementById("jie").options.length = 0;
+                    document.getElementById("jie").add(new Option("请选择街道",""));
                     var html = "";
                     for (i = 0; i < data.length; i++) {
                         html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
@@ -219,6 +236,8 @@
                 dataType: "json",
                 success: function (data) {
                     var html = "";
+                    document.getElementById("jie").options.length = 0;
+                    document.getElementById("jie").add(new Option("请选择街道",""));
                     for (i = 0; i < data.length; i++) {
                         html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
                     }
