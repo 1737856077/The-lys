@@ -77,6 +77,7 @@ class Createqrcode extends CommonBase
         $listing_province=htmlspecialchars(isset($param['city']) ? trim($param['city']) : '');
         $listing_city=htmlspecialchars(isset($param['qu']) ? trim($param['qu']) : '');
         $listing_district=htmlspecialchars(isset($param['jie']) ? trim($param['jie']) : '');
+        $manufacture_date=isset($param['manufacture_date']) ? strtotime($param['manufacture_date']) : '0';
         $gettime=time();
         $admin_id=Session::get('adminid') ;
         $market_time=strtotime($market_time);
@@ -121,6 +122,7 @@ class Createqrcode extends CommonBase
             'product_code_id'=>$product_code_id,
             'product_id'=>$product_id,
             'title'=>$title,
+            'manufacture_date'=>$manufacture_date,
             'market_time'=>$market_time,
             'product_code_begin'=>1,
             'product_code_end'=>$product_code_num,
@@ -248,7 +250,7 @@ class Createqrcode extends CommonBase
     {
         $param = $this->request->post();
        $shi = Db::name('region')
-           ->where('area_parent_id',$param['shi'])
+           ->where('area_parent_id',isset($param['shi']['area_code']) ? $param['shi']['area_code'] : $param['shi'])
            ->field('area_name,area_code')
            ->select();
        return json($shi);

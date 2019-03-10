@@ -543,6 +543,23 @@ class Product extends CommonBase
      * @描述：溯源信息
      */
     public function herbicide_xinxi(){
+        $param = $this->request->param();
+        $product_code_info_id=isset($param['code_info_id']) ? htmlentities(trim($param['code_info_id'])) : '';
+        if(empty($product_code_info_id)){echo 'paramer error!'; exit;}
+
+        $ModelProductCode=Db::name('product_code');
+        $ModelProductCodeInfo=Db::name('product_code_info');
+
+        $getoneProductCodeInfo=$getoneProductCode=array();
+
+        $getoneProductCodeInfo=$ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id' AND data_status=1 ")
+            ->find();
+        //查询产品码信息
+        $getoneProductCode=$ModelProductCode->where("product_code_id='$getoneProductCodeInfo[product_code_id]'")->find();
+
+        $this->assign('param',$param);
+        $this->assign('getoneProductCode',$getoneProductCode);
+        $this->assign('getoneProductCodeInfo',$getoneProductCodeInfo);
         return $this->fetch('xinxi');
     }
     /*======================除草剂 end=======================*/
