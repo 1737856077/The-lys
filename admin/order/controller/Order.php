@@ -17,51 +17,62 @@ use \app\common\controller\CommonAdmin;
 class Order extends CommonAdmin
 {
     /**
+     * @描述：初始方法
+     */
+    public function _initialize(){
+        parent::_initialize();
+        // 订单状态
+        $this->assign("ConfigOrderStatus", \think\Config::get('data.order_status'));
+        // 支付状态
+        $this->assign("ConfigPayStatus", \think\Config::get('data.pay_status'));
+    }
+
+    /**
      * @描述：列表页面
      */
     public function  index(){
         $param = $this->request->param();
         //查询
-        $SearchTitle = isset($param['SearchTitle']) ? $param['SearchTitle'] : '' ;
-        $SearchTitle=urldecode($SearchTitle);
-        $SearchSex = isset($param['SearchSex']) ? $param['SearchSex'] : '' ;
-        $SearchIsVip = isset($param['SearchIsVip']) ? $param['SearchIsVip'] : '' ;
+        $SearchUsername = htmlspecialchars(isset($param['SearchUsername']) ? $param['SearchUsername'] : '') ;
+        $SearchOrderNo = htmlspecialchars(isset($param['SearchOrderNo']) ? $param['SearchOrderNo'] : '') ;
         $SearchEmail = isset($param['SearchEmail']) ? $param['SearchEmail'] : '' ;
-        $SearchEmail=urldecode($SearchEmail);
-        $SearchMobile = isset($param['SearchMobile']) ? $param['SearchMobile'] : '' ;
-        $SearchMobile=urldecode($SearchMobile);
-        $SearchCompanyName = isset($param['SearchCompanyName']) ? $param['SearchCompanyName'] : '' ;
-        $SearchCompanyName=urldecode($SearchCompanyName);
+        $SearchOrderStatus = isset($param['SearchOrderStatus']) ? $param['SearchOrderStatus'] : '' ;
+        $SearchOrderDate = isset($param['SearchOrderDate']) ? $param['SearchOrderDate'] : '' ;
+        $SearchTemplateTitle = htmlspecialchars(isset($param['SearchTemplateTitle']) ? $param['SearchTemplateTitle'] : '') ;
         $paramUrl='';
-        $paramUrl.='SearchTitle='.$SearchTitle;
-        $paramUrl.='&SearchSex='.$SearchSex;
-        $paramUrl.='&SearchIsVip='.$SearchIsVip;
+        $paramUrl.='SearchUsername='.$SearchUsername;
+        $paramUrl.='&SearchOrderNo='.$SearchOrderNo;
         $paramUrl.='&SearchEmail='.$SearchEmail;
-        $paramUrl.='&SearchMobile='.$SearchMobile;
-        $paramUrl.='&SearchCompanyName='.$SearchCompanyName;
-        $this->assign("SearchTitle",$SearchTitle);
-        $this->assign("SearchSex",$SearchSex);
-        $this->assign("SearchIsVip",$SearchIsVip);
+        $paramUrl.='&SearchOrderStatus='.$SearchOrderStatus;
+        $paramUrl.='&SearchOrderDate='.$SearchOrderDate;
+        $paramUrl.='&SearchTemplateTitle='.$SearchTemplateTitle;
+        $this->assign("SearchUsername",$SearchUsername);
+        $this->assign("SearchOrderNo",$SearchOrderNo);
         $this->assign("SearchEmail",$SearchEmail);
-        $this->assign("SearchMobile",$SearchMobile);
-        $this->assign("SearchCompanyName",$SearchCompanyName);
+        $this->assign("SearchOrderStatus",$SearchOrderStatus);
+        $this->assign("SearchOrderDate",$SearchOrderDate);
+        $this->assign("SearchTemplateTitle",$SearchTemplateTitle);
 
-        $ModelSalesman=Db::name('member');
+        $ModelOrder=Db::name('order');
 
         $_where="1";
-        if(!empty($SearchTitle)){ $_where.=" AND username LIKE '%".urldecode($SearchTitle)."%'"; }
-        if($SearchSex == '0' or $SearchSex == '1'){$_where.=" AND sex='$SearchSex'";}
-        if($SearchIsVip == '0' or $SearchIsVip == '1'){$_where.=" AND is_vip='$SearchIsVip'";}
+        if(!empty($SearchUsername)){ $_where.=" AND username LIKE '%".urldecode($SearchUsername)."%'"; }
+        if(!empty($SearchOrderNo)){ $_where.=" AND order_no='".urldecode($SearchOrderNo)."'"; }
         if(!empty($SearchEmail)){ $_where.=" AND email LIKE '%".urldecode($SearchEmail)."%'"; }
-        if(!empty($SearchMobile)){ $_where.=" AND mobile LIKE '%".urldecode($SearchMobile)."%'"; }
-        if(!empty($SearchCompanyName)){ $_where.=" AND company_name LIKE '%".urldecode($SearchCompanyName)."%'"; }
+        if($SearchOrderStatus !== ''){$_where.=" AND order_status='".intval($SearchOrderStatus)."'";}
+        if(!empty($SearchOrderDate)){
+            $SearchOrderDate_Begin=strtotime($SearchOrderDate,' 00:00:00');
+            $SearchOrderDate_End=strtotime($SearchOrderDate,' 23:59:59');
+            $_where.=" AND create_time BETWEEN $SearchOrderDate_Begin AND $SearchOrderDate_End";
+        }
+        if(!empty($SearchTemplateTitle)){ $_where.=" AND template_title LIKE '%".urldecode($SearchTemplateTitle)."%'"; }
 
         if($_where=='1'){$_where='';}
-        $count = $ModelSalesman->where($_where)
+        $count = $ModelOrder->where($_where)
             ->count();
 
         $resultArr=array();
-        $List=$ModelSalesman->where($_where)
+        $List=$ModelOrder->where($_where)
             ->order('create_time DESC')
             ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
         $show=$List->render();
@@ -74,6 +85,60 @@ class Order extends CommonAdmin
         $this->assign("List",$resultArr);
         $this->assign("page",$show);
         $this->assign('paramUrl',$paramUrl);
+        return $this->fetch();
+    }
+
+    /**
+     * @desc : 编辑
+     */
+    public function edit(){
+        $param = $this->request->param();
+        $id=isset($param['id']) ? htmlspecialchars($param['id']) : '' ;
+        if(empty($id)){echo 'paramer error!';exit;}
+        $ModelOrder=Db::name('order');
+        $getone=$ModelOrder->where("order_no='$id'")->find();
+
+        $this->assign("getone",$getone);
+        return $this->fetch();
+    }
+
+    /**
+     * @描述：编辑提交
+     */
+    public function update(){
+        $param = $this->request->post();
+        $model=Db::name('order');
+
+        $order_no=htmlspecialchars(isset($param['order_no']) ? trim($param['order_no']) : '');
+        $order_status=intval(isset($param['order_status']) ? trim($param['order_status']) : '0');
+        $gettime=time();
+
+        if(empty($member_id)  or empty($email)   ){
+            echo '<script language="javascript">alert("必填项不能为空！");history.go(-1);</script>';
+            exit;
+        }
+        $data=array(
+            'order_status'=>$order_status,
+            'update_time'=>$gettime,
+        );
+
+        $ReturnID=$model->where("order_no='$order_no'")->update($data);
+
+        $this->success("操作成功",url("order/index"),3);
+        exit;
+    }
+
+    /**
+     * @desc : 详细
+     */
+    public function info(){
+        $param = $this->request->param();
+        $id=isset($param['id']) ? htmlspecialchars($param['id']) : '' ;
+        if(empty($id)){echo 'paramer error!';exit;}
+        $ModelOrder=Db::name('order');
+        $getone=$ModelOrder->where("order_no='$id'")->find();
+
+        $this->assign("getone",$getone);
         return $this->fetch();
     }
 }

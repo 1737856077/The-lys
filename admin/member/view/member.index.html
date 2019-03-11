@@ -77,6 +77,9 @@
                         {if auth('member/member/info') }
                         [<a href="{:url('member/info')}?id={$value['member_id']}&{$paramUrl}">详细</a>]
                         {/if}
+                        {if auth('order/order/index') }
+                        [<a href="{:url('order/index')}?SearchUsername={$value['username']}">客户订单</a>]
+                        {/if}
                     </td>
                 </tr>
                 {/foreach}

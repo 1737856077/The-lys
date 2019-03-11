@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>客户管理-客户列表-详细</title>
+<title>订单管理-订单列表-详细</title>
     <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
     <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
     <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
@@ -11,86 +11,62 @@
     <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/member_add.js"></script>
 </head>
 <body>
 <div class="container">
 	
-    <div class="cont_title">　你当前的位置：客户管理 - <a href="__URL__/index">客户列表</a> - 详细</div>
+    <div class="cont_title">　你当前的位置：订单管理 - <a href="__URL__/index">订单列表</a> - 详细</div>
     
     <div class="con">
     
     	<div class="conlist">
-        <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfunedit();">
-            <input type="hidden" name="member_id" id="member_id" value="{$getone.member_id}" />
+        <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1">
             <table class="listtable">
                 <tr class="tr1">
                     <td colspan="2" class="tit">详细</td>
                 </tr>
-               <tr class="tr1">
+                <tr class="tr1">
+                    <td class="tdl">订单号</td>
+                    <td class="tdr" style="padding-top:5px;">{$getone.order_no}</td>
+                </tr>
+                <tr class="tr1">
                     <td class="tdl">用户名</td>
                     <td class="tdr" style="padding-top:5px;">{$getone.username}</td>
                 </tr>
                 <tr class="tr1">
-                    <td class="tdl">性别</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {if $getone.sex eq 0 }男{/if}
-                        {if $getone.sex eq 1 }女{/if}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">角色</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {if $getone.sex eq 0 }普通用户{/if}
-                        {if $getone.sex eq 1 }VIP用户{/if}
-                    </td>
+                    <td class="tdl">用户真实姓名</td>
+                    <td class="tdr" style="padding-top:5px;">{$getone.name}</td>
                 </tr>
                 <tr class="tr1">
                     <td class="tdl">邮箱</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.email}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">真实姓名</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.real_name}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">公司名称</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.company_name}
-                    </td>
+                    <td class="tdr" style="padding-top:5px;">{$getone.email}</td>
                 </tr>
                 <tr class="tr1">
                     <td class="tdl">手机号</td>
+                    <td class="tdr" style="padding-top:5px;">{$getone.moblie}</td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">模版名称</td>
+                    <td class="tdr" style="padding-top:5px;">{$getone.template_title}</td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">打印数量</td>
+                    <td class="tdr" style="padding-top:5px;">{$getone.print_num}</td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">价格</td>
+                    <td class="tdr" style="padding-top:5px;">{$getone.score_real_pay}</td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">纸张尺寸</td>
                     <td class="tdr" style="padding-top:5px;">
-                        {$getone.mobile}
+                        {$getone.paper_size_long}*{$getone.paper_size_wide} {$getone.paper_size_unit}
                     </td>
                 </tr>
                 <tr class="tr1">
-                    <td class="tdl">邀请者</td>
+                    <td class="tdl">支付状态</td>
                     <td class="tdr" style="padding-top:5px;">
-                        {$getoneAdmin.name}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">最后登录时间</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.last_login_time|date='Y-m-d H:i:s',###}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">备注</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.data_desc}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">状态</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {:$getone.data_status ? '已审' : '未审'}
+                        {:$getone.pay_status ? '已支付' : '未支付'}
                     </td>
                 </tr>
                 <tr class="tr1">
