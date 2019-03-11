@@ -28,6 +28,7 @@ class Getlocation extends CommonBaseHome
         $lat=isset($param['lat']) ? htmlentities(trim($param['lat'])) : '';
         $lng=isset($param['lng']) ? htmlentities(trim($param['lng'])) : '';
         $gettime=time();
+        $is_listing_area=0;//是否窜货（0：否；1：是；）
 
         $result=['code'=>'0',
             'msg'=>'success'
@@ -41,6 +42,7 @@ class Getlocation extends CommonBaseHome
             exit;
         }
 
+        $ModelProductCode=Db::name('product_code');
         $ModelProductCodeInfo=Db::name('product_code_info');
         $ModelProductCodeInfoVisitRecord=Db::name('product_code_info_visit_record');
 
@@ -59,6 +61,36 @@ class Getlocation extends CommonBaseHome
             echo $this->returnJson($result);
             exit;
         }
+        // 查看是否窜货
+        $getoneProductCode=$ModelProductCode->where("product_code_id='$getoneProductCodeInfo[product_code_id]'")->find();
+        // 区
+        if(!empty($getoneProductCode['listing_district'])){
+            if($getoneProductCode['listing_district']!=$adcode){
+                $is_listing_area=1;
+            }
+        // 市
+        }else if(!empty($getoneProductCode['listing_city'])){
+            $listing_left = substr($getoneProductCode['listing_city'],0,4);
+            $listing_right = substr($adcode,0,4);
+            if($listing_left!=$listing_right){
+                $is_listing_area=1;
+            }
+        //省
+        }else if(!empty($getoneProductCode['listing_province'])){
+            $listing_left = substr($getoneProductCode['listing_province'],0,2);
+            $listing_right = substr($adcode,0,2);
+            if($listing_left!=$listing_right){
+                $is_listing_area=1;
+            }
+        // 国家
+        }else if(!empty($getoneProductCode['listing_nation'])){
+            $listing_left = substr($getoneProductCode['listing_nation'],0,1);
+            $listing_right = substr($adcode,0,1);
+            if($listing_left!=$listing_right){
+                $is_listing_area=1;
+            }
+        }
+
         $data=array('product_code_info_id'=>$product_code_info_id,
             'product_code_id'=>$getoneProductCodeInfo['product_code_id'],
             'product_id'=>$getoneProductCodeInfo['product_id'],
@@ -72,6 +104,7 @@ class Getlocation extends CommonBaseHome
             'lat'=>$lat,
             'lng'=>$lng,
             'sn'=>$sn,
+            'is_listing_area'=>$is_listing_area,
             'create_time'=>$gettime,
             'update_time'=>$gettime,
         );

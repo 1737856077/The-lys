@@ -1,289 +1,60 @@
+
 <!DOCTYPE html>
-<html><head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-    <title>{$getoneProduct.title}全程追溯信息</title>
-    <link rel="stylesheet" href="__STATIC__/home/images_scsg/swiper.css">
-    <link rel="stylesheet" href="__STATIC__/home/images_scsg/base.css">
-    <link rel="stylesheet" type="text/css" href="__STATIC__/home/images_scsg/result.css">
-    <link rel="stylesheet" type="text/css" href="__STATIC__/home/images_scsg/map.css">
-    <script src="__STATIC__/home/images_scsg/api" type="text/javascript"></script>
-    <script type="text/javascript" src="__STATIC__/home/images_scsg/getscript_002"></script>
-    <script type="text/javascript" src="__STATIC__/home/images_scsg/getscript"></script>
+    <link rel="stylesheet" href="__STATIC__/admin/css/product_info.css">
+    <title>{$getoneWebConfig.web_name}</title>
 </head>
+
 <body>
-<div id="mainContent" class="mainContent diyScroll" style="width: 320px;">
-
-    <div class="banner">
-        <img src="__STATIC__/uploads/{if !empty($getoneProduct.images)}product/{$getoneProduct.images}{else/}default.jpg{/if}">
-    </div>
-
-    <div class="areaWrap">
-        <div class="areaWrap-content zoom bannerTitle">
-            <div class="title-txt fl_left">
-                <h1>{$getoneProduct.title}</h1>
-                <p class="subTitle">{$getoneProduct.data_desc}</p>
-            </div>
-            <div class="toScore fl_right">
-            </div>
-            <div id="scoreDetail" class="scoreDetail" style="display:none;">
-                <div class="wrapArrow"><div class="wrapArrowInner"></div></div>
-                <ul class="score-starts zoom">
-                    <li class="selected" name="1"></li>
-                    <li name="2"></li>
-                    <li name="3"></li>
-                    <li name="4"></li>
-                    <li name="5"></li>
-                </ul>
-                <div class="score-sure"><a href="javascript:void(0);" class="baseBtn">确定</a></div>
-            </div>
+<!--<header><img src="__STATIC__/images/header.jpg" alt="" /> </header>-->
+<section class="banner"><img src="__STATIC__/images/banner.jpg" alt="" /></section>
+<section class="content">
+    <p class="cp_title">产品详细信息</p>
+    {if $code==1}
+    <div class="one">
+        <div class="one_left">
+            <img src="__STATIC__/uploads/{if !empty($getoneProduct.images)}product/{$getoneProduct.images}{else/}default.jpg{/if}" alt="" />
         </div>
-    </div>
-
-    <div class="areaWrap">
-        <div class="areaWrap-content zoom">
-            <ul class="nav zoom">
-                <li class="nav-item fl_left nav-1 current">
-                    <p>政府认证</p>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li class="nav-item fl_left nav-2">
-                    <p>质量保证</p>
-                    <div class="nav-arrow"></div>
-                </li>
-                <li class="nav-item fl_left nav-3">
-                    <p>第三方检测</p>
-                    <div class="nav-arrow"></div>
-                </li>
-            </ul>
-            <div class="nav-detail zoom">
-                <span class="nav-detail-txt fl_left">延津县农产品质量安全监管局</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="areaWrap">
-        <div class="tableBorder">
-            <table>
-                <thead class="table-head-title">
-                <tr>
-                    <td colspan="2" class="areaTitle">产品详情</td>
-                </tr>
-                </thead>
-                <tbody>
+        <div class="one_right">
+            <ul>
+                <li>产品名称：{$getoneProduct.title}</li>
                 {foreach $listProductContent as $key=>$value}
-                <tr>
-                    <td class="table-title">{$value.title}</td>
-                    <td class="table-content" id="syCode">{$value.content}</td>
-                </tr>
+                {if $key<4}
+                <li>{$value.title}：{$value.content}</li>
+                {/if}
                 {/foreach}
-                </tbody></table>
-        </div>
-
-        <div class="tableBorder" id="weather" style="display: block;">
-            <table>
-                <thead class="table-head-title">
-                <tr>
-                    <td colspan="2" class="areaTitle">环境气候</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="table-title" colspan="2" style="text-align:left;padding-left:20px;">产地：<span id="weatherPlace" style="color:#323232">河南省新乡市</span></td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="weatherInfo zoom">
-                        <span class="w_celsius"><span id="weatherCelsius">28</span>°</span>
-                        <span class="w_icon" id="weatherPic" style="background-image: url(&quot;http://app1.showapi.com/weather/icon/day/00.png&quot;);"></span>
-                        <div class="w_Detail">
-                            <span class="w_state" id="weatherState">晴</span>
-                            <div class="w_item"><span class="w_item-title">湿度：</span><span class="w_item-info" id="weatherSD">72%</span></div>
-                            <div class="w_item"><span class="w_item-title">空气质量：</span><span class="w_item-info" id="weatherQuality">良好</span></div>
-                        </div>
-
-                    </td>
-                </tr>
-                </tbody></table>
-        </div>
-
-        <div class="filesWrap">
-            <div class="filesWrap-title areaTitle">溯源档案</div>
-            <ul class="filesWrap-items zoom">
-                <li class="fl_left item-1">
-                    <a href="__URL__/shengzhangqi">
-                        <div class="file-img"></div>
-                        <p class="file-txt">生长期图片</p>
-                    </a>
-                </li>
-                <li class="fl_left item-2">
-                    <a href="__URL__/jiance">
-                        <div class="file-img"></div>
-                        <p class="file-txt">检测信息</p>
-                    </a>
-                </li>
-                <li class="fl_left item-3">
-                    <a href="__URL__/feiliao">
-                        <div class="file-img"></div>
-                        <p class="file-txt">肥料使用表</p>
-                    </a>
-                </li>
-                <li class="fl_left item-4">
-                    <a href="__URL__/nongyao">
-                        <div class="file-img"></div>
-                        <p class="file-txt">农药使用表</p>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
-
-    <div class="areaWrap land" style="border-bottom:none;">
-        <div class="tableBorder">
-            <table>
-                <thead class="table-head-title">
-                <tr style="height:32px;">
-                    <td colspan="2" class="areaTitle">地块信息</td>
-                </tr>
-                </thead>
-                <tbody><tr>
-                    <td class="table-title">地块名称</td>
-                    <td class="table-content">碱地番茄-1区</td>
-                </tr>
-                <tr>
-                    <td class="table-title">所属农场</td>
-                    <td class="table-content">河南省新乡市延津县南街</td>
-                </tr>
-                <tr>
-                    <td class="table-title">经纬度</td>
-                    <td class="table-content">
-                        东经114°   北纬35°
-                    </td>
-                </tr>
-                <tr>
-                    <td class="table-title">面积</td>
-                    <td class="table-content">1000亩</td>
-                </tr>
-                <tr>
-                    <td class="table-title">承包人</td>
-                    <td class="table-content">董成林</td>
-                </tr>
-                <tr>
-                    <td class="table-title">承包起止时间</td>
-                    <td class="table-content">2017年1月1日~2023年1月1日</td>
-                </tr>
-                </tbody></table>
-        </div>
-        <div class="liveVedioWrap" style="display: none;">
-            <div class="liveVedio-title">
-                地块视频监控
-            </div>
-            <div>
-
-            </div>
-        </div>
+    {else/}
+    <div class="one_error">
+        查询信息不存在或已删除！
     </div>
+    {/if}
 
-    <div class="linkArea">
-        <a class="linkItem zoom lc" href="__URL__/sclc">
-            <span class="linkItem-img"></span>
-            <span class="linkItem-txt">生产流程</span>
-        </a>
-        <a class="linkItem zoom rl" href="__URL__/rili">
-            <span class="linkItem-img"></span>
-            <span class="linkItem-txt">成长日记</span>
-        </a>
+    <div class="two">
+        <ul>
+            {foreach $listProductContent as $key=>$value}
+            {if $key>3}
+            <li>{$value.title}：{$value.content}</li>
+            {/if}
+            {/foreach}
+            <li>信息提供者名称：{$getoneWebConfig.web_name}</li>
+            <li>信息提供者地址：{$getoneWebConfig.company_dizhi}</li>
+            <li>信息提供者电话：{$getoneWebConfig.web_dianhua}</li>
+            <li>&nbsp;</li>
+        </ul>
     </div>
-
-    <div class="areaWrap" style="padding-top:0;">
-        <div class="areaWrap-content zoom">
-        </div>
-    </div>
-
-    <div class="areaWrap"></div>
-    <div class="areaWrap">
-        <div class="areaWrap-content">
-            <div class="shoppingWrap">
-                <form enctype="multipart/form-data" action="__URL__/fwsearch" method="post">
-                    <input type="hidden" name="code_id" id="code_id" value="{$getoneProductCode.product_code_id}" />
-                <div class="shopping-info zoom">
-                    <div class="shopping-info-talk">
-                        <input type="text" name="fw_code" id="fw_code" value="" placeholder="请输入16位的仿伪码" maxlength="16" />
-                    </div>
-                    <label for="">
-                        <div class="shoppingBtn">
-                            <a class="baseBtn">
-                                <button type="submit" class="btnBg">仿伪查询</button>
-                            </a>
-                        </div>
-                    </label>
-                </div>
-                </form>
-            </div>
-            <div class="swiper-group-levelLoop margin_10"></div>
-        </div>
-    </div>
-
-    {include file="publicinfo@publicinfo/footer"  /}
-</div>
-<script type="text/javascript">
-    if(!navigator.userAgent.match(/AppleWebKit.*Mobile.*/)){
-        document.getElementById('mainContent').style.width = '320px';
-        document.getElementById('mainContent').className="mainContent diyScroll";
-    }
-</script>
-<script type="text/javascript" src="__STATIC__/home/images_scsg/jquery.js"></script>
-<script type="text/javascript" src="__STATIC__/home/images_scsg/swiper.js"></script>
-<script type="text/javascript" src="__STATIC__/home/images_scsg/script.js"></script>
-<script type="text/javascript" src="__STATIC__/home/images_scsg/map.js"></script>
-<script type="text/javascript" src="__STATIC__/home/images_scsg/result.js"></script>
-<script type="text/javascript">
-    var wap_config = {
-        data_service_site: "http://122.224.171.198/agricultureAPI",
-        data_service: function (name) {
-            name = name || "";
-            return this.data_service_site + "/JsonDataService.ashx?function=" + name;
-        }
-    }
-
-    //天气
-    function setWeather(lng, lat) {
-        var data = { Longitude: lng ? lng : '', Latitude: lat ? lat : "" };
-        $.ajax(
-            {
-                url: wap_config.data_service("GetWeatherInfo"),
-                dataType: "jsonp",
-                processData: true,
-                type: "Get",
-                data: data,
-                cache: false,
-                success: function (result) {
-                    if (result.Result == 1) {
-                        $('#weather').show();
-                        $('#weatherCelsius').html(result.Data.temperature);
-                        $('#weatherState').html(result.Data.weather);
-                        $('#weatherSD').html(result.Data.sd);
-                        $('#weatherQuality').html(result.Data.quality);
-                        $('#weatherPic').css('background-image', "url(" + result.Data.weather_pic + ")");
-                        var place = "";
-                        if (result.Data.city.search(/上海|北京|天津|重庆/) < 0) {
-                            place += result.Data.province + "省";
-                        }
-                        place += result.Data.city + "市";
-                        $('#weatherPlace').html(place);
-                    }
-
-                },
-                error: function () {
-                    console.log("请求异常");
-                }
-            }
-        );
-    }
-    setWeather(122.08872,41.008786);
-</script>
-
+</section>
 </body>
+
 </html>

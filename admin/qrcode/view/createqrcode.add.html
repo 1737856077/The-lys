@@ -113,7 +113,7 @@
                         </td>
                         <td class="tdr">
                             <select id="sheng" name="sheng">
-                                <option>请选择省份</option>
+                                <option value="">请选择省份</option>
                                 {volist name="region" id="vo"}
                                 <option value='{$vo.area_code}'>{$vo.area_name}</option>
                                 {/volist}
@@ -124,7 +124,7 @@
                             <select id="qu"  name="qu">
                                 <option value="">请选择区</option>
                             </select>
-                            <select id="jie"  name="jie">
+                            <select id="jie"  name="jie" style="display: none;">
                                 <option value="">请选择街道</option>
                             </select>
                         </td>

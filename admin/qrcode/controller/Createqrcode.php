@@ -73,10 +73,10 @@ class Createqrcode extends CommonBase
         $product_code_num=htmlspecialchars(isset($param['product_code_num']) ? intval($param['product_code_num']) : 1);
         $market_time=isset($param['market_time']) ? trim($param['market_time']) : date('Y-m-d');
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
-        $listing_nation=htmlspecialchars(isset($param['sheng']) ? trim($param['sheng']) : '');
-        $listing_province=htmlspecialchars(isset($param['city']) ? trim($param['city']) : '');
-        $listing_city=htmlspecialchars(isset($param['qu']) ? trim($param['qu']) : '');
-        $listing_district=htmlspecialchars(isset($param['jie']) ? trim($param['jie']) : '');
+        $listing_province=htmlspecialchars(isset($param['sheng']) ? trim($param['sheng']) : '');
+        $listing_city=htmlspecialchars(isset($param['city']) ? trim($param['city']) : '');
+        $listing_district=htmlspecialchars(isset($param['qu']) ? trim($param['qu']) : '');
+        $listing_nation=empty($listing_province) ? '' : '1';
         $manufacture_date=isset($param['manufacture_date']) ? strtotime($param['manufacture_date']) : '0';
         $gettime=time();
         $admin_id=Session::get('adminid') ;
