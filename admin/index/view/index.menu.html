@@ -134,10 +134,12 @@
                         {if auth('member/member/index')}
                         <li><a href="/admin.php/member/member/index" target="mainframe">客户列表　</a></li>
                         {/if}
-                        {if auth('salesman/divideinto/index')}
-                        <li><a href="#" target="mainframe">资料管理　</a></li>
+                        {if auth('member/member/index')}
+                        <li><a href="/admin.php/member/member/index" target="mainframe">资料管理　</a></li>
                         {/if}
-                        <li><a href="#" target="mainframe">财务往来　</a></li>
+                        {if auth('order/order/index')}
+                        <li><a href="/admin.php/order/order/index" target="mainframe">财务往来　</a></li>
+                        {/if}
                         <li><a href="#" target="mainframe">统计报表　</a></li>
                     </ul>
                     <hr>
@@ -146,11 +148,21 @@
                   <li class="tab">
                     <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">订单管理</a><em></em></div>
                     <ul class="ct" style="display:none;">
-                    	<li><a href="#" target="mainframe">订单列表（0）　</a></li>
-                        <li><a href="#" target="mainframe">订单审核　</a></li>
-                        <li><a href="#" target="mainframe">订单下发　</a></li>
-                        <li><a href="#" target="mainframe">状态管理　</a></li>
-                        <li><a href="#" target="mainframe">下载模版文件(1)　</a></li>
+                        {if auth('order/order/index')}
+                    	<li><a href="/admin.php/order/order/index" target="mainframe">订单列表　</a></li>
+                        {/if}
+                        {if auth('order/order/index')}
+                        <li><a href="/admin.php/order/order/index" target="mainframe">订单审核　</a></li>
+                        {/if}
+                        {if auth('order/order/index')}
+                        <li><a href="/admin.php/order/order/index" target="mainframe">订单下发　</a></li>
+                        {/if}
+                        {if auth('order/order/index')}
+                        <li><a href="/admin.php/order/order/index" target="mainframe">状态管理　</a></li>
+                        {/if}
+                        {if auth('order/order/index')}
+                        <li><a href="/admin.php/order/order/index" target="mainframe">下载模版文件(1)　</a></li>
+                        {/if}
                     </ul>
                     <hr>
                   </li>

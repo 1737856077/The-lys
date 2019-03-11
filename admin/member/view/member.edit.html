@@ -50,8 +50,8 @@
                     <td class="tdl">角色<span style="color:#f00;">*</span></td>
                     <td class="tdr" style="padding-top:5px;">
                         <select name="is_vip">
-                            <option value="0" {if $getone.sex eq 0 }selected{/if} >普通用户</option>
-                            <option value="1" {if $getone.sex eq 1 }selected{/if} >VIP用户</option>
+                            <option value="0" {if $getone.is_vip eq 0 }selected{/if} >普通用户</option>
+                            <option value="1" {if $getone.is_vip eq 1 }selected{/if} >VIP用户</option>
                         </select>
                     </td>
                 </tr>

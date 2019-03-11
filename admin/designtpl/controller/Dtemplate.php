@@ -96,7 +96,7 @@ class Dtemplate extends CommonAdmin
         $id=isset($param['id']) ? intval($param['id']) : 0 ;
         $ModelTemplate=Db::name('template');
         $Status=isset($param['Status']) ? intval($param['Status']) : 0 ;
-        $ModelTemplate->where("admin_id='$id'")->setField('job_status',$Status);
+        $ModelTemplate->where("template_id='$id'")->setField('data_status',$Status);
 
         $this->success("操作成功",url("salesman/index"),3);
         exit;

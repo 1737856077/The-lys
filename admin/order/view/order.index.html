@@ -73,10 +73,10 @@
                     <td class="tdlist">[<a href="__STATIC__/uploads/pdf/{$value['down_pdf']}" target="_blank">下载</a>]</td>
                     <td class="tdlist">
                         {if auth('order/order/edit') }
-                        [<a href="{:url('member/edit')}?id={$value['order_no']}&{$paramUrl}">编辑</a>]
+                        [<a href="{:url('order/edit')}?id={$value['order_no']}&{$paramUrl}">编辑</a>]
                         {/if}
                         {if auth('order/order/info') }
-                        [<a href="{:url('member/info')}?id={$value['order_no']}&{$paramUrl}">详细</a>]
+                        [<a href="{:url('order/info')}?id={$value['order_no']}&{$paramUrl}">详细</a>]
                         {/if}
                     </td>
                 </tr>

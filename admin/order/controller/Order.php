@@ -113,7 +113,7 @@ class Order extends CommonAdmin
         $order_status=intval(isset($param['order_status']) ? trim($param['order_status']) : '0');
         $gettime=time();
 
-        if(empty($member_id)  or empty($email)   ){
+        if(empty($order_no) ){
             echo '<script language="javascript">alert("必填项不能为空！");history.go(-1);</script>';
             exit;
         }
