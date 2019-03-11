@@ -9,10 +9,10 @@
 namespace app\sinterface\controller;
 
 
-use app\common\controller\CommonBase;
+use app\common\controller\CommonBaseHome;
 use think\Db;
 
-class Dscanrecord extends CommonBase
+class Dscanrecord extends CommonBaseHome
 {
     /**
      * @@描述：扫码记录

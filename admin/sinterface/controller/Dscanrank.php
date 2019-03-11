@@ -9,10 +9,10 @@
 namespace app\sinterface\controller;
 
 
-use app\common\controller\CommonBase;
+use app\common\controller\CommonBaseHome;
 use think\Db;
 
-class Dscanrank extends CommonBase
+class Dscanrank extends CommonBaseHome
 {
     public function index()
     {

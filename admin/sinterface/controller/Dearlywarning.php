@@ -9,10 +9,10 @@
 namespace app\sinterface\controller;
 
 
-use app\common\controller\CommonBase;
+use app\common\controller\CommonBaseHome;
 use think\Db;
 
-class Dearlywarning extends CommonBase
+class Dearlywarning extends CommonBaseHome
 {
     /**
      * @描述：实时预警接口

@@ -9,10 +9,10 @@
 namespace app\sinterface\controller;
 
 
-use app\common\controller\CommonBase;
+use app\common\controller\CommonBaseHome;
 use think\Db;
 
-class Dmapdate extends CommonBase
+class Dmapdate extends CommonBaseHome
 {
     /*
      * @描述地图数据接口 省份数据
