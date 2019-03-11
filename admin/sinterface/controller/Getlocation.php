@@ -108,7 +108,7 @@ class Getlocation extends CommonBaseHome
             'create_time'=>$gettime,
             'update_time'=>$gettime,
         );
-        $returnID=$ModelProductCodeInfoVisitRecord->insert($data);
+        $returnID=$ModelProductCodeInfoVisitRecord->insert($data,true);
         if($returnID){
             echo $this->returnJson($result);
             exit;

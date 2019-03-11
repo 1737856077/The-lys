@@ -13,4 +13,12 @@ ALTER TABLE `sy_product_code_info_visit_record` ADD `is_listing_area` TINYINT(1)
 /*===×·¼Ó×Ö¶Î 2019-03-10==*/
 ALTER TABLE `sy_product_code` ADD `manufacture_date` INT NULL DEFAULT '0' AFTER `title`; 
 
+/*=== 2019-03-11==*/
+ALTER TABLE  `sy_product_code_info_query_record` ADD UNIQUE (
+`sn`
+);
+ALTER TABLE  `sy_product_code_info_visit_record` ADD UNIQUE (
+`sn`
+);
+
 
