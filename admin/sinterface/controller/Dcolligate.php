@@ -154,36 +154,36 @@ class Dcolligate extends CommonBaseHome
         $logData = array([
             'name' => '周一',
             'value' => $Monday[0]['id'],
-            'values' => $Mondays[0]['id'],],
+            'value1' => $Mondays[0]['id'],],
             [
                 'name' => '周二',
                 'value' => $Tuesday[0]['id'],
-                'values' => $Tuesdays[0]['id'],
+                'value1' => $Tuesdays[0]['id'],
 
             ],
             [
                 'name' => '周三',
                 'value' => $Wednesday[0]['id'],
-                'values' => $Wednesdays[0]['id'],
+                'value1' => $Wednesdays[0]['id'],
             ],
             [
                 'name' => '周四',
                 'value' => $Thursday[0]['id'],
-                'values' => $Thursdays[0]['id'],
+                'value1' => $Thursdays[0]['id'],
             ],
             [
                 'name' => '周五',
                 'value' => $Friday[0]['id'],
-                'values' => $Fridays[0]['id'],
+                'value1' => $Fridays[0]['id'],
             ],
             [
                 'name' => '周六',
                 'value' => $Saturday[0]['id'],
-                'values' => $Saturdays[0]['id'],
+                'value1' => $Saturdays[0]['id'],
             ], [
                 'name' => '周日',
                 'value' => $zhouri[0]['id'],
-                'values' => $zhouris[0]['id'],
+                'value1' => $zhouris[0]['id'],
 
             ],
         );
