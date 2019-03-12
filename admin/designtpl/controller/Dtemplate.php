@@ -25,12 +25,14 @@ class Dtemplate extends CommonAdmin
         $this->assign("ConfigTemplateDataType", \think\Config::get('data.template_data_type'));
         // 条码类型
         $this->assign("ConfigTemplateCodeType", \think\Config::get('data.template_code_type'));
-        $ModelOrder=Db::name('order');
+        $ModelSystemConfig=Db::name('system_config');
         //使用场景
         $listUsageScenarios=array();
+        $listUsageScenarios=$ModelSystemConfig->where("father_id=1")->order("sort_rank ASC,id ASC")->select();
         $this->assign("listUsageScenarios",$listUsageScenarios);
         //行业分类
         $listIndustry=array();
+        $listIndustry=$ModelSystemConfig->where("father_id=2")->order("sort_rank ASC,id ASC")->select();
         $this->assign("listIndustry",$listIndustry);
     }
 
