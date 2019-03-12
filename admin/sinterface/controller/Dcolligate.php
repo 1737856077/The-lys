@@ -61,13 +61,138 @@ class Dcolligate extends CommonBaseHome
             $data['msg'] = '查询失败';
             return json($data);
         }
-        $logData['value'] = count($datas);//本周
-        $logData['value1'] = count($datass);//上周
+
+        //本周一时间戳
+        $Monday = strtotime("previous monday");
+        $Zon = $Monday;
+        //上周一时间戳字段
+        $Mondays = $Monday - (60 * 60 * 24 * 7);
+        $Tuesday = $Monday + (60 * 60 * 24);
+        $Tuesdays = $Mondays + (60 * 60 * 24);
+        $Wednesday = $Tuesday + (60 * 60 * 24);
+        $Wednesdays = $Tuesdays + (60 * 60 * 24);
+        $Thursday = $Wednesday + (60 * 60 * 24);
+        $Thursdays = $Wednesdays + (60 * 60 * 24);
+        $Friday = $Thursday + (60 * 60 * 24);
+        $Fridays = $Thursdays + (60 * 60 * 24);
+        $Saturday = $Friday + (60 * 60 * 24);
+        $Saturdays = $Fridays + (60 * 60 * 24);
+        $Sunday = $Saturday + (60 * 60 * 24);
+        $Sundays = $Saturdays + (60 * 60 * 24);
+        $zhoumo = strtotime('next monday');//对照
+        //查询
+        $Monday = Db::query(" 
+              SELECT COUNT(*) as id  FROM sy_product
+            WHERE create_time
+            BETWEEN $Monday AND $Tuesday
+            ");
+        $Mondays = Db::query(" 
+              SELECT COUNT(*) as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Mondays AND $Tuesdays
+            ");
+        $Tuesday = Db::query(" 
+              SELECT COUNT(*) as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Tuesday AND $Wednesday
+            ");
+        $Tuesdays = Db::query(" 
+              SELECT COUNT(*) as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Tuesdays AND $Wednesdays
+            ");
+        $Wednesday = Db::query(" 
+              SELECT COUNT(*)  as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Wednesday AND $Thursday
+            ");
+        $Wednesdays = Db::query(" 
+              SELECT COUNT(*)as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Wednesdays AND $Thursdays
+            ");
+        $Thursday = Db::query(" 
+              SELECT COUNT(*)as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Thursday AND $Friday
+            ");
+        $Thursdays = Db::query(" 
+              SELECT COUNT(*)as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Thursdays AND $Fridays
+            ");
+        $Friday = Db::query(" 
+              SELECT COUNT(*)as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Friday AND $Saturday
+            ");
+        $Fridays = Db::query(" 
+              SELECT COUNT(*)as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Fridays AND $Saturdays
+            ");
+        $Saturday = Db::query(" 
+              SELECT COUNT(*)as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Saturday AND $Sunday
+            ");
+        $Saturdays = Db::query(" 
+              SELECT COUNT(*) as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Saturdays AND $Sundays
+            ");
+        $zhouri = Db::query(" 
+              SELECT COUNT(*)as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Sunday AND $zhoumo
+            ");
+        $zhouris = Db::query(" 
+              SELECT COUNT(*)as id FROM sy_product
+            WHERE create_time
+            BETWEEN $Sunday AND $Zon
+            ");
+        $logData = array([
+            'name' => '周一',
+            'value' => $Monday[0]['id'],
+            'values' => $Mondays[0]['id'],],
+            [
+                'name' => '周二',
+                'value' => $Tuesday[0]['id'],
+                'values' => $Tuesdays[0]['id'],
+
+            ],
+            [
+                'name' => '周三',
+                'value' => $Wednesday[0]['id'],
+                'values' => $Wednesdays[0]['id'],
+            ],
+            [
+                'name' => '周四',
+                'value' => $Thursday[0]['id'],
+                'values' => $Thursdays[0]['id'],
+            ],
+            [
+                'name' => '周五',
+                'value' => $Friday[0]['id'],
+                'values' => $Fridays[0]['id'],
+            ],
+            [
+                'name' => '周六',
+                'value' => $Saturday[0]['id'],
+                'values' => $Saturdays[0]['id'],
+            ], [
+                'name' => '周日',
+                'value' => $zhouri[0]['id'],
+                'values' => $zhouris[0]['id'],
+
+            ],
+        );
+
         $Dcolligates['totalCompany'] = $totalCompany[0]['totalCompany'];
         $Dcolligates['totalProduct'] = $totalProduct[0]['totalProduct'];
         $Dcolligates['visitlog'] = $visitlog;
         $Dcolligates['scanData'] = $scanData;
-        $Dcolligates['logData'] =$logData;
+        $Dcolligates['logData'] = $logData;
         $data['data'] = $Dcolligates;
         return json($data);
     }
