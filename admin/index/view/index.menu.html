@@ -73,9 +73,15 @@
                     <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">基础资料</a><em></em></div>
                     <ul class="ct" style="display:none;">
                         <li><a href="#" target="mainframe">标准模版管理　</a></li>
-                        <li><a href="#" target="mainframe">|--模版列有　</a></li>
-                        <li><a href="#" target="mainframe">|--添加模版　</a></li>
-                        <li><a href="#" target="mainframe">|--设置状态　</a></li>
+                        {if auth('designtpl/dtemplate/index')}
+                        <li><a href="/admin.php/designtpl/dtemplate/index" target="mainframe">|--模版列有　</a></li>
+                        {/if}
+                        {if auth('design/online/index')}
+                        <li><a href="/index.php/design/online/index" target="mainframe">|--添加模版　</a></li>
+                        {/if}
+                        {if auth('designtpl/dtemplate/index')}
+                        <li><a href="/admin.php/designtpl/dtemplate/index" target="mainframe">|--设置状态　</a></li>
+                        {/if}
                         <li><a href="#" target="mainframe">模版分类管理　</a></li>
                         <li><a href="#" target="mainframe">|--分类列有　</a></li>
                         <li><a href="#" target="mainframe">|--添加分类　</a></li>
