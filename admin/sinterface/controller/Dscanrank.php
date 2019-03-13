@@ -27,15 +27,29 @@ class Dscanrank extends CommonBaseHome
             ->field('count(province) value,province name')
             ->group('province')
             ->order('value desc')->select();
-        $Dscanranks['areaData']= $Dscanrank;
-        if (!empty($Dscanrank)) {
-          $data['code'] = $code;
-          $data['msg']=$msg;
-          $data['data']= $Dscanranks;
-        }else{
-            $data['code'] = 0;
-            $data['msg']='请求错误';
+
+        $Dscanrankss = Db::name('product_code_info_visit_record')->field(' product_id ,count( product_code_info_id) name')
+            ->group('product_code_info_id')->order('name desc ')->select();
+
+        foreach ($Dscanrankss as $a => $v) {
+            $arr1[] = Db::name('product')->field('title')->where('product_id', $v['product_id'])->select();
         }
-    return json( $data);
+        foreach ($arr1 as $a => $vs) {
+            $arr2[] = array('name:'.$vs[0]['title'].'产品');
+        }
+
+        $Dscanranks['areaData'] = $Dscanrank;
+        $Dscanranks['productData'] = $arr2;
+        if (!empty($Dscanrank)) {
+            $data['code'] = $code;
+            $data['msg'] = $msg;
+            $data['data'] = $Dscanranks;
+        } else {
+            $data['code'] = 0;
+            $data['msg'] = '请求错误';
+        }
+
+
+        return json($data);
     }
 }
