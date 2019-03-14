@@ -109,6 +109,9 @@ class Getlocation extends CommonBaseHome
             'update_time'=>$gettime,
         );
         $returnID=$ModelProductCodeInfoVisitRecord->insert($data,true);
+        // 更新统计查询次数code_cipher_query_time
+        $ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id' AND code_cipher_query_time=0")->update(array('code_cipher_query_time'=>time()));
+        $ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id'")->setInc('code_cipher_query_total',1);
         if($returnID){
             echo $this->returnJson($result);
             exit;

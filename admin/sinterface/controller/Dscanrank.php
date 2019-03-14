@@ -35,7 +35,7 @@ class Dscanrank extends CommonBaseHome
         $da = [];
         foreach ($Dscanrank as $a => $v) {
             $da[] = array(
-                'value' => round(($v['value'] / $va * 100)) . '%',
+                'value' => round(($v['value'] / $va * 100)) . '',
                 'name' => $v['name']
             );
         }

@@ -188,11 +188,20 @@ class Dcolligate extends CommonBaseHome
             ],
         );
 
+        // 总溯源：完成、未完成
+        $perCount_WC = Db::name('product_code_info')->where("data_status=1 AND code_cipher_query_total > 0")->count();
+        $perCount_WWC = Db::name('product_code_info')->where("data_status=1 AND code_cipher_query_total < 1")->count();
+        $perCount=array(
+            array('value'=>$perCount_WC,'name'=>'完成'),
+            array('value'=>$perCount_WWC,'name'=>'未完成')
+        );
+
         $Dcolligates['totalCompany'] = $totalCompany[0]['totalCompany'];
         $Dcolligates['totalProduct'] = $totalProduct[0]['totalProduct'];
         $Dcolligates['visitlog'] = $visitlog;
         $Dcolligates['scanData'] = $scanData;
         $Dcolligates['logData'] = $logData;
+        $Dcolligates['perCount'] = $perCount;
         $data['data'] = $Dcolligates;
         return json($data);
     }
