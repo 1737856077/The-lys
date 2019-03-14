@@ -52,11 +52,19 @@
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td class="tdl">生产批次:<span style="color:#f00;">*</span></td>
+                        <td class="tdl">标题:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
                             <input type="text" name="title" id="title" size="60" maxlength="32"
                                    onKeyPress="return noStrs(event);" onBlur="onBlur_title()"/>
                             <span id="span_title" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">生产批次:</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="production_batch" id="production_batch" size="60" maxlength="32"
+                                   onKeyPress="return noStrs(event);"  />
+                            <span id="span_production_batch" style="color:#f00;"></span>
                         </td>
                     </tr>
                     <tr class="tr1">
@@ -93,7 +101,7 @@
                         <td class="tdr" style="padding-top:5px;">
                             <input type="text" name="product_code_num" id="product_code_num" size="8"
                                    maxlength="12" onkeypress="return noNumbers(event);"
-                                   value="1"/>
+                                   value="1" onblur="onBlur_product_code_num()" />
                             说明：当数量小于等0时， 自动处理为1
                         </td>
 
@@ -130,6 +138,14 @@
                         </td>
                     </tr>
                     <tr class="tr1">
+                        <td class="tdl">经营企业:</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="business_enterprise" id="business_enterprise" size="60" maxlength="128"
+                                   onKeyPress="return noStrs(event);" />
+                            <span id="span_business_enterprise" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
                         <td class="tdl">描述：</td>
                         <td class="tdr" style="padding-top:5px;">
                             <textarea name="data_desc" rows="5" id="data_desc" onKeyPress="return noStrs(event);"
@@ -140,7 +156,7 @@
                         <td class="tdl">备注：</td>
                         <td class="tdr" style="padding-top:5px;">
                             A、提交：普通生成方式，二维码需要手动开启，方有效；<br/>
-                            B、生成并下载(TXT)：快速生成方式，二维码自动为开启状态；
+                            B、生成并下载(TXT)：快速生成方式，二维码可批量开启状态；
                         </td>
                     </tr>
                     <tr class="tr1">

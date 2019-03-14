@@ -43,6 +43,7 @@
                     <tr class="tr1">
                         <td class="tdtit"><input type="checkbox" id="chkAll" name="chkAll" onClick="CheckAll(this.form)" value="checkbox" />序号</td>
                         <td class="tdtit">产品名称</td>
+                        <td class="tdtit">标题</td>
                         <td class="tdtit">批次名称</td>
                         <td class="tdtit">二维码</td>
                         <td class="tdtit">产品码-明码</td>
@@ -59,6 +60,7 @@
                         </td>
                         <td class="tdlist">{$getoneProduct['title']}&nbsp;</td>
                         <td class="tdlist">{$getoneProductCode['title']}&nbsp;</td>
+                        <td class="tdlist">{$getoneProductCode['production_batch']}&nbsp;</td>
                         <td class="tdlist"><img src="{$value['images']}" width="58" height="58" /></td>
                         <td class="tdlist">{$value['code_plain']}&nbsp;</td>
                         <td class="tdlist">{$value['code_cipher']}&nbsp;</td>

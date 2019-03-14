@@ -39,6 +39,7 @@
                     <tr class="tr1">
                         <td class="tdtit">ID</td>
                         <td class="tdtit">产品名称</td>
+                        <td class="tdtit">标题</td>
                         <td class="tdtit">批次名称</td>
                         <td class="tdtit">上市时间</td>
                         <td class="tdtit">码开始数值</td>
@@ -52,6 +53,7 @@
                     	<td class="tdlist">{$value['id']}&nbsp;</td>
                         <td class="tdlist">{$value['product_title']}&nbsp;</td>
                         <td class="tdlist">{$value['title']}&nbsp;</td>
+                        <td class="tdlist">{$value['production_batch']}&nbsp;</td>
                         <td class="tdlist">{:date('Y-m-d',$value['market_time'])}&nbsp;</td>
                         <td class="tdlist">{$value['product_code_begin']}&nbsp;</td>
                         <td class="tdlist">{$value['product_code_end']}&nbsp;</td>
@@ -60,7 +62,22 @@
                         <td class="tdlist">
                             {if $value['data_type'] neq 2}
                                 {if auth('qrcode/productcodeinfo/index') }
-                                [<a href="{:url('productcodeinfo/index')}?product_code_id={$value['product_code_id']}">二维码详细列表</a>]
+                                [<a href="{:url('productcodeinfo/index')}?product_code_id={$value['product_code_id']}">二维码详细列表</a>]　
+                                {/if}
+                            {/if}
+                            {if $value['data_type'] neq 2}
+                                {if auth('qrcode/productcode/openqrcode') }
+                                    {if $value['is_batch_open'] eq 0}
+                                    <a href="__URL__/openqrcode?product_code_id={$value['product_code_id']}" ><font color="#ff0000">[批量开启]</font></a>
+                                    {else}
+                                    <font color="#006600">[已开启]</font>
+                                    {/if}
+                                {else}
+                                    {if $value['is_batch_open'] eq 0}
+                                    <font color="#ff0000">[批量开启]</font>
+                                    {else}
+                                    <font color="#006600">[已开启]</font>
+                                    {/if}
                                 {/if}
                             {/if}
                         </td>

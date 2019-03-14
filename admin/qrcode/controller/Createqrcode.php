@@ -78,6 +78,8 @@ class Createqrcode extends CommonBase
         $listing_district=htmlspecialchars(isset($param['qu']) ? trim($param['qu']) : '');
         $listing_nation=empty($listing_province) ? '' : '1';
         $manufacture_date=isset($param['manufacture_date']) ? strtotime($param['manufacture_date']) : '0';
+        $production_batch=htmlspecialchars(isset($param['production_batch']) ? trim($param['production_batch']) : '');
+        $business_enterprise=htmlspecialchars(isset($param['business_enterprise']) ? trim($param['business_enterprise']) : '');
         $gettime=time();
         $admin_id=Session::get('adminid') ;
         $market_time=strtotime($market_time);
@@ -123,6 +125,7 @@ class Createqrcode extends CommonBase
             'product_id'=>$product_id,
             'title'=>$title,
             'manufacture_date'=>$manufacture_date,
+            'production_batch'=>$production_batch,
             'market_time'=>$market_time,
             'product_code_begin'=>1,
             'product_code_end'=>$product_code_num,
@@ -131,6 +134,7 @@ class Createqrcode extends CommonBase
             'listing_province'=>$listing_province,
             'listing_city'=>$listing_city,
             'listing_district'=>$listing_district,
+            'business_enterprise'=>$business_enterprise,
             'admin_id'=>$admin_id,
             'data_desc'=>$data_desc,
             'create_time'=>$gettime,
@@ -203,8 +207,8 @@ class Createqrcode extends CommonBase
                 $str=$_qrurl_data;
             }
             if($actionType == 1 or $actionType == 2){
-                $data_product_code_info['qr_open_time']=$gettime;
-                $data_product_code_info['data_status']=1;
+                //$data_product_code_info['qr_open_time']=$gettime;
+                //$data_product_code_info['data_status']=1;
             }
             array_push($dataAll,$data_product_code_info);
             if($i % 1000 == 0 or $i == $product_code_num){

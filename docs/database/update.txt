@@ -21,4 +21,10 @@ ALTER TABLE  `sy_product_code_info_visit_record` ADD UNIQUE (
 `sn`
 );
 
+/*=== 2019-03-14==*/
+ALTER TABLE `sy_product_code` ADD `production_batch` VARCHAR(32) NULL AFTER `manufacture_date`; 
+ALTER TABLE `sy_product_code` ADD `is_batch_open` TINYINT(1) NULL DEFAULT '0' AFTER `listing_district`;
+ALTER TABLE `sy_product_code` ADD `business_enterprise` VARCHAR(128) NULL AFTER `is_batch_open`; 
+
+ 
 

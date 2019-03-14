@@ -86,4 +86,29 @@ class Productcode extends CommonBase
         $this->assign('paramUrl',$paramUrl);
         return $this->fetch();
     }
+
+    /**
+     * @desc: 批量开启二维码
+     */
+    public function openqrcode(){
+        $param = $this->request->param();
+        $product_code_id = isset($param['product_code_id']) ? trim(htmlspecialchars(urldecode($param['product_code_id']))) : '' ;
+        if(empty($product_code_id)){echo 'param error!';exit;}
+        $gettime=time();
+
+        $ModelProductCode=Db::name('product_code');
+        $ModelProductCodeInfo=Db::name('product_code_info');
+
+        $_data=array('data_status'=>'1',
+            "qr_open_time"=>$gettime,
+            "update_time"=>$gettime
+        );
+        // 开启事务
+        Db::startTrans();
+        $ModelProductCodeInfo->where("product_code_id='$product_code_id'")->update($_data);
+        $ModelProductCode->where("product_code_id='$product_code_id'")->update(array('is_batch_open'=>'1','update_time'=>$gettime));
+        Db::commit();//提交事务
+
+        $this->success("操作成功", url("productcode/index"), 3);
+    }
 }

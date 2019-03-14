@@ -28,6 +28,16 @@ function onBlur_title(){
 	}
 }
 
+// product_code_num
+function onBlur_product_code_num(){
+	var product_code_num = document.getElementById('product_code_num').value.trim();
+    product_code_num = parseInt(product_code_num);
+	if(product_code_num>26000){
+        document.getElementById('product_code_num').value = '26000';
+	}else if(product_code_num<1){
+        document.getElementById('product_code_num').value = '1';
+	}
+}
 
 //add submit
 function subfun(){
