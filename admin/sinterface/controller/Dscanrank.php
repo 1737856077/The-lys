@@ -47,7 +47,7 @@ class Dscanrank extends CommonBaseHome
         }
 
         foreach ($arr1 as $a => $vs) {
-            $arr2[] = array('name:' . $vs[0]['title'] . '产品');
+            $arr2[] = array('name'=>$vs[0]['title'] . '产品');
         }
 
         $Dscanranks['areaData'] = $da;
