@@ -26,19 +26,31 @@ class Dscanrank extends CommonBaseHome
         $Dscanrank = Db::name('product_code_info_visit_record')
             ->field('count(province) value,province name')
             ->group('province')
-            ->order('value desc')->select();
+            ->order('province desc')->select();
 
-        $Dscanrankss = Db::name('product_code_info_visit_record')->field(' product_id ,count( product_code_info_id) name')
-            ->group('product_code_info_id')->order('name desc ')->select();
+        $va = 0;
+        foreach ($Dscanrank as $a => $v) {
+            $va += $v['value'];
+        }
+        $da = [];
+        foreach ($Dscanrank as $a => $v) {
+            $da[] = array(
+                'value' => round(($v['value'] / $va * 100)) . '%',
+                'name' => $v['name']
+            );
+        }
+        $Dscanrankss = Db::name('product_code_info_visit_record')->field(' product_id ,count( product_id) name')
+            ->group('product_id')->order('product_id desc ')->select();
 
         foreach ($Dscanrankss as $a => $v) {
             $arr1[] = Db::name('product')->field('title')->where('product_id', $v['product_id'])->select();
         }
+
         foreach ($arr1 as $a => $vs) {
-            $arr2[] = array('name:'.$vs[0]['title'].'产品');
+            $arr2[] = array('name:' . $vs[0]['title'] . '产品');
         }
 
-        $Dscanranks['areaData'] = $Dscanrank;
+        $Dscanranks['areaData'] = $da;
         $Dscanranks['productData'] = $arr2;
         if (!empty($Dscanrank)) {
             $data['code'] = $code;
