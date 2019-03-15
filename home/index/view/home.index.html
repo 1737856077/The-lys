@@ -23,21 +23,23 @@
 
 //模板分类<br/>
 {volist name="ConfigTemplateDataType" id="admin"}
-{$admin}
+{$admin}{$key}
 {/volist}<br/>
 //条码分类<br/>
 {volist name="ConfigTemplateCodeType" id="admin"}
-{$admin}
+{$admin}{$key}
 {/volist}
 <br/>
 //场景分类<br/>
 {foreach name='listUsageScenarios' id='admin'}
 {$admin.title}
+{$admin.id}
 {/foreach}
 <br/>
 //行业分类<br/>
 {foreach name='listIndustry' id='admin'}
 {$admin.title}
+{$admin.id}
 {/foreach}
 <br/>
 //热门排序<br/>

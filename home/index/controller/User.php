@@ -27,7 +27,7 @@ class User extends CommonBaseHome
     //注册功能页面
     public function insert()
     {
-        if (Request::instance()->post()) {
+        if (Request::instance()->isPost()) {
             $request = Request::instance();
             $data = $request->post();
             $rule = ([
@@ -60,32 +60,27 @@ class User extends CommonBaseHome
                     Session::set('username', $data['username']);
                     Session::set('email', $data["email"]);
                     Session::set('id', $data["id"]['id']);
-                    $this->return_msg('200', '注册成功', $data);
-//                    $this->success("注册成功",url("index"));
-                    //echo "<script language=\"javascript\">window.open('" . url('index/index') . "','_top');</script>";
-                } else {
+                    $this->success("注册成功",url("index"));
+                  } else {
                     $this->return_msg('400', '注册失败');
-                    // echo "<script language=\"javascript\">window.open('" . url('index/index') . "','_top');</script>";
-                }
+                   }
             }
         } else {
-            $this->error("请求错误");
+            $this->error("请求错误",url('register'));
         }
     }
     //登陆功能页面
     public function logins()
     {
-        if (Request::instance()->post()) {
+        if (Request::instance()->isPost()) {
             $request = Request::instance();
             $data = $request->post();
             $rule = ([
                 'username|姓名' => 'require|length:2,20|chsAlphaNum',
-//                'email|邮箱'=> 'require|email|unique:member',
                 'pwd|密码' => 'require|length:6,20|alphaNum'
             ]);
             $data = [
                 'username' => $data['username'],
-//                'email' =>$data['email'],
                 'pwd' => $data['pwd'],
             ];
             $validate = new Validate($rule);
@@ -97,13 +92,12 @@ class User extends CommonBaseHome
                     ->where('pwd', md5($data['pwd']))->find();
             }
             if (null == $data) {
-                $this->return_msg('400', '用户名或密码错误');
+                $this->success("密码错误",url("login"));
                 //echo "<script language=\"javascript\">window.open('" . url('index/index') . "','_top');</script>";
             } else {
-                //将用户的数据写入到session中
                 Session::set('username', $data['username']);
                 Session::set('member_id', $data['member_id']);
-                $this->return_msg('200', '登陆成功');
+                $this->success("登陆成功",url("inde/index"));
                 // echo "<script language=\"javascript\">window.open('" . url('index/index') . "','_top');</script>";
             }
 
@@ -209,6 +203,33 @@ class User extends CommonBaseHome
         }
         $tp = Db::name('template')->where('member_id',$id)->select();
     }
-    //
+    //搜索自己的模板
+    public function chaxun()
+    {
+        $request = Request::instance();
+        $value =$request->param();
+        if (!$value['value']){
+            return '无内容';
+        }
+        if ($value) {
+            $map['title'] = ['like', '%' . $value['title'] . '%'];
+            $searchres = db('template ')->where($map)->where('template_id',$value['value'])->order('template_id desc')->select();
+            $this->assign(array(
+                'data' => $searchres,
+                'value' => $value['value']
+            ));
+            return $this->fetch();
+        } else {
+            $this->assign(array(
+                'data' => null,
+                'value' => '暂无数据'
+            ));
+        }
 
+    }
+    //我的订单
+    public function dingdan()
+    {
+
+    }
 }
