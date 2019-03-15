@@ -80,6 +80,8 @@ class Createqrcode extends CommonBase
         $manufacture_date=isset($param['manufacture_date']) ? strtotime($param['manufacture_date']) : '0';
         $production_batch=htmlspecialchars(isset($param['production_batch']) ? trim($param['production_batch']) : '');
         $business_enterprise=htmlspecialchars(isset($param['business_enterprise']) ? trim($param['business_enterprise']) : '');
+        $contacts=htmlspecialchars(isset($param['contacts']) ? trim($param['contacts']) : '');
+        $tel=htmlspecialchars(isset($param['tel']) ? trim($param['tel']) : '');
         $gettime=time();
         $admin_id=Session::get('adminid') ;
         $market_time=strtotime($market_time);
@@ -135,6 +137,8 @@ class Createqrcode extends CommonBase
             'listing_city'=>$listing_city,
             'listing_district'=>$listing_district,
             'business_enterprise'=>$business_enterprise,
+            'contacts'=>$contacts,
+            'tel'=>$tel,
             'admin_id'=>$admin_id,
             'data_desc'=>$data_desc,
             'create_time'=>$gettime,

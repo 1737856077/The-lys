@@ -89,7 +89,17 @@
 	background-color: #fff;font-size: 0.24rem;padding-top: 0.1rem; color: #333333;
 
 }
+.layout-mianContantBox .maintableBox1{
 
+	background-color: #fff;font-size: 0.24rem;padding-top: 0.1rem; color: #333333;
+
+}
+
+.layout-mianContantBox .maintableBox1 p{
+
+	text-align: center;
+
+}
 .layout-mianContantBox .maintableBox table th, .layout-mianContantBox .maintableBox table td {
 
 	font-size: 0.24rem;line-height: 1.4;word-break: break-all;padding: 0.1rem 0;padding-right: 0.25rem;

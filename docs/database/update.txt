@@ -26,5 +26,9 @@ ALTER TABLE `sy_product_code` ADD `production_batch` VARCHAR(32) NULL AFTER `man
 ALTER TABLE `sy_product_code` ADD `is_batch_open` TINYINT(1) NULL DEFAULT '0' AFTER `listing_district`;
 ALTER TABLE `sy_product_code` ADD `business_enterprise` VARCHAR(128) NULL AFTER `is_batch_open`; 
 
- 
+/*=== 2019-03-15==*/
+ALTER TABLE `sy_product_code` ADD `contacts` VARCHAR(32) NULL AFTER `business_enterprise`; 
+ALTER TABLE `sy_product_code` ADD `tel` VARCHAR(32) NULL AFTER `contacts`; 
+
+
 

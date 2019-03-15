@@ -2,117 +2,115 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
-<title>溯源信息</title>
-<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/css/common.css" />
-<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/css/style.css" />
-<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/font_icon/iconfont.css">
-<link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/swiper/idangerous.swiper.css" />
-<script src="__STATIC__/home/images_herbicide/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="__STATIC__/home/images_herbicide/js/mobile.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="__STATIC__/home/images_herbicide/swiper/idangerous.swiper.min.js"></script>
-<style>
-/*滑屏插件*/
-
-			
+    <meta charset="UTF-8">
+    <title>溯源信息</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/font_icon/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/images_herbicide/swiper/idangerous.swiper.css" />
+    <script src="__STATIC__/home/images_herbicide/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__STATIC__/home/images_herbicide/js/mobile.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="__STATIC__/home/images_herbicide/swiper/idangerous.swiper.min.js"></script>
+    <style>
+        /*滑屏插件*/
 
 
-.swiper-container {
-	width: 100%;
-	display: block;
-	overflow: hidden;
-	position: relative;
-}
-.swiper-slide img {
-	width: 100%;
-	height: 100%;
-	display: block;
-}
-#wrapper {
-	height: 100vh;
-	-webkit-overflow-scrolling: touch;
-	overflow-y: scroll;
-}
-.layout-mianContantBox .maintableBox .table01 th {
-	width: 1.5rem;
-}
-.layout-mianContantBox .maintableBox .contentBox {
-	padding: 0 0.25rem 0.25rem 0.25rem;
-}
-.layout-mianContantBox .maintableBox table td {
-	padding-right: 0;
-}
-</style>
+
+
+        .swiper-container {
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            position: relative;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #wrapper {
+            height: 100vh;
+            -webkit-overflow-scrolling: touch;
+            overflow-y: scroll;
+        }
+        .layout-mianContantBox .maintableBox .table01 th {
+            width: 1.5rem;
+        }
+        .layout-mianContantBox .maintableBox .contentBox {
+            padding: 0 0.25rem 0.25rem 0.25rem;
+        }
+        .layout-mianContantBox .maintableBox table td {
+            padding-right: 0;
+        }
+    </style>
 </head>
 
 <body>
-<div id="wrapper"> 
-  
-  <!--<<顶部-->
-  
-  <div class="layout-headBox"> <a class="iconfont icon-xiangzuo1" href="javascript:history.go(-1);"></a>溯源信息</div>
-  
-  <!--<<顶部占位-->
-  
-  <div class="layout-headmainBox"></div>
-  
-  <!--顶部>>--> 
-  
-  <!--主内容区-->
-  
-  <div class="layout-mianContantBox"> 
-    
-    <!--轮播-->
-    
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="__STATIC__/home/images_herbicide/img/swipers01.jpg" /></div>
-        <div class="swiper-slide"><img src="__STATIC__/home/images_herbicide/img/swipers02.jpg" /></div>
-        <div class="swiper-slide"><img src="__STATIC__/home/images_herbicide/img/swipers03.jpg" /></div>
-      </div>
-      <div class="pagination "></div>
+<div id="wrapper">
+
+    <!--<<顶部-->
+
+    <div class="layout-headBox"> <a class="iconfont icon-xiangzuo1" href="javascript:history.go(-1);"></a>溯源信息</div>
+
+    <!--<<顶部占位-->
+
+    <div class="layout-headmainBox"></div>
+
+    <!--顶部>>-->
+
+    <!--主内容区-->
+
+    <div class="layout-mianContantBox">
+
+        <!--轮播-->
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="__STATIC__/home/images_herbicide/img/swipers01.jpg" /></div>
+                <div class="swiper-slide"><img src="__STATIC__/home/images_herbicide/img/swipers02.jpg" /></div>
+                <div class="swiper-slide"><img src="__STATIC__/home/images_herbicide/img/swipers03.jpg" /></div>
+            </div>
+            <div class="pagination "></div>
+        </div>
+        <div class="maintableBox">
+            <div class="contentBox">
+                <p class="title">生产经营信息</p>
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" class="table01 bor-top">
+                    <tr>
+                        <th>生产企业:</th>
+                        <td>云南勐牛生物技术有限公司</td>
+                    </tr>
+                    <tr>
+                        <th>生产日期:</th>
+                        <td>{:$getoneProductCode['manufacture_date'] == 0 ? '' : date('Y年m月d日',$getoneProductCode['manufacture_date'])}</td>
+                    </tr>
+                    <tr>
+                        <th>生产批次:</th>
+                        <td>{$getoneProductCode['production_batch']}</td>
+                    </tr>
+                    <tr>
+                        <th>经营企业:</th>
+                        <td>{$getoneProductCode['business_enterprise']}</td>
+                    </tr>
+                    <tr>
+                        <th>经 营 者:</th>
+                        <td>{$getoneProductCode['contacts']}</td>
+                    </tr>
+                    <tr>
+                        <th>联系方式:</th>
+                        <td>{$getoneProductCode['tel']}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!--底部信息-->
+
+        <div class="none">—— 没有更多了 ——</div>
     </div>
-    <div class="maintableBox">
-      <div class="contentBox">
-        <p class="title">生产信息</p>
-        <table border="0" cellspacing="0" cellpadding="0" width="100%" class="table01 bor-top">
-          <tr>
-            <th>生产时间:</th>
-            <td>{:$getoneProductCode['manufacture_date'] == 0 ? date('Y年m月d日',$getoneProductCode['market_time']) : date('Y年m月d日',$getoneProductCode['manufacture_date']) }</td>
-          </tr>
-          <tr>
-            <th>生产批次:</th>
-            <td>{$getoneProductCode['title']}</td>
-          </tr>
-          <tr>
-            <th>生产班组:</th>
-            <td>今天今日</td>
-          </tr>
-          <tr>
-            <th>生产班次:</th>
-            <td>今天今日</td>
-          </tr>
-          <tr>
-            <th>生产地区:</th>
-            <td>云南昆明</td>
-          </tr>
-          <tr>
-            <th>检验报告:</th>
-            <td><i class="picsBox" onclick="picseject(1);"><img src="__STATIC__/home/images_herbicide/img/pic01.jpg"/></i> <i class="picsBox" onclick="picseject(2);"><img src="__STATIC__/home/images_herbicide/img/pic02.png"/></i> 
-              
-              <!--<i class="picsBox"></i>--></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    
-    <!--底部信息-->
-    
-    <div class="none">—— 没有更多了 ——</div>
-  </div>
-  
-  <!--主内容区--> 
-  
+
+    <!--主内容区-->
+
 </div>
 <div onclick="closepic();" id="overlay"></div>
 
@@ -120,98 +118,98 @@
 
 <div onclick="closepic();" class="picsejectBox"><img id="imgsbox" src="__STATIC__/home/images_herbicide/img/pic01.jpg"></div>
 
-<!--图片弹出>>--> 
+<!--图片弹出>>-->
 
 <script>
 
-	$(function() {
+    $(function() {
 
-		twoconert();
+        twoconert();
 
-	});
-
-
-
-	function twoconert() {
-
-		var popWidth = $(window).width();
-
-		$(".swiper-container").css({
-
-			height: (popWidth) / 2
-
-		});
-
-		$(".swiper-wrapper").css({
-
-			height: (popWidth) / 2
-
-		});
-
-		$(".swiper-slide").css({
-
-			height: (popWidth) / 2
-
-		});
+    });
 
 
 
-		setTimeout("twoconert()", 1); //刷新频率 1000 为 1 秒
+    function twoconert() {
 
-	}
+        var popWidth = $(window).width();
 
-</script> 
+        $(".swiper-container").css({
+
+            height: (popWidth) / 2
+
+        });
+
+        $(".swiper-wrapper").css({
+
+            height: (popWidth) / 2
+
+        });
+
+        $(".swiper-slide").css({
+
+            height: (popWidth) / 2
+
+        });
+
+
+
+        setTimeout("twoconert()", 1); //刷新频率 1000 为 1 秒
+
+    }
+
+</script>
 <script>
 
-	var mySwiper = new Swiper('.swiper-container', {
+    var mySwiper = new Swiper('.swiper-container', {
 
-		paginationClickable: true,
+        paginationClickable: true,
 
-		loop: true,
+        loop: true,
 
-		autoplay: 5000,
+        autoplay: 5000,
 
-		grabCursor: true,
+        grabCursor: true,
 
-		autoplayDisableOnInteraction: false,
+        autoplayDisableOnInteraction: false,
 
-		speed: 300,
+        speed: 300,
 
-		pagination: '.pagination',
+        pagination: '.pagination',
 
-	})
-
-
-
-	function picseject(id) {
+    })
 
 
 
-		if(id == 1) {
-
-			$("#imgsbox").attr('src', "__STATIC__/home/images_herbicide/img/pic01.jpg");
-
-		} else if(id == 2) {
-
-			$("#imgsbox").attr('src', "__STATIC__/home/images_herbicide/img/pic02.png");
-
-		}
-
-		$("#overlay").show();
-
-		$(".picsejectBox").show();
-
-	}
+    function picseject(id) {
 
 
 
-	function closepic() {
+        if(id == 1) {
 
-		$("#overlay").hide();
+            $("#imgsbox").attr('src', "__STATIC__/home/images_herbicide/img/pic01.jpg");
 
-		$(".picsejectBox").hide();
+        } else if(id == 2) {
 
-	}
+            $("#imgsbox").attr('src', "__STATIC__/home/images_herbicide/img/pic02.png");
+
+        }
+
+        $("#overlay").show();
+
+        $(".picsejectBox").show();
+
+    }
+
+
+
+    function closepic() {
+
+        $("#overlay").hide();
+
+        $(".picsejectBox").hide();
+
+    }
 
 </script>
 </body>
