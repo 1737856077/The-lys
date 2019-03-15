@@ -27,9 +27,9 @@ class User extends CommonBaseHome
     //注册功能页面
     public function insert()
     {
-        if (Request::instance()->isGet()) {
+        if (Request::instance()->post()) {
             $request = Request::instance();
-            $data = $request->get();
+            $data = $request->post();
             $rule = ([
                 'username|姓名' => 'require|length:2,20|chsAlphaNum|unique:member',
                 'email|邮箱' => 'require|email|unique:member',
@@ -75,9 +75,9 @@ class User extends CommonBaseHome
     //登陆功能页面
     public function logins()
     {
-        if (Request::instance()->isGet()) {
+        if (Request::instance()->post()) {
             $request = Request::instance();
-            $data = $request->get();
+            $data = $request->post();
             $rule = ([
                 'username|姓名' => 'require|length:2,20|chsAlphaNum',
 //                'email|邮箱'=> 'require|email|unique:member',
@@ -127,7 +127,7 @@ class User extends CommonBaseHome
         if (!isset($this->request->param()['pwd']) || !isset($this->request->param()['pwds']) || !isset($this->request->param()['member_id'])) {
             return '缺少字段';
         }
-        if (Request::instance()->isGet()) {
+        if (Request::instance()->post()) {
             $data = $this->request->param();
             $rule = ([
                 'pwd|密码' => 'require|length:6,20|alphaNum',
