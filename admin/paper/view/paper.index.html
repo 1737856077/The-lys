@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>系统配置-纸张管理-材质列表</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+</head>
+
+<body>
+<div class="cont_title">　你当前的位置：系统配置 -纸张管理-材质列表</div>
+
+<div class="con">
+
+    <div class="conlist">
+        <form  method="post" action="__URL__/del" id="form1">
+            <table class="listtable">
+                <tr class="tr1">
+                    <td colspan="6" class="tit">
+                    </td>
+                    <td class="tit">
+                        {if auth('paper/paper/add') }
+                        <a href="__URL__/add"><input type="button"  value="添加材质" class="buttomorger100" /> </a>
+                        {/if}
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdtit"><input type="checkbox" id="chkAll" name="chkAll" onClick="CheckAll(this.form)" value="checkbox" />ID</td>
+                    <td class="tdtit">材质</td>
+                    <td class="tdtit">厚度</td>
+                    <td class="tdtit">价格</td>
+                    <td class="tdtit">排序</td>
+                    <td class="tdtit">状态</td>
+                    <td class="tdtit">操作</td>
+                </tr>
+                {foreach $list as $value}
+                <tr class="tr1">
+                    <td class="tdlist">
+                        <input type="checkbox" name="ids[]"  value="{$value['id']}" />
+                        {$value['id']}&nbsp;
+                    </td>
+                    <td class="tdlist">{$value['title']}&nbsp;</td>
+                    <td class="tdlist">{$value['thickness']} {$value['thickness_unit']}</td>
+                    <td class="tdlist">{$value['price']}元/张</td>
+                    <td class="tdlist">
+                        <input type="text" name="sorts[{$value['id']}]" value="{$value['sort_rank']}" maxlength="5" size="5" />
+                    </td>
+                    <td class="tdlist">
+                        {if auth('paper/paper/setDataStatus') }
+                            {if $value['data_status'] eq 0}
+                            <a href="__URL__/setDataStatus/id/{$value['id']}/Status/1" ><font color="#ff0000">未启用</font></a>
+                            {else}
+                            <a href="__URL__/setDataStatus/id/{$value['id']}/Status/0" ><font color="#006600">已启用</font></a>
+                            {/if}
+                        {else}
+                            {if $value['data_status'] eq 0}
+                            <font color="#ff0000">未启用</font>
+                            {else}
+                            <font color="#006600">已启用</font>
+                            {/if}
+                        {/if}
+                    </td>
+                    <td class="tdlist">
+                        {if auth('paper/paper/edit') }
+                        [<a href="__URL__/edit/id/{$value['id']}" >编辑</a>]
+                        {/if}
+                        {if auth('paper/paper/del') }
+                        [<a href="__URL__/del/id/{$value['id']}" onclick="return confirm('确定要删除吗？');">删除</a>]
+                        {/if}
+                    </td>
+                </tr>
+                {/foreach}
+
+                {if $count eq 0}
+                <tr class="tr1">
+                    <td colspan="7" class="tdlist">暂无相关记录！ </td>
+                </tr>
+                {/if}
+                <tr class="tr1">
+                    <td colspan="11" class="tdlist" >
+                        <input type="hidden" name="checkclass" id="checkclass" value="1" />
+                        {if auth('paper/paper/del') }
+                        <input type="submit" class="buttomorger"  value="删除"  onClick="javascript:return confirm('确定要删除吗？');" />
+                        {/if}
+                        {if auth('paper/paper/sortrank') }
+                        <input type="submit" class="buttomorger"  value="排序"
+                               onClick="document.getElementById('checkclass').value='2'; document.getElementById('form1').action='__URL__/sortrank';" />
+                        {/if}
+                    </td>
+                </tr>
+            </table>
+            <div style="text-align:right; padding-right:40px;">
+                {$page}
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+
+</div>
+</body>
+</html>

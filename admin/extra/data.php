@@ -59,4 +59,9 @@ return [
     'template_code_type'=>['0'=>'二维码',
         '1'=>'条形码'
     ],
+    // 纸张厚度单位
+    'paper_thickness_unit'=>['mm'=>'毫米（mm）',
+        'cm'=>'厘米（cm）',
+        'in'=>'英寸（in）'
+    ],
 ];

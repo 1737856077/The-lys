@@ -92,10 +92,16 @@
                         {if auth('designtpl/dtemplatetype/index')}
                         <li><a href="/admin.php/designtpl/dtemplatetype/index" target="mainframe">|--编辑分类　</a></li>
                         {/if}
-                        <li><a href="#" target="mainframe">纸张管理　</a></li>
-                        <li><a href="#" target="mainframe">|--材质列表　</a></li>
-                        <li><a href="#" target="mainframe">|--添加材质　</a></li>
-                        <li><a href="#" target="mainframe">|--编辑材质　</a></li>
+                        <li><a  target="mainframe">纸张管理　</a></li>
+                        {if auth('paper/paper/index') }
+                        <li><a href="/admin.php/paper/paper/index" target="mainframe">|--材质列表　</a></li>
+                        {/if}
+                        {if auth('paper/paper/add') }
+                        <li><a href="/admin.php/paper/paper/add" target="mainframe">|--添加材质　</a></li>
+                        {/if}
+                        {if auth('paper/paper/index') }
+                        <li><a href="/admin.php/paper/paper/add" target="mainframe">|--编辑材质　</a></li>
+                        {/if}
                     </ul>
                     <hr>
                   </li>
@@ -178,37 +184,7 @@
                     </ul>
                     <hr>
                   </li>
-<!--
-                  {if auth('product/product/index') }
-                  <li class="tab">
-                    <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">产品管理</a><em></em></div>
-                    <ul class="ct" style="display:none;">
-                        {if auth('product/product/index')}
-                        <li><a href="__ROOT__/admin.php/product/product/index" target="mainframe">产品列表　</a></li>
-                        {/if}
-                    </ul>
-                    <hr>
-                  </li>
-                  {/if}
 
-                 {if auth('qrcode/productcode/index') or  auth('qrcode/createqrcode/add') or auth('qrcode/qrreport/index') }
-                 <li class="tab">
-                     <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">二维码管理</a><em></em></div>
-                     <ul class="ct" style="display:none;">
-                         {if auth('qrcode/productcode/index')}
-                         <li><a href="__ROOT__/admin.php/qrcode/productcode/index" target="mainframe">二维码列表</a></li>
-                         {/if}
-                         {if auth('qrcode/createqrcode/add')}
-                         <li><a href="__ROOT__/admin.php/qrcode/createqrcode/add" target="mainframe">生成二维码</a></li>
-                         {/if}
-                         {if auth('qrcode/qrreport/index')}
-                         <li><a href="__ROOT__/admin.php/qrcode/qrreport/index" target="mainframe">二维码统计</a></li>
-                         {/if}
-                     </ul>
-                     <hr>
-                 </li>
-                 {/if}
--->
             </ul>
         
         </div>
