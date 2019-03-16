@@ -20,7 +20,23 @@
             <input type="hidden" name="father_id" id="father_id" value="{$father_id}" />
             <table class="listtable">
                 <tr class="tr1">
-                    <td colspan="7" class="tit">行业分类　<a href="__URL__/index?father_id=2">使用场景</a>　</td>
+                    <td colspan="4" class="tit">
+                        {if $father_id eq 1}
+                        <a style="color: #666; font-weight: bold;">行业分类</a>　
+                        {else}
+                        <a href="__URL__/index?father_id=1">行业分类</a>　
+                        {/if}
+                        {if $father_id eq 2}
+                        <a style="color: #666; font-weight: bold;">使用场景</a>　
+                        {else}
+                        <a href="__URL__/index?father_id=2">使用场景</a>　
+                        {/if}
+                    </td>
+                    <td class="tit">
+                        {if auth('disigntpl/dtemplatetype/add') }
+                        <a href="__URL__/add?father_id={$father_id}"><input type="button"  value="添加分类" class="buttomorger100" /> </a>
+                        {/if}
+                    </td>
                 </tr>
                 <tr class="tr1">
                     <td class="tdtit"><input type="checkbox" id="chkAll" name="chkAll" onClick="CheckAll(this.form)" value="checkbox" />ID</td>
@@ -32,19 +48,19 @@
                 {foreach $list as $value}
                 <tr class="tr1">
                     <td class="tdlist">
-                        <input type="checkbox" name="ids[]"  value="{$value['id']}" />
-                        {$value['id']}&nbsp;
+                        <input type="checkbox" name="ids[]"  value="{$value['class_id']}" />
+                        {$value['class_id']}&nbsp;
                     </td>
                     <td class="tdlist">{$value['title']}&nbsp;</td>
                     <td class="tdlist">
-                        <input type="text" name="sorts[{$value['id']}]" value="{$value['sort_rank']}" maxlength="5" size="5" />
+                        <input type="text" name="sorts[{$value['class_id']}]" value="{$value['sort_rank']}" maxlength="5" size="5" />
                     </td>
                     <td class="tdlist">
                         {if auth('disigntpl/dtemplatetype/setDataStatus') }
                             {if $value['data_status'] eq 0}
-                            <a href="__URL__/setDataStatus/father_id/{$father_id}/id/{$value['id']}/Status/1" ><font color="#ff0000">未启用</font></a>
+                            <a href="__URL__/setDataStatus/father_id/{$father_id}/id/{$value['class_id']}/Status/1" ><font color="#ff0000">未启用</font></a>
                             {else}
-                            <a href="__URL__/setDataStatus/father_id/{$father_id}/id/{$value['id']}/Status/0" ><font color="#006600">已启用</font></a>
+                            <a href="__URL__/setDataStatus/father_id/{$father_id}/id/{$value['class_id']}/Status/0" ><font color="#006600">已启用</font></a>
                             {/if}
                         {else}
                             {if $value['data_status'] eq 0}
@@ -56,10 +72,10 @@
                     </td>
                     <td class="tdlist">
                         {if auth('designtpl/dtemplatetype/edit') }
-                        [<a href="__URL__/edit/father_id/{$father_id}/id/{$value['id']}" >编辑</a>]
+                        [<a href="__URL__/edit/father_id/{$father_id}/id/{$value['class_id']}" >编辑</a>]
                         {/if}
                         {if auth('designtpl/dtemplatetype/del') }
-                        [<a href="__URL__/del/father_id/{$father_id}/id/{$value['id']}" >删除</a>]
+                        [<a href="__URL__/del/father_id/{$father_id}/id/{$value['class_id']}" onclick="return confirm('确定要删除吗？');">删除</a>]
                         {/if}
                     </td>
                 </tr>
@@ -78,7 +94,7 @@
                         {/if}
                         {if auth('disigntpl/dtemplatetype/sortrank') }
                         <input type="submit" class="buttomorger"  value="排序"
-                               onClick="document.getElementById('checkclass').value='2'; document.getElementById('action').value='__URL__/sortrank?father_id={$father_id}';" />
+                               onClick="document.getElementById('checkclass').value='2'; document.getElementById('form1').action='__URL__/sortrank?father_id={$father_id}';" />
                         {/if}
                     </td>
                 </tr>

@@ -20,16 +20,6 @@ class Dtemplatetype extends CommonAdmin
      */
     public function _initialize(){
         parent::_initialize();
-
-        $ModelSystemConfig=Db::name('system_config');
-        //使用场景
-        $listUsageScenarios=array();
-        $listUsageScenarios=$ModelSystemConfig->where("father_id=1")->order("sort_rank ASC,id ASC")->select();
-        $this->assign("listUsageScenarios",$listUsageScenarios);
-        //行业分类
-        $listIndustry=array();
-        $listIndustry=$ModelSystemConfig->where("father_id=2")->order("sort_rank ASC,id ASC")->select();
-        $this->assign("listIndustry",$listIndustry);
     }
 
     /**
@@ -41,8 +31,8 @@ class Dtemplatetype extends CommonAdmin
         $father_id = intval(isset($param['father_id']) ? $param['father_id'] : '1') ;
         $this->assign("father_id",$father_id);
 
-        $ModelSystemConfig=Db::name('system_config');
-        $list=$ModelSystemConfig->where("father_id='$father_id'")->order("sort_rank ASC,id ASC")->select();
+        $ModelSystemConfig=Db::name('template_class');
+        $list=$ModelSystemConfig->where("father_id='$father_id'")->order("sort_rank ASC,class_id ASC")->select();
 
         $this->assign("count",count($list));
         $this->assign("list",$list);
@@ -54,7 +44,7 @@ class Dtemplatetype extends CommonAdmin
      */
     public function add(){
         $param = $this->request->param();
-        $father_id=intval(isset($param['father_id']) ? trim($param['father_id']) : '0');
+        $father_id=intval(isset($param['father_id']) ? trim($param['father_id']) : '1');
         if(empty($father_id)){echo 'paramer error!';exit;}
 
         $this->assign("father_id",$father_id);
@@ -66,7 +56,7 @@ class Dtemplatetype extends CommonAdmin
      */
     public function insert(){
         $param = $this->request->post();
-        $model=Db::name('system_config');
+        $model=Db::name('template_class');
 
         $father_id=intval(isset($param['father_id']) ? trim($param['father_id']) : '0');
         $title=htmlspecialchars(isset($param['title']) ? trim($param['title']) : '');
@@ -101,8 +91,8 @@ class Dtemplatetype extends CommonAdmin
         $param = $this->request->param();
         $id = intval(isset($param['id']) ? $param['id'] : '0') ;
         if(empty($id)){echo 'paramer error!';exit;}
-        $ModelSystemConfig=Db::name('system_config');
-        $getone=$ModelSystemConfig->where("id='$id'")->find();
+        $ModelSystemConfig=Db::name('template_class');
+        $getone=$ModelSystemConfig->where("class_id='$id'")->find();
 
         $this->assign("getone",$getone);
         return $this->fetch();
@@ -113,24 +103,28 @@ class Dtemplatetype extends CommonAdmin
      */
     public function update(){
         $param = $this->request->post();
-        $model=Db::name('system_config');
+        $model=Db::name('template_class');
 
-        $id=intval(isset($param['id']) ? trim($param['id']) : '0');
+        $class_id=intval(isset($param['class_id']) ? trim($param['class_id']) : '0');
         $father_id=intval(isset($param['father_id']) ? trim($param['father_id']) : '0');
         $title=htmlspecialchars(isset($param['title']) ? trim($param['title']) : '');
+        $sort_rank=intval(isset($param['sort_rank']) ? trim($param['sort_rank']) : '0');
+        $data_status=intval(isset($param['data_status']) ? trim($param['data_status']) : '0');
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
         $gettime=time();
 
-        if(!$id or empty($title) ){
+        if(!$class_id or empty($title) ){
             echo '<script language="javascript">alert("必填项不能为空！");history.go(-1);</script>';
             exit;
         }
         $data=array(
             'title'=>$title,
+            'sort_rank'=>$sort_rank,
+            'data_status'=>$data_status,
             'data_desc'=>$data_desc,
             'update_time'=>$gettime,
         );
-        $ReturnID=$model->where("id='$id'")->update($data);
+        $ReturnID=$model->where("class_id='$class_id'")->update($data);
 
         $this->success("操作成功",url("dtemplatetype/index").'?father_id='.$father_id,3);
         exit;
@@ -146,8 +140,8 @@ class Dtemplatetype extends CommonAdmin
         $Status=intval(isset($param['Status']) ? trim($param['Status']) : '0');
         if(empty($id)){echo 'paramer error!';exit;}
 
-        $model=Db::name('system_config');
-        $model->where("id='$id'")->update(array('data_status'=>$Status));
+        $model=Db::name('template_class');
+        $model->where("class_id='$id'")->update(array('data_status'=>$Status));
 
         $this->success("操作成功",url("dtemplatetype/index").'?father_id='.$father_id,3);
         exit;
@@ -161,13 +155,13 @@ class Dtemplatetype extends CommonAdmin
         $id = intval(isset($param['id']) ? $param['id'] : '0') ;
         $father_id=intval(isset($param['father_id']) ? trim($param['father_id']) : '0');
         $ids=isset($param['ids']) ? $param['ids']: [];
-        if(empty($id)){echo 'paramer error!';exit;}
+        if(empty($id) and empty($ids)){echo 'paramer error!';exit;}
 
-        $model=Db::name('system_config');
+        $model=Db::name('template_class');
         if(empty($ids)) {
-            $model->where("id='$id'")->delete();
+            $model->where("class_id='$id'")->delete();
         }else{
-            $model->whereIn('id',$ids)->delete();
+            $model->whereIn('class_id',$ids)->delete();
         }
 
         $this->success("操作成功",url("dtemplatetype/index").'?father_id='.$father_id,3);
@@ -179,14 +173,15 @@ class Dtemplatetype extends CommonAdmin
      */
     public function sortrank(){
         $param = $this->request->post();
-        $model=Db::name('system_config');
+        $model=Db::name('template_class');
 
         $father_id=intval(isset($param['father_id']) ? trim($param['father_id']) : '0');
         $sorts=isset($param['sorts']) ? $param['sorts']: [];
 
         if(!empty($sorts)){
             foreach ($sorts as $key=>$value){
-                $model->where("id='$key'")->update(array('sort_rank'=>$value));
+                $value = intval($value);
+                $model->where("class_id='$key'")->update(array('sort_rank'=>$value));
             }
         }
         $this->success("操作成功",url("dtemplatetype/index").'?father_id='.$father_id,3);

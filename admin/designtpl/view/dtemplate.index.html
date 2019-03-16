@@ -29,13 +29,13 @@
                         使用场景 <select name="SearchUsageScenariosId" id="SearchUsageScenariosId">
                             <option value="">请选择</option>
                             {foreach $listUsageScenarios as $key=>$value}
-                            <option value="{$value['id']}" {if $SearchUsageScenariosId==$value['id'] }selected{/if} >{$value['title']}</option>
+                            <option value="{$value['class_id']}" {if $SearchUsageScenariosId==$value['class_id'] }selected{/if} >{$value['title']}</option>
                             {/foreach}
                         </select>　　
                         行业分类 <select name="SearchIndustryId" id="SearchIndustryId">
                             <option value="">请选择</option>
                             {foreach $listIndustry as $key=>$value}
-                            <option value="{$value['id']}" {if $SearchIndustryId==$value['id'] }selected{/if} >{$value['title']}</option>
+                            <option value="{$value['class_id']}" {if $SearchIndustryId==$value['class_id'] }selected{/if} >{$value['title']}</option>
                             {/foreach}
                         </select>　　
                         条码类型 <select name="SearchCodeType" id="SearchCodeType">

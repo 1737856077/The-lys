@@ -18,14 +18,13 @@
 <body>
 <div class="container">
 
-    <div class="cont_title">　你当前的位置：模版管理 - 分类管理 - <a href="__URL__/index?father_id={$father_id}">分类列表</a> - 添加分类</div>
+    <div class="cont_title">　你当前的位置：模版管理 - 分类管理 - <a href="__URL__/index?father_id={$getone['father_id']}">分类列表</a> - 编辑</div>
 
     <div class="con">
 
         <div class="conlist">
-            <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">
-                <input type="hidden" name="submitType" value="1" />
-
+            <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfunedit();">
+                <input type="hidden" name="class_id" value="{$getone['class_id']}" />
                 <table class="listtable">
                     <tr class="tr1">
                         <td colspan="2" class="tit">添加</td>
@@ -34,33 +33,33 @@
                         <td class="tdl">所属分类：<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
                             <select name="father_id">
-                                <option value="1" {if $father_id eq 1}selected{/if} >行业分类</option>
-                                <option value="2" {if $father_id eq 2}selected{/if}>使用场景</option>
+                                <option value="1" {if $getone.father_id eq 1}selected{/if} >行业分类</option>
+                                <option value="2" {if $getone.father_id eq 2}selected{/if}>使用场景</option>
                             </select>
                         </td>
                     </tr>
                     <tr class="tr1">
                         <td class="tdl">标题：<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input name="title" id="title" type="text" onBlur="onBlur_title()" value="" />　<span class="showErrorMessage" id="span_title"></span>
+                            <input name="title" id="title" type="text" onBlur="onBlur_title()" value="{$getone['title']}" />　<span class="showErrorMessage" id="span_title"></span>
                         </td>
                     </tr>
                     <tr class="tr1">
                         <td class="tdl">排序：</td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input name="sort_rank" id="sort_rank" type="text"  value="50" /> 说明：正序，数字越大越向后<span class="showErrorMessage" id="span_sort_rank"></span>
+                            <input name="sort_rank" id="sort_rank" type="text"  value="{$getone['sort_rank']}" /> 说明：正序，数字越大越向后<span class="showErrorMessage" id="span_sort_rank"></span>
                         </td>
                     </tr>
                     <tr class="tr1">
                         <td class="tdl">状态：</td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input type="radio" name="data_status" value="0" checked />已审　
-                            <input type="radio" name="data_status" value="1"  />未审
+                            <input type="radio" name="data_status" value="0" {if $getone.data_status eq 0}checked{/if}  />已审　
+                            <input type="radio" name="data_status" value="1" {if $getone.data_status eq 1}checked{/if}  />未审
                         </td>
                     </tr>
                     <tr class="tr1">
                         <td class="tdl">备注：</td>
-                        <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60"></textarea>  </td>
+                        <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60">{$getone['data_desc']}</textarea>  </td>
                     </tr>
 
                     <tr class="tr1">
