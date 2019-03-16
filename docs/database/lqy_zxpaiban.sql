@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2019 �?03 �?12 �?04:08
+-- 生成日期: 2019 �?03 �?16 �?10:04
 -- 服务器版本: 5.5.53
 -- PHP 版本: 5.6.27
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `sy_admin_operate_log` (
   `data_status` tinyint(1) DEFAULT '0',
   `create_time` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- 转存表中的数据 `sy_admin_operate_log`
@@ -94,7 +94,9 @@ INSERT INTO `sy_admin_operate_log` (`id`, `content`, `admin_id`, `create_ip`, `d
 (13, 'admin登录网站后台管理系统。', 1, '::1', 0, 0, 1548835824),
 (14, 'admin登录网站后台管理系统。', 1, '::1', 0, 0, 1550909948),
 (15, '编辑管理员信息。', 1, '::1', 0, 0, 1550910169),
-(16, 'admin登录网站后台管理系统。', 1, '::1', 0, 0, 1551946335);
+(16, 'admin登录网站后台管理系统。', 1, '::1', 0, 0, 1551946335),
+(17, 'admin登录网站后台管理系统。', 1, '::1', 0, 0, 1552541687),
+(18, 'admin登录网站后台管理系统。', 1, '::1', 0, 0, 1552640802);
 
 -- --------------------------------------------------------
 
@@ -265,6 +267,34 @@ CREATE TABLE IF NOT EXISTS `sy_order` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `order_no` (`order_no`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sy_paper`
+--
+
+CREATE TABLE IF NOT EXISTS `sy_paper` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) NOT NULL,
+  `thickness` int(11) NOT NULL DEFAULT '0',
+  `thickness_unit` varchar(6) NOT NULL DEFAULT 'mm',
+  `price` double NOT NULL DEFAULT '0',
+  `sort_rank` int(11) DEFAULT '50',
+  `data_desc` varchar(64) DEFAULT NULL,
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- 转存表中的数据 `sy_paper`
+--
+
+INSERT INTO `sy_paper` (`id`, `title`, `thickness`, `thickness_unit`, `price`, `sort_rank`, `data_desc`, `data_type`, `data_status`, `create_time`, `update_time`) VALUES
+(1, '材质2', 22, 'cm', 0.2, 50, '备注2', 0, 0, 0, 1552726432);
 
 -- --------------------------------------------------------
 
@@ -47590,14 +47620,48 @@ CREATE TABLE IF NOT EXISTS `sy_template` (
 CREATE TABLE IF NOT EXISTS `sy_template_class` (
   `class_id` int(11) NOT NULL AUTO_INCREMENT,
   `father_id` int(11) DEFAULT '0',
+  `level` tinyint(2) DEFAULT '1',
   `title` varchar(64) NOT NULL,
+  `sort_rank` int(11) DEFAULT '50',
   `data_desc` varchar(64) DEFAULT NULL,
   `data_type` int(11) NOT NULL DEFAULT '0',
   `data_status` int(11) NOT NULL DEFAULT '0',
   `create_time` int(11) NOT NULL DEFAULT '0',
   `update_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`class_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+
+--
+-- 转存表中的数据 `sy_template_class`
+--
+
+INSERT INTO `sy_template_class` (`class_id`, `father_id`, `level`, `title`, `sort_rank`, `data_desc`, `data_type`, `data_status`, `create_time`, `update_time`) VALUES
+(1, 0, 1, '行业', 50, '模版分类的行业', 0, 1, 0, 0),
+(2, 0, 1, '场景', 50, '模版分类的场景', 0, 1, 0, 0),
+(3, 1, 2, '食品/医疗', 50, '', 0, 1, 0, 0),
+(4, 1, 2, '纺织服饰', 50, '', 0, 1, 0, 0),
+(5, 1, 2, '烟酒饮料', 50, '', 0, 1, 0, 0),
+(6, 1, 2, '石油化工', 50, '', 0, 1, 0, 0),
+(7, 1, 2, '造纸印刷', 50, '', 0, 1, 0, 0),
+(8, 1, 2, '家具家居', 50, '', 0, 1, 0, 0),
+(9, 1, 2, '汽车', 50, '', 0, 1, 0, 0),
+(10, 1, 2, '电气机械', 50, '', 0, 1, 0, 0),
+(11, 1, 2, '计算机通讯及电子设备', 50, '', 0, 1, 0, 0),
+(12, 1, 2, '文教体美', 50, '', 0, 1, 0, 0),
+(13, 2, 2, '包装', 50, '', 0, 1, 0, 0),
+(14, 2, 2, '电器', 50, '', 0, 1, 0, 0),
+(15, 2, 2, '商品', 50, '', 0, 1, 0, 0),
+(16, 2, 2, '办公', 50, '', 0, 1, 0, 0),
+(17, 2, 2, '珠宝', 50, '', 0, 1, 0, 0),
+(18, 2, 2, '服装', 50, '', 0, 1, 0, 0),
+(19, 2, 2, '机场', 50, '', 0, 1, 0, 0),
+(20, 2, 2, '车票', 50, '', 0, 1, 0, 0),
+(21, 2, 2, '化工', 50, '', 0, 1, 0, 0),
+(22, 2, 2, '门票', 50, '', 0, 1, 0, 0),
+(23, 2, 2, '固定资产', 50, '', 0, 1, 0, 0),
+(24, 2, 2, '吊牌', 50, '', 0, 1, 0, 0),
+(25, 2, 2, '唛头', 50, '', 0, 1, 0, 0),
+(26, 2, 2, '信件', 50, '', 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 

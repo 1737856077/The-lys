@@ -16,6 +16,13 @@ use app\common\controller\CommonBase;
 class Publicinfo extends Controller
 {
     /**
+     * @描述：公用头部
+     */
+    public function header(){
+        return $this->fetch();
+    }
+
+    /**
      * @描述：公用底部
      */
     public function footer(){
