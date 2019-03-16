@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+        <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>统计报表</title>
+            <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+            <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+            <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+            <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+            <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+            <script language="javascript" type="text/javascript" src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
+        </head>
+
+<body>
+<div class="cont_title">　你当前的位置：统计报表</div>
+
+<div class="con">
+
+    <div class="conlist">
+        <form name="form1" method="get" action="__URL__/index">
+            <table class="listtable">
+                <tr class="tr1">
+                    <td  colspan="7" class="tdlist">查询：
+                        开始时间 <input type="text" name="SearchBeginTime" id="SearchBeginTime" size="20" maxlength="10"
+                                    value="{$SearchBeginTime}" class="Wdate"
+                                    onClick="WdatePicker()"/>　
+                        结束时间 <input type="text" name="market_time" id="SearchEndTime" size="20" maxlength="10"
+                                    value="{$SearchEndTime}" class="Wdate"
+                                    onClick="WdatePicker()"/>　　
+                        <!--会员名称 <input type="text" name="SearchUsername" id="SearchUsername" value="{$SearchUsername}" />　-->
+                        <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" />
+                    </td>
+                    <td   class="tdlist">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <form  method="post">
+            <table class="listtable">
+                <tr class="tr1">
+                    <td class="tdtit">订单数</td>
+                    <td class="tdtit">订单金额</td>
+                    <td class="tdtit">用户数</td>
+                    <td class="tdtit">模版库数量</td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdlist">{$countOrderTotal}&nbsp;</td>
+                    <td class="tdlist">{$sumOrderTotalPrice}&nbsp;</td>
+                    <td class="tdlist">{$countMemberTotal}&nbsp;</td>
+                    <td class="tdlist">{$countTemplateTotal}&nbsp;</td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+</div>
+
+
+</div>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

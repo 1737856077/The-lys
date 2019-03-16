@@ -158,7 +158,9 @@
                         {if auth('order/order/index')}
                         <li><a href="/admin.php/order/order/index" target="mainframe">财务往来　</a></li>
                         {/if}
-                        <li><a href="#" target="mainframe">统计报表　</a></li>
+                        {if auth('report/report/index')}
+                        <li><a href="/admin.php/report/report/index" target="mainframe">统计报表　</a></li>
+                        {/if}
                     </ul>
                     <hr>
                   </li>
