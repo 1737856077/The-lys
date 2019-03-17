@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>register</title>
+    <script type="text/javascript" src="__STATIC__/home/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/js/regin.js"></script>
 </head>
 <body>
-Register index
+<form name="form1" method="post" action="__URL__/regin" onsubmit="javascript:return subfun();">
+    <input type="hidden" name="fromUserId" id="fromUserId" value="{$fromUserId}" />
+    <h1><img src="__STATIC__/admin/images/logo.png" alt="" /></h1>
+    用户名：<input type="text" name="username" id="username" onblur="onBlur_username()" maxlength="32" /><span id="span_username"></span><br />
+    密码：<input type="password"  name="pwd"  id="pwd" onblur="onBlur_pwd()" maxlength="32" /><span id="span_pwd"></span><br />
+    确认密码：<input type="password"  name="pwd2"  id="pwd2" onblur="onBlur_pwd2()"  maxlength="32" /><span id="span_pwd2"></span><br />
+    邮箱：<input type="text" name="email" id="email" onblur="onBlur_email()"  maxlength="64" /><span id="span_email"></span><br />
+    <button type="submit" class="login">注册</button>&nbsp;<br /><br />
+</form>
+<p><a href="/index.php/member/register/login">已有账号，现在登录</a></p>
 </body>
 </html>

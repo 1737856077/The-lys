@@ -11,8 +11,8 @@ use think\Controller;
 use think\View;
 use think\Request;
 use think\Db;
+use think\Session;
 use app\common\controller\CommonBase;
-
 class Publicinfo extends Controller
 {
     /**

@@ -18,7 +18,86 @@ class Register extends CommonBaseHome
      * @desc:显示用户注册页面
      */
     public function index(){
+        $param = $this->request->param();
+        $fromUserId=intval(isset($param['fromUserId']) ? trim($param['fromUserId']) : '0');
+        $this->assign("fromUserId",$fromUserId);
         return $this->fetch();
+    }
+
+    /**
+     * @desc: 验证用户名是否可用
+     */
+    public function checkname(){
+        $param = $this->request->post();
+        $username=htmlspecialchars(isset($param['username']) ? trim($param['username']) : '');
+
+        $result=array('code'=>'0','msg'=>'');
+        if(empty($username)){
+            $result['code']='-1';
+            $result['msg']='请输入用户名！';
+            echo json_encode($result);
+            exit;
+        }
+
+        $modelMember=Db::name('member');
+        $count=$modelMember->where("username='$username'")->count();
+        if($count){
+            $result['code']='-2';
+            $result['msg']='用户名已存在相同！';
+            echo json_encode($result);
+            exit;
+        }
+
+        echo json_encode($result);
+        exit;
+    }
+
+    /**
+     * @desc:提交登录验证
+     */
+    public function regin(){
+        $param = $this->request->post();
+        $fromUserId=intval(isset($param['fromUserId']) ? trim($param['fromUserId']) : '0');
+        $username=htmlspecialchars(isset($param['username']) ? trim($param['username']) : '');
+        $pwd=isset($param['pwd']) ? trim($param['pwd']) : '';
+        $email=htmlspecialchars(isset($param['email']) ? trim($param['email']) : '');
+        $gettime=time();
+
+        if(empty($username) or empty($pwd) ){
+            echo '<script language="javascript">alert("请输入用户名和密码！");history.go(-1);</script>';
+            exit;
+        }
+
+        $pwd=md5($pwd);
+        $modelMember=Db::name('member');
+        $getone=$modelMember->where("username='$username'")->find();
+        if(!empty($getone)){
+            echo '<script language="javascript">alert("用户名已存在相同！");history.go(-1);</script>';
+            exit;
+        }
+
+        $data=array('username'=>$username,
+            'pwd'=>$pwd,
+            'email'=>$email,
+            'from_user_id'=>$fromUserId,
+            'last_login_time'=>$gettime,
+            'data_status'=>'1',
+            'create_time'=>$gettime,
+            'update_time'=>$gettime
+            );
+        $memberid=$modelMember->insertGetId($data);
+        if(!$memberid){
+            echo '<script language="javascript">alert("服务器忙，请稍后再试！");history.go(-1);</script>';
+            exit;
+        }
+
+        Session::delete('memberid');
+        Session::delete('username');
+        Session::set('memberid', $memberid);
+        Session::set('username', $username);
+        //添加日志 begin
+        //添加日志 end
+        echo "<script language=\"javascript\">window.open('".url('member/index')."','_top');</script>";
     }
 
     /**
@@ -26,7 +105,7 @@ class Register extends CommonBaseHome
      */
     public function login(){
         if(Session::has('username')){
-            echo "<script language=\"javascript\">window.open('".url('index/index')."','_top');</script>";
+            echo "<script language=\"javascript\">window.open('".url('member/index')."','_top');</script>";
         }else{
             return $this->fetch();
         }
@@ -36,27 +115,30 @@ class Register extends CommonBaseHome
      * @desc:提交登录验证
      */
     public function checklogin(){
-        $adminname=htmlspecialchars(trim($_POST['username']));
-        $adminpwd=$_POST['pwd'];
+        $param = $this->request->post();
+        $username=htmlspecialchars(isset($param['username']) ? trim($param['username']) : '');
+        $pwd=isset($param['pwd']) ? trim($param['pwd']) : '';
 
-        $map=array();
-        $map['name']=array('eq',$adminname);
-        $map['pwd']=array('eq',md5($adminpwd));
-        $ModelAdmin=Db::name('member');
-        $getoneAdmin=$ModelAdmin->where($map)->find();
-
-        if(empty($getoneAdmin)){
-            $this->error('用户名或密码错误!');
-        }else{
-            Session::delete('adminid');
-            Session::delete('adminname');
-            Session::set('adminid', $getoneAdmin["admin_id"]);
-            Session::set('adminname', $getoneAdmin["name"]);
-            //添加日志 begin
-            $ModelAdmin->where('')->update(array());
-            //添加日志 end
-            echo "<script language=\"javascript\">window.open('".url('index/index')."','_top');</script>";
+        if(empty($username) or empty($pwd) ){
+            echo '<script language="javascript">alert("请输入用户名和密码！");history.go(-1);</script>';
+            exit;
         }
+
+        $pwd=md5($pwd);
+        $modelMember=Db::name('member');
+        $getone=$modelMember->where("username='$username' AND pwd='$pwd'")->find();
+        if(empty($getone)){
+            echo '<script language="javascript">alert("用户名或密码错误！");history.go(-1);</script>';
+            exit;
+        }
+
+        Session::delete('memberid');
+        Session::delete('username');
+        Session::set('memberid', $getone["member_id"]);
+        Session::set('username', $getone["username"]);
+        //添加日志 begin
+        //添加日志 end
+        echo "<script language=\"javascript\">window.open('".url('member/index')."','_top');</script>";
     }
 
     /**
@@ -65,22 +147,10 @@ class Register extends CommonBaseHome
     public function unlogin(){
         //Session::clear();
         //添加日志 begin
-        $_content=Session::get('adminname').'退出网站后台管理系统。';
-        $ModelAdminOperateLog=Db::name('admin_operate_log');
-        $dataAdminOperateLog=array("content"=>$_content,
-            "admin_id"=>Session::get('adminid'),
-            "create_ip"=>$_SERVER["REMOTE_ADDR"],
-            "create_time"=>time(),
-        );
-        $ModelAdminOperateLog->insert($dataAdminOperateLog);
         //添加日志 end
-        Session::delete('adminid');
-        Session::delete('adminname');
-        Session::delete('adminoskey');
-        Session::delete('admin_data_type');
-        Session::delete('admin_permissions');
-        Session::delete('admin_role_id');
+        Session::delete('memberid');
+        Session::delete('username');
 
-        echo "<script language=\"javascript\">window.open('".url('index/index')."','_top');</script>";
+        echo "<script language=\"javascript\">window.open('".url('member/index')."','_top');</script>";
     }
 }

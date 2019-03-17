@@ -29,9 +29,4 @@ class CommonBaseHome extends Controller
             ->find();
         $this->assign('getoneWebConfigComm',$getoneWebConfigComm);
     }
-
-    public function returnStrC($str){
-        $ConfigDataCInterface=\think\Config::get('data.c_interface');
-        return $ConfigDataCInterface['begin_str'].$str.$ConfigDataCInterface['end_str'];
-    }
 }

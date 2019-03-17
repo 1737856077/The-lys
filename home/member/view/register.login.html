@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="__STATIC__/home/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/js/login.js"></script>
+</head>
+<body>
+<form name="form1" method="post" action="__URL__/checklogin" onsubmit="javascript:return subfun();">
+    <h1><img src="__STATIC__/admin/images/logo.png" alt="" /></h1>
+    用户名：<input type="text" value="" name="username" id="username" onblur="onBlur_username()" maxlength="32" /><span id="span_username"></span><br />
+    密码：<input type="text" value=""  name="pwd"  id="pwd" onblur="onBlur_pwd()" maxlength="32"  /><span id="span_pwd"></span><br />
+    <button type="submit" class="login">登 录</button>&nbsp;<br /><br />
+</form>
+</body>
+</html>

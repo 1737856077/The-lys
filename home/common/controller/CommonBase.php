@@ -25,7 +25,7 @@ class CommonBase extends CommonBaseHome
     public function  _initialize(){
         parent::_initialize();
         if(!Session::has('username') ){
-            echo "<script language=\"javascript\">window.open('/index.php','_top');</script>";
+            echo "<script language=\"javascript\">window.open('/index.php/member/register/login','_top');</script>";
             exit;
         }
     }
