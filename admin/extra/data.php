@@ -64,4 +64,16 @@ return [
         'cm'=>'厘米（cm）',
         'in'=>'英寸（in）'
     ],
+    // 打印模式
+    'preorder_print_mode'=>['0'=>'单个标签',
+        '1'=>'循环标签'
+    ],
+    // 排序方式
+    'preorder_print_sort'=>['0'=>'正序',
+        '1'=>'倒序'
+    ],
+    // 纸张方式
+    'preorder_paper_direction'=>['0'=>'横向',
+        '1'=>'纵向'
+    ],
 ];
