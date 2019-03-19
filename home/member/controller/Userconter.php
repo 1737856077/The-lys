@@ -125,6 +125,7 @@ class Userconter extends  CommonBase
        }
 
             $datas['industry_id'] = $id;
+            $datas['update_time'] = time();
             $result = Db::name('member')->where('member_id',$id)->update($datas);
             if ($result == true){
                 $this->success('更新成功','/index.php/member/userconter/index');

@@ -227,9 +227,4 @@ class User extends CommonBaseHome
         }
 
     }
-    //我的订单
-    public function dingdan()
-    {
-
-    }
 }

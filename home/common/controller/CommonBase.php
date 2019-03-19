@@ -22,12 +22,12 @@ class CommonBase extends CommonBaseHome
     /**
      * @描述：初始化函数
      */
-    public function  _initialize(){
-        parent::_initialize();
-        if(!Session::has('username') ){
-            echo "<script language=\"javascript\">window.open('/index.php/member/register/login','_top');</script>";
-            exit;
-        }
-    }
+//    public function  _initialize(){
+//        parent::_initialize();
+//        if(!Session::has('username') ){
+//            echo "<script language=\"javascript\">window.open('/index.php/member/register/login','_top');</script>";
+//            exit;
+//        }
+//    }
 
 }
