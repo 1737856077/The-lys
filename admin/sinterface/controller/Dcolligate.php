@@ -27,7 +27,7 @@ class Dcolligate extends CommonBaseHome
         //查询累计企业
         $totalCompany = Db::name('admin')->where('data_type=1 AND data_status=1')->field('count(data_type) totalCompany')->select();
         //累计产品
-        $totalProduct = Db::name('product')->where('data_status=1')->field('count(id) totalProduct')->select();
+        $totalProduct = Db::name('product_code_info')->where('data_status=1')->field('count(id) totalProduct')->select();
         //每月登记的溯源产品
         $visitlog = Db::query("
                          SELECT DATE_FORMAT(FROM_UNIXTIME(create_time),'%m') AS name,COUNT(*) AS value

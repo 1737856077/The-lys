@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>二维码管理-二维码列表-编辑</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script language="javascript" type="text/javascript"
+            src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/productcode_add.js"></script>
+</head>
+<style type="text/css">
+    .btn_public_orgin {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #aa5500;
+        color: #ffffff;
+        padding: 0px 10px;
+    }
+</style>
+<body>
+<div class="container">
+
+    <div class="cont_title">　你当前的位置：二维码管理 - <a href="__URL__/index">二维码列表</a> - 编辑</div>
+
+    <div class="con">
+
+        <div class="conlist">
+            <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1"
+                  onSubmit="javascript:return subfun();">
+                <input type="hidden" name="product_code_id" id="product_code_id" value="{$getone['product_code_id']}"/>
+                <table class="listtable">
+                    <tr class="tr1">
+                        <td colspan="2" class="tit">编辑</td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">产品:</td>
+                        <td class="tdr" style="padding-top:5px;">{$getoneProduct['title']}</td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">标题:<span style="color:#f00;">*</span></td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="title" id="title" size="60" maxlength="32"
+                                   onKeyPress="return noStrs(event);" onBlur="onBlur_title()" value="{$getone['title']}" />
+                            <span id="span_title" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">生产批次:</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="production_batch" id="production_batch" size="60" maxlength="32"
+                                   onKeyPress="return noStrs(event);" value="{$getone['production_batch']}" />
+                            <span id="span_production_batch" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">生产日期：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="manufacture_date" id="manufacture_date" size="20" maxlength="10"
+                                   value="{:date('Y-m-d',$getone['manufacture_date'])}" class="Wdate"
+                                   onClick="WdatePicker()"/>
+                        </td>
+                    </tr>
+
+                    <tr class="tr1">
+                        <td class="tdl">上市时间：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="market_time" id="market_time" size="20" maxlength="10"
+                                   value="{:date('Y-m-d',$getone['market_time'])}" class="Wdate"
+                                   onClick="WdatePicker()"/>
+                            说明：当上市时间为空，默认为生成二维码的日期
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">经营企业:</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="business_enterprise" id="business_enterprise" size="60" maxlength="128"
+                                   onKeyPress="return noStrs(event);" value="{$getone['business_enterprise']}" />
+                            <span id="span_business_enterprise" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">联系人:</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="contacts" id="contacts" size="60" maxlength="32"
+                                   onKeyPress="return noStrs(event);" value="{$getone['contacts']}" />
+                            <span id="span_contacts" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">联系电话:</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="tel" id="tel" size="60" maxlength="32"
+                                   onKeyPress="return noStrs(event);" value="{$getone['tel']}" />
+                            <span id="span_tel" style="color:#f00;"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">描述：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <textarea name="data_desc" rows="5" id="data_desc" onKeyPress="return noStrs(event);"
+                                      cols="60">{$getone['data_desc']}</textarea>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl"></td>
+                        <td class="tdr" style="padding-top:5px; position:relative;">
+                            <input type="submit" name="Submit" value="提交" class="btn_public_orgin"
+                                   onclick="document.getElementById('form1').target='';document.getElementById('actionType').value ='0';"/>　
+                            <input type="button" name="button" value="返回" class="buttomgray"
+                                   onClick="javascript:history.go(-1);"/>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

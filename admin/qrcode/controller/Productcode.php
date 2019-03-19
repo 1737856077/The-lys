@@ -111,4 +111,70 @@ class Productcode extends CommonBase
 
         $this->success("操作成功", url("productcode/index"), 3);
     }
+
+    /**
+     * @描述：编辑
+     */
+    public function  edit(){
+        $param = $this->request->param();
+        $product_code_id = isset($param['product_code_id']) ? trim(htmlspecialchars(urldecode($param['product_code_id']))) : '' ;
+        if(empty($product_code_id)){echo 'param error!';exit;}
+        $gettime=time();
+
+        $ModelProduct=Db::name('product');
+        $ModelProductCode=Db::name('product_code');
+
+        $getone=$ModelProductCode->where("product_code_id='$product_code_id'")->find();
+        if(empty($getone) or $getone['is_batch_open']!='0'){
+            echo 'param error!';exit;
+        }
+        $getoneProduct=$ModelProduct->where("product_id='$getone[product_id]'")->find();
+
+        $this->assign("getone",$getone);
+        $this->assign("getoneProduct",$getoneProduct);
+        return $this->fetch();
+    }
+
+    /**
+     * @desc : update
+     */
+    public function update(){
+        $param = $this->request->post();
+        $ModelProduct=Db::name('product');
+        $ModelProductCode=Db::name('product_code');
+        $ModelProductCodeInfo=Db::name('product_code_info');
+        $ModelAdmin=Db::name('admin');
+
+        $product_code_id=htmlspecialchars(isset($param['product_code_id']) ? trim($param['product_code_id']) : '');
+        $title=htmlspecialchars(isset($param['title']) ? trim($param['title']) : '');
+        $production_batch=htmlspecialchars(isset($param['production_batch']) ? trim($param['production_batch']) : '');
+        $manufacture_date=isset($param['manufacture_date']) ? strtotime($param['manufacture_date']) : '0';
+        $market_time=isset($param['market_time']) ? trim($param['market_time']) : date('Y-m-d');
+        $business_enterprise=htmlspecialchars(isset($param['business_enterprise']) ? trim($param['business_enterprise']) : '');
+        $contacts=htmlspecialchars(isset($param['contacts']) ? trim($param['contacts']) : '');
+        $tel=htmlspecialchars(isset($param['tel']) ? trim($param['tel']) : '');
+        $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
+        $gettime=time();
+        $market_time=strtotime($market_time);
+
+        $getone=$ModelProductCode->where("product_code_id='$product_code_id'")->find();
+        if(empty($title) or empty($getone) or $getone['is_batch_open']!='0'){
+            echo 'param error!';exit;
+        }
+
+        $data=array(
+            'title'=>$title,
+            'production_batch'=>$production_batch,
+            'manufacture_date'=>$manufacture_date,
+            'market_time'=>$market_time,
+            'business_enterprise'=>$business_enterprise,
+            'contacts'=>$contacts,
+            'tel'=>$tel,
+            'data_desc'=>$data_desc,
+            'update_time'=>$gettime
+        );
+        $ModelProductCode->where("product_code_id='$product_code_id'")->update($data);
+
+        $this->success("操作成功", url("productcode/index"), 3);
+    }
 }

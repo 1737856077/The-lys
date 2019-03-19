@@ -80,6 +80,15 @@
                                     {/if}
                                 {/if}
                             {/if}
+                            {if $value['data_type'] neq 2}
+                                {if auth('qrcode/productcode/edit') }
+                                    {if $value['is_batch_open'] eq 0}
+                                    <a href="__URL__/edit?product_code_id={$value['product_code_id']}" ><font color="#ff0000">[编辑]</font></a>
+                                    {else}
+                                    <font color="#006600">[编辑]</font>
+                                    {/if}
+                                {/if}
+                            {/if}
                         </td>
                     </tr>
 				    {/foreach}
