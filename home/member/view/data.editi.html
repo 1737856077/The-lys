@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑</title>
+</head>
+<body>
+<form action="/index.php/member/data/sdata" method="post">
+    数据库：<input type="text" name="title_value" value="{$data.0.title_value}">
+    <input type="hidden" name="member_id" value="{$data.0.database_id}">
+    <input type="submit" name="提交">
+</form>
+</body>
+</html>

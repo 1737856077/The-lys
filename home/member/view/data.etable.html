@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更改数据表</title>
+</head>
+<body>
+<form action="/index.php/member/data/stable" method="post">
+    数据库名：
+    <input type="text" name="title_value" value="{$data.0.title_value}">
+    <input type="hidden" name="table_id" value="{$data.0.table_id}">
+    <input type="hidden" name="database_id" value="{$data.0.database_id}">
+    <input type="submit" value="确认">
+</form>
+</body>
+</html>

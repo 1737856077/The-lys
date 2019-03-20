@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据表</title>
+</head>
+<body>
+
+<a href="/index.php/member/data/ntable/id/{$id}">添加数据表</a><br>
+{foreach name='data' id='data'}
+数据表:{$data.title_value}
+<a href="/index.php/member/data/bfield/tableid/{$data.table_id}/databaseid/{$data.database_id}">查看数据</a>
+<a href="/index.php/member/data/etable/tableid/{$data.table_id}/databaseid/{$data.database_id}">编辑</a>
+<a href="/index.php/member/data/dtable/tableid/{$data.table_id}">删除</a>
+<br/>
+{/foreach}
+</body>
+</html>
