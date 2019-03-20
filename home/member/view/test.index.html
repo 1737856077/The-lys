@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+表名
+<table>
+
+    <tr>
+        {foreach $listCustomDataCell as $key=>$value}
+        <td>{$value['title']}</td>
+        {/foreach}
+    </tr>
+
+    {foreach $listCustomTableData as $key=>$value}
+    <tr>
+        {for start="0" end="count($arrayCell)" step="1" name="i"}
+        <td>{:isset($value['content'][$arrayCell[$i]]) ? $value['content'][$arrayCell[$i]] : ''}</td>
+        {/for}
+    </tr>
+    {/foreach}
+</table>
+
+</body>
+</html>
