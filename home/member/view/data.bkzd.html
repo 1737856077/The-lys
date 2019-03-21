@@ -28,10 +28,11 @@
     {/foreach}
     {else /}
     {foreach $listCustomDataCell as $key=>$value}
-    <td><input name="call{$key}" type="text" value=""></td>
+    <td>
+        <input name="call{$key}" type="text" value=""></td>
+
     <input type="hidden" name="if" value="1">
     {/foreach}
-
     {/if}
 </tr>
 <input type="hidden" name="did" value="{$sj.did}">

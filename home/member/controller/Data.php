@@ -18,7 +18,7 @@ use think\Session;
 class Data extends CommonBase
 {
     //查看数据库
-    public function bdb()
+    public function index()
     {
         $memberid = Session::get('memberid');
         $data = Db::name('custom_database')->where('member_id', $memberid)->select();
@@ -27,7 +27,7 @@ class Data extends CommonBase
     }
 
     //新建数据库
-    public function index()
+    public function bdb()
     {
         $id = Session::get('memberid');
         $param = $this->request->param();
@@ -69,7 +69,6 @@ class Data extends CommonBase
         }
         $data = Db::name('custom_database')->where('database_id', $database_id)->select();
         $this->assign('data', $data);
-        dump($data);
         return $this->fetch();
     }
 
@@ -88,9 +87,9 @@ class Data extends CommonBase
         );
         $data = Db::name('custom_database')->where('database_id', $member_id)->update($data);
         if ($data) {
-            $this->success('更新成功');
+            $this->success('更新成功','/index.php/member/data/index');
         } else {
-            $this->error('更新失败');
+            $this->error('更新失败','/index.php/member/data/index');
         }
     }
 
@@ -438,7 +437,6 @@ class Data extends CommonBase
         }
 
     }
-
     //保存data
     public function saveData()
     {
@@ -447,13 +445,13 @@ class Data extends CommonBase
         $tableid = isset($param['tid'])?$param['tid']:'';
         if (empty($databaseid) or empty($tableid)){
             $this->error('错误');
-        }
-
-        $if = isset($param['if'])?1:0;
+        }$if = isset($param['if'])?1:0;
         $id = isset($param['id'])?$param['id']:'';
+        unset($param['id']);
+        unset($param['did']);
+        unset($param['tid']);
+        $content = json_encode($param);
         if ($if){
-            $content ="{\"cell1\":\"苹41414141A3\",\"cell2\":\"规格03\",\"cell3\":\"型号03\"}";
-
             $data = [
                 'database_id'=>$databaseid,
                 'table_id'=>$tableid,
@@ -461,8 +459,7 @@ class Data extends CommonBase
                 'create_time'=>time()
             ];
             $datas = Db::name('custom_table_data')->insert($data);
-        }else{$content ="{\"cell1\":\"苹bbbbA3\",\"cell2\":\"规54545454545403\",\"cell3\":\"型号03\"}";
-
+        }else{
             $data = [
                 'database_id'=>$databaseid,
                 'table_id'=>$tableid,
@@ -471,7 +468,6 @@ class Data extends CommonBase
             ];
             $datas = Db::name('custom_table_data')->where('id',$id)->update($data);
         }
-
         if ($datas){
             $this->success('保存成功');
         }else{
