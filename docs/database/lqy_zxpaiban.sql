@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2019 �?03 �?16 �?10:04
+-- 生成日期: 
 -- 服务器版本: 5.5.53
--- PHP 版本: 5.6.27
+-- PHP 版本: 7.0.12
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -149,7 +149,14 @@ CREATE TABLE IF NOT EXISTS `sy_custom_database` (
   `create_time` int(11) NOT NULL DEFAULT '0',
   `update_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`database_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `sy_custom_database`
+--
+
+INSERT INTO `sy_custom_database` (`database_id`, `title`, `title_value`, `template_id`, `admin_id`, `member_id`, `data_desc`, `data_type`, `data_status`, `create_time`, `update_time`) VALUES
+(1, '刘庆艳测试', 'userdb_1_1', 1, 0, 1, NULL, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -171,7 +178,16 @@ CREATE TABLE IF NOT EXISTS `sy_custom_data_cell` (
   `create_time` int(11) NOT NULL DEFAULT '0',
   `update_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`data_cell_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- 转存表中的数据 `sy_custom_data_cell`
+--
+
+INSERT INTO `sy_custom_data_cell` (`data_cell_id`, `database_id`, `table_id`, `title`, `title_value`, `cell_type`, `cell_lenght`, `data_desc`, `data_type`, `data_status`, `create_time`, `update_time`) VALUES
+(1, 1, 1, '产品名称', 'cell1', 'varchar', 255, NULL, 0, 0, 0, 0),
+(2, 1, 1, '产品规格', 'cell2', 'varchar', 255, NULL, 0, 0, 0, 0),
+(3, 1, 1, '产品型号', 'cell3', 'varchar', 255, NULL, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -190,7 +206,42 @@ CREATE TABLE IF NOT EXISTS `sy_custom_table` (
   `create_time` int(11) NOT NULL DEFAULT '0',
   `update_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`table_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `sy_custom_table`
+--
+
+INSERT INTO `sy_custom_table` (`table_id`, `database_id`, `title`, `title_value`, `data_desc`, `data_type`, `data_status`, `create_time`, `update_time`) VALUES
+(1, 1, '产品表', 'usertable_1_1', NULL, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sy_custom_table_data`
+--
+
+CREATE TABLE IF NOT EXISTS `sy_custom_table_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `database_id` int(11) NOT NULL DEFAULT '0',
+  `table_id` int(11) NOT NULL DEFAULT '0',
+  `content` text,
+  `data_desc` varchar(64) DEFAULT NULL,
+  `data_type` tinyint(4) DEFAULT '0',
+  `data_status` tinyint(4) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- 转存表中的数据 `sy_custom_table_data`
+--
+
+INSERT INTO `sy_custom_table_data` (`id`, `database_id`, `table_id`, `content`, `data_desc`, `data_type`, `data_status`, `create_time`, `update_time`) VALUES
+(1, 1, 1, '{"cell1":"苹果A1","cell2":"规格01","cell3":"型号01"}', NULL, 0, 0, 0, 0),
+(2, 1, 1, '{"cell1":"苹果A2","cell2":"规格02","cell3":"型号02"}', NULL, 0, 0, 0, 0),
+(3, 1, 1, '{"cell1":"苹果A3","cell2":"规格03","cell3":"型号03"}', NULL, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -258,6 +309,8 @@ CREATE TABLE IF NOT EXISTS `sy_order` (
   `paper_size_wide` int(11) DEFAULT '0',
   `paper_size_unit` varchar(2) DEFAULT 'mm',
   `paper_direction` tinyint(1) DEFAULT '0',
+  `print_mode` tinyint(1) DEFAULT '0',
+  `print_sort` tinyint(1) DEFAULT '0',
   `down_pdf` varchar(64) DEFAULT '',
   `data_desc` varchar(64) DEFAULT NULL,
   `data_type` int(11) NOT NULL DEFAULT '0',
@@ -280,6 +333,9 @@ CREATE TABLE IF NOT EXISTS `sy_paper` (
   `thickness` int(11) NOT NULL DEFAULT '0',
   `thickness_unit` varchar(6) NOT NULL DEFAULT 'mm',
   `price` double NOT NULL DEFAULT '0',
+  `price_one` double(10,2) DEFAULT '0.00',
+  `price_two` double(10,2) DEFAULT '0.00',
+  `price_three` double(10,2) DEFAULT '0.00',
   `sort_rank` int(11) DEFAULT '50',
   `data_desc` varchar(64) DEFAULT NULL,
   `data_type` tinyint(1) DEFAULT '0',
@@ -293,8 +349,8 @@ CREATE TABLE IF NOT EXISTS `sy_paper` (
 -- 转存表中的数据 `sy_paper`
 --
 
-INSERT INTO `sy_paper` (`id`, `title`, `thickness`, `thickness_unit`, `price`, `sort_rank`, `data_desc`, `data_type`, `data_status`, `create_time`, `update_time`) VALUES
-(1, '材质2', 22, 'cm', 0.2, 50, '备注2', 0, 0, 0, 1552726432);
+INSERT INTO `sy_paper` (`id`, `title`, `thickness`, `thickness_unit`, `price`, `price_one`, `price_two`, `price_three`, `sort_rank`, `data_desc`, `data_type`, `data_status`, `create_time`, `update_time`) VALUES
+(1, '材质2', 22, 'cm', 0.2, 0.00, 0.00, 0.00, 50, '备注2', 0, 0, 0, 1552726432);
 
 -- --------------------------------------------------------
 
