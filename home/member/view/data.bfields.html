@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>填写字段</title>
+</head>
+<body>
+<form action="/index.php/member/data/bfield1/tableid/{$data.tableid}/databaseid/{$data.databaseid}" method="post">
+    列名：<input type="text" name="title_value" value=""><br>
+    属性：<select name="cell_type"><br>
+    <option name="cell_type" value ="varchar">varchar</option>
+    <option name="cell_type" value ="date">date</option>
+    <option name="cell_type" value="int">int</option>
+</select><br>
+    长度: <input type="text" name="cell_lenght" value="">
+    <input type="hidden" name="tableid" value="{$data.tableid}">
+    <input type="hidden" name="databaseid" value="{$data.databaseid}">
+    <br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

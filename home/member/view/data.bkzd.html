@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/index.php/member/data/bfields/tableid/{$sj.tid}/databaseid/{$sj.did}">添加字段</a>
+<br>
+{foreach $listCustomDataCell as $key=>$value}
+{$value['title_value']}
+{/foreach}
+<br>
+<form action="/index.php/member/data/saveData/tid/{$sj.tid}/did/{$sj.did}" method="post">
+    {if condition="empty($listCustomTableData) neq true"}
+    {foreach $listCustomTableData as $key=>$value}
+    {for start="0" end="count($listCustomDataCell)" step="1" name="i"}
+    <input name="call{$i}" type="text" value="{:isset($value[$i]) ? $value[$i] : ''}">
+    <input type="hidden" name="id" value="{$id}">
+    {/for} <br>
+    {/foreach}
+    {else /}
+    {foreach $listCustomDataCell as $key=>$value}
+    <td><input name="call{$key}" type="text" value=""></td>
+    <input type="hidden" name="if" value="1">
+    {/foreach}
+
+    {/if}
+</tr>
+<input type="hidden" name="did" value="{$sj.did}">
+<input type="submit" value="保存">
+
+</form>
+</body>
+</html>
+</body>
+</html>
