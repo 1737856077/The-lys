@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>　<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>详细数据</title>
+</head>
+<body>
+<form action="/index.php/member/userconter/sub" method="post">
+{foreach name='data' id='data'}
+模板名：{$data.title}
+{/foreach}
+{foreach name='content' id='data'}
+纸张规格：{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}<br>
+{/foreach}
+请填写打印数量：<input type="text" name="number" value=""><br>
+    请选择纸张类型:
+<select name="type">
+    <option name="type">请选择纸张类型</option>{foreach name='zhizhang' id='data'}
+    <option name="type" value="{$data.id}">{$data.title}</option>{/foreach}
+</select>
+<br>
+请填写纸张类型：<input type="text" name="cmtype" value=""><br>
+    <input type="hidden" name="tempid" value="{$content.0.template_id}"><br>
+    <input type="submit" value="提交订单">
+</form>
+</body>
+</html>

@@ -5,15 +5,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <meta charset="UTF-8">
-    <title>添加数据库</title>
+    <title>支付</title>
 </head>
-<body>{include file="publicinfo@publicinfo/header" /}
-<form action="/index.php/member/data/bdb" method="post">
-    数据库名：
-    <input type="text" name="title_value" value="">
-    <input type="hidden" name="member_id" value="{$data.memberid}">
-    <input type="hidden" name="template_id" value="151f">
-    <input type="submit" value="确认">
+<body>
+订单详情:
+{$data|dump}
+    模板名称：{$data.template_title}<br>
+    客户姓名：{$data.name}<br>
+    客户手机号：{$data.moblie}<br>
+    单号：{$data.order_no}<br>
+    支付金额：{$data.score_pay}<br>
+<form action="/index.php/member/userconter/qxzf/tempalteid/{$data.template_id}/memberid/{$data.member_id}" method="post">
+  {foreach $data as $key=>$value}
+    <input type="hidden" name="{$key}" value="{$value}">
+    {/foreach}
+    <input type="submit" value="取消订单">
 </form>
+<script></script>
 </body>
 </html>

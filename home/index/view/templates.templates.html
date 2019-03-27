@@ -31,57 +31,57 @@
     条码分类：{foreach name='ConfigTemplateCodeType' id='data'}
     <a href="">{$data}</a>||
     {/foreach} <hr>
-<div class="ss" id="ss">
+    <div class="ss" id="ss">
 
-</div>
-   <div class="content" id="content">
-       热门模板：
-       <hr>
-       {foreach name='Popular' id='data'}
-       <div class="row">
-           <div class="col-sm-6 col-md-4">
-               <div class="thumbnail">
-                   <img src="{$data.img}" alt="...">
-                   <div class="caption">
-                       <h3>{$data.title}</h3>
-                       <p>被生成打印{$data.get_nums}</p>
-                       <p>纸张尺寸：{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</p>
-                       <p>标签尺寸：{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</p>
-                       <input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id}">
-                       <input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id+1}">
-                       <p><a href="#" id="btn-primary"  class="btn btn-primary" role="button">获取模板</a> <a href="#" id="btn-default" class="btn btn-default" role="button">查看模板</a></p>
-                   </div>
-               </div>
-           </div>
-       </div>
-       {/foreach}
-       <hr>
-       最新模板：
-       <hr>
-       {foreach name='cas' id='data'}
-       <div class="row">
-           <div class="col-sm-6 col-md-4">
-               <div class="thumbnail">
-                   <img src="{$data.img}" alt="...">
-                   <div class="caption">
-                       <h3>{$data.title}</h3>
-                       <p>被生成打印{$data.get_nums}</p>
-                       <p>纸张尺寸：{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</p>
-                       <p>标签尺寸：{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</p><input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id}">
-                       <input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id+1}">
-                       <input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id+2}">
-                       <p><a href="#" id="btn-primary{$data.template_id}"  class="btn btn-primary" role="button">获取模板</a> <a href="#" id="btn-default{$data.template_id}" class="btn btn-default" role="button">查看模板</a></p>
-                   </div>
-               </div>
-           </div>
-       </div>
-       {/foreach}
-   </div>
+    </div>
+    <div class="content" id="content">
+        热门模板：
+        <hr>
+        {foreach name='Popular' id='data'}
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="{$data.img}" alt="...">
+                    <div class="caption">
+                        <h3>{$data.title}</h3>
+                        <p>被生成打印{$data.get_nums}</p>
+                        <p>纸张尺寸：{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</p>
+                        <p>标签尺寸：{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</p>
+                        <input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id}">
+                        <input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id+1}">
+                        <p><a href="#" id="btn-primary"  class="btn btn-primary" role="button">获取模板</a> <a href="#" id="btn-default" class="btn btn-default" role="button">查看模板</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/foreach}
+        <hr>
+        最新模板：
+        <hr>
+        {foreach name='cas' id='data'}
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="{$data.img}" alt="...">
+                    <div class="caption">
+                        <h3>{$data.title}</h3>
+                        <p>被生成打印{$data.get_nums}</p>
+                        <p>纸张尺寸：{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</p>
+                        <p>标签尺寸：{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</p><input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id}">
+                        <input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id+1}">
+                        <input type="hidden" value="{$data.template_id}" class="tijiao{$data.template_id+2}">
+                        <p><a href="#" id="btn-primary{$data.template_id}"  class="btn btn-primary" role="button">获取模板</a> <a href="#" id="btn-default{$data.template_id}" class="btn btn-default" role="button">查看模板</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/foreach}
+    </div>
     <hr>
 </div>
 <script type="text/javascript">
-function log() {
-    $(document).ready(function(){
+    function log() {
+        $(document).ready(function(){
             $.ajax({
                 type: "post",
                 data: $('#form-inline').serialize(),
@@ -114,7 +114,7 @@ function log() {
                 }
             })
         })
-}
+    }
 
 </script>
 

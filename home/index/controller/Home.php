@@ -111,17 +111,17 @@ class Home extends CommonBaseHome
         $value = input('value');
         if ($value) {
             $map['title'] = ['like', '%' . $value . '%'];
-            $searchres = db('template ')->where($map)->order('template_id desc')->select();
-            $this->assign(array(
-                'data' => $searchres,
-                'value' => $value
-            ));
-            return $this->fetch();
-        } else {
-            $this->assign(array(
-                'data' => null,
-                'value' => '暂无数据'
-            ));
+            $searchres = db('template ')->where($map)->where('data_type',0)->order('template_id desc')->select();
+            foreach($searchres as $k=>$value){
+                $Popularss= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select()[0];
+                $searchres[$k]['paper_size_long']=isset($Popularss['paper_size_long'])?$Popularss['paper_size_long']:'';
+                $searchres[$k]['paper_size_wide']=isset($Popularss['paper_size_wide'])?$Popularss['paper_size_wide']:'';
+                $searchres[$k]['paper_size_unit']=isset($Popularss['paper_size_unit'])?$Popularss['paper_size_unit']:'';
+                $searchres[$k]['lable_size_wide']=isset($Popularss['lable_size_wide'])?$Popularss['lable_size_wide']:'';
+                $searchres[$k]['lable_size_height']=isset($Popularss['lable_size_height'])?$Popularss['lable_size_height']:'';
+                $searchres[$k]['lable_size_unit']=isset($Popularss['lable_size_unit'])?$Popularss['lable_size_unit']:'';
+            }
+            return json($searchres);
         }
     }
 }

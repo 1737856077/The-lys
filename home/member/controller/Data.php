@@ -448,6 +448,7 @@ class Data extends CommonBase
         }$if = isset($param['if'])?1:0;
         $id = isset($param['id'])?$param['id']:'';
         unset($param['id']);
+        unset($param['if']);
         unset($param['did']);
         unset($param['tid']);
         $content = json_encode($param);
@@ -457,7 +458,8 @@ class Data extends CommonBase
                 'table_id'=>$tableid,
                 'content'=>$content,
                 'create_time'=>time()
-            ];
+            ]; unset($data['if']);
+            dump($data);
             $datas = Db::name('custom_table_data')->insert($data);
         }else{
             $data = [
