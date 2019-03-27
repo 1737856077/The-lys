@@ -17,3 +17,5 @@ FTP账号资料
 测试域名：yunpai.sindns.com
 IP:
 最新服务器：122.114.163.11
+
+支付宝API接口地址：https://docs.open.alipay.com/api_1/alipay.trade.page.pay/

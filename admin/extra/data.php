@@ -21,6 +21,10 @@ return [
         'savename_rule'=>'date',
         'excel_backup'=>'./runtime/temp/',
     ],
+	'alipay' => [
+		//该地址表示用户缴费支付完成后开发者系统接受支付结果通知的回调地址。
+    	'notify_url' => 'https://yunpai.sindns.com/index.php/alipay/wypaycallback/index',
+	],
 
     //二维码配置信息
     'qr_data'=>['query_url'=>'https://zhuisu.sindns.com/index.php/index/product/index',//二维码的查询地址
