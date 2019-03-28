@@ -48,7 +48,7 @@ class Index extends  CommonBaseHome
         if (empty($New)) {
             $New = Db::query("  SELECT *    FROM sy_template WHERE  data_status=1 AND data_type=0 AND create_time BETWEEN $tuesdays AND  $time   ORDER BY create_time DESC");
                 if (empty($New)){
-                    $New = Db::name('template')->where('data_type',0)->order('create_time desc')->select();;
+                    $New = Db::name('template')->where('data_type',0)->where('data_status',1)->order('create_time desc')->select();;
                 }
         }
 
@@ -64,7 +64,7 @@ class Index extends  CommonBaseHome
 
         }
         //热门排序
-        $Popular = Db::name('template ')->order('get_nums desc')->select();
+        $Popular = Db::name('template ')->where('data_type',0)->where('data_status',1)->order('get_nums desc')->select();
         foreach($Popular as $k=>$value){
             $Populars= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select()[0];
             $Popular[$k]['paper_size_long']=isset($Populars['paper_size_long'])?$Populars['paper_size_long']:'';
@@ -76,7 +76,7 @@ class Index extends  CommonBaseHome
 
         }
         //综合排序
-        $cas = Db::name('template')->order('show_nums+get_nums desc')->select();;
+        $cas = Db::name('template')->where('data_type',0)->where('data_status',1)->order('show_nums+get_nums desc')->select();;
 
         foreach($cas as $k=>$value){
             $cass= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select()[0];
