@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>业务员独立后台</title>
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+  <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><img src="./images/logo.png"></div>    
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item"><a href="">前台首页</a></li>
+      <li class="layui-nav-item"><a href="">退出登录</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-tab">
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <ul class="layui-nav layui-nav-tree layui-tab-title">
+        <li class="layui-nav-item layui-this"><i class="lusheji lusheji_iconziliao"></i>资料修改</li>
+        <li class="layui-nav-item"><i class="lusheji lusheji_icontuiguang"></i>用户推广</li>
+      </ul>
+    </div>
+  </div>
+  
+ <!--资料修改开始-->
+   <div class="layui-tab-content layui-body">
+     <div class="layui-tab-item layui-show">
+    <div class="bgzt">
+        <div class="box-center">
+           <div class="Order_title">资料修改</div>
+<div class="liebiao">
+   <form class="layui-form" action="">
+  <div class="layui-form-item">
+    <label class="layui-form-label">更改密码</label>
+    <div class="layui-input-inline">
+      <input style="width: 190px;" type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux">辅助文字</div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">确认密码</label>
+    <div class="layui-input-inline">
+      <input style="width: 190px;" type="password" name="password" required lay-verify="required" placeholder="请重新输入密码" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux">请再次确认密码</div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="formDemo">立即更改</button>
+    </div>
+  </div>
+</form>
+  </div></div>
+  </div>
+     <div class="clear"></div>
+   </div>
+
+
+ <!--资料修改结束-->
+
+
+
+ <!--用户推广开始-->
+ <div class="layui-tab-item">
+  <div class="bgzt">
+    <div class="box-center">
+          <div class="Order_title">用户推广</div>
+<div class="liebiao">
+<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">推广链接</label>
+    <div class="layui-input-block">
+      <input id="fuzhi" style="width: 300px;    padding: 0 5px;" value="http://www.baidu.com" readonly/>   <button  onclick="copyUrl()" class="layui-btn ">复制</button>
+    </div>
+    <script>  
+function copyUrl() {  
+    var Url=document.getElementById("fuzhi");  
+    Url.select(); // 选择对象  
+    document.execCommand("Copy"); // 执行浏览器复制命令  
+    alert("复制成功！");  
+}
+</script>
+  </div>
+</div>
+
+      <div class="Order_title">推广列表</div>
+    <div class="liebiao">
+      <table class="layui-table" lay-skin="line" lay-size="sm" >
+  <colgroup>
+    <col width="100">
+    <col width="100">
+    <col width="100">
+    <col width="100">
+    <col width="100">
+  </colgroup>
+   <thead>
+    <tr>
+      <th>用户名</th>
+      <th>注册日期</th>
+      <th>下单数量</th>
+      <th>下单金额</th>
+      <th>分成</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr>
+      <td>张三</td>
+      <td>2019-03-03</td>
+      <td>26952</td>
+      <td>1321541.00</td>
+      <td>8659.00</td>
+    </tr>
+        <tr>
+      <td>李四</td>
+      <td>2019-03-03</td>
+      <td>26952</td>
+      <td>1321541.00</td>
+      <td>8659.00</td>
+    </tr>
+    <tr>
+      <td>王五</td>
+      <td>2019-03-03</td>
+      <td>26952</td>
+      <td>1321541.00</td>
+      <td>8659.00</td>
+    </tr>
+    <tr>
+      <td>朱六</td>
+      <td>2019-03-03</td>
+      <td>26952</td>
+      <td>1321541.00</td>
+      <td>8659.00</td>
+    </tr>
+  </tbody>
+</table>
+ </div>
+ </div>
+
+ <div id="laypage88" style="text-align: center;">
+  <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+    <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+    <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+      <a href="javascript:;" data-page="2">2</a>
+      <a href="javascript:;" data-page="3">3</a>
+      <a href="javascript:;" data-page="4">4</a>
+      <a href="javascript:;" data-page="5">5</a>
+      <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+    </div>
+  </div>
+</div> 
+<div class="clear"></div>
+</div>
+  <!--资料修改结束-->
+
+
+      </div>
+
+  </div>
+  
+
+  </div>
+
+
+<script src="./layui/layui.all.js"></script>
+  <script>
+        layui.use(['form', 'laydate'], function(){
+          var form          = layui.form
+          ,laydate          = layui.laydate;
+        });
+      </script>
+  
+</body>
+</html>

@@ -3,23 +3,21 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>后台管理</title>
-	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
-	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<link rel="stylesheet" href="__STATIC__/admin/newstyle/layui/css/layui.css">
+	<link rel="stylesheet" href="__STATIC__/admin/newstyle/css/style.css">
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
 </head>
-<body>
-	<div class="backstage">
-		<a href="__URL__/main" target="mainframe"><div class="webs fl">网站内容管理系统</div></a>
-        <div class="webs_r fr">
-        	<ul class="webs_con">
-                <li class="adminid"></li>
-                <li class="adminids">登陆者&nbsp;:&nbsp;{$Think.session.adminname}</li>
-				{if auth('admin/admin/modifypwd')}
-                <li><a href="__ROOT__/admin.php/admin/admin/modifypwd" target="mainframe"><span>修改密码</span></a></li>
-				{/if}
-                <li><a href="__URL__/unlogin" title="退出"><span>退出</span></a></li>
-                <!--<li><a href="/index.php" target="_blank" title="前台"><span>前台</span></a></li>-->
-        	</ul>
-        </div>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<div class="layui-header">
+		<div class="layui-logo"><a href="__URL__/main" target="mainframe"><img src="./images/logo.png" style="margin-top:20px;"></a></div>
+		<ul class="layui-nav layui-layout-right">
+			<li class="layui-nav-item"><a href="/index.php">前台首页</a></li>
+			<li class="layui-nav-item"><a href="__URL__/unlogin">退出登录</a></li>
+			<span class="layui-nav-bar"></span>
+			<!--<li class="adminids">登陆者&nbsp;:&nbsp;{$Think.session.adminname}</li>-->
+		</ul>
 	</div>
+</div>
 </body>
 </html>
