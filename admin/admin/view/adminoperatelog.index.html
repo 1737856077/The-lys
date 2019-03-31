@@ -3,6 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理-操作日志</title>
+    <link rel="stylesheet" href="__STATIC__/admin/newstyle/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/newstyle/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
 	<link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
 	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
     <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
@@ -12,17 +15,48 @@
 </head>
 
 <body>
-<div class="cont_title">　您当前的位置：后台管理&nbsp;-&nbsp; 系统管理员&nbsp;-&nbsp; 操作记录</div>
-    
+<!--顶部TAB菜单开始-->
+<div class="layui-tab-content">
+    <div class="layui-tab-item">
+        <div class="bgzt">
+            <div class="box-center">
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title tab_tatle">
+        {if auth('admin/admin/index')}
+        <li>
+            <a href="/admin.php/admin/admin/index"><p class="Order1">管理员列表</p></a>
+        </li>
+        {/if}
+        {if auth('admin/admin/add')}
+        <li>
+            <a href="/admin.php/admin/admin/add"><p class="Order1">添加管理员</p></a>
+        </li>
+        {/if}
+        {if auth('admin/adminoperatelog/index')}
+        <li class="layui-this">
+            <a href="/admin.php/admin/adminoperatelog/index"><p class="Order1">操作记录</p></a>
+        </li>
+        {/if}
+        {if auth('admin/admin/modifypwd')}
+        <li>
+            <a href="/admin.php/admin/admin/modifypwd"><p class="Order1">修改密码</p></a>
+        </li>
+        {/if}
+        {if auth('admin/adminshare/index')}
+        <li>
+            <a href="/admin.php/admin/adminshare/index"><p class="Order1">分享注册</p></a>
+        </li>
+        {/if}
+    </ul>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部TAB菜单结束-->
     <div class="con">
-    
     	<div class="conlist">
-        
      	<table class="listtable">
-            	<tr class="tr1">
-                	<td colspan="3" class="tit">操作记录</td>
-                    <td  class="tit"></td>
-                </tr>
                 <tr class="tr1">
                     <td class="tdtit">ID</td>
                     <td class="tdtit">操作者</td>
