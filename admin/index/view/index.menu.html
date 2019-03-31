@@ -1,196 +1,168 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>Document</title>
-	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
-	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="wilih=device-wilih, initial-scale=1, maximum-scale=1">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
-	<!--[if lte IE 6]>
-<script src="/Public/js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script src="http://at.alicdn.com/t/font_1116225_3uku9hmvtoc.js"></script>
+    <script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
-        DD_belatedPNG.fix('div,p,img,li,span,i');
+        $(function () {
+            $(".layui-side-scroll dd").hide();
+            $(".layui-side-scroll li").click(function () {
+                $(this).parent().find('dd').removeClass("menu_chioce");
+                $(".menu_chioce").slideUp();
+                $(this).parent().find('dd').slideToggle();
+            });
+        })
     </script>
-	<![endif]-->
-    
-<script type="text/javascript">
-    $(function(){
-       $(".menus").height($(window).height()-54).find(".menus_r").width($(window).width()-160-20);  
-   
-    /****************左侧菜单触发二级菜单******************/
-    $(".menus_l > ul > li.tab > .list_back").each(function(m,n){
-        $(n).click(function(){
-          $(this).next("ul").slideToggle().parent("li").addClass("change").siblings("li.tab").removeClass("change").find("ul").hide();
-        });
-    });  
-});  
-</script>
 </head>
-<body style="background:#191f26 none repeat scroll;">
-    <div class="menus">
-     	<div class="menus_l">
-        	 <ul>
-              <li class="cur">
-                  <div class="list_ca list_back"><i></i><a href="javascript:vivo(0)">内容管理</a><em></em></div>
-              </li>
 
-                 {if auth('admin/admin/index') or  auth('admin/manager/index') or  auth('admin/admin/add') or  auth('admin/adminoperatelog/index')  or  auth('admin/admin/modifypwd') }
-                 <li class="tab change">
-                     <div class="list_cb list_back"><i></i><a href="javascript:vivo(0)">系统管理员 </a><em></em></div>
-                     <ul class="ct" style="display:none;">
-                         {if auth('admin/admin/index')}
-                         <li><a href="__ROOT__/admin.php/admin/admin/index" target="mainframe">管理员列表</a></li>
-                         {/if}
-                         {if auth('admin/admin/add')}
-                         <li><a href="__ROOT__/admin.php/admin/admin/add" target="mainframe">添加管理员</a></li>
-                         {/if}
-                         {if auth('admin/adminoperatelog/index')}
-                         <li><a href="__ROOT__/admin.php/admin/adminoperatelog/index" target="mainframe">操作记录　</a></li>
-                         {/if}
-                         {if auth('admin/admin/modifypwd')}
-                         <li><a href="__ROOT__/admin.php/admin/admin/modifypwd" target="mainframe">修改密码　</a></li>
-                         {/if}
-                         {if auth('admin/adminshare/index')}
-                         <li><a href="__ROOT__/admin.php/admin/adminshare/index" target="mainframe">分享注册　</a></li>
-                         {/if}
-                     </ul>
-                     <hr>
-                 </li>
-                 {/if}
-                 
-                 <li class="tab">
-                    <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">安全管理</a><em></em></div>
-                    <ul class="ct" style="display:none;">
-                        {if auth('admin/admin/modifypwd')}
-                        <li><a href="__ROOT__/admin.php/admin/admin/modifypwd" target="mainframe">修改密码　</a></li>
-                        {/if}
-                        <li><a href="#" target="mainframe">fdsdfdsfsfdsf　</a></li>
-                    </ul>
-                    <hr>
-                  </li>
-                 
-                 <li class="tab">
-                    <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">基础资料</a><em></em></div>
-                    <ul class="ct" style="display:none;">
-                        <li><a href="#" target="mainframe">标准模版管理　</a></li>
-                        {if auth('designtpl/dtemplate/index')}
-                        <li><a href="/admin.php/designtpl/dtemplate/index" target="mainframe">|--模版列有　</a></li>
-                        {/if}
-                        {if auth('design/online/index')}
-                        <li><a href="/index.php/design/online/index" target="mainframe">|--添加模版　</a></li>
-                        {/if}
-                        {if auth('designtpl/dtemplate/index')}
-                        <li><a href="/admin.php/designtpl/dtemplate/index" target="mainframe">|--设置状态　</a></li>
-                        {/if}
-                        <li><a href="#" target="mainframe">模版分类管理　</a></li>
-                        {if auth('designtpl/dtemplatetype/index')}
-                        <li><a href="/admin.php/designtpl/dtemplatetype/index" target="mainframe">|--分类列有　</a></li>
-                        {/if}
-                        {if auth('designtpl/dtemplatetype/add')}
-                        <li><a href="/admin.php/designtpl/dtemplatetype/add" target="mainframe">|--添加分类　</a></li>
-                        {/if}
-                        {if auth('designtpl/dtemplatetype/index')}
-                        <li><a href="/admin.php/designtpl/dtemplatetype/index" target="mainframe">|--编辑分类　</a></li>
-                        {/if}
-                        <li><a  target="mainframe">纸张管理　</a></li>
-                        {if auth('paper/paper/index') }
-                        <li><a href="/admin.php/paper/paper/index" target="mainframe">|--材质列表　</a></li>
-                        {/if}
-                        {if auth('paper/paper/add') }
-                        <li><a href="/admin.php/paper/paper/add" target="mainframe">|--添加材质　</a></li>
-                        {/if}
-                        {if auth('paper/paper/index') }
-                        <li><a href="/admin.php/paper/paper/add" target="mainframe">|--编辑材质　</a></li>
-                        {/if}
-                    </ul>
-                    <hr>
-                  </li>
+<body class="layui-layout-body">
+<div class="menus">
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item layui-this"><i class="layui-icon">&#xe7ae;</i>内容管理
+        </li>
+    </dl>
 
-                 {if auth('auth/systemrole/index') or  auth('auth/systemnode/index')  }
-                 <li class="tab">
-                     <div class="list_cc list_back"><i></i><a href="javascript:vivo(0)">权限管理</a><em></em></div>
-                     <ul class="ct" style="display:none;">
-                         {if auth('auth/systemrole/index')}
-                         <li><a href="__ROOT__/admin.php/auth/systemrole/index" target="mainframe">系统角色</a></li>
-                         {/if}
-                         {if auth('auth/systemnode/index')}
-                         <li><a href="__ROOT__/admin.php/auth/systemnode/index" target="mainframe">系统结点</a></li>
-                         {/if}
-                     </ul>
-                     <hr>
-                 </li>
-                 {/if}
-                 
-                 <li class="tab">
-                    <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">工单管理</a><em></em></div>
-                    <ul class="ct" style="display:none;">
-                        <li><a href="#" target="mainframe">工单列表　</a></li>
-                        <li><a href="#" target="mainframe">待回复工单　</a></li>
-                    </ul>
-                    <hr>
-                  </li>
+    {if auth('admin/admin/index') or  auth('admin/manager/index') or  auth('admin/admin/add') or  auth('admin/adminoperatelog/index')  or  auth('admin/admin/modifypwd') }
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item"><i class="layui-icon">&#xe66f;</i>   系统管理员
+        </li>
+        {if auth('admin/admin/index')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/admin/admin/index" target="mainframe">管理员列表</a></dd>
+        {/if}
+        {if auth('admin/admin/add')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/admin/admin/add" target="mainframe">添加管理员</a></dd>
+        {/if}
+        {if auth('admin/adminoperatelog/index')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/admin/adminoperatelog/index" target="mainframe">操作记录　</a></dd>
+        {/if}
+        {if auth('admin/admin/modifypwd')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/admin/admin/modifypwd" target="mainframe">修改密码　</a></dd>
+        {/if}
+        {if auth('admin/adminshare/index')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/admin/adminshare/index" target="mainframe">分享注册　</a></dd>
+        {/if}
+    </dl>
+    {/if}
 
-                 {if auth('salesman/salesman/index') or  auth('salesman/divideinto/index') }
-                 <li class="tab">
-                     <div class="list_cc list_back"><i></i><a href="javascript:vivo(0)">业务员管理</a><em></em></div>
-                     <ul class="ct" style="display:none;">
-                         {if auth('salesman/salesman/index')}
-                         <li><a href="__ROOT__/admin.php/salesman/salesman/index" target="mainframe">资料管理</a></li>
-                         {/if}
-                         {if auth('salesman/divideinto/index')}
-                         <li><a href="__ROOT__/admin.php/salesman/divideinto/index" target="mainframe">业务员分成　</a></li>
-                         {/if}
-                        <!--<li><a href="#" target="mainframe">业务统计　</a></li>-->
-                     </ul>
-                     <hr>
-                 </li>
-                 {/if}
-                 
-                 <li class="tab">
-                    <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">客户管理</a><em></em></div>
-                    <ul class="ct" style="display:none;">
-                        {if auth('member/member/index')}
-                        <li><a href="/admin.php/member/member/index" target="mainframe">客户列表　</a></li>
-                        {/if}
-                        {if auth('member/member/index')}
-                        <li><a href="/admin.php/member/member/index" target="mainframe">资料管理　</a></li>
-                        {/if}
-                        {if auth('order/order/index')}
-                        <li><a href="/admin.php/order/order/index" target="mainframe">财务往来　</a></li>
-                        {/if}
-                        {if auth('report/report/index')}
-                        <li><a href="/admin.php/report/report/index" target="mainframe">统计报表　</a></li>
-                        {/if}
-                    </ul>
-                    <hr>
-                  </li>
-                  
-                  <li class="tab">
-                    <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">订单管理</a><em></em></div>
-                    <ul class="ct" style="display:none;">
-                        {if auth('order/order/index')}
-                    	<li><a href="/admin.php/order/order/index" target="mainframe">订单列表　</a></li>
-                        {/if}
-                        {if auth('order/order/index')}
-                        <li><a href="/admin.php/order/order/index" target="mainframe">订单审核　</a></li>
-                        {/if}
-                        {if auth('order/order/index')}
-                        <li><a href="/admin.php/order/order/index" target="mainframe">订单下发　</a></li>
-                        {/if}
-                        {if auth('order/order/index')}
-                        <li><a href="/admin.php/order/order/index" target="mainframe">状态管理　</a></li>
-                        {/if}
-                        {if auth('order/order/index')}
-                        <li><a href="/admin.php/order/order/index" target="mainframe">下载模版文件(1)　</a></li>
-                        {/if}
-                    </ul>
-                    <hr>
-                  </li>
 
-            </ul>
-        
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item"><i class="layui-icon">&#xe672;</i> 安全中心
+        </li>
+        {if auth('admin/admin/modifypwd')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/admin/admin/modifypwd" target="mainframe">修改密码　</a></dd>
+        {/if}
+    </dl>
+
+
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item"><i class="layui-icon">&#xe63c;</i>基础资料
+        </li>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">标准模版管理　</a></dd>
+        {if auth('designtpl/liemplate/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/designtpl/liemplate/index" target="mainframe">|--模版列有　</a></dd>
+        {/if}
+        {if auth('design/onddne/index')}
+        <dd class="layui-nav-item"><a href="/index.php/design/onddne/index" target="mainframe">|--添加模版　</a></dd>
+        {/if}
+        {if auth('designtpl/liemplate/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/designtpl/liemplate/index" target="mainframe">|--设置状态　</a></dd>
+        {/if}
+        <dd class="layui-nav-item"><a href="#" target="mainframe">模版分类管理　</a></dd>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">|--分类列有　</a></dd>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">|--添加分类　</a></dd>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">|--编辑分类　</a></dd>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">纸张管理　</a></dd>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">|--材质列表　</a></dd>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">|--添加材质　</a></dd>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">|--编辑材质　</a></dd>
+    </dl>
+
+    {if auth('auth/systemrole/index') or  auth('auth/systemnode/index')  }
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item"> <i class="layui-icon">&#xe679;</i>   权限管理
+        </li>
+        {if auth('auth/systemrole/index')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/auth/systemrole/index" target="mainframe">系统角色</a></dd>
+        {/if}
+        {if auth('auth/systemnode/index')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/auth/systemnode/index" target="mainframe">系统结点</a></dd>
+        {/if}
+    </dl>
+    {/if}
+
+
+
+
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item"><i class="layui-icon">&#xe62a;</i>工单管理
+        </li>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">工单列表　</a></dd>
+        <dd class="layui-nav-item"><a href="#" target="mainframe">待回复工单　</a></dd>
+    </dl>
+
+    {if auth('salesman/salesman/index') or  auth('salesman/divideinto/index') }
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item"><i class="layui-icon">&#xe770;</i>业务员管理
+        </li>
+        {if auth('salesman/salesman/index')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/salesman/salesman/index" target="mainframe">资料管理</a></dd>
+        {/if}
+        {if auth('salesman/divideinto/index')}
+        <dd class="layui-nav-item"><a href="__ROOT__/admin.php/salesman/divideinto/index" target="mainframe">业务员分成　</a></dd>
+        {/if}
+        <!--<dd class="layui-nav-item"><a href="#" target="mainframe">业务统计　</a></dd>-->
+    </dl>
+    {/if}
+
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item"><i class="layui-icon">&#xe613;</i>客户管理
+        </li>
+        {if auth('member/member/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/member/member/index" target="mainframe">客户列表　</a></dd>
+        {/if}
+        {if auth('member/member/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/member/member/index" target="mainframe">资料管理　</a></dd>
+        {/if}
+        {if auth('order/order/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/order/order/index" target="mainframe">财务往来　</a></dd>
+        {/if}
+        <dd class="layui-nav-item"><a href="#" target="mainframe">统计报表　</a></dd>
+    </dl>
+
+
+
+    <dl class="layui-nav layui-nav-tree layui-tab-title">
+        <li onCddck="changeImage()" class="layui-nav-item"><i class="layui-icon">&#xe629;</i>订单管理
+        </li>
+        {if auth('order/order/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/order/order/index" target="mainframe">订单列表　</a></dd>
+        {/if}
+        {if auth('order/order/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/order/order/index" target="mainframe">订单审核　</a></dd>
+        {/if}
+        {if auth('order/order/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/order/order/index" target="mainframe">订单下发　</a></dd>
+        {/if}
+        {if auth('order/order/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/order/order/index" target="mainframe">状态管理　</a></dd>
+        {/if}
+        {if auth('order/order/index')}
+        <dd class="layui-nav-item"><a href="/admin.php/order/order/index" target="mainframe">下载模版文件(1)　</a></dd>
+        {/if}
+    </dl>
         </div>
-        
-    </div>
+
+        </div>
+</div>
 </body>
 </html>

@@ -195,9 +195,15 @@ class Admin extends \app\common\controller\CommonAdmin
         $map['name']=array('eq',Session::get("adminname"));
         $Admin=Db::name('admin');
         $getoneAdmin=$Admin->where($map)->find();
-
         $this->assign('getoneAdmin',$getoneAdmin);
         return $this->fetch();
+    }
+    public function modifypwds(){
+        $param = $this->request->param();
+        $admin_id = htmlspecialchars(isset($param['admin_id'])?intval(trim($param['admin_id'])):'');
+        $Admin=Db::name('admin');
+        $getoneAdmin=$Admin->where("admin_id",$admin_id)->find();
+        return json($getoneAdmin);
     }
 
     /**

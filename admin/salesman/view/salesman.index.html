@@ -1,100 +1,383 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>业务员管理-业务员列表</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
+<body class="layui-layout-body">
+<div class="layui-tab-item layui-show">
+    <div class="layui-tab-content layui-body">
 
-<body>
-    <div class="cont_title">　你当前的位置：业务员管理 -业务员列表</div>
-    
-    <div class="con">
-    
-    	<div class="conlist">
-        <form name="form1" method="get" action="__URL__/index">
-     	<table class="listtable">
-        
-                   
-                    <tr class="tr1">
-						<td  colspan="7" class="tdlist">查询：
-                        业务员名称 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
-                        联系电话 <input type="text" name="SearchTel" id="SearchTel" value="{$SearchTel}" />　
-                        <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
-					
-					<td   class="tdlist">
-                        {if auth('salesman/salesman/add') }
-                        <a href="__URL__/add"><input type="button"  value="添加业务员" class="buttomorger100" /> </a>
-                        {/if}
-                    </td>
-                    </tr>
-				</table>
-                 </form> 
-        <form  method="post" action="__URL__/editinfo/action/save?{$paramUrl}">        
-				<table class="listtable">
-                    <tr class="tr1">
-                        <td colspan="7" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdtit">ID</td>
-                        <td class="tdtit">用户名</td>
-                        <td class="tdtit">性别</td>
-                        <td class="tdtit">入职日期</td>
-                        <td class="tdtit">分成比例</td>
-                        <td class="tdtit">状态</td>
-                        <td class="tdtit">操作</td>
-                    </tr>
-                   {foreach $List as $value}
-                	<tr class="tr1">
-                    	<td class="tdlist">{$value['admin_id']}&nbsp;</td>
-                        <td class="tdlist">{$value['name']}&nbsp;</td>
-                        <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
-                        <td class="tdlist">{$value['job_in_time']}</td>
-                        <td class="tdlist">{$value['divide_into']}%</td>
-                        <td class="tdlist">
-                            {if auth('salesman/salesman/editinfo') }
-                                {if $value['job_status'] eq 0}
-                                <a href="__URL__/editinfo/action/checkStatus/id/{$value['admin_id']}/Status/1?{$paramUrl}" ><font color="#ff0000">已离职</font></a>
-                                {else}
-                                <a href="__URL__/editinfo/action/checkStatus/id/{$value['admin_id']}/Status/0?{$paramUrl}" ><font color="#006600">在职</font></a>
-                                {/if}
-                            {else}
-                                {if $value['job_status'] eq 0}
-                                <font color="#ff0000">已离职</font>
-                                {else}
-                                <font color="#006600">在职</font>
-                                {/if}
+
+
+        <!--业务员管理开始-->
+            <div class="bgzt">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            <li class="layui-this"><p class="Order1">查找业务员</p></li>
+                            {if auth('salesman/salesman/add') }
+                            <a  href="__URL__/add"><input type="button"  class="layui-btn layui-btn-radius" value="添加业务员" class="buttomorger100" /> </a>
                             {/if}
-                        </td>
-                        <td class="tdlist">
-                            {if auth('salesman/salesman/edit') }
-                                [<a href="{:url('salesman/edit')}?id={$value['admin_id']}&{$paramUrl}">编辑</a>]
-                            {/if}
-                        </td>
-                    </tr>
-				{/foreach}
-                
-                {if $count eq 0}
-                    <tr class="tr1">
-                    	<td colspan="7" class="tdlist">暂无相关记录！ </td>
-                    </tr>
-                {/if}
-                
-            </table>
-            <div style="text-align:right; padding-right:40px;">
-            {$page}
-           </div>
-           </form> 
-            
+                        </ul>
+
+
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <form class="layui-form" method="get" action="__URL__/index">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">业务员名称</label>
+                                        <div class="layui-input-block">
+                                            <input style="width: 190px;" type="text" name="SearchTitle"   class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">联系电话</label>
+                                        <div class="layui-input-inline">
+                                            <input style="width: 190px;" type="password" name="SearchTel" class="layui-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <button class="layui-btn" lay-submit lay-filter="formDemo">查找</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="Order_title">业务员列表</div>
+                                <div class="liebiao"><table class="layui-table" lay-skin="line" lay-size="sm" >
+                                    <thead>
+                                    <tr>
+                                        <td class="tdtit">ID</td>
+                                        <td class="tdtit">用户名</td>
+                                        <td class="tdtit">性别</td>
+                                        <td class="tdtit">入职日期</td>
+                                        <td class="tdtit">分成比例</td>
+                                        <td class="tdtit">状态</td>
+                                        <td class="tdtit">操作</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {foreach $List as $value}
+                                    <tr class="tr1">
+                                        <td class="tdlist">{$value['admin_id']}&nbsp;</td>
+                                        <td class="tdlist">{$value['name']}&nbsp;</td>
+                                        <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
+                                        <td class="tdlist">{$value['job_in_time']}</td>
+                                        <td class="tdlist">{$value['divide_into']}%</td>
+                                        <td class="tdlist">
+                                            {if auth('salesman/salesman/editinfo') }
+                                            {if $value['job_status'] eq 0}
+                                            <a href="__URL__/editinfo/action/checkStatus/id/{$value['admin_id']}/Status/1?{$paramUrl}" ><font color="#ff0000">已离职</font></a>
+                                            {else}
+                                            <a href="__URL__/editinfo/action/checkStatus/id/{$value['admin_id']}/Status/0?{$paramUrl}" ><font color="#006600">在职</font></a>
+                                            {/if}
+                                            {else}
+                                            {if $value['job_status'] eq 0}
+                                            <font color="#ff0000">已离职</font>
+                                            {else}
+                                            <font color="#006600">在职</font>
+                                            {/if}
+                                            {/if}
+                                        </td>
+                                        <td class="tdlist">
+                                            {if auth('salesman/salesman/edit') }
+                                            [<a class="click_pop" href="{:url('salesman/edit')}?id={$value['admin_id']}&{$paramUrl}">编辑</a>]
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                    {/foreach}
+
+                                    {if $count eq 0}
+                                    <tr class="tr1">
+                                        <td colspan="7" class="tdlist">暂无相关记录！ </td>
+                                    </tr>
+                                    {/if}
+                                    </tbody>
+                                </table>
+                                    <!--遮罩层-->
+                                    <div class="bgPop"></div>
+                                    <!--弹出框-->
+                                    <div class="pop">
+                                        <div class="pop-top">
+                                            <h2>编辑</h2>
+                                            <span class="pop-close"><i class="lusheji lusheji_iconclose-b" style="font-size: 40px;color: #000;"></i></span>
+                                        </div>
+                                        <div class="pop-content">
+                                            <div class="pop-content-left">
+                                                <img src="" alt="" class="teathumb">
+                                            </div>
+                                            <div class="pop-content-right">
+                                                <form class="layui-form" action="">
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">用户名</label>
+                                                        <div class="layui-input-block">
+                                                            <input style="width: 190px;" type="text" name="title" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">密码框</label>
+                                                        <div class="layui-input-inline">
+                                                            <input style="width: 190px;" type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">确认密码</label>
+                                                        <div class="layui-input-inline">
+                                                            <input style="width: 190px;" type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <label class="layui-form-label">入职日期</label>
+                                                        <div class="layui-input-inline">
+                                                            <input type="text" class="layui-input" id="tool-time4" placeholder="yyyy-MM-dd">
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">性别</label>
+                                                        <div class="layui-input-block">
+                                                            <input type="radio" name="sex" value="男" title="男">
+                                                            <input type="radio" name="sex" value="女" title="女" checked>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <label class="layui-form-label">分成比例</label>
+                                                        <div class="layui-input-block">
+                                                            <input style="width: 190px;" type="text" name="title" required  lay-verify="required" placeholder="请输入分成比例" autocomplete="off" class="layui-input">
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <div class="layui-input-block">
+                                                            <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div id="laypage88" style="text-align: center;">
+                                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                                        <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                        <a href="javascript:;" data-page="2">2</a>
+                                        <a href="javascript:;" data-page="3">3</a>
+                                        <a href="javascript:;" data-page="4">4</a>
+                                        <a href="javascript:;" data-page="5">5</a>
+                                        <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a></div></div>
+                            </div>
+                            <div class="layui-tab-item">
+
+                                <div class="liebiao">
+                                    <table class="layui-table" lay-skin="line" lay-size="sm" >
+                                        <colgroup>
+                                            <col width="100">
+                                            <col width="50">
+                                            <col width="10">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th>用户名</th>
+                                            <th>性别</th>
+                                            <th>入职时间</th>
+                                            <th>分成比例</th>
+                                            <th>推广人数</th>
+                                            <th>累计分成</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>张三</td>
+                                            <td>男</td>
+                                            <td>2019-01-01</td>
+                                            <td>10%</td>
+                                            <td>1052</td>
+                                            <td><i class="lusheji lusheji_iconjinbi"></i>224615</td>
+                                        </tr>
+                                        <tr>
+                                            <td>张三</td>
+                                            <td>男</td>
+                                            <td>2019-01-01</td>
+                                            <td>10%</td>
+                                            <td>1052</td>
+                                            <td><i class="lusheji lusheji_iconjinbi"></i>224615</td>
+                                        </tr>
+                                        <tr>
+                                            <td>张三</td>
+                                            <td>男</td>
+                                            <td>2019-01-01</td>
+                                            <td>10%</td>
+                                            <td>1052</td>
+                                            <td><i class="lusheji lusheji_iconjinbi"></i>224615</td>
+                                        </tr>
+                                        <tr>
+                                            <td>张三</td>
+                                            <td>男</td>
+                                            <td>2019-01-01</td>
+                                            <td>10%</td>
+                                            <td>1052</td>
+                                            <td><i class="lusheji lusheji_iconjinbi"></i>224615</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="laypage88" style="text-align: center;">
+                                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                                        <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                        <a href="javascript:;" data-page="2">2</a>
+                                        <a href="javascript:;" data-page="3">3</a>
+                                        <a href="javascript:;" data-page="4">4</a>
+                                        <a href="javascript:;" data-page="5">5</a>
+                                        <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a></div></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    
-    </div>
-    
- 
-</div>
+        <!--业务员管理结束-->
+
+
+    </div><script src="__STATIC__/admin/layui/layui.all.js"></script>
+    <script>
+        layui.use(['form', 'laydate'], function () {
+            var form = layui.form
+                , laydate = layui.laydate;
+
+            // 时间选择
+            laydate.render({
+                elem: '#tool-time',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+            // 时间选择2
+            laydate.render({
+                elem: '#tool-time2',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+// 时间选择3
+            laydate.render({
+                elem: '#tool-time3',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+            // 时间选择4
+            laydate.render({
+                elem: '#tool-time4',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+
+            // 时间选择5
+            laydate.render({
+                elem: '#tool-time5',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+        });
+    </script>
+    <script>
+        var j = 3;
+
+        function addtr() {
+            var tableobj = document.getElementById("tid");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+        function addtr2() {
+            var tableobj = document.getElementById("tid2");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+        function addtr3() {
+            var tableobj = document.getElementById("tid3");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+
+        function addtr4() {
+            var tableobj = document.getElementById("tid4");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+        function addtr5() {
+            var tableobj = document.getElementById("tid5");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+        function delecttr(obj) {
+            var tr = obj.parentNode.parentNode;
+            tr.parentNode.removeChild(tr);
+        }
+
+    </script>
 </body>
 </html>

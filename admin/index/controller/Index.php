@@ -23,6 +23,10 @@ class Index extends  Controller
             $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
         }
     }
+    public function header2()
+    {
+        return $this->fetch();
+    }
 
     public function main(){
         return $this->fetch();

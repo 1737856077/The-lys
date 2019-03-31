@@ -33,11 +33,12 @@ INSERT INTO `sy_template_class` (`class_id`, `father_id`, `level`, `title`, `dat
 (25, 2, 2, 'ßéÍ·', '', 50, 0, 1, 0, 0),
 (26, 2, 2,  'ÐÅ¼þ', '', 50, 0, 1, 0, 0);
 
-
-
-
-
-
+/*2019-03-19*/
+ALTER TABLE  `sy_paper` ADD  `price_one` double(10,2) NULL DEFAULT  '0.00' AFTER  `price`;
+ALTER TABLE  `sy_paper` ADD  `price_two` double(10,2) NULL DEFAULT  '0.00' AFTER  `price_one`;
+ALTER TABLE  `sy_paper` ADD  `price_three` double(10,2) NULL DEFAULT  '0.00' AFTER  `price_two`;
+ALTER TABLE  `sy_order` ADD  `print_mode` Tinyint(1) NULL DEFAULT  '0' AFTER  `paper_direction`;
+ALTER TABLE  `sy_order` ADD  `print_sort` Tinyint(1) NULL DEFAULT  '0' AFTER  `print_mode`;
 
 
 

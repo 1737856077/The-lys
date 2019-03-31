@@ -16,9 +16,18 @@ use think\Session;
 use app\common\controller\CommonBase;
 class Userconter extends  CommonBase
 {
+    public function  _initialize(){
+        parent::_initialize();
+
+        // 打印模式
+        $this->assign("ConfigPreorderPrintMode", \think\Config::get('data.preorder_print_mode'));
+        // 排序方式
+        $this->assign("ConfigPreorderPrintSort", \think\Config::get('data.preorder_print_sort'));
+    }
     /**
      * @用户中心
      */
+
     public function index(){
        $id = Session::get('memberid');
        $data = Db::name('member')->where('member_id',$id)->select();
@@ -138,6 +147,7 @@ class Userconter extends  CommonBase
     public function orders()
     {
         $data= Session::get('memberid');
+
         $member_id = isset($data)? Session::get('memberid') : 0;
         if ($member_id) {
             $member = Db::name('order');
@@ -146,7 +156,8 @@ class Userconter extends  CommonBase
             $design = $member->where('member_id', $member_id)->where('order_status', 2)->select();//设计中
             $verify = $member->where('member_id', $member_id)->where('order_status', 1)->select();//已核实
             $new = $member->where('member_id', $member_id)->where('order_status', 0)->select();//新提交
-            $data = $member->select();
+            $data = $member->where('member_id', $member_id)->select();
+
             if (!empty($data)) {
                 $this->assign([
                     'data' => $data,
@@ -220,7 +231,7 @@ class Userconter extends  CommonBase
     }
 
     /**
-     * @查看模板内容
+     * @内容
      */
     public function content()
     {
@@ -232,6 +243,9 @@ class Userconter extends  CommonBase
         $data = Db::name('template')->where('template_id',$templateid)->select();
         $content = Db::name('template_content')->where('template_id',$templateid)->select();
         $zhizhang = Db::name('paper')->select();
+        $member_id = $data['0']['member_id'];
+        $username = Db::name('member')->where('member_id',$member_id)->field('username')->find();
+        $this->assign('username',$username);
         $this->assign('content',$content);
         $this->assign('data',$data);
         $this->assign('zhizhang',$zhizhang);
@@ -244,14 +258,13 @@ class Userconter extends  CommonBase
     {
         $param = $this->request->param();
         $paper = isset($param['type'])?$param['type']:0;
-        $mumber=isset($param['number'])?$param['number']:0;
-        $cmtype = isset($param['cmtype'])?$param['cmtype']:0;
-        $tempid = isset($param['tempid'])?$param['tempid']:0;
-        dump($param);
+        $mumber=intval(isset($param['number'])?trim($param['number']):0);
+        $cmtype = isset($param['cmtype'])?htmlspecialchars($param['cmtype']):0;
+        $tempid = intval(isset($param['tempid'])?trim($param['tempid']):0);
         $paperdata = Db::name('paper')->where('id',$paper)->select();
+        $username =  htmlspecialchars(isset($param['username'])?$param['username']:0);
         $tempdata = Db::name('template_content')->where('template_id',$tempid)->select();
         $temptadata = Db::name('template')->where('template_id',$tempid)->select();
-        dump($paperdata);
         if (!empty($paperdata)){
             $price = $paperdata[0]['price'];
             $atm  = $mumber*$price;//支付金额
@@ -283,6 +296,7 @@ class Userconter extends  CommonBase
             $data['score_pay'] = $atm;
             $data['score_real_pay'] = $atm;
             $data['create_time'] = time();
+            $data['username'] = $username;
            $this->assign('data',$data);
            return $this->fetch();
         }else{
@@ -302,6 +316,7 @@ class Userconter extends  CommonBase
 
             }
             $data['print_num'] = $mumber;
+            $data['username'] = $username;
             $memberid = $temptadata[0]['member_id'];
             $memberdata =  Db::name('member')->where('member_id',$memberid)->select();
             foreach ($memberdata as $k=>$v){
@@ -311,6 +326,7 @@ class Userconter extends  CommonBase
             }
             $data['create_time'] = time();
             $data = Db::name('order')->insert($data);
+
             if ($data){
                 $this->success('提交成功','/index.php/member/userconter/orders');
             }else{

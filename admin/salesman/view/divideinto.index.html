@@ -1,94 +1,257 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>业务员管理-业务员分成</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script language="javascript" type="text/javascript" src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
+<body class="layui-layout-body">
+<div class="layui-tab-item layui-show">
+    <div class="layui-tab-content layui-body">
 
-<body>
-    <div class="cont_title">　你当前的位置：业务员管理 -业务员分成</div>
-    
-    <div class="con">
-    
-    	<div class="conlist">
-        <form name="form1" method="get" action="__URL__/index">
-     	    <table class="listtable">
-                    <tr class="tr1">
-						<td  colspan="7" class="tdlist">查询：
-                        业务员名称 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
-                        联系电话 <input type="text" name="SearchTel" id="SearchTel" value="{$SearchTel}" />　
-                        <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /><br />
-						　　　&nbsp;支付时间
-                        &nbsp;从&nbsp;
-                        <input type="text" name="SearchBeginTime" id="SearchBeginTime" value="{$SearchBeginTime}" class="Wdate" onClick="WdatePicker({minDate:'2018-01-01',maxDate:'{:date('Y-m-d')}'})"  />　
-                       至 
-                        <input type="text" name="SearchEndTime" id="SearchEndTime" value="{$SearchEndTime}" class="Wdate" onClick="WdatePicker({minDate:'2018-01-01',maxDate:'{:date('Y-m-d')}'}'})"  />
-                    </td>
-					
-					<td   class="tdlist">
-                    </td>
-                    </tr>
-			</table>
-        </form>
-        <form  method="post" action="__URL__/editinfo/action/save?{$paramUrl}">        
-				<table class="listtable">
-                    <tr class="tr1">
-                        <td colspan="7" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdtit">序号</td>
-                        <td class="tdtit">业务员</td>
-                        <td class="tdtit">姓别</td>
-                        <td class="tdtit">分成比例</td>
-                        <td class="tdtit">推广人数</td>
-                        <td class="tdtit">分成</td>
-                        <td class="tdtit">时间</td>
-                    </tr>
-                   {foreach $List as $value}
-                	<tr class="tr1">
-                    	<td class="tdlist">{$value['admin_id']}&nbsp;</td>
-                        <td class="tdlist">{$value['name']}&nbsp;</td>
-                        <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
-                        <td class="tdlist">{$value['divide_into']}</td>
-                        <td class="tdlist">{$value['count_village']}&nbsp;</td>
-                        <td class="tdlist">{$value['sum_BillEntryAmountYZF']}</td>
-                        <td class="tdlist">
-                            {$SearchBeginTime} ~ {$SearchEndTime}
-                        </td>
-                    </tr>
-				{/foreach}
-                
-                {if $count eq 0}
-                    <tr class="tr1">
-                    	<td colspan="7" class="tdlist">暂无相关记录！ </td>
-                    </tr>
-                {/if}
-                <tr class="tr1">
-                        <td class="tdlist">订单总金额</td>
-                        <td class="tdlist"></td>
-                        <td class="tdlist"></td>
-                        <td class="tdlist"></td>
-                        <td class="tdlist"></td>
-                        <td class="tdlist">{$data['sumTotalYZF']}</td>
-                        <td class="tdlist">{$SearchBeginTime} ~ {$SearchEndTime}</td>
-                    </tr>
-            </table>
-            <div style="text-align:right; padding-right:40px;">
-            {$page}
-           </div>
-           </form> 
-            
+
+        <!--业务员管理开始-->
+        <div class="bgzt">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title tab_tatle">
+                    <li class="layui-this"><p class="Order1">业务员分成</p></li>
+                </ul>
+
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <form class="layui-form" method="get" action="__URL__/index">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">业务员名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">联系电话</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="SearchTel" id="SearchTel" value="{$SearchTel}" />　</div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">入职日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="SearchBeginTime" id="SearchBeginTime" value="{$SearchBeginTime}" class="Wdate" onClick="WdatePicker({minDate:'2018-01-01',maxDate:'{:date('Y-m-d')}'})"  />　
+                                    至
+                                    <input type="text" name="SearchEndTime" id="SearchEndTime" value="{$SearchEndTime}" class="Wdate" onClick="WdatePicker({minDate:'2018-01-01',maxDate:'{:date('Y-m-d')}'}'})"  />
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">查找</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+
+
+
+
+                        <div class="liebiao">
+                            <table class="layui-table" lay-skin="line" lay-size="sm">
+                                <thead>
+                                <tr>
+                                    <td class="tdtit">序号</td>
+                                    <td class="tdtit">业务员</td>
+                                    <td class="tdtit">姓别</td>
+                                    <td class="tdtit">分成比例</td>
+                                    <td class="tdtit">推广人数</td>
+                                    <td class="tdtit">分成</td>
+                                    <td class="tdtit">时间</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {foreach $List as $value}
+                                <tr class="tr1">
+                                    <td class="tdlist">{$value['admin_id']}&nbsp;</td>
+                                    <td class="tdlist">{$value['name']}&nbsp;</td>
+                                    <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
+                                    <td class="tdlist">{$value['divide_into']}</td>
+                                    <td class="tdlist">{$value['count_village']}&nbsp;</td>
+                                    <td class="tdlist"><i class="lusheji lusheji_iconjinbi"></i>{$value['sum_BillEntryAmountYZF']}
+                                    </td>
+                                    <td class="tdlist">
+                                        {$SearchBeginTime} ~ {$SearchEndTime}
+                                    </td>
+                                </tr>
+                                {/foreach}
+
+                                {if $count eq 0}
+                                <tr class="tr1">
+                                    <td colspan="7" class="tdlist">暂无相关记录！</td>
+                                </tr>
+                                {/if}
+                                <tr class="tr1">
+                                    <td class="tdlist">订单总金额</td>
+                                    <td class="tdlist"></td>
+                                    <td class="tdlist"></td>
+                                    <td class="tdlist"></td>
+                                    <td class="tdlist"></td>
+                                    <td class="tdlist">{$data['sumTotalYZF']}</td>
+                                    <td class="tdlist">{$SearchBeginTime} ~ {$SearchEndTime}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div id="laypage88" style="text-align: center;">
+                            <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                <a href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                   data-page="0">上一页</a>
+                                <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                <a href="javascript:;" data-page="2">2</a>
+                                <a href="javascript:;" data-page="3">3</a>
+                                <a href="javascript:;" data-page="4">4</a>
+                                <a href="javascript:;" data-page="5">5</a>
+                                <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    
+        <!--业务员管理结束-->
+
+
     </div>
-    
- 
-</div>
+    <script src="__STATIC__/admin/layui/layui.all.js">
+
+
+    </script>
+    <script>
+        layui.use(['form', 'laydate'], function () {
+            var form = layui.form
+                , laydate = layui.laydate;
+
+            // 时间选择
+            laydate.render({
+                elem: '#tool-time',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+            // 时间选择2
+            laydate.render({
+                elem: '#tool-time2',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+// 时间选择3
+            laydate.render({
+                elem: '#tool-time3',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+            // 时间选择4
+            laydate.render({
+                elem: '#tool-time4',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+
+            // 时间选择5
+            laydate.render({
+                elem: '#tool-time5',
+                format: 'yyyy-MM-dd HH:mm:ss'
+                ,
+                theme: '#0f88eb'
+            });
+        });
+    </script>
+    <script>
+        var j = 3;
+
+        function addtr() {
+            var tableobj = document.getElementById("tid");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+        function addtr2() {
+            var tableobj = document.getElementById("tid2");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+        function addtr3() {
+            var tableobj = document.getElementById("tid3");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+
+        function addtr4() {
+            var tableobj = document.getElementById("tid4");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+        function addtr5() {
+            var tableobj = document.getElementById("tid5");
+            var trobj = document.createElement("tr");
+            for (var i = 0; i < 1; i++) {
+                var tdobj = document.createElement("td");
+                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+                trobj.appendChild(tdobj);
+            }
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+            trobj.appendChild(tdobj);
+            tableobj.appendChild(trobj);
+        }
+
+        function delecttr(obj) {
+            var tr = obj.parentNode.parentNode;
+            tr.parentNode.removeChild(tr);
+        }
+
+    </script>
 </body>
 </html>

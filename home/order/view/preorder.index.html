@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <script type="text/javascript" src="__STATIC__/home/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/js/regin.js"></script>
+</head>
+<body>
+<form name="form1" method="post" action="__URL__/regin" onsubmit="javascript:return subfun();">
+    <h1><img src="__STATIC__/admin/images/logo.png" alt="" /></h1>
+    模版名称：
+    模版图片：
+    纸张尺寸：
+    标签尺寸：
+    打印份数：<input type="text" name="username" id="username" onblur="onBlur_username()" maxlength="32" /><span id="span_username"></span><br />
+    打印模式：<select name="">
+                <option value=""></option>
+            </select><br />
+    排序方式：<select name="">
+                <option value=""></option>
+            </select><br />
+    纸张：<select name="">
+            <option value=""></option>
+          </select><br />
+    打印所需：元
+    <button type="submit" class="login">确认</button>&nbsp;<br /><br />
+</form>
+</body>
+</html>

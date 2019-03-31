@@ -1,101 +1,214 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>业务员管理-业务员列表-编辑</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/salesman_add.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
+<body class="layui-layout-body">
 
-
-<body>
-<div class="container">
-	
-    <div class="cont_title">　你当前的位置：业务员管理 - <a href="__URL__/index">业务员列表</a> - 编辑</div>
-    
-    <div class="con">
-    
-    	<div class="conlist">
-        <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfunedit();">
-            <input type="hidden" name="salesman_id" id="salesman_id" value="{$getone.admin_id}" />
-            <table class="listtable">
-                <tr class="tr1">
-                    <td colspan="2" class="tit">编辑</td>
-                </tr>
-               <tr class="tr1">
-                    <td class="tdl">用户名</td>
-                    <td class="tdr" style="padding-top:5px;">{$getone.name}</td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">密码</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input name="pwd" id="pwd" type="text" value="" />　说明：为空则不修改<span class="showErrorMessage" id="span_pwd"></span>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">性别<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <select name="sex">
-                            <option value="0" {if $getone.sex eq 0 }selected{/if} >男</option>
-                            <option value="1" {if $getone.sex eq 1 }selected{/if} >女</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">入职日期<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input type="text" name="job_in_time" id="job_in_time" size="20"  maxlength="10" value="{$getone.job_in_time}" class="Wdate" onClick="WdatePicker()"  />　
-                        示例：2018-01-01<span class="showErrorMessage" id="span_job_in_time"></span>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">分成比例<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input name="divide_into" id="divide_into" type="text" onBlur="onBlur_divide_into()" value="{$getone.divide_into}" />%　示例：10%<span class="showErrorMessage" id="span_divide_into"></span>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">电话<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input name="tel" id="tel" type="text" onBlur="onBlur_tel()" value="{$getone.tel}" />　示例：15601628091<span class="showErrorMessage" id="span_tel"></span>
-                    </td>
-                </tr>
-               <tr class="tr1">
-                        <td class="tdl">状态：</td>
-                        <td class="tdr" style="padding-top:5px;">
-                        <input type="radio" name="data_status" value="0" {if $getone.data_status eq 0}checked{/if} />已离职　
-                        <input type="radio" name="data_status" value="1" {if $getone.data_status eq 1}checked{/if} />在职&nbsp;
-                        </td>
-                </tr>
-                 <tr class="tr1">
-                        <td class="tdl">备注：</td>
-                        <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60">{$getone.data_desc}</textarea>  </td>
-                  </tr>   
-              
-                <tr class="tr1">
-                    <td class="tdl"></td>
-                 <td class="tdr" style="padding-top:5px;">
-                  <input type="submit" name="Submit" value="提交"  class="buttomorger" />　 
-                  <input type="button" name="button" value="返回"  class="buttomorger" onClick="javascript:history.go(-1);" /> 
-                 </td>
-               </tr>
-            </table>
-     
-      </form>      
+<div class="pop-content-right">
+    <form class="layui-form"  action="__URL__/update" method="post" >  <input type="hidden" name="salesman_id" id="salesman_id" value="{$getone.admin_id}" />
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input style="width: 190px;" type="text" name="title"  disabled="disabled" value="{$getone.name}"
+                     class="layui-input">
+            </div>
         </div>
-    
-    </div>
-    
-    
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码框</label>
+            <div class="layui-input-inline">
+                <input style="width: 190px;" type="password" name="pwd"  class="layui-input">
+            </div>
+
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <select name="sex">
+                    <option value="0" {if $getone.sex eq 0 }selected{/if} >男</option>
+                    <option value="1" {if $getone.sex eq 1 }selected{/if} >女</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="layui-inline">
+            <label class="layui-form-label">入职日期</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="tool-time4" value="{$getone.job_in_time}" name="job_in_time" placeholder="yyyy-MM-dd">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">分成比例</label>
+            <div class="layui-input-block">
+                <input style="width: 190px;" type="text" name="divide_into"
+                       placeholder="请输入分成比例" value="{$getone.divide_into}"  class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-inline">
+                <input style="width: 190px;" type="text" name="tel"
+                         value="{$getone.tel}" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态：</label>
+            <div class="layui-input-inline">
+                <input type="radio" name="data_status" value="0" {if $getone.data_status eq 0}checked{/if} />已离职　
+                <input type="radio" name="data_status" value="1" {if $getone.data_status eq 1}checked{/if} />在职&nbsp; </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注：</label>
+            <div class="layui-input-inline">
+                <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60">{$getone.data_desc}</textarea>  </td>
+            </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" >保存</button>
+
+            </div>
+        </div>
+    </form>
 </div>
 
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form
+            , laydate = layui.laydate;
 
+        // 时间选择
+        laydate.render({
+            elem: '#tool-time',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择2
+        laydate.render({
+            elem: '#tool-time2',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+// 时间选择3
+        laydate.render({
+            elem: '#tool-time3',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择4
+        laydate.render({
+            elem: '#tool-time4',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+
+        // 时间选择5
+        laydate.render({
+            elem: '#tool-time5',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+    });
+</script>
+<script>
+    var j = 3;
+
+    function addtr() {
+        var tableobj = document.getElementById("tid");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr2() {
+        var tableobj = document.getElementById("tid2");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr3() {
+        var tableobj = document.getElementById("tid3");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+
+    function addtr4() {
+        var tableobj = document.getElementById("tid4");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr5() {
+        var tableobj = document.getElementById("tid5");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function delecttr(obj) {
+        var tr = obj.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+    }
+
+</script>
 </body>
 </html>
