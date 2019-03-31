@@ -1,5 +1,6 @@
 
 文档地址：https://docs.open.alipay.com/270
-在线下单文档：https://docs.open.alipay.com/api_1/alipay.trade.page.pay/
+
+电脑网站支付接口文档地址：https://docs.open.alipay.com/270/105899/
 
 

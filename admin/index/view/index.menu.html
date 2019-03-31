@@ -67,18 +67,21 @@
             </a>
             {/if}
 
-            <a href="list.html" target="mainframe">
+            {if auth('admin/adminshare/index')}
+            <a href="/admin.php/admin/adminshare/index" target="mainframe">
                 <li class="layui-nav-item" style="color:#fff;">
                     <i class="lusheji lusheji_icontuiguang"></i>用户推广
                 </li>
             </a>
+            {/if}
 
-
-            <a href="list.html" target="mainframe">
+            {if auth('paper/paper/index') }
+            <a href="/admin.php/paper/paper/index" target="mainframe">
                 <li class="layui-nav-item" style="color:#fff;">
                     <i class="lusheji lusheji_iconpeizhi"></i>系统配置
                 </li>
             </a>
+            {/if}
 
             <span class="layui-nav-bar" style="top: 67px; opacity: 0; height: 0px;"></span></ul>
     </div>

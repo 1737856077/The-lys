@@ -44,7 +44,12 @@
                     </td>
                     <td class="tdlist">{$value['title']}&nbsp;</td>
                     <td class="tdlist">{$value['thickness']} {$value['thickness_unit']}</td>
-                    <td class="tdlist">{$value['price']}元/张</td>
+                    <td class="tdlist">
+                        单张价格：{$value['price']}元/张<br />
+                        单张价格(101-500张)：{$value['price_one']}元/张<br />
+                        单张价格(101-500张)：{$value['price_two']}元/张<br />
+                        单张价格(501-以上张)：{$value['price_three']}元/张
+                    </td>
                     <td class="tdlist">
                         <input type="text" name="sorts[{$value['id']}]" value="{$value['sort_rank']}" maxlength="5" size="5" />
                     </td>
@@ -93,7 +98,6 @@
                 </tr>
             </table>
             <div style="text-align:right; padding-right:40px;">
-                {$page}
             </div>
         </form>
 
