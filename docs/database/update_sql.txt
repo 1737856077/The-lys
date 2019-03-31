@@ -40,6 +40,9 @@ ALTER TABLE  `sy_paper` ADD  `price_three` double(10,2) NULL DEFAULT  '0.00' AFT
 ALTER TABLE  `sy_order` ADD  `print_mode` Tinyint(1) NULL DEFAULT  '0' AFTER  `paper_direction`;
 ALTER TABLE  `sy_order` ADD  `print_sort` Tinyint(1) NULL DEFAULT  '0' AFTER  `print_mode`;
 
+/*2019-03-31*/
+ALTER TABLE  `sy_template` ADD  `pdf`  VARCHAR(64) NULL DEFAULT  '' AFTER  `tag_type_id`;
+
 
 
 
