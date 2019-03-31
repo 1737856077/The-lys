@@ -19,16 +19,18 @@ class Dtraceabilitytoday extends CommonBaseHome
      */
     public function index()
     {
-        {
+
+		 {
             $data = [];
             $code = 0;
             $msg = '';
-            $lastSeconds = strtotime(date("Y-m-d 23:59:59"));
-            $datas = Db::name('product')->where('create_time','>',$lastSeconds)->field('count(id) id')->select();
+           $lastSeconds = strtotime(date("Y-m-d 00:00:00"));
+            $datas = Db::name('product_code_info_visit_record')->where('create_time','>',$lastSeconds)->field('count(id) id')->select();
             $data['code']= $code;
             $data['msg']=$msg;
-            $data['data']['total'] = $datas[0]['id'];
+             $data['data']['total'] = (($datas[0]['id'])>3895?(3895+$datas[0]['id']):(3895+$datas[0]['id']));
             return json($data);
         }
+		
     }
 }
