@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("PRC");
+
 /* *
  * 功能：支付宝服务器异步通知页面
  * 版本：2.0
@@ -36,18 +38,36 @@ if($result) {//验证成功
     //获取支付宝的通知返回参数，可参考技术文档中服务器异步通知参数列表
 	
 	//商户订单号
-
 	$out_trade_no = $_POST['out_trade_no'];
-
 	//支付宝交易号
-
 	$trade_no = $_POST['trade_no'];
-
+    //收款支付宝账号对应的支付宝唯一用户号。
+    //以2088开头的纯16位数字
+    $seller_id = htmlspecialchars($_GET['seller_id']);
+    //交易金额
+    $total_amount= htmlspecialchars($_GET['total_amount']);
+    $total_amount=number_format($total_amount,2,".","");
 	//交易状态
 	$trade_status = $_POST['trade_status'];
 
+    require("../../Public/Lib/DB/config.php");
+    require("../../Public/Lib/DB/DB.php");
+    require("../../Public/Lib/functions.php");
+    $DB=new DB();
+    $gettime=time();
+    // 1\写入异步通知表(sy_bill_details_notify)
+    $_dataBillDetailsNotify = array(
+        'trade_no' => $trade_no,
+        'out_trade_no' => $out_trade_no,
+        'seller_id' => $seller_id,
+        'trade_status' => $trade_status,
+        'content' => json_encode($_POST),
+        'create_time' => $gettime,
+        'update_time' => $gettime
+    );
+    $DB->insert('sy_bill_details_notify', $_dataBillDetailsNotify);
 
-    if($_POST['trade_status'] == 'TRADE_FINISHED') {
+    if($_POST['trade_status'] == 'TRADE_FINISHED' or $_POST['trade_status'] == 'TRADE_SUCCESS') {
 
 		//判断该笔订单是否在商户网站中已经做过处理
 			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
@@ -56,14 +76,36 @@ if($result) {//验证成功
 				
 		//注意：
 		//退款日期超过可退款期限后（如三个月可退款），支付宝系统发送该交易状态通知
-    }
-    else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
+    //}
+    //else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
 		//判断该笔订单是否在商户网站中已经做过处理
 			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
 			//请务必判断请求时的total_amount与通知时获取的total_fee为一致的
 			//如果有做过处理，不执行商户的业务程序			
 		//注意：
 		//付款完成后，支付宝系统发送该交易状态通知
+        //处理数据 liuqingyan begin(2019-03-31)
+        $getoneOrder=$DB->query("SELECT * from sy_order where order_no = '$out_trade_no'");
+        if (!empty($getoneOrder)){
+            // 开启事务
+            $DB->query("BEGIN");
+            // 2、验证订单(验证金额、验证支付状态)
+            if($getoneOrder['score_real_pay'] == $total_amount and $getoneOrder['pay_status']!=1){
+                // 3\更新订单支付状态
+                $_dataOrder=array('pay_status'=>'1',
+                    'pay_time'=>$gettime,
+                    'update_time'=>$gettime
+                );
+                $retrunID=$DB->update('sy_order',$_dataOrder,"order_no='$out_trade_no'");
+                if(!$retrunID) {
+                    // 回滚事务
+                    $DB->query("ROLLBACK");
+                }
+            }
+            // 提交事务
+            $DB->query("COMMIT");
+        }
+        //处理数据 liuqingyan end
     }
 	//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
 	echo "success";	//请不要修改或删除

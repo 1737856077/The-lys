@@ -74,6 +74,7 @@ class Preorder extends CommonBase
         $ModelTemplate=Db::name('template');
         $ModelTemplateContent=Db::name('template_content');
         $ModelPaper=Db::name('paper');
+        $ModelOrder=Db::name('order');
 
         $getoneMember=$ModelMember->where("member_id='$memberid'")->find();
         $getoneTemplate=$ModelTemplate->where("template_id='$templateId'")->find();
@@ -105,6 +106,7 @@ class Preorder extends CommonBase
         Db::startTrans();
         //Db::rollback();//事务回滚
         // 1\insert order 订单表==写入订单表
+        $order_no=date('ymdHis').rand(10000,99999);
         $dataOrder=array('order_no'=>$order_no,
             'template_id'=>$getoneTemplate['template_id'],
             'template_title'=>$getoneTemplate['title'],
@@ -128,9 +130,30 @@ class Preorder extends CommonBase
             'create_time'=>$gettime,
             'update_time'=>$gettime
             );
-
+        $returnID=$ModelOrder->insert($dataOrder);
+        if(!$returnID){
+            //事务回滚
+            Db::rollback();
+            echo '<script language="javascript">alert("服务器忙，请稍后再试！");history.go(-1);</script>';
+            exit;
+        }
         //提交事务
         Db::commit();
-        exit;
+
+        $WIDsubject=$getoneTemplate['title'].'打印'.$printNum.'份';
+        $this->assign("dataOrder",$dataOrder);
+        $this->assign("WIDout_trade_no",$order_no);
+        $this->assign("WIDsubject",$WIDsubject);
+        $this->assign("WIDtotal_amount",$_priceTotal);
+        $this->assign("WIDbody",$WIDsubject);
+//        $postData=array('WIDout_trade_no'=>$order_no,
+//            'WIDsubject'=>$getoneTemplate['title'].'打印'.$printNum.'份',
+//            'WIDtotal_amount'=>$_priceTotal,
+//            'WIDbody'=>$getoneTemplate['title'].'打印'.$printNum.'份'
+//            );
+//        $url='/onlinepay/alipay/pagepay/pagepay.php';
+//        $returnPostData=$this->PostSend($url,$postData);
+
+        return $this->fetch();
     }
 }
