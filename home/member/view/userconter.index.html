@@ -58,13 +58,18 @@
                         </section>
                         <div class="user-box-list">
                             <div class="user-box-list-area">
-                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
-                                <p class="works-manange"><a href="/index.php/member/userconter/index"> <i class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
-                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
-                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i
+                                        class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"> <i
+                                        class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i
+                                        class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i
+                                        class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
                             </div>
                             <div class="user-box-list-area">
-                                <p class="works-manange"><a href="/index.php/member/register/unlogin"><i class="lusheji lusheji_icontuichu"></i>退出</a></p>
+                                <p class="works-manange"><a href="/index.php/member/register/unlogin"><i
+                                        class="lusheji lusheji_icontuichu"></i>退出</a></p>
                             </div>
                         </div>
                     </div>
@@ -105,102 +110,151 @@
             <div class="layui-tab-item layui-show">
                 <div class="bgzt">
                     <div class="box-center">
-                        <div class="Order_title">资料设置</div>
+                        <div class="Order_title">基本资料</div>
                         <div class="liebiao">
-                            <form class="layui-form" action="/index.php/member/userconter/save" method="post"
-                                  enctype="multipart/form-data">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">修改头像</label>
-                                    <div class="layui-upload" style="margin: 0 0 20px 110px;">
-                                        <div class="layui-upload-list">
-                                            {volist name="data" id="user"}
-                                            <img class="layui-upload-img" src="/home/uploads/{$user.img}" id="touxiang">
-                                            {/volist}
-                                            <p id="demoText"></p>
-                                        </div>
-                                        <span class="btn btn-success fileinput-button">
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">修改头像</label>
+                                <div class="layui-upload" style="margin: 0 0 20px 110px;">
+                                    <div class="layui-upload-list">
+                                        {volist name="data" id="user"}
+                                        <img class="layui-upload-img" src="/home/uploads/{$user.img}" id="touxiang">
+                                        {/volist}
+                                        <p id="demoText"></p>
+                                    </div>
+                                    <span class="btn btn-success fileinput-button">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         <span class="layui-btn layui-btn-radius"
                                               style="display: block; height: 35px;width: 100px;">上传图片</span>
                                         <input type="file" name="img" placeholder="">
                                         </span>
-                                    </div>
                                 </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">修改密码</label>
-                                    <div class="layui-input-inline">
-                                        <input style="width: 190px;" type="password" name="password" autocomplete="off"
-                                               class="layui-input">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">不修改请留空</div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">性别</label>
-                                    <div class="layui-input-block">
-                                        <td class="tdlist">{$user['sex']==1 ?
-                                            " <input type='radio' name='sex' value='0' title='男'>
-                                            <input type='radio' name='sex' value='1' title='女' checked>"
-
-                                            :
-                                            " <input type='radio' name='sex' value='0' title='男' checked>
-                                            <input type='radio' name='sex' value='1' title='女'>"
-                                            }&nbsp;
-                                        </td>
-
-                                    </div>
-                                </div>
-                                {if condition="isset($order)"}
+                            </div>
 
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">收货地址</label>
-                                    <div class="layui-input-block">
-                                        {$order}
-                                    </div>
-                                </div>
-                                {/if}
-
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">性别</label>
                                 <div class="layui-input-inline">
-                                    <label class="layui-form-label">更改收货地址</label>
-                                    <select style="display: block;" id="sheng" class="sheng" name="sheng">
-                                        <option value="">请选择省份</option>
-                                        {volist name="region" id="vo"}
-                                        <option value='{$vo.area_code}'>{$vo.area_name}</option>
-                                        {/volist}
-                                    </select>
-                                    <select style="display: block;" id="city" name="city">
-                                        <option value="">请选择城市</option>
-                                    </select>
-                                    <select style="display: block" id="qu" name="qu">
-                                        <option value="">请选择区</option>
-                                    </select>
-                                    <select style="display: block" id="jie" name="jie">
-                                        <option value="">请选择街道</option>
-                                    </select>
-
+                                    <input style="width: 190px;" value="  {$user['sex']==1 ?'女':'男'}" type="text"
+                                           checked="checked"
+                                           class="layui-input" disabled="disabled">
                                 </div>
-                                <div class="layui-form-item">
+                            </div>
 
-                                    <label class="layui-form-label">行业类型</label>
+
+                            {if condition="isset($order)"}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">收货地址</label>
+                                <div class="layui-input-inline">
+                                    <input style="width: 190px;" value="{$order}" type="text" checked="checked"
+                                           class="layui-input" disabled="disabled">
+                                </div>
+                            </div>
+                            {/if}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">行业类型</label>
+                                <div class="layui-input-inline">
+                                    <input style="width: 190px;" value="  {$industry.title}" type="text"
+                                           checked="checked"
+                                           class="layui-input" disabled="disabled">
+                                </div>
+                            </div>
+
+                            <div class="Order_title">资料设置</div>
+                            <form action="/index.php/member/userconter/save" method="post"
+                                  enctype="multipart/form-data">
+
+                                <table class="layui-table" lay-skin="nob">
+
+                                    <tbody>
+                                    <tr>
+                                        <colgroup>
+                                            <col width="150">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                    </tr>
+                                    <tr>
+                                        <td>更改收货地址</td>
+                                        <td>
+                                            <div style="float: left;" class="layui-form-item"><select id="sheng"
+                                                                                                      class="sheng"
+                                                                                                      name="sheng">
+                                                <option value="">请选择省份</option>
+                                                {volist name="region" id="vo"}
+                                                <option value='{$vo.area_code}'>{$vo.area_name}</option>
+                                                {/volist}
+                                            </select>
+                                                <select id="city" name="city">
+                                                    <option value="">请选择城市</option>
+                                                </select>
+                                                <select id="qu" name="qu">
+                                                    <option value="">请选择区</option>
+                                                </select>
+                                                <select id="jie" name="jie">
+                                                    <option value="">请选择街道</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>性别</td>
+                                        <td>
+                                            <div style="float: left;" class="layui-form-item">
+                                                男：<input type='radio' name='sex' value='0' title='男' checked>
+                                                女：<input type='radio' name='sex' value='1' title='女'>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            请选择行业
+                                        </td>
+                                        <td>
+                                            <div style="float: left;" class="layui-form-item">
+                                                <select name="title">
+                                                    <option name="title" value=""> 请选择</option>
+                                                    {foreach name='title' id = 'user'}
+                                                    <option name="title" value="{$user.id}"> {$user.title}</option>
+                                                    {/foreach}
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            修改密码
+                                        </td>
+                                        <td>
+                                            <input style="width: 190px;" type="password" name="password"
+                                                   autocomplete="off" class="layui-input">
+                                        </td>
+                                        <td>
+                                            可以为空
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        {$industry.title}
-                                    </div>
-                                </div>
 
-                                <div class="layui-form-item">
-                                    <li><p>请选择行业</p>
-                                        <select name="title">
-                                            <option name="title" value=""> 请选择</option>
-                                            {foreach name='title' id = 'user'}
-                                            <option name="title" value="{$user.id}"> {$user.title}</option>
-                                            {/foreach}
-                                        </select>
-                                    </li>
-
-                                </div>
-                                <div class="layui-form-item">
-                                    <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
                                     </div>
                                 </div>
                             </form>
@@ -328,8 +382,10 @@
                             <div style="width: 600px;    margin-top: 20px;">
                                 <div id="search">
                                     <form id="seek" class="seek" action="">
-                                        <input class="user_search_k" id="value" type="text" name="order"  value="请输入标签名称或订单号查询">
-                                        <input class="user_search_b" type="button" onclick="login()" id="select" value="搜索">
+                                        <input class="user_search_k" id="value" type="text" name="order"
+                                               value="请输入标签名称或订单号查询">
+                                        <input class="user_search_b" type="button" onclick="login()" id="select"
+                                               value="搜索">
                                     </form>
                                 </div>
                             </div>
@@ -338,69 +394,77 @@
                                 <!--全部订单-->
                                 <div class="layui-tab-item layui-show">
                                     <div class="dj" id="dj">
-                                 <div class="nr" id="nr">
-                                     {foreach name='orderdata' id='orderdata'}
-                                     <table  id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
-                                         <colgroup>
-                                             <col width="50">
-                                             <col width="200">
-                                             <col width="200">
-                                             <col width="200">
-                                         </colgroup>
-                                         <thead>
+                                        <div class="nr" id="nr">
+                                            {foreach name='orderdata' id='orderdata'}
+                                            <table id="Order_tbody" class="layui-table" lay-skin="line"
+                                                   style="height: 260px">
+                                                <colgroup>
+                                                    <col width="50">
+                                                    <col width="200">
+                                                    <col width="200">
+                                                    <col width="200">
+                                                </colgroup>
+                                                <thead>
 
-                                         <tr style="background: #EAF8FF;">
-                                             <th style="text-align: left;padding:0 20px;height: 30px">
-                                                 {$orderdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$orderdata.order_no}
-                                             </th>
-                                             <th>打印数量</th>
-                                             <th>订单状态</th>
-                                             <th>交易操作</th>
-                                         </tr>
-                                         </thead>
-                                         <tbody>
-                                         <tr style="height: 190px">
-                                             <td>
-                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
-                                                     <tbody>
-                                                     <tr style="height: 190px">
-                                                         <td><img src="/home/uploads/{$orderdata.img}"></td>
-                                                         <td>
-                                                             <div class="order_title">{$orderdata.template_title}</div>
-                                                             <h2>纸张尺寸</h2>
-                                                             <h3>{$orderdata.paper_size_long}{$orderdata.paper_size_unit}*{$orderdata.paper_size_wide}{$orderdata.paper_size_unit}</h3>
-                                                         </td>
-                                                     </tr>
-                                                     </tbody>
-                                                 </table>
-                                             </td>
-                                             <td>{$orderdata.print_num}</td>
-                                             <td>
-                                                 {switch name="$orderdata.order_status" }
-                                                 {case value="0"}
-                                                 <button class="layui-btn layui-btn-sm">新提交</button>
-                                                 {/case}
-                                                 {case value="1"}
-                                                 <button class="layui-btn layui-btn-danger layui-btn-sm"> 已核实</button>
-                                                 {/case}
-                                                 {case value="2"}
-                                                 <button class="layui-btn layui-btn-danger layui-btn-sm">设计中</button>
-                                                 {/case}
-                                                 {case value="3"}
-                                                 <button class="layui-btn layui-btn-warm layui-btn-sm">设计结束</button>
-                                                 {/case}
-                                                 {case value="4"}
-                                                 <button class="layui-btn layui-btn-sm">已完成</button>
-                                                 {/case}
-                                                 {/switch}
-                                             </td>
-                                             <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a>
-                                             </td>
-                                         </tr>
-                                         </tbody>
-                                     </table>
-                                     {/foreach}
-                                 </div>
+                                                <tr style="background: #EAF8FF;">
+                                                    <th style="text-align: left;padding:0 20px;height: 30px">
+                                                        {$orderdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$orderdata.order_no}
+                                                    </th>
+                                                    <th>打印数量</th>
+                                                    <th>订单状态</th>
+                                                    <th>交易操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr style="height: 190px">
+                                                    <td>
+                                                        <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                            <tbody>
+                                                            <tr style="height: 190px">
+                                                                <td><img src="/home/uploads/{$orderdata.img}"></td>
+                                                                <td>
+                                                                    <div class="order_title">
+                                                                        {$orderdata.template_title}
+                                                                    </div>
+                                                                    <h2>纸张尺寸</h2>
+                                                                    <h3>
+                                                                        {$orderdata.paper_size_long}{$orderdata.paper_size_unit}*{$orderdata.paper_size_wide}{$orderdata.paper_size_unit}</h3>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td>{$orderdata.print_num}</td>
+                                                    <td>
+                                                        {switch name="$orderdata.order_status" }
+                                                        {case value="0"}
+                                                        <button class="layui-btn layui-btn-sm">新提交</button>
+                                                        {/case}
+                                                        {case value="1"}
+                                                        <button class="layui-btn layui-btn-danger layui-btn-sm"> 已核实
+                                                        </button>
+                                                        {/case}
+                                                        {case value="2"}
+                                                        <button class="layui-btn layui-btn-danger layui-btn-sm">设计中
+                                                        </button>
+                                                        {/case}
+                                                        {case value="3"}
+                                                        <button class="layui-btn layui-btn-warm layui-btn-sm">设计结束
+                                                        </button>
+                                                        {/case}
+                                                        {case value="4"}
+                                                        <button class="layui-btn layui-btn-sm">已完成</button>
+                                                        {/case}
+                                                        {/switch}
+                                                    </td>
+                                                    <td><a href="#" class="layui-btn  layui-btn-xs"
+                                                           target="_blank">再下一单</a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            {/foreach}
+                                        </div>
                                     </div>
                                 </div>
                                 <!--新提交-->
@@ -429,18 +493,23 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td> <img src="/home/uploads/{$newdata.img}"></td>
+                                                        <td><img src="/home/uploads/{$newdata.img}"></td>
                                                         <td>
                                                             <div class="order_title">{$newdata.template_title}</div>
-                                                            <h2>纸张尺寸</h2><h3>      {$newdata.paper_size_long}{$newdata.paper_size_unit}*{$newdata.paper_size_wide}{$newdata.paper_size_unit}</h3>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$newdata.paper_size_long}{$newdata.paper_size_unit}*{$newdata.paper_size_wide}{$newdata.paper_size_unit}</h3>
                                                         </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </td>
                                             <td>{$newdata.print_num}</td>
-                                            <td><button class="layui-btn layui-btn-normal layui-btn-sm">新提交</button></td>
-                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">继续设计</a></td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-normal layui-btn-sm">新提交</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">继续设计</a>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -472,20 +541,23 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td> <img src="/home/uploads/{$verifydata.img}"></td>
+                                                        <td><img src="/home/uploads/{$verifydata.img}"></td>
                                                         <td>
                                                             <div class="order_title">{$verifydata.template_title}</div>
-                                                            <h2>纸张尺寸</h2><h3>
-                                                            {$verifydata.paper_size_long}{$verifydata.paper_size_unit}*{$verifydata.paper_size_wide}{$verifydata.paper_size_unit}
-                                                        </h3>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$verifydata.paper_size_long}{$verifydata.paper_size_unit}*{$verifydata.paper_size_wide}{$verifydata.paper_size_unit}
+                                                            </h3>
                                                         </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </td>
                                             <td>{$verifydata.print_num}</td>
-                                            <td><button class="layui-btn layui-btn-danger layui-btn-sm">已核实</button></td>
-                                            <td> <a href="#" class="layui-btn  layui-btn-xs" target="_blank">去付款</a></td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-danger layui-btn-sm">已核实</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">去付款</a></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -517,20 +589,24 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td> <img src="/home/uploads/{$designdata.img}"></td>
+                                                        <td><img src="/home/uploads/{$designdata.img}"></td>
                                                         <td>
                                                             <div class="order_title">{$designdata.template_title}</div>
-                                                            <h2>纸张尺寸</h2><h3>
-                                                            {$designdata.paper_size_long}{$designdata.paper_size_unit}*{$designdata.paper_size_wide}{$designdata.paper_size_unit}
-                                                        </h3>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$designdata.paper_size_long}{$designdata.paper_size_unit}*{$designdata.paper_size_wide}{$designdata.paper_size_unit}
+                                                            </h3>
                                                         </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </td>
                                             <td>{$designdata.print_num}</td>
-                                            <td><button class="layui-btn layui-btn-warm layui-btn-sm">设计中</button></td>
-                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">编辑追加</a></td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-warm layui-btn-sm">设计中</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">编辑追加</a>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -565,20 +641,25 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td> <img src="/home/uploads/{$designenddata.img}"></td>
+                                                        <td><img src="/home/uploads/{$designenddata.img}"></td>
                                                         <td>
-                                                            <div class="order_title">{$designenddata.template_title}</div>
-                                                            <h2>纸张尺寸</h2><h3>
-                                                            {$designenddata.paper_size_long}{$designenddata.paper_size_unit}*{$designenddata.paper_size_wide}{$designenddata.paper_size_unit}
-                                                        </h3>
+                                                            <div class="order_title">{$designenddata.template_title}
+                                                            </div>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$designenddata.paper_size_long}{$designenddata.paper_size_unit}*{$designenddata.paper_size_wide}{$designenddata.paper_size_unit}
+                                                            </h3>
                                                         </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </td>
                                             <td>{$designenddata.print_num}</td>
-                                            <td><button class="layui-btn layui-btn-sm">设计结束</button></td>
-                                            <td> <a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a></td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-sm">设计结束</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -611,20 +692,24 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td> <img src="/home/uploads/{$designenddata.img}"></td>
+                                                        <td><img src="/home/uploads/{$designenddata.img}"></td>
                                                         <td>
                                                             <div class="order_title">{$enddata.template_title}</div>
-                                                            <h2>纸张尺寸</h2><h3>
-                                                            {$enddata.paper_size_long}{$enddata.paper_size_unit}*{$enddata.paper_size_wide}{$enddata.paper_size_unit}
-                                                        </h3>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$enddata.paper_size_long}{$enddata.paper_size_unit}*{$enddata.paper_size_wide}{$enddata.paper_size_unit}
+                                                            </h3>
                                                         </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </td>
                                             <td>{$enddata.print_num}</td>
-                                            <td><button class="layui-btn layui-btn-sm">已完成</button></td>
-                                            <td> <a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a></td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-sm">已完成</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -640,10 +725,6 @@
                 <div class="clear"></div>
             </div>
             <!--订单中心结束-->
-
-
-
-
 
 
             <!--数据表开始-->
