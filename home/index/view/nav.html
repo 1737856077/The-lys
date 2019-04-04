@@ -34,8 +34,15 @@
         <ul class="login">
             <li class="user">
                 <div class="avatar-container-30">
-                    <a href="/index.php/member/userconter/index" class="user-list"><img src="/home/uploads/{$MemberData.img}" title="{$MemberData.username}" alt="{$MemberData.username}"></a>
-                </div>
+                    {if condition="!empty($MemberData.img)"}
+                    <a href="/index.php/member/userconter/index" class="user-list">
+                        <img class="layui-upload-img" src="/home/uploads/{$MemberData.img}" title="{$MemberData.username}"  alt="{$MemberData.username}">
+                    </a>
+                    {else/}
+                    <a href="/index.php/member/userconter/index" class="user-list">
+                        <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg" title="{$MemberData.username}"  alt="{$MemberData.username}">
+                    </a>
+                    {/if} </div>
                 <div class="menu-list user-box hide">
                     <section><a href="/index.php/member/userconter/index" z-st="nav_userbox_name">{$MemberData.username}</a></section>
                     <div class="user-box-list">

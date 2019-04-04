@@ -66,7 +66,8 @@ class Userconter extends CommonBase
                 $Popular[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
                 $Popular[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
             }
-            //最新模板Db
+
+            //最新模板
             $newtemplate = Db::name('template')
                 ->where('member_id', $id)
                 ->where('data_type', 1)
@@ -104,10 +105,10 @@ class Userconter extends CommonBase
             $n = Db::name('custom_database')->where('member_id', $id)->field('count(member_id) id')->select();
             $this->assign('databases', $databases);
             $this->assign('n', $n);
-
+            $this->orders();
             $checkorder = Db::name('template ');
-            $template = $checkorder->where('member_id', $id)->where('data_type', 1)->select();
             $region = Db::name('region')->where('area_type', 2)->field('area_name,area_code')->select();
+
             $newtemplate = Db::name('template')
                 ->where('member_id', $id)
                 ->where('data_type', 1)
@@ -123,10 +124,22 @@ class Userconter extends CommonBase
                 $newtemplate[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
                 $newtemplate[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
             }
+            $checkorder = Db::name('template');
+            $Popular = $checkorder->where('member_id', $id)->where('data_type', 1)->select();
+
+            foreach ($Popular as $k => $value) {
+                $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
+                $Popular[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
+                $Popular[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
+                $Popular[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
+                $Popular[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
+                $Popular[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height'])?$Populars[0]['lable_size_height'] : '';
+                $Popular[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
+            }
             $this->orders();
             $this->assign([
                 'newtemplate' => $newtemplate,
-                'template' => $template,
+                'template' => $Popular,
                 'data' => $data,
                 'industry' => $industry,
                 'title' => $title,
@@ -292,6 +305,7 @@ class Userconter extends CommonBase
                 $v['img'] = $template->where('template_id', $v['id'])->field('img')->find()['img'];
                 $data[] = $v;
             }
+
             $Ends = $member->where('member_id', $member_id)->where('order_status', 4)->select();//订单完成
             $End = array();
             foreach ($Ends as $k => $v) {

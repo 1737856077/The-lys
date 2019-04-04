@@ -117,8 +117,9 @@ class Home extends CommonBaseHome
         if ($value) {
             $map['title'] = ['like', '%' . $value . '%'];
             $searchres = db('template ')->where($map)->where('data_type', 0)->order('template_id desc')->select();
-
             foreach ($searchres as $k => $value) {
+                $UserNamess = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
+                $searchres[$k]['username']=isset($UserNamess[0]['name'])?$UserNamess[0]['name']:'';
                 $Popularss = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
                 $searchres[$k]['paper_size_long'] = isset($Popularss[0]['paper_size_long']) ? $Popularss[0]['paper_size_long'] : '';
                 $searchres[$k]['paper_size_wide'] = isset($Popularss[0]['paper_size_wide']) ? $Popularss[0]['paper_size_wide'] : '';

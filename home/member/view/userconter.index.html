@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,9 +50,18 @@
             <ul class="login">
                 <li class="user">
                     <div class="avatar-container-30">
-                        <a href="/index.php/member/userconter/index" class="user-list"><img
-                                src="/home/uploads/{$data.0.img}"
-                                title="{$data.0.username}" alt="{$data.0.username}"></a>
+
+                        {if condition="!empty($MemberData.img)"}
+                        <a href="/index.php/member/userconter/index" class="user-list">
+                        <img class="layui-upload-img" src="/home/uploads/{$MemberData.img}" title="{$MemberData.username}"  alt="{$MemberData.username}">
+                        </a>
+                        {else/}
+                        <a href="/index.php/member/userconter/index" class="user-list">
+                        <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg" title="{$MemberData.username}"  alt="{$MemberData.username}">
+                        </a>
+                            {/if}
+
+
                     </div>
                     <div class="menu-list user-box hide">
                         <section><a href="/index.php/member/userconter/index" z-st="nav_userbox_name">{$Think.session.username}</a>
@@ -86,7 +96,11 @@
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
                 <div class="header-box ft">
-                    <img class="useravatar" src="/home/uploads/{$data.0.img}" alt="头像">
+                    {if condition="!empty($MemberData.img)"}
+                    <img class="layui-upload-img" src="/home/uploads/{$MemberData.img}"  alt="{$MemberData.usernmae}" title="{$MemerData.username}">
+                    {else/}
+                    <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg"  title="{$MemberData.username}" alt="{$MemberData.username}">
+                    {/if}
                     <div class="header-info">
                         <span class="header-name">{$data.0.username}</span>
                     </div>
@@ -114,28 +128,26 @@
                         <div class="liebiao">
 
                             <div class="layui-form-item">
-                                <label class="layui-form-label">修改头像</label>
+                                <label class="layui-form-label">头像</label>
                                 <div class="layui-upload" style="margin: 0 0 20px 110px;">
                                     <div class="layui-upload-list">
-                                        {volist name="data" id="user"}
-                                        <img class="layui-upload-img" src="/home/uploads/{$user.img}" id="touxiang">
-                                        {/volist}
+                                        {if condition="!empty($MemberData.img)"}
+                                        <img class="layui-upload-img" src="/home/uploads/{$MemberData.img}">
+                                        {else/}
+                                        <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg">
+                                        {/if}
+
                                         <p id="demoText"></p>
                                     </div>
-                                    <span class="btn btn-success fileinput-button">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                        <span class="layui-btn layui-btn-radius"
-                                              style="display: block; height: 35px;width: 100px;">上传图片</span>
-                                        <input type="file" name="img" placeholder="">
-                                        </span>
+
                                 </div>
                             </div>
 
 
                             <div class="layui-form-item">
-                                <label class="layui-form-label">性别</label>
+                                <label class="layui-form-label">性别:</label>
                                 <div class="layui-input-inline">
-                                    <input style="width: 190px;" value="  {$user['sex']==1 ?'女':'男'}" type="text"
+                                    <input  style="width: 190px;" value="  {$MemberData['sex']==1 ?'女':'男'}" type="text"
                                            checked="checked"
                                            class="layui-input" disabled="disabled">
                                 </div>
@@ -159,8 +171,8 @@
                                            class="layui-input" disabled="disabled">
                                 </div>
                             </div>
-
-                            <div class="Order_title">资料设置</div>
+                            <div  class="Order_title">资料设置</div>
+                            <div class="zhilaio" >
                             <form action="/index.php/member/userconter/save" method="post"
                                   enctype="multipart/form-data">
 
@@ -169,10 +181,23 @@
                                     <tbody>
                                     <tr>
                                         <colgroup>
-                                            <col width="150">
+                                            <col width="70">
                                             <col width="200">
                                             <col width="200">
                                         </colgroup>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            头像修改
+                                        </td>
+                                        <td style="line-height: 100%">
+                                        <span  class="btn btn-success fileinput-button">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                        <span class="layui-btn layui-btn-radius" style="display: block; height: 35px;width: 100px;">上传图片</span>
+                                        <input type="file" name="img" placeholder="">
+                                        </span>
+                                        </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>更改收货地址</td>
@@ -237,6 +262,7 @@
                                             可以为空
                                         </td>
                                     </tr>
+
                                     <tr>
                                         <td>
                                             <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
@@ -258,8 +284,7 @@
                                     </div>
                                 </div>
                             </form>
-
-
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -279,6 +304,7 @@
 
                         <div class="user_muban_list">
                             <ul>
+                                {if condition="!empty($newtemplate)"}
                                 {foreach name='newtemplate' id='data'}
                                 <li>
                                     <a href="#" target="_blank">
@@ -306,7 +332,9 @@
                                     </div>
                                 </li>
                                 {/foreach}
-
+                                {else/}
+                               <h1>暂无数据</h1>
+                                {/if}
                             </ul>
                         </div>
                     </div>
@@ -395,80 +423,86 @@
                                 <div class="layui-tab-item layui-show">
                                     <div class="dj" id="dj">
                                         <div class="nr" id="nr">
-                                            {foreach name='orderdata' id='orderdata'}
-                                            <table id="Order_tbody" class="layui-table" lay-skin="line"
-                                                   style="height: 260px">
-                                                <colgroup>
-                                                    <col width="50">
-                                                    <col width="200">
-                                                    <col width="200">
-                                                    <col width="200">
-                                                </colgroup>
-                                                <thead>
+                                            {if condition="isset($orderdata)"}
+                                                {foreach name='orderdata' id='orderdata'}
+                                                <table id="Order_tbody" class="layui-table" lay-skin="line"
+                                                       style="height: 260px">
+                                                    <colgroup>
+                                                        <col width="50">
+                                                        <col width="200">
+                                                        <col width="200">
+                                                        <col width="200">
+                                                    </colgroup>
+                                                    <thead>
 
-                                                <tr style="background: #EAF8FF;">
-                                                    <th style="text-align: left;padding:0 20px;height: 30px">
-                                                        {$orderdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$orderdata.order_no}
-                                                    </th>
-                                                    <th>打印数量</th>
-                                                    <th>订单状态</th>
-                                                    <th>交易操作</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr style="height: 190px">
-                                                    <td>
-                                                        <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
-                                                            <tbody>
-                                                            <tr style="height: 190px">
-                                                                <td><img src="/home/uploads/{$orderdata.img}"></td>
-                                                                <td>
-                                                                    <div class="order_title">
-                                                                        {$orderdata.template_title}
-                                                                    </div>
-                                                                    <h2>纸张尺寸</h2>
-                                                                    <h3>
-                                                                        {$orderdata.paper_size_long}{$orderdata.paper_size_unit}*{$orderdata.paper_size_wide}{$orderdata.paper_size_unit}</h3>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                    <td>{$orderdata.print_num}</td>
-                                                    <td>
-                                                        {switch name="$orderdata.order_status" }
-                                                        {case value="0"}
-                                                        <button class="layui-btn layui-btn-sm">新提交</button>
-                                                        {/case}
-                                                        {case value="1"}
-                                                        <button class="layui-btn layui-btn-danger layui-btn-sm"> 已核实
-                                                        </button>
-                                                        {/case}
-                                                        {case value="2"}
-                                                        <button class="layui-btn layui-btn-danger layui-btn-sm">设计中
-                                                        </button>
-                                                        {/case}
-                                                        {case value="3"}
-                                                        <button class="layui-btn layui-btn-warm layui-btn-sm">设计结束
-                                                        </button>
-                                                        {/case}
-                                                        {case value="4"}
-                                                        <button class="layui-btn layui-btn-sm">已完成</button>
-                                                        {/case}
-                                                        {/switch}
-                                                    </td>
-                                                    <td><a href="#" class="layui-btn  layui-btn-xs"
-                                                           target="_blank">再下一单</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            {/foreach}
+                                                    <tr style="background: #EAF8FF;">
+                                                        <th style="text-align: left;padding:0 20px;height: 30px">
+                                                            {$orderdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$orderdata.order_no}
+                                                        </th>
+                                                        <th>打印数量</th>
+                                                        <th>订单状态</th>
+                                                        <th>交易操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td>
+                                                            <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                                <tbody>
+                                                                <tr style="height: 190px">
+                                                                    <td><img src="/home/uploads/{$orderdata.img}"></td>
+                                                                    <td>
+                                                                        <div class="order_title">
+                                                                            {$orderdata.template_title}
+                                                                        </div>
+                                                                        <h2>纸张尺寸</h2>
+                                                                        <h3>
+                                                                            {$orderdata.paper_size_long}{$orderdata.paper_size_unit}*{$orderdata.paper_size_wide}{$orderdata.paper_size_unit}</h3>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                        <td>{$orderdata.print_num}</td>
+                                                        <td>
+                                                            {switch name="$orderdata.order_status" }
+                                                            {case value="0"}
+                                                            <button class="layui-btn layui-btn-sm">新提交</button>
+                                                            {/case}
+                                                            {case value="1"}
+                                                            <button class="layui-btn layui-btn-danger layui-btn-sm"> 已核实
+                                                            </button>
+                                                            {/case}
+                                                            {case value="2"}
+                                                            <button class="layui-btn layui-btn-danger layui-btn-sm">设计中
+                                                            </button>
+                                                            {/case}
+                                                            {case value="3"}
+                                                            <button class="layui-btn layui-btn-warm layui-btn-sm">设计结束
+                                                            </button>
+                                                            {/case}
+                                                            {case value="4"}
+                                                            <button class="layui-btn layui-btn-sm">已完成</button>
+                                                            {/case}
+                                                            {/switch}
+                                                        </td>
+                                                        <td><a href="#" class="layui-btn  layui-btn-xs"
+                                                               target="_blank">再下一单</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                {/foreach}
+                                            {else/}
+                                            暂无数据
+                                            {/if}
+
                                         </div>
                                     </div>
                                 </div>
                                 <!--新提交-->
                                 <div class="layui-tab-item">
+                                    {if condition="isset($new)"}
                                     {foreach name='new' id='newdata'}
                                     <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
                                         <colgroup>
@@ -514,9 +548,13 @@
                                         </tbody>
                                     </table>
                                     {/foreach}
-                                </div>
+                                    {else/}
+                                    暂无数据
+                                    {/if} </div>
+
                                 <!--核实-->
                                 <div class="layui-tab-item">
+                                    {if condition="isset($verify)"}
                                     {foreach name='verify' id='verifydata'}
                                     <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
                                         <colgroup>
@@ -562,9 +600,13 @@
                                         </tbody>
                                     </table>
                                     {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if}
                                 </div>
                                 <div class="layui-tab-item">
                                     <!--设计中-->
+                                    {if condition="isset($design)"}
                                     {foreach name='design' id='designdata'}
                                     <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
                                         <colgroup>
@@ -611,12 +653,16 @@
                                         </tbody>
                                     </table>
                                     {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if}
 
 
                                 </div>
 
                                 <div class="layui-tab-item">
                                     <!--设计结束-->
+                                    {if condition="isset($designend)"}
                                     {foreach name='designend' id='designenddata'}
                                     <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
                                         <colgroup>
@@ -664,10 +710,14 @@
                                         </tbody>
                                     </table>
                                     {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if}
                                 </div>
                                 <!--已完成end-->
                                 <div class="layui-tab-item">
                                     <!--设计结束-->
+                                    {if condition="isset($End)"}
                                     {foreach name='End' id='enddata'}
                                     <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
                                         <colgroup>
@@ -714,6 +764,9 @@
                                         </tbody>
                                     </table>
                                     {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if}
                                 </div>
                             </div>
                         </div>
@@ -779,6 +832,8 @@
                         <a href="__STATIC__/home/data.html">
                             <div class="yun_data_box_add"><i class="layui-icon">&#xe654;</i>添加新的数据表</div>
                         </a>
+
+                        <div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>默认数据库</div>
                         {foreach name='databases' id='databases'}
                         <div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>{$databases.title}</div>
                         {/foreach}
