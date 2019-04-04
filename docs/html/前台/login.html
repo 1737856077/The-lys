@@ -1,0 +1,186 @@
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="applicable-device"content="pc,mobile"/>
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+  <script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/select.js"></script>
+</head>
+
+
+<body>
+<header>
+<nav>
+<div class="logo"><a href="#"><img src="./images/logo.png"></a></div>
+<div class="menu">
+<div class="menu-box">
+<ul class="menu-list-content">
+<li><a href="/index.html" >首页</a></li>
+<li><a href="/list.html" >模板中心</a></li>
+<li><a href="/design.html" >开始设计</a></li>
+<li><a href="/customized.html" >模板定制</a></li>
+</ul>
+	</div>
+	<div class="user-center">
+	<!--未登录样式  -->
+<ul class="unlogin">
+<li><a href="login.html">登录</a><a href="register.html">注册</a></li>
+</ul> 
+	</div>
+
+
+  <!--登录后 
+<ul class="login">
+                <li class="user">
+                <div class="avatar-container-30">
+                 <a href="/user.html" class="user-list"><img src="http://t.cn/RCzsdCq" title="午夜设计尸" alt="午夜设计尸"></a>
+                    </div>
+                    <div class="menu-list user-box hide">
+                        <section><a href="/user.html" z-st="nav_userbox_name">午夜设计尸</a></section>
+                        <div class="user-box-list">
+                            <div class="user-box-list-area">
+                            <p class="works-manange"><a href="/user.html#Setup"><i class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
+                            <p class="works-manange"><a href="/user.html#Template"><i class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
+                            <p class="works-manange"><a href="/user.html#Order"><i class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
+                            <p class="works-manange"><a href="/user.html#Data"><i class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
+                            </div>
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="javascript:logout();"><i class="lusheji lusheji_icontuichu"></i>退出</a></p>
+                            </div>
+                        </div>
+                    </div>
+                  </li>
+            </ul>
+ -->
+</nav>
+</header>
+<div id="wp" style="padding-top: 110px;background:url(./images/bg.jpg) 100% 80px; height: 900px">
+<div class="all-work-list">
+
+<div class="register_box">
+  <div class="register_box_title">立即登录</div>
+<form method="post" autocomplete="off" name="register" id="registerform" enctype="multipart/form-data" onsubmit="checksubmit();return false;" action="member.php?mod=register" _lpchecked="1">
+<div id="layer_reg" class="bm_c">
+<input type="hidden" name="regsubmit" value="">
+<input type="hidden" name="formhash" value="">
+<input type="hidden" name="referer" value="">
+<input type="hidden" name="activationauth" value="">
+<div class="mtw">
+<div id="reginfo_a">
+<div class="yun_login">
+<i class="icon_251 icon_user2"></i>
+<input type="text" class="lo_input" id="yun_name" name="yun_name" tabindex="1" value="" autocomplete="off" size="25" maxlength="15" placeholder="请输入用户名" required="">
+</div>
+<div class="yun_login2">
+ <i class="icon_251 icon_password"></i>
+<input type="password" placeholder="请输入密码" class="lo_input er" id="yun_password" name="yun_password" size="25" tabindex="1" required="">
+</div> 
+</div>
+</div>
+</div>
+<div id="layer_reginfo_b">
+<table width="100%">
+<tbody><tr>
+<td>
+<span id="reginfo_a_btn">
+<button class="lo_btn" id="registerformsubmit" type="submit" name="regsubmit" value="true" tabindex="1"><strong>立即登录</strong></button>
+</span>
+</td>
+<td></td>
+</tr>
+</tbody></table>
+<div class="lo_txt">
+<span>用第三方帐号直接登录</span>
+<a href="/register.html" style="float:right">没有帐号？立即注册</a>
+<a class="lo_btn2" href="#"><i class="icon_251 icon_qq_2"></i>QQ登录</a>
+<a class="lo_btn3" href="#"><i class="icon_251 icon_wx"></i>微信登录</a>
+</div>
+</div>
+</form>
+</div>
+
+
+<div class="clear"></div> 
+</div>
+</div>
+
+
+
+
+
+<div class="footer">
+<div class="all-work-list">
+<div class="lt">
+<div class="bottom_logo clearfix">
+<div class="fl footer-logo-box">
+<img src="./images/bottom_logo.png" class="footer-logo">
+  <span class="footer-slogan">做标签 · 不求人</span>
+ </div>
+</div>
+ <span class="footer-slogan2">
+云标签倾力打造智能的标签在线编辑和打印管理平台。
+</span>
+
+ <span class="footer-slogan2">
+设计师可以在线编辑会员分享的成品标签，也可自行设计自己想要的模板。
+</span>
+
+ <span class="footer-slogan2">
+©lusheji.com, powered by lusheji Team。 
+</span>
+</div>
+
+<div class="rt">
+  <div class="bottom_logo clearfix">
+<div class="fl footer-logo-box">
+<img src="./images/weixin.png" class="footer-weixin"> <a href="#" target="_blank"><img src="./images/qq.png" class="footer-weixin"></a>
+</div>
+</div>
+ <span class="footer_phone">
+400-888-8888 
+</span>
+<span class="footer-slogan2">
+email@email.com
+</span>
+<span class="footer-slogan2">
+XXX省XX市XX路XX有限公司 
+</span>
+</div>
+</div>
+<script src="./layui/layui.all.js"></script>
+<script>
+layui.use(['carousel', 'form'], function(){
+  var carousel = layui.carousel
+  ,form = layui.form;
+  
+  //常规轮播
+  carousel.render({
+    elem: '#test1'
+   ,width: '1200px'
+    ,height: '359px'
+    ,interval: 3000
+  });
+
+});
+</script>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+   
+
+     
+         
+
