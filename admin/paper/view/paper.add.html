@@ -1,114 +1,142 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>系统配置-纸张管理-材质列表-添加材质</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/paper_add.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>添加</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+
 </head>
 
-
 <body>
-<div class="container">
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
 
-    <div class="cont_title">　你当前的位置：系统配置 - 纸张管理 - <a href="__URL__/index">材质列表</a> - 添加材质</div>
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
 
-    <div class="con">
+                            <li>
+                                <a href="#"><p class="Order1">添加材质</p></a>
+                            </li>
+                        </ul>
+                        <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1"
+                              id="form1" onSubmit="javascript:return subfun();">
+                            <input type="hidden" name="submitType" value="1"/>
 
-        <div class="conlist">
-            <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">
-                <input type="hidden" name="submitType" value="1" />
+                            <table class="layui-table" lay-skin="line" lay-size="sm">
+                                <tr class="tr1">
+                                    <td colspan="2" class="tit">添加</td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">材质：<span style="color:#f00;">*</span></td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <input name="title" id="title" type="text" onBlur="onBlur_title()"
+                                               value=""/>　<span class="showErrorMessage" id="span_title"></span>
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">厚度：<span style="color:#f00;">*</span></td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <input name="thickness" id="thickness" type="text" value=""
+                                               onKeyPress="return noNumbers(event);" onBlur="onBlur_thickness()"/> <span
+                                            class="showErrorMessage" id="span_thickness"></span>
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">单位：<span style="color:#f00;">*</span></td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <select name="thickness_unit">
+                                            {foreach $ConfigPaperThicknessUnit as $key=>$value}
+                                            <option value="{$key}">{$value}</option>
+                                            {/foreach}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">单张价格：<span style="color:#f00;">*</span></td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <input name="price" id="price" type="text" value=""
+                                               onKeyPress="FormatFloat(event, 2)"
+                                               onBlur="onBlur_price()"/>元　格式：0.01元<span class="showErrorMessage"
+                                                                                        id="span_price"></span>
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">单张价格(1-100张)：<span style="color:#f00;">*</span></td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <input name="price_one" id="price_one" type="text" value=""
+                                               onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_one()"/>元　格式：0.01元<span
+                                            class="showErrorMessage" id="span_price_one"></span>
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">单张价格(101-500张)：<span style="color:#f00;">*</span></td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <input name="price_two" id="price_two" type="text" value=""
+                                               onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_two()"/>元　格式：0.01元<span
+                                            class="showErrorMessage" id="span_price_two"></span>
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">单张价格(501-以上张)：<span style="color:#f00;">*</span></td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <input name="price_three" id="price_three" type="text" value=""
+                                               onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_three()"/>元　格式：0.01元<span
+                                            class="showErrorMessage" id="span_price_three"></span>
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">排序：</td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <input name="sort_rank" id="sort_rank" type="text" value="50"
+                                               onKeyPress="return noNumbers(event);"/> 说明：正序，数字越大越向后<span
+                                            class="showErrorMessage" id="span_sort_rank"></span>
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">状态：</td>
+                                    <td class="tdr" style="padding-top:5px;">
+                                        <input type="radio" name="data_status" value="0" checked/>已审　
+                                        <input type="radio" name="data_status" value="1"/>未审
+                                    </td>
+                                </tr>
+                                <tr class="tr1">
+                                    <td class="tdl">备注：</td>
+                                    <td class="tdr" style="padding-top:5px;"><textarea name="data_desc" rows="5"
+                                                                                       id="data_desc"
+                                                                                       onKeyPress="return noStrs(event);"
+                                                                                       cols="60"></textarea></td>
+                                </tr>
 
-                <table class="listtable">
-                    <tr class="tr1">
-                        <td colspan="2" class="tit">添加</td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">材质：<span style="color:#f00;">*</span></td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input name="title" id="title" type="text" onBlur="onBlur_title()" value="" />　<span class="showErrorMessage" id="span_title"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">厚度：<span style="color:#f00;">*</span></td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input name="thickness" id="thickness" type="text"  value="" onKeyPress="return noNumbers(event);" onBlur="onBlur_thickness()" /> <span class="showErrorMessage" id="span_thickness"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">单位：<span style="color:#f00;">*</span></td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <select name="thickness_unit">
-                                {foreach $ConfigPaperThicknessUnit as $key=>$value}
-                                <option value="{$key}">{$value}</option>
-                                {/foreach}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">单张价格：<span style="color:#f00;">*</span></td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input name="price" id="price" type="text"  value="" onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price()"  />元　格式：0.01元<span class="showErrorMessage" id="span_price"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">单张价格(1-100张)：<span style="color:#f00;">*</span></td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input name="price_one" id="price_one" type="text"  value="" onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_one()"  />元　格式：0.01元<span class="showErrorMessage" id="span_price_one"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">单张价格(101-500张)：<span style="color:#f00;">*</span></td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input name="price_two" id="price_two" type="text"  value="" onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_two()"  />元　格式：0.01元<span class="showErrorMessage" id="span_price_two"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">单张价格(501-以上张)：<span style="color:#f00;">*</span></td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input name="price_three" id="price_three" type="text"  value="" onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_three()"  />元　格式：0.01元<span class="showErrorMessage" id="span_price_three"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">排序：</td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input name="sort_rank" id="sort_rank" type="text"  value="50" onKeyPress="return noNumbers(event);" /> 说明：正序，数字越大越向后<span class="showErrorMessage" id="span_sort_rank"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">状态：</td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input type="radio" name="data_status" value="0" checked />已审　
-                            <input type="radio" name="data_status" value="1"  />未审
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">备注：</td>
-                        <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60"></textarea>  </td>
-                    </tr>
+                                <tr class="tr1">
+                                    <td class="tdl"></td>
+                                    <td class="tdr" style="padding-top:5px; position:relative;">
+                                        <input type="submit" name="Submit" value="提交" class="layui-btn layui-btn-radius"
+                                               class="layui-btn layui-btn-radius"/>　
+                                        <input type="button" name="button" value="返回"
+                                               class="layui-btn layui-btn-radius layui-btn-normal"
+                                               onClick="javascript:history.go(-1);"/>
 
-                    <tr class="tr1">
-                        <td class="tdl"></td>
-                        <td class="tdr" style="padding-top:5px; position:relative;">
-                            <input type="submit" name="Submit" value="提交"  class="buttomorger" />　
-                            <input type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" />
+                                    </td>
+                                </tr>
+                            </table>
 
-                        </td>
-                    </tr>
-                </table>
+                        </form>
+                    </div>
 
-            </form>
+                </div>
+
+            </div>
         </div>
-
     </div>
-
 
 </div>
 
