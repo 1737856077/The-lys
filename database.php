@@ -40,7 +40,7 @@ return [
 
     // 密码
 
-    'password'        => 'root',
+    'password'        => '994158',
 
     // 端口
 

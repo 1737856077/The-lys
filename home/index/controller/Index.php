@@ -43,7 +43,8 @@ class Index extends  CommonBaseHome
         $tuesday = time() - 60 * 60 * 84;
         $tuesdays = time() - 60 * 60 * 48;
         $time = time();       //AND data_status=1 AND data_type=0
-
+        $MemberModel = Db::name('member');
+        $MemberData = $MemberModel->where('member_id',Session::get('memberid'))->find();//用户信息
         $New = Db::query("  SELECT *    FROM sy_template WHERE  data_status=1 AND data_type=0 AND create_time BETWEEN $tuesday AND  $time    ORDER BY create_time DESC");
         if (empty($New)) {
             $New = Db::query("  SELECT *    FROM sy_template WHERE  data_status=1 AND data_type=0 AND create_time BETWEEN $tuesdays AND  $time   ORDER BY create_time DESC");
@@ -53,7 +54,8 @@ class Index extends  CommonBaseHome
         }
 
         foreach($New as $k=>$value){
-
+            $UserNamess = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
+            $News[$k]['username']=isset($UserNamess[0]['name'])?$UserNamess[0]['name']:'';
             $News= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
             $New[$k]['paper_size_long']=isset($News['paper_size_long'])?$News['paper_size_long']:'';
             $New[$k]['paper_size_wide']=isset($News['paper_size_wide'])?$News['paper_size_wide']:'';
@@ -66,7 +68,9 @@ class Index extends  CommonBaseHome
         //热门排序
         $Popular = Db::name('template ')->where('data_type',0)->where('data_status',1)->order('get_nums desc')->select();
         foreach($Popular as $k=>$value){
-            $Populars= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select()[0];
+            $UserNames = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
+            $Popular[$k]['username']=isset($UserNames[0]['name'])?$UserNames[0]['name']:'';
+            $Populars= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
             $Popular[$k]['paper_size_long']=isset($Populars['paper_size_long'])?$Populars['paper_size_long']:'';
             $Popular[$k]['paper_size_wide']=isset($Populars['paper_size_wide'])?$Populars['paper_size_wide']:'';
             $Popular[$k]['paper_size_unit']=isset($Populars['paper_size_unit'])?$Populars['paper_size_unit']:'';
@@ -79,7 +83,10 @@ class Index extends  CommonBaseHome
         $cas = Db::name('template')->where('data_type',0)->where('data_status',1)->order('show_nums+get_nums desc')->select();;
 
         foreach($cas as $k=>$value){
-            $cass= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select()[0];
+            //插入模板详细内容
+            $cass= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
+            $UserName = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
+            $cas[$k]['username']=isset($UserName[0]['name'])?$UserName[0]['name']:'';
             $cas[$k]['paper_size_long']=isset($cass['paper_size_long'])?$cass['paper_size_long']:'';
             $cas[$k]['paper_size_wide']=isset($cass['paper_size_wide'])?$cass['paper_size_wide']:'';
             $cas[$k]['paper_size_unit']=isset($cass['paper_size_unit'])?$cass['paper_size_unit']:'';
@@ -87,8 +94,10 @@ class Index extends  CommonBaseHome
             $cas[$k]['lable_size_height']=isset($cass['lable_size_height'])?$cass['lable_size_height']:'';
             $cas[$k]['lable_size_unit']=isset($cass['lable_size_unit'])?$cass['lable_size_unit']:'';
         }
+
         $this->assign(
             [
+                'MemberData'=>$MemberData,
                 'New' => $New,
                 'Popular' => $Popular,
                 'cas' => $cas

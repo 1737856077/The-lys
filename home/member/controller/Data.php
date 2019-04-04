@@ -10,20 +10,22 @@ namespace app\member\controller;
 
 
 use app\common\controller\CommonBase;
+use app\common\controller\CommonBaseHome;
 use function Composer\Autoload\includeFile;
 use think\Cookie;
 use think\Db;
 use think\Session;
 
-class Data extends CommonBase
+class Data extends CommonBaseHome
 {
     //查看数据库
     public function index()
     {
         $memberid = Session::get('memberid');
         $data = Db::name('custom_database')->where('member_id', $memberid)->select();
+        $n = Db::name('custom_database')->where('member_id',$memberid)->field('count(member_id) id')->select();
         $this->assign('data', $data);
-        return $this->fetch();
+        $this->assign('n',$n);
     }
 
     //新建数据库

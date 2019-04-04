@@ -1,323 +1,133 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>后台管理</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>登录记录页面</title>
     <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
     <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
-<body class="layui-layout-body">
-<div class="layui-tab-item layui-show">
-    <div class="Order_title">管理员列表</div>
-    <div class="liebiao">
-        <table class="layui-table" lay-skin="line" lay-size="sm">
-            <thead>
-            <tr>
-                <th><input type="checkbox"></th>
-                <td class="tdtit">ID</td>
-                <td class="tdtit">名字</td>
-                <td class="tdtit">类型</td>
-                <td class="tdtit">角色</td>
-                <td class="tdtit">电话</td>
-                <td class="tdtit">状态</td>
-                <td class="tdtit">操作</td>
-            </tr>
-            </thead>
-            <tbody>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            {if auth('admin/admin/index')}
+                            <li class="layui-this">
+                                <a href="/admin.php/admin/admin/index"><p class="Order1">管理员列表</p></a>
+                            </li>
+                            {/if}
+                            {if auth('admin/admin/add')}
+                            <li>
+                                <a href="/admin.php/admin/admin/add"><p class="Order1">添加管理员</p></a>
+                            </li>
+                            {/if}
+                            {if auth('admin/adminoperatelog/index')}
+                            <li>
+                                <a href="/admin.php/admin/adminoperatelog/index"><p class="Order1">操作记录</p></a>
+                            </li>
+                            {/if}
+                            {if auth('admin/admin/modifypwd')}
+                            <li>
+                                <a href="/admin.php/admin/admin/modifypwd"><p class="Order1">修改密码</p></a>
+                            </li>
+                            {/if}
+                            {if auth('admin/adminshare/index')}
+                            <li>
+                                <a href="/admin.php/admin/adminshare/index"><p class="Order1">分享注册</p></a>
+                            </li>
+                            {/if}
 
-            {foreach $list as $vo}
-            <tr class="tr1">
-                <td><input type="checkbox"></td>
-                <td class="tdlist">{$vo['admin_id']}</td>
-                <td class="tdlist">{$vo['name']}</td>
-                <td class="tdlist">
-                    {if $vo['data_type'] eq 1}系统管理员
-                    {elseif $vo['data_type'] eq 2/}商家管理员
-                    {/if}
-                </td>
-                <td class="tdlist">{$vo['role_title']}</td>
-                <td class="tdlist">{$vo['tel']}</td>
-                <td class="tdlist">
-                    {if auth('admin/admin/editinfo') }
-                    {if $vo['name'] eq 'admin'}
-                    <font color="#006600">正常</font>
-                    {else}
-                    {if $vo['data_status'] eq 0}
-                    <a href="__URL__/editinfo/action/checkStatus/id/{$vo['admin_id']}/Status/1" ><font color="#ff0000">冻结</font></a>
-                    {else}
-                    <a href="__URL__/editinfo/action/checkStatus/id/{$vo['admin_id']}/Status/0" ><font color="#006600">正常</font></a>
-                    {/if}
-                    {/if}
-                    {else}
-                    {if $vo['data_status'] eq 0}
-                    <font color="#ff0000">冻结</font>
-                    {else}
-                    <font color="#006600">正常</font>
-                    {/if}
-                    {/if}
-                </td>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
+                                    <table class="layui-table" lay-skin="line" lay-size="sm">
+                                        <thead>
+                                        <tr>
+                                            <th><input type="checkbox"></th>
+                                            <td class="tdtit">ID</td>
+                                            <td class="tdtit">名字</td>
+                                            <td class="tdtit">类型</td>
+                                            <td class="tdtit">角色</td>
+                                            <td class="tdtit">电话</td>
+                                            <td class="tdtit">状态</td>
+                                            <td class="tdtit">操作</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
-
-                {if $vo['name'] eq 'admin'}
-                <td style="color: #141a20">编辑</td>
-                {else}
-                {if auth('admin/admin/setpwd') }
-                <td><a href="javascript:void(0)" onclick="obj('{$vo.admin_id}')" class="click_pop">编辑</a></td>
-                {/if}
-                {/if}
-
-
-
-
-
-
-            </tr>
-            {/foreach}
-
-
-            </tbody>
-        </table>
-        <!--遮罩层-->
-        <div class="bgPop"></div>
-        <!--弹出框-->
-        <div class="pop">
-            <div class="pop-top">
-                <h2>编辑</h2>
-                <span class="pop-close"><i class="lusheji lusheji_iconclose-b"
-                                           style="font-size: 40px;color: #000;"></i></span>
-            </div>
-            <div class="pop-content">
-                <div class="pop-content-left">
-                    <img src="" alt="" class="teathumb">
-                </div>
-                <div class="pop-content-right">
-                    <form class="layui-form"  action="/admin.php/admin/admin/update" enctype="multipart/form-data" method="post">
-
-                        <div class="layui-form-item" id="form1">
-                            <label class="layui-form-label">用户名</label>
-                            <div class="layui-input-block">
-                                <input style="width: 190px;" type="text" name="name" required
-                                       lay-verify="required" placeholder="请输入用户名" autocomplete="off"
-                                       class="layui-input"  disabled="true" id="name">
-                            </div>
-                        </div>
+                                        {foreach $list as $vo}
+                                        <tr class="tr1">
+                                            <td><input type="checkbox"></td>
+                                            <td class="tdlist">{$vo['admin_id']}</td>
+                                            <td class="tdlist">{$vo['name']}</td>
+                                            <td class="tdlist">
+                                                {if $vo['data_type'] eq 1}系统管理员
+                                                {elseif $vo['data_type'] eq 2/}商家管理员
+                                                {/if}
+                                            </td>
+                                            <td class="tdlist">{$vo['role_title']}</td>
+                                            <td class="tdlist">{$vo['tel']}</td>
+                                            <td class="tdlist">
+                                                {if auth('admin/admin/editinfo') }
+                                                {if $vo['name'] eq 'admin'}
+                                                <font color="#006600">正常</font>
+                                                {else}
+                                                {if $vo['data_status'] eq 0}
+                                                <a href="__URL__/editinfo/action/checkStatus/id/{$vo['admin_id']}/Status/1" ><font color="#ff0000">冻结</font></a>
+                                                {else}
+                                                <a href="__URL__/editinfo/action/checkStatus/id/{$vo['admin_id']}/Status/0" ><font color="#006600">正常</font></a>
+                                                {/if}
+                                                {/if}
+                                                {else}
+                                                {if $vo['data_status'] eq 0}
+                                                <font color="#ff0000">冻结</font>
+                                                {else}
+                                                <font color="#006600">正常</font>
+                                                {/if}
+                                                {/if}
+                                            </td>
 
 
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">电话</label>
-                            <div class="layui-input-block">
-                                <input style="width: 190px;" type="text" name="tel" required
-                                       lay-verify="required" placeholder="电话" autocomplete="off"
-                                       class="layui-input">
-                            </div>
-                        </div>
+                                            {if $vo['name'] eq 'admin'}
+                                            <td style="color: #141a20">编辑</td>
+                                            {else}
+                                            {if auth('admin/admin/setpwd') }
+                                            <td><a href="/admin.php/admin/admin/edit/id/{$vo['admin_id']}">编辑</a></td>
+                                            {/if}
+                                            {/if}
 
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">性别</label>
-                            <div class="layui-input-block">
-                                <input type="radio" name="sex" value="男" title="男">
-                                <input type="radio" name="sex" value="女" title="女" checked>
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">管理员类型</label>
-                            <div class="layui-input-block" style="width: 19%">
-                                <select name="data_type" lay-verify="" style="width: 48%">
-                                    <option value="1" selected>系统管理员</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">管理员角色</label>
-                            <div class="layui-input-block" style="width: 19%">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <tr class="tr1">
-                                <label class="layui-form-label">描述</label>
-                                <td class="tdr" style="padding-top:5px;"><textarea name="data_desc" rows="5" id="data_desc"
-                                                                                   onKeyPress="return noStrs(event);"
-                                                                                   cols="60"></textarea></td>
-                            </tr>
-                        </div>
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                                <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+
+
+
+                                        </tr>
+                                        {/foreach}
+
+
+                                        </tbody>
+                                    </table></div>
+                                <div id="laypage88" style="text-align: center;">
+                                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7"> <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a> <span class="layui-laypage-curr"> <em class="layui-laypage-em"></em><em>1</em></span> <a href="javascript:;" data-page="2">2</a> <a href="javascript:;" data-page="3">3</a> <a href="javascript:;" data-page="4">4</a> <a href="javascript:;" data-page="5">5</a> <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a></div>
                                 </div>
+                            </div>
                         </div>
-                </div>
+                    </div>
                 </div>
             </div>
-
-        </div>
-        <script>
-            function  obj(obj) {
-                var thisObj = obj;
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: "/admin.php/admin/admin/modifypwds",
-                    data: {'admin_id': thisObj},
-                    success: function (result) {
-
-                        $("#name").val(result.name)
-                        $("#data_desc").val(result.data_desc)
-                        $("#form1").append(" <input type='hidden' name='admin_id' value='"+result.admin_id+"'"+"/>")
-                    }
-                });
-            }
-            $(document).ready(function () {
-                $('.pop-close').click(function () {
-                    $('.bgPop,.pop').hide();
-                });
-                $('.click_pop').click(function () {
-                    $('.bgPop,.pop').show();
-                });
-            })
-
-        </script>
-
-
-    </div>
-    <div id="laypage88" style="text-align: center;">
-        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
-            <a href="javascript:;" class="layui-laypage-prev layui-disabled"
-               data-page="0">上一页</a>
-            <span class="layui-laypage-curr">
-      <em class="layui-laypage-em"></em><em>1</em></span>
-            <a href="javascript:;" data-page="2">2</a>
-            <a href="javascript:;" data-page="3">3</a>
-            <a href="javascript:;" data-page="4">4</a>
-            <a href="javascript:;" data-page="5">5</a>
-            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
         </div>
     </div>
-</div><script src="__STATIC__/admin/layui/layui.all.js"></script>
-<script>
-    layui.use(['form', 'laydate'], function () {
-        var form = layui.form
-            , laydate = layui.laydate;
-
-        // 时间选择
-        laydate.render({
-            elem: '#tool-time',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-        // 时间选择2
-        laydate.render({
-            elem: '#tool-time2',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-// 时间选择3
-        laydate.render({
-            elem: '#tool-time3',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-        // 时间选择4
-        laydate.render({
-            elem: '#tool-time4',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-
-        // 时间选择5
-        laydate.render({
-            elem: '#tool-time5',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-    });
-</script>
-<script>
-    var j = 3;
-
-    function addtr() {
-        var tableobj = document.getElementById("tid");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-    function addtr2() {
-        var tableobj = document.getElementById("tid2");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-    function addtr3() {
-        var tableobj = document.getElementById("tid3");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-
-    function addtr4() {
-        var tableobj = document.getElementById("tid4");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-    function addtr5() {
-        var tableobj = document.getElementById("tid5");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-    function delecttr(obj) {
-        var tr = obj.parentNode.parentNode;
-        tr.parentNode.removeChild(tr);
-    }
-
-</script>
+</div>
 </body>
 </html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+</body>
+</html>
+
+
+
+

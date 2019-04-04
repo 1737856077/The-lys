@@ -1,0 +1,72 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>云标签</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="applicable-device"content="pc,mobile"/>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script src="__STATIC__/home/js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<header>
+<nav>
+    <div class="logo"><a href="#"><img src="__STATIC__/home/images/logo.png"></a></div>
+    <div class="menu">
+        <div class="menu-box">
+            <ul class="menu-list-content">
+                <li><a href="/index.html" >首页</a></li>
+                <li><a href="/index.php/index/templates/templates" >模板中心</a></li>
+                <li><a href="/design.html" >开始设计</a></li>
+                <li><a href="/customized.html" >模板定制</a></li>
+            </ul>
+        </div>
+        <div class="user-center">
+            {if condition="empty($Think.session.username)"}
+            <ul class="unlogin">
+                <li><a href="/index.php/member/Register/login">登录</a><a href="/index.php/member/Register/index">注册</a></li>
+            </ul>
+        </div>
+        {else /}
+        <ul class="login">
+            <li class="user">
+                <div class="avatar-container-30">
+                    <a href="/index.php/member/userconter/index" class="user-list"><img src="/home/uploads/{$MemberData.img}" title="{$MemberData.username}" alt="{$MemberData.username}"></a>
+                </div>
+                <div class="menu-list user-box hide">
+                    <section><a href="/index.php/member/userconter/index" z-st="nav_userbox_name">{$MemberData.username}</a></section>
+                    <div class="user-box-list">
+                        <div class="user-box-list-area">
+                            <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
+                            <p class="works-manange"><a href="/index.php/member/userconter/index"> <i class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
+                            <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
+                            <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
+                        </div>
+                        <div class="user-box-list-area">
+                            <p class="works-manange"><a href="/index.php/member/register/unlogin"><i class="lusheji lusheji_icontuichu"></i>退出</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        {/if}
+    </div>
+</nav>
+</header>
+<div id="wp" style="background:#fff;margin-top: 60px;">
+    <div class="all-work-list">
+        <div class="top_img"><img width="519" height="39" src="__STATIC__/home/images/top1.png"></div>
+        <div class="container">
+            <div id="search">
+                <form action="/index.php/index/home/ss" method="post">
+                    <input class="search_k" type="text" name="value">
+                    <input  type="submit" name="value" value=""> <button class="search_b">搜索</button> 或　<a href="#"><button class="search_b">在线设计</button></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

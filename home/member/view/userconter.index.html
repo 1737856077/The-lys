@@ -1,107 +1,795 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>　<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <title>1</title>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script type="text/javascript" src="__STATIC__/home/js/jquery-1.8.0.min.js"></script>
     <style>
-        .black_overlay{
-            display: none;
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index:1001;
-            -moz-opacity: 0.8;
-            opacity:.80;
-            filter: alpha(opacity=88);
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
         }
-        .white_content {
-            display: none;
+
+        .fileinput-button input {
             position: absolute;
-            top: 25%;
-            left: 25%;
-            width: 55%;
-            height: 55%;
-            padding: 20px;
-            border: 10px solid orange;
-            background-color: white;
-            z-index:1002;
-            overflow: auto;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+            cursor: pointer;
         }
     </style>
-
 </head>
-<body>
-
-{include file="publicinfo@publicinfo/header" /}
-<div id="child_header">
-    <div class="current_location"><span>个人信息</span></div>
-    <div class="current_location"><a href="/index.php/member/userconter/template">模板管理</a></div>
-    <div class="current_location"><a href="/index.php/member/userconter/orders">订单中心</a></div>
-    <div class="current_location"><a href="/index.php/member/data/index">数据库</a></div>
-</div>
-<div class="user_info">
-    <form action="/index.php/member/userconter/save" method="post" enctype="multipart/form-data">
-        <ul>
-            {volist name="data" id="user"}
-            <li><span>头像</span>
-            <img src="/home/uploads/{$user.img}" width="100" class="img-rounded">
-            <div class="form-group">
-                <label>修改头像</label>
-                <input  placeholder="" name="img"  type="file">
+<header>
+    <nav>
+        <div class="logo"><a href="#"><img src="__STATIC__/home/images/logo.png"></a></div>
+        <div class="menu">
+            <div class="menu-box">
+                <ul class="menu-list-content">
+                    <li><a href="/index.html">首页</a></li>
+                    <li><a href="/index.php/index/templates/templates">模板中心</a></li>
+                    <li><a href="/design.html">开始设计</a></li>
+                    <li><a href="/customized.html">模板定制</a></li>
+                </ul>
             </div>
-            <li><p>修改密码<input  type="password" name="pwd" value=""></p></li>
-            {if condition="($industry.title)"}
-            <li><p>行业类型:{$industry.title}</p></li>
+            <div class="user-center">
+                {if condition="empty($Think.session.username)"}
+                <ul class="unlogin">
+                    <li><a href="/index.php/member/Register/login">登录</a><a
+                            href="/index.php/member/Register/index">注册</a></li>
+                </ul>
+            </div>
             {else /}
-            <li><p>请选择行业</p>
-                <select name="title">
-                  {foreach name='title' id = 'user'}
-                    <option name="title" value="{$user.id}"> {$user.title} </option>
-                    {/foreach}
-                </select>
-            </li>
+            <ul class="login">
+                <li class="user">
+                    <div class="avatar-container-30">
+                        <a href="/index.php/member/userconter/index" class="user-list"><img
+                                src="/home/uploads/{$data.0.img}"
+                                title="{$data.0.username}" alt="{$data.0.username}"></a>
+                    </div>
+                    <div class="menu-list user-box hide">
+                        <section><a href="/index.php/member/userconter/index" z-st="nav_userbox_name">{$Think.session.username}</a>
+                        </section>
+                        <div class="user-box-list">
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"> <i class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
+                            </div>
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="/index.php/member/register/unlogin"><i class="lusheji lusheji_icontuichu"></i>退出</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
             {/if}
-            {if condition="isset($order)"}
-            <li><p>收货地址{$order}</li>
-            {else /}
-            <td class="tdr">
-                <li><p>请选择收货地址</li>
-                <select id="sheng" name="sheng">
-                    <option value="">请选择省份</option>
-                    {volist name="region" id="vo"}
-                    <option value='{$vo.area_code}'>{$vo.area_name}</option>
-                    {/volist}
-                </select>
-                <select id="city"  name="city">
-                    <option value="">请选择城市</option>
-                </select>
-                <select id="qu"  name="qu">
-                    <option value="">请选择区</option>
-                </select>
-                <select id="jie"  name="jie" style="display: none;">
-                    <option value="">请选择街道</option>
-                </select>
-            </td>
-            {/if}
-            {/volist}   <input type="submit" value="保存">
-        </ul>
-    </form>
+        </div>
+    </nav>
+</header>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-tab">
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <div class="header-box ft">
+                    <img class="useravatar" src="/home/uploads/{$data.0.img}" alt="头像">
+                    <div class="header-info">
+                        <span class="header-name">{$data.0.username}</span>
+                    </div>
+                    <div class="line"></div>
+                </div>
+                <ul class="layui-nav layui-nav-tree layui-tab-title">
+                    <li name="#Setup" class="layui-nav-item layui-this"><i class="lusheji lusheji_iconziliao"></i>资料设置
+                    </li>
+                    <li name="#Template" class="layui-nav-item"><i class="lusheji lusheji_icontemplate-library"></i>模板管理
+                    </li>
+                    <li name="#Order" class="layui-nav-item"><i class="lusheji lusheji_icondingdan"></i>订单中心</li>
+                    <li name="#Data" class="layui-nav-item"><i class="lusheji lusheji_icontuiguang"></i>数据表</li>
+                </ul>
+            </div>
+        </div>
+
+        <!--主体区域-->
+
+        <!--资料设置开始-->
+        <div class="layui-tab-content layui-body">
+            <div class="layui-tab-item layui-show">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">资料设置</div>
+                        <div class="liebiao">
+                            <form class="layui-form" action="/index.php/member/userconter/save" method="post"
+                                  enctype="multipart/form-data">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">修改头像</label>
+                                    <div class="layui-upload" style="margin: 0 0 20px 110px;">
+                                        <div class="layui-upload-list">
+                                            {volist name="data" id="user"}
+                                            <img class="layui-upload-img" src="/home/uploads/{$user.img}" id="touxiang">
+                                            {/volist}
+                                            <p id="demoText"></p>
+                                        </div>
+                                        <span class="btn btn-success fileinput-button">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                        <span class="layui-btn layui-btn-radius"
+                                              style="display: block; height: 35px;width: 100px;">上传图片</span>
+                                        <input type="file" name="img" placeholder="">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">修改密码</label>
+                                    <div class="layui-input-inline">
+                                        <input style="width: 190px;" type="password" name="password" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">不修改请留空</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">性别</label>
+                                    <div class="layui-input-block">
+                                        <td class="tdlist">{$user['sex']==1 ?
+                                            " <input type='radio' name='sex' value='0' title='男'>
+                                            <input type='radio' name='sex' value='1' title='女' checked>"
+
+                                            :
+                                            " <input type='radio' name='sex' value='0' title='男' checked>
+                                            <input type='radio' name='sex' value='1' title='女'>"
+                                            }&nbsp;
+                                        </td>
+
+                                    </div>
+                                </div>
+                                {if condition="isset($order)"}
+
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">收货地址</label>
+                                    <div class="layui-input-block">
+                                        {$order}
+                                    </div>
+                                </div>
+                                {/if}
+
+                                <div class="layui-input-inline">
+                                    <label class="layui-form-label">更改收货地址</label>
+                                    <select style="display: block;" id="sheng" class="sheng" name="sheng">
+                                        <option value="">请选择省份</option>
+                                        {volist name="region" id="vo"}
+                                        <option value='{$vo.area_code}'>{$vo.area_name}</option>
+                                        {/volist}
+                                    </select>
+                                    <select style="display: block;" id="city" name="city">
+                                        <option value="">请选择城市</option>
+                                    </select>
+                                    <select style="display: block" id="qu" name="qu">
+                                        <option value="">请选择区</option>
+                                    </select>
+                                    <select style="display: block" id="jie" name="jie">
+                                        <option value="">请选择街道</option>
+                                    </select>
+
+                                </div>
+                                <div class="layui-form-item">
+
+                                    <label class="layui-form-label">行业类型</label>
+                                    <div class="layui-input-block">
+                                        {$industry.title}
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <li><p>请选择行业</p>
+                                        <select name="title">
+                                            <option name="title" value=""> 请选择</option>
+                                            {foreach name='title' id = 'user'}
+                                            <option name="title" value="{$user.id}"> {$user.title}</option>
+                                            {/foreach}
+                                        </select>
+                                    </li>
+
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+
+            <!--资料资料设置结束-->
+
+
+            <!--模板管理开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">最新模板</div>
+                        <div class="Order_more">更多模板>></div>
+
+                        <div class="user_muban_list">
+                            <ul>
+                                {foreach name='newtemplate' id='data'}
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <div class="imgBox">
+                                            <img width="260px" height="220px"
+                                                 src="/home/uploads/{$data.img}">
+                                            <div class="imgBox-mask">
+                                                <button class="layui-btn l_button">编辑</button>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="interactive-box">
+                                        <a href="#" target="_blank">
+                                            <h2>{$data.title}</h2>
+                                        </a>
+                                        <div class="data-box">
+                                            <div class="data-view">
+                                                <span>纸张尺寸</span><br><span> 标签尺寸</span> <br><span>发布时间</span>
+                                            </div>
+                                            <div class="data-like">
+                                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span><br><span>{$data.lable_size_wide}{$data.lable_size_unit}*{$data.lable_size_height}{$data.lable_size_unit}</span><br><span>{$data.create_time|date="y-m-d:H-i-s",###}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {/foreach}
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="box-center">
+                        <div class="Order_title">我的模板</div>
+
+                        <div class="user_muban_list">
+                            <ul>
+                                {foreach name='template' id='data'}
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <div class="imgBox">
+                                            <img width="260px" height="220px"
+                                                 src="/home/uploads/{$data.img}">
+                                            <div class="imgBox-mask">
+                                                <button class="layui-btn l_button">编辑</button>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="interactive-box">
+                                        <a href="#" target="_blank">
+                                            <h2>{$data.title}</h2>
+                                        </a>
+                                        <div class="data-box">
+                                            <div class="data-view">
+                                                <span>纸张尺寸</span><br><span> 标签尺寸</span> <br><span>发布时间</span>
+                                            </div>
+                                            <div class="data-like">
+                                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span><br><span>{$data.lable_size_wide}{$data.lable_size_unit}*{$data.lable_size_height}{$data.lable_size_unit}</span><br><span>{$data.create_time|date="y-m-d:H-i-s",###}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div id="laypage88" style="text-align: center;">
+                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                            <a href="javascript:;" data-page="2">2</a>
+                            <a href="javascript:;" data-page="3">3</a>
+                            <a href="javascript:;" data-page="4">4</a>
+                            <a href="javascript:;" data-page="5">5</a>
+                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--模板管理结束-->
+            <!--订单中心开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title tab_tatle">
+                                <li class="layui-this"><p class="Order1">全部订单</p></li>
+                                <li><p class="Order1">新提交</p></li>
+                                <li><p class="Order1">已核实</p></li>
+                                <li><p class="Order1">设计中</p></li>
+                                <li><p class="Order1">设计结束</p></li>
+                                <li><p class="Order1">已完成</p></li>
+                            </ul>
+                            <div style="width: 600px;    margin-top: 20px;">
+                                <div id="search">
+                                    <form id="seek" class="seek" action="">
+                                        <input class="user_search_k" id="value" type="text" name="order"  value="请输入标签名称或订单号查询">
+                                        <input class="user_search_b" type="button" onclick="login()" id="select" value="搜索">
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="layui-tab-content">
+                                <!--全部订单-->
+                                <div class="layui-tab-item layui-show">
+                                    <div class="dj" id="dj">
+                                 <div class="nr" id="nr">
+                                     {foreach name='orderdata' id='orderdata'}
+                                     <table  id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                         <colgroup>
+                                             <col width="50">
+                                             <col width="200">
+                                             <col width="200">
+                                             <col width="200">
+                                         </colgroup>
+                                         <thead>
+
+                                         <tr style="background: #EAF8FF;">
+                                             <th style="text-align: left;padding:0 20px;height: 30px">
+                                                 {$orderdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$orderdata.order_no}
+                                             </th>
+                                             <th>打印数量</th>
+                                             <th>订单状态</th>
+                                             <th>交易操作</th>
+                                         </tr>
+                                         </thead>
+                                         <tbody>
+                                         <tr style="height: 190px">
+                                             <td>
+                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                     <tbody>
+                                                     <tr style="height: 190px">
+                                                         <td><img src="/home/uploads/{$orderdata.img}"></td>
+                                                         <td>
+                                                             <div class="order_title">{$orderdata.template_title}</div>
+                                                             <h2>纸张尺寸</h2>
+                                                             <h3>{$orderdata.paper_size_long}{$orderdata.paper_size_unit}*{$orderdata.paper_size_wide}{$orderdata.paper_size_unit}</h3>
+                                                         </td>
+                                                     </tr>
+                                                     </tbody>
+                                                 </table>
+                                             </td>
+                                             <td>{$orderdata.print_num}</td>
+                                             <td>
+                                                 {switch name="$orderdata.order_status" }
+                                                 {case value="0"}
+                                                 <button class="layui-btn layui-btn-sm">新提交</button>
+                                                 {/case}
+                                                 {case value="1"}
+                                                 <button class="layui-btn layui-btn-danger layui-btn-sm"> 已核实</button>
+                                                 {/case}
+                                                 {case value="2"}
+                                                 <button class="layui-btn layui-btn-danger layui-btn-sm">设计中</button>
+                                                 {/case}
+                                                 {case value="3"}
+                                                 <button class="layui-btn layui-btn-warm layui-btn-sm">设计结束</button>
+                                                 {/case}
+                                                 {case value="4"}
+                                                 <button class="layui-btn layui-btn-sm">已完成</button>
+                                                 {/case}
+                                                 {/switch}
+                                             </td>
+                                             <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a>
+                                             </td>
+                                         </tr>
+                                         </tbody>
+                                     </table>
+                                     {/foreach}
+                                 </div>
+                                    </div>
+                                </div>
+                                <!--新提交-->
+                                <div class="layui-tab-item">
+                                    {foreach name='new' id='newdata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #ebfdfb;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$newdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$newdata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td> <img src="/home/uploads/{$newdata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$newdata.template_title}</div>
+                                                            <h2>纸张尺寸</h2><h3>      {$newdata.paper_size_long}{$newdata.paper_size_unit}*{$newdata.paper_size_wide}{$newdata.paper_size_unit}</h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$newdata.print_num}</td>
+                                            <td><button class="layui-btn layui-btn-normal layui-btn-sm">新提交</button></td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">继续设计</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                </div>
+                                <!--核实-->
+                                <div class="layui-tab-item">
+                                    {foreach name='verify' id='verifydata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #fff1ec;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$verifydata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$verifydata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td> <img src="/home/uploads/{$verifydata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$verifydata.template_title}</div>
+                                                            <h2>纸张尺寸</h2><h3>
+                                                            {$verifydata.paper_size_long}{$verifydata.paper_size_unit}*{$verifydata.paper_size_wide}{$verifydata.paper_size_unit}
+                                                        </h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$verifydata.print_num}</td>
+                                            <td><button class="layui-btn layui-btn-danger layui-btn-sm">已核实</button></td>
+                                            <td> <a href="#" class="layui-btn  layui-btn-xs" target="_blank">去付款</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                </div>
+                                <div class="layui-tab-item">
+                                    <!--设计中-->
+                                    {foreach name='design' id='designdata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #fff7e4;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$designdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$designdata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td> <img src="/home/uploads/{$designdata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$designdata.template_title}</div>
+                                                            <h2>纸张尺寸</h2><h3>
+                                                            {$designdata.paper_size_long}{$designdata.paper_size_unit}*{$designdata.paper_size_wide}{$designdata.paper_size_unit}
+                                                        </h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$designdata.print_num}</td>
+                                            <td><button class="layui-btn layui-btn-warm layui-btn-sm">设计中</button></td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">编辑追加</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+
+
+                                </div>
+
+                                <div class="layui-tab-item">
+                                    <!--设计结束-->
+                                    {foreach name='designend' id='designenddata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #EAF8FF;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$designenddata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$designenddata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td> <img src="/home/uploads/{$designenddata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$designenddata.template_title}</div>
+                                                            <h2>纸张尺寸</h2><h3>
+                                                            {$designenddata.paper_size_long}{$designenddata.paper_size_unit}*{$designenddata.paper_size_wide}{$designenddata.paper_size_unit}
+                                                        </h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$designenddata.print_num}</td>
+                                            <td><button class="layui-btn layui-btn-sm">设计结束</button></td>
+                                            <td> <a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                </div>
+                                <!--已完成end-->
+                                <div class="layui-tab-item">
+                                    <!--设计结束-->
+                                    {foreach name='End' id='enddata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #EAF8FF;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$enddata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$enddata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td> <img src="/home/uploads/{$designenddata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$enddata.template_title}</div>
+                                                            <h2>纸张尺寸</h2><h3>
+                                                            {$enddata.paper_size_long}{$enddata.paper_size_unit}*{$enddata.paper_size_wide}{$enddata.paper_size_unit}
+                                                        </h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$enddata.print_num}</td>
+                                            <td><button class="layui-btn layui-btn-sm">已完成</button></td>
+                                            <td> <a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!--订单中心结束-->
+
+
+
+
+
+
+            <!--数据表开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">共有 <b style="color: red">{$n.0.id}</b> 份数据表</div>
+                        <div class="data_leading"><a href="javascript:void(0)" class="layui-btn click_pop"><i
+                                class="lusheji lusheji_iconcaozuo-shangchuan-upload"></i>导入EXCEL</a></div>
+                        <!--遮罩层-->
+                        <div class="bgPop"></div>
+                        <!--弹出框-->
+                        <div class="pop">
+                            <div class="pop-top">
+                                <h2>数据表导入</h2>
+                                <span class="pop-close"><i class="lusheji lusheji_iconclose-b"
+                                                           style="font-size: 40px;color: #000;"></i></span>
+                            </div>
+                            <div class="pop-content">
+                                <div class="pop-content-right">
+                                    <div class="layui-form-item">请下载数据表模板，按照要求上传文件，默认只导入第一张工作表的内容。</div>
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <button type="button" class="layui-btn" id="excel"><i
+                                                    class="layui-icon"></i>上传文件
+                                            </button>
+                                        </div>
+                                        <div class="layui-form-item"><a href="#"><i
+                                                class="lusheji lusheji_iconxiazai"></i>下载数据表模板</a></div>
+                                        <div class="layui-form-item">
+                                            <button class="layui-btn"
+                                                    style="position: absolute;bottom: 50px;right: 50px;" lay-submit
+                                                    lay-filter="formDemo">保存
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $('.pop-close').click(function () {
+                                    $('.bgPop,.pop').hide();
+                                });
+                                $('.click_pop').click(function () {
+                                    $('.bgPop,.pop').show();
+                                });
+                            })
+
+                        </script>
+                        <a href="__STATIC__/home/data.html">
+                            <div class="yun_data_box_add"><i class="layui-icon">&#xe654;</i>添加新的数据表</div>
+                        </a>
+                        {foreach name='databases' id='databases'}
+                        <div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>{$databases.title}</div>
+                        {/foreach}
+                    </div>
+
+                    <div class="clear"></div>
+                    <div id="laypage88" style="text-align: center;">
+                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                            <a href="javascript:;" data-page="2">2</a>
+                            <a href="javascript:;" data-page="3">3</a>
+                            <a href="javascript:;" data-page="4">4</a>
+                            <a href="javascript:;" data-page="5">5</a>
+                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--数据表结束-->
+
+
+        </div>
+        <!--主体区域end-->
+    </div>
 </div>
 
-{include file="publicinfo@publicinfo/footer" /}
+
+<script src="__STATIC__/home/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', 'upload'], function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#txsc'
+            , url: '/index.php/member/userconter/imf'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#touxiang').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('如果上传失败');
+                }
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#excel'
+            , url: '/index.php/member/userconter/img'
+            , accept: 'file' //普通文件
+            , done: function (res) {
+                console.log(res)
+            }
+        });
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , pass: [
+                /^[\S]{6,12}$/
+                , '密码必须6到12位，且不能出现空格'
+            ]
+            , content: function (value) {
+                layedit.sync(editIndex);
+            }
+        });
+    });
+</script>
 <script>
 
     $("#sheng").change(function () {
@@ -114,11 +802,11 @@
             success: function (data) {
                 var option = "", shi = '';
                 document.getElementById("city").options.length = 0;
-                document.getElementById("city").add(new Option("请选择城市",""));
+                document.getElementById("city").add(new Option("请选择城市", ""));
                 document.getElementById("qu").options.length = 0;
-                document.getElementById("qu").add(new Option("请选择区",""));
+                document.getElementById("qu").add(new Option("请选择区", ""));
                 document.getElementById("jie").options.length = 0;
-                document.getElementById("jie").add(new Option("请选择街道",""));
+                document.getElementById("jie").add(new Option("请选择街道", ""));
                 for (var i = 0; i < data.length; i++) {
                     if (shi == '') shi = data[i];
 
@@ -144,9 +832,9 @@
                 dataType: "json",
                 success: function (data) {
                     document.getElementById("qu").options.length = 0;
-                    document.getElementById("qu").add(new Option("请选择区",""));
+                    document.getElementById("qu").add(new Option("请选择区", ""));
                     document.getElementById("jie").options.length = 0;
-                    document.getElementById("jie").add(new Option("请选择街道",""));
+                    document.getElementById("jie").add(new Option("请选择街道", ""));
                     var html = "";
                     for (i = 0; i < data.length; i++) {
                         html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
@@ -173,7 +861,7 @@
                 success: function (data) {
                     var html = "";
                     document.getElementById("jie").options.length = 0;
-                    document.getElementById("jie").add(new Option("请选择街道",""));
+                    document.getElementById("jie").add(new Option("请选择街道", ""));
                     for (i = 0; i < data.length; i++) {
                         html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
                     }
@@ -182,6 +870,17 @@
             })
         }
     })</script>
-</body>
 
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

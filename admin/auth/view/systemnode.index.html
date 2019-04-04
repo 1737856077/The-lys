@@ -1,33 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>权限管理-系统节点</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/city.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>登录记录页面</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
 <style type="text/css">
     .bagcolor{ font-weight: bold;}
 </style>
 <body>
-<div class="cont_title">　你当前的位置：权限管理 -系统节点</div>
-
-<div class="con">
-
-    <div class="conlist">
-
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            {if auth('admin/admin/index')}
+                            <li >
+                                <a href="/admin.php/auth/systemrole/index"><p class="Order1">系统角色</p></a>
+                            </li>
+                            {/if}
+                            {if auth('admin/admin/modifypwd')}
+                            <li class="layui-this">
+                                <a href="/admin.php/auth/systemnode/index"><p class="Order1">系统节点</p></a>
+                            </li>
+                            {/if}
+                        </ul>
         <form  method="post" action="__URL__/editinfo/action/save" id="form_save">
-            <table class="listtable">
-                <tr class="tr1">
-                    <td colspan="4" class="tit">列表　</td>
-                    <td   class="tdlist">
-                        <a href="__URL__/add">{if auth('auth/systemnode/add') }<input type="button" name="" class="buttomorger"  value="添加" />{/if}</a>
-                    </td>
-                </tr>
+            <table class="layui-table" lay-skin="line" lay-size="sm">
+            <tr class="tr1">
+                <td colspan="4" class="tit">列表　</td>
+                <td   class="tdlist">
+                    <a href="__URL__/add">{if auth('auth/systemnode/add') }<input class="layui-btn" type="button" name="" class="buttomorger"  value="添加" />{/if}</a>
+                </td>
+            </tr>
+            </table>
+            <table class="layui-table" lay-skin="line" lay-size="sm">
+
                 <tr class="tr1">
                     <td class="tdtit"><input type="checkbox" id="chkAll" name="chkAll" onClick="CheckAll(this.form)" value="checkbox" />ID</td>
                     <td class="tdtit">名称</td>
@@ -41,19 +56,19 @@
                     <td class="tdlist bagcolor">{$value['title']}&nbsp;</td>
                     <td class="tdlist bagcolor">&nbsp;</td>
                     <td class="tdlist bagcolor">
-                    {if auth('auth/systemnode/editinfo') }
+                        {if auth('auth/systemnode/editinfo') }
                         {if $value['data_status'] eq 0}
                         <a href="__URL__/editinfo/action/checkStatus/id/{$value['node_id']}/Status/1" ><font color="#ff0000">未审</font></a>
                         {else}
                         <a href="__URL__/editinfo/action/checkStatus/id/{$value['node_id']}/Status/0" ><font color="#006600">已审</font></a>
                         {/if}
-                     {else}
+                        {else}
                         {if $value['data_status'] eq 0}
                         <font color="#ff0000">未审</font>
                         {else}
                         <font color="#006600">已审</font>
                         {/if}
-                     {/if}
+                        {/if}
                     </td>
                     <td class="tdlist bagcolor">
                         {if auth('auth/systemnode/edit') }
@@ -61,33 +76,33 @@
                         {/if}
                     </td>
                 </tr>
-                    {foreach $value['list'] as $val}
-                    <tr class="tr1">
-                        <td class="tdlist"><input type="checkbox" name="sqt[]" value="{$val['node_id']}" />{$val['node_id']}&nbsp;</td>
-                        <td class="tdlist">|-- {$val['title']}&nbsp;</td>
-                        <td class="tdlist">{$val['content']}&nbsp;</td>
-                        <td class="tdlist">
-                            {if auth('auth/systemnode/editinfo') }
-                                {if $val['data_status'] eq 0}
-                                <a href="__URL__/editinfo/action/checkStatus/id/{$val['node_id']}/Status/1" ><font color="#ff0000">未审</font></a>
-                                {else}
-                                <a href="__URL__/editinfo/action/checkStatus/id/{$val['node_id']}/Status/0" ><font color="#006600">已审</font></a>
-                                {/if}
-                            {else}
-                                {if $val['data_status'] eq 0}
-                                <font color="#ff0000">未审</font>
-                                {else}
-                                <font color="#006600">已审</font>
-                                {/if}
-                            {/if}
-                        </td>
-                        <td class="tdlist">
-                            {if auth('auth/systemnode/edit') }
-                            [<a href="__URL__/edit/id/{$val['node_id']}">编辑</a>]
-                            {/if}
-                        </td>
-                    </tr>
-                    {/foreach}
+                {foreach $value['list'] as $val}
+                <tr class="tr1">
+                    <td class="tdlist"><input type="checkbox" name="sqt[]" value="{$val['node_id']}" />{$val['node_id']}&nbsp;</td>
+                    <td class="tdlist">|-- {$val['title']}&nbsp;</td>
+                    <td class="tdlist">{$val['content']}&nbsp;</td>
+                    <td class="tdlist">
+                        {if auth('auth/systemnode/editinfo') }
+                        {if $val['data_status'] eq 0}
+                        <a href="__URL__/editinfo/action/checkStatus/id/{$val['node_id']}/Status/1" ><font color="#ff0000">未审</font></a>
+                        {else}
+                        <a href="__URL__/editinfo/action/checkStatus/id/{$val['node_id']}/Status/0" ><font color="#006600">已审</font></a>
+                        {/if}
+                        {else}
+                        {if $val['data_status'] eq 0}
+                        <font color="#ff0000">未审</font>
+                        {else}
+                        <font color="#006600">已审</font>
+                        {/if}
+                        {/if}
+                    </td>
+                    <td class="tdlist">
+                        {if auth('auth/systemnode/edit') }
+                        [<a href="__URL__/edit/id/{$val['node_id']}">编辑</a>]
+                        {/if}
+                    </td>
+                </tr>
+                {/foreach}
                 {/foreach}
 
                 {if $count eq 0}

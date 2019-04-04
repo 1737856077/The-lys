@@ -1,84 +1,105 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>权限管理-系统角色</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/city.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>登录记录页面</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
-
 <body>
-<div class="cont_title">　你当前的位置：权限管理 -系统角色</div>
-
-<div class="con">
-
-    <div class="conlist">
-
-        <form  method="post" action="__URL__/editinfo/action/save?">
-            <table class="listtable">
-                <tr class="tr1">
-                    <td colspan="4" class="tit">列表　</td>
-                    <td   class="tdlist">
-                        <a href="__URL__/add">{if auth('auth/systemrole/add') }<input type="button" name="" class="buttomorger"  value="添加" />{/if}</a>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdtit">ID</td>
-                    <td class="tdtit">名称</td>
-                    <td class="tdtit">描述</td>
-                    <td class="tdtit">状态</td>
-                    <td class="tdtit">操作</td>
-                </tr>
-                {foreach $List as $value}
-                <tr class="tr1">
-                    <td class="tdlist">{$value['role_id']}&nbsp;</td>
-                    <td class="tdlist">{$value['title']}&nbsp;</td>
-                     <td class="tdlist">{$value['data_desc']}&nbsp;</td>
-                    <td class="tdlist">
-                        {if auth('auth/systemrole/edit') }
-                            {if $value['data_status'] eq 0}
-                            <a href="__URL__/editinfo/action/checkStatus/id/{$value['role_id']}/Status/1" ><font color="#ff0000">未审</font></a>
-                            {else}
-                            <a href="__URL__/editinfo/action/checkStatus/id/{$value['role_id']}/Status/0" ><font color="#006600">已审</font></a>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            {if auth('admin/admin/index')}
+                            <li class="layui-this">
+                                <a href="/admin.php/auth/systemrole/index"><p class="Order1">系统角色</p></a>
+                            </li>
                             {/if}
-                        {else}
-                            {if $value['data_status'] eq 0}
-                            <font color="#ff0000">未审</font>
-                            {else}
-                            <font color="#006600">已审</font>
+                            {if auth('admin/admin/modifypwd')}
+                            <li>
+                                <a href="/admin.php/auth/systemnode/index"><p class="Order1">系统节点</p></a>
+                            </li>
                             {/if}
-                        {/if}
-                    </td>
-                    <td class="tdlist">
-                        {if auth('auth/systemrole/edit') }
-                        [<a href="__URL__/edit/id/{$value['role_id']}">编辑</a>]
-                        {/if}
-                        {if auth('auth/roleauth/index') }
-                        [<a href="{:url('roleauth/index')}?role_id={$value['role_id']}">编辑权限</a>]
-                        {/if}
-                    </td>
-                </tr>
-                {/foreach}
+                        </ul>
+                            <div class="layui-tab-content">
+                            <form  method="post" action="__URL__/editinfo/action/save?">
+                                <table class="layui-table" lay-even lay-skin="line" lay-size="lg">
 
-                {if $count eq 0}
-                <tr class="tr1">
-                    <td colspan="5" class="tdlist">暂无相关记录！ </td>
-                </tr>
-                {/if}
+                                <tr class="tr1">
+                                        <td colspan="4" class="tit">列表　</td>
+                                        <td   class="tdlist">
+                                            <a href="__URL__/add">{if auth('auth/systemrole/add') }<input 	class="layui-btn layui-btn-normal" type="button" name="" class="buttomorger"  value="添加" />{/if}</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr1">
+                                        <td class="tdtit">ID</td>
+                                        <td class="tdtit">名称</td>
+                                        <td class="tdtit">描述</td>
+                                        <td class="tdtit">状态</td>
+                                        <td class="tdtit">操作</td>
+                                    </tr>
+                                    {foreach $List as $value}
+                                    <tr class="tr1">
+                                        <td class="tdlist">{$value['role_id']}&nbsp;</td>
+                                        <td class="tdlist">{$value['title']}&nbsp;</td>
+                                        <td class="tdlist">{$value['data_desc']}&nbsp;</td>
+                                        <td class="tdlist">
+                                            {if auth('auth/systemrole/edit') }
+                                            {if $value['data_status'] eq 0}
+                                            <a href="__URL__/editinfo/action/checkStatus/id/{$value['role_id']}/Status/1" ><font color="#ff0000">未审</font></a>
+                                            {else}
+                                            <a href="__URL__/editinfo/action/checkStatus/id/{$value['role_id']}/Status/0" ><font color="#006600">已审</font></a>
+                                            {/if}
+                                            {else}
+                                            {if $value['data_status'] eq 0}
+                                            <font color="#ff0000">未审</font>
+                                            {else}
+                                            <font color="#006600">已审</font>
+                                            {/if}
+                                            {/if}
+                                        </td>
+                                        <td class="tdlist">
+                                            {if auth('auth/systemrole/edit') }
+                                            [<a href="__URL__/edit/id/{$value['role_id']}">编辑</a>]
+                                            {/if}
+                                            {if auth('auth/roleauth/index') }
+                                            [<a href="{:url('roleauth/index')}?role_id={$value['role_id']}">编辑权限</a>]
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                    {/foreach}
 
-            </table>
+                                    {if $count eq 0}
+                                    <tr class="tr1">
+                                        <td colspan="5" class="tdlist">暂无相关记录！ </td>
+                                    </tr>
+                                    {/if}
 
-        </form>
+                                </table>
 
+                            </form>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-</div>
-
-
 </div>
 </body>
 </html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+</body>
+</html>
+
+
+
+

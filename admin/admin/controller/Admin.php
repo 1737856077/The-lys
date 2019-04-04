@@ -110,7 +110,7 @@ class Admin extends \app\common\controller\CommonAdmin
             $data=$Admin->where("admin_id='$admin_id'")->find();
             /*dump($data);*/
             if(!empty($data)){
-
+                dump($data);
                 $this->assign("data",$data);
                 return $this->fetch();
             }else{

@@ -1,342 +1,173 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>后台管理</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>登录记录页面</title>
     <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
     <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
-<body class="layui-layout-body">
-<div class="layui-tab-item layui-show">
-    <div class="layui-tab-content layui-body">
+<body>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            <a href="__ROOT__/admin.php/member/member/index" target="mainframe"><li class="">
+                                <p class="Order1">财务往来</p>
+                            </li></a>
+                            <a href="__ROOT__/admin.php/member/member/index"><li class="">
+                                <p class="Order1">资料管理</p>
+                                <a href=" __ROOT__/admin.php/member/member/index"><li class="layui-this">
+                                <p class="Order1">用户列表</p>
+                            </li></a>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
 
 
-            <div class="Order_title">搜索用户</div>
-            <div class="liebiao">
-                <form class="layui-form" action="__URL__/index">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">用户名</label>
-                        <div class="layui-input-block">
-                            <input style="width: 190px;" type="text" name="SearchTitle" class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">邮箱</label>
-                        <div class="layui-input-inline">
-                            <input  style="width: 190px;" type="text" name="SearchEmail"  value="{$SearchEmail}"  class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">手机号</label>
-                        <div class="layui-input-inline">
-                            <input  style="width: 190px;" type="text" name="SearchMobile"value="{$SearchMobile}" class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">公司名称</label>
-                        <div class="layui-input-inline">
-                            <input  style="width: 190px;" type="text" name="SearchCompanyName"  value="{$SearchCompanyName}"  class="layui-input">
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">性别</label>
-                        <div class="layui-input-inline">
-                            <select name="SearchSex" lay-verify="required" lay-search="">
-                                <option value="0" {if $SearchSex=='0' }selected{/if} >男</option>
-                                <option value="1" {if $SearchSex=='1' }selected{/if} >女</option>
-                            </select>
-                        </div>
-                    </div>
 
 
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">角色</label>
-                        <div class="layui-input-inline">
-                            <select name="SearchIsVip" id="SearchIsVip" >
-                                <option value="">请选择</option>
-                                <option value="0" {if $SearchIsVip=='0' }selected{/if} >普通用户</option>
-                                <option value="1" {if $SearchIsVip=='1' }selected{/if} >VIP用户</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即搜索</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
 
 
-            <div class="Order_title">用户列表</div>
-            <div class="liebiao">
-                <table class="layui-table" lay-skin="line" lay-size="sm" >
-                    <thead>
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <th>ID</th>
-                        <th>用户名</th>
-                        <th>手机号</th>
-                        <th>公司名称</th>
-                        <th>角色</th>
-                        <th>性别</th>
-                        <th>邮箱</th>
-                        <th>资料</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {foreach $List as $value}
-                    <tr class="tr1">
-                        <td><input type="checkbox"></td>
-                        <td class="tdlist">{$value['member_id']}&nbsp;</td>
-                        <td class="tdlist">{$value['username']}&nbsp;</td>
-                        <td class="tdlist">{$value['mobile']}&nbsp;</td>
-                        <td class="tdlist">{$value['company_name']}&nbsp;</td>
-                        {:$value['is_vip']===1 ? '<td><i class="lusheji lusheji_iconhuiyuan"></i>VIP会员</td>' : '<td><i class="lusheji lusheji_iconduanxinyingxiao-huiyuanfenzu"></i>普通会员</td>'}
-                        <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
-                        <td class="tdlist">{$value['email']}</td>
-                        <td class="tdlist">
-                            {if auth('member/member/edit') }
-                            <a href="javascript:void(0)" class="click_pop">编辑</a>
+                                    <div class="Order_title">搜索用户</div>
+                                    <div class="liebiao">
+                                        <form class="layui-form" action="__URL__/index">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">用户名</label>
+                                                <div class="layui-input-block">
+                                                    <input style="width: 190px;" type="text" name="SearchTitle" class="layui-input">
+                                                </div>
+                                            </div>
 
-                            {/if}
-                            {if auth('member/member/info') }
-                            [<a href="{:url('member/info')}?id={$value['member_id']}&{$paramUrl}">详细</a>]
-                            {/if}
-                            {if auth('order/order/index') }
-                            [<a href="/admin.php/order/order/index?SearchUsername={$value['username']}">客户订单</a>]
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">邮箱</label>
+                                                <div class="layui-input-inline">
+                                                    <input  style="width: 190px;" type="text" name="SearchEmail"  value="{$SearchEmail}"  class="layui-input">
+                                                </div>
+                                            </div>
 
-                            {/if}
-                        </td>
-                    </tr>
-                    {/foreach}
-                    </tbody>
-                </table>
-                <!--遮罩层-->
-                <div class="bgPop"></div>
-                <!--弹出框-->
-                <div class="pop">
-                    <div class="pop-top">
-                        <h2>编辑</h2>
-                        <span class="pop-close"><i class="lusheji lusheji_iconclose-b" style="font-size: 40px;color: #000;"></i></span>
-                    </div>
-                    <div class="pop-content">
-                        <div class="pop-content-left">
-                            <img src="" alt="" class="teathumb">
-                        </div>
-                        <div class="pop-content-right">
-                            <form class="layui-form" action="">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">更改密码</label>
-                                    <div class="layui-input-inline">
-                                        <input style="width: 190px;" type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">手机号</label>
+                                                <div class="layui-input-inline">
+                                                    <input  style="width: 190px;" type="text" name="SearchMobile"value="{$SearchMobile}" class="layui-input">
+                                                </div>
+                                            </div>
+
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">公司名称</label>
+                                                <div class="layui-input-inline">
+                                                    <input  style="width: 190px;" type="text" name="SearchCompanyName"  value="{$SearchCompanyName}"  class="layui-input">
+                                                </div>
+                                            </div>
+
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">性别</label>
+                                                <div class="layui-input-inline">
+                                                    <select name="SearchSex" lay-verify="required" lay-search="">
+                                                        <option value="0" {if $SearchSex=='0' }selected{/if} >男</option>
+                                                        <option value="1" {if $SearchSex=='1' }selected{/if} >女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">角色</label>
+                                                <div class="layui-input-inline">
+                                                    <select name="SearchIsVip" id="SearchIsVip" >
+                                                        <option value="">请选择</option>
+                                                        <option value="0" {if $SearchIsVip=='0' }selected{/if} >普通用户</option>
+                                                        <option value="1" {if $SearchIsVip=='1' }selected{/if} >VIP用户</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="layui-form-item">
+                                                <div class="layui-input-block">
+                                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即搜索</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="layui-form-mid layui-word-aux">辅助文字</div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">确认密码</label>
-                                    <div class="layui-input-inline">
-                                        <input style="width: 190px;" type="password" name="password" required lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">再次输入密码</div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">邮箱</label>
-                                    <div class="layui-input-inline">
-                                        <input  style="width: 190px;" type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
-                                    </div>
-                                </div>
 
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">性别</label>
-                                    <div class="layui-input-block">
-                                        <input type="radio" name="sex" value="男" title="男">
-                                        <input type="radio" name="sex" value="女" title="女" checked>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">角色</label>
-                                    <div class="layui-input-inline">
-                                        <select name="modules" lay-verify="required" lay-search="">
-                                            <option value="">直接选择或搜索选择</option>
-                                            <option value="1">普通用户</option>
-                                            <option value="2">VIP用户</option>
-                                            <option value="3">企业用户</option>
-                                            <option value="4">业务员</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
-                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
 
-                </div>
+                                    <div class="Order_title">用户列表</div>
+                                    <div class="liebiao">
+                                        <table class="layui-table" lay-skin="line" lay-size="sm" >
+                                            <thead>
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <th>ID</th>
+                                                <th>用户名</th>
+                                                <th>手机号</th>
+                                                <th>公司名称</th>
+                                                <th>角色</th>
+                                                <th>性别</th>
+                                                <th>邮箱</th>
+                                                <th>资料</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {foreach $List as $value}
+                                            <tr class="tr1">
+                                                <td><input type="checkbox"></td>
+                                                <td class="tdlist">{$value['member_id']}&nbsp;</td>
+                                                <td class="tdlist">{$value['username']}&nbsp;</td>
+                                                <td class="tdlist">{$value['mobile']}&nbsp;</td>
+                                                <td class="tdlist">{$value['company_name']}&nbsp;</td>
+                                                {:$value['is_vip']===1 ? '<td><i class="lusheji lusheji_iconhuiyuan"></i>VIP会员</td>' : '<td><i class="lusheji lusheji_iconduanxinyingxiao-huiyuanfenzu"></i>普通会员</td>'}
+                                                <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
+                                                <td class="tdlist">{$value['email']}</td>
+                                                <td class="tdlist">
+                                                    {if auth('member/member/edit') }
+                                                    <a href="{:url('member/edit')}?id={$value['member_id']}&{$paramUrl}" class="click_pop">编辑</a>
 
-            </div>
-            <div id="laypage88" style="text-align: center;">
-                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
-                    <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
-                    <span class="layui-laypage-curr">
+                                                    {/if}
+                                                    {if auth('member/member/info') }
+                                                    [<a href="{:url('member/info')}?id={$value['member_id']}&{$paramUrl}">详细</a>]
+                                                    {/if}
+                                                    {if auth('order/order/index') }
+                                                    [<a href="/admin.php/order/order/index?SearchUsername={$value['username']}">客户订单</a>]
+
+                                                    {/if}
+                                                </td>
+                                            </tr>
+                                            {/foreach}
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div id="laypage88" style="text-align: center;">
+                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                                            <span class="layui-laypage-curr">
       <em class="layui-laypage-em"></em><em>1</em></span>
-                    <a href="javascript:;" data-page="2">2</a>
-                    <a href="javascript:;" data-page="3">3</a>
-                    <a href="javascript:;" data-page="4">4</a>
-                    <a href="javascript:;" data-page="5">5</a>
-                    <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                                            <a href="javascript:;" data-page="2">2</a>
+                                            <a href="javascript:;" data-page="3">3</a>
+                                            <a href="javascript:;" data-page="4">4</a>
+                                            <a href="javascript:;" data-page="5">5</a>
+                                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-<!--用户管理结束-->
-
-
-
-
-
-
-
-
-
-
-    </div><script src="__STATIC__/admin/layui/layui.all.js"></script>
-    <script>
-        layui.use(['form', 'laydate'], function () {
-            var form = layui.form
-                , laydate = layui.laydate;
-
-            // 时间选择
-            laydate.render({
-                elem: '#tool-time',
-                format: 'yyyy-MM-dd HH:mm:ss'
-                ,
-                theme: '#0f88eb'
-            });
-            // 时间选择2
-            laydate.render({
-                elem: '#tool-time2',
-                format: 'yyyy-MM-dd HH:mm:ss'
-                ,
-                theme: '#0f88eb'
-            });
-// 时间选择3
-            laydate.render({
-                elem: '#tool-time3',
-                format: 'yyyy-MM-dd HH:mm:ss'
-                ,
-                theme: '#0f88eb'
-            });
-            // 时间选择4
-            laydate.render({
-                elem: '#tool-time4',
-                format: 'yyyy-MM-dd HH:mm:ss'
-                ,
-                theme: '#0f88eb'
-            });
-
-            // 时间选择5
-            laydate.render({
-                elem: '#tool-time5',
-                format: 'yyyy-MM-dd HH:mm:ss'
-                ,
-                theme: '#0f88eb'
-            });
-        });
-    </script>
-    <script>
-        var j = 3;
-
-        function addtr() {
-            var tableobj = document.getElementById("tid");
-            var trobj = document.createElement("tr");
-            for (var i = 0; i < 1; i++) {
-                var tdobj = document.createElement("td");
-                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-                trobj.appendChild(tdobj);
-            }
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-            trobj.appendChild(tdobj);
-            tableobj.appendChild(trobj);
-        }
-
-        function addtr2() {
-            var tableobj = document.getElementById("tid2");
-            var trobj = document.createElement("tr");
-            for (var i = 0; i < 1; i++) {
-                var tdobj = document.createElement("td");
-                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-                trobj.appendChild(tdobj);
-            }
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-            trobj.appendChild(tdobj);
-            tableobj.appendChild(trobj);
-        }
-
-        function addtr3() {
-            var tableobj = document.getElementById("tid3");
-            var trobj = document.createElement("tr");
-            for (var i = 0; i < 1; i++) {
-                var tdobj = document.createElement("td");
-                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-                trobj.appendChild(tdobj);
-            }
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-            trobj.appendChild(tdobj);
-            tableobj.appendChild(trobj);
-        }
-
-
-        function addtr4() {
-            var tableobj = document.getElementById("tid4");
-            var trobj = document.createElement("tr");
-            for (var i = 0; i < 1; i++) {
-                var tdobj = document.createElement("td");
-                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-                trobj.appendChild(tdobj);
-            }
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-            trobj.appendChild(tdobj);
-            tableobj.appendChild(trobj);
-        }
-
-        function addtr5() {
-            var tableobj = document.getElementById("tid5");
-            var trobj = document.createElement("tr");
-            for (var i = 0; i < 1; i++) {
-                var tdobj = document.createElement("td");
-                tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-                trobj.appendChild(tdobj);
-            }
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-            trobj.appendChild(tdobj);
-            tableobj.appendChild(trobj);
-        }
-
-        function delecttr(obj) {
-            var tr = obj.parentNode.parentNode;
-            tr.parentNode.removeChild(tr);
-        }
-
-    </script>
+</body>
+</html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
 </body>
 </html>

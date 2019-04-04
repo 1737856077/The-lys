@@ -1,284 +1,213 @@
-<!DOCTYPE html>
-<html>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>后台管理</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>登录记录页面</title>
     <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
     <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
-<body class="layui-layout-body">
-<div class="layui-tab-item layui-show">
-    <div class="layui-tab-content layui-body">
+<body>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            <a href="/admin.php/order/order/index" target="mainframe"><li class="layui-this">
+                                <p class="Order1">订单列表</p>
+                            </li></a>
+                            <a href="/admin.php/order/order/index"><li >
+                                <p class="Order1">订单审核　</p>
+                            </li>
+                            </a>
+                            <a href="/admin.php/order/order/index"><li>
+                                <p class="Order1">订单下发　</p>
+                            </li>
+                            </a>
 
-    <!--订单管理开始-->
-            <div class="box-center">
-                <div class="Order_title">订单查找</div>
-                <div class="liebiao">
+                            <a href="/admin.php/order/order/index"><li>
+                                <p class="Order1">状态管理　</p>
+                            </li>
+                            </a>
 
-                    <form class="layui-form" action="__URL__/index" method="get">
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">用户名</label>
-                            <div class="layui-input-block">
-                                <input style="width: 190px;" type="text" name="SearchUsername" placeholder="请输入用户名"  autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">订单号</label>
-                            <div class="layui-input-block">
-                                <input style="width: 190px;" type="text" name="SearchOrderNo"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">邮箱</label>
-                            <div class="layui-input-inline">
-                                <input  style="width: 190px;" type="text" name="SearchEmail"  autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">标签名称</label>
-                            <div class="layui-input-block">
-                                <input style="width: 190px;" type="text" name="SearchTemplateTitle" placeholder="标签名称" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">订单状态</label>
-                            <div class="layui-input-inline">
-                                <select name="SearchOrderStatus" lay-verify="required" lay-search="">
-                                    <option value="">请选择</option>
-                                    {foreach $ConfigOrderStatus as $key=>$value}
-                                    <option value="{$key}" {if $SearchOrderStatus==$key }selected{/if} >{$value}</option>
-                                    {/foreach}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">订单日期</label>
-                                <div style="width: 190px;" class="layui-input-inline">
-                                    <input type="text" name="SearchOrderDate" class="layui-input" id="tool-time5" placeholder="yyyy-MM-dd">
+                            <a href="/admin.php/order/order/index"><li>
+                                <p class="Order1">下载模版文件(1)　</p>
+                            </li>
+                            </a>
+
+
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
+
+
+
+                                    <div class="box-center">
+                                        <!--订单管理开始-->
+                                        <div class="box-center">
+                                            <div class="Order_title">订单查找</div>
+                                            <div class="liebiao">
+                                                <form class="layui-form" action="__URL__/index">
+                                                    <table class="layui-table" lay-skin="line" lay-size="sm">
+                                                        <colgroup>
+                                                            <col width="150">
+                                                            <col width="350">
+                                                            <col width="150">
+                                                            <col width="350">
+                                                            <col width="100">
+                                                        </colgroup>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>用户名：</td>
+                                                            <td><input style="width: 190px;" type="text" name="SearchUsername" placeholder="请输入用户名" autocomplete="off" class="layui-input"></td>
+                                                            <td>订单号：</td>
+                                                            <td><input style="width: 190px;" type="text" name="SearchOrderNo" placeholder="请输入订单号" autocomplete="off" class="layui-input"></td>
+                                                            <td><button class="layui-btn" lay-submit="" lay-filter="formDemo">提交</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>邮箱：</td>
+                                                            <td><input style="width: 190px;" type="text" name="SearchEmail" placeholder="请输入用户名" autocomplete="off" class="layui-input"></td>
+                                                            <td>标签名称：</td>
+                                                            <td><input style="width: 190px;" type="text" name="SearchTemplateTitle" placeholder="请输入订单号" autocomplete="off" class="layui-input"></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>订单状态：</td>
+                                                            <td style="text-align:left;">
+                                                                <select name="SearchOrderStatus" lay-verify="required" lay-search="">
+                                                                    <option value="">直接选择或搜索选择</option>
+                                                                    <option value="">请选择</option>
+                                                                    {foreach $ConfigOrderStatus as $key=>$value}
+                                                                    <option value="{$key}" {if $SearchOrderStatus==$key }selected{/if} >{$value}</option>
+                                                                    {/foreach}
+                                                                </select>
+                                                            </td>
+                                                            <td>订单日期：</td>
+                                                            <td>  <input type="text" name="SearchOrderDate" class="layui-input" id="tool-time5" placeholder="yyyy-MM-dd">
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </form></div>
+
+                                            <div class="Order_title">订单管理</div>
+                                            <div class="liebiao">
+                                                <table class="layui-table" lay-skin="line" lay-size="sm" >
+                                                    <colgroup>
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col width="300">
+                                                        <col width="200">
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col width="100">
+                                                    </colgroup>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>用户名</th>
+                                                        <th>打印数量</th>
+                                                        <th>标签名称</th>
+                                                        <th>打印尺寸</th>
+                                                        <th>下单时间</th>
+                                                        <th>下单金额</th>
+                                                        <th>订单状态</th>
+                                                        <th>模板文件</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    {foreach $List as $value}
+                                                    <tr>
+
+                                                        <td>{$value['username']}</td>
+                                                        <td>{$value['print_num']}</td>
+                                                        <td>{$value['template_title']}</td>
+                                                        <td>{$value['paper_size_long']}*{$value['paper_size_wide']} {$value['paper_size_unit']}</td>
+                                                        <td>{$value['create_time']|date='Y-m-d H:i:s',###}</td>
+                                                        <td>{$value['score_real_pay']}</td>
+
+                                                        {switch name="$value.order_status" }
+
+
+                                                        {case value="0"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">新提交</a></button>
+                                                        <button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td></button></td>
+                                                        {/case}
+                                                        {case value="1"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">已核实</a> </button><button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {case value="2"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">设计中</a></button><button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {case value="3"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">设计结束</a></button><button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {case value="4"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">已完成</a></button><button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {/switch}
+
+                                                        <td  >[<a  href="__STATIC__/uploads/pdf/{$value['down_pdf']}" target="_blank">下载</a>]</td>
+
+                                                    </tr>
+                                                    {/foreach}
+
+
+
+
+
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div id="laypage88" style="text-align: center;">
+                                            <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                                <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                                                <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                                <a href="javascript:;" data-page="2">2</a>
+                                                <a href="javascript:;" data-page="3">3</a>
+                                                <a href="javascript:;" data-page="4">4</a>
+                                                <a href="javascript:;" data-page="5">5</a>
+                                                <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                                            </div>
+
+                                        </div>
+                                        <!--订单管理结束-->
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                                <button class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
-                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="Order_title">订单管理</div>
-                <div class="liebiao">
-                    <table class="layui-table" lay-skin="line" lay-size="sm" >
-                        <colgroup>
-                            <col width="100">
-                            <col width="100">
-                            <col width="400">
-                            <col width="100">
-                            <col width="100">
-                            <col width="100">
-                            <col width="100">
-                            <col width="100">
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th>用户名</th>
-                            <th>打印数量</th>
-                            <th>标签名称</th>
-                            <th>打印尺寸</th>
-                            <th>下单时间</th>
-                            <th>下单金额</th>
-                            <th>订单状态</th>
-                            <th>模板文件</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {foreach $List as $value}
-                        <tr>
-                            <td>{$value['username']}&nbsp;</td>
-                            <td>{$value['print_num']}&nbsp;</td>
-                            <td>{$value['template_title']}&nbsp;</td>
-                            <td>{$value['paper_size_long']}*{$value['paper_size_wide']} {$value['paper_size_unit']}&nbsp;</td>
-                            <td>{$value['create_time']|date='Y-m-d H:i:s',###}&nbsp;</td>
-                            <td>{$value['score_real_pay']}&nbsp;</td>
-
-                            {switch name="$value.order_status" }
-                            {case value="0"}  <td><button class="layui-btn layui-btn-sm">新提交</button><button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button></td>
-                            {/case}
-                            {case value="1"}  <td><button class="layui-btn layui-btn-sm">已核实</button><button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button></td>
-                            {/case}
-                            {case value="2"}  <td><button class="layui-btn layui-btn-sm">设计中</button><button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button></td>
-                            {/case}
-                            {case value="3"}  <td><button class="layui-btn layui-btn-sm">设计结束</button><button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button></td>
-                            {/case}
-                            {case value="4"}  <td><button class="layui-btn layui-btn-sm">已完成</button><button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button></td>
-                            {/case}
-                            {/switch}
-
-                            <td  >[<a  href="__STATIC__/uploads/pdf/{$value['down_pdf']}" target="_blank">下载</a>]</td>
-
-                        </tr>
-                        {/foreach}
-
-
-
-
-
-
-
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             </div>
-
-            <div id="laypage88" style="text-align: center;">
-                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
-                    <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
-                    <span class="layui-laypage-curr">
-      <em class="layui-laypage-em"></em><em>1</em></span>
-                    <a href="javascript:;" data-page="2">2</a>
-                    <a href="javascript:;" data-page="3">3</a>
-                    <a href="javascript:;" data-page="4">4</a>
-                    <a href="javascript:;" data-page="5">5</a>
-                    <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
-                </div>
-
+        </div>
     </div>
-    <!--订单管理结束-->
-
-
-
-
-
-
-</div><script src="__STATIC__/admin/layui/layui.all.js"></script>
-<script>
-    layui.use(['form', 'laydate'], function () {
-        var form = layui.form
-            , laydate = layui.laydate;
-
-        // 时间选择
-        laydate.render({
-            elem: '#tool-time',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-        // 时间选择2
-        laydate.render({
-            elem: '#tool-time2',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-// 时间选择3
-        laydate.render({
-            elem: '#tool-time3',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-        // 时间选择4
-        laydate.render({
-            elem: '#tool-time4',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-
-        // 时间选择5
-        laydate.render({
-            elem: '#tool-time5',
-            format: 'yyyy-MM-dd HH:mm:ss'
-            ,
-            theme: '#0f88eb'
-        });
-    });
-</script>
-<script>
-    var j = 3;
-
-    function addtr() {
-        var tableobj = document.getElementById("tid");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-    function addtr2() {
-        var tableobj = document.getElementById("tid2");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-    function addtr3() {
-        var tableobj = document.getElementById("tid3");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-
-    function addtr4() {
-        var tableobj = document.getElementById("tid4");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-    function addtr5() {
-        var tableobj = document.getElementById("tid5");
-        var trobj = document.createElement("tr");
-        for (var i = 0; i < 1; i++) {
-            var tdobj = document.createElement("td");
-            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
-            trobj.appendChild(tdobj);
-        }
-        var tdobj = document.createElement("td");
-        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
-        trobj.appendChild(tdobj);
-        tableobj.appendChild(trobj);
-    }
-
-    function delecttr(obj) {
-        var tr = obj.parentNode.parentNode;
-        tr.parentNode.removeChild(tr);
-    }
-
-</script>
+</div>
+</div>
 </body>
 </html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

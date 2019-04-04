@@ -28,5 +28,9 @@ class CommonBaseHome extends Controller
             ->order("id DESC")
             ->find();
         $this->assign('getoneWebConfigComm',$getoneWebConfigComm);
+        //用户信息
+        $MemberModel = Db::name('member');
+        $MemberData = $MemberModel->where('member_id',Session::get('memberid'))->find();
+        $this->assign('MemberData',  $MemberData );
     }
 }

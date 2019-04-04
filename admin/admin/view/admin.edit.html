@@ -1,83 +1,165 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>编辑用户</title>
-<link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-<script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-<script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-<script type="text/javascript" src="__STATIC__/admin/js/Admin.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>修改</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
-
 <body>
-<div class="container">
-	
-    <div class="cont_title">　你当前的位置：后台管理 &nbsp;-&nbsp; 系统管理员&nbsp;-&nbsp;<a href="__URL__/index">管理员列表</a> -  编辑管理员</div>
-    
-    <div class="con">
-    
-    	<div class="conlist">
-        <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit_modify();">
-                <input type="hidden" name="admin_id" value="{$data['admin_id']}" /> 
-        	<table class="listtable">
-            	<tr class="tr1">
-                	<td colspan="2" class="tit">编辑管理员</td>
-                </tr>
-               
-               <tr class="tr1">
-                    <td class="tdl">用户名<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$data['name']}
-                    </td>
-                </tr>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            <li class="layui-this">
+                                <p class="Order1">修改管理员</p>
+                            </li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="pop-content-left">
+                                    <img src="" alt="" class="teathumb">
+                                </div>
+                                <div class="pop-content-right">
+                                    <form class="layui-form" action="/admin.php/admin/admin/update"
+                                          enctype="multipart/form-data" method="post">
+                                        <input type="hidden" name="admin_id" value="{$data.admin_id}">
+                                        <div class="layui-form-item" id="form1">
+                                            <label class="layui-form-label">用户名</label>
+                                            <div class="layui-input-block">
+                                                <input style="width: 190px;" type="text" name="name" required
+                                                       lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                                                       class="layui-input" disabled="true" value="{$data.name}"
+                                                       id="name">
+                                            </div>
+                                        </div>
 
-                <tr class="tr1">
-                    <td  class="tdl">管理员类型</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <select name="data_type">
-                            <option value="1" {if $data['data_type'] eq 1}selected{/if} >系统管理员</option>
-                            <!--<option value="2" {if $data['data_type'] eq 2}selected{/if}>商家管理员</option>-->
-                        </select>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td  class="tdl">管理员角色</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <select name="role_id">
-                            {foreach $listSystemRole as $value}
-                            <option value="{$value['role_id']}" {if $value['role_id'] eq $data['role_id']}selected{/if}>{$value['title']}</option>
-                            {/foreach}
-                        </select>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">电话</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input name="tel" id="tel" type="text" value="{$data['tel']}" />　示例：15601628091<span class="showErrorMessage" id="span_tel"></span>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">备注：</td>
-                    <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60">{$data['data_desc']}</textarea>  </td>
-                </tr>
-                <tr class="tr1">
-                	<td class="tdl"></td>
-                 <td class="tdr" style="padding-top:5px;">
-                  <input type="submit" name="Submit" value="提交"  class="buttomorger" />　 
-                  <input type="button" name="button" value="返回"  class="buttomorger" onClick="javascript:history.go(-1);" /> 
-                 </td>
-               </tr>
-            </table>
-     
-      </form>      
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">电话</label>
+                                            <div class="layui-input-block">
+                                                <input style="width: 190px;" type="text" value="{$data.tel}" name="tel"
+                                                       required
+                                                       lay-verify="required" placeholder="电话" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">性别</label>
+                                            <div class="layui-input-block">
+
+                                                {if $data.sex eq 1}
+
+                                                <input type="radio" name="sex" value="0" title="男">
+                                                <input type="radio" name="sex" value="1" title="女" checked>
+
+                                                {elseif $data.sex eq 0/}
+                                                <input type="radio" name="sex" value="0" title="男" checked>
+                                                <input type="radio" name="sex" value="1" title="女">
+                                                {/if}
+
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">管理员类型</label>
+                                            <div class="layui-input-block" style="width: 19%">
+                                                <select name="data_type" lay-verify="" style="width: 48%">
+                                                    <option value="1" selected>系统管理员</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">管理员角色</label>
+                                            <div class="layui-input-block" style="width: 19%">
+                                                <select name="role_id" lay-verify="" style="width: 48%">
+                                                    <option value="1" selected>系统管理员</option>
+                                                    <option value="2" selected>业务</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <tr class="tr1">
+                                                <label class="layui-form-label">描述</label>
+                                                <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"
+                                                                                                   rows="5"
+                                                                                                   id="data_desc"
+                                                                                                   onKeyPress="return noStrs(event);"
+                                                                                                   cols="60"></textarea>
+                                                </td>
+                                            </tr>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+                                            </div>
+                                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    
     </div>
-    
-    
-</div>
+</body>
+</html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form
+            , laydate = layui.laydate;
 
+        // 时间选择
+        laydate.render({
+            elem: '#tool-time',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择2
+        laydate.render({
+            elem: '#tool-time2',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+// 时间选择3
+        laydate.render({
+            elem: '#tool-time3',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择4
+        laydate.render({
+            elem: '#tool-time4',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+
+        // 时间选择5
+        laydate.render({
+            elem: '#tool-time5',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+    });
+</script>
 
 </body>
 </html>
+
+
+
+
