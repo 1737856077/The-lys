@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>register</title>
+    <title>用户下单</title>
     <script type="text/javascript" src="__STATIC__/home/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/home/js/regin.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/js/preorder.js"></script>
 </head>
 <body>
+<<<<<<< HEAD
 <form name="form1" method="post" action="__URL__/regin" onsubmit="javascript:return subfun();">
     <h1><img src="__STATIC__/admin/images/logo.png" alt="" /></h1>
     模版名称：
@@ -16,15 +17,41 @@
     打印份数：<input type="text" name="username" id="username" onblur="onBlur_username()" maxlength="32" /><span id="span_username"></span><br />
     打印模式：<select name="">
                 <option value=""></option>
+=======
+<form name="form1" method="post" action="__URL__/suborder" onsubmit="javascript:return subfun();">
+    <input type="hidden" name="memberid" id="memberid" value="{$memberid}" />
+    <input type="hidden" name="templateId" id="templateId" value="{$getoneTemplate['template_id']}" />
+    <input type="hidden" name="listPaper" id="listPaper" value='{:json_encode($listPaper)}' />
+    <input type="hidden" name="paperDataType" id="paperDataType" value="0" />
+    <input type="hidden" name="paperPrice" id="paperPrice" value="0.00" />
+    <h1>用户下单</h1>
+    模版名称：{$getoneTemplate['title']}<br />
+    模版图片：__STATIC__/{$getoneTemplate['img']}<br />
+    纸张尺寸：{$getoneTemplateContent['paper_size_long']}{$getoneTemplateContent['paper_size_unit']}*{$getoneTemplateContent['paper_size_wide']}{$getoneTemplateContent['paper_size_unit']}<br />
+    标签尺寸：{$getoneTemplateContent['lable_size_wide']}{$getoneTemplateContent['lable_size_unit']}*{$getoneTemplateContent['lable_size_height']}{$getoneTemplateContent['lable_size_unit']}<br />
+    打印份数：<input type="text" name="printNum" id="printNum" onblur="onBlur_printNum()" maxlength="32" value="1" /><span id="span_printNum"></span><br />
+    打印模式：<select name="printMode" id="printMode">
+    {foreach $ConfigPreorderPrintMode as $key=>$val}
+    <option value="{$key}">{$val}</option>
+    {/foreach}
+>>>>>>> c17ffecbb31ae9a7bc14cde2201b2479f3620444
             </select><br />
-    排序方式：<select name="">
-                <option value=""></option>
+    排序方式：<select name="printSort" id="printSort">
+    {foreach $ConfigPreorderPrintSort as $key=>$val}
+    <option value="{$key}">{$val}</option>
+    {/foreach}
             </select><br />
-    纸张：<select name="">
-            <option value=""></option>
+    纸张：<select name="paperId" id="paperId" onchange="onchange_paperId();">
+    {foreach $listPaper as $key=>$val}
+    <option value="{$val['id']}">{$val['title']}</option>
+    {/foreach}
           </select><br />
-    打印所需：元
+    打印所需：<label id="priceTotal"></label>元<br />
+    <span id="span_success"></span><br />
     <button type="submit" class="login">确认</button>&nbsp;<br /><br />
 </form>
+<script type="text/javascript">
+    setTimeout(onBlur_priceTotal(),1000*3);
+</script>
 </body>
 </html>

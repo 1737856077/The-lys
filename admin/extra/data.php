@@ -24,6 +24,13 @@ return [
 	'alipay' => [
 		//该地址表示用户缴费支付完成后开发者系统接受支付结果通知的回调地址。
     	'notify_url' => 'https://yunpai.sindns.com/index.php/alipay/wypaycallback/index',
+        //同步跳转
+        'return_url' => 'https://yunpai.sindns.com/onlinepay/alipay/return_url.php',
+        'app_id'=>'2019031863590154',//应用AppID
+        'rsaPublicKeyPem'=>'####',//应用公钥
+        'rsaPrivateKey'=>'####',//请填写商户私钥，一行字符串
+        'alipayrsaPublicKey' => '####',//请填写支付宝公钥，一行字符串
+        'url'=>'https://openapi.alipay.com/gateway.do',
 	],
 
     //二维码配置信息

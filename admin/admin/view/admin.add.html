@@ -4,24 +4,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
+
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>登录记录页面</title>
+    <title>添加</title>
     <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
     <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
     <!-- 内容主体区域 -->
     <div class="layui-tab-content">
+
         <div class="layui-tab-item layui-show">
             <div class="bgzt">
                 <div class="box-center">
                     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                         <ul class="layui-tab-title tab_tatle">
+
                             <li>
                             {if auth('admin/admin/index')}
+
                                 <a href="/admin.php/admin/admin/index"><p class="Order1">管理员列表</p></a>
                             </li>
                             {/if}
@@ -48,6 +53,7 @@
                         </ul>
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
+
                                 <div class="liebiao">
                                     <form class="layui-form" action="__URL__/insert" enctype="multipart/form-data" method="post">
                                         <div class="layui-form-item">
@@ -186,12 +192,15 @@
     var j = 3;
 
 
+
+
     function delecttr(obj) {
         var tr = obj.parentNode.parentNode;
         tr.parentNode.removeChild(tr);
     }
 
 </script>
+
 </body>
 </html>
 

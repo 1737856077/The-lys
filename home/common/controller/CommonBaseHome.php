@@ -33,4 +33,30 @@ class CommonBaseHome extends Controller
         $MemberData = $MemberModel->where('member_id',Session::get('memberid'))->find();
         $this->assign('MemberData',  $MemberData );
     }
+
+    /**
+     * @desc:异步请求
+     * @param string $url       --请求地址
+     * @param array $data       --请求的数据
+     * @param string $method    --请求的方式
+     * @return mixed|string
+     */
+    public function PostSend($url,$data,$method="POST"){
+        $ch = curl_init ();
+        curl_setopt ( $ch, CURLOPT_URL, $url );
+        curl_setopt ( $ch, CURLOPT_CUSTOMREQUEST, $method );
+        curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, FALSE );
+        curl_setopt ( $ch, CURLOPT_SSL_VERIFYHOST, FALSE );
+        curl_setopt ( $ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; MSIE 5.01; Windows NT 5.0)' );
+        curl_setopt ( $ch, CURLOPT_FOLLOWLOCATION, 1 );
+        curl_setopt ( $ch, CURLOPT_AUTOREFERER, 1 );
+        curl_setopt ( $ch, CURLOPT_POSTFIELDS, $data );
+        curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+        $tmpInfo = curl_exec ( $ch );
+        if (curl_errno ( $ch )) {
+            return curl_error ( $ch );
+        }
+        curl_close ( $ch );
+        return $tmpInfo;
+    }
 }

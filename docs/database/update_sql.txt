@@ -40,6 +40,30 @@ ALTER TABLE  `sy_paper` ADD  `price_three` double(10,2) NULL DEFAULT  '0.00' AFT
 ALTER TABLE  `sy_order` ADD  `print_mode` Tinyint(1) NULL DEFAULT  '0' AFTER  `paper_direction`;
 ALTER TABLE  `sy_order` ADD  `print_sort` Tinyint(1) NULL DEFAULT  '0' AFTER  `print_mode`;
 
+/*2019-03-31*/
+ALTER TABLE  `sy_template` ADD  `pdf`  VARCHAR(64) NULL DEFAULT  '' AFTER  `tag_type_id`;
+
+
+/*2019-04-01*/
+ALTER TABLE `sy_bill_details_notify`
+  DROP `buyer_user_id`,
+  DROP `buyer_logon_id`,
+  DROP `receipt_amount`,
+  DROP `refund_fee`,
+  DROP `body`,
+  DROP `det_list`,
+  DROP `fund_bill_list`;
+ALTER TABLE `sy_bill_details_notify` ADD `out_trade_no` VARCHAR(64) NULL AFTER `trade_no`;
+ALTER TABLE `sy_bill_details_notify`
+  DROP `notify_time`,
+  DROP `trade_status`,
+  DROP `total_amount`,
+  DROP `gmt_create`,
+  DROP `gmt_payment`,
+  DROP `gmt_refund`,
+  DROP `gmt_close`;
+
+
 
 
 

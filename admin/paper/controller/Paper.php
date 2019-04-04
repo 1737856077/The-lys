@@ -33,7 +33,8 @@ class Paper extends CommonAdmin
         $param = $this->request->param();
 
         $model=Db::name('paper');
-        $list=$model->order("sort_rank ASC,id ASC")->select();
+        $list=$model->where('data_type=0')
+        ->order("sort_rank ASC,id ASC")->select();
 
         $this->assign("count",count($list));
         $this->assign("list",$list);

@@ -59,6 +59,24 @@
                         </td>
                     </tr>
                     <tr class="tr1">
+                        <td class="tdl">单张价格(1-100张)：<span style="color:#f00;">*</span></td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input name="price_one" id="price_one" type="text"  value="" onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_one()"  />元　格式：0.01元<span class="showErrorMessage" id="span_price_one"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">单张价格(101-500张)：<span style="color:#f00;">*</span></td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input name="price_two" id="price_two" type="text"  value="" onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_two()"  />元　格式：0.01元<span class="showErrorMessage" id="span_price_two"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">单张价格(501-以上张)：<span style="color:#f00;">*</span></td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input name="price_three" id="price_three" type="text"  value="" onKeyPress="FormatFloat(event, 2)" onBlur="onBlur_price_three()"  />元　格式：0.01元<span class="showErrorMessage" id="span_price_three"></span>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
                         <td class="tdl">排序：</td>
                         <td class="tdr" style="padding-top:5px;">
                             <input name="sort_rank" id="sort_rank" type="text"  value="50" onKeyPress="return noNumbers(event);" /> 说明：正序，数字越大越向后<span class="showErrorMessage" id="span_sort_rank"></span>

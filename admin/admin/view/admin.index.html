@@ -1,18 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
+
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>登录记录页面</title>
     <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
     <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
     <!-- 内容主体区域 -->
     <div class="layui-tab-content">
+
         <div class="layui-tab-item layui-show">
+
+
             <div class="bgzt">
                 <div class="box-center">
                     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
@@ -43,6 +48,7 @@
                             </li>
                             {/if}
 
+
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
                                 <div class="liebiao">
@@ -71,9 +77,11 @@
                                                 {elseif $vo['data_type'] eq 2/}商家管理员
                                                 {/if}
                                             </td>
+
                                             <td class="tdlist">{$vo['role_title']}</td>
                                             <td class="tdlist">{$vo['tel']}</td>
                                             <td class="tdlist">
+
                                                 {if auth('admin/admin/editinfo') }
                                                 {if $vo['name'] eq 'admin'}
                                                 <font color="#006600">正常</font>
@@ -92,6 +100,7 @@
                                                 {/if}
                                                 {/if}
                                             </td>
+
 
 
                                             {if $vo['name'] eq 'admin'}
@@ -120,6 +129,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 </body>

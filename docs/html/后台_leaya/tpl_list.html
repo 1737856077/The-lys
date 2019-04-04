@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>模版</title>
+<link rel="stylesheet" href="./layui/css/layui.css">
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+  <!-- 内容主体区域 -->
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+      <div class="bgzt">
+        <div class="box-center">
+          <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title tab_tatle">
+              <a href="tpl_list.html"><li class="layui-this">
+                <p class="Order1">全部模板</p>
+              </li></a>
+              <a href="edit.html"><li class="">
+                <p class="Order1">添加模板</p>
+              </li></a>
+              <a href="tpl_chk.html"><li>
+                <p class="Order1">审核模板</p>
+              </li></a>
+            </ul>
+            <div class="layui-tab-content">
+              <!--全部模板开始-->
+              <div class="layui-tab-item">
+                <div class="bgzt">
+                  <div class="row">
+                    <ul class="simplefilter">
+                      模板分类：
+                      <li class="active" data-filter="all">全部</li>
+                      <li data-filter="1">一般模板</li>
+                      <li data-filter="2">定制模板</li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <ul class="simplefilter">
+                      使用场景：
+                      <li data-filter="21">包装</li>
+                      <li data-filter="22">电器</li>
+                      <li data-filter="23">商品</li>
+                      <li data-filter="24">办公</li>
+                      <li data-filter="25">珠宝</li>
+                      <li data-filter="26">服装</li>
+                      <li data-filter="27">机场</li>
+                      <li data-filter="28">车票</li>
+                      <li data-filter="29">化工</li>
+                      <li data-filter="210">门票</li>
+                      <li data-filter="211">固定资产</li>
+                      <li data-filter="212">吊牌</li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <ul class="simplefilter">
+                      行业类型：
+                      <li data-filter="31">食品/医疗</li>
+                      <li data-filter="32">纺织服饰</li>
+                      <li data-filter="33">烟酒饮料</li>
+                      <li data-filter="34">石油化工</li>
+                      <li data-filter="35">造纸印刷</li>
+                      <li data-filter="36">家具家居</li>
+                      <li data-filter="37">汽车</li>
+                      <li data-filter="38">电气机械</li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <ul class="simplefilter">
+                      条码类型：
+                      <li data-filter="41">一维码</li>
+                      <li data-filter="42">二维码</li>
+                      <li data-filter="43">混合码</li>
+                    </ul>
+                  </div>
+                  <div class="row search-row"> 关键字搜索：
+                    <input type="text" class="filtr-search" name="filtr-search" data-search="">
+                  </div>
+                  <div class="muban_list">
+                    <div class="filtr-container" style="height: 1000px; padding: 0px; position: relative;">
+                      <ul>
+                        <div class="filtr-item" data-category="1, 5" style="opacity: 1; transform: scale(1) translate3d(0px, 0px, 0px); backface-visibility: hidden; perspective: 1000px; transform-style: preserve-3d; position: absolute; transition: all 0.5s ease-out 0ms; pointer-events: auto;">
+                          <li>
+                            <div class="imgBox"> <img width="260px" height="220px" src="./images/muban_list_test.png">
+                              <div class="imgBox-mask">
+                                <h3>标签名称：工艺管道焊口标签</h3>
+                                <h3>模板分类：定制模板</h3>
+                                <h3>使用场景：包装</h3>
+                                <h3>行业类型：石油化工</h3>
+                                <h3>条码类型：二维码</h3>
+                                <h3>纸张尺寸：100.0mm*20mm</h3>
+                                <h3>标签尺寸：100.0mm*20mm</h3>
+                              </div>
+                            </div>
+                            <div class="interactive-box"> <a href="#" target="_blank">
+                              <h2>工艺管道焊口标签</h2>
+                              </a>
+                              <div class="data-box">
+                                <div class="data-view"> <span>纸张尺寸</span><br>
+                                  <span> 标签尺寸</span> </div>
+                                <div class="data-like"> <span>100.0mm*20mm</span><br>
+                                  <span> 100.0mm*20mm</span> </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="filtr-item" data-category="2, 25, 34, 41" style="opacity: 1; transform: scale(1) translate3d(0px, 0px, 0px); backface-visibility: hidden; perspective: 1000px; transform-style: preserve-3d; position: absolute; transition: all 0.5s ease-out 0ms; pointer-events: auto;">
+                          <li>
+                            <div class="imgBox"> <img width="260px" height="220px" src="./images/muban_list_test.png">
+                              <div class="imgBox-mask">
+                                <h3>标签名称：工艺管道焊口标签</h3>
+                                <h3>模板分类：定制模板</h3>
+                                <h3>使用场景：包装</h3>
+                                <h3>行业类型：石油化工</h3>
+                                <h3>条码类型：二维码</h3>
+                                <h3>纸张尺寸：100.0mm*20mm</h3>
+                                <h3>标签尺寸：100.0mm*20mm</h3>
+                              </div>
+                            </div>
+                            <div class="interactive-box"> <a href="#" target="_blank">
+                              <h2>工艺管道焊口标签</h2>
+                              </a>
+                              <div class="data-box">
+                                <div class="data-view"> <span>纸张尺寸</span><br>
+                                  <span> 标签尺寸</span> </div>
+                                <div class="data-like"> <span>100.0mm*20mm</span><br>
+                                  <span> 100.0mm*20mm</span> </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="filtr-item" data-category="1, 29, 36, 42" style="opacity: 1; transform: scale(1) translate3d(0px, 0px, 0px); backface-visibility: hidden; perspective: 1000px; transform-style: preserve-3d; position: absolute; transition: all 0.5s ease-out 0ms; pointer-events: auto;">
+                          <li>
+                            <div class="imgBox"> <img width="260px" height="220px" src="./images/muban_list_test.png">
+                              <div class="imgBox-mask">
+                                <h3>标签名称：工艺管道焊口标签</h3>
+                                <h3>模板分类：定制模板</h3>
+                                <h3>使用场景：包装</h3>
+                                <h3>行业类型：石油化工</h3>
+                                <h3>条码类型：二维码</h3>
+                                <h3>纸张尺寸：100.0mm*20mm</h3>
+                                <h3>标签尺寸：100.0mm*20mm</h3>
+                              </div>
+                            </div>
+                            <div class="interactive-box"> <a href="#" target="_blank">
+                              <h2>工艺管道焊口标签</h2>
+                              </a>
+                              <div class="data-box">
+                                <div class="data-view"> <span>纸张尺寸</span><br>
+                                  <span> 标签尺寸</span> </div>
+                                <div class="data-like"> <span>100.0mm*20mm</span><br>
+                                  <span> 100.0mm*20mm</span> </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="filtr-item" data-category="1, 210, 38, 41" style="opacity: 1; transform: scale(1) translate3d(0px, 0px, 0px); backface-visibility: hidden; perspective: 1000px; transform-style: preserve-3d; position: absolute; transition: all 0.5s ease-out 0ms; pointer-events: auto;">
+                          <li>
+                            <div class="imgBox"> <img width="260px" height="220px" src="./images/muban_list_test.png">
+                              <div class="imgBox-mask">
+                                <h3>标签名称：工艺管道焊口标签</h3>
+                                <h3>模板分类：定制模板</h3>
+                                <h3>使用场景：包装</h3>
+                                <h3>行业类型：石油化工</h3>
+                                <h3>条码类型：二维码</h3>
+                                <h3>纸张尺寸：100.0mm*20mm</h3>
+                                <h3>标签尺寸：100.0mm*20mm</h3>
+                              </div>
+                            </div>
+                            <div class="interactive-box"> <a href="#" target="_blank">
+                              <h2>工艺管道焊口标签</h2>
+                              </a>
+                              <div class="data-box">
+                                <div class="data-view"> <span>纸张尺寸</span><br>
+                                  <span> 标签尺寸</span> </div>
+                                <div class="data-like"> <span>100.0mm*20mm</span><br>
+                                  <span> 100.0mm*20mm</span> </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="filtr-item" data-category="1, 26, 33, 41" style="opacity: 1; transform: scale(1) translate3d(0px, 0px, 0px); backface-visibility: hidden; perspective: 1000px; transform-style: preserve-3d; position: absolute; transition: all 0.5s ease-out 0ms; pointer-events: auto;">
+                          <li>
+                            <div class="imgBox"> <img width="260px" height="220px" src="./images/muban_list_test.png">
+                              <div class="imgBox-mask">
+                                <h3>标签名称：工艺管道焊口标签</h3>
+                                <h3>模板分类：定制模板</h3>
+                                <h3>使用场景：包装</h3>
+                                <h3>行业类型：石油化工</h3>
+                                <h3>条码类型：二维码</h3>
+                                <h3>纸张尺寸：100.0mm*20mm</h3>
+                                <h3>标签尺寸：100.0mm*20mm</h3>
+                              </div>
+                            </div>
+                            <div class="interactive-box"> <a href="#" target="_blank">
+                              <h2>工艺管道焊口标签</h2>
+                              </a>
+                              <div class="data-box">
+                                <div class="data-view"> <span>纸张尺寸</span><br>
+                                  <span> 标签尺寸</span> </div>
+                                <div class="data-like"> <span>100.0mm*20mm</span><br>
+                                  <span> 100.0mm*20mm</span> </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="filtr-item" data-category="2, 22, 31, 43" style="opacity: 1; transform: scale(1) translate3d(0px, 0px, 0px); backface-visibility: hidden; perspective: 1000px; transform-style: preserve-3d; position: absolute; transition: all 0.5s ease-out 0ms; pointer-events: auto;">
+                          <li>
+                            <div class="imgBox"> <img width="260px" height="220px" src="./images/muban_list_test.png">
+                              <div class="imgBox-mask">
+                                <h3>标签名称：工艺管道焊口标签</h3>
+                                <h3>模板分类：定制模板</h3>
+                                <h3>使用场景：包装</h3>
+                                <h3>行业类型：石油化工</h3>
+                                <h3>条码类型：二维码</h3>
+                                <h3>纸张尺寸：100.0mm*20mm</h3>
+                                <h3>标签尺寸：100.0mm*20mm</h3>
+                              </div>
+                            </div>
+                            <div class="interactive-box"> <a href="#" target="_blank">
+                              <h2>工艺管道焊口标签</h2>
+                              </a>
+                              <div class="data-box">
+                                <div class="data-view"> <span>纸张尺寸</span><br>
+                                  <span> 标签尺寸</span> </div>
+                                <div class="data-like"> <span>100.0mm*20mm</span><br>
+                                  <span> 100.0mm*20mm</span> </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="filtr-item" data-category="1, 25, 32, 41" style="opacity: 1; transform: scale(1) translate3d(0px, 0px, 0px); backface-visibility: hidden; perspective: 1000px; transform-style: preserve-3d; position: absolute; transition: all 0.5s ease-out 0ms; pointer-events: auto;">
+                          <li>
+                            <div class="imgBox"> <img width="260px" height="220px" src="./images/muban_list_test.png">
+                              <div class="imgBox-mask">
+                                <h3>标签名称：工艺管道焊口标签</h3>
+                                <h3>模板分类：定制模板</h3>
+                                <h3>使用场景：包装</h3>
+                                <h3>行业类型：石油化工</h3>
+                                <h3>条码类型：二维码</h3>
+                                <h3>纸张尺寸：100.0mm*20mm</h3>
+                                <h3>标签尺寸：100.0mm*20mm</h3>
+                              </div>
+                            </div>
+                            <div class="interactive-box"> <a href="#" target="_blank">
+                              <h2>工艺管道焊口标签</h2>
+                              </a>
+                              <div class="data-box">
+                                <div class="data-view"> <span>纸张尺寸</span><br>
+                                  <span> 标签尺寸</span> </div>
+                                <div class="data-like"> <span>100.0mm*20mm</span><br>
+                                  <span> 100.0mm*20mm</span> </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                      </ul>
+                    </div>
+                    <div id="laypage88" style="text-align: center;">
+                      <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7"> <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a> <span class="layui-laypage-curr"> <em class="layui-laypage-em"></em><em>1</em></span> <a href="javascript:;" data-page="2">2</a> <a href="javascript:;" data-page="3">3</a> <a href="javascript:;" data-page="4">4</a> <a href="javascript:;" data-page="5">5</a> <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+              <script src="js/jquery.filterizr.min.js"></script>
+              <script src="js/controls.js"></script>
+              <script type="text/javascript">
+$(function() {
+  $('.filtr-container').filterizr();
+});
+</script>
+              <!--全部模板结束-->
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

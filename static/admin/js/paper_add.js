@@ -40,6 +40,39 @@ function onBlur_price(){
     }
     return true;
 }
+//单张价格(1-100张)
+function onBlur_price_one(){
+    var price_one=document.getElementById("price_one").value;
+    if(price_one.trim()=="" || price_one.trim()<=0){
+        document.getElementById("span_price_one").innerHTML="不能为空！";
+        return false;
+    }else{
+        document.getElementById("span_price_one").innerHTML="";
+    }
+    return true;
+}
+//单张价格(101-500张)
+function onBlur_price_two(){
+    var price_two=document.getElementById("price_two").value;
+    if(price_two.trim()=="" || price_two.trim()<=0){
+        document.getElementById("span_price_two").innerHTML="不能为空！";
+        return false;
+    }else{
+        document.getElementById("span_price_two").innerHTML="";
+    }
+    return true;
+}
+//单张价格(501-以上张)
+function onBlur_price_three(){
+    var price_three=document.getElementById("price_three").value;
+    if(price_three.trim()=="" || price_three.trim()<=0){
+        document.getElementById("span_price_three").innerHTML="不能为空！";
+        return false;
+    }else{
+        document.getElementById("span_price_three").innerHTML="";
+    }
+    return true;
+}
 
 //add submit
 function subfun(){
@@ -49,6 +82,12 @@ function subfun(){
     if(!onBlur_thickness()){return false;}
     //add 单张价格
     if(!onBlur_price()){return false;}
+    //单张价格(1-100张)
+    if(!onBlur_price_one()){return false;}
+    //单张价格(101-500张)
+    if(!onBlur_price_two()){return false;}
+    //单张价格(501-以上张)
+    if(!onBlur_price_three()){return false;}
 
 	return true;
 }
@@ -61,6 +100,12 @@ function subfunedit(){
     if(!onBlur_thickness()){return false;}
     //单张价格
     if(!onBlur_price()){return false;}
+    //单张价格(1-100张)
+    if(!onBlur_price_one()){return false;}
+    //单张价格(101-500张)
+    if(!onBlur_price_two()){return false;}
+    //单张价格(501-以上张)
+    if(!onBlur_price_three()){return false;}
 
 	return true;
 }
