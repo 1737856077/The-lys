@@ -96,8 +96,9 @@
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
                 <div class="header-box ft">
+
                     {if condition="!empty($MemberData.img)"}
-                    <img class="layui-upload-img" src="/home/uploads/{$MemberData.img}"  alt="{$MemberData.usernmae}" title="{$MemerData.username}">
+                    <img class="layui-upload-img" src="/home/uploads/{$MemberData.img}"  alt="{$MemberData.username}" title="{$MemberData.username}">
                     {else/}
                     <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg"  title="{$MemberData.username}" alt="{$MemberData.username}">
                     {/if}
