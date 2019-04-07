@@ -40,7 +40,7 @@ class Userconter extends CommonBase
         $industry = Db::name('system_config')->where('id', $industryid)->field('title')->find();
         $title = Db::name('system_config')->field('title,id')->select();
         $orders = Db::name('member')->where('member_id', $id)->select();
-        if ($orders[0]['district']) {
+        if (isset($orders[0]['district'])) {
             $order = $orders[0]['district'];
             $regions = Db::name('region')->where('area_code', $order)->select();
             $regionss = $regions[0]['area_parent_id'];

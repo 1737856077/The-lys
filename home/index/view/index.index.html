@@ -141,9 +141,9 @@
 </div>
 
 
-<div id="wp" style="background:rgba(249,249,250,1); height:980px;">
+<div id="wp" style="background:rgba(249,249,250,1); min-height:490px;">
     <div class="all-work-list">
-        <div class="index_title"><p style="color: #000;font-size:26px;" class="lt">热门模板</p><a href="#" target="_blank">
+        <div class="index_title"><p style="color: #000;font-size:26px;" class="lt">热门模板</p><a href="/index.php/index/templates/templates" target="_blank">
             <p style="color: #777;font-size:16px;" class="rt">更多>></p></a></div>
 
         <div class="muban_list">
@@ -152,7 +152,7 @@
                 <li>
                     <a href="/index.php/index/templates/content/template_id/{$data.template_id}" target="_blank">
                         <div class="imgBox">
-                            <img width="260px" height="220px" src="/home/uploads/{$data.img}">
+                            <img width="260px" height="220px" src="{if $data.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$data.img}{/if}">
                         </div>
                     </a>
                     <div class="interactive-box">
@@ -164,7 +164,7 @@
                                 <span>纸张尺寸</span>
 
                                 <br><span> 标签尺寸</span>
-                                <br><span><a class="user-list"><img src="/home/uploads/{$data.img}"
+                                <br><span><a class="user-list"><img src="{if $data.img == ''}__STATIC__/home/images/user_default.jpg{else/}__STATIC__/{$data.img}{/if}"
                                                                     title="{$data.username}"
                                                                     alt="{$data.username}"></a>　{$data.username}</span>
                             </div>
@@ -184,9 +184,9 @@
 </div>
 
 
-<div id="wp" style="height:1080px;background: #fff">
+<div id="wp" style="min-height:590px;background: #fff">
     <div class="all-work-list">
-        <div class="index_title"><p style="color: #000;font-size:26px;" class="lt">最新模板</p><a href="#" target="_blank">
+        <div class="index_title"><p style="color: #000;font-size:26px;" class="lt">最新模板</p><a href="/index.php/index/templates/templates" target="_blank">
             <p style="color: #777;font-size:16px;" class="rt">更多>></p></a></div>
 
         <div class="muban_list">
@@ -195,7 +195,7 @@
                 <li>
                     <a href="#" target="_blank">
                         <div class="imgBox">
-                            <img width="260px" height="220px" src="/home/uploads/{$data.img}">
+                            <img width="260px" height="220px" src="{if $data.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$data.img}{/if}">
                         </div>
                     </a>
                     <div class="interactive-box">
@@ -207,7 +207,7 @@
                                 <span>纸张尺寸</span>
                                 <br><span> 标签尺寸</span>
 
-                                <br><span><a class="user-list"><img src="/home/uploads/{$MemberData.img}"
+                                <br><span><a class="user-list"><img src="{if $MemberData.img == ''}__STATIC__/home/images/user_default.jpg{else/}__STATIC__/{$MemberData.img}{/if}"
                                                                     title="{$MemberData.username}"
                                                                     alt="{$MemberData.username}"></a>　{$MemberData.username}</span>
                             </div>

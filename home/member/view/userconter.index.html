@@ -27,70 +27,9 @@
         }
     </style>
 </head>
-<header>
-    <nav>
-        <div class="logo"><a href="#"><img src="__STATIC__/home/images/logo.png"></a></div>
-        <div class="menu">
-            <div class="menu-box">
-                <ul class="menu-list-content">
-                    <li><a href="/index.html">首页</a></li>
-                    <li><a href="/index.php/index/templates/templates">模板中心</a></li>
-                    <li><a href="/design.html">开始设计</a></li>
-                    <li><a href="/customized.html">模板定制</a></li>
-                </ul>
-            </div>
-            <div class="user-center">
-                {if condition="empty($Think.session.username)"}
-                <ul class="unlogin">
-                    <li><a href="/index.php/member/Register/login">登录</a><a
-                            href="/index.php/member/Register/index">注册</a></li>
-                </ul>
-            </div>
-            {else /}
-            <ul class="login">
-                <li class="user">
-                    <div class="avatar-container-30">
 
-                        {if condition="!empty($MemberData.img)"}
-                        <a href="/index.php/member/userconter/index" class="user-list">
-                        <img class="layui-upload-img" src="/home/uploads/{$MemberData.img}" title="{$MemberData.username}"  alt="{$MemberData.username}">
-                        </a>
-                        {else/}
-                        <a href="/index.php/member/userconter/index" class="user-list">
-                        <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg" title="{$MemberData.username}"  alt="{$MemberData.username}">
-                        </a>
-                            {/if}
-
-
-                    </div>
-                    <div class="menu-list user-box hide">
-                        <section><a href="/index.php/member/userconter/index" z-st="nav_userbox_name">{$Think.session.username}</a>
-                        </section>
-                        <div class="user-box-list">
-                            <div class="user-box-list-area">
-                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i
-                                        class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
-                                <p class="works-manange"><a href="/index.php/member/userconter/index"> <i
-                                        class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
-                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i
-                                        class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
-                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i
-                                        class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
-                            </div>
-                            <div class="user-box-list-area">
-                                <p class="works-manange"><a href="/index.php/member/register/unlogin"><i
-                                        class="lusheji lusheji_icontuichu"></i>退出</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            {/if}
-        </div>
-    </nav>
-</header>
 <body class="layui-layout-body">
+{include file="publicinfo@publicinfo/header" /}
 <div class="layui-layout layui-layout-admin">
     <div class="layui-tab">
         <div class="layui-side layui-bg-black">
