@@ -62,8 +62,8 @@ class Dtemplate extends CommonAdmin
         $_where="1";
 
         if($SearchDataType !== ''){$_where.=" AND data_type='".intval($SearchDataType)."'";}
-        if(!$SearchUsageScenariosId){$_where.=" AND usage_scenarios_id='$SearchUsageScenariosId'";}
-        if(!$SearchIndustryId){$_where.=" AND industry_id='$SearchIndustryId'";}
+        if($SearchUsageScenariosId){$_where.=" AND usage_scenarios_id='$SearchUsageScenariosId'";}
+        if($SearchIndustryId){$_where.=" AND industry_id='$SearchIndustryId'";}
         if($SearchCodeType !== ''){$_where.=" AND code_type='".intval($SearchCodeType)."'";}
 
         if($_where=='1'){$_where='';}

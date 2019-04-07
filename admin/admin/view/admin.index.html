@@ -3,7 +3,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>登录记录页面</title>
+    <title>系统管理员</title>
     <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
     <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
@@ -101,14 +101,17 @@
                                                 {/if}
                                             </td>
 
-
-
                                             {if $vo['name'] eq 'admin'}
-                                            <td style="color: #141a20">编辑</td>
+                                            <td style="color: #141a20">[重置密码]&nbsp;[编辑]</td>
                                             {else}
-                                            {if auth('admin/admin/setpwd') }
-                                            <td><a href="/admin.php/admin/admin/edit/id/{$vo['admin_id']}">编辑</a></td>
-                                            {/if}
+                                            <td>
+                                                {if auth('admin/admin/setpwd') }
+                                                [<a href="__URL__/setpwd/id/{$vo['admin_id']}">重置密码</a>]&nbsp;
+                                                {/if}
+                                                {if auth('admin/admin/edit') }
+                                                [<a href="/admin.php/admin/admin/edit/id/{$vo['admin_id']}">编辑</a>]
+                                                {/if}
+                                            </td>
                                             {/if}
 
 
