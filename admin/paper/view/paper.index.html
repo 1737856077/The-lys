@@ -31,7 +31,7 @@
                 <tr class="tr1">
                     <td colspan="6" class="tit">
                     </td>
-                    <td class="tit">
+                    <td class="tit" style="border-right:#e4e3e3 1px solid;">
                         {if auth('paper/paper/add') }
                         <a href="__URL__/add"><input type="button"  value="添加材质" class="layui-btn layui-btn-radius" /> </a>
                         {/if}
@@ -44,7 +44,7 @@
                     <td class="tdtit">价格</td>
                     <td class="tdtit">排序</td>
                     <td class="tdtit">状态</td>
-                    <td class="tdtit">操作</td>
+                    <td class="tdtit" style="border-right:#e4e3e3 1px solid;">操作</td>
                 </tr>
                 {foreach $list as $value}
                 <tr class="tr1">
@@ -78,7 +78,7 @@
                             {/if}
                         {/if}
                     </td>
-                    <td class="tdlist">
+                    <td class="tdlist" style="border-right:#e4e3e3 1px solid;">
                         {if auth('paper/paper/edit') }
                         <a href="__URL__/edit/id/{$value['id']}" class="layui-btn" >编辑</a>
                         {/if}
