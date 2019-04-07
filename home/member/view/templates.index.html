@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="__STATIC__/home/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
     <script type="text/javascript" src="__STATIC__/home/js/jquery-1.8.0.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
     <style>
         .fileinput-button {
             position: relative;
@@ -41,19 +42,19 @@
                 <div class="bgzt">
                     <div class="box-center">
                         <div class="Order_title">最新模板</div>
-                        <div class="Order_more">更多模板>></div>
+                        <div class="Order_more"><a href="/index.php/index/templates/templates"> 更多模板>></a></div>
 
                         <div class="user_muban_list">
                             <ul>
                                 {if condition="!empty($newtemplate)"}
                                 {foreach name='newtemplate' id='data'}
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="/index.php/index/templates/content/template_id/{$data.template_id}" target="_blank">
                                         <div class="imgBox">
                                             <img width="260px" height="220px"
-                                                 src="/home/uploads/{$data.img}">
+                                                 src="{if $data.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$data.img}{/if}">
                                             <div class="imgBox-mask">
-                                                <button class="layui-btn l_button">编辑</button>
+                                                <button class="layui-btn l_button">详细</button>
                                                 <br>
                                             </div>
                                         </div>
@@ -88,16 +89,19 @@
                             <ul>
                                 {foreach name='template' id='data'}
                                 <li>
-                                    <a href="#" target="_blank">
+
                                         <div class="imgBox">
                                             <img width="260px" height="220px"
-                                                 src="/home/uploads/{$data.img}">
+                                                 src="{if $data.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$data.img}{/if}">
                                             <div class="imgBox-mask">
-                                                <button class="layui-btn l_button">编辑</button>
+                                                <a href="#"><button class="layui-btn l_button">编辑</button></a>
+                                                <br>
+                                                <a href="/index.php/index/templates/content/template_id/{$data.template_id}"><button class="layui-btn l_button">详细</button></a>
+                                                <br>
+                                                <a href="/index.php/order/preorder/index?templateId={$data.template_id}"><button class="layui-btn l_button">立即下单</button></a>
                                                 <br>
                                             </div>
                                         </div>
-                                    </a>
                                     <div class="interactive-box">
                                         <a href="#" target="_blank">
                                             <h2>{$data.title}</h2>
@@ -118,17 +122,8 @@
                     </div>
 
 
-                    <div id="laypage88" style="text-align: center;">
-                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
-                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
-                            <span class="layui-laypage-curr">
-      <em class="layui-laypage-em"></em><em>1</em></span>
-                            <a href="javascript:;" data-page="2">2</a>
-                            <a href="javascript:;" data-page="3">3</a>
-                            <a href="javascript:;" data-page="4">4</a>
-                            <a href="javascript:;" data-page="5">5</a>
-                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
-                        </div>
+                    <div style="text-align:right; padding-right:40px;">
+                        {$page}
                     </div>
 
                     <div class="clear"></div>
