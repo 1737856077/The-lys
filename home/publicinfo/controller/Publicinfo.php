@@ -28,4 +28,11 @@ class Publicinfo extends Controller
     public function footer(){
         return $this->fetch();
     }
+
+    /**
+     * @描述：公用头部搜索
+     */
+    public function search(){
+        return $this->fetch();
+    }
 }

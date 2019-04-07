@@ -1,23 +1,60 @@
-
-<div >
-    <a href="/index.php">首页</a>　|　
-    <a href="/index.php/index/templates/templates">模版中心</a>　|　
-    <a href="/index.php/design/online/index">开始设计</a>　|　
-    <a href="/index.php/design/online/index">模版定制</a>　|　
-
-    {php}
-    use think\Session;
-    if(Session::has('username')){
-    {/php}
-    {$Think.session.username}
-    <a href="/index.php/member/register/unlogin">退出</a>　|　
-    <a href="/index.php/member/userconter/index">用户中心</a>　|　
-    {php}
-    }else{
-    {/php}
-    <a href="/index.php/member/register/index">注册</a>　|　
-    <a href="/index.php/member/register/login">登录</a>　|　
-    {php}
-    }
-    {/php}
-</div>
+<header>
+    <nav>
+        <div class="logo"><a href="/index.php"><img src="__STATIC__/home/images/logo.png"></a></div>
+        <div class="menu">
+            <div class="menu-box">
+                <ul class="menu-list-content">
+                    <li><a href="/index.php" >首页</a></li>
+                    <li><a href="/index.php/index/templates/templates" >模板中心</a></li>
+                    <li><a href="/index.php/design/online/index" >开始设计</a></li>
+                    <li><a href="/index.php/design/online/index" >模板定制</a></li>
+                </ul>
+            </div>
+            {php}
+            use think\Session;
+            if(Session::has('username')){
+            {/php}
+            <div class="user-center">
+            <ul class="login">
+                <li class="user">
+                    <div class="avatar-container-30">
+                        {if condition="!empty($Think.session.userimg)"}
+                        <a href="/index.php/member/userconter/index" class="user-list">
+                            <img class="layui-upload-img" src="/home/uploads/{$Think.session.userimg}" title="{$Think.session.username}"  alt="{$Think.session.username}">
+                        </a>
+                        {else/}
+                        <a href="/index.php/member/userconter/index" class="user-list">
+                            <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg" title="{$Think.session.username}"  alt="{$Think.session.username}">
+                        </a>
+                        {/if} </div>
+                    <div class="menu-list user-box hide">
+                        <section><a href="/index.php/member/userconter/index" z-st="nav_userbox_name">{$Think.session.username}</a></section>
+                        <div class="user-box-list">
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"> <i class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
+                            </div>
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="/index.php/member/register/unlogin"><i class="lusheji lusheji_icontuichu"></i>退出</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            </div>
+            {php}
+            }else{
+            {/php}
+            <div class="user-center">
+                <ul class="unlogin">
+                    <li><a href="/index.php/member/register/login">登录</a><a href="/index.php/member/register/index">注册</a></li>
+                </ul>
+            </div>
+            {php}
+            }
+            {/php}
+        </div>
+    </nav>
+</header>

@@ -16,7 +16,7 @@ function S_xmlhttprequest(){
 
 //username
 function onBlur_username(){
-    var username = document.getElementById("username").value.trim();
+    var username = document.getElementById("yun_name").value.trim();
 	if(username==""){
 		document.getElementById("span_username").innerHTML="不能为空！";
 		return false;
@@ -50,7 +50,7 @@ function onBlur_username(){
 
 //pwd
 function onBlur_pwd(){
-    var pwd = document.getElementById("pwd").value.trim();
+    var pwd = document.getElementById("yun_password").value.trim();
     if(pwd==""){
         document.getElementById("span_pwd").innerHTML="不能为空！";
         return false;
@@ -62,8 +62,8 @@ function onBlur_pwd(){
 
 //pwd2
 function onBlur_pwd2(){
-    var pwd = document.getElementById("pwd").value.trim();
-    var pwd2 = document.getElementById("pwd2").value.trim();
+    var pwd = document.getElementById("yun_password").value.trim();
+    var pwd2 = document.getElementById("yun_password2").value.trim();
     if(pwd2=="") {
         document.getElementById("span_pwd2").innerHTML = "不能为空！";
         return false;
@@ -79,7 +79,7 @@ function onBlur_pwd2(){
 //email
 function onBlur_email(){
     var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
-    var email = document.getElementById("email").value.trim();
+    var email = document.getElementById("yun-email").value.trim();
     if(email!=""){
         if(!reg.test(email)) { //正则验证不通过，格式不对
             document.getElementById("span_email").innerHTML = "邮箱格式错误！";

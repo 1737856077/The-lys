@@ -1044,7 +1044,7 @@ header nav .user-center>ul .header-msg-menu-withmore:hover .menu-list, header na
     height: 25px;
     border: 1px solid #d6d6d6;
     padding: 12px 10px;
-    background: url(/images/login_icon.png) no-repeat 35px -140px;
+    background: url(/static/home/images/login_icon.png) no-repeat 35px -140px;
 }
 .icon_251 {
     display: inline-block;
@@ -1052,7 +1052,7 @@ header nav .user-center>ul .header-msg-menu-withmore:hover .menu-list, header na
     margin-right: 2px;
     width: 25px;
     height: 25px;
-    background: url(/images/login_icon.png) no-repeat;
+    background: url(/static/home/images/login_icon.png) no-repeat;
     vertical-align: middle;
 }
 .icon_user2 {
@@ -1080,7 +1080,7 @@ header nav .user-center>ul .header-msg-menu-withmore:hover .menu-list, header na
     border-bottom: 1px solid #d6d6d6;
     border-right: 1px solid #d6d6d6;
     padding: 12px 10px;
-    background: url(/images/login_icon.png) no-repeat 35px -140px;
+    background: url(/static/home/images/login_icon.png) no-repeat 35px -140px;
 }
 .lo_btn {
     display: block;

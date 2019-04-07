@@ -95,6 +95,7 @@ class Register extends CommonBaseHome
         Session::delete('username');
         Session::set('memberid', $memberid);
         Session::set('username', $username);
+        Session::set('userimg', '');
         //添加日志 begin
         //添加日志 end
         echo "<script language=\"javascript\">window.open('".url('member/index')."','_top');</script>";
@@ -136,6 +137,7 @@ class Register extends CommonBaseHome
         Session::delete('username');
         Session::set('memberid', $getone["member_id"]);
         Session::set('username', $getone["username"]);
+        Session::set('userimg', $getone["img"]);
         //添加日志 begin
         //添加日志 end
         echo "<script language=\"javascript\">window.open('".url('member/userconter/index')."','_top');</script>";
