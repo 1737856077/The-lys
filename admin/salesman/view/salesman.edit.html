@@ -11,7 +11,43 @@
 </head>
 <body class="layui-layout-body">
 
-<div class="pop-content-right">
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            {if auth('salesman/salesman/index') }
+                            <a href="__ROOT__/admin.php/salesman/salesman/index" target="mainframe">
+                                <li>
+                                    <p class="Order1">业务员列表</p>
+                                </li>
+                            </a>
+                            {/if}
+                            {if auth('salesman/divideinto/index') }
+                            <a href="__ROOT__/admin.php/salesman/divideinto/index">
+                                <li>
+                                    <p class="Order1">业务员分成</p>
+                                </li>
+                            </a>
+                            {/if}
+                            {if auth('salesman/salesman/add') }
+                            <a href="__URL__/add">
+                                <li>
+                                    <p class="Order1">添加业务员</p>
+                                </li>
+                            </a>
+                            {/if}
+                            <li  class="layui-this">
+                                <p class="Order1">编辑业务员</p>
+                            </li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
+
     <form class="layui-form"  action="__URL__/update" method="post" >  <input type="hidden" name="salesman_id" id="salesman_id" value="{$getone.admin_id}" />
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
@@ -80,10 +116,17 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" >保存</button>
-
+                <input  class="layui-btn" type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" />
             </div>
         </div>
     </form>
+                                </div></div></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="__STATIC__/admin/layui/layui.all.js"></script>

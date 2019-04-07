@@ -20,8 +20,8 @@
                 <div class="box-center">
                     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                         <ul class="layui-tab-title tab_tatle">
+                            {if auth('admin/admin/index')}
                             <li>
-                                {if auth('admin/admin/index')}
                                 <a href="/admin.php/admin/admin/index"><p class="Order1">管理员列表</p></a>
                             </li>
                             {/if}

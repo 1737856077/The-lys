@@ -9,90 +9,128 @@
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
-<body class="layui-layout-body">
-<div class="layui-tab-item layui-show">
-    <div class="layui-tab-content layui-body">
+<body>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            {if auth('salesman/salesman/index') }
+                            <a href="__ROOT__/admin.php/salesman/salesman/index" target="mainframe">
+                                <li>
+                                    <p class="Order1">业务员列表</p>
+                                </li>
+                            </a>
+                            {/if}
+                            {if auth('salesman/divideinto/index') }
+                            <a href="__ROOT__/admin.php/salesman/divideinto/index">
+                                <li>
+                                    <p class="Order1">业务员分成</p>
+                                </li>
+                            </a>
+                            {/if}
+                            {if auth('salesman/salesman/add') }
+                            <a href="__URL__/add">
+                                <li class="layui-this">
+                                    <p class="Order1">添加业务员</p>
+                                </li>
+                            </a>
+                            {/if}
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
 
-        <form class="layui-form" action="__URL__/insert" method="post">
-            <input type="hidden" name="submitType" value="1" />
-            <div class="layui-form-item">
-                <label class="layui-form-label">用户名</label>
-                <div class="layui-input-block">
-                    <input style="width: 190px;" type="text" name="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+
+
+                        <form class="layui-form" action="__URL__/insert" method="post">
+                            <input type="hidden" name="submitType" value="1" />
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">用户名</label>
+                                <div class="layui-input-block">
+                                    <input style="width: 190px;" type="text" name="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密码框</label>
+                                <div class="layui-input-inline">
+                                    <input style="width: 190px;" type="password" name="pwd" required   class="layui-input">
+                                </div>
+
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">性别</label>
+                                <div class="layui-input-block">
+                                    <select name="sex">
+                                        <option value="0" selected>男</option>
+                                        <option value="1">女</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">入职日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="tool-time3" name="job_in_time" placeholder="yyyy-MM-dd">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">分成比例</label>
+                                <div class="layui-input-block">
+                                    <input style="width: 190px;"  type="text" name="divide_into" required  lay-verify="required" placeholder="请输入分成比例" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">电话</label>
+                                <div class="layui-input-inline">
+                                    <input style="width: 190px;" type="text" name="tel"   class="layui-input">
+                                </div>
+
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">状态：</label>
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="data_status" value="0" checked />已离职　
+                                    <input type="radio" name="data_status" value="1"  />在职&nbsp;
+                                </div>
+
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">备注：</label>
+                                <div class="layui-input-inline">
+                                    <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60"></textarea>  </td>
+                                </div>
+
+                            </div>
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
+                                    <input  class="layui-btn" type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" />
+                                </div>
+                            </div>
+                        </form>
+                                </div></div></div>
+
+                    </div>
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">密码框</label>
-                <div class="layui-input-inline">
-                    <input style="width: 190px;" type="password" name="pwd" required   class="layui-input">
-                </div>
-
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">性别</label>
-                <div class="layui-input-block">
-                    <select name="sex">
-                        <option value="0" selected>男</option>
-                        <option value="1">女</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="layui-inline">
-                <label class="layui-form-label">入职日期</label>
-                <div class="layui-input-inline">
-                    <input type="text" class="layui-input" id="tool-time3" name="job_in_time" placeholder="yyyy-MM-dd">
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">分成比例</label>
-                <div class="layui-input-block">
-                    <input style="width: 190px;"  type="text" name="divide_into" required  lay-verify="required" placeholder="请输入分成比例" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">电话</label>
-                <div class="layui-input-inline">
-                    <input style="width: 190px;" type="text" name="tel"   class="layui-input">
-                </div>
-
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">状态：</label>
-                <div class="layui-input-inline">
-                    <input type="radio" name="data_status" value="0" checked />已离职　
-                    <input type="radio" name="data_status" value="1"  />在职&nbsp;
-                </div>
-
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">备注：</label>
-                <div class="layui-input-inline">
-                    <td class="tdr" style="padding-top:5px;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60"></textarea>  </td>
-                </div>
-
-            </div>
-
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
-                    <input  class="layui-btn" type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" />
-                </div>
-            </div>
-        </form>
-
+        </div>
     </div>
 </div>
 <!--业务员管理结束-->
 
 
-</div><script src="__STATIC__/admin/layui/layui.all.js"></script>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
 <script>
     layui.use(['form', 'laydate'], function () {
         var form = layui.form
