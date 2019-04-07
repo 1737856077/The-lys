@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/systemrole_add.js"></script>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
@@ -28,12 +32,14 @@
                             <div class="layui-tab-item layui-show">
                                 <div class="liebiao">
                                     <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">
-                                    <label class="layui-form-label">名称</label>
-                                        <div class="layui-input-block">
-                                            <input style="width: 190px;" type="text" name="title"  value=""
+                                        <div class="layui-form-item">
+                                        <label class="layui-form-label">名称<font color="#ff0000">*</font></label>
+                                            <div class="layui-input-inline">
+                                            <input style="width: 190px;" type="text" name="title" id="title" value=""
                                                    class="layui-input">
                                         </div>
-                                    </div>
+                                        <div class="layui-form-mid layui-word-aux" id="span_title"></div>
+                                        </div>
                                         <div class="layui-form-item">
                                             <label class="layui-form-label">状态</label>
                                             <div class="layui-input-block">
