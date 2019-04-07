@@ -1,74 +1,133 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>权限管理-系统角色-编辑</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>权限管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/systemrole_add.js"></script>
 </head>
-
-
 <body>
-<div class="container">
-	
-    <div class="cont_title">　你当前的位置：权限管理 - <a href="__URL__/index">系统角色</a> - 编辑</div>
-    
-    <div class="con">
-    
-    	<div class="conlist">
-        <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">
-            <input type="hidden" name="role_id" value="{$getone['role_id']}" />
-        	<table class="listtable">
-            	<tr class="tr1">
-                	<td colspan="2" class="tit">编辑</td>
-                </tr>
-               <tr class="tr1">
-                    <td  class="tdl">名称:<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input type="text" name="title" id="title" size="60"  maxlength="100" onBlur="onBlur_title()"
-                               onKeyPress="return noStrs(event);" value="{$getone['title']}"  />
-                        <span id="span_title" style="color:#f00;"></span>
-                    </td>
-                </tr>
-                    <tr class="tr1">
-						<td class="tdl">状态：</td>
-						<td class="tdr" style="padding-top:5px;">
-                            <input type="radio" name="data_status" value="0" {if $getone['data_status'] eq 0}checked{/if} />冻结　
-                            <input type="radio" name="data_status" value="1" {if $getone['data_status'] eq 1}checked{/if} />正常&nbsp;
-                        </td>
-					</tr>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            <li  class="layui-this">
+                                <a href="#"><p class="Order1">修改</p></a>
+                            </li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
+                                    <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">   <div class="layui-form-item">
+                                        <input type="hidden" name="role_id" value="{$getone['role_id']}" />
+                                        <div class="layui-form-item">
+                                        <label class="layui-form-label">名称<font color="#ff0000">*</font></label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;" type="text" name="title"  id="title" value="{$getone['title']}"
+                                                       class="layui-input">
+                                            </div>
+                                            <div class="layui-form-mid layui-word-aux" id="span_title"></div>
+                                        </div>
 
-                  <tr class="tr1">
-						<td class="tdl">描述：</td>
-						<td class="tdr" style="padding-top:5px;">
-                            <textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60">{$getone['data_desc']}</textarea>
-                        </td>
-				  </tr>
-                 
-                <tr class="tr1">
-                	<td class="tdl"></td>
-                    <td class="tdr" style="padding-top:5px; position:relative;">
-                    <input type="submit" name="Submit" value="提交"  class="buttomorger" />　 
-                    <input type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" /> 
-                    
-                 </td>
-               </tr>
-            </table>
-     
-      </form>      
+
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">性别</label>
+                                            <div class="layui-input-block">
+                                                <td class="tdr" style="padding-top:5px;">
+                                                    <input type="radio" name="data_status" value="0" {if $getone['data_status'] eq 0}checked{/if} />冻结　
+                                                    <input type="radio" name="data_status" value="1" {if $getone['data_status'] eq 1}checked{/if} />正常&nbsp;
+                                                </td>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">描述</label>
+                                            <div class="layui-input-block">
+
+                                                    <td class="tdr" style="padding-top:5px;">
+                                                        <textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60">{$getone['data_desc']}</textarea>
+                                                    </td>
+                                                </tr>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
+                                                <input type="button" name="button" value="返回"  class="layui-btn layui-btn-primary" onClick="javascript:history.go(-1);" />
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    
     </div>
-    
-    
 </div>
+</div>
+</body>
+</html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form
+            , laydate = layui.laydate;
 
+        // 时间选择
+        laydate.render({
+            elem: '#tool-time',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择2
+        laydate.render({
+            elem: '#tool-time2',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+// 时间选择3
+        laydate.render({
+            elem: '#tool-time3',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择4
+        laydate.render({
+            elem: '#tool-time4',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
 
+        // 时间选择5
+        laydate.render({
+            elem: '#tool-time5',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+    });
+</script>
 </body>
 </html>

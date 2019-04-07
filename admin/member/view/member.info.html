@@ -1,111 +1,146 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>客户管理-客户列表-详细</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/member_add.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
 <body>
-<div class="container">
-	
-    <div class="cont_title">　你当前的位置：客户管理 - <a href="__URL__/index">客户列表</a> - 详细</div>
-    
-    <div class="con">
-    
-    	<div class="conlist">
-        <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfunedit();">
-            <input type="hidden" name="member_id" id="member_id" value="{$getone.member_id}" />
-            <table class="listtable">
-                <tr class="tr1">
-                    <td colspan="2" class="tit">详细</td>
-                </tr>
-               <tr class="tr1">
-                    <td class="tdl">用户名</td>
-                    <td class="tdr" style="padding-top:5px;">{$getone.username}</td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">性别</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {if $getone.sex eq 0 }男{/if}
-                        {if $getone.sex eq 1 }女{/if}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">角色</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {if $getone.sex eq 0 }普通用户{/if}
-                        {if $getone.sex eq 1 }VIP用户{/if}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">邮箱</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.email}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">真实姓名</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.real_name}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">公司名称</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.company_name}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">手机号</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.mobile}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">邀请者</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getoneAdmin.name}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">最后登录时间</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.last_login_time|date='Y-m-d H:i:s',###}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">备注</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {$getone.data_desc}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">状态</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        {:$getone.data_status ? '已审' : '未审'}
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl"></td>
-                    <td class="tdr" style="padding-top:5px;">
-                      <input type="button" name="button" value="返回"  class="buttomorger" onClick="javascript:history.go(-1);" />
-                    </td>
-               </tr>
-            </table>
-     
-      </form>      
-        </div>
-    
-    </div>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
 
+                                 <p class="Order1">用户详情</p>
+                            </li></a>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
+
+
+
+
+
+                                <div class="liebiao">
+                                    <div class="layui-form-item">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">用户名</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{$getone.username}"
+                                                       class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">性别</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{if $getone.sex eq 0 }男{/if}{if $getone.sex eq 1 }女{/if}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">角色</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{if $getone.sex eq 0 }普通用户{/if}{if $getone.sex eq 1 }VIP用户{/if}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">邮箱</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{$getone.email}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">真实姓名</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{$getone.real_name}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">公司名称</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{$getone.company_name}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">手机号</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{$getone.mobile}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">邀请者</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{$getoneAdmin.name}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">最后登录时间</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{$getone.last_login_time|date='Y-m-d H:i:s',###}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">备注</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{$getone.data_desc}" class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">状态</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;"  disabled="disabled" type="text" name="SearchMobile" value="{:$getone.data_status ? '已审' : '未审'}" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-inline">
+                                                <input class="layui-btn" type="button" name="button" value="返回"  class="buttomorger" onClick="javascript:history.go(-1);" /></div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,89 +1,93 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>权限管理-系统节点-添加</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>权限管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/systemnode_add.js"></script>
 </head>
 
-
 <body>
-<div class="container">
-	
-    <div class="cont_title">　你当前的位置：权限管理 - <a href="__URL__/index">系统节点</a> - 添加</div>
-    
-    <div class="con">
-    
-    	<div class="conlist">
-        <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            <li  class="layui-this">
+                                <a href="#"><p class="Order1">添加</p></a>
+                            </li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
+                                    <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return subfun();">  <table class="layui-table" lay-skin="line" lay-size="sm" >
 
-        	<table class="listtable">
-            	<tr class="tr1">
-                	<td colspan="2" class="tit">添加</td>
-                </tr>
-                <tr class="tr1">
-                    <td  class="tdl">上级分类:</td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <select name="class_id" id="class_id">
-                            <option value="0"  >请选择</option>
-                            {foreach $listSystemNode as $key=>$value}
-                            <option value="{$value.node_id}"  >{$value.title}</option>
-                            {/foreach}
-                    </td>
-                </tr>
-               <tr class="tr1">
-                    <td  class="tdl">名称:<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input type="text" name="title" id="title" size="60"  maxlength="100" onBlur="onBlur_title()" onKeyPress="return noStrs(event);"  />
-                        <span id="span_title" style="color:#f00;"></span>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td  class="tdl">路径:<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input type="text" name="content" id="content" size="60"  maxlength="100" onBlur="onBlur_content()" onKeyPress="return noStrs(event);"  />
-                        <span id="span_content" style="color:#f00;"></span>
-                    </td>
-                </tr>
-                    <tr class="tr1">
-						<td class="tdl">状态：</td>
-						<td class="tdr" style="padding-top:5px;">
-                            <input type="radio" name="data_status" value="0" checked />冻结　
-                            <input type="radio" name="data_status" value="1"  />正常&nbsp;
-                        </td>
-					</tr>
+                                            <div class="layui-form-item" >
+                                                <label class="layui-form-label">上级分类</label>
+                                                <div class="layui-input-block">
+                                                    <select name="class_id" >
+                                                        <option value="0"  >请选择</option>
+                                                        {foreach $listSystemNode as $key=>$value}
+                                                        <option value="{$value.node_id}"  >{$value.title}</option>
+                                                        {/foreach}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item" >
+                                                <label class="layui-form-label">名称:<span style="color:#f00;">*</span></label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="title" id="title" size="60"  maxlength="100" onBlur="onBlur_title()"
+                                                           onKeyPress="return noStrs(event);" value=""  />
+                                                    <span id="span_title" style="color:#f00;"></span>
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item" >
+                                                <label class="layui-form-label">路径:</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="content"  size="60"  maxlength="100" onBlur="onBlur_content()"
+                                                           onKeyPress="return noStrs(event);" value="" />
+                                                    <span style="color:#f00;"></span>
+                                                </div>
+                                            </div>
 
-                  <tr class="tr1">
-						<td class="tdl">描述：</td>
-						<td class="tdr" style="padding-top:5px;">
-                            <textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60"></textarea>
-                        </td>
-				  </tr>
-                 
-                <tr class="tr1">
-                	<td class="tdl"></td>
-                    <td class="tdr" style="padding-top:5px; position:relative;">
-                    <input type="submit" name="Submit" value="提交"  class="buttomorger" />　 
-                    <input type="button" name="button" value="返回"  class="buttomgray" onClick="javascript:history.go(-1);" /> 
-                    
-                 </td>
-               </tr>
-            </table>
-     
-      </form>      
-        </div>
-    
-    </div>
-    
-    
-</div>
+                                            <div class="layui-form-item" >
+                                                <label class="layui-form-label">状态:<span style="color:#f00;">*</span></label>
+                                                <div class="layui-input-block">
+                                                    <input type="radio" name="data_status" value="0" checked />冻结　
+                                                    <input type="radio" name="data_status" value="1"  />正常&nbsp;
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item" >
+                                                <label class="layui-form-label">描述:<span style="color:#f00;">*</span></label>
+                                                <div class="layui-input-block">
+                                                    <textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60"></textarea>   </div>
+                                            </div>
+
+                                            <div class="layui-form-item" >   <div class="layui-input-block">
+                                                <input type="submit" name="Submit" value="提交" class="layui-btn layui-btn-radius" />　
+                                                <input type="button" name="button" value="返回"  class="layui-btn layui-btn-radius layui-btn-warm" onClick="javascript:history.go(-1);" />
+                                            </div>
+                                            </div>
+                                        </table>
+
+                                    </form>
+                                </div>
+
+                            </div>
+
+
+                        </div>
 
 
 </body>

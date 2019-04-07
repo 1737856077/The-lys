@@ -96,7 +96,7 @@ class Roleauth extends CommonAdmin
             }
         }
 
-        $this->success("操作成功",url("roleauth/index")."?role_id=$role_id",3);
+        $this->success("操作成功",url("systemrole/index")."?role_id=$role_id",3);
         exit;
     }
 

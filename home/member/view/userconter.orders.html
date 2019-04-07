@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">　<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <style>
+        html, body, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; /*vertical-align: baseline;*/ background: transparent; }
+        ol, ul { list-style: none; }
+        html { height: 100%; }
+        body { font-family: Arial, Helvetica, sans-serif; padding: 0; font-size: 14px; margin: 0 auto; height: 100%; position: relative; background-color: #f7f5f2; color: #333333 }
+        blockquote, q { quotes: none; }
+        blockquote:before, blockquote:after, q:before, q:after { content: ''; }
+        :focus { outline: 0; }
+        ins { text-decoration: none; }
+        del { text-decoration: line-through; }
+        table { border-collapse: collapse; border-spacing: 0; }
+        body { min-width: 320px; }
+        .mall_main { display: block; min-width: 320px; }
+        .body_color { background-color: #f9f2e3; }
+     #header .current_region { float: left; width: 44% }
+        #header .current_region span, #header .current_location span { color: #000000; text-decoration: none; font-size: 16px; line-height: 36px; float: left }
+        #header .current_region i { height: 32px; width: 24px; float: left; background: url(../images/index_icon/little_icon.png) no-repeat center; background-position: 5px 14px }
+        #header .current_location { }
+        #header .current_region a, #header .current_location a { display: block }
+        #header .current_location span { font-size: 18px; }
+       .menu ul { list-style: none; padding: 0px; margin: 0px; width: 100%; box-shadow: 0 0 8px #b7b6b6; overflow: hidden }
+        .menu ul li { list-style: none; margin: 0; width: 33.33%; height: auto; float: left; display: block; position: relative; }
+        .menu ul li a { color: #FFFFFF; text-decoration: none; text-align: center; display: block }
+        .menu ul li a span { display: block; text-align: center; font-size: 14px; line-height: 0; position: absolute; top: 75%; width: 100% }
+        .menu ul li img { display: block; max-width: 100%; }
+        .all_orders { display: block }
+        .all_orders .order_nav { width: 100%; display: block; background-color: #FFFFFF; overflow: hidden }
+        .all_orders .order_nav li { width: 25%; float: left; text-align: center }
+        .all_orders .order_nav li a { color: #333333; display: block; width: 100%; padding: 4px 0 }
+        .all_orders .order_nav .current a { color: #FFFFFF; background-color: #58a1b0 }
+        .all_orders .wait_pay { background-color: #f9f2e3 }
+        .all_orders .wait_pay .order_list { background-color: #FFFFFF; width: 100%; padding: 0; margin-bottom: 15px; border-top: #bbbbbb 1px solid; border-bottom: #bbbbbb 1px solid; overflow: hidden }
+        .all_orders .wait_pay .order_list p { padding-bottom: 8px; width: 92%; padding: 2% 4% 0; }
+        .all_orders .wait_pay .goods_info { width: 92%; padding: 0% 4%; display: block; overflow: hidden }
+        .all_orders .wait_pay .left_goods { float: left; width: 80%; padding: 2% 0 }
+        .all_orders .wait_pay .left_goods a { width: 58px; height: 58px; padding: 3px; background: url(../images/goods_bg.png) no-repeat; float: left; margin: 3px; }
+        .all_orders .wait_pay .left_goods a img { height: 58px; width: 58px; }
+        .all_orders .wait_pay .right_operate { float: left; width: 20% }
+        .all_orders .wait_pay .right_operate a { background-color: #edc700; width: 100%; display: block; text-align: center; color: #FFFFFF; border-radius: 5px; -webkit-border-radius: 5px; height: 20px; line-height: 20px; margin: 4px 0px; }
+        .all_orders .wait_pay .price_count { width: 92%; padding: 2% 4%; border-top: #bbbbbb 1px solid; display: block }
+        .all_orders .wait_pay .price_count time { font-size: 12px; }
+        .all_orders .wait_pay .price_count span { float: right; margin-left: 10px }
+
+    </style>
+</head>
+<body class="body_color">
+{include file="publicinfo@publicinfo/header" /}
+<div class="mall_main">
+    <div id="child_header">
+        <div class="goback"><a href="javascript:history.back(-1)"><i></i></a></div>
+        <div class="current_location"><span>全部订单</span></div>
+    </div>
+
+    <div class="all_orders">
+        <div class="wait_pay">
+            {foreach name="data" id="order"}
+            <div class="order_list">
+                <p>订单号：{$order.order_no}</p>
+                <p>模版名称：{$order.template_title}</p>
+                <p>纸张尺寸：{$order.paper_size_long}{$order.paper_size_unit}*{$order.paper_size_wide}{$order.paper_size_unit}</p>
+
+                <div class="goods_info">
+                    <div class="left_goods">
+                        <a href="goods.html" class="goods_img"><img src="images/user_photo.jpg"></a>
+                    </div>
+
+                    <div class="right_operate">  <a href="/index.php/member/userconter/orderdetails/id/{$order.id}">查看详情</a>
+                        {switch name="$order.pay_status"}
+                        {case value="1"}<a>订单状态:已支付</a>{/case}
+                        {case value="0"}
+                        {in name="$order.order_status" value="0,1,2"}
+                        <a href="#">编辑</a>
+                        {/in}
+
+
+                        <a style="color: red">订单状态:未支付</a>{/case}
+                        {/switch}
+                    </div>
+                </div>
+                <div class="price_count"><time>下单时间：{$order.create_time|date="Y-m-d",###}</time> <span>合计金额:{$order.score_pay}</span><span>打印数量:{$order.print_num}</span></div>
+            </div>
+            {/foreach}
+        </div>
+        <div class="wait_pay">
+            {foreach name="new" id="order"}
+            <div class="order_list">
+                <p>订单号：{$order.order_no}</p>
+                <p>模版名称：{$order.template_title}</p>
+                <p>纸张尺寸：{$order.paper_size_long}{$order.paper_size_unit}*{$order.paper_size_wide}{$order.paper_size_unit}</p>
+
+                <div class="goods_info">
+                    <div class="left_goods">
+                        <a href="goods.html" class="goods_img"><img src="images/user_photo.jpg"></a>
+                    </div>
+
+                    <div class="right_operate">  <a href="/index.php/member/userconter/orderdetails/id/{$order.id}">查看详情</a>
+                        {switch name="$order.pay_status"}
+                        {case value="1"}<a>订单状态:已支付</a>{/case}
+                        {case value="0"}
+                        {in name="$order.order_status" value="0,1,2"}
+                        <a href="#">编辑</a>
+                        {/in}
+
+
+                        <a style="color: red">订单状态:未支付</a>{/case}
+                        {/switch}
+                    </div>
+                </div>
+                <div class="price_count"><time>下单时间：{$order.create_time|date="Y-m-d",###}</time> <span>合计金额:{$order.score_pay}</span><span>打印数量:{$order.print_num}</span></div>
+            </div>
+            {/foreach}
+        </div>
+        <div class="wait_pay">
+            {foreach name="verify" id="order"}
+            <div class="order_list">
+                <p>订单号：{$order.order_no}</p>
+                <p>模版名称：{$order.template_title}</p>
+                <p>纸张尺寸：{$order.paper_size_long}{$order.paper_size_unit}*{$order.paper_size_wide}{$order.paper_size_unit}</p>
+
+                <div class="goods_info">
+                    <div class="left_goods">
+                        <a href="goods.html" class="goods_img"><img src="images/user_photo.jpg"></a>
+                    </div>
+
+                    <div class="right_operate">  <a href="/index.php/member/userconter/orderdetails/id/{$order.id}">查看详情</a>
+                        {switch name="$order.pay_status"}
+                        {case value="1"}<a>订单状态:已支付</a>{/case}
+                        {case value="0"}
+                        {in name="$order.order_status" value="0,1,2"}
+                        <a href="#">编辑</a>
+                        {/in}
+
+
+                        <a style="color: red">订单状态:未支付</a>{/case}
+                        {/switch}
+                    </div>
+                </div>
+                <div class="price_count"><time>下单时间：{$order.create_time|date="Y-m-d",###}</time> <span>合计金额:{$order.score_pay}</span><span>打印数量:{$order.print_num}</span></div>
+            </div>
+            {/foreach}
+        </div>
+        <div class="wait_pay">
+            {foreach name="design" id="order"}
+            <div class="order_list">
+                <p>订单号：{$order.order_no}</p>
+                <p>模版名称：{$order.template_title}</p>
+                <p>纸张尺寸：{$order.paper_size_long}{$order.paper_size_unit}*{$order.paper_size_wide}{$order.paper_size_unit}</p>
+
+                <div class="goods_info">
+                    <div class="left_goods">
+                        <a href="goods.html" class="goods_img"><img src="images/user_photo.jpg"></a>
+                    </div>
+
+                    <div class="right_operate">  <a href="/index.php/member/userconter/orderdetails/id/{$order.id}">查看详情</a>
+                        {switch name="$order.pay_status"}
+                        {case value="1"}<a>订单状态:已支付</a>{/case}
+                        {case value="0"}
+                        {in name="$order.order_status" value="0,1,2"}
+                        <a href="#">编辑</a>
+                        {/in}
+
+
+                        <a style="color: red">订单状态:未支付</a>{/case}
+                        {/switch}
+                    </div>
+                </div>
+                <div class="price_count"><time>下单时间：{$order.create_time|date="Y-m-d",###}</time> <span>合计金额:{$order.score_pay}</span><span>打印数量:{$order.print_num}</span></div>
+            </div>
+            {/foreach}
+        </div>
+        <div class="wait_pay">
+            {foreach name="designend" id="order"}
+            <div class="order_list">
+                <p>订单号：{$order.order_no}</p>
+                <p>模版名称：{$order.template_title}</p>
+                <p>纸张尺寸：{$order.paper_size_long}{$order.paper_size_unit}*{$order.paper_size_wide}{$order.paper_size_unit}</p>
+
+                <div class="goods_info">
+                    <div class="left_goods">
+                        <a href="goods.html" class="goods_img"><img src="images/user_photo.jpg"></a>
+                    </div>
+
+                    <div class="right_operate">  <a href="/index.php/member/userconter/orderdetails/id/{$order.id}">查看详情</a>
+                        {switch name="$order.pay_status"}
+                        {case value="1"}<a>订单状态:已支付</a>{/case}
+                        {case value="0"}
+                        {in name="$order.order_status" value="0,1,2"}
+                        <a href="#">编辑</a>
+                        {/in}
+
+
+                        <a style="color: red">订单状态:未支付</a>{/case}
+                        {/switch}
+                    </div>
+                </div>
+                <div class="price_count"><time>下单时间：{$order.create_time|date="Y-m-d",###}</time> <span>合计金额:{$order.score_pay}</span><span>打印数量:{$order.print_num}</span></div>
+            </div>
+            {/foreach}
+        </div>
+        <div class="wait_pay">
+            {foreach name="End" id="order"}
+            <div class="order_list">
+                <p>订单号：{$order.order_no}</p>
+                <p>模版名称：{$order.template_title}</p>
+                <p>纸张尺寸：{$order.paper_size_long}{$order.paper_size_unit}*{$order.paper_size_wide}{$order.paper_size_unit}</p>
+
+                <div class="goods_info">
+                    <div class="left_goods">
+                        <a href="goods.html" class="goods_img"><img src="images/user_photo.jpg"></a>
+                    </div>
+
+                    <div class="right_operate">  <a href="/index.php/member/userconter/orderdetails/id/{$order.id}">查看详情</a>
+                        {switch name="$order.pay_status"}
+                        {case value="1"}<a>订单状态:已支付</a>{/case}
+                        {case value="0"}
+                        {in name="$order.order_status" value="0,1,2"}
+                        <a href="#">编辑</a>
+                        {/in}
+
+
+                        <a style="color: red">订单状态:未支付</a>{/case}
+                        {/switch}
+                    </div>
+                </div>
+                <div class="price_count"><time>下单时间：{$order.create_time|date="Y-m-d",###}</time> <span>合计金额:{$order.score_pay}</span><span>打印数量:{$order.print_num}</span></div>
+            </div>
+            {/foreach}
+        </div>
+
+
+</div>
+
+<script type="text/javascript">
+    jQuery(function($){
+        $('.all_orders ul li').click(function(){
+            var index = $('.all_orders ul li').index(this);
+            $(this).addClass('current').siblings('li').removeClass('current');
+            $('.all_orders .wait_pay:eq('+index+')').show().siblings('.wait_pay').hide();
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,17 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script type="text/javascript" src="__STATIC__/home/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/home/js/login.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="applicable-device"content="pc,mobile"/>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/select.js"></script>
 </head>
+
 <body>
-<form name="form1" method="post" action="__URL__/checklogin" onsubmit="javascript:return subfun();">
-    <h1>会员登录</h1>
-    用户名：<input type="text" value="" name="username" id="username" onblur="onBlur_username()" maxlength="32" /><span id="span_username"></span><br />
-    密码：<input type="text" value=""  name="pwd"  id="pwd" onblur="onBlur_pwd()" maxlength="32"  /><span id="span_pwd"></span><br />
-    <button type="submit" class="login">登 录</button>&nbsp;<br /><br />
-</form>
+<header>
+    <nav>
+        <div class="logo"><a href="#"><img src="__STATIC__/home/images/logo.png"></a></div>
+        <div class="menu">
+            <div class="menu-box">
+                <ul class="menu-list-content">
+                    <li><a href="/index.html" >首页</a></li>
+                    <li><a href="/list.html" >模板中心</a></li>
+                    <li><a href="/design.html" >开始设计</a></li>
+                    <li><a href="/customized.html" >模板定制</a></li>
+                </ul>
+            </div>
+            <div class="user-center">
+                <!--未登录样式  -->
+                <ul class="unlogin">
+                    <li><a href="login.html">登录</a><a href="register.html">注册</a></li>
+                </ul>
+            </div>
+    </nav>
+</header>
+<div id="wp" style="padding-top: 110px;background:url(__STATIC__/home/images/bg.jpg) 100% 80px; height: 900px">
+    <div class="all-work-list">
+
+        <div class="register_box">
+            <div class="register_box_title">立即登录</div>
+            <form method="post" autocomplete="off" name="form1" id="registerform" enctype="multipart/form-data" onsubmit="checksubmit();return false;"  action="__URL__/checklogin" _lpchecked="1">
+                <div id="layer_reg" class="bm_c">
+                    <input type="hidden" name="regsubmit" value="">
+                    <input type="hidden" name="formhash" value="">
+                    <input type="hidden" name="referer" value="">
+                    <input type="hidden" name="activationauth" value="">
+                    <div class="mtw">
+                        <div id="reginfo_a">
+                            <div class="yun_login">
+                                <i class="icon_251 icon_user2"></i>
+                                <input type="text" class="lo_input" id="yun_name" name="username" tabindex="1" value="" autocomplete="off" size="25" maxlength="15" placeholder="请输入用户名" required="">
+                            </div>
+                            <div class="yun_login2">
+                                <i class="icon_251 icon_password"></i>
+                                <input type="password" placeholder="请输入密码" class="lo_input er" id="yun_password" name="pwd" size="25" tabindex="1" required="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="layer_reginfo_b">
+                    <table width="100%">
+                        <tbody><tr>
+                            <td>
+<span id="reginfo_a_btn">
+<button class="lo_btn" id="registerformsubmit" type="submit" name="regsubmit" value="true" tabindex="1"><strong>立即登录</strong></button>
+</span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody></table>
+                    <div class="lo_txt">
+                        <span>用第三方帐号直接登录</span>
+                        <a href="/index.php/member/register/index" style="float:right">没有帐号？立即注册</a>
+                        <a class="lo_btn2" href="#"><i class="icon_251 icon_qq_2"></i>QQ登录</a>
+                        <a class="lo_btn3" href="#"><i class="icon_251 icon_wx"></i>微信登录</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+
+
+
+<div class="footer">
+    <div class="all-work-list">
+        <div class="lt">
+            <div class="bottom_logo clearfix">
+                <div class="fl footer-logo-box">
+                    <img src="__STATIC__/home/images/bottom_logo.png" class="footer-logo">
+                    <span class="footer-slogan">做标签 · 不求人</span>
+                </div>
+            </div>
+            <span class="footer-slogan2">
+云标签倾力打造智能的标签在线编辑和打印管理平台。
+</span>
+
+            <span class="footer-slogan2">
+设计师可以在线编辑会员分享的成品标签，也可自行设计自己想要的模板。
+</span>
+
+            <span class="footer-slogan2">
+©lusheji.com, powered by lusheji Team。
+</span>
+        </div>
+
+        <div class="rt">
+            <div class="bottom_logo clearfix">
+                <div class="fl footer-logo-box">
+                    <img src="__STATIC__/home/images/weixin.png" class="footer-weixin"> <a href="#" target="_blank"><img src="__STATIC__/home/images/qq.png" class="footer-weixin"></a>
+                </div>
+            </div>
+            <span class="footer_phone">
+400-888-8888
+</span>
+            <span class="footer-slogan2">
+email@email.com
+</span>
+            <span class="footer-slogan2">
+XXX省XX市XX路XX有限公司
+</span>
+        </div>
+    </div>
+    <script src="__STATIC__/home/layui/layui.all.js"></script>
+    <script>
+        layui.use(['carousel', 'form'], function(){
+            var carousel = layui.carousel
+                ,form = layui.form;
+
+            //常规轮播
+            carousel.render({
+                elem: '#test1'
+                ,width: '1200px'
+                ,height: '359px'
+                ,interval: 3000
+            });
+
+        });
+    </script>
+
+</div>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

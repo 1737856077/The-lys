@@ -93,7 +93,6 @@ class Dtemplatetype extends CommonAdmin
         if(empty($id)){echo 'paramer error!';exit;}
         $ModelSystemConfig=Db::name('template_class');
         $getone=$ModelSystemConfig->where("class_id='$id'")->find();
-
         $this->assign("getone",$getone);
         return $this->fetch();
     }

@@ -1,30 +1,53 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>权限管理-系统角色-编辑权限</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>权限管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
     <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/city.js"></script>
-</head>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 <style type="text/css">
     .bagcolor{ font-weight: bold;}
     .ulbfb100{ width: 96%; padding: 0px 2%;}
     .ulbfb100 li{ width: 200px; float: left;}
 </style>
 <body>
-<div class="cont_title">　你当前的位置：权限管理 -<a href="{:url('systemrole/index')}">系统角色</a>-编辑权限</div>
-
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            {if auth('admin/admin/index')}
+                            <li class="layui-this">
+                                <a href="/admin.php/auth/systemrole/index"><p class="Order1">系统角色</p></a>
+                            </li>
+                            {/if}
+                            {if auth('admin/admin/modifypwd')}
+                            <li ">
+                                <a href="/admin.php/auth/systemnode/index"><p class="Order1">系统节点</p></a>
+                            </li>
+                            {/if}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="con">
 
     <div class="conlist">
 
         <form  method="post" action="__URL__/editinfo/action/save" id="form_save">
             <input type="hidden" name="role_id" id="role_id" value="{$getoneSystemRole['role_id']}" />
-            <table class="listtable">
+            <table class="listtable" lay-even lay-skin="line" lay-size="lg">
                 <tr class="tr1">
                     <td  class="tit">[{$getoneSystemRole['title']}]编辑权限　</td>
                 </tr>
@@ -51,13 +74,13 @@
                 <tr class="tr1">
                     <td class="tdlist" >
                         <input type="hidden" name="checkclass" id="checkclass" value="1" />
-                        <input type="submit"  value="更新权限" class="buttomorger"  onClick="checkclassfun('21');" />
+                        <input type="submit"  value="更新权限" class="layui-btn"  onClick="checkclassfun('21');" />
+                        <input type="button" name="button" value="返回"  class="layui-btn layui-btn-radius layui-btn-warm" onClick="javascript:history.go(-1);" />
                     </td>
                 </tr>
-            </table>
 
         </form>
-
+        </table>
     </div>
 
 </div>

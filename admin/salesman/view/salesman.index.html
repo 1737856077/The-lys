@@ -1,100 +1,167 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>业务员管理-业务员列表</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>业务员管理</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
     <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
     <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
-
 <body>
-    <div class="cont_title">　你当前的位置：业务员管理 -业务员列表</div>
-    
-    <div class="con">
-    
-    	<div class="conlist">
-        <form name="form1" method="get" action="__URL__/index">
-     	<table class="listtable">
-        
-                   
-                    <tr class="tr1">
-						<td  colspan="7" class="tdlist">查询：
-                        业务员名称 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
-                        联系电话 <input type="text" name="SearchTel" id="SearchTel" value="{$SearchTel}" />　
-                        <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
-					
-					<td   class="tdlist">
-                        {if auth('salesman/salesman/add') }
-                        <a href="__URL__/add"><input type="button"  value="添加业务员" class="buttomorger100" /> </a>
-                        {/if}
-                    </td>
-                    </tr>
-				</table>
-                 </form> 
-        <form  method="post" action="__URL__/editinfo/action/save?{$paramUrl}">        
-				<table class="listtable">
-                    <tr class="tr1">
-                        <td colspan="7" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdtit">ID</td>
-                        <td class="tdtit">用户名</td>
-                        <td class="tdtit">性别</td>
-                        <td class="tdtit">入职日期</td>
-                        <td class="tdtit">分成比例</td>
-                        <td class="tdtit">状态</td>
-                        <td class="tdtit">操作</td>
-                    </tr>
-                   {foreach $List as $value}
-                	<tr class="tr1">
-                    	<td class="tdlist">{$value['admin_id']}&nbsp;</td>
-                        <td class="tdlist">{$value['name']}&nbsp;</td>
-                        <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
-                        <td class="tdlist">{$value['job_in_time']}</td>
-                        <td class="tdlist">{$value['divide_into']}%</td>
-                        <td class="tdlist">
-                            {if auth('salesman/salesman/editinfo') }
-                                {if $value['job_status'] eq 0}
-                                <a href="__URL__/editinfo/action/checkStatus/id/{$value['admin_id']}/Status/1?{$paramUrl}" ><font color="#ff0000">已离职</font></a>
-                                {else}
-                                <a href="__URL__/editinfo/action/checkStatus/id/{$value['admin_id']}/Status/0?{$paramUrl}" ><font color="#006600">在职</font></a>
-                                {/if}
-                            {else}
-                                {if $value['job_status'] eq 0}
-                                <font color="#ff0000">已离职</font>
-                                {else}
-                                <font color="#006600">在职</font>
-                                {/if}
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            {if auth('salesman/salesman/index') }
+                            <a href="__ROOT__/admin.php/salesman/salesman/index" target="mainframe">
+                                <li class="layui-this">
+                                    <p class="Order1">业务员列表</p>
+                                </li>
+                            </a>
                             {/if}
-                        </td>
-                        <td class="tdlist">
-                            {if auth('salesman/salesman/edit') }
-                                [<a href="{:url('salesman/edit')}?id={$value['admin_id']}&{$paramUrl}">编辑</a>]
+                            {if auth('salesman/divideinto/index') }
+                            <a href="__ROOT__/admin.php/salesman/divideinto/index">
+                                <li>
+                                    <p class="Order1">业务员分成</p>
+                                </li>
+                            </a>
                             {/if}
-                        </td>
-                    </tr>
-				{/foreach}
-                
-                {if $count eq 0}
-                    <tr class="tr1">
-                    	<td colspan="7" class="tdlist">暂无相关记录！ </td>
-                    </tr>
-                {/if}
-                
-            </table>
-            <div style="text-align:right; padding-right:40px;">
-            {$page}
-           </div>
-           </form> 
-            
+                            {if auth('salesman/salesman/add') }
+                            <a href="__URL__/add">
+                                <li>
+                                    <p class="Order1">添加业务员</p>
+                                </li>
+                            </a>
+                            {/if}
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
+                                    <div class="bgzt">
+                                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                                            <div class="layui-tab-content">
+                                                <div class="layui-tab-item layui-show">
+                                                    <form class="layui-form" method="get" action="__URL__/index">
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">业务员名称</label>
+                                                            <div class="layui-input-block">
+                                                                <input style="width: 190px;" type="text"
+                                                                       name="SearchTitle" class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">联系电话</label>
+                                                            <div class="layui-input-inline">
+                                                                <input style="width: 190px;" type="text"
+                                                                       name="SearchTel" class="layui-input">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="layui-form-item">
+                                                            <div class="layui-input-block">
+                                                                <button class="layui-btn" lay-submit
+                                                                        lay-filter="formDemo">查找
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="Order_title">业务员列表</div>
+                                                    <div class="liebiao">
+                                                        <table class="layui-table" lay-skin="line" lay-size="sm">
+                                                            <thead>
+                                                            <tr>
+                                                                <td class="tdtit">ID</td>
+                                                                <td class="tdtit">用户名</td>
+                                                                <td class="tdtit">性别</td>
+                                                                <td class="tdtit">入职日期</td>
+                                                                <td class="tdtit">分成比例</td>
+                                                                <td class="tdtit">状态</td>
+                                                                <td class="tdtit">操作</td>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {foreach $List as $value}
+                                                            <tr class="tr1">
+                                                                <td class="tdlist">{$value['admin_id']}&nbsp;</td>
+                                                                <td class="tdlist">{$value['name']}&nbsp;</td>
+                                                                <td class="tdlist">{:$value['sex']===1 ? '女' : '男'}&nbsp;</td>
+                                                                <td class="tdlist">{$value['job_in_time']}</td>
+                                                                <td class="tdlist">{$value['divide_into']}%</td>
+                                                                <td class="tdlist">
+                                                                    {if auth('salesman/salesman/editinfo') }
+                                                                    {if $value['job_status'] eq 0}
+                                                                    <a href="__URL__/editinfo/action/checkStatus/id/{$value['admin_id']}/Status/1?{$paramUrl}"><font
+                                                                            color="#ff0000">已离职</font></a>
+                                                                    {else}
+                                                                    <a href="__URL__/editinfo/action/checkStatus/id/{$value['admin_id']}/Status/0?{$paramUrl}"><font
+                                                                            color="#006600">在职</font></a>
+                                                                    {/if}
+                                                                    {else}
+                                                                    {if $value['job_status'] eq 0}
+                                                                    <font color="#ff0000">已离职</font>
+                                                                    {else}
+                                                                    <font color="#006600">在职</font>
+                                                                    {/if}
+                                                                    {/if}
+                                                                </td>
+                                                                <td class="tdlist">
+                                                                    {if auth('salesman/salesman/edit') }
+                                                                    [<a class="click_pop"
+                                                                        href="{:url('salesman/edit')}?id={$value['admin_id']}&{$paramUrl}">编辑</a>]
+                                                                    {/if}
+                                                                </td>
+                                                            </tr>
+                                                            {/foreach}
+
+                                                            {if $count eq 0}
+                                                            <tr class="tr1">
+                                                                <td colspan="7" class="tdlist">暂无相关记录！</td>
+                                                            </tr>
+                                                            {/if}
+                                                            </tbody>
+                                                        </table>
+                                                        <!--遮罩层-->
+                                                        <div class="bgPop"></div>
+                                                        <!--弹出框-->
+
+
+                                                    </div>
+                                                    <div style="text-align:right; padding-right:40px;">
+                                                        {$page}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    
     </div>
-    
- 
+</div>
 </div>
 </body>
 </html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+

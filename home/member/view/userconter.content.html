@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>　
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>详细数据</title>
+</head>
+<body>{include file="publicinfo@publicinfo/header" /}
+<form action="/index.php/member/userconter/sub" method="post">
+    {foreach name='data' id='data'}
+    模板名：{$data.title}<br>
+    模版图片：<img src="{$data.img}" alt=""><br>
+    {/foreach}
+    {foreach name='content' id='data'}
+    纸张尺寸：{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}<br>
+    标签尺寸：{$data.lable_size_wide}{$data.lable_size_unit}*{$data.lable_size_height}{$data.lable_size_unit}<br>
+    {/foreach}
+    打印份数：<input type="text" name="number" maxlength="32" value=""><br>
+    纸张:
+    <select name="type">
+        <option name="type">请选择纸张类型</option>
+        {foreach name='zhizhang' id='data'}
+        <option name="type" value="{$data.id}">{$data.title}</option>
+        {/foreach}
+    </select>
+    <br>
+
+
+    填写纸张：<input type="text" name="cmtype" value=""><br>
+    打印模式：<select name="ConfigPreorderPrint">
+    {foreach $ConfigPreorderPrintMode as  $k=>$v}
+     <option name="ConfigPreorderPrint" value="{$k}">{$v}</option>
+    {/foreach}
+</select><br />
+
+    排序方式：<select name="ConfigPreorderPrintSort">
+    {foreach $ConfigPreorderPrintSort as  $k=>$v}
+    <option name="ConfigPreorderPrintSort" value="{$k}">{$v}</option>
+    {/foreach}
+</select><br />
+    <input type="hidden" name="username" value="{$username.username}">;
+    <input type="hidden" name="tempid" value="{$content.0.template_id}"><br>
+    <input type="submit" value="提交订单">
+</form>
+</body>
+</html>

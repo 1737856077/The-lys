@@ -1,22 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>管理员列表</title>
-    <link rel="stylesheet" href="__STATIC__/admin/newstyle/layui/css/layui.css">
-    <link rel="stylesheet" href="__STATIC__/admin/newstyle/css/style.css">
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>系统管理员</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
-    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-	<script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
     <!-- 内容主体区域 -->
     <div class="layui-tab-content">
-        <!--列表开始-->
-        <div class="layui-tab-item">
+
+        <div class="layui-tab-item layui-show">
+
+
             <div class="bgzt">
                 <div class="box-center">
                     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
@@ -46,44 +47,41 @@
                                 <a href="/admin.php/admin/adminshare/index"><p class="Order1">分享注册</p></a>
                             </li>
                             {/if}
-                        </ul>
+
+
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
                                 <div class="liebiao">
-                                    <table class="layui-table" lay-skin="line" lay-size="sm" >
-                                        <colgroup>
-                                            <col width="50">
-                                            <col width="200">
-                                            <col width="200">
-                                            <col width="200">
-                                            <col width="200">
-                                            <col width="200">
-                                            <col width="200">
-                                        </colgroup>
+                                    <table class="layui-table" lay-skin="line" lay-size="sm">
                                         <thead>
                                         <tr>
-                                            <th>ID<input type="checkbox"></th>
-                                            <th>名字</th>
-                                            <th>类型</th>
-                                            <th>角色</th>
-                                            <th>电话</th>
-                                            <th>状态</th>
-                                            <th>操作</th>
+                                            <th><input type="checkbox"></th>
+                                            <td class="tdtit">ID</td>
+                                            <td class="tdtit">名字</td>
+                                            <td class="tdtit">类型</td>
+                                            <td class="tdtit">角色</td>
+                                            <td class="tdtit">电话</td>
+                                            <td class="tdtit">状态</td>
+                                            <td class="tdtit">操作</td>
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                         {foreach $list as $vo}
-                                        <tr>
-                                            <td>{$vo['admin_id']}</td>
-                                            <td>{$vo['name']}</td>
-                                            <td>
+                                        <tr class="tr1">
+                                            <td><input type="checkbox"></td>
+                                            <td class="tdlist">{$vo['admin_id']}</td>
+                                            <td class="tdlist">{$vo['name']}</td>
+                                            <td class="tdlist">
                                                 {if $vo['data_type'] eq 1}系统管理员
                                                 {elseif $vo['data_type'] eq 2/}商家管理员
                                                 {/if}
                                             </td>
-                                            <td>{$vo['role_title']}</td>
-                                            <td>{$vo['tel']}</td>
-                                            <td>
+
+                                            <td class="tdlist">{$vo['role_title']}</td>
+                                            <td class="tdlist">{$vo['tel']}</td>
+                                            <td class="tdlist">
+
                                                 {if auth('admin/admin/editinfo') }
                                                 {if $vo['name'] eq 'admin'}
                                                 <font color="#006600">正常</font>
@@ -102,32 +100,44 @@
                                                 {/if}
                                                 {/if}
                                             </td>
+
+                                            {if $vo['name'] eq 'admin'}
+                                            <td style="color: #141a20">[重置密码]&nbsp;[编辑]</td>
+                                            {else}
                                             <td>
-                                                {if $vo['name'] eq 'admin'}
-                                                [重置密码]&nbsp;
-                                                [修改]&nbsp;
-                                                {else}
                                                 {if auth('admin/admin/setpwd') }
-                                                [<a href="__URL__/setpwd/id/{$vo['admin_id']}" class="click_pop">重置密码</a>]&nbsp;
+                                                [<a href="__URL__/setpwd/id/{$vo['admin_id']}">重置密码</a>]&nbsp;
                                                 {/if}
                                                 {if auth('admin/admin/edit') }
-                                                [<a href="__URL__/edit/id/{$vo['admin_id']}" class="click_pop">修改</a>]&nbsp;
-                                                {/if}
+                                                [<a href="/admin.php/admin/admin/edit/id/{$vo['admin_id']}">编辑</a>]
                                                 {/if}
                                             </td>
+                                            {/if}
+
+
+
+
                                         </tr>
                                         {/foreach}
+
+
                                         </tbody>
-                                    </table>
-                                </div>
+                                    </table></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--列表结束-->
+
     </div>
 </div>
 </body>
 </html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+</body>
+</html>
+
+
+
+

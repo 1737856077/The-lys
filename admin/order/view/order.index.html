@@ -1,104 +1,208 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>订单管理-订单列表</title>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
-    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
-    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>登录记录页面</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
 </head>
-
 <body>
-<div class="cont_title">　你当前的位置：订单管理 -订单列表</div>
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="bgzt">
+                <div class="box-center">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            {if auth('order/order/index') }
+                            <a href="/admin.php/order/order/index" target="mainframe"><li class="layui-this">
+                                <p class="Order1">订单列表</p>
+                            </li></a>
+                            <a href="/admin.php/order/order/index"><li >
+                                <p class="Order1">订单审核　</p>
+                            </li>
+                            </a>
+                            <a href="/admin.php/order/order/index"><li>
+                                <p class="Order1">订单下发　</p>
+                            </li>
+                            </a>
 
-<div class="con">
+                            <a href="/admin.php/order/order/index"><li>
+                                <p class="Order1">状态管理　</p>
+                            </li>
+                            </a>
 
-    <div class="conlist">
-        <form name="form1" method="get" action="__URL__/index">
-            <table class="listtable">
-                <tr class="tr1">
-                    <td  colspan="7" class="tdlist">查询：
-                        用户名 <input type="text" name="SearchUsername" id="SearchUsername" value="{$SearchUsername}" />　
-                        订单号 <input type="text" name="SearchOrderNo" id="SearchOrderNo" value="{$SearchOrderNo}" />　
-                        邮箱 <input type="text" name="SearchEmail" id="SearchEmail" value="{$SearchEmail}" />　
-                    </td>
-                    <td   class="tdlist">
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td  colspan="7" class="tdlist">　　
-                        订单状态 <select name="SearchOrderStatus" id="SearchOrderStatus">
-                            <option value="">请选择</option>
-                            {foreach $ConfigOrderStatus as $key=>$value}
-                            <option value="{$key}" {if $SearchOrderStatus==$key }selected{/if} >{$value}</option>
-                            {/foreach}
-                        </select>　　
-                        订单日期 <input type="text" name="SearchOrderDate" id="SearchOrderDate" value="{$SearchOrderDate}" />　　
-                        标签名称 <input type="text" name="SearchTemplateTitle" id="SearchTemplateTitle" value="{$SearchTemplateTitle}" />　
-                        <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
-                    <td   class="tdlist">
-                    </td>
-                </tr>
-            </table>
-        </form>
-        <form  method="post" action="__URL__/editinfo/action/save?{$paramUrl}">
-            <table class="listtable">
-                <tr class="tr1">
-                    <td colspan="7" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdtit">ID</td>
-                    <td class="tdtit">用户名</td>
-                    <td class="tdtit">打印数量</td>
-                    <td class="tdtit">标签名称</td>
-                    <td class="tdtit">打印尺寸</td>
-                    <td class="tdtit">下单时间</td>
-                    <td class="tdtit">下单金额</td>
-                    <td class="tdtit">订单状态</td>
-                    <td class="tdtit">模版文件</td>
-                    <td class="tdtit">操作</td>
-                </tr>
-                {foreach $List as $value}
-                <tr class="tr1">
-                    <td class="tdlist">{$value['member_id']}&nbsp;</td>
-                    <td class="tdlist">{$value['username']}&nbsp;</td>
-                    <td class="tdlist">{$value['print_num']}&nbsp;</td>
-                    <td class="tdlist">{$value['template_title']}&nbsp;</td>
-                    <td class="tdlist">{$value['paper_size_long']}*{$value['paper_size_wide']} {$value['paper_size_unit']}&nbsp;</td>
-                    <td class="tdlist">{$value['create_time']|date='Y-m-d H:i:s',###}&nbsp;</td>
-                    <td class="tdlist">{$value['score_real_pay']}&nbsp;</td>
-                    <td class="tdlist">{$ConfigOrderStatus[$value['order_status']]}&nbsp;</td>
-                    <td class="tdlist">[<a href="__STATIC__/uploads/pdf/{$value['down_pdf']}" target="_blank">下载</a>]</td>
-                    <td class="tdlist">
-                        {if auth('order/order/edit') }
-                        [<a href="{:url('order/edit')}?id={$value['order_no']}&{$paramUrl}">编辑</a>]
-                        {/if}
-                        {if auth('order/order/info') }
-                        [<a href="{:url('order/info')}?id={$value['order_no']}&{$paramUrl}">详细</a>]
-                        {/if}
-                    </td>
-                </tr>
-                {/foreach}
+                            <a href="/admin.php/order/order/index"><li>
+                                <p class="Order1">下载模版文件　</p>
+                            </li>
+                            </a>
+                            {/if}
 
-                {if $count eq 0}
-                <tr class="tr1">
-                    <td colspan="7" class="tdlist">暂无相关记录！ </td>
-                </tr>
-                {/if}
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="liebiao">
 
-            </table>
-            <div style="text-align:right; padding-right:40px;">
-                {$page}
+
+
+                                    <div class="box-center">
+                                        <!--订单管理开始-->
+                                        <div class="box-center">
+                                            <div class="Order_title">订单查找</div>
+                                            <div class="liebiao">
+                                                <form class="layui-form" action="__URL__/index">
+                                                    <table class="layui-table" lay-skin="line" lay-size="sm">
+                                                        <colgroup>
+                                                            <col width="150">
+                                                            <col width="350">
+                                                            <col width="150">
+                                                            <col width="350">
+                                                            <col width="100">
+                                                        </colgroup>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>用户名：</td>
+                                                            <td><input style="width: 190px;" type="text" name="SearchUsername" placeholder="请输入用户名" autocomplete="off" class="layui-input"></td>
+                                                            <td>订单号：</td>
+                                                            <td><input style="width: 190px;" type="text" name="SearchOrderNo" placeholder="请输入订单号" autocomplete="off" class="layui-input"></td>
+                                                            <td><button class="layui-btn" lay-submit="" lay-filter="formDemo">提交</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>邮箱：</td>
+                                                            <td><input style="width: 190px;" type="text" name="SearchEmail" placeholder="请输入用户名" autocomplete="off" class="layui-input"></td>
+                                                            <td>标签名称：</td>
+                                                            <td><input style="width: 190px;" type="text" name="SearchTemplateTitle" placeholder="请输入订单号" autocomplete="off" class="layui-input"></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>订单状态：</td>
+                                                            <td style="text-align:left;">
+                                                                <select name="SearchOrderStatus" lay-verify="required" lay-search="">
+                                                                    <option value="">直接选择或搜索选择</option>
+                                                                    <option value="">请选择</option>
+                                                                    {foreach $ConfigOrderStatus as $key=>$value}
+                                                                    <option value="{$key}" {if $SearchOrderStatus==$key }selected{/if} >{$value}</option>
+                                                                    {/foreach}
+                                                                </select>
+                                                            </td>
+                                                            <td>订单日期：</td>
+                                                            <td>  <input type="text" name="SearchOrderDate" class="layui-input" id="tool-time5" placeholder="yyyy-MM-dd">
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </form></div>
+
+                                            <div class="Order_title">订单列表</div>
+                                            <div class="liebiao">
+                                                <table class="layui-table" lay-skin="line" lay-size="sm" >
+                                                    <colgroup>
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col width="300">
+                                                        <col width="200">
+                                                        <col width="100">
+                                                        <col width="200">
+                                                        <col width="100">
+                                                    </colgroup>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>用户名</th>
+                                                        <th>打印数量</th>
+                                                        <th>标签名称</th>
+                                                        <th>打印尺寸</th>
+                                                        <th>下单时间</th>
+                                                        <th>下单金额</th>
+                                                        <th>订单状态</th>
+                                                        <th>模板文件</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    {foreach $List as $value}
+                                                    <tr>
+
+                                                        <td>{$value['username']}</td>
+                                                        <td>{$value['print_num']}</td>
+                                                        <td>{$value['template_title']}</td>
+                                                        <td>{$value['paper_size_long']}*{$value['paper_size_wide']} {$value['paper_size_unit']}</td>
+                                                        <td>{$value['create_time']|date='Y-m-d H:i:s',###}</td>
+                                                        <td>{$value['score_real_pay']}</td>
+
+                                                        {switch name="$value.order_status" }
+
+
+                                                        {case value="0"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">新提交</a></button>
+                                                        <button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {case value="1"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">已核实</a> </button><button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {case value="2"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">设计中</a></button><button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {case value="3"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">设计结束</a></button><button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {case value="4"}  <td><button class="layui-btn layui-btn-sm"><a href="__URL__/info/id/{$value['order_no']}">已完成</a></button><button class="layui-btn layui-btn-sm"><a href="__URL__/edit/id/{$value['order_no']}"><i class="layui-icon"></i></a></button></td>
+                                                        {/case}
+                                                        {/switch}
+
+                                                        <td  >[<a  href="__STATIC__/uploads/pdf/{$value['down_pdf']}" target="_blank">下载</a>]</td>
+
+                                                    </tr>
+                                                    {/foreach}
+
+                                                    {if $count eq 0}
+                                                    <tr class="tr1">
+                                                        <td colspan="8" class="tdlist">暂无相关记录！</td>
+                                                    </tr>
+                                                    {/if}
+
+
+
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div style="text-align:right; padding-right:40px;">
+                                            {$page}
+                                        </div>
+                                        <!--订单管理结束-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
-
+        </div>
     </div>
-
 </div>
-
-
 </div>
 </body>
 </html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

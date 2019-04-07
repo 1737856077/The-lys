@@ -1,13 +1,268 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{include file="publicinfo@publicinfo/header" /}
-index.index
+{include file="nav" /}
+<div id="wp" style="background:#fff;margin-top: 60px;">
+    <div class="all-work-list">
+        <!-- 轮播 -->
+        <div class="banner_tabs">
+            <div class="layui-carousel" id="test1" lay-filter="test1">
+                <div carousel-item="">
+                    <div><img width="1200" height="359" src="__STATIC__/home/images/banner-tab-1.png"></div>
+                    <div><img width="1200" height="359" src="__STATIC__/home/images/banner-tab-1.png"></div>
+                    <div><img width="1200" height="359" src="__STATIC__/home/images/banner-tab-1.png"></div>
+                    <div><img width="1200" height="359" src="__STATIC__/home/images/banner-tab-1.png"></div>
+                    <div><img width="1200" height="359" src="__STATIC__/home/images/banner-tab-1.png"></div>
+                </div>
+            </div>
+        </div>
+        <script src="__STATIC__/home/layui/layui.all.js"></script>
+        <script>
+            layui.use(['carousel', 'form'], function () {
+                var carousel = layui.carousel
+                    , form = layui.form;
 
-{include file="publicinfo@publicinfo/footer" /}
+                //常规轮播
+                carousel.render({
+                    elem: '#test1'
+                    , width: '1200px'
+                    , height: '359px'
+                    , interval: 3000
+                });
+
+            });
+        </script>
+        <!-- 版块 -->
+        <div class="block-f">
+            <ul>
+                <li class="ban1">
+                    <h2>免费易用</h2>
+                    <span>会打字就能用的在线编辑器</span>
+                </li>
+                <li class="ban2">
+                    <h2>云端储存</h2>
+                    <span>不怕丢失 随时编辑</span>
+                </li>
+                <li class="ban3">
+                    <h2>一键生成</h2>
+                    <span>一键生成编辑好的模板</span>
+                </li>
+                <li class="ban4">
+                    <h2>海量模板</h2>
+                    <span>海量模板在线编辑</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="wp" style="background:rgba(249,249,250,1); height:647px;">
+    <div class="all-work-list">
+        <div class="top_img2"><img style="margin-top: 60px" width="285" height="38"
+                                   src="__STATIC__/home/images/top2.png"></div>
+        <div class="top_img3"><img style="margin-top: 87px" width="1215" height="210"
+                                   src="__STATIC__/home/images/index1.png"></div>
+        <div class="top_img4"><a href="#"><img style="margin-top: 116px" width="240" height="57"
+                                               src="__STATIC__/home/images/kaishi.png"></a></div>
+    </div>
+</div>
+
+<div id="wp" style=" height:520px;background: #fff;">
+    <div class="all-work-list">
+        <div class="top_img5"><img style="margin: 80px auto" width="782" height="39"
+                                   src="__STATIC__/home/images/index2.png"></div>
+        <div class="layui-form-item">
+            <label class="lusheji-form-label"><img width="179" height="57"
+                                                   src="__STATIC__/home/images/scene.png"></label>
+            <div class="lusheji-input-block">
+                <div class="menu_Navigation">
+                    <ul>
+                        {foreach name='listUsageScenarios' id='data'}
+                        <a href="#">
+                            <li>{$data.title}</li>
+                        </a>
+                        {/foreach}
+                        <a href="#">
+                            <li style="color: #50a6f1;float: right;">更多>></li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item">
+            <label class="lusheji-form-label"><img width="179" height="57"
+                                                   src="__STATIC__/home/images/industry.png"></label>
+            <div class="lusheji-input-block">
+                <div class="menu_Navigation">
+                    <ul>
+                        {foreach name='listIndustry' id='data'}
+                        <a href="#">
+                            <li>{$data.title}</li>
+                        </a>
+                        {/foreach}
+                        <a href="#">
+                            <li style="color: #50a6f1;float: right;">更多>></li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="lusheji-form-label"><img width="179" height="57"
+                                                   src="__STATIC__/home/images/type.png"></label>
+            <div class="lusheji-input-block">
+                <div class="menu_Navigation">
+                    <ul>
+                        {foreach name='ConfigTemplateCodeType' id='data'}
+                        <a href="#">
+                            <li>{$data}</li>
+                        </a>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="wp" style="background:rgba(249,249,250,1); height:980px;">
+    <div class="all-work-list">
+        <div class="index_title"><p style="color: #000;font-size:26px;" class="lt">热门模板</p><a href="#" target="_blank">
+            <p style="color: #777;font-size:16px;" class="rt">更多>></p></a></div>
+
+        <div class="muban_list">
+            <ul>
+                {foreach name='Popular' id='data'}
+                <li>
+                    <a href="/index.php/index/templates/content/template_id/{$data.template_id}" target="_blank">
+                        <div class="imgBox">
+                            <img width="260px" height="220px" src="/home/uploads/{$data.img}">
+                        </div>
+                    </a>
+                    <div class="interactive-box">
+                        <a href="#" target="_blank">
+                            <h2>{$data.title}</h2>
+                        </a>
+                        <div class="data-box">
+                            <div class="data-view">
+                                <span>纸张尺寸</span>
+
+                                <br><span> 标签尺寸</span>
+                                <br><span><a class="user-list"><img src="/home/uploads/{$data.img}"
+                                                                    title="{$data.username}"
+                                                                    alt="{$data.username}"></a>　{$data.username}</span>
+                            </div>
+                            <div class="data-like">
+                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span>
+                                <br><span>{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</span>
+                                <br><span>被获取打印<b style="color: #FF6262">{$data.get_nums}</b>次</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {/foreach}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div id="wp" style="height:1080px;background: #fff">
+    <div class="all-work-list">
+        <div class="index_title"><p style="color: #000;font-size:26px;" class="lt">最新模板</p><a href="#" target="_blank">
+            <p style="color: #777;font-size:16px;" class="rt">更多>></p></a></div>
+
+        <div class="muban_list">
+            <ul>
+                {foreach name='cas' id='data'}
+                <li>
+                    <a href="#" target="_blank">
+                        <div class="imgBox">
+                            <img width="260px" height="220px" src="/home/uploads/{$data.img}">
+                        </div>
+                    </a>
+                    <div class="interactive-box">
+                        <a href="#" target="_blank">
+                            <h2>{$data.title}</h2>
+                        </a>
+                        <div class="data-box">
+                            <div class="data-view">
+                                <span>纸张尺寸</span>
+                                <br><span> 标签尺寸</span>
+
+                                <br><span><a class="user-list"><img src="/home/uploads/{$MemberData.img}"
+                                                                    title="{$MemberData.username}"
+                                                                    alt="{$MemberData.username}"></a>　{$MemberData.username}</span>
+                            </div>
+                            <div class="data-like">
+                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span>
+                                <br><span>{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</span>
+                                <br><span>被获取打印<b style="color: #FF6262">{$data.get_nums}</b>次</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="all-work-list">
+        <div class="lt">
+            <div class="bottom_logo clearfix">
+                <div class="fl footer-logo-box">
+                    <img src="__STATIC__/home/images/bottom_logo.png" class="footer-logo">
+                    <span class="footer-slogan">做标签 · 不求人</span>
+                </div>
+            </div>
+            <span class="footer-slogan2">
+云标签倾力打造智能的标签在线编辑和打印管理平台。
+</span>
+
+            <span class="footer-slogan2">
+设计师可以在线编辑会员分享的成品标签，也可自行设计自己想要的模板。
+</span>
+
+            <span class="footer-slogan2">
+©lusheji.com, powered by lusheji Team。
+</span>
+        </div>
+
+        <div class="rt">
+            <div class="bottom_logo clearfix">
+                <div class="fl footer-logo-box">
+                    <img src="__STATIC__/home/images/weixin.png" class="footer-weixin"> <a href="#" target="_blank"><img
+                        src="__STATIC__/home/images/qq.png" class="footer-weixin"></a>
+                </div>
+            </div>
+            <span class="footer_phone">
+400-888-8888
+</span>
+            <span class="footer-slogan2">
+email@email.com
+</span>
+            <span class="footer-slogan2">
+XXX省XX市XX路XX有限公司
+</span>
+        </div>
+    </div>
+
+</div>
+
+</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,30 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加管理员</title>
-    <link rel="stylesheet" href="__STATIC__/admin/newstyle/layui/css/layui.css">
-    <link rel="stylesheet" href="__STATIC__/admin/newstyle/css/style.css">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
-	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__STATIC__/admin/js/Admin.js"></script>
-</head>
 
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>添加</title>
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery-1.8.0.min.js"></script>
+
+</head>
 <body>
 <div class="layui-layout layui-layout-admin">
     <!-- 内容主体区域 -->
     <div class="layui-tab-content">
-        <!--编辑开始-->
-        <div class="layui-tab-item">
+
+        <div class="layui-tab-item layui-show">
             <div class="bgzt">
                 <div class="box-center">
                     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                         <ul class="layui-tab-title tab_tatle">
                             {if auth('admin/admin/index')}
                             <li>
-                                <a href="/admin.php/admin/admin/index"><p class="Order1">管理员列表</p></a>
+                                 <a href="/admin.php/admin/admin/index"><p class="Order1">管理员列表</p></a>
                             </li>
                             {/if}
                             {if auth('admin/admin/add')}
@@ -50,71 +51,157 @@
                         </ul>
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
-                                <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit();">
-                                    <table class="layui-table" lay-skin="line" lay-size="sm">
-                                        <colgroup>
-                                            <col width="200">
-                                            <col width="900">
-                                        </colgroup>
-                                        <tr>
-                                            <td>用户名<span style="color:#f00;">*</span></td>
-                                            <td style="text-align:left;">
-                                                <input name="name" id="name" type="text" onBlur="Onblur_name()" value="" />　<span class="showErrorMessage" id="span_name"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>密码<span style="color:#f00;">*</span></td>
-                                            <td style="text-align:left;"><input name="pwd" id="pwd" type="text" value="" onBlur="Onblur_pwd()" />　<span class="showErrorMessage" id="span_pwd"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>管理员类型</td>
-                                            <td  style="text-align:left;">
-                                                <select name="data_type">
+
+                                <div class="liebiao">
+                                    <form class="layui-form" action="__URL__/insert" enctype="multipart/form-data" method="post">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">用户名</label>
+                                            <div class="layui-input-block">
+                                                <input style="width: 190px;" type="text" name="name" required
+                                                       lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">密码框</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;" type="password" name="pwd" required
+                                                       lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                            <div class="layui-form-mid layui-word-aux">辅助文字</div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">电话</label>
+                                            <div class="layui-input-block">
+                                                <input style="width: 190px;" type="text" name="tel" required
+                                                       lay-verify="required" placeholder="电话" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">入职日期</label>
+                                                <div style="width: 190px;" class="layui-input-inline">
+                                                    <input type="text" class="layui-input" id="tool-time"
+                                                           placeholder="请选择时间">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">性别</label>
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="sex" value="男" title="男">
+                                                <input type="radio" name="sex" value="女" title="女" checked>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">管理员类型</label>
+                                            <div class="layui-input-block" style="width: 19%">
+                                                <select name="data_type" lay-verify="" style="width: 48%">
                                                     <option value="1" selected>系统管理员</option>
-                                                    <!--<option value="2">商家管理员</option>-->
                                                 </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>管理员角色</td>
-                                            <td  style="text-align:left;">
-                                                <select name="role_id">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">管理员类型</label>
+                                            <div class="layui-input-block" style="width: 19%">
+                                                <select name="role_id" lay-verify="" style="width: 48%">
                                                     {foreach $listSystemRole as $value}
-                                                    <option value="{$value['role_id']}">{$value['title']}</option>
+                                                    <option value="1" selected>{$value.title}</option>
                                                     {/foreach}
                                                 </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>电话</td>
-                                            <td style="text-align:left;">
-                                                <input name="tel" id="tel" type="text" value="" />　示例：15601628091<span class="showErrorMessage" id="span_tel"></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>备注：</td>
-                                            <td  style="text-align:left;"><textarea name="data_desc"  rows="5" id="data_desc" onKeyPress="return noStrs(event);"  cols="60"></textarea>  </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td style="text-align:left;">
-                                                <button type="submit" class="layui-btn" lay-submit lay-filter="formDemo">提交</button>
-                                                <button type="reset" class="layui-btn layui-btn-primary" onClick="javascript:history.go(-1);" >返回</button>
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                </form>
-
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <tr class="tr1">
+                                                <label class="layui-form-label">描述</label>
+                                                <td class="tdr" style="padding-top:5px;"><textarea name="data_desc" rows="5" id="data_desc"
+                                                                                                   onKeyPress="return noStrs(event);"
+                                                                                                   cols="60"></textarea></td>
+                                            </tr>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
+                                        </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--编辑结束-->
     </div>
+</div>
 </div>
 </body>
 </html>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form
+            , laydate = layui.laydate;
+
+        // 时间选择
+        laydate.render({
+            elem: '#tool-time',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择2
+        laydate.render({
+            elem: '#tool-time2',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+// 时间选择3
+        laydate.render({
+            elem: '#tool-time3',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择4
+        laydate.render({
+            elem: '#tool-time4',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+
+        // 时间选择5
+        laydate.render({
+            elem: '#tool-time5',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+    });
+</script>
+<script>
+    var j = 3;
+
+
+
+
+    function delecttr(obj) {
+        var tr = obj.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+    }
+
+</script>
+
+</body>
+</html>
+
+
+
+

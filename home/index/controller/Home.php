@@ -7,6 +7,7 @@
  */
 
 namespace app\index\controller;
+
 use think\Config;
 use think\Controller;
 use think\Validate;
@@ -43,6 +44,7 @@ class Home extends CommonBaseHome
             ->find();
         $this->assign('getoneWebConfigComm', $getoneWebConfigComm);
     }
+
     //首页
     public function index()
     {
@@ -69,6 +71,7 @@ class Home extends CommonBaseHome
         );
         return $this->fetch();
     }
+
     //点击栏目筛选 栏目查模板
     public function chaxuns()
     {
@@ -77,13 +80,13 @@ class Home extends CommonBaseHome
         $param = $this->request->param();
         $_where = " data_status=1 AND data_type=0";
         $where = array();
-        foreach ($param as $key=>$value){
-          $where[]=$_where.=" AND "." $key".'='."$value ";
+        foreach ($param as $key => $value) {
+            $where[] = $_where .= " AND " . " $key" . '=' . "$value ";
         }
-      $_where = end($where);
+        $_where = end($where);
         $count = $chaxun->where($_where)
             ->select();
-      return json($count);
+        return json($count);
 //        if (!empty($param['industry_id']) AND !empty($param['tag_type_id'])) {
 //            $_where .= " AND industry_id =" . urldecode($param['industry_id']) . " AND industry_id =" . urldecode($param['industry_id']);
 //        } else {
@@ -96,6 +99,7 @@ class Home extends CommonBaseHome
 //        }
 
     }
+
     //详情页数据 模板查内容
     public function bianji()
     {
@@ -104,6 +108,7 @@ class Home extends CommonBaseHome
         $data = Db::name('template_content')->where('template_id', $param['id'])->select();
         return json($data);
     }
+
     //搜索功能 模糊搜索
     public function ss()
     {
@@ -111,17 +116,24 @@ class Home extends CommonBaseHome
         $value = input('value');
         if ($value) {
             $map['title'] = ['like', '%' . $value . '%'];
-            $searchres = db('template ')->where($map)->order('template_id desc')->select();
-            $this->assign(array(
-                'data' => $searchres,
-                'value' => $value
-            ));
+            $searchres = db('template ')->where($map)->where('data_type', 0)->order('template_id desc')->select();
+            foreach ($searchres as $k => $value) {
+                $UserNamess = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
+                $searchres[$k]['username']=isset($UserNamess[0]['name'])?$UserNamess[0]['name']:'';
+                $Popularss = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
+                $searchres[$k]['paper_size_long'] = isset($Popularss[0]['paper_size_long']) ? $Popularss[0]['paper_size_long'] : '';
+                $searchres[$k]['paper_size_wide'] = isset($Popularss[0]['paper_size_wide']) ? $Popularss[0]['paper_size_wide'] : '';
+                $searchres[$k]['paper_size_unit'] = isset($Popularss[0]['paper_size_unit']) ? $Popularss[0]['paper_size_unit'] : '';
+                $searchres[$k]['lable_size_wide'] = isset($Popularss[0]['lable_size_wide']) ? $Popularss[0]['lable_size_wide'] : '';
+                $searchres[$k]['lable_size_height'] = isset($Popularss[0]['lable_size_height']) ? $Popularss[0]['lable_size_height'] : '';
+                $searchres[$k]['lable_size_unit'] = isset($Popularss[0]['lable_size_unit']) ? $Popularss[0]['lable_size_unit'] : '';
+            }
+            $MemberModel = Db::name('member');
+
+            $MemberData = $MemberModel->where('member_id',Session::get('memberid'))->find();//用户信息
+            $this->assign('datas', $searchres);
+            $this->assign('MemberData', $MemberData);
             return $this->fetch();
-        } else {
-            $this->assign(array(
-                'data' => null,
-                'value' => '暂无数据'
-            ));
         }
     }
 }

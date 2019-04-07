@@ -1,0 +1,246 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>列表页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="applicable-device"content="pc,mobile"/>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script src="__STATIC__/home/js/jquery-1.7.2.min.js"></script>
+    <script src="__STATIC__/home/js/select.js"></script>
+</head>
+
+
+<body>
+<header>
+
+    <nav>
+        <div class="logo"><a href="#"><img src="__STATIC__/home/images/logo.png"></a></div>
+        <div class="menu">
+            <div class="menu-box">
+                <ul class="menu-list-content">
+                    <li><a href="/index.html" >首页</a></li>
+                    <li><a href="/index.php/index/templates/templates" >模板中心</a></li>
+                    <li><a href="/design.html" >开始设计</a></li>
+                    <li><a href="/customized.html" >模板定制</a></li>
+                </ul>
+            </div>
+            <div class="user-center">
+                {if condition="empty($Think.session.username)"}
+                <ul class="unlogin">
+                    <li><a href="/index.php/member/Register/login">登录</a><a href="/index.php/member/Register/index">注册</a></li>
+                </ul>
+            </div>
+            {else /}
+            <ul class="login">
+                <li class="user">
+                    <div class="avatar-container-30">
+                        {if condition="!empty($MemberData.img)"}
+                        <a href="/index.php/member/userconter/index" class="user-list">
+                            <img class="layui-upload-img" src="/home/uploads/{$MemberData.img}" title="{$MemberData.username}"  alt="{$MemberData.username}">
+                        </a>
+                        {else/}
+                        <a href="/index.php/member/userconter/index" class="user-list">
+                            <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg" title="{$MemberData.username}"  alt="{$MemberData.username}">
+                        </a>
+                        {/if} </div>
+                    <div class="menu-list user-box hide">
+                        <section><a href="/index.php/member/userconter/index" z-st="nav_userbox_name">{$MemberData.username}</a></section>
+                        <div class="user-box-list">
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"> <i class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
+                                <p class="works-manange"><a href="/index.php/member/userconter/index"><i class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
+                            </div>
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="/index.php/member/register/unlogin"><i class="lusheji lusheji_icontuichu"></i>退出</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            {/if}
+        </div>
+    </nav>
+</header>
+<div id="wp" style="background:#fff;margin-top: 60px;">
+    <div class="all-work-list">
+        <div class="top_img"><img width="519" height="39" src="__STATIC__/home/images/top1.png"></div>
+        <div class="container">
+            <div id="search">
+                <form action="/index.php/index/home/ss" method="post">
+                    <input class="search_k" type="text" name="value">
+                    <input  type="submit" name="value" value=""> <button class="search_b">搜索</button> 或　<a href="#"><button class="search_b">在线设计</button></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="wp" style="height:1080px;">
+    <div class="all-work-list">
+
+    <div class="screen">
+            <ul class="select">
+                <li class="select-list">
+                    <dl id="select1">
+                        <dt>行业：</dt>
+                        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+                        {foreach name='listUsageScenarios' id='data'}
+                        <dd><a href="javascript:">{$data.title}</a></dd>
+                        {/foreach}
+                    </dl>
+                </li>
+                <li class="select-list">
+                    <dl id="select2">
+                        <dt>场景：</dt>
+                        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+                        {foreach name='listIndustry' id='data'}
+                        <dd><a href="javascript:">{$data.title}</a></dd>
+                        {/foreach}
+                    </dl>
+                </li>
+                <li class="select-list">
+                    <dl id="select3">
+                        <dt>条码类型：</dt>
+                        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+                        {foreach name='ConfigTemplateCodeType' id='data'}
+                        <dd><a href="javascript:">{$data}</a></dd>
+                        {/foreach}
+                    </dl>
+                </li>
+                <li class="select-result">
+                    <dl>
+                        <dt>已选条件：</dt>
+                        <dd class="select-no">暂时没有选择过滤条件</dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="muban_list">
+            <ul>
+
+                {foreach name='Popular' id='data'}
+                <li>
+                    <a href="#" target="_blank">
+                        <div class="imgBox">
+                            <a href="/index.php/index/templates/content/template_id/{$data.template_id}">
+                                <img width="260px" height="220px" src="/home/uploads/{$data.img}">
+                            </a>
+
+                        </div>
+                    </a>
+                    <div class="interactive-box">
+                        <a href="#" target="_blank">
+                            <h2>{$data.title}</h2>
+                        </a>
+                        <div class="data-box">
+                            <div class="data-view">
+                                <span>纸张尺寸</span>
+                                <br><span> 标签尺寸</span>
+                                <br><span><a class="user-list"><img src="/home/uploads/{$data.img}"
+                                                                    title="{$data.username}"
+                                                                    alt="{$data.username}"></a>　{$data.username}</span>
+                            </div>
+                            <div class="data-like">
+                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span>
+                                <br><span>{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</span>
+                                <br><span>被获取打印<b style="color: #FF6262">{$data.get_nums}</b>次</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {/foreach}
+
+
+            </ul>
+        </div>
+
+        <div id="laypage88" style="text-align: center;">
+            <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                <a href="javascript:;" data-page="2">2</a>
+                <a href="javascript:;" data-page="3">3</a>
+                <a href="javascript:;" data-page="4">4</a>
+                <a href="javascript:;" data-page="5">5</a>
+                <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer">
+    <div class="all-work-list">
+        <div class="lt">
+            <div class="bottom_logo clearfix">
+                <div class="fl footer-logo-box">
+                    <img src="__STATIC__/home/images/bottom_logo.png" class="footer-logo">
+                    <span class="footer-slogan">做标签 · 不求人</span>
+                </div>
+            </div>
+            <span class="footer-slogan2">
+云标签倾力打造智能的标签在线编辑和打印管理平台。
+</span>
+
+            <span class="footer-slogan2">
+设计师可以在线编辑会员分享的成品标签，也可自行设计自己想要的模板。
+</span>
+
+            <span class="footer-slogan2">
+©lusheji.com, powered by lusheji Team。
+</span>
+        </div>
+
+        <div class="rt">
+            <div class="bottom_logo clearfix">
+                <div class="fl footer-logo-box">
+                    <img src="__STATIC__/home/images/weixin.png" class="footer-weixin"> <a href="#" target="_blank"><img
+                        src="__STATIC__/home/images/qq.png" class="footer-weixin"></a>
+                </div>
+            </div>
+            <span class="footer_phone">
+400-888-8888
+</span>
+            <span class="footer-slogan2">
+email@email.com
+</span>
+            <span class="footer-slogan2">
+XXX省XX市XX路XX有限公司
+</span>
+        </div>
+    </div>
+    <script src="__STATIC__/home/layui/layui.all.js"></script>
+    <script>
+        layui.use(['carousel', 'form'], function () {
+            var carousel = layui.carousel
+                , form = layui.form;
+
+            //常规轮播
+            carousel.render({
+                elem: '#test1'
+                , width: '1200px'
+                , height: '359px'
+                , interval: 3000
+            });
+
+        });
+    </script>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

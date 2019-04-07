@@ -1,0 +1,132 @@
+
+<div class="clear"></div>
+
+</div>
+
+</div>
+<script src="__STATIC__/admin/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form
+            , laydate = layui.laydate;
+
+        // 时间选择
+        laydate.render({
+            elem: '#tool-time',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择2
+        laydate.render({
+            elem: '#tool-time2',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+// 时间选择3
+        laydate.render({
+            elem: '#tool-time3',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择4
+        laydate.render({
+            elem: '#tool-time4',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+
+        // 时间选择5
+        laydate.render({
+            elem: '#tool-time5',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+    });
+</script>
+<script>
+    var j = 3;
+
+    function addtr() {
+        var tableobj = document.getElementById("tid");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr2() {
+        var tableobj = document.getElementById("tid2");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr3() {
+        var tableobj = document.getElementById("tid3");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+
+    function addtr4() {
+        var tableobj = document.getElementById("tid4");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr5() {
+        var tableobj = document.getElementById("tid5");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function delecttr(obj) {
+        var tr = obj.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+    }
+
+</script>
+</body>
+</html>

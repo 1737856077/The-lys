@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_d0oe8omhr1m.css">
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo"><img src="./images/logo.png"></div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item"><a href="">前台首页</a></li>
+            <li class="layui-nav-item"><a href="">退出登录</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-tab">
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree layui-tab-title">
+                    <li class="layui-nav-item layui-this"><i class="lusheji lusheji_iconshezhi"></i>后台汇总</li>
+                    <li class="layui-nav-item"><i class="lusheji lusheji_iconziliao"></i>资料修改</li>
+                    <li class="layui-nav-item"><i class="lusheji lusheji_iconquanxianguanli"></i>权限管理</li>
+                    <li class="layui-nav-item"><i class="lusheji lusheji_iconyewu"></i>业务员管理</li>
+                    <li class="layui-nav-item"><i class="lusheji lusheji_iconyonghu"></i>用户管理</li>
+                    <li class="layui-nav-item"><i class="lusheji lusheji_iconmuban"></i>模板管理</li>
+                    <li class="layui-nav-item"><i class="lusheji lusheji_icondingdan"></i>订单管理</li>
+                    <li class="layui-nav-item"><i class="lusheji lusheji_icontuiguang"></i>用户推广</li>
+                    <li class="layui-nav-item"><i class="lusheji lusheji_iconpeizhi"></i>系统配置</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 内容主体区域 -->
+        <div class="layui-tab-content layui-body">
+            <!--后台总览开始-->
+            <div class="layui-tab-item layui-show">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title tab_tatle">
+                                <li class="layui-this"><p class="Order1">日</p></li>
+                                <li><p class="Order1">月</p></li>
+                                <li><p class="Order1">年</p></li>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <!--日报表开始-->
+                                <div class="layui-tab-item layui-show">
+                                    <table class="layui-table" lay-skin="nob">
+                                        <colgroup>
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <td><b class="Order">12356</b></td>
+                                            <td><b class="Order">12356</b></td>
+                                            <td><b class="Order">12356</b></td>
+                                            <td><b class="Order">12356</b></td>
+                                            <td><b class="Order">12356</b></td>
+                                            <td><b class="Order">12356</b></td>
+                                            <td><b class="Order">12356</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>订单数</td>
+                                            <td>用户数</td>
+                                            <td>下单金额</td>
+                                            <td>模板库数量</td>
+                                            <td>需审核模板</td>
+                                            <td>已发货订单</td>
+                                            <td>未发货订单</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--日报表结束-->
+                                <!--月报表开始-->
+                                <div class="layui-tab-item">
+                                    <table class="layui-table" lay-skin="nob">
+                                        <colgroup>
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <td><b class="Order">2222</b></td>
+                                            <td><b class="Order">2222</b></td>
+                                            <td><b class="Order">2222</b></td>
+                                            <td><b class="Order">2222</b></td>
+                                            <td><b class="Order">2222</b></td>
+                                            <td><b class="Order">2222</b></td>
+                                            <td><b class="Order">2222</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>订单数</td>
+                                            <td>用户数</td>
+                                            <td>下单金额</td>
+                                            <td>模板库数量</td>
+                                            <td>需审核模板</td>
+                                            <td>已发货订单</td>
+                                            <td>未发货订单</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--月报表结束-->
+                                <!--年报表开始-->
+                                <div class="layui-tab-item">
+                                    <table class="layui-table" lay-skin="nob">
+                                        <colgroup>
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <td><b class="Order">3333</b></td>
+                                            <td><b class="Order">3333</b></td>
+                                            <td><b class="Order">3333</b></td>
+                                            <td><b class="Order">3333</b></td>
+                                            <td><b class="Order">3333</b></td>
+                                            <td><b class="Order">3333</b></td>
+                                            <td><b class="Order">3333</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>订单数</td>
+                                            <td>用户数</td>
+                                            <td>下单金额</td>
+                                            <td>模板库数量</td>
+                                            <td>需审核模板</td>
+                                            <td>已发货订单</td>
+                                            <td>未发货订单</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--年报表结束-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--后台总览结束-->
+
+
+            <!--资料修改开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title tab_tatle">
+                                <li class="layui-this"><p class="Order1">添加管理员</p></li>
+                                <li><p class="Order1">修改管理员密码</p></li>
+                                <li><p class="Order1">操作记录</p></li>
+                            </ul>
+
+                            <div class="layui-tab-content">
+                                <div class="layui-tab-item layui-show">
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">用户名</label>
+                                            <div class="layui-input-block">
+                                                <input style="width: 190px;" type="text" name="title" required
+                                                       lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">密码框</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;" type="password" name="password" required
+                                                       lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                            <div class="layui-form-mid layui-word-aux">辅助文字</div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">入职日期</label>
+                                                <div style="width: 190px;" class="layui-input-inline">
+                                                    <input type="text" class="layui-input" id="tool-time"
+                                                           placeholder="yyyy-MM-dd">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">性别</label>
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="sex" value="男" title="男">
+                                                <input type="radio" name="sex" value="女" title="女" checked>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="Order_title">管理员列表</div>
+                                    <div class="liebiao">
+                                        <table class="layui-table" lay-skin="line" lay-size="sm">
+                                            <colgroup>
+                                                <col width="50">
+                                                <col width="150">
+                                                <col width="50">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <th>用户名</th>
+                                                <th>性别</th>
+                                                <th>入职时间</th>
+                                                <th>资料</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--遮罩层-->
+                                        <div class="bgPop"></div>
+                                        <!--弹出框-->
+                                        <div class="pop">
+                                            <div class="pop-top">
+                                                <h2>编辑</h2>
+                                                <span class="pop-close"><i class="lusheji lusheji_iconclose-b"
+                                                                           style="font-size: 40px;color: #000;"></i></span>
+                                            </div>
+                                            <div class="pop-content">
+                                                <div class="pop-content-left">
+                                                    <img src="" alt="" class="teathumb">
+                                                </div>
+                                                <div class="pop-content-right">
+                                                    <form class="layui-form" action="">
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">用户名</label>
+                                                            <div class="layui-input-block">
+                                                                <input style="width: 190px;" type="text" name="title"
+                                                                       required lay-verify="required"
+                                                                       placeholder="请输入用户名" autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">密码框</label>
+                                                            <div class="layui-input-inline">
+                                                                <input style="width: 190px;" type="password"
+                                                                       name="password" required lay-verify="required"
+                                                                       placeholder="请输入密码" autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">确认密码</label>
+                                                            <div class="layui-input-inline">
+                                                                <input style="width: 190px;" type="password"
+                                                                       name="password" required lay-verify="required"
+                                                                       placeholder="请输入密码" autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-inline">
+                                                            <label class="layui-form-label">入职日期</label>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" class="layui-input" id="tool-time2"
+                                                                       placeholder="yyyy-MM-dd">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">性别</label>
+                                                            <div class="layui-input-block">
+                                                                <input type="radio" name="sex" value="男" title="男">
+                                                                <input type="radio" name="sex" value="女" title="女"
+                                                                       checked>
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <div class="layui-input-block">
+                                                                <button class="layui-btn" lay-submit
+                                                                        lay-filter="formDemo">保存
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <script>
+                                            $(document).ready(function () {
+                                                $('.pop-close').click(function () {
+                                                    $('.bgPop,.pop').hide();
+                                                });
+                                                $('.click_pop').click(function () {
+                                                    $('.bgPop,.pop').show();
+                                                });
+                                            })
+
+                                        </script>
+
+
+                                    </div>
+                                    <div id="laypage88" style="text-align: center;">
+                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                            <a href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                               data-page="0">上一页</a>
+                                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                            <a href="javascript:;" data-page="2">2</a>
+                                            <a href="javascript:;" data-page="3">3</a>
+                                            <a href="javascript:;" data-page="4">4</a>
+                                            <a href="javascript:;" data-page="5">5</a>
+                                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+
+
+                                    <form class="layui-form" action="">
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">更改密码</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;" type="password" name="password" required
+                                                       lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                            <div class="layui-form-mid layui-word-aux">*请输入密码</div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">确认密码</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;" type="password" name="password" required
+                                                       lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                            <div class="layui-form-mid layui-word-aux">*请再次输入密码</div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="layui-tab-item">
+                                    <div class="liebiao">
+                                        <table class="layui-table" lay-skin="line" lay-size="sm">
+                                            <colgroup>
+                                                <col width="50">
+                                                <col width="200">
+                                                <col width="600">
+                                                <col width="400">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>操作类型</th>
+                                                <th>详情</th>
+                                                <th>操作时间</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>用户登录</td>
+                                                <td><p class="login_ok">登陆成功</p>
+                                                    <p>，账号：admin，登录IP：123.123.123.123</p></td>
+                                                <td>2019-03-30-03 23:25:25</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>用户登录</td>
+                                                <td><p class="login_no">登陆失败</p>
+                                                    <p>，账号：admin，登录IP：123.123.123.123</p></td>
+                                                <td>2019-03-30-03 23:25:25</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="laypage88" style="text-align: center;">
+                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                            <a href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                               data-page="0">上一页</a>
+                                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                            <a href="javascript:;" data-page="2">2</a>
+                                            <a href="javascript:;" data-page="3">3</a>
+                                            <a href="javascript:;" data-page="4">4</a>
+                                            <a href="javascript:;" data-page="5">5</a>
+                                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--资料修改结束-->
+
+
+            <!--权限管理开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">添加角色</div>
+                        <div class="liebiao">
+
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">角色名称</label>
+                                    <div class="layui-input-block">
+                                        <input style="width: 190px;" type="text" name="title" required
+                                               lay-verify="required" placeholder="请输入角色名称" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="Order_title">角色列表</div>
+                        <div class="liebiao">
+                            <table class="layui-table" lay-skin="line" lay-size="sm">
+                                <colgroup>
+                                    <col width="200">
+                                    <col width="200">
+                                    <col width="200">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>角色名称</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>VIP会员</td>
+                                    <td>删除</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>普通会员</td>
+                                    <td>删除</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--权限管理结束-->
+
+
+            <!--业务员管理开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title tab_tatle">
+                                <li class="layui-this"><p class="Order1">添加业务员</p></li>
+                                <li><p class="Order1">业务员分成</p></li>
+                            </ul>
+
+                            <div class="layui-tab-content">
+                                <div class="layui-tab-item layui-show">
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">用户名</label>
+                                            <div class="layui-input-block">
+                                                <input style="width: 190px;" type="text" name="title" required
+                                                       lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">密码框</label>
+                                            <div class="layui-input-inline">
+                                                <input style="width: 190px;" type="password" name="password" required
+                                                       lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                            <div class="layui-form-mid layui-word-aux">辅助文字</div>
+                                        </div>
+
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">入职日期</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" class="layui-input" id="tool-time3"
+                                                       placeholder="yyyy-MM-dd">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">性别</label>
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="sex" value="男" title="男">
+                                                <input type="radio" name="sex" value="女" title="女" checked>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">分成比例</label>
+                                            <div class="layui-input-block">
+                                                <input style="width: 190px;" type="text" name="title" required
+                                                       lay-verify="required" placeholder="请输入分成比例" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="Order_title">业务员列表</div>
+                                    <div class="liebiao">
+                                        <table class="layui-table" lay-skin="line" lay-size="sm">
+                                            <colgroup>
+                                                <col width="50">
+                                                <col width="150">
+                                                <col width="50">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <th>用户名</th>
+                                                <th>性别</th>
+                                                <th>入职时间</th>
+                                                <th>分成比例</th>
+                                                <th>资料</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td>10%</td>
+                                                <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td>10%</td>
+                                                <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td>10%</td>
+                                                <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox"></td>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td>10%</td>
+                                                <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--遮罩层-->
+                                        <div class="bgPop"></div>
+                                        <!--弹出框-->
+                                        <div class="pop">
+                                            <div class="pop-top">
+                                                <h2>编辑</h2>
+                                                <span class="pop-close"><i class="lusheji lusheji_iconclose-b"
+                                                                           style="font-size: 40px;color: #000;"></i></span>
+                                            </div>
+                                            <div class="pop-content">
+                                                <div class="pop-content-left">
+                                                    <img src="" alt="" class="teathumb">
+                                                </div>
+                                                <div class="pop-content-right">
+                                                    <form class="layui-form" action="">
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">用户名</label>
+                                                            <div class="layui-input-block">
+                                                                <input style="width: 190px;" type="text" name="title"
+                                                                       required lay-verify="required"
+                                                                       placeholder="请输入用户名" autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">密码框</label>
+                                                            <div class="layui-input-inline">
+                                                                <input style="width: 190px;" type="password"
+                                                                       name="password" required lay-verify="required"
+                                                                       placeholder="请输入密码" autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">确认密码</label>
+                                                            <div class="layui-input-inline">
+                                                                <input style="width: 190px;" type="password"
+                                                                       name="password" required lay-verify="required"
+                                                                       placeholder="请输入密码" autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-inline">
+                                                            <label class="layui-form-label">入职日期</label>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" class="layui-input" id="tool-time4"
+                                                                       placeholder="yyyy-MM-dd">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">性别</label>
+                                                            <div class="layui-input-block">
+                                                                <input type="radio" name="sex" value="男" title="男">
+                                                                <input type="radio" name="sex" value="女" title="女"
+                                                                       checked>
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <label class="layui-form-label">分成比例</label>
+                                                            <div class="layui-input-block">
+                                                                <input style="width: 190px;" type="text" name="title"
+                                                                       required lay-verify="required"
+                                                                       placeholder="请输入分成比例" autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <div class="layui-input-block">
+                                                                <button class="layui-btn" lay-submit
+                                                                        lay-filter="formDemo">保存
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div id="laypage88" style="text-align: center;">
+                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                            <a href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                               data-page="0">上一页</a>
+                                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                            <a href="javascript:;" data-page="2">2</a>
+                                            <a href="javascript:;" data-page="3">3</a>
+                                            <a href="javascript:;" data-page="4">4</a>
+                                            <a href="javascript:;" data-page="5">5</a>
+                                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+
+                                    <div class="liebiao">
+                                        <table class="layui-table" lay-skin="line" lay-size="sm">
+                                            <colgroup>
+                                                <col width="100">
+                                                <col width="50">
+                                                <col width="10">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                                <col width="200">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th>用户名</th>
+                                                <th>性别</th>
+                                                <th>入职时间</th>
+                                                <th>分成比例</th>
+                                                <th>推广人数</th>
+                                                <th>累计分成</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td>10%</td>
+                                                <td>1052</td>
+                                                <td><i class="lusheji lusheji_iconjinbi"></i>224615</td>
+                                            </tr>
+                                            <tr>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td>10%</td>
+                                                <td>1052</td>
+                                                <td><i class="lusheji lusheji_iconjinbi"></i>224615</td>
+                                            </tr>
+                                            <tr>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td>10%</td>
+                                                <td>1052</td>
+                                                <td><i class="lusheji lusheji_iconjinbi"></i>224615</td>
+                                            </tr>
+                                            <tr>
+                                                <td>张三</td>
+                                                <td>男</td>
+                                                <td>2019-01-01</td>
+                                                <td>10%</td>
+                                                <td>1052</td>
+                                                <td><i class="lusheji lusheji_iconjinbi"></i>224615</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div id="laypage88" style="text-align: center;">
+                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                            <a href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                               data-page="0">上一页</a>
+                                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                            <a href="javascript:;" data-page="2">2</a>
+                                            <a href="javascript:;" data-page="3">3</a>
+                                            <a href="javascript:;" data-page="4">4</a>
+                                            <a href="javascript:;" data-page="5">5</a>
+                                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--业务员管理结束-->
+
+
+            <!--用户管理开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">添加用户</div>
+                        <div class="liebiao">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名</label>
+                                    <div class="layui-input-block">
+                                        <input style="width: 190px;" type="text" name="title" required
+                                               lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">密码框</label>
+                                    <div class="layui-input-inline">
+                                        <input style="width: 190px;" type="password" name="password" required
+                                               lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">辅助文字</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮箱</label>
+                                    <div class="layui-input-inline">
+                                        <input style="width: 190px;" type="text" name="email" lay-verify="email"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">性别</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="sex" value="男" title="男">
+                                        <input type="radio" name="sex" value="女" title="女" checked>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">角色</label>
+                                    <div class="layui-input-inline">
+                                        <select name="modules" lay-verify="required" lay-search="">
+                                            <option value="">直接选择或搜索选择</option>
+                                            <option value="1">普通用户</option>
+                                            <option value="2">VIP用户</option>
+                                            <option value="3">企业用户</option>
+                                            <option value="4">业务员</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="Order_title">搜索用户</div>
+                        <div class="liebiao">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名</label>
+                                    <div class="layui-input-block">
+                                        <input style="width: 190px;" type="text" name="title" required
+                                               lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮箱</label>
+                                    <div class="layui-input-inline">
+                                        <input style="width: 190px;" type="text" name="email" lay-verify="email"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">性别</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="sex" value="男" title="男">
+                                        <input type="radio" name="sex" value="女" title="女" checked>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">角色</label>
+                                    <div class="layui-input-inline">
+                                        <select name="modules" lay-verify="required" lay-search="">
+                                            <option value="">直接选择或搜索选择</option>
+                                            <option value="1">普通用户</option>
+                                            <option value="2">VIP用户</option>
+                                            <option value="3">企业用户</option>
+                                            <option value="4">业务员</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即搜索</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="Order_title">用户列表</div>
+                        <div class="liebiao">
+                            <table class="layui-table" lay-skin="line" lay-size="sm">
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>用户名</th>
+                                    <th>性别</th>
+                                    <th>邮箱</th>
+                                    <th>角色</th>
+                                    <th>资料</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>张三</td>
+                                    <td>男</td>
+                                    <td>123@123.com</td>
+                                    <td><i class="lusheji lusheji_iconduanxinyingxiao-huiyuanfenzu"></i>普通会员</td>
+                                    <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>李四</td>
+                                    <td>男</td>
+                                    <td>123@123.com</td>
+                                    <td><i class="lusheji lusheji_iconhuiyuan"></i>VIP会员</td>
+                                    <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>王五</td>
+                                    <td>男</td>
+                                    <td>123@123.com</td>
+                                    <td><i class="lusheji lusheji_iconqiyejianjie"></i>企业会员</td>
+                                    <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>朱六</td>
+                                    <td>男</td>
+                                    <td>123@123.com</td>
+                                    <td><i class="lusheji lusheji_iconhuiyuan1"></i>业务员</td>
+                                    <td><a href="javascript:void(0)" class="click_pop">编辑</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--遮罩层-->
+                            <div class="bgPop"></div>
+                            <!--弹出框-->
+                            <div class="pop">
+                                <div class="pop-top">
+                                    <h2>编辑</h2>
+                                    <span class="pop-close"><i class="lusheji lusheji_iconclose-b"
+                                                               style="font-size: 40px;color: #000;"></i></span>
+                                </div>
+                                <div class="pop-content">
+                                    <div class="pop-content-left">
+                                        <img src="" alt="" class="teathumb">
+                                    </div>
+                                    <div class="pop-content-right">
+                                        <form class="layui-form" action="">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">更改密码</label>
+                                                <div class="layui-input-inline">
+                                                    <input style="width: 190px;" type="password" name="password"
+                                                           required lay-verify="required" placeholder="请输入密码"
+                                                           autocomplete="off" class="layui-input">
+                                                </div>
+                                                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">确认密码</label>
+                                                <div class="layui-input-inline">
+                                                    <input style="width: 190px;" type="password" name="password"
+                                                           required lay-verify="required" placeholder="请确认密码"
+                                                           autocomplete="off" class="layui-input">
+                                                </div>
+                                                <div class="layui-form-mid layui-word-aux">再次输入密码</div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">邮箱</label>
+                                                <div class="layui-input-inline">
+                                                    <input style="width: 190px;" type="text" name="email"
+                                                           lay-verify="email" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">性别</label>
+                                                <div class="layui-input-block">
+                                                    <input type="radio" name="sex" value="男" title="男">
+                                                    <input type="radio" name="sex" value="女" title="女" checked>
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">角色</label>
+                                                <div class="layui-input-inline">
+                                                    <select name="modules" lay-verify="required" lay-search="">
+                                                        <option value="">直接选择或搜索选择</option>
+                                                        <option value="1">普通用户</option>
+                                                        <option value="2">VIP用户</option>
+                                                        <option value="3">企业用户</option>
+                                                        <option value="4">业务员</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <div class="layui-input-block">
+                                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加
+                                                    </button>
+                                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div id="laypage88" style="text-align: center;">
+                            <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                                <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                <a href="javascript:;" data-page="2">2</a>
+                                <a href="javascript:;" data-page="3">3</a>
+                                <a href="javascript:;" data-page="4">4</a>
+                                <a href="javascript:;" data-page="5">5</a>
+                                <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--用户管理结束-->
+
+
+            <!--模板管理开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title tab_tatle">
+                                <li class="layui-this"><p class="Order1">全部模板</p></li>
+                                <li><p class="Order1">添加模板</p></li>
+                                <li><p class="Order1">审核模板</p></li>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <!--全部模板开始-->
+                                <div class="layui-tab-item layui-show">
+                                    <div class="bgzt">
+                                        <div class="row">
+                                            <ul class="simplefilter">
+                                                模板分类：
+                                                <li class="active" data-filter="all">全部</li>
+                                                <li data-filter="1">一般模板</li>
+                                                <li data-filter="2">定制模板</li>
+                                            </ul>
+                                        </div>
+                                        <div class="row">
+                                            <ul class="simplefilter">
+                                                使用场景：
+                                                <li data-filter="21">包装</li>
+                                                <li data-filter="22">电器</li>
+                                                <li data-filter="23">商品</li>
+                                                <li data-filter="24">办公</li>
+                                                <li data-filter="25">珠宝</li>
+                                                <li data-filter="26">服装</li>
+                                                <li data-filter="27">机场</li>
+                                                <li data-filter="28">车票</li>
+                                                <li data-filter="29">化工</li>
+                                                <li data-filter="210">门票</li>
+                                                <li data-filter="211">固定资产</li>
+                                                <li data-filter="212">吊牌</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row">
+                                            <ul class="simplefilter">
+                                                行业类型：
+                                                <li data-filter="31">食品/医疗</li>
+                                                <li data-filter="32">纺织服饰</li>
+                                                <li data-filter="33">烟酒饮料</li>
+                                                <li data-filter="34">石油化工</li>
+                                                <li data-filter="35">造纸印刷</li>
+                                                <li data-filter="36">家具家居</li>
+                                                <li data-filter="37">汽车</li>
+                                                <li data-filter="38">电气机械</li>
+                                            </ul>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <ul class="simplefilter">
+                                                条码类型：
+                                                <li data-filter="41">一维码</li>
+                                                <li data-filter="42">二维码</li>
+                                                <li data-filter="43">混合码</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row search-row">
+                                            关键字搜索：
+                                            <input type="text" class="filtr-search" name="filtr-search" data-search>
+                                        </div>
+
+
+                                        <div class="muban_list">
+                                            <div class="filtr-container" style="height: 1000px">
+                                                <ul>
+                                                    <div class="filtr-item" data-category="1, 5">
+                                                        <li>
+                                                            <div class="imgBox">
+                                                                <img width="260px" height="220px"
+                                                                     src="./images/muban_list_test.png">
+                                                                <div class="imgBox-mask">
+                                                                    <h3>标签名称：工艺管道焊口标签</h3>
+                                                                    <h3>模板分类：定制模板</h3>
+                                                                    <h3>使用场景：包装</h3>
+                                                                    <h3>行业类型：石油化工</h3>
+                                                                    <h3>条码类型：二维码</h3>
+                                                                    <h3>纸张尺寸：100.0mm*20mm</h3>
+                                                                    <h3>标签尺寸：100.0mm*20mm</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="interactive-box">
+                                                                <a href="#" target="_blank">
+                                                                    <h2>工艺管道焊口标签</h2>
+                                                                </a>
+                                                                <div class="data-box">
+                                                                    <div class="data-view">
+                                                                        <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                                    </div>
+                                                                    <div class="data-like">
+                                                                        <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+
+                                                    <div class="filtr-item" data-category="2, 25, 34, 41">
+                                                        <li>
+                                                            <div class="imgBox">
+                                                                <img width="260px" height="220px"
+                                                                     src="./images/muban_list_test.png">
+                                                                <div class="imgBox-mask">
+                                                                    <h3>标签名称：工艺管道焊口标签</h3>
+                                                                    <h3>模板分类：定制模板</h3>
+                                                                    <h3>使用场景：包装</h3>
+                                                                    <h3>行业类型：石油化工</h3>
+                                                                    <h3>条码类型：二维码</h3>
+                                                                    <h3>纸张尺寸：100.0mm*20mm</h3>
+                                                                    <h3>标签尺寸：100.0mm*20mm</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="interactive-box">
+                                                                <a href="#" target="_blank">
+                                                                    <h2>工艺管道焊口标签</h2>
+                                                                </a>
+                                                                <div class="data-box">
+                                                                    <div class="data-view">
+                                                                        <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                                    </div>
+                                                                    <div class="data-like">
+                                                                        <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+
+
+                                                    <div class="filtr-item" data-category="1, 29, 36, 42">
+                                                        <li>
+                                                            <div class="imgBox">
+                                                                <img width="260px" height="220px"
+                                                                     src="./images/muban_list_test.png">
+                                                                <div class="imgBox-mask">
+                                                                    <h3>标签名称：工艺管道焊口标签</h3>
+                                                                    <h3>模板分类：定制模板</h3>
+                                                                    <h3>使用场景：包装</h3>
+                                                                    <h3>行业类型：石油化工</h3>
+                                                                    <h3>条码类型：二维码</h3>
+                                                                    <h3>纸张尺寸：100.0mm*20mm</h3>
+                                                                    <h3>标签尺寸：100.0mm*20mm</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="interactive-box">
+                                                                <a href="#" target="_blank">
+                                                                    <h2>工艺管道焊口标签</h2>
+                                                                </a>
+                                                                <div class="data-box">
+                                                                    <div class="data-view">
+                                                                        <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                                    </div>
+                                                                    <div class="data-like">
+                                                                        <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+
+                                                    <div class="filtr-item" data-category="1, 210, 38, 41">
+                                                        <li>
+                                                            <div class="imgBox">
+                                                                <img width="260px" height="220px"
+                                                                     src="./images/muban_list_test.png">
+                                                                <div class="imgBox-mask">
+                                                                    <h3>标签名称：工艺管道焊口标签</h3>
+                                                                    <h3>模板分类：定制模板</h3>
+                                                                    <h3>使用场景：包装</h3>
+                                                                    <h3>行业类型：石油化工</h3>
+                                                                    <h3>条码类型：二维码</h3>
+                                                                    <h3>纸张尺寸：100.0mm*20mm</h3>
+                                                                    <h3>标签尺寸：100.0mm*20mm</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="interactive-box">
+                                                                <a href="#" target="_blank">
+                                                                    <h2>工艺管道焊口标签</h2>
+                                                                </a>
+                                                                <div class="data-box">
+                                                                    <div class="data-view">
+                                                                        <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                                    </div>
+                                                                    <div class="data-like">
+                                                                        <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+
+
+                                                    <div class="filtr-item" data-category="1, 26, 33, 41">
+                                                        <li>
+                                                            <div class="imgBox">
+                                                                <img width="260px" height="220px"
+                                                                     src="./images/muban_list_test.png">
+                                                                <div class="imgBox-mask">
+                                                                    <h3>标签名称：工艺管道焊口标签</h3>
+                                                                    <h3>模板分类：定制模板</h3>
+                                                                    <h3>使用场景：包装</h3>
+                                                                    <h3>行业类型：石油化工</h3>
+                                                                    <h3>条码类型：二维码</h3>
+                                                                    <h3>纸张尺寸：100.0mm*20mm</h3>
+                                                                    <h3>标签尺寸：100.0mm*20mm</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="interactive-box">
+                                                                <a href="#" target="_blank">
+                                                                    <h2>工艺管道焊口标签</h2>
+                                                                </a>
+                                                                <div class="data-box">
+                                                                    <div class="data-view">
+                                                                        <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                                    </div>
+                                                                    <div class="data-like">
+                                                                        <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+
+                                                    <div class="filtr-item" data-category="2, 22, 31, 43">
+
+                                                        <li>
+                                                            <div class="imgBox">
+                                                                <img width="260px" height="220px"
+                                                                     src="./images/muban_list_test.png">
+                                                                <div class="imgBox-mask">
+                                                                    <h3>标签名称：工艺管道焊口标签</h3>
+                                                                    <h3>模板分类：定制模板</h3>
+                                                                    <h3>使用场景：包装</h3>
+                                                                    <h3>行业类型：石油化工</h3>
+                                                                    <h3>条码类型：二维码</h3>
+                                                                    <h3>纸张尺寸：100.0mm*20mm</h3>
+                                                                    <h3>标签尺寸：100.0mm*20mm</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="interactive-box">
+                                                                <a href="#" target="_blank">
+                                                                    <h2>工艺管道焊口标签</h2>
+                                                                </a>
+                                                                <div class="data-box">
+                                                                    <div class="data-view">
+                                                                        <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                                    </div>
+                                                                    <div class="data-like">
+                                                                        <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+
+                                                    <div class="filtr-item" data-category="1, 25, 32, 41">
+                                                        <li>
+                                                            <div class="imgBox">
+                                                                <img width="260px" height="220px"
+                                                                     src="./images/muban_list_test.png">
+                                                                <div class="imgBox-mask">
+                                                                    <h3>标签名称：工艺管道焊口标签</h3>
+                                                                    <h3>模板分类：定制模板</h3>
+                                                                    <h3>使用场景：包装</h3>
+                                                                    <h3>行业类型：石油化工</h3>
+                                                                    <h3>条码类型：二维码</h3>
+                                                                    <h3>纸张尺寸：100.0mm*20mm</h3>
+                                                                    <h3>标签尺寸：100.0mm*20mm</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="interactive-box">
+                                                                <a href="#" target="_blank">
+                                                                    <h2>工艺管道焊口标签</h2>
+                                                                </a>
+                                                                <div class="data-box">
+                                                                    <div class="data-view">
+                                                                        <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                                    </div>
+                                                                    <div class="data-like">
+                                                                        <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+
+
+                                                </ul>
+                                            </div>
+                                            <div id="laypage88" style="text-align: center;">
+                                                <div class="layui-box layui-laypage layui-laypage-default"
+                                                     id="layui-laypage-7">
+                                                    <a href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                                       data-page="0">上一页</a>
+                                                    <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                                    <a href="javascript:;" data-page="2">2</a>
+                                                    <a href="javascript:;" data-page="3">3</a>
+                                                    <a href="javascript:;" data-page="4">4</a>
+                                                    <a href="javascript:;" data-page="5">5</a>
+                                                    <a href="javascript:;" class="layui-laypage-next"
+                                                       data-page="2">下一页</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+                                <script src="js/jquery.filterizr.min.js"></script>
+                                <script src="js/controls.js"></script>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('.filtr-container').filterizr();
+                                    });
+                                </script>
+                                <!--全部模板结束-->
+                                <!--添加模板开始-->
+                                <div class="layui-tab-item">
+                                    <form class="layui-form" action="">
+                                        <div class="lt">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>模板分类:</legend>
+                                            </fieldset>
+                                            <table class="layui-table" lay-skin="line" lay-size="sm" id="tid"
+                                                   style="width: 300px;margin-right: 10px;">
+                                                <colgroup>
+                                                    <col width="100">
+                                                    <col width="100">
+
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th>分类名称</th>
+                                                    <th>操作<i class="lusheji lusheji_icontianjia" onclick="addtr()"></i>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>定制模板</td>
+                                                    <td><i class="lusheji lusheji_iconshanchu"
+                                                           onclick="delecttr(this)"></i></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="lt">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>使用场景:</legend>
+                                            </fieldset>
+                                            <table class="layui-table" lay-skin="line" lay-size="sm" id="tid2"
+                                                   style="width: 300px;margin-right: 10px;">
+                                                <colgroup>
+                                                    <col width="100">
+                                                    <col width="100">
+
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th>分类名称</th>
+                                                    <th>操作<i class="lusheji lusheji_icontianjia" onclick="addtr2()"></i>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>包装</td>
+                                                    <td><i class="lusheji lusheji_iconshanchu"
+                                                           onclick="delecttr(this)"></i></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="lt">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>行业类型:</legend>
+                                            </fieldset>
+                                            <table class="layui-table" lay-skin="line" lay-size="sm" id="tid3"
+                                                   style="width: 300px;margin-right: 10px;">
+                                                <colgroup>
+                                                    <col width="100">
+                                                    <col width="100">
+
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th>分类名称</th>
+                                                    <th>操作<i class="lusheji lusheji_icontianjia" onclick="addtr3()"></i>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>行业类型1</td>
+                                                    <td><i class="lusheji lusheji_iconshanchu"
+                                                           onclick="delecttr(this)"></i></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="lt">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>条码类型:</legend>
+                                            </fieldset>
+                                            <table class="layui-table" lay-skin="line" lay-size="sm" id="tid4"
+                                                   style="width: 300px;margin-right: 10px;">
+                                                <colgroup>
+                                                    <col width="100">
+                                                    <col width="100">
+
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th>分类名称</th>
+                                                    <th>操作<i class="lusheji lusheji_icontianjia" onclick="addtr4()"></i>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>一维码</td>
+                                                    <td><i class="lusheji lusheji_iconshanchu"
+                                                           onclick="delecttr(this)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>二维码</td>
+                                                    <td><i class="lusheji lusheji_iconshanchu"
+                                                           onclick="delecttr(this)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>综合码</td>
+                                                    <td><i class="lusheji lusheji_iconshanchu"
+                                                           onclick="delecttr(this)"></i></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即添加</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <!--添加模板结束-->
+                                <!--模板审核开始-->
+                                <div class="layui-tab-item">
+                                    <div class="muban_list">
+                                        <ul>
+                                            <li>
+                                                <div class="imgBox">
+                                                    <img width="260px" height="220px"
+                                                         src="./images/muban_list_test.png">
+                                                    <div class="imgBox-mask">
+                                                        <button class="layui-btn layui-btn-normal l_button">通过</button>
+                                                        <br>
+                                                        <button class="layui-btn layui-btn-danger l_button">不通过</button>
+                                                    </div>
+                                                </div>
+                                                <div class="interactive-box">
+                                                    <a href="#" target="_blank">
+                                                        <h2>工艺管道焊口标签</h2>
+                                                    </a>
+                                                    <div class="data-box">
+                                                        <div class="data-view">
+                                                            <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                        </div>
+                                                        <div class="data-like">
+                                                            <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li>
+                                                <div class="imgBox">
+                                                    <img width="260px" height="220px"
+                                                         src="./images/muban_list_test.png">
+                                                    <div class="imgBox-mask">
+                                                        <button class="layui-btn layui-btn-normal l_button">通过</button>
+                                                        <br>
+                                                        <button class="layui-btn layui-btn-danger l_button">不通过</button>
+                                                    </div>
+                                                </div>
+                                                <div class="interactive-box">
+                                                    <a href="#" target="_blank">
+                                                        <h2>工艺管道焊口标签</h2>
+                                                    </a>
+                                                    <div class="data-box">
+                                                        <div class="data-view">
+                                                            <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                        </div>
+                                                        <div class="data-like">
+                                                            <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li>
+                                                <div class="imgBox">
+                                                    <img width="260px" height="220px"
+                                                         src="./images/muban_list_test.png">
+                                                    <div class="imgBox-mask">
+                                                        <button class="layui-btn layui-btn-normal l_button">通过</button>
+                                                        <br>
+                                                        <button class="layui-btn layui-btn-danger l_button">不通过</button>
+                                                    </div>
+                                                </div>
+                                                <div class="interactive-box">
+                                                    <a href="#" target="_blank">
+                                                        <h2>工艺管道焊口标签</h2>
+                                                    </a>
+                                                    <div class="data-box">
+                                                        <div class="data-view">
+                                                            <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                        </div>
+                                                        <div class="data-like">
+                                                            <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="imgBox">
+                                                    <img width="260px" height="220px"
+                                                         src="./images/muban_list_test.png">
+                                                    <div class="imgBox-mask">
+                                                        <button class="layui-btn layui-btn-normal l_button">通过</button>
+                                                        <br>
+                                                        <button class="layui-btn layui-btn-danger l_button">不通过</button>
+                                                    </div>
+                                                </div>
+                                                <div class="interactive-box">
+                                                    <a href="#" target="_blank">
+                                                        <h2>工艺管道焊口标签</h2>
+                                                    </a>
+                                                    <div class="data-box">
+                                                        <div class="data-view">
+                                                            <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                        </div>
+                                                        <div class="data-like">
+                                                            <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li>
+                                                <div class="imgBox">
+                                                    <img width="260px" height="220px"
+                                                         src="./images/muban_list_test.png">
+                                                    <div class="imgBox-mask">
+                                                        <button class="layui-btn layui-btn-normal l_button">通过</button>
+                                                        <br>
+                                                        <button class="layui-btn layui-btn-danger l_button">不通过</button>
+                                                    </div>
+                                                </div>
+                                                <div class="interactive-box">
+                                                    <a href="#" target="_blank">
+                                                        <h2>工艺管道焊口标签</h2>
+                                                    </a>
+                                                    <div class="data-box">
+                                                        <div class="data-view">
+                                                            <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                        </div>
+                                                        <div class="data-like">
+                                                            <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li>
+                                                <div class="imgBox">
+                                                    <img width="260px" height="220px"
+                                                         src="./images/muban_list_test.png">
+                                                    <div class="imgBox-mask">
+                                                        <button class="layui-btn layui-btn-normal l_button">通过</button>
+                                                        <br>
+                                                        <button class="layui-btn layui-btn-danger l_button">不通过</button>
+                                                    </div>
+                                                </div>
+                                                <div class="interactive-box">
+                                                    <a href="#" target="_blank">
+                                                        <h2>工艺管道焊口标签</h2>
+                                                    </a>
+                                                    <div class="data-box">
+                                                        <div class="data-view">
+                                                            <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                        </div>
+                                                        <div class="data-like">
+                                                            <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+                                            <li>
+                                                <div class="imgBox">
+                                                    <img width="260px" height="220px"
+                                                         src="./images/muban_list_test.png">
+                                                    <div class="imgBox-mask">
+                                                        <button class="layui-btn layui-btn-normal l_button">通过</button>
+                                                        <br>
+                                                        <button class="layui-btn layui-btn-danger l_button">不通过</button>
+                                                    </div>
+                                                </div>
+                                                <div class="interactive-box">
+                                                    <a href="#" target="_blank">
+                                                        <h2>工艺管道焊口标签</h2>
+                                                    </a>
+                                                    <div class="data-box">
+                                                        <div class="data-view">
+                                                            <span>纸张尺寸</span><br><span> 标签尺寸</span>
+                                                        </div>
+                                                        <div class="data-like">
+                                                            <span>100.0mm*20mm</span><br><span> 100.0mm*20mm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="laypage88" style="text-align: center;">
+                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                                            <a href="javascript:;" class="layui-laypage-prev layui-disabled"
+                                               data-page="0">上一页</a>
+                                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                                            <a href="javascript:;" data-page="2">2</a>
+                                            <a href="javascript:;" data-page="3">3</a>
+                                            <a href="javascript:;" data-page="4">4</a>
+                                            <a href="javascript:;" data-page="5">5</a>
+                                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--模板审核结束-->
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!--模板管理结束-->
+
+
+            <!--订单管理开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">订单查找</div>
+                        <div class="liebiao">
+
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名</label>
+                                    <div class="layui-input-block">
+                                        <input style="width: 190px;" type="text" name="title" placeholder="请输入用户名"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单号</label>
+                                    <div class="layui-input-block">
+                                        <input style="width: 190px;" type="text" name="title" placeholder="请输入订单号"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮箱</label>
+                                    <div class="layui-input-inline">
+                                        <input style="width: 190px;" type="text" name="email" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">标签名称</label>
+                                    <div class="layui-input-block">
+                                        <input style="width: 190px;" type="text" name="title" placeholder="标签名称"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">订单状态</label>
+                                    <div class="layui-input-inline">
+                                        <select name="modules" lay-verify="required" lay-search="">
+                                            <option value="">直接选择或搜索选择</option>
+                                            <option value="1">设计中</option>
+                                            <option value="2">未付款</option>
+                                            <option value="3">已付款</option>
+                                            <option value="4" selected="">已完成</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">订单日期</label>
+                                        <div style="width: 190px;" class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="tool-time5"
+                                                   placeholder="yyyy-MM-dd">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="Order_title">订单管理</div>
+                        <div class="liebiao">
+                            <table class="layui-table" lay-skin="line" lay-size="sm">
+                                <colgroup>
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="400">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="100">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>用户名</th>
+                                    <th>打印数量</th>
+                                    <th>标签名称</th>
+                                    <th>打印尺寸</th>
+                                    <th>下单时间</th>
+                                    <th>下单金额</th>
+                                    <th>订单状态</th>
+                                    <th>模板文件</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>张三</td>
+                                    <td>128</td>
+                                    <td>工艺管道焊口标签</td>
+                                    <td>100mm*100mm</td>
+                                    <td>2019-03-03</td>
+                                    <td>8659.00</td>
+                                    <td>
+                                        <button class="layui-btn layui-btn-danger layui-btn-sm">待发货</button>
+                                        <button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
+                                    </td>
+                                    <td>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">下载模板</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>李四</td>
+                                    <td>128</td>
+                                    <td>工艺管道焊口标签</td>
+                                    <td>100mm*100mm</td>
+                                    <td>2019-03-03</td>
+                                    <td>8659.00</td>
+                                    <td>
+                                        <button class="layui-btn layui-btn-warm layui-btn-sm">未付款</button>
+                                        <button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
+                                    </td>
+                                    <td>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">下载模板</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>王五</td>
+                                    <td>128</td>
+                                    <td>工艺管道焊口标签</td>
+                                    <td>100mm*100mm</td>
+                                    <td>2019-03-03</td>
+                                    <td>8659.00</td>
+                                    <td>
+                                        <button class="layui-btn layui-btn-sm">已完成</button>
+                                        <button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
+                                    </td>
+                                    <td>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">下载模板</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>朱六</td>
+                                    <td>128</td>
+                                    <td>工艺管道焊口标签</td>
+                                    <td>100mm*100mm</td>
+                                    <td>2019-03-03</td>
+                                    <td>8659.00</td>
+                                    <td>
+                                        <button class="layui-btn layui-btn-normal layui-btn-sm">设计中</button>
+                                        <button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
+                                    </td>
+                                    <td>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">下载模板</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="laypage88" style="text-align: center;">
+                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                            <a href="javascript:;" data-page="2">2</a>
+                            <a href="javascript:;" data-page="3">3</a>
+                            <a href="javascript:;" data-page="4">4</a>
+                            <a href="javascript:;" data-page="5">5</a>
+                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--订单管理结束-->
+
+
+            <!--用户推广开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">推广人查找</div>
+                        <div class="liebiao">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名</label>
+                                    <div class="layui-input-block">
+                                        <input style="width: 190px;" type="text" name="title" placeholder="请输入用户名"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="Order_title">推广列表</div>
+                        <div class="liebiao">
+                            <table class="layui-table" lay-skin="line" lay-size="sm">
+                                <colgroup>
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="100">
+                                    <col width="100">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>用户名</th>
+                                    <th>推广人数</th>
+                                    <th>下单人数</th>
+                                    <th>下单数量</th>
+                                    <th>下单金额</th>
+                                    <th>业务员分成</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>张三</td>
+                                    <td>128</td>
+                                    <td>88</td>
+                                    <td>26952</td>
+                                    <td>1321541.00</td>
+                                    <td>8659.00</td>
+                                </tr>
+                                <tr>
+                                    <td>李四</td>
+                                    <td>128</td>
+                                    <td>88</td>
+                                    <td>26952</td>
+                                    <td>1321541.00</td>
+                                    <td>8659.00</td>
+                                </tr>
+                                <tr>
+                                    <td>王五</td>
+                                    <td>128</td>
+                                    <td>88</td>
+                                    <td>26952</td>
+                                    <td>1321541.00</td>
+                                    <td>8659.00</td>
+                                </tr>
+                                <tr>
+                                    <td>朱六</td>
+                                    <td>128</td>
+                                    <td>88</td>
+                                    <td>26952</td>
+                                    <td>1321541.00</td>
+                                    <td>8659.00</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="laypage88" style="text-align: center;">
+                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                            <a href="javascript:;" data-page="2">2</a>
+                            <a href="javascript:;" data-page="3">3</a>
+                            <a href="javascript:;" data-page="4">4</a>
+                            <a href="javascript:;" data-page="5">5</a>
+                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--用户推广结束-->
+
+
+            <!--系统配置开始-->
+            <div class="layui-tab-item">
+                <div class="bgzt">
+                    <div class="box-center">
+
+
+                        <form class="layui-form" action="">
+                            <div class="Order_title">纸张设置</div>
+                            <div class="liebiao">
+                                <table class="layui-table" lay-skin="line" lay-size="sm" id="tid5"
+                                       style="width: 300px;margin-right: 10px;">
+                                    <colgroup>
+                                        <col width="100">
+                                        <col width="100">
+
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>纸张材质</th>
+                                        <th>操作<i class="lusheji lusheji_icontianjia" onclick="addtr5()"></i></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>不干胶</td>
+                                        <td><i class="lusheji lusheji_iconshanchu" onclick="delecttr(this)"></i></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">保存设置</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!--系统配置结束-->
+
+        </div>
+        <div class="clear"></div>
+
+    </div>
+
+</div>
+
+<script src="./layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form
+            , laydate = layui.laydate;
+
+        // 时间选择
+        laydate.render({
+            elem: '#tool-time',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择2
+        laydate.render({
+            elem: '#tool-time2',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+// 时间选择3
+        laydate.render({
+            elem: '#tool-time3',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+        // 时间选择4
+        laydate.render({
+            elem: '#tool-time4',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+
+        // 时间选择5
+        laydate.render({
+            elem: '#tool-time5',
+            format: 'yyyy-MM-dd HH:mm:ss'
+            ,
+            theme: '#0f88eb'
+        });
+    });
+</script>
+<script>
+    var j = 3;
+
+    function addtr() {
+        var tableobj = document.getElementById("tid");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr2() {
+        var tableobj = document.getElementById("tid2");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr3() {
+        var tableobj = document.getElementById("tid3");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+
+    function addtr4() {
+        var tableobj = document.getElementById("tid4");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function addtr5() {
+        var tableobj = document.getElementById("tid5");
+        var trobj = document.createElement("tr");
+        for (var i = 0; i < 1; i++) {
+            var tdobj = document.createElement("td");
+            tdobj.innerHTML = "<input type='text' name='title' lay-verify='title' autocomplete='off' placeholder='请输入分类名称' class='layui-input'>";
+            trobj.appendChild(tdobj);
+        }
+        var tdobj = document.createElement("td");
+        tdobj.innerHTML = "<i class='lusheji lusheji_iconshanchu' onclick='delecttr(this)'></i>";
+        trobj.appendChild(tdobj);
+        tableobj.appendChild(trobj);
+    }
+
+    function delecttr(obj) {
+        var tr = obj.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+    }
+
+</script>
+</body>
+</html>

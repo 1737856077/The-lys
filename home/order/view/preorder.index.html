@@ -7,6 +7,17 @@
     <script type="text/javascript" src="__STATIC__/home/js/preorder.js"></script>
 </head>
 <body>
+<<<<<<< HEAD
+<form name="form1" method="post" action="__URL__/regin" onsubmit="javascript:return subfun();">
+    <h1><img src="__STATIC__/admin/images/logo.png" alt="" /></h1>
+    模版名称：
+    模版图片：
+    纸张尺寸：
+    标签尺寸：
+    打印份数：<input type="text" name="username" id="username" onblur="onBlur_username()" maxlength="32" /><span id="span_username"></span><br />
+    打印模式：<select name="">
+                <option value=""></option>
+=======
 <form name="form1" method="post" action="__URL__/suborder" onsubmit="javascript:return subfun();">
     <input type="hidden" name="memberid" id="memberid" value="{$memberid}" />
     <input type="hidden" name="templateId" id="templateId" value="{$getoneTemplate['template_id']}" />
@@ -23,6 +34,7 @@
     {foreach $ConfigPreorderPrintMode as $key=>$val}
     <option value="{$key}">{$val}</option>
     {/foreach}
+>>>>>>> c17ffecbb31ae9a7bc14cde2201b2479f3620444
             </select><br />
     排序方式：<select name="printSort" id="printSort">
     {foreach $ConfigPreorderPrintSort as $key=>$val}
