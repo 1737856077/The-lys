@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script type="text/javascript" src="__STATIC__/home/js/jquery-1.8.0.min.js"></script>
+    <style>
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input {
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+{include file="publicinfo@publicinfo/header" /}
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-tab">
+        {include file="member@userconter/menu" menutype="templates" /}
+
+        <!--主体区域-->
+            <!--模板管理开始-->
+        <div class="layui-tab-content layui-body">
+            <div class="layui-tab-item layui-show">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">最新模板</div>
+                        <div class="Order_more">更多模板>></div>
+
+                        <div class="user_muban_list">
+                            <ul>
+                                {if condition="!empty($newtemplate)"}
+                                {foreach name='newtemplate' id='data'}
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <div class="imgBox">
+                                            <img width="260px" height="220px"
+                                                 src="/home/uploads/{$data.img}">
+                                            <div class="imgBox-mask">
+                                                <button class="layui-btn l_button">编辑</button>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="interactive-box">
+                                        <a href="#" target="_blank">
+                                            <h2>{$data.title}</h2>
+                                        </a>
+                                        <div class="data-box">
+                                            <div class="data-view">
+                                                <span>纸张尺寸</span><br><span> 标签尺寸</span> <br><span>发布时间</span>
+                                            </div>
+                                            <div class="data-like">
+                                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span><br><span>{$data.lable_size_wide}{$data.lable_size_unit}*{$data.lable_size_height}{$data.lable_size_unit}</span><br><span>{$data.create_time|date="y-m-d:H-i-s",###}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {/foreach}
+                                {else/}
+                               <h1>暂无数据</h1>
+                                {/if}
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="box-center">
+                        <div class="Order_title">我的模板</div>
+
+                        <div class="user_muban_list">
+                            <ul>
+                                {foreach name='template' id='data'}
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <div class="imgBox">
+                                            <img width="260px" height="220px"
+                                                 src="/home/uploads/{$data.img}">
+                                            <div class="imgBox-mask">
+                                                <button class="layui-btn l_button">编辑</button>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="interactive-box">
+                                        <a href="#" target="_blank">
+                                            <h2>{$data.title}</h2>
+                                        </a>
+                                        <div class="data-box">
+                                            <div class="data-view">
+                                                <span>纸张尺寸</span><br><span> 标签尺寸</span> <br><span>发布时间</span>
+                                            </div>
+                                            <div class="data-like">
+                                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span><br><span>{$data.lable_size_wide}{$data.lable_size_unit}*{$data.lable_size_height}{$data.lable_size_unit}</span><br><span>{$data.create_time|date="y-m-d:H-i-s",###}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div id="laypage88" style="text-align: center;">
+                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                            <a href="javascript:;" data-page="2">2</a>
+                            <a href="javascript:;" data-page="3">3</a>
+                            <a href="javascript:;" data-page="4">4</a>
+                            <a href="javascript:;" data-page="5">5</a>
+                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+            <!--模板管理结束-->
+
+        </div>
+        <!--主体区域end-->
+    </div>
+</div>
+<script src="__STATIC__/home/layui/layui.all.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

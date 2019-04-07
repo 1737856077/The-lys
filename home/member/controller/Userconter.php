@@ -39,9 +39,9 @@ class Userconter extends CommonBase
         $industryid = $data[0]['industry_id'];
         $industry = Db::name('system_config')->where('id', $industryid)->field('title')->find();
         $title = Db::name('system_config')->field('title,id')->select();
-        $orders = Db::name('member')->where('member_id', $id)->select();
-        if (isset($orders[0]['district'])) {
-            $order = $orders[0]['district'];
+        //$orders = Db::name('member')->where('member_id', $id)->select();
+        //if (isset($orders[0]['district'])) {
+            /*$order = $orders[0]['district'];
             $regions = Db::name('region')->where('area_code', $order)->select();
             $regionss = $regions[0]['area_parent_id'];
             $regionss = Db::name('region')->where('area_code', $regionss)->select();
@@ -51,9 +51,9 @@ class Userconter extends CommonBase
             $databases = Db::name('custom_database')->where('member_id', $id)->select();
             $n = Db::name('custom_database')->where('member_id', $id)->field('count(member_id) id')->select();
             $this->assign('databases', $databases);
-            $this->assign('n', $n);
+            $this->assign('n', $n);*/
 
-            //查询本会员的个人模板
+            /*//查询本会员的个人模板
             $checkorder = Db::name('template');
             $Popular = $checkorder->where('member_id', $id)->where('data_type', 1)->select();
 
@@ -82,25 +82,26 @@ class Userconter extends CommonBase
                 $newtemplate[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
                 $newtemplate[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
                 $newtemplate[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
-            }
+            }*/
 
-            $this->orders();
+            /*$this->orders();
             $order = $regionsss[0]['area_name'] . '-' . $regionss[0]['area_name'] . '-' . $regions[0]['area_name'];
+            */
             $region = Db::name('region')->where('area_type', 2)->field('area_name,area_code')->select();
-            unset($title[0]);
-            unset($title[1]);
-            $this->assign([
-                'newtemplate' => $newtemplate,
-                'template' => $Popular,
-                'order' => $order,
-                'data' => $data,
-                'industry' => $industry,
-                'title' => $title,
-                'region' => $region,
-                'order' => $order,
-            ]);
-        } else {
-            //查看数据库
+            /*unset($title[0]);
+            unset($title[1]);*/
+            //$this->assign([
+                //'newtemplate' => $newtemplate,
+                //'template' => $Popular,
+                //'order' => $order,
+                //'data' => $data,
+                //'industry' => $industry,
+                //'title' => $title,
+                //'region' => $region,
+                //'order' => $order,
+           // ]);
+       // } else {
+            /*//查看数据库
             $databases = Db::name('custom_database')->where('member_id', $id)->select();
             $n = Db::name('custom_database')->where('member_id', $id)->field('count(member_id) id')->select();
             $this->assign('databases', $databases);
@@ -136,17 +137,17 @@ class Userconter extends CommonBase
                 $Popular[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height'])?$Populars[0]['lable_size_height'] : '';
                 $Popular[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
             }
-            $this->orders();
+            $this->orders();*/
             $this->assign([
-                'newtemplate' => $newtemplate,
-                'template' => $Popular,
+                //'newtemplate' => $newtemplate,
+                //'template' => $Popular,
                 'data' => $data,
                 'industry' => $industry,
                 'title' => $title,
                 'region' => $region,
 
             ]);
-        }
+        //}
         return $this->fetch();
     }
 
@@ -290,8 +291,9 @@ class Userconter extends CommonBase
 
     /**
      *  订单
+     * DEL:已删除，移植到了Order.php控制器中
      */
-    public function orders()
+    /*public function orders()
     {
         $data = Session::get('memberid');
 
@@ -350,7 +352,7 @@ class Userconter extends CommonBase
         } else {
             $this->error('错误');
         }
-    }
+    }*/
 
     /**
      * 模板详情
@@ -540,6 +542,13 @@ class Userconter extends CommonBase
                 $this->error('取消失败', '/index.php/member/userconter/orders');
             }
         }
+    }
+
+    /**
+     * @desc:用户中心-左侧菜单
+     */
+    public function menu(){
+        return $this->fetch();
     }
 
 }

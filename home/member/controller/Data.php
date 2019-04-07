@@ -10,14 +10,22 @@ namespace app\member\controller;
 
 
 use app\common\controller\CommonBase;
-use app\common\controller\CommonBaseHome;
-use function Composer\Autoload\includeFile;
+//use app\common\controller\CommonBaseHome;
+//use Composer\Autoload\includeFile;
 use think\Cookie;
 use think\Db;
 use think\Session;
-
-class Data extends CommonBaseHome
+class Data extends CommonBase
 {
+    public function _initialize()
+    {
+        parent::_initialize();
+        // 打印模式
+        $this->assign("ConfigPreorderPrintMode", \think\Config::get('data.preorder_print_mode'));
+        // 排序方式
+        $this->assign("ConfigPreorderPrintSort", \think\Config::get('data.preorder_print_sort'));
+    }
+
     //查看数据库
     public function index()
     {
@@ -25,7 +33,9 @@ class Data extends CommonBaseHome
         $data = Db::name('custom_database')->where('member_id', $memberid)->select();
         $n = Db::name('custom_database')->where('member_id',$memberid)->field('count(member_id) id')->select();
         $this->assign('data', $data);
+        $this->assign('databases', $data);
         $this->assign('n',$n);
+        return $this->fetch();
     }
 
     //新建数据库

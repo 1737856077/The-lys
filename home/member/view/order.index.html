@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script type="text/javascript" src="__STATIC__/home/js/jquery-1.8.0.min.js"></script>
+    <style>
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input {
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+{include file="publicinfo@publicinfo/header" /}
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-tab">
+        {include file="member@userconter/menu" menutype="order" /}
+
+        <!--主体区域-->
+            <!--订单中心开始-->
+        <div class="layui-tab-content layui-body">
+            <div class="layui-tab-item  layui-show">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                            <ul class="layui-tab-title tab_tatle">
+                                <li class="layui-this"><p class="Order1">全部订单</p></li>
+                                <li><p class="Order1">新提交</p></li>
+                                <li><p class="Order1">已核实</p></li>
+                                <li><p class="Order1">设计中</p></li>
+                                <li><p class="Order1">设计结束</p></li>
+                                <li><p class="Order1">已完成</p></li>
+                            </ul>
+                            <div style="width: 600px;    margin-top: 20px;">
+                                <div id="search">
+                                    <form id="seek" class="seek" action="">
+                                        <input class="user_search_k" id="value" type="text" name="order"
+                                               value="请输入标签名称或订单号查询">
+                                        <input class="user_search_b" type="button" onclick="login()" id="select"
+                                               value="搜索">
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="layui-tab-content">
+                                <!--全部订单-->
+                                <div class="layui-tab-item layui-show">
+                                    <div class="dj" id="dj">
+                                        <div class="nr" id="nr">
+                                            {if condition="isset($orderdata)"}
+                                                {foreach name='orderdata' id='orderdata'}
+                                                <table id="Order_tbody" class="layui-table" lay-skin="line"
+                                                       style="height: 260px">
+                                                    <colgroup>
+                                                        <col width="50">
+                                                        <col width="200">
+                                                        <col width="200">
+                                                        <col width="200">
+                                                    </colgroup>
+                                                    <thead>
+
+                                                    <tr style="background: #EAF8FF;">
+                                                        <th style="text-align: left;padding:0 20px;height: 30px">
+                                                            {$orderdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$orderdata.order_no}
+                                                        </th>
+                                                        <th>打印数量</th>
+                                                        <th>订单状态</th>
+                                                        <th>交易操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td>
+                                                            <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                                <tbody>
+                                                                <tr style="height: 190px">
+                                                                    <td><img src="/home/uploads/{$orderdata.img}"></td>
+                                                                    <td>
+                                                                        <div class="order_title">
+                                                                            {$orderdata.template_title}
+                                                                        </div>
+                                                                        <h2>纸张尺寸</h2>
+                                                                        <h3>
+                                                                            {$orderdata.paper_size_long}{$orderdata.paper_size_unit}*{$orderdata.paper_size_wide}{$orderdata.paper_size_unit}</h3>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                        <td>{$orderdata.print_num}</td>
+                                                        <td>
+                                                            {switch name="$orderdata.order_status" }
+                                                            {case value="0"}
+                                                            <button class="layui-btn layui-btn-sm">新提交</button>
+                                                            {/case}
+                                                            {case value="1"}
+                                                            <button class="layui-btn layui-btn-danger layui-btn-sm"> 已核实
+                                                            </button>
+                                                            {/case}
+                                                            {case value="2"}
+                                                            <button class="layui-btn layui-btn-danger layui-btn-sm">设计中
+                                                            </button>
+                                                            {/case}
+                                                            {case value="3"}
+                                                            <button class="layui-btn layui-btn-warm layui-btn-sm">设计结束
+                                                            </button>
+                                                            {/case}
+                                                            {case value="4"}
+                                                            <button class="layui-btn layui-btn-sm">已完成</button>
+                                                            {/case}
+                                                            {/switch}
+                                                        </td>
+                                                        <td><a href="#" class="layui-btn  layui-btn-xs"
+                                                               target="_blank">再下一单</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                {/foreach}
+                                            {else/}
+                                            暂无数据
+                                            {/if}
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--新提交-->
+                                <div class="layui-tab-item">
+                                    {if condition="isset($new)"}
+                                    {foreach name='new' id='newdata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #ebfdfb;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$newdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$newdata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td><img src="/home/uploads/{$newdata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$newdata.template_title}</div>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$newdata.paper_size_long}{$newdata.paper_size_unit}*{$newdata.paper_size_wide}{$newdata.paper_size_unit}</h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$newdata.print_num}</td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-normal layui-btn-sm">新提交</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">继续设计</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if} </div>
+
+                                <!--核实-->
+                                <div class="layui-tab-item">
+                                    {if condition="isset($verify)"}
+                                    {foreach name='verify' id='verifydata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #fff1ec;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$verifydata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$verifydata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td><img src="/home/uploads/{$verifydata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$verifydata.template_title}</div>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$verifydata.paper_size_long}{$verifydata.paper_size_unit}*{$verifydata.paper_size_wide}{$verifydata.paper_size_unit}
+                                                            </h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$verifydata.print_num}</td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-danger layui-btn-sm">已核实</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">去付款</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if}
+                                </div>
+                                <div class="layui-tab-item">
+                                    <!--设计中-->
+                                    {if condition="isset($design)"}
+                                    {foreach name='design' id='designdata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #fff7e4;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$designdata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$designdata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td><img src="/home/uploads/{$designdata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$designdata.template_title}</div>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$designdata.paper_size_long}{$designdata.paper_size_unit}*{$designdata.paper_size_wide}{$designdata.paper_size_unit}
+                                                            </h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$designdata.print_num}</td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-warm layui-btn-sm">设计中</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">编辑追加</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if}
+
+
+                                </div>
+
+                                <div class="layui-tab-item">
+                                    <!--设计结束-->
+                                    {if condition="isset($designend)"}
+                                    {foreach name='designend' id='designenddata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #EAF8FF;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$designenddata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$designenddata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td><img src="/home/uploads/{$designenddata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$designenddata.template_title}
+                                                            </div>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$designenddata.paper_size_long}{$designenddata.paper_size_unit}*{$designenddata.paper_size_wide}{$designenddata.paper_size_unit}
+                                                            </h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$designenddata.print_num}</td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-sm">设计结束</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if}
+                                </div>
+                                <!--已完成end-->
+                                <div class="layui-tab-item">
+                                    <!--设计结束-->
+                                    {if condition="isset($End)"}
+                                    {foreach name='End' id='enddata'}
+                                    <table id="Order_tbody" class="layui-table" lay-skin="line" style="height: 260px">
+                                        <colgroup>
+                                            <col width="50">
+                                            <col width="200">
+                                            <col width="200">
+                                            <col width="200">
+                                        </colgroup>
+                                        <thead>
+                                        <tr style="background: #EAF8FF;">
+                                            <th style="text-align: left;padding:0 20px;height: 30px">
+                                                {$enddata.create_time|date="y-m-d:H-i-s",###}　　　订单号：{$enddata.order_no}
+                                            </th>
+                                            <th>打印数量</th>
+                                            <th>订单状态</th>
+                                            <th>交易操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr style="height: 190px">
+                                            <td>
+                                                <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
+                                                    <tbody>
+                                                    <tr style="height: 190px">
+                                                        <td><img src="/home/uploads/{$designenddata.img}"></td>
+                                                        <td>
+                                                            <div class="order_title">{$enddata.template_title}</div>
+                                                            <h2>纸张尺寸</h2>
+                                                            <h3>
+                                                                {$enddata.paper_size_long}{$enddata.paper_size_unit}*{$enddata.paper_size_wide}{$enddata.paper_size_unit}
+                                                            </h3>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td>{$enddata.print_num}</td>
+                                            <td>
+                                                <button class="layui-btn layui-btn-sm">已完成</button>
+                                            </td>
+                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    {/foreach}
+                                    {else/}
+                                    暂无数据
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="clear"></div>
+            </div>
+    </div>
+            <!--订单中心结束-->
+
+        </div>
+        <!--主体区域end-->
+    </div>
+</div>
+
+
+<script src="__STATIC__/home/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', 'upload'], function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#txsc'
+            , url: '/index.php/member/userconter/imf'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#touxiang').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('如果上传失败');
+                }
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#excel'
+            , url: '/index.php/member/userconter/img'
+            , accept: 'file' //普通文件
+            , done: function (res) {
+                console.log(res)
+            }
+        });
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , pass: [
+                /^[\S]{6,12}$/
+                , '密码必须6到12位，且不能出现空格'
+            ]
+            , content: function (value) {
+                layedit.sync(editIndex);
+            }
+        });
+    });
+</script>
+<script>
+
+    $("#sheng").change(function () {
+        var sheng = $('#sheng').val();
+        $.ajax({
+            type: 'post',
+            url: '__URL__/shi',
+            data: 'shi=' + $('#sheng').val(),
+            dataType: "json",
+            success: function (data) {
+                var option = "", shi = '';
+                document.getElementById("city").options.length = 0;
+                document.getElementById("city").add(new Option("请选择城市", ""));
+                document.getElementById("qu").options.length = 0;
+                document.getElementById("qu").add(new Option("请选择区", ""));
+                document.getElementById("jie").options.length = 0;
+                document.getElementById("jie").add(new Option("请选择街道", ""));
+                for (var i = 0; i < data.length; i++) {
+                    if (shi == '') shi = data[i];
+
+                    option += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
+                }
+                $("#city").append(option);
+                set_qu(sheng, shi);
+            }
+        })
+        $("#city").change(function () {
+            var sheng = $('#sheng').val();
+            var shi = this.value;
+            set_qu(sheng, shi);
+
+        })
+
+        function set_qu(sheng, shi) {
+
+            $.ajax({
+                type: 'post',
+                url: '__URL__/shi',
+                data: {'shi': sheng, 'shi': shi},
+                dataType: "json",
+                success: function (data) {
+                    document.getElementById("qu").options.length = 0;
+                    document.getElementById("qu").add(new Option("请选择区", ""));
+                    document.getElementById("jie").options.length = 0;
+                    document.getElementById("jie").add(new Option("请选择街道", ""));
+                    var html = "";
+                    for (i = 0; i < data.length; i++) {
+                        html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
+                    }
+                    $('#qu').append(html);
+                }
+            })
+        }
+
+        $("#qu").change(function () {
+            var shi = $('#qu').val();
+            var shi = this.value;
+            set_qu1(shi);
+
+        })
+
+        function set_qu1(shi) {
+
+            $.ajax({
+                type: 'post',
+                url: '__URL__/shi',
+                data: {'shi': shi},
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    document.getElementById("jie").options.length = 0;
+                    document.getElementById("jie").add(new Option("请选择街道", ""));
+                    for (i = 0; i < data.length; i++) {
+                        html += "<option value='" + data[i]['area_code'] + "'>" + data[i]['area_name'] + "</option>";
+                    }
+                    $('#jie').append(html);
+                }
+            })
+        }
+    })</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

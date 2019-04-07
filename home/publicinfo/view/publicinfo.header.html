@@ -20,7 +20,7 @@
                     <div class="avatar-container-30">
                         {if condition="!empty($Think.session.userimg)"}
                         <a href="/index.php/member/userconter/index" class="user-list">
-                            <img class="layui-upload-img" src="/home/uploads/{$Think.session.userimg}" title="{$Think.session.username}"  alt="{$Think.session.username}">
+                            <img class="layui-upload-img" src="__STATIC__/{$Think.session.userimg}" title="{$Think.session.username}"  alt="{$Think.session.username}">
                         </a>
                         {else/}
                         <a href="/index.php/member/userconter/index" class="user-list">

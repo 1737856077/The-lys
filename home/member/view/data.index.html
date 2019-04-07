@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script type="text/javascript" src="__STATIC__/home/js/jquery-1.8.0.min.js"></script>
+    <style>
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input {
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+{include file="publicinfo@publicinfo/header" /}
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-tab">
+        {include file="member@userconter/menu" menutype="userinfo" /}
+
+        <!--主体区域-->
+
+
+
+            <!--数据表开始-->
+        <div class="layui-tab-content layui-body">
+            <div class="layui-tab-item layui-show">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">共有 <b style="color: red">{$n.0.id}</b> 份数据表</div>
+                        <div class="data_leading"><a href="javascript:void(0)" class="layui-btn click_pop"><i
+                                class="lusheji lusheji_iconcaozuo-shangchuan-upload"></i>导入EXCEL</a></div>
+                        <!--遮罩层-->
+                        <div class="bgPop"></div>
+                        <!--弹出框-->
+                        <div class="pop">
+                            <div class="pop-top">
+                                <h2>数据表导入</h2>
+                                <span class="pop-close"><i class="lusheji lusheji_iconclose-b"
+                                                           style="font-size: 40px;color: #000;"></i></span>
+                            </div>
+                            <div class="pop-content">
+                                <div class="pop-content-right">
+                                    <div class="layui-form-item">请下载数据表模板，按照要求上传文件，默认只导入第一张工作表的内容。</div>
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <button type="button" class="layui-btn" id="excel"><i
+                                                    class="layui-icon"></i>上传文件
+                                            </button>
+                                        </div>
+                                        <div class="layui-form-item"><a href="#"><i
+                                                class="lusheji lusheji_iconxiazai"></i>下载数据表模板</a></div>
+                                        <div class="layui-form-item">
+                                            <button class="layui-btn"
+                                                    style="position: absolute;bottom: 50px;right: 50px;" lay-submit
+                                                    lay-filter="formDemo">保存
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $('.pop-close').click(function () {
+                                    $('.bgPop,.pop').hide();
+                                });
+                                $('.click_pop').click(function () {
+                                    $('.bgPop,.pop').show();
+                                });
+                            })
+
+                        </script>
+                        <a href="__STATIC__/home/data.html">
+                            <div class="yun_data_box_add"><i class="layui-icon">&#xe654;</i>添加新的数据表</div>
+                        </a>
+
+                        <div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>默认数据库</div>
+                        {foreach name='databases' id='databases'}
+                        <div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>{$databases.title}</div>
+                        {/foreach}
+                    </div>
+
+                    <div class="clear"></div>
+                    <div id="laypage88" style="text-align: center;">
+                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+                            <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+                            <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+                            <a href="javascript:;" data-page="2">2</a>
+                            <a href="javascript:;" data-page="3">3</a>
+                            <a href="javascript:;" data-page="4">4</a>
+                            <a href="javascript:;" data-page="5">5</a>
+                            <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--数据表结束-->
+
+
+        </div>
+        <!--主体区域end-->
+    </div>
+</div>
+
+
+<script src="__STATIC__/home/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', 'upload'], function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#txsc'
+            , url: '/index.php/member/userconter/imf'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#touxiang').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('如果上传失败');
+                }
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '#excel'
+            , url: '/index.php/member/userconter/img'
+            , accept: 'file' //普通文件
+            , done: function (res) {
+                console.log(res)
+            }
+        });
+        //自定义验证规则
+        form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , pass: [
+                /^[\S]{6,12}$/
+                , '密码必须6到12位，且不能出现空格'
+            ]
+            , content: function (value) {
+                layedit.sync(editIndex);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

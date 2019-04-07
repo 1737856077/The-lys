@@ -1,0 +1,36 @@
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <div class="header-box ft">
+
+            {if condition="!empty($Think.session.userimg)"}
+            <img class="layui-upload-img" src="__STATIC__/{$Think.session.userimg}}"  alt="{$Think.session.username}" title="{$Think.session.username}">
+            {else/}
+            <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg"  title="{$Think.session.username}" alt="{$Think.session.username}">
+            {/if}
+            <div class="header-info">
+                <span class="header-name">{$Think.session.username}</span>
+            </div>
+            <div class="line"></div>
+        </div>
+        <ul class="layui-nav layui-nav-tree layui-tab-title">
+            <a href="/index.php/member/userconter/index">
+            <li name="#Setup" class="layui-nav-item {if '[menutype]' eq 'userinfo'}layui-this{/if}">
+                <i class="lusheji lusheji_iconziliao"></i>资料设置
+            </li>
+            </a>
+            <a href="/index.php/member/templates/index">
+            <li name="#Template" class="layui-nav-item {if '[menutype]' eq 'templates'}layui-this{/if}" >
+                <i class="lusheji lusheji_icontemplate-library"></i>模板管理
+            </li>
+            </a>
+            <a href="/index.php/member/order/index">
+            <li name="#Order" class="layui-nav-item {if '[menutype]' eq 'order'}layui-this{/if}">
+                <i class="lusheji lusheji_icondingdan"></i>订单中心</li>
+            </a>
+            <a href="/index.php/member/data/index">
+            <li name="#Data" class="layui-nav-item {if '[menutype]' eq 'database'}layui-this{/if}">
+                <i class="lusheji lusheji_icontuiguang"></i>数据表</li>
+            </a>
+        </ul>
+    </div>
+</div>
