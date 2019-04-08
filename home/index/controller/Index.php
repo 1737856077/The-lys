@@ -55,8 +55,8 @@ class Index extends  CommonBaseHome
 
         foreach($New as $k=>$value){
             $UserNamess = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
-            $News[$k]['username']=isset($UserNamess[0]['name'])?$UserNamess[0]['name']:'';
-            $News= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
+            $New[$k]['username']=isset($UserNamess[0]['name'])?$UserNamess[0]['name']:'';
+            $News = Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
             $New[$k]['paper_size_long']=isset($News['paper_size_long'])?$News['paper_size_long']:'';
             $New[$k]['paper_size_wide']=isset($News['paper_size_wide'])?$News['paper_size_wide']:'';
             $New[$k]['paper_size_unit']=isset($News['paper_size_unit'])?$News['paper_size_unit']:'';
@@ -79,27 +79,11 @@ class Index extends  CommonBaseHome
             $Popular[$k]['lable_size_unit']=isset($Populars['lable_size_unit'])?$Populars['lable_size_unit']:'';
 
         }
-        //综合排序
-        $cas = Db::name('template')->where('data_type',0)->where('data_status',1)->order('show_nums+get_nums desc')->select();;
-
-        foreach($cas as $k=>$value){
-            //插入模板详细内容
-            $cass= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-            $UserName = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
-            $cas[$k]['username']=isset($UserName[0]['name'])?$UserName[0]['name']:'';
-            $cas[$k]['paper_size_long']=isset($cass['paper_size_long'])?$cass['paper_size_long']:'';
-            $cas[$k]['paper_size_wide']=isset($cass['paper_size_wide'])?$cass['paper_size_wide']:'';
-            $cas[$k]['paper_size_unit']=isset($cass['paper_size_unit'])?$cass['paper_size_unit']:'';
-            $cas[$k]['lable_size_wide']=isset($cass['lable_size_wide'])?$cass['lable_size_wide']:'';
-            $cas[$k]['lable_size_height']=isset($cass['lable_size_height'])?$cass['lable_size_height']:'';
-            $cas[$k]['lable_size_unit']=isset($cass['lable_size_unit'])?$cass['lable_size_unit']:'';
-        }
         $this->assign(
             [
                 'MemberData'=>$MemberData,
                 'New' => $New,
                 'Popular' => $Popular,
-                'cas' => $cas
             ]
         );
         return $this->fetch();

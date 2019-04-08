@@ -17,10 +17,35 @@ use think\Db;
 use think\Session;
 use app\common\controller\CommonBaseHome;
 use think\view\driver\Think;
+use think\paginator\driver\Bootstrap;
 
 class Home extends CommonBaseHome
 {
-    //默认数据
+    /**
+     * @数据分页
+     */
+    public $url;
+    public function page($data, $name, $page, $listRow = '')
+    {
+        if (!is_array($data) || empty($data) || empty($name) || empty($page)) {
+            return false;
+        }
+        if (empty($listRow)) {
+            $listRow = intval(config('paginate')['list_rows']);
+        }
+
+        $curPage = input('page') ? input('page') : 1;
+        $showData = array_slice($data, ($curPage - 1) * $listRow, $listRow, true);
+        $p = Bootstrap::make($showData, $listRow, $curPage, count($data), false, ['var_page' => 'page', 'path' => url($this->url), 'fragment' => '',]);
+
+        $p->appends($_GET);
+        $this->assign($name, $p);
+        $this->assign($page, $p->render());
+    }
+
+    /**
+     * @默认数据
+     */
     public function _initialize()
     {
         parent::_initialize();
@@ -46,7 +71,9 @@ class Home extends CommonBaseHome
         $this->assign('getoneWebConfigComm', $getoneWebConfigComm);
     }
 
-    //首页
+    /**
+     * @首页
+     */
     public function index()
     {
 
@@ -73,7 +100,9 @@ class Home extends CommonBaseHome
         return $this->fetch();
     }
 
-    //点击栏目筛选 栏目查模板
+    /**
+     * @筛选栏目
+     */
     public function chaxuns()
     {
         //点击栏目查询
@@ -101,7 +130,9 @@ class Home extends CommonBaseHome
 
     }
 
-    //详情页数据 模板查内容
+    /**
+     * @模板详情
+     */
     public function bianji()
     {
         //模板数据
@@ -110,14 +141,16 @@ class Home extends CommonBaseHome
         return json($data);
     }
 
-    //搜索功能 模糊搜索
+    /**
+     * @搜索
+     */
     public function ss()
     {
         //模糊搜索
         $value = input('value');
         if ($value) {
             $map['title'] = ['like', '%' . $value . '%'];
-            $searchres = db('template ')->where($map)->where('data_type', 0)->order('template_id desc')->select();
+            $searchres = db('template ')->where($map)->where('data_type', 0)->where('data_status',1)->order('template_id desc')->select();
             foreach ($searchres as $k => $value) {
                 $UserNamess = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
                 $searchres[$k]['username']=isset($UserNamess[0]['name'])?$UserNamess[0]['name']:'';
@@ -130,11 +163,14 @@ class Home extends CommonBaseHome
                 $searchres[$k]['lable_size_unit'] = isset($Popularss[0]['lable_size_unit']) ? $Popularss[0]['lable_size_unit'] : '';
             }
             $MemberModel = Db::name('member');
-
             $MemberData = $MemberModel->where('member_id',Session::get('memberid'))->find();//用户信息
-            $this->assign('datas', $searchres);
+            if ($searchres){
+            $this->page($searchres,'datas','page',4);
             $this->assign('MemberData', $MemberData);
-            return $this->fetch();
+            return $this->fetch();}else{
+                $this->assign('NoData','无数据');
+                return $this->fetch();
+            }
         }else{
             $this->assign('NoData','无数据');
             return $this->fetch();

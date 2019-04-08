@@ -191,16 +191,16 @@
 
         <div class="muban_list">
             <ul>
-                {foreach name='cas' id='data'}
+                {foreach name='New' id='NewData'}
                 <li>
                     <a href="#" target="_blank">
                         <div class="imgBox">
-                            <img width="260px" height="220px" src="{if $data.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$data.img}{/if}">
+                            <img width="260px" height="220px" src="{if $NewData.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$NewData.img}{/if}">
                         </div>
                     </a>
                     <div class="interactive-box">
                         <a href="#" target="_blank">
-                            <h2>{$data.title}</h2>
+                            <h2>{$NewData.title}</h2>
                         </a>
                         <div class="data-box">
                             <div class="data-view">
@@ -212,9 +212,9 @@
                                                                     alt="{$MemberData.username}"></a>　{$MemberData.username}</span>
                             </div>
                             <div class="data-like">
-                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span>
-                                <br><span>{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</span>
-                                <br><span>被获取打印<b style="color: #FF6262">{$data.get_nums}</b>次</span>
+                                <span>{$NewData.paper_size_long}{$NewData.paper_size_unit}*{$NewData.paper_size_wide}{$NewData.paper_size_unit}</span>
+                                <br><span>{$NewData.lable_size_wide}{$NewData.paper_size_unit}*{$NewData.lable_size_height}{$NewData.paper_size_unit}</span>
+                                <br><span>被获取打印<b style="color: #FF6262">{$NewData.get_nums}</b>次</span>
                             </div>
                         </div>
                     </div>

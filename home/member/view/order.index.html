@@ -92,7 +92,7 @@
                                                             <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                                 <tbody>
                                                                 <tr style="height: 190px">
-                                                                    <td><img src="/home/uploads/{$orderdata.img}"></td>
+                                                                    <td><img src="{if $orderdata.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$orderdata.img}{/if}"></td>
                                                                     <td>
                                                                         <div class="order_title">
                                                                             {$orderdata.template_title}
@@ -169,7 +169,7 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td><img src="/home/uploads/{$newdata.img}"></td>
+                                                        <td><img src="{if $newdata.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$newdata.img}{/if}"></td>
                                                         <td>
                                                             <div class="order_title">{$newdata.template_title}</div>
                                                             <h2>纸张尺寸</h2>
@@ -221,7 +221,7 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td><img src="/home/uploads/{$verifydata.img}"></td>
+                                                        <td><img src="{if $verifydata.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$verifydata.img}{/if}"></td>
                                                         <td>
                                                             <div class="order_title">{$verifydata.template_title}</div>
                                                             <h2>纸张尺寸</h2>
@@ -273,7 +273,7 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td><img src="/home/uploads/{$designdata.img}"></td>
+                                                        <td><img src="{if $designdata.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$designdata.img}{/if}"></td>
                                                         <td>
                                                             <div class="order_title">{$designdata.template_title}</div>
                                                             <h2>纸张尺寸</h2>
@@ -329,7 +329,7 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td><img src="/home/uploads/{$designenddata.img}"></td>
+                                                        <td><img src="{if $designenddata.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$designenddata.img}{/if}"></td>
                                                         <td>
                                                             <div class="order_title">{$designenddata.template_title}
                                                             </div>
@@ -384,7 +384,7 @@
                                                 <table id="Order_tbody2" lay-skin="nob" style="height: 190px">
                                                     <tbody>
                                                     <tr style="height: 190px">
-                                                        <td><img src="/home/uploads/{$designenddata.img}"></td>
+                                                        <td><img src="{if $enddata.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$enddata.img}{/if}"></td>
                                                         <td>
                                                             <div class="order_title">{$enddata.template_title}</div>
                                                             <h2>纸张尺寸</h2>

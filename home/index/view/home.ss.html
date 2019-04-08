@@ -48,8 +48,7 @@
 
                             <a href="#" target="_blank">
                                 <div class="imgBox">
-                                    <a href="/index.php/index/templates/content/template_id/{$datad.template_id}"> <img width="260px" height="220px" src="/home/uploads/{$datad.img}"></a>
-
+                                    <img width="260px" height="220px" src="{if $datad.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$datad}{/if}">
                                 </div>
                             </a>
                             <div class="interactive-box">
@@ -60,7 +59,7 @@
                                     <div class="data-view">
                                         <span>纸张尺寸</span>
                                         <br><span> 标签尺寸</span>
-                                        <br><span><a class="user-list"><img src="/home/uploads/{$datad.img}" title="{$MemberData.username}" alt="{$MemberData.username}"></a>　{$MemberData.username}</span>
+                                        <br><span><a class="user-list"><img src="{if $MemberData.img == ''}__STATIC__/home/images/user_default.jpg{else/}__STATIC__/{$MemberData.img}{/if}" title="{$MemberData.username}" alt="{$MemberData.username}"></a>　{$MemberData.username}</span>
                                     </div>
                                     <div class="datad-like">
                                         <span>{$datad.paper_size_long}{$datad.paper_size_unit}*{$datad.paper_size_wide}{$datad.paper_size_unit}</span>
@@ -79,14 +78,7 @@
                 {if condition="isset($datas) eq true"}
                 <div id="laypage88" style="text-align: center;">
                     <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
-                        <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
-                        <span class="layui-laypage-curr">
-      <em class="layui-laypage-em"></em><em>1</em></span>
-                        <a href="javascript:;" data-page="2">2</a>
-                        <a href="javascript:;" data-page="3">3</a>
-                        <a href="javascript:;" data-page="4">4</a>
-                        <a href="javascript:;" data-page="5">5</a>
-                        <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+                        {$page}
                     </div>
                 </div>
                 {else/}
