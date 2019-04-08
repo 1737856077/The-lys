@@ -94,7 +94,6 @@ class Index extends  CommonBaseHome
             $cas[$k]['lable_size_height']=isset($cass['lable_size_height'])?$cass['lable_size_height']:'';
             $cas[$k]['lable_size_unit']=isset($cass['lable_size_unit'])?$cass['lable_size_unit']:'';
         }
-
         $this->assign(
             [
                 'MemberData'=>$MemberData,

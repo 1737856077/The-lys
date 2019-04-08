@@ -138,9 +138,15 @@ class Userconter extends CommonBase
                 $Popular[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
             }
             $this->orders();*/
+            $DistrictModel = Db::name('region');
+            $Place = $DistrictModel->where('area_code',$data[0]['district'])->field('area_name,area_parent_id')->find();
+            $si  = $DistrictModel->where('area_code',$Place['area_parent_id'])->field('area_name,area_parent_id')->find();
+            $s = $DistrictModel->where('area_code',$si['area_parent_id'])->field('area_name,area_parent_id')->find();
+            $Place = $s['area_name']."-".$si['area_name']."-".$Place['area_name'];
             $this->assign([
                 //'newtemplate' => $newtemplate,
                 //'template' => $Popular,
+                "place"=>$Place,
                 'data' => $data,
                 'industry' => $industry,
                 'title' => $title,
@@ -150,59 +156,6 @@ class Userconter extends CommonBase
         //}
         return $this->fetch();
     }
-
-    /**
-     * 订单查找
-     */
-    public function SeekTemplate()
-    {
-        $param = $this->request->param();
-        $Member_Id = Session::get('memberid');
-        $order = $param['order'];
-        $map['template_title'] = ['like', '%' . $order . '%'
-            ,
-            'member_id' => $Member_Id,
-        ];
-        $TemplateModel = Db::name('order');
-        $data = $TemplateModel->where($map)->select();
-        //订单模板详情
-        foreach ($data as $k => $value) {
-            $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-            $data[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
-            $data[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
-            $data[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
-            $data[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
-            $data[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
-            $data[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
-        }
-        if (!empty($data)) {
-            $data = json($data);
-            return $data;
-        }
-        if (empty($data)) {
-            $maps['order_no'] = ['like', '%' . $order . '%'];
-            $data = $TemplateModel->where($maps)->select();
-            foreach ($data as $k => $value) {
-                $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-                $data[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
-                $data[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
-                $data[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
-                $data[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
-                $data[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
-                $data[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
-            }
-            if (empty($data)) {
-                $data = [
-                    'Status' => 1,
-                    'code' => 200,
-                    'msg' => '没有数据'
-                ];
-                return json($data);
-            }
-            return json($data);
-        }
-    }
-
     /**
      * 市区保存
      */
@@ -234,9 +187,11 @@ class Userconter extends CommonBase
             $info = $file->validate([
                 'size' => 9048576,
                 'ext' => 'jpeg,jpg,png,bmp'
-            ])->move('home/uploads/');
+            ])->move("static/uploads/");
+
             if ($info) {
                 $datas['img'] = $info->getSaveName();//头像
+
             } else {
                 $this->error($file->getError());
             }
@@ -282,6 +237,10 @@ class Userconter extends CommonBase
         }
         $datas['update_time'] = time();
         $result = Db::name('member')->where('member_id', $id)->update($datas);
+        $member_id = Session::get('memberid');
+           Session::delete('userimg');
+        $MemberData = Db::name('member')->where('member_id',$member_id)->find();
+        Session::set('userimg',$MemberData['img'] );
         if ($result == true) {
             $this->success('更新成功', '/index.php/member/userconter/index');
         }

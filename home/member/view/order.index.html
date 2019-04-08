@@ -42,7 +42,7 @@
                     <div class="box-center">
                         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                             <ul class="layui-tab-title tab_tatle">
-                                <li class="layui-this"><p class="Order1">全部订单</p></li>
+                                <li class="layui-this"><p class="Order1"><a href="/index.php/member/order/index">全部订单</a></p></li>
                                 <li><p class="Order1">新提交</p></li>
                                 <li><p class="Order1">已核实</p></li>
                                 <li><p class="Order1">设计中</p></li>
@@ -51,10 +51,10 @@
                             </ul>
                             <div style="width: 600px;    margin-top: 20px;">
                                 <div id="search">
-                                    <form id="seek" class="seek" action="">
+                                    <form id="seek" method="post" class="seek" action="/index.php/member/order/SeekTemplate">
                                         <input class="user_search_k" id="value" type="text" name="order"
-                                               value="请输入标签名称或订单号查询">
-                                        <input class="user_search_b" type="button" onclick="login()" id="select"
+                                               value="" placeholder="请输入标签名称或订单号查询">
+                                        <input class="user_search_b" type="submit"  id="select"
                                                value="搜索">
                                     </form>
                                 </div>
