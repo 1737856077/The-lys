@@ -21,7 +21,7 @@ use Traversable;
 abstract class Paginator implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable
 {
     /** @var bool 是否为简洁模式 */
-    protected $simple = false;
+    protected $simple = true;
 
     /** @var Collection 数据集 */
     protected $items;

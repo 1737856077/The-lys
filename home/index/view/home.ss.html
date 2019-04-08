@@ -42,6 +42,7 @@
                 </div>
                 <div class="muban_list">
                     <ul>
+                        {if condition="isset($datas) eq true"}
                         {foreach name='datas' id='datad'}
                         <li>
 
@@ -70,11 +71,12 @@
                             </div>
                         </li>
                         {/foreach}
-
-
+                        {else/}
+                               <h2>  {$NoData}</h2>
+                        {/if}
                     </ul>
                 </div>
-
+                {if condition="isset($datas) eq true"}
                 <div id="laypage88" style="text-align: center;">
                     <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
                         <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
@@ -87,7 +89,8 @@
                         <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
                     </div>
                 </div>
-
+                {else/}
+                {/if}
             </div>
         </div>
     </div>
@@ -113,7 +116,6 @@
 ©lusheji.com, powered by lusheji Team。
 </span>
                 </div>
-
                 <div class="rt">
                     <div class="bottom_logo clearfix">
                         <div class="fl footer-logo-box">
@@ -144,7 +146,6 @@ XXX省XX市XX路XX有限公司
                         ,height: '359px'
                         ,interval: 3000
                     });
-
                 });
             </script>
 

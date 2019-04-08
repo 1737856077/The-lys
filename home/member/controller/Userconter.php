@@ -17,6 +17,7 @@ use think\Session;
 use app\member\controller\Data;
 use think\Paginator;
 use app\common\controller\CommonBase;
+
 class Userconter extends CommonBase
 {
     public function _initialize()
@@ -39,123 +40,23 @@ class Userconter extends CommonBase
         $industryid = $data[0]['industry_id'];
         $industry = Db::name('system_config')->where('id', $industryid)->field('title')->find();
         $title = Db::name('system_config')->field('title,id')->select();
-        //$orders = Db::name('member')->where('member_id', $id)->select();
-        //if (isset($orders[0]['district'])) {
-            /*$order = $orders[0]['district'];
-            $regions = Db::name('region')->where('area_code', $order)->select();
-            $regionss = $regions[0]['area_parent_id'];
-            $regionss = Db::name('region')->where('area_code', $regionss)->select();
-            $regionsss = $regionss[0]['area_parent_id'];
-            $regionsss = Db::name('region')->where('area_code', $regionsss)->select();
-            //查看数据库
-            $databases = Db::name('custom_database')->where('member_id', $id)->select();
-            $n = Db::name('custom_database')->where('member_id', $id)->field('count(member_id) id')->select();
-            $this->assign('databases', $databases);
-            $this->assign('n', $n);*/
+        $region = Db::name('region')->where('area_type', 2)->field('area_name,area_code')->select();
+        $DistrictModel = Db::name('region');
+        $Place = $DistrictModel->where('area_code', $data[0]['district'])->field('area_name,area_parent_id')->find();
+        $si = $DistrictModel->where('area_code', $Place['area_parent_id'])->field('area_name,area_parent_id')->find();
+        $s = $DistrictModel->where('area_code', $si['area_parent_id'])->field('area_name,area_parent_id')->find();
+        $Place = $s['area_name'] . "-" . $si['area_name'] . "-" . $Place['area_name'];
+        $this->assign([
+            "place" => $Place,
+            'data' => $data,
+            'industry' => $industry,
+            'title' => $title,
+            'region' => $region,
 
-            /*//查询本会员的个人模板
-            $checkorder = Db::name('template');
-            $Popular = $checkorder->where('member_id', $id)->where('data_type', 1)->select();
-
-            foreach ($Popular as $k => $value) {
-                $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-                $Popular[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
-                $Popular[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
-                $Popular[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
-                $Popular[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
-                $Popular[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
-                $Popular[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
-            }
-
-            //最新模板
-            $newtemplate = Db::name('template')
-                ->where('member_id', $id)
-                ->where('data_type', 1)
-                ->order('create_time desc')
-                ->limit(4)
-                ->select();
-            foreach ($newtemplate as $k => $value) {
-                $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-                $newtemplate[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
-                $newtemplate[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
-                $newtemplate[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
-                $newtemplate[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
-                $newtemplate[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
-                $newtemplate[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
-            }*/
-
-            /*$this->orders();
-            $order = $regionsss[0]['area_name'] . '-' . $regionss[0]['area_name'] . '-' . $regions[0]['area_name'];
-            */
-            $region = Db::name('region')->where('area_type', 2)->field('area_name,area_code')->select();
-            /*unset($title[0]);
-            unset($title[1]);*/
-            //$this->assign([
-                //'newtemplate' => $newtemplate,
-                //'template' => $Popular,
-                //'order' => $order,
-                //'data' => $data,
-                //'industry' => $industry,
-                //'title' => $title,
-                //'region' => $region,
-                //'order' => $order,
-           // ]);
-       // } else {
-            /*//查看数据库
-            $databases = Db::name('custom_database')->where('member_id', $id)->select();
-            $n = Db::name('custom_database')->where('member_id', $id)->field('count(member_id) id')->select();
-            $this->assign('databases', $databases);
-            $this->assign('n', $n);
-            $this->orders();
-            $checkorder = Db::name('template ');
-            $region = Db::name('region')->where('area_type', 2)->field('area_name,area_code')->select();
-
-            $newtemplate = Db::name('template')
-                ->where('member_id', $id)
-                ->where('data_type', 1)
-                ->order('create_time desc')
-                ->limit(4)
-                ->select();
-            foreach ($newtemplate as $k => $value) {
-                $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-                $newtemplate[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
-                $newtemplate[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
-                $newtemplate[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
-                $newtemplate[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
-                $newtemplate[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
-                $newtemplate[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
-            }
-            $checkorder = Db::name('template');
-            $Popular = $checkorder->where('member_id', $id)->where('data_type', 1)->select();
-
-            foreach ($Popular as $k => $value) {
-                $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-                $Popular[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
-                $Popular[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
-                $Popular[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
-                $Popular[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
-                $Popular[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height'])?$Populars[0]['lable_size_height'] : '';
-                $Popular[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
-            }
-            $this->orders();*/
-            $DistrictModel = Db::name('region');
-            $Place = $DistrictModel->where('area_code',$data[0]['district'])->field('area_name,area_parent_id')->find();
-            $si  = $DistrictModel->where('area_code',$Place['area_parent_id'])->field('area_name,area_parent_id')->find();
-            $s = $DistrictModel->where('area_code',$si['area_parent_id'])->field('area_name,area_parent_id')->find();
-            $Place = $s['area_name']."-".$si['area_name']."-".$Place['area_name'];
-            $this->assign([
-                //'newtemplate' => $newtemplate,
-                //'template' => $Popular,
-                "place"=>$Place,
-                'data' => $data,
-                'industry' => $industry,
-                'title' => $title,
-                'region' => $region,
-
-            ]);
-        //}
+        ]);
         return $this->fetch();
     }
+
     /**
      * 市区保存
      */
@@ -231,87 +132,22 @@ class Userconter extends CommonBase
             $datas['city'] = $data['city'];
             $datas['district'] = $data['qu'];
         }
-            $datas['sex'] = $data['sex'];
+        $datas['sex'] = $data['sex'];
         if (!empty($data['title'])) {
             $datas['industry_id'] = $data['title'];
         }
         $datas['update_time'] = time();
         $result = Db::name('member')->where('member_id', $id)->update($datas);
         $member_id = Session::get('memberid');
-           Session::delete('userimg');
-        $MemberData = Db::name('member')->where('member_id',$member_id)->find();
-        Session::set('userimg',$MemberData['img'] );
+        Session::delete('userimg');
+        $MemberData = Db::name('member')->where('member_id', $member_id)->find();
+        Session::set('userimg', $MemberData['img']);
         if ($result == true) {
             $this->success('更新成功', '/index.php/member/userconter/index');
         }
         $this->success('更新成功', '/index.php/member/userconter/index');
 
     }
-
-    /**
-     *  订单
-     * DEL:已删除，移植到了Order.php控制器中
-     */
-    /*public function orders()
-    {
-        $data = Session::get('memberid');
-
-        $member_id = isset($data) ? Session::get('memberid') : 0;
-        if ($member_id) {
-            $member = Db::name('order');
-            $template = Db::name('template');
-            $datas = $member->where('member_id', $member_id)->select();
-            $data = array();
-            foreach ($datas as $k => $v) {
-                $v['img'] = $template->where('template_id', $v['id'])->field('img')->find()['img'];
-                $data[] = $v;
-            }
-
-            $Ends = $member->where('member_id', $member_id)->where('order_status', 4)->select();//订单完成
-            $End = array();
-            foreach ($Ends as $k => $v) {
-                $v['img'] = $template->where('template_id', $v['id'])->field('img')->find()['img'];
-                $End[] = $v;
-            }
-            $desigends = $member->where('member_id', $member_id)->where('order_status', 3)->select();//设计结束
-            $desigend = array();
-            foreach ($desigends as $k => $v) {
-                $v['img'] = $template->where('template_id', $v['id'])->field('img')->find()['img'];
-                $desigend[] = $v;
-            }
-            $designs = $member->where('member_id', $member_id)->where('order_status', 2)->select();//设计中
-            $design = array();
-            foreach ($designs as $k => $v) {
-                $v['img'] = $template->where('template_id', $v['id'])->field('img')->find()['img'];
-                $design[] = $v;
-            }
-            $verifys = $member->where('member_id', $member_id)->where('order_status', 1)->select();//已核实
-            $verify = array();
-            foreach ($verifys as $k => $v) {
-                $v['img'] = $template->where('template_id', $v['id'])->field('img')->find()['img'];
-                $verify[] = $v;
-            }
-            $news = $member->where('member_id', $member_id)->where('order_status', 0)->select();//新提交
-            $new = array();
-            foreach ($news as $k => $v) {
-                $v['img'] = $template->where('template_id', $v['id'])->field('img')->find()['img'];
-                $new[] = $v;
-            }
-            if (!empty($data)) {
-                $this->assign([
-                    'orderdata' => $data,
-                    'new' => $new,
-                    'verify' => $verify,
-                    'design' => $design,
-                    'designend' => $desigend,
-                    'End' => $End
-                ]);
-
-            }
-        } else {
-            $this->error('错误');
-        }
-    }*/
 
     /**
      * 模板详情
@@ -506,7 +342,8 @@ class Userconter extends CommonBase
     /**
      * @desc:用户中心-左侧菜单
      */
-    public function menu(){
+    public function menu()
+    {
         return $this->fetch();
     }
 

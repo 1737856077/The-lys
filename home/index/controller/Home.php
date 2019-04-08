@@ -16,6 +16,7 @@ use think\Request;
 use think\Db;
 use think\Session;
 use app\common\controller\CommonBaseHome;
+use think\view\driver\Think;
 
 class Home extends CommonBaseHome
 {
@@ -133,6 +134,9 @@ class Home extends CommonBaseHome
             $MemberData = $MemberModel->where('member_id',Session::get('memberid'))->find();//用户信息
             $this->assign('datas', $searchres);
             $this->assign('MemberData', $MemberData);
+            return $this->fetch();
+        }else{
+            $this->assign('NoData','无数据');
             return $this->fetch();
         }
     }
