@@ -6,19 +6,21 @@ namespace app\admin\controller;
  * $Id:Admin.php 2018-04-05 13:50:00 $
  */
 
+use function PHPSTORM_META\map;
 use think\Controller;
 use think\View;
 use think\Request;
 use think\Db;
 use think\Session;
 use think\model;
-
+use app\common\controller\CommonPag;
 class Admin extends \app\common\controller\CommonAdmin
 {
     /**
      * @描述：管理员列表页面
      */
     public function index(){
+        $pag = new CommonPag();
         $Admin=Db::name('admin');
         $ModelSystemRole=Db::name('system_role');
 
@@ -28,9 +30,7 @@ class Admin extends \app\common\controller\CommonAdmin
             $_getoneSystemRole=$ModelSystemRole->where("role_id='$val[role_id]'")->find();
             $list[$key]['role_title']=$_getoneSystemRole['title'];
         }
-
-        $this->assign("list",$list);
-
+        $pag->page($list,'list','page',5);
         return $this->fetch();
     }
 

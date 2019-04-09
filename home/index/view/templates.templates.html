@@ -11,16 +11,7 @@
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
     <script src="__STATIC__/home/js/jquery-1.7.2.min.js"></script>
     <script src="__STATIC__/home/js/select.js"></script>
-    <script>
-        function huoqu() {
-            var DataA = $("#selectA").find('a').text()
-            var DataB =  $("#selectB").find('a').text()
-            var DataC = $("#selectC").find('a').text()
-            alert(DataA)
-            alert(DataB)
-            alert(DataC)
-        }
-    </script>
+
 </head>
 
 
@@ -68,9 +59,45 @@
             </ul>
         </div>
 
+        <script>
+            function huoqu() {
+                $(".xu").empty();
+                var  html=" {foreach name='Popular' id='data'}";
+                html+="  <li>";
+                html+=" <a href='#' target='_blank'>";
+                html+=" <div class='imgBox'>";
+                html+="<a href='/index.php/index/templates/content/template_id/{$data.template_id}'>";
+                html+=" <img width='260px' height='220px' src='{if $data.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$data.img}{/if}'>";
+                html+=" </a>";
+                html+="</div>";
+                html+="</a>";
+                html+=" <div class='interactive-box'>";
+                html+="  <a href='#' target='_blank'>";
+                html+=" <h2>{$data.title}</h2>";
+                html+=" </a>";
+                html+="<div class='data-box'>";
+                html+=" <div class='data-view'>";
+                html+="  <span>纸张尺寸</span>";
+                html+="<br><span> 标签尺寸</span>";
+                html+="  <br><span><a class='user-list'><img src='{if $data.img == ''}__STATIC__/home/images/user_default.jpg{else/}__STATIC__/{$data.img}{/if}'\n" +
+                    "                                                                    title='{$data.username}'\n" +
+                    "                                                                    alt='{$data.username}'></a>　{$data.username}</span>";
+                html+=" </div>\n" +
+                    "                            <div class='data-like'>\n" +
+                    "                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span>\n" +
+                    "                                <br><span>{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</span>\n" +
+                    "                                <br><span>被获取打印<b style='color: #FF6262'>{$data.get_nums}</b>次</span>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                    </div>\n" +
+                    "                </li>\n" +
+                    "                {/foreach}";
+                $(".xu").html(html);
 
+            }
+        </script>
         <div class="muban_list">
-            <ul>
+            <ul class="xu">
 
                 {foreach name='Popular' id='data'}
                 <li>
