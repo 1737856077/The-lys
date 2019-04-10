@@ -98,7 +98,7 @@ class Register extends CommonBaseHome
         Session::set('userimg', '');
         //添加日志 begin
         //添加日志 end
-        echo "<script language=\"javascript\">window.open('".url('member/index')."','_top');</script>";
+        echo "<script language=\"javascript\">window.open('".url('member/userconter/index')."','_top');</script>";
     }
 
     /**

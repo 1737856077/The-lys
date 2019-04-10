@@ -21,18 +21,14 @@
 <div id="wp" style="min-height:590px;">
     <div class="all-work-list">
 
-    <div class="screen">
+        <div class="screen">
             <ul class="select">
                 <li class="select-list">
                     <dl id="select1">
                         <dt>行业：</dt>
                         <dd class="select-all selected"><a href="javascript:">全部</a></dd>
                         {foreach name='listUsageScenarios' id='data'}
-                        <dd><a href="javascript:" onclick="hangye({
-                        hangye:'{$data.id}',
-                        cangjing:'' ,
-                        leixing:'',
-                        })" >{$data.title}</a></dd>
+                        <dd><a href="javascript:" onclick="req('IndustryId','{$data.id}')" >{$data.title}</a></dd>
                         {/foreach}
                     </dl>
                 </li>
@@ -41,11 +37,7 @@
                         <dt>场景：</dt>
                         <dd class="select-all selected"><a href="javascript:">全部</a></dd>
                         {foreach name='listIndustry' id='datas'}
-                        <dd><a href="javascript:" onclick="hangye({
-                        hangye:'',
-                        cangjing:'{$datas.id}' ,
-                        leixing:'',
-                        })">{$datas.title}</a></dd>
+                        <dd><a href="javascript:" onclick="req('UsageScenariosId','{$datas.id}')" >{$datas.title}</a></dd>
                         {/foreach}
                     </dl>
                 </li>
@@ -53,8 +45,8 @@
                     <dl id="select3">
                         <dt>条码类型：</dt>
                         <dd class="select-all selected"><a href="javascript:">全部</a></dd>
-                        {foreach name='ConfigTemplateCodeType' id='data'}
-                        <dd><a href="javascript:" onclick="huoqu()">{$data}</a></dd>
+                        {foreach name='ConfigTemplateCodeType' id='datass' key='key'}
+                        <dd><a href="javascript:" onclick="req('ConfigTemplateCodeTypeId','{$key} ')">{$datass}</a></dd>
                         {/foreach}
                     </dl>
                 </li>
@@ -66,74 +58,37 @@
                 </li>
             </ul>
         </div>
-
         <script>
-            function hangye(datas) {
-                // var url = window.location.href;
-                // url+="/?";
-                // window.location.href = url;
-         if (datas['hangye']!==''){
-                var hangye = datas['hangye']
-         } else {
+            function req(a,b) {
 
-         }
-                if (datas['cangjing']!==''){
-                    var usage_scenarios_id = datas['cangjing']
-                } else {
-    
-                }
-                alert()
-
-         // alert("/index.php/index/templates/chaxuns/industry/"+hangye+"/usage_scenarios_id/");
+                document.getElementById(a).setAttribute("value", b)
+                var IndustryId = $("#IndustryId").attr("value");
+                var UsageScenariosId = $("#UsageScenariosId").attr("value");
+                var ConfigTemplateCodeTypeId = $("#ConfigTemplateCodeTypeId").attr("value");
+                var a = ( !(IndustryId == "undefined" || IndustryId == null || IndustryId == ""))?("/IndustryId/"+IndustryId) : '';
+                var b = ( !(UsageScenariosId == "undefined" || UsageScenariosId == null || UsageScenariosId == ""))?("/UsageScenariosId/"+UsageScenariosId) : '';
+                var c = ( !(ConfigTemplateCodeTypeId == "undefined" || ConfigTemplateCodeTypeId == null || ConfigTemplateCodeTypeId == ""))?("/ConfigTemplateCodeTypeId/"+ConfigTemplateCodeTypeId) : '';
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: "/index.php/index/templates/chaxuns/industry/"+hangye+"/usage_scenarios_id/",
+                    url: "/index.php/index/templates/chaxuns"+a+b+c,
                     data: $('#form1').serialize(),
                     success: function (result) {
-                        alert(result)
+
                     },
                 });
             }
-
-
-
-            function huoqu() {
-                $(".xu").empty();
-                var  html=" {foreach name='Popular' id='data'}";
-                html+="  <li>";
-                html+=" <a href='#' target='_blank'>";
-                html+=" <div class='imgBox'>";
-                html+="<a href='/index.php/index/templates/content/template_id/{$data.template_id}'>";
-                html+=" <img width='260px' height='220px' src='{if $data.img == ''}__STATIC__/home/images/tpl_default.png{else/}__STATIC__/{$data.img}{/if}'>";
-                html+=" </a>";
-                html+="</div>";
-                html+="</a>";
-                html+=" <div class='interactive-box'>";
-                html+="  <a href='#' target='_blank'>";
-                html+=" <h2>{$data.title}</h2>";
-                html+=" </a>";
-                html+="<div class='data-box'>";
-                html+=" <div class='data-view'>";
-                html+="  <span>纸张尺寸</span>";
-                html+="<br><span> 标签尺寸</span>";
-                html+="  <br><span><a class='user-list'><img src='{if $data.img == ''}__STATIC__/home/images/user_default.jpg{else/}__STATIC__/{$data.img}{/if}'\n" +
-                    "                                                                    title='{$data.username}'\n" +
-                    "                                                                    alt='{$data.username}'></a>　{$data.username}</span>";
-                html+=" </div>\n" +
-                    "                            <div class='data-like'>\n" +
-                    "                                <span>{$data.paper_size_long}{$data.paper_size_unit}*{$data.paper_size_wide}{$data.paper_size_unit}</span>\n" +
-                    "                                <br><span>{$data.lable_size_wide}{$data.paper_size_unit}*{$data.lable_size_height}{$data.paper_size_unit}</span>\n" +
-                    "                                <br><span>被获取打印<b style='color: #FF6262'>{$data.get_nums}</b>次</span>\n" +
-                    "                            </div>\n" +
-                    "                        </div>\n" +
-                    "                    </div>\n" +
-                    "                </li>\n" +
-                    "                {/foreach}";
-                $(".xu").html(html);
-
+            // 移除筛选条件
+            function removeCondition(id) {
+                document.getElementById(id).setAttribute("value", null);
+                document.getElementById("conditionForm").submit();
             }
         </script>
+        <form action="/index.php/index/templates/chaxuns" id="ti" method="get">
+            <input type="hidden" name="IndustryId" id="IndustryId" class="IndustryId" value="">
+            <input type="hidden" name="UsageScenariosId" id="UsageScenariosId" class="UsageScenariosId" value="">
+            <input type="hidden" name="ConfigTemplateCodeTypeId" id="ConfigTemplateCodeTypeId" class="ConfigTemplateCodeTypeId" value="">
+        </form>
         <div class="muban_list">
             <ul class="xu">
                 {if condition="!empty($Popular)"}
@@ -168,15 +123,17 @@
                     </div>
                 </li>
                 {/foreach}
-                {/else}
+                {else/}
                 <p>无数据</p>
-                 {/if}
+                {/if}
             </ul>
         </div>
 
         <div id="laypage88" style="text-align: center;">
             <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7" style="width:100%;">
-               {$page}
+                {if condition="!empty($Popular)"}
+                {$page}
+                {/if}
             </div>
         </div>
 
@@ -184,22 +141,22 @@
 </div>
 
 {include file="publicinfo@publicinfo/footer" /}
-    <script src="__STATIC__/home/layui/layui.all.js"></script>
-    <script>
-        layui.use(['carousel', 'form'], function () {
-            var carousel = layui.carousel
-                , form = layui.form;
+<script src="__STATIC__/home/layui/layui.all.js"></script>
+<script>
+    layui.use(['carousel', 'form'], function () {
+        var carousel = layui.carousel
+            , form = layui.form;
 
-            //常规轮播
-            carousel.render({
-                elem: '#test1'
-                , width: '1200px'
-                , height: '359px'
-                , interval: 3000
-            });
-
+        //常规轮播
+        carousel.render({
+            elem: '#test1'
+            , width: '1200px'
+            , height: '359px'
+            , interval: 3000
         });
-    </script>
+
+    });
+</script>
 
 </body>
 </html>

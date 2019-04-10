@@ -109,6 +109,8 @@ class Index extends CommonBaseHome
             $Popular[$k]['lable_size_unit'] = isset($Populars[$k]['lable_size_unit']) ? $Populars[$k]['lable_size_unit'] : '';
 
         }
+        $New = array_slice($New,0,4);
+        $Popular = array_slice($Popular,0,4);
         $this->assign(
             [
                 'MemberData' => $MemberData,

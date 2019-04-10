@@ -153,26 +153,39 @@ class Templates extends CommonBaseHome
         //点击栏目查询
         $chaxun = Db::name('template');
         $param = $this->request->param();
-        dump($param);die();
+        //栏目id值
+        $IndustryId = isset($param['IndustryId'])?$param['IndustryId']:'';
+        $UsageScenariosId = isset($param['UsageScenariosId'])?$param['UsageScenariosId']:'';
+        $ConfigTemplateCodeTypeId = isset($param['ConfigTemplateCodeTypeId'])?$param['ConfigTemplateCodeTypeId']:'';
         $_where = " data_status=1 AND data_type=0";
         $where = array();
-        foreach ($param as $key => $value) {
-            $where[] = $_where .= " AND " . " $key" . '=' . "$value ";
+        //判断
+        $where[] = $_where .=((!empty($IndustryId)? " AND industry_id =". $IndustryId:'').(!empty($UsageScenariosId)? " AND usage_scenarios_id =". $UsageScenariosId:'').(!empty($ConfigTemplateCodeTypeId)? " AND code_type =". $ConfigTemplateCodeTypeId:''));
+        $where[] = $_where .=(!empty($IndustryId)? " AND industry_id =". $IndustryId:'');
+        if (!empty($IndustryId) and !empty($UsageScenariosId)){
+            //两种
+            $where[] = $_where .=  " AND industry_id =". $IndustryId." AND usage_scenarios_id=" .$UsageScenariosId ;
+        }elseif (!empty($IndustryId)){
+            $where[] = $_where .=  " AND industry_id =". $IndustryId;
+        }elseif (!empty($UsageScenariosId)){
+            $where[] = $_where .=  " AND usage_scenarios_id=". $UsageScenariosId;
         }
         $_where = end($where);
         $count = $chaxun->where($_where)
             ->select();
+        //查询模板详情信息 模板发布人
+        foreach($count as $k=>$value){
+            $UserNames = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
+            $count[$k]['username']=isset($UserNames[0]['name'])?$UserNames[0]['name']:'';
+            $Populars= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
+            $count[$k]['paper_size_long']=isset($Populars[0]['paper_size_long'])?$Populars[0]['paper_size_long']:'';
+            $count[$k]['paper_size_wide']=isset($Populars[0]['paper_size_wide'])?$Populars[0]['paper_size_wide']:'';
+            $count[$k]['paper_size_unit']=isset($Populars[0]['paper_size_unit'])?$Populars[0]['paper_size_unit']:'';
+            $count[$k]['lable_size_wide']=isset($Populars[0]['lable_size_wide'])?$Populars[0]['lable_size_wide']:'';
+            $count[$k]['lable_size_height']=isset($Populars[0]['lable_size_height'])?$Populars[0]['lable_size_height']:'';
+            $count[$k]['lable_size_unit']=isset($Populars[0]['lable_size_unit'])?$Populars[0]['lable_size_unit']:'';
+        }
         return json($count);
-//        if (!empty($param['industry_id']) AND !empty($param['tag_type_id'])) {
-//            $_where .= " AND industry_id =" . urldecode($param['industry_id']) . " AND industry_id =" . urldecode($param['industry_id']);
-//        } else {
-//            if (!empty($param['industry_id'])) {
-//                $_where .= " AND industry_id =" . urldecode($param['industry_id']);
-//            }
-//            if (!empty($param['tag_type_id'])) {
-//                $_where .= " AND tag_type_id =" . urldecode($param['tag_type_id']);
-//            }
-//        }
 
     }
 }
