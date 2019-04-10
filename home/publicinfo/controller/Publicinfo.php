@@ -35,4 +35,11 @@ class Publicinfo extends Controller
     public function search(){
         return $this->fetch();
     }
+
+    /**
+     * @描述：公用头部-用户信息
+     */
+    public function headeruser(){
+        return $this->fetch();
+    }
 }

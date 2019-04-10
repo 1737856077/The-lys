@@ -64,7 +64,8 @@ ALTER TABLE `sy_bill_details_notify`
   DROP `gmt_close`;
 
 
-
+/*2019-04-09*/
+ALTER TABLE  `sy_template` ADD  `xml`  text NULL DEFAULT  '' AFTER  `pdf`;
 
 
 

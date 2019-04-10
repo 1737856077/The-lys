@@ -1,10 +1,543 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>云标签</title>
+    <script type="text/javascript">
+        mxBasePath = '__STATIC__/home/mxClient/src';
+        // 插件文件的路件
+        var mxClientMyDir = '__STATIC__/home/mxClient/';
+    </script>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/mxClient.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/html2canvas.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/canvg.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/pdf.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/pdf.worker.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/jspdf.debug.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/RangeSlider1.js"></script>
+
+    <script type="text/javascript" src="__STATIC__/home/mxClient/src/js/designOnlineInit.js"></script>
 </head>
-<body>
-design online index
+
+<body onload="main();">
+<header>
+    <nav>
+        <div class="logo"><a href="/index.php"><img src="__STATIC__/home//images/logo.png"></a></div>
+        <div class="menu">
+            <div class="menu-box">
+                <ul class="menu-list-content">
+                    <li><a href="/index.php/design/online/index">新建</a></li>
+                    <li><a href="/index.php/index/templates/templates">更换模板</a></li>
+                    <!--<li><a href="#">返回上一步</a></li>-->
+                    <li><a href="javascript:void(0)" onclick="save()">保存</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPdf()">显示pdf文档</a></li>
+                    <!--<li><a href="javascript:void(0)" class="click_pop">上传数据</a></li>-->
+                    <!--<li><a href="#">预览</a></li>-->
+                    <!--<li><a href="#">打印</a></li>-->
+
+                </ul>
+            </div>
+            {include file="publicinfo@publicinfo/headeruser" /}
+        </div>
+    </nav>
+</header>
+<div class="top" id="top">
+    <!--<button id="save">-->
+        <!--<a href="javascript:void(0)" target="_blank" onclick="save()">保存数据</a>-->
+    <!--</button>-->
+    <!--<button id="getPDF">
+        <a href="javascript:void(0)" target="_blank" onclick="showPdf()">显示pdf文档</a>
+    </button>
+    <button id="getPNG">png</button>-->
+</div>
+<div class="left-container close">
+    <!--左侧栏收起-->
+    <div class="left-bar">
+        <div class="left-bar-thumbnail">
+            <div>
+                <div class="icon-img">
+                    <img src="__STATIC__/home/images/code.png">
+                </div>
+                <div>条码</div>
+            </div>
+            <div>
+                <div class="icon-img">
+                    <img src="__STATIC__/home/images/code.png"/>
+                </div>
+                <div>图形</div>
+            </div>
+            <div>
+                <div class="icon-img">
+                    <img src="__STATIC__/home/images/line.png"/>
+                </div>
+                <div>线条</div>
+            </div>
+            <div>
+                <div class="icon-img">
+                    <img src="__STATIC__/home/images/Text.png"/>
+                </div>
+                <div>文字</div>
+            </div>
+        </div>
+    </div>
+    <!--左侧栏展开-->
+    <div class="left-bar-detail">
+        <div class="title">类别</div>
+        <div class="left-bar-detail-list">
+            <div id="code1"  class="left-bar-detail-item  item-type-1"></div>
+            <div id="code2"  class="left-bar-detail-item  item-type-1"></div>
+            <div id="basicImage-circle" class="left-bar-detail-item  item-type-2">
+            </div>
+            <div id="basicImage-rectangle" class="left-bar-detail-item item-type-2">
+            </div>
+            <div id="basicImage-triangle" class="left-bar-detail-item  item-type-2">
+            </div>
+            <div id="line" class="left-bar-detail-item  item-type-3">
+            </div>
+            <div id="text" class="left-bar-detail-item  item-type-4">
+            </div>
+        </div>
+    </div>
+    <!--左侧栏展开-->
+    <div class="left-bar_open_close">
+        <div style="color:#fff;font-size:20px;line-height:136px;">&lt</div>
+    </div>
+</div>
+<!--中间内容部分-->
+<div class="middle-container"></div>
+<!--右侧放大缩小功能-->
+<div class="right-container">
+    <div class="title">
+        <span>属性</span>
+    </div>
+    <dl>
+        <dt>尺寸</dt>
+        <dd>
+            <div>宽度</div>
+            <div>
+                <input id="width" value="0" type="range"/>
+                <input id="width-value" value="0" disabled class="input-value"/>
+                <select>
+                    <option value="mm">毫米(mm)</option>
+                    <option value="cm">厘米(cm)</option>
+                </select>
+            </div>
+            <div>高度</div>
+            <div>
+                <input id="height" value="0" type="range"/>
+                <input id="height-value" value="0" disabled class="input-value"/>
+                <select>
+                    <option value="mm">毫米(mm)</option>
+                    <option value="cm">厘米(cm)</option>
+                </select>
+            </div>
+            <div>顶部距离</div>
+            <div>
+                <input id="top1" value="0" type="range"/>
+                <input id="top-value" value="0" disabled class="input-value"/>
+                <select>
+                    <option value="mm">毫米(mm)</option>
+                    <option value="cm">厘米(cm)</option>
+                </select>
+            </div>
+            <div>左侧距离</div>
+            <div>
+                <input id="left" value="0" type="range"/>
+                <input id="left-value" value="0" disabled class="input-value"/>
+                <select>
+                    <option value="mm">毫米(mm)</option>
+                    <option value="cm">厘米(cm)</option>
+                </select>
+            </div>
+        </dd>
+        <dt>旋转</dt>
+        <dd>
+            <div>角度</div>
+            <div>
+                <input id="angle" value="0" type="range"/>
+                <input id="angle-value" value="0" disabled class="input-value"/>
+                <span class="angle-icon">90</span>
+                <span class="angle-icon">180</span>
+                <span class="angle-icon">270</span>
+            </div>
+        </dd>
+        <dt>文本显示</dt>
+        <dd>
+            <select>
+                <option value="mm">毫米(mm)</option>
+                <option value="cm">厘米(cm)</option>
+            </select>
+        </dd>
+    </dl>
+</div>
+<div class="container-wrap">
+    <div id="container" style="border:1px solid;"></div>
+</div>
 </body>
+<script type="text/javascript" src="__STATIC__/home/mxClient/src/js/designOnlineHandle.js"></script>
+<style>
+    .right-container input[type=range] {
+        -webkit-appearance: none;
+        width: 160px;
+        border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+        background: -webkit-linear-gradient(#059CFA, #059CFA) no-repeat;
+        background-size: 0% 100%;
+        height: 10px;
+    }
+    .right-container input[type=range]:focus {
+        outline: none;
+    }
+
+    .right-container input[type=range]::-webkit-slider-runnable-track {
+        height: 9px;
+        border-radius: 10px; /*将轨道设为圆角的*/
+        box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+    }
+
+    .right-container input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 15px;
+        width: 15px;
+        margin-top: -3px; /*使滑块超出轨道部分的偏移量相等*/
+        background: #ffffff;
+        border-radius: 50%; /*外观设置为圆形*/
+        border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+        box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+    }
+
+    .right-container input[type=range]::-moz-range-track {
+        height: 15px;
+        border-radius: 10px; /*将轨道设为圆角的*/
+        box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+    }
+
+    .right-container input[type=range]::-moz-range-thumb {
+        appearance: none;
+        height: 25px;
+        width: 25px;
+        margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+        background: #ffffff;
+        border-radius: 50%; /*外观设置为圆形*/
+        border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+        box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+    }
+
+    .right-container input[type=range]::-moz-range-progress {
+        background: linear-gradient(#059CFA, #059CFA) no-repeat;
+        height: 13px;
+        border-radius: 10px;
+    }
+
+    .right-container input[type=range]::-ms-track {
+        height: 25px;
+        border-radius: 10px;
+        box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112;
+        border-color: transparent; /*去除原有边框*/
+        color: transparent; /*去除轨道内的竖线*/
+    }
+
+    .right-container input[type=range]::-ms-thumb {
+        border: solid 0.125em rgba(205, 224, 230, 0.5);
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        background: #ffffff;
+        margin-top: -5px;
+        box-shadow: 0 .125em .125em #3b4547;
+    }
+
+    .right-container input[type=range]::-ms-fill-lower {
+        /*进度条已填充的部分*/
+        height: 22px;
+        border-radius: 10px;
+        background: linear-gradient(#059CFA, #059CFA) no-repeat;
+    }
+
+    .right-container input[type=range]::-ms-fill-upper {
+        /*进度条未填充的部分*/
+        height: 22px;
+        border-radius: 10px;
+        background: #ffffff;
+    }
+
+    .right-container input[type=range]:focus::-ms-fill-lower {
+        background: linear-gradient(#059CFA, #059CFA) no-repeat;
+    }
+
+    .right-container input[type=range]:focus::-ms-fill-upper {
+        background: #ffffff;
+    }
+</style>
+<style>
+    body {
+        background: #eff2f7;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        color: rgb(79, 79, 79);
+    }
+
+    /**顶部*/
+    .top {
+        height: 76px;
+        background: #fff;
+        width: 100%;
+        box-shadow: 0 0 20px #d9d9d9;
+        margin-bottom: 4px;
+    }
+
+    /*左侧容器*/
+    .left-container.close {
+        width: 90px;
+    }
+
+    .left-container {
+        width: 356px;
+        min-height: calc(100% - 88px);
+        position: relative;
+        float: left;
+        background: #fff;
+    }
+
+    /**左侧栏收起*/
+    .left-bar {
+        width: 92px;
+        background: #fff;
+        text-align: center;
+        float: left;
+    }
+
+    .left-bar-thumbnail {
+        padding: 56px 0;
+        border-right: 2px solid rgb(250, 250, 250);
+    }
+
+    .left-bar-thumbnail > div {
+        height: 90px;
+        position: relative;
+    }
+
+    .left-bar-thumbnail .icon {
+        width: 24px;
+        height: 24px;
+        margin: 0 auto;
+        border: 2px solid rgb(48, 164, 220);
+    }
+    .left-bar-thumbnail .icon-img {
+        width: 24px;
+        height: 24px;
+        margin: 0 auto;
+    }
+
+    .left-bar-thumbnail .icon ~ div,.left-bar-thumbnail .icon-img ~ div {
+        padding-top: 15px;
+    }
+
+    .left-bar-thumbnail_active::before {
+        content: '';
+        border-left: 4px solid;
+        position: absolute;
+        left: 0;
+        height: 62px;
+        color: rgb(48, 164, 220)
+    }
+
+    /**左侧栏展开*/
+    .left-container.close .left-bar-detail {
+        display: none;
+    }
+    .left-bar-detail-list > div {
+        width: 50%;
+        float: left;
+        text-align: center;
+    }
+    .left-bar-detail {
+        display: block;
+        width: 250px;
+        float: left;
+        background: #fff;
+        margin-left: 2px;
+        padding: 0 6px;
+    }
+
+    .left-bar-detail .title {
+        font-size: 18px;
+        padding: 20px 0;
+        border-bottom: 1px dashed;
+        text-indent: 12px;
+        font-weight: bold;
+    }
+
+    .left-bar-detail .icon, .left-bar-detail .mxToolbarMode {
+        width: 40px;
+        height: 40px;
+        margin: 20px auto 10px auto;
+    }
+
+    .left-bar-detail-item.active .icon {
+        border: 2px solid rgb(48, 164, 220);
+    }
+
+    .left-bar-detail-item.active * {
+        color: rgb(48, 164, 220);
+    }
+
+    .left-bar-detail-item {
+        display: none;
+    }
+
+    .left-bar-detail-item.show {
+        display: block;
+    }
+
+    /**展开收起按钮*/
+    .left-container.close .left-bar_open_close {
+        left: 90px;
+    }
+
+    .left-bar_open_close {
+        position: absolute;
+        width: 25px;
+        height: 136px;
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+        background: rgb(48, 164, 220);
+        color: #fff;
+        right: 0;
+        top: 50%;
+        left: 356px;
+        transform: translateY(-50%);
+    }
+
+    /**中间内容部分*/
+
+    /**右侧*/
+    .right-container {
+        width: 385px;
+        background: #fff;
+        height: calc(100% - 88px);
+        float: right;
+        height: unset;
+    }
+
+    .right-container .title {
+        font-size: 20px;
+        padding: 20px 0;
+        text-indent: 12px;
+        border-bottom: 4px solid rgb(250, 250, 250);
+        color: #000;
+    }
+
+    .right-container .angle-icon {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        border: 1px solid rgb(217, 217, 217);;
+        display: inline-block;
+        vertical-align: bottom;
+    }
+
+    .right-container dl {
+        padding: 20px 10px;
+    }
+
+    .right-container input[type=range] {
+        vertical-align: middle;
+    }
+
+    .right-container input {
+        line-height: 35px;
+    }
+
+    .right-container input:not([type=range]), .right-container select {
+        border: 1px solid rgb(217, 217, 217);
+        height: 35px;
+        border-radius: 4px;
+        background: #fff;
+    }
+
+    .right-container dt {
+        padding: 20px 0;
+        color: #000;
+    }
+
+    .input-value {
+        width: 65px;
+        border: 1px solid rgb(217, 217, 217);
+    }
+
+    #tbContainer {
+        position: absolute;
+        overflow: hidden;
+        padding: 2px;
+        left: 0;
+        top: 0;
+        width: 60px;
+        bottom: 0;
+        background: #fff;;
+    }
+
+    #tbContainer .geTitle {
+        display: block;
+        font-size: 9pt;
+        font-weight: 400;
+        padding: 6px 0 6px 2px;
+        margin: 0;
+        cursor: default;
+        background: #eee;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        line-height: 1.4em;
+    }
+
+    #tbContainer .collapse {
+        width: 0;
+        height: 0;
+        border-width: 5px 5px 5px 0;
+        border-style: solid;
+        display: inline-block;
+        border-color: transparent #333 transparent transparent; /*透明 灰 透明 透明 */
+        position: relative;
+    }
+
+    /**中间内容部分**/
+    .left-container.close ~ #container {
+        left: 115px;
+    }
+
+    .container-wrap{
+        position: absolute;
+        top: 180px;
+        right: 0;
+        bottom: 0;
+        left: 140px;
+        width: calc(100% - 570px);
+        overflow: hidden;
+        background: #f9f9fa;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: left .2s ease;
+        transition: left .2s ease;
+    }
+    .container-wrap.active{
+        left: 400px;
+        width: calc(100% - 820px);
+    }
+    #container {
+        position: absolute;
+        overflow: hidden;
+        left: 385px;
+        top: 80px;
+        right: 390px;
+        bottom: 0;
+        background: #fff;
+    }
+</style>
 </html>
