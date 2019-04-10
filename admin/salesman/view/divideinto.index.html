@@ -36,7 +36,13 @@
                                 </li>
                             </a>
                             {/if}
-
+                            {if auth('salesman/salesman/add') }
+                            <a href="__ROOT__/admin.php/salesman/salesman/add">
+                                <li>
+                                    <p class="Order1">添加业务员</p>
+                                </li>
+                            </a>
+                            {/if}
                         </ul>
                         <div class="layui-tab-content">
                             <div class="layui-tab-item layui-show">
@@ -130,8 +136,10 @@
                                                         </table>
 
                                                     </div>
-                                                    <div style="text-align:right; padding-right:40px;">
-                                                        {$page}
+                                                    <div id="laypage88" style="text-align: center;">
+                                                        <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7" style="width:100%;">
+                                                            {$page}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

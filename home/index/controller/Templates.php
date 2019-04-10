@@ -143,4 +143,36 @@ class Templates extends CommonBaseHome
         );
         return $this->fetch();
     }
+
+
+    /**
+     * @筛选栏目
+     */
+    public function chaxuns()
+    {
+        //点击栏目查询
+        $chaxun = Db::name('template');
+        $param = $this->request->param();
+        dump($param);die();
+        $_where = " data_status=1 AND data_type=0";
+        $where = array();
+        foreach ($param as $key => $value) {
+            $where[] = $_where .= " AND " . " $key" . '=' . "$value ";
+        }
+        $_where = end($where);
+        $count = $chaxun->where($_where)
+            ->select();
+        return json($count);
+//        if (!empty($param['industry_id']) AND !empty($param['tag_type_id'])) {
+//            $_where .= " AND industry_id =" . urldecode($param['industry_id']) . " AND industry_id =" . urldecode($param['industry_id']);
+//        } else {
+//            if (!empty($param['industry_id'])) {
+//                $_where .= " AND industry_id =" . urldecode($param['industry_id']);
+//            }
+//            if (!empty($param['tag_type_id'])) {
+//                $_where .= " AND tag_type_id =" . urldecode($param['tag_type_id']);
+//            }
+//        }
+
+    }
 }

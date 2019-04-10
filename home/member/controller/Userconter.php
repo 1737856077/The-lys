@@ -86,10 +86,9 @@ class Userconter extends CommonBase
         $file = $request->file('img');
         if ($file) {
             $info = $file->validate([
-                'size' => 9048576,
+                'size' => (1024*1024)*1,
                 'ext' => 'jpeg,jpg,png,bmp'
             ])->move("static/uploads/");
-
             if ($info) {
                 $datas['img'] = $info->getSaveName();//头像
 
@@ -233,111 +232,6 @@ class Userconter extends CommonBase
         return $this->fetch();
     }
 
-    /**
-     * @获取订单
-     */
-    public function sub()
-    {
-        $param = $this->request->param();
-        $paper = isset($param['type']) ? $param['type'] : 0;
-        $mumber = intval(isset($param['number']) ? trim($param['number']) : 0);
-        $cmtype = isset($param['cmtype']) ? htmlspecialchars($param['cmtype']) : 0;
-        $tempid = intval(isset($param['tempid']) ? trim($param['tempid']) : 0);
-        $paperdata = Db::name('paper')->where('id', $paper)->select();
-        $username = htmlspecialchars(isset($param['username']) ? $param['username'] : 0);
-        $tempdata = Db::name('template_content')->where('template_id', $tempid)->select();
-        $temptadata = Db::name('template')->where('template_id', $tempid)->select();
-        if (!empty($paperdata)) {
-            $price = $paperdata[0]['price'];
-            $atm = $mumber * $price;//支付金额
-            foreach ($temptadata as $k => $v) {
-                $data['template_title'] = $v['title'];
-                $data['img'] = $v['img'];
-
-            }
-            $data['order_no'] = date("d") . date("his") . mt_rand(10000, 99999);//订单号
-            foreach ($tempdata as $k => $v) {
-                $data['template_id'] = $v['template_id'];
-                $data['paper_size_long'] = $v['paper_size_long'];
-                $data['paper_size_wide'] = $v['paper_size_wide'];
-                $data['paper_size_unit'] = $v['paper_size_unit'];
-                $data['paper_direction'] = $v['paper_direction'];
-
-            }
-            $data['print_num'] = $mumber;
-            $data['price'] = $atm;
-            $memberid = $temptadata[0]['member_id'];
-            $memberdata = Db::name('member')->where('member_id', $memberid)->select();
-
-            foreach ($memberdata as $k => $v) {
-                $data['member_id'] = $v['member_id'];
-                $data['name'] = $v['real_name'];
-                $data['email'] = $v['email'];
-                $data['moblie'] = $v['mobile'];
-            }
-            $data['score_pay'] = $atm;
-            $data['score_real_pay'] = $atm;
-            $data['create_time'] = time();
-            $data['username'] = $username;
-            $this->assign('data', $data);
-            return $this->fetch();
-        } else {
-            $paperdata = Db::name('paper')->where('id', $paper)->select();
-            $tempdata = Db::name('template_content')->where('template_id', $tempid)->select();
-            $temptadata = Db::name('template')->where('template_id', $tempid)->select();
-            foreach ($temptadata as $k => $v) {
-                $data['template_title'] = $v['title'];
-
-            }
-            $data['order_no'] = date("d") . date("his") . mt_rand(10000, 99999);
-            foreach ($tempdata as $k => $v) {
-                $data['paper_size_long'] = $v['paper_size_long'];
-                $data['paper_size_wide'] = $v['paper_size_wide'];
-                $data['paper_size_unit'] = $v['paper_size_unit'];
-                $data['paper_direction'] = $v['paper_direction'];
-
-            }
-            $data['print_num'] = $mumber;
-            $data['username'] = $username;
-            $memberid = $temptadata[0]['member_id'];
-            $memberdata = Db::name('member')->where('member_id', $memberid)->select();
-            foreach ($memberdata as $k => $v) {
-                $data['name'] = $v['real_name'];
-                $data['email'] = $v['email'];
-                $data['moblie'] = $v['mobile'];
-            }
-            $data['create_time'] = time();
-            $data = Db::name('order')->insert($data);
-
-            if ($data) {
-                $this->success('提交成功', '/index.php/member/userconter/orders');
-            } else {
-                $this->error('提交失败请检查');
-            }
-        }
-    }
-
-    /**
-     * @取消支付
-     */
-    public function qxzf()
-    {
-        $param = $this->request->param();
-        unset($param['img']);
-        unset($param['tempalteid']);
-        unset($param['memberid']);
-        $tempalte_id = isset($param['template_id']) ? $param['template_id'] : 0;
-        if (!empty($tempalte_id)) {
-            $Modeorder = Db::name('order');
-            $param['pay_status'] = 0;
-            $data = $Modeorder->insert($param);
-            if ($data) {
-                $this->success('取消支付成功', '/index.php/member/userconter/orders');
-            } else {
-                $this->error('取消失败', '/index.php/member/userconter/orders');
-            }
-        }
-    }
 
     /**
      * @desc:用户中心-左侧菜单

@@ -91,7 +91,7 @@
                 <div class="menu_Navigation">
                     <ul>
                         {foreach name='listUsageScenarios' id='data'}
-                        <a href="#">
+                        <a href="/index.php/index/index/templates/id/{$data.id}">
                             <li>{$data.title}</li>
                         </a>
                         {/foreach}
@@ -111,7 +111,7 @@
                 <div class="menu_Navigation">
                     <ul>
                         {foreach name='listIndustry' id='data'}
-                        <a href="#">
+                        <a href="/index.php/index/index/templates/id/{$data.id}">
                             <li>{$data.title}</li>
                         </a>
                         {/foreach}
@@ -129,7 +129,7 @@
                 <div class="menu_Navigation">
                     <ul>
                         {foreach name='ConfigTemplateCodeType' id='data'}
-                        <a href="#">
+                        <a href="/index.php/index/index/templates/value/{$data}">
                             <li>{$data}</li>
                         </a>
                         {/foreach}
