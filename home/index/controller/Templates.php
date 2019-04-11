@@ -177,7 +177,7 @@ class Templates extends CommonBaseHome
                 $data[$k]['lable_size_unit']=isset($Populars[0]['lable_size_unit'])?$Populars[0]['lable_size_unit']:'';
             }
             //未选择条件的数据
-                return $data;
+            return $data;
         }
 
         $where = array();

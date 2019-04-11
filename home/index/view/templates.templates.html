@@ -69,13 +69,13 @@
                 var b = ( !(UsageScenariosId == "undefined" || UsageScenariosId == null || UsageScenariosId == ""))?("/UsageScenariosId/"+UsageScenariosId) : '';
                 var c = ( !(ConfigTemplateCodeTypeId == "undefined" || ConfigTemplateCodeTypeId == null || ConfigTemplateCodeTypeId == ""))?("/ConfigTemplateCodeTypeId/"+ConfigTemplateCodeTypeId) : '';
                 $.ajax({
-                    type: "POST",
+                    type: "get",
                     url: "/index.php/index/templates/chaxuns"+a+b+c,
                     data: $('#form1').serialize(),
                     success: function (result) {
                         $(".xu").empty();
                         for (var i =0; i<result.length; i++) {
-                           var html='';
+                            var html='';
                             html+="  <li>";
                             html+=" <a href='#' target='_blank'>";
                             html+=" <div class='imgBox'>";
@@ -131,7 +131,7 @@
                 var b = ( !(UsageScenariosId == "undefined" || UsageScenariosId == null || UsageScenariosId == ""))?("/UsageScenariosId/"+UsageScenariosId) : '';
                 var c = ( !(ConfigTemplateCodeTypeId == "undefined" || ConfigTemplateCodeTypeId == null || ConfigTemplateCodeTypeId == ""))?("/ConfigTemplateCodeTypeId/"+ConfigTemplateCodeTypeId) : '';
                 $.ajax({
-                    type: "POST",
+                    type: "get",
                     url: "/index.php/index/templates/chaxuns"+a+b+c,
                     data: $('#form1').serialize(),
                     success: function (result) {
