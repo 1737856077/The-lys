@@ -46,6 +46,9 @@ class Product extends CommonBaseHome
                 $code=0;
             }else{
                 $product_code_info_id = isset($getoneProductCodeInfo['product_code_info_id']) ? $getoneProductCodeInfo['product_code_info_id'] : $product_code_info_id;
+				// 更新查询次数
+				$ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id' AND code_plain_query_time=0")->update(array('code_plain_query_time'=>time()));
+        		$ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id'")->setInc('code_plain_query_total',1);
             }
         }
 

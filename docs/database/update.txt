@@ -30,5 +30,7 @@ ALTER TABLE `sy_product_code` ADD `business_enterprise` VARCHAR(128) NULL AFTER 
 ALTER TABLE `sy_product_code` ADD `contacts` VARCHAR(32) NULL AFTER `business_enterprise`; 
 ALTER TABLE `sy_product_code` ADD `tel` VARCHAR(32) NULL AFTER `contacts`; 
 
-
+/*=== 2019-04-11==*/
+ALTER TABLE `sy_product_code_info` ADD `code_plain_query_time` INT(11) NULL DEFAULT '0' AFTER `code_cipher_query_total`;
+ALTER TABLE `sy_product_code_info` ADD `code_plain_query_total` INT(11) NULL DEFAULT '0' AFTER `code_plain_query_time`;
 

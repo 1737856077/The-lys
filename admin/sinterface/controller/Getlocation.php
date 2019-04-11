@@ -110,8 +110,12 @@ class Getlocation extends CommonBaseHome
         );
         $returnID=$ModelProductCodeInfoVisitRecord->insert($data,true);
         // 更新统计查询次数code_cipher_query_time
-        $ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id' AND code_cipher_query_time=0")->update(array('code_cipher_query_time'=>time()));
-        $ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id'")->setInc('code_cipher_query_total',1);
+		// 屏掉暗码查询统计
+        //$ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id' AND code_cipher_query_time=0")->update(array('code_cipher_query_time'=>time()));
+        //$ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id'")->setInc('code_cipher_query_total',1);
+		// 改到了Product.php控制器中统计
+		//$ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id' AND code_plain_query_time=0")->update(array('code_plain_query_time'=>time()));
+        //$ModelProductCodeInfo->where("product_code_info_id='$product_code_info_id'")->setInc('code_plain_query_total',1);
         if($returnID){
             echo $this->returnJson($result);
             exit;
