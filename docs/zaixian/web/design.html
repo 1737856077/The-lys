@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>设计中心</title>
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+  <script type="text/javascript" src="./js/jquery-1.8.0.min.js"></script>
+</head>
+<header>
+<nav>
+<div class="logo"><a href="#"><img src="./images/logo.png"></a></div>
+<div class="menu">
+<div class="menu-box">
+<ul class="menu-list-content">
+<li><a href="#" >新建</a></li>
+<li><a href="/list.html" >更换模板</a></li>
+<li><a href="#">返回上一步</a></li>
+<li><a href="#" >保存</a></li>
+<li><a href="javascript:void(0)" class="click_pop">上传数据</a></li>
+<li><a href="#" >预览</a></li>
+<li><a href="#" >打印</a></li>
+</ul>
+  </div>
+  <div class="user-center">
+  <ul class="login">
+                <li class="user">
+                <div class="avatar-container-30">
+                 <a href="/user.html" class="user-list"><img src="http://t.cn/RCzsdCq" title="午夜设计尸" alt="午夜设计尸"></a>
+                    </div>
+                    <div class="menu-list user-box hide">
+                        <section><a href="/user.html" z-st="nav_userbox_name">午夜设计尸</a></section>
+                        <div class="user-box-list">
+                            <div class="user-box-list-area">
+                            <p class="works-manange"><a href="/user.html#Setup"><i class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
+                            <p class="works-manange"><a href="/user.html#Template"><i class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
+                            <p class="works-manange"><a href="/user.html#Order"><i class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
+                            <p class="works-manange"><a href="/user.html#Data"><i class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
+                            </div>
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="javascript:logout();"><i class="lusheji lusheji_icontuichu"></i>退出</a></p>
+                            </div>
+                        </div>
+                    </div>
+                  </li>
+            </ul>
+
+</nav>
+
+
+
+</header>
+<body class="layui-layout-body">
+<!-- 左侧边栏 -->
+<div class="layui-form">
+  <div class="tool-sidebar-wrapper">
+    <div class="tool-editor-sidebar">
+      <div class="tool-tabs tool-tabs--left">
+        <div class="tool-tabs__tab-list">
+          <div data-name="ini_img" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+             <img src="./images/code.png"/>
+              <span>条码类型</span>
+            </div>
+          </div> 
+
+          <div data-name="text" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+              <img src="./images/Text.png"/>
+              <span>文字文本</span>
+            </div>
+          </div>
+
+          <div data-name="graph" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+              <img src="./images/code.png"/>
+              <span>基础图形</span>
+            </div>
+          </div>
+          <div data-name="line" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+              <img src="./images/line.png"/>
+              <span>基础线条</span>
+            </div>
+          </div>
+          <div data-name="Icon" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+              <img src="./images/Icon.png"/>
+              <span>符号字体</span>
+            </div>
+          </div>
+          <div data-name="aq" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+              <img src="./images/aq.png"/>
+              <span>安全提示</span>
+            </div>
+          </div>
+          <div data-name="rz" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+              <img src="./images/rz.png"/>
+              <span>认证标识</span>
+            </div>
+          </div>
+          <div data-name="bzx" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+              <img src="./images/bzx.png"/>
+              <span>包装标识</span>
+            </div>
+          </div>
+           <div data-name="xd" class="tool-tabs__tab">
+            <div class="tool-editor-sidebar-panel__tab">
+              <img src="./images/xd.png"/>
+              <span>洗涤标识</span>
+            </div>
+          </div>
+        </div>
+        <div data-name="" class="tool-tabs__content">
+          <div role="tab-panel" data-name="ini_img" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+              <!--  -->
+              <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+
+                  <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+                  <div class="panel-row">
+                   <i class="lusheji lusheji_icontwo-dimensional-code"></i>
+                    <div class="panel-cell-with-tips">二维码</div>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </div>
+          </div>
+          <div role="tab-panel" data-name="text" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+            <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+                
+                <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+
+               <div class="clear"></div>   
+             </div>
+            </div>
+          </div>
+          <div role="tab-panel" data-name="graph" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+            <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+                
+                <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+
+               <div class="clear"></div>   
+             </div>
+            </div>
+          </div>
+          <div role="tab-panel" data-name="line" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+            <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+                
+                <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+
+               <div class="clear"></div>   
+             </div>
+            </div>
+          </div>
+          <div role="tab-panel" data-name="Icon" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+            <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+                
+                <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+
+               <div class="clear"></div>   
+             </div>
+            </div>
+          </div>
+         <div role="tab-panel" data-name="aq" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+            <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+                
+                <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+
+               <div class="clear"></div>   
+             </div>
+            </div>
+          </div>
+
+          <div role="tab-panel" data-name="rz" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+            <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+                
+                <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+
+               <div class="clear"></div>   
+             </div>
+            </div>
+          </div>
+
+          <div role="tab-panel" data-name="bzx" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+            <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+                
+                <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+
+               <div class="clear"></div>   
+             </div>
+            </div>
+          </div>
+
+          <div role="tab-panel" data-name="xd" class="tool-tab-panel tool-editor-sidebar-panel" style="display: none;">
+            <div class="tool-editor-text-panel">
+                <div class="editor-canvas-panel">
+                
+                <div class="panel-row">
+                    <i class="lusheji lusheji_icontiaoma1"></i>
+                    <div class="panel-cell-with-tips">一维码</div>
+                  </div>
+
+               <div class="clear"></div>   
+             </div>
+            </div>
+          </div>
+         <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tool-help">
+      <div class="tool-help-btn">
+        <div class="tool-help-btn__icon">
+          <img src="./images/help.png"/>
+        </div>
+        <p>帮助</p>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <!-- 内容框架 -->
+  <div class="tool-editor-container">
+    <div class="tool-editor" id="tool_editor">
+         <div data-title="" style="height: 700px;margin: 10% 5%;background: #fff;" id="Tool_Modular">
+        
+      </div>
+
+    </div>
+  </div>
+  <!-- 右侧边栏 -->
+  <div class="tool-panel">
+    <div class="tool-editor-panel"> 
+      <!--  -->
+      <div class="editor-panel-content">
+        <div class="editor-canvas-panel">
+            <div class="panel-cell-with-title">页面尺寸</div>
+        
+
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title tab_tatle">
+        <li class="layui-this">
+          <p class="design-Order">纸张设置</p>
+        </li>
+        <li>
+          <p class="design-Order">标签设置</p>
+        </li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+
+      <fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>纸张尺寸：</legend>
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">宽度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="paper_width" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_width">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+    
+     <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">高度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="paper_height" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+</fieldset>
+
+<fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>纸张方向：</legend>
+    <div class="yun-Label-box">
+      <input type="radio" name="sex" value="横向" title="横向" checked="">
+      <input type="radio" name="sex" value="纵向" title="纵向">
+    </div>
+</fieldset>
+
+
+<fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>页边距：</legend>
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">上</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="paper_top" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_width">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+    
+     <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">右</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="paper_right" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+
+<div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">下</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="paper_bottom" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+
+<div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">左</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="paper_left" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+
+
+</fieldset>
+
+  <button style="float: right;margin-right:5px " class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
+
+        </div>
+        <div class="layui-tab-item">
+        <fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+        <legend>标签形状：</legend>
+        <div class="yun-Label-box">
+        <div class="tool-mould-gay">
+                      <select name="module_type" id="module_type" lay-filter="business">
+                        <option value="0"  selected="">请选择标签形状</option>
+                        <option value="1">矩形</option>
+                        <option value="2">圆角矩形</option>
+                        <option value="3">正圆</option>
+                        <option value="4">椭圆</option>
+                      </select>   
+                    </div>
+       
+        </div>
+      </fieldset>
+
+
+<!--矩形标签尺寸-->
+
+    <div class="tooltype01" style="display: none;">
+                    
+     <fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>标签尺寸：</legend>
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">宽度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_width" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_width">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+    
+     <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">高度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_height" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+</fieldset>
+ </div>
+  
+<!--圆角矩形标签尺寸-->
+<div class="tooltype02" style="display: none;">
+ <fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>标签尺寸：</legend>
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">宽度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_width02" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_width">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+    
+     <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">高度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_height02" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">半径</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_radius" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+</fieldset>
+</div>
+
+
+<!--正圆标签尺寸-->
+ <div class="tooltype03" style="display: none;">
+<fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>标签尺寸：</legend>
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">宽度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_radius02" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_width">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+</fieldset>
+</div>
+
+
+<!--椭圆标签尺寸-->
+<div class="tooltype04" style="display: none;">
+ <fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>标签尺寸：</legend>
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">宽度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_width03" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_width">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+    
+     <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">高度</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_height03" class="demo-slider"></div>
+    </div>
+    <div style=" width: 69px;float: left;margin-top: -6px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">毫米 (mm)</option>
+        <option value="1">厘米 (cm)</option>
+        <option value="2">英寸 (in)</option>
+      </select>
+    </div>
+    </div>
+</fieldset>
+</div>       
+                 
+<fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>标签打印顺序：</legend>
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">起始位置</p>
+     <div style="width: 70px;float: left;margin: -6px 0 0 10px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">左上</option>
+        <option value="1">左下</option>
+        <option value="2">右上</option>
+        <option value="3">右下</option>
+      </select>
+    </div>
+    </div>
+    
+     <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">首选方向</p>
+    <div style="width: 70px;float: left;margin: -6px 0 0 10px;">
+      <select name="interest" lay-filter="lable_height">
+        <option value=""></option>
+        <option value="0" selected="">垂直</option>
+        <option value="1">水平</option>
+      </select>
+    </div>
+    </div>
+</fieldset>
+                  
+<fieldset class="layui-elem-field" style="width:362px;padding: 10px 0;">
+    <legend>标签间距：</legend>
+    <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">水平间距</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_width04" class="demo-slider"></div>
+    </div>
+    </div>
+    
+     <div class="yun-Label-box">
+    <p class="yun_tab_tatle_tip">垂直间距</p>
+     <div class="layui-field-box" style=" width: 210px;float: left;">
+    <div id="yun_lable_height04" class="demo-slider"></div>
+    </div>
+    </div>
+</fieldset>
+  <button style="float: right;margin-right:5px " class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./layui/layui.all.js"></script>
+  <script>
+    layui.use(['form', 'layedit', 'laydate', 'upload', 'slider'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate
+  ,jq      = layui.jquery
+  ,slider = layui.slider
+// 
+    var ToolModular  = document.getElementById("Tool_Modular");
+    var tooleditor   = document.getElementById("tool_editor");
+    form.on('select(business)', function(data){
+      if (data.value == 0) {
+        jq(".tooltype01").css({"display": "none"});
+        jq(".tooltype02").css({"display": "none"});
+        jq(".tooltype03").css({"display": "none"});
+        jq(".tooltype04").css({"display": "none"});
+      }else if(data.value == 1){
+        jq(".tooltype01").css({"display": "block"});
+        jq(".tooltype02").css({"display": "none"});
+        jq(".tooltype03").css({"display": "none"});
+        jq(".tooltype04").css({"display": "none"});
+      }else if(data.value == 2){
+        jq(".tooltype01").css({"display": "none"});
+        jq(".tooltype02").css({"display": "block"});
+        jq(".tooltype03").css({"display": "none"});
+        jq(".tooltype04").css({"display": "none"});
+       }else if(data.value == 3){
+        jq(".tooltype01").css({"display": "none"});
+        jq(".tooltype02").css({"display": "none"});
+        jq(".tooltype03").css({"display": "block"});
+        jq(".tooltype04").css({"display": "none"});
+       }else if(data.value == 4){
+        jq(".tooltype01").css({"display": "none"});
+        jq(".tooltype02").css({"display": "none"});
+        jq(".tooltype03").css({"display": "none"});
+        jq(".tooltype04").css({"display": "block"});
+      }else{
+        jq(".tooltype01").css({"display": "none"});
+        jq(".tooltype02").css({"display": "none"});
+        jq(".tooltype03").css({"display": "none"});
+        jq(".tooltype04").css({"display": "none"});
+      }
+    });
+
+     $(".tool-editor-sidebar .tool-tabs__tab-list .tool-tabs__tab").click(function () {
+    $(".tool-tabs__tab").removeClass("tool-tabs__tab--active");
+    $(this).addClass("tool-tabs__tab--active");
+    $(".tool-tabs__content").attr("data-name", $(this).data("name"));
+    var that = this;
+    $(".tool-tab-panel").each(function (index, item) {
+      if($(that).data("name") == $(item).data("name")){
+        if ($(item).css('display') == 'block') {
+          $(item).hide()
+          $(".tool-tabs__content").attr("data-name", '');
+        } else {
+          $(item).show();
+        }
+      } else {
+        $(item).hide()
+      }
+    })
+  })
+
+ //打印份数
+  slider.render({
+    elem: '#paper_width222'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+
+//开启纸张高度滑块paper_width输入框
+  slider.render({
+    elem: '#paper_width'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //开启纸张宽度滑块paper_height输入框
+  slider.render({
+    elem: '#paper_height'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+//页边距顶部输入框
+  slider.render({
+    elem: '#paper_top'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //页边距右部输入框
+  slider.render({
+    elem: '#paper_right'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //页边距下部输入框
+  slider.render({
+    elem: '#paper_bottom'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //页边距左部输入框
+  slider.render({
+    elem: '#paper_left'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+    //矩形标签宽度输入框
+  slider.render({
+    elem: '#yun_lable_width'
+    ,input: true
+    ,theme: '#50a6f1'
+  });
+  //矩形标签高度输入框
+  slider.render({
+    elem: '#yun_lable_height'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+    //圆角矩形标签宽度输入框
+  slider.render({
+    elem: '#yun_lable_width02'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //圆角矩形标签高度输入框
+  slider.render({
+    elem: '#yun_lable_height02'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //圆角矩形标签半径输入框
+  slider.render({
+    elem: '#yun_lable_radius'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //正圆标签半径输入框
+  slider.render({
+    elem: '#yun_lable_radius02'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+//椭圆标签宽度输入框
+  slider.render({
+    elem: '#yun_lable_width03'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //椭圆标签高度输入框
+  slider.render({
+    elem: '#yun_lable_height03'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //标签间距输入框
+  slider.render({
+    elem: '#yun_lable_width04'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  //标签间距输入框
+  slider.render({
+    elem: '#yun_lable_height04'
+    ,input: true 
+    ,theme: '#50a6f1'
+  });
+  
+ });
+ $(document).ready(function () {
+        $('.pop-close').click(function () {
+            $('.bgPop,.pop').hide();
+        });
+        $('.click_pop').click(function () {
+            $('.bgPop,.pop').show();
+        });
+        $('.pop-close2').click(function () {
+            $('.bgPop2,.pop2').hide();
+        });
+        $('.click_pop2').click(function () {
+            $('.bgPop2,.pop2').show();
+        });
+         $('.pop-close3').click(function () {
+            $('.bgPop3,.pop3').hide();
+        });
+        $('.click_pop4').click(function () {
+            $('.bgPop3,.pop3').show();
+        });
+
+    })
+</script>
+
+
+<div class="bgPop"></div>
+<div class="pop">
+    <div class="pop-top" id="#upload">
+        <h2>选择数据表</h2>
+        <span class="pop-close"><i class="lusheji lusheji_iconclose-b" style="font-size: 40px;color: #000;"></i></span>
+    </div>
+    <div class="pop-content">
+        <div class="pop-content-right">
+          
+<div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>云模板-工艺管道焊口标签1</div>
+<div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>云模板-工艺管道焊口标签1</div>
+<div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>云模板-工艺管道焊口标签1</div>
+<div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>云模板-工艺管道焊口标签1</div>
+<div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>云模板-工艺管道焊口标签1</div>
+<div class="yun_data_box"><i class="lusheji lusheji_icontuiguang"></i>云模板-工艺管道焊口标签1</div>
+
+        </div>
+        <div id="laypage88" style="text-align: center;">
+  <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-7">
+    <a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a>
+    <span class="layui-laypage-curr">
+      <em class="layui-laypage-em"></em><em>1</em></span>
+      <a href="javascript:;" data-page="2">2</a>
+      <a href="javascript:;" data-page="3">3</a>
+      <a href="javascript:;" data-page="4">4</a>
+      <a href="javascript:;" data-page="5">5</a>
+      <a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a>
+    </div>
+  </div>
+  <button style="float: right;margin-right:5px " class="layui-btn" lay-submit="" lay-filter="demo1">确认</button>
+   <div class="clear"></div>
+</div>  
+</div>   
+
+
+
+   
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
