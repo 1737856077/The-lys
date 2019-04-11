@@ -89,6 +89,15 @@
                         <td>{$getoneProductCode['production_batch']}</td>
                     </tr>
                     <tr>
+                        <th>查询次数:</th>
+                        <td>第
+                            {if condition="$getoneProductCodeInfo['code_plain_query_total']>=1"}{$getoneProductCodeInfo['code_plain_query_total']}
+                            {else /}
+                             0
+                            {/if}次查询
+                        </td>
+                    </tr>
+                    <tr>
                         <th>经营企业:</th>
                         <td>{$getoneProductCode['business_enterprise']}</td>
                     </tr>
