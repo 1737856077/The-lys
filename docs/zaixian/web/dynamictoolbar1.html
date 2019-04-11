@@ -125,7 +125,7 @@
             $('#container').width(data.width).height(data.height)//.css({top:data.top,left:data.left})
             if (data.shape == shape.round) {
                 console.log('round');
-                $('#container').css({borderRadius: data.width/2+'px'});
+                $('#container').css({borderRadius: '50%'});
             }
             if (data.shape == shape.rectangle) {
                 console.log('rectangle')
@@ -360,8 +360,7 @@
                 <option value="cm">厘米(cm)</option>
             </select>
         </dd>
-        <dt><button onclick="showQRCode('png')">pdf</button></dt>
-        <dt><button onclick="showPdf()">pdfaaaaaaaaaa</button></dt>
+		<dt><button onclick="showPdf()">pdf</button></dt>
     </dl>
 </div>
 <div class="container-wrap">
@@ -487,9 +486,6 @@
             html2canvas(document.querySelector("#container"), {
                 onrendered: function (canvas) {
                     var base64Str = canvas.toDataURL(`image/png`);
-                    let img  = document.createElement('img')
-                    img.src = base64Str
-                    document.body.appendChild(img)
                     console.log(base64Str)
                 }
             });
@@ -578,7 +574,6 @@
     }
     // pdf
     function showPdf() {
-
         var nodesToRecover = [];
         var nodesToRemove = [];
         var svgElem = $("#container").find('svg');
