@@ -5,7 +5,7 @@
             {if condition="!empty($Think.session.userimg)"}
 
             <!--<img class="layui-upload-img" src="__STATIC__/{$Think.session.userimg}}"  alt="{$Think.session.username}" title="{$Think.session.username}">-->
-            <img class="layui-upload-img" src="/static/uploads/{$Think.session.userimg}"  alt="{$Think.session.username}" title="{$Think.session.username}">
+            <img class="layui-upload-img" src="__STATIC__/home/uploads/member/{$Think.session.userimg}"  alt="{$Think.session.username}" title="{$Think.session.username}">
             {else/}
             <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg"  title="{$Think.session.username}" alt="{$Think.session.username}">
             {/if}

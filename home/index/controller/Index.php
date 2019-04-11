@@ -87,12 +87,12 @@ class Index extends CommonBaseHome
             $UserNamess = Db::name('admin')->where('admin_id', $value['admin_id'])->field('name')->select();
             $New[$k]['username'] = isset($UserNamess[0]['name']) ? $UserNamess[0]['name'] : '';
             $News = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-            $New[$k]['paper_size_long'] = isset($News[$k]['paper_size_long']) ? $News[$k]['paper_size_long'] : '';
-            $New[$k]['paper_size_wide'] = isset($News[$k]['paper_size_wide']) ? $News[$k]['paper_size_wide'] : '';
-            $New[$k]['paper_size_unit'] = isset($News[$k]['paper_size_unit']) ? $News[$k]['paper_size_unit'] : '';
-            $New[$k]['lable_size_wide'] = isset($News[$k]['lable_size_wide']) ? $News[$k]['lable_size_wide'] : '';
-            $New[$k]['lable_size_height'] = isset($News[$k]['lable_size_height']) ? $News[$k]['lable_size_height'] : '';
-            $New[$k]['lable_size_unit'] = isset($News[$k]['lable_size_unit']) ? $News[$k]['lable_size_unit'] : '';
+            $New[$k]['paper_size_long'] = isset($News[0]['paper_size_long']) ? $News[0]['paper_size_long'] : '';
+            $New[$k]['paper_size_wide'] = isset($News[0]['paper_size_wide']) ? $News[0]['paper_size_wide'] : '';
+            $New[$k]['paper_size_unit'] = isset($News[0]['paper_size_unit']) ? $News[0]['paper_size_unit'] : '';
+            $New[$k]['lable_size_wide'] = isset($News[0]['lable_size_wide']) ? $News[0]['lable_size_wide'] : '';
+            $New[$k]['lable_size_height'] = isset($News[0]['lable_size_height']) ? $News[0]['lable_size_height'] : '';
+            $New[$k]['lable_size_unit'] = isset($News[0]['lable_size_unit']) ? $News[0]['lable_size_unit'] : '';
 
         }
         //热门排序
@@ -101,12 +101,12 @@ class Index extends CommonBaseHome
             $UserNames = Db::name('admin')->where('admin_id', $value['admin_id'])->field('name')->select();
             $Popular[$k]['username'] = isset($UserNames[0]['name']) ? $UserNames[0]['name'] : '';
             $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-            $Popular[$k]['paper_size_long'] = isset($Populars[$k]['paper_size_long']) ? $Populars[$k]['paper_size_long'] : '';
-            $Popular[$k]['paper_size_wide'] = isset($Populars[$k]['paper_size_wide']) ? $Populars[$k]['paper_size_wide'] : '';
-            $Popular[$k]['paper_size_unit'] = isset($Populars[$k]['paper_size_unit']) ? $Populars[$k]['paper_size_unit'] : '';
-            $Popular[$k]['lable_size_wide'] = isset($Populars[$k]['lable_size_wide']) ? $Populars[$k]['lable_size_wide'] : '';
-            $Popular[$k]['lable_size_height'] = isset($Populars[$k]['lable_size_height']) ? $Populars[$k]['lable_size_height'] : '';
-            $Popular[$k]['lable_size_unit'] = isset($Populars[$k]['lable_size_unit']) ? $Populars[$k]['lable_size_unit'] : '';
+            $Popular[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
+            $Popular[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
+            $Popular[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
+            $Popular[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
+            $Popular[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
+            $Popular[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
 
         }
         $New = array_slice($New,0,4);
@@ -127,6 +127,7 @@ class Index extends CommonBaseHome
     public function templates()
     {
         $param = $this->request->param();
+        $Value = isset($param['value'])?htmlspecialchars(intval($param['value'])):'';
         $Trade = isset($param['id']) ? intval($param['id']) : '';
         $SystemModel = Db::name('system_config');
         $SystemData = $SystemModel->where('id', $Trade)->find();
@@ -140,15 +141,16 @@ class Index extends CommonBaseHome
                 'industry_id'=>$SystemData['id']
             ])->select();
             foreach ($TemplateData as $k => $value) {
-                $UserNames = Db::name('admin')->where('admin_id', $value['admin_id'])->field('name')->select();
-                $TemplateData[$k]['username'] = isset($UserNames[0]['name']) ? $UserNames[0]['name'] : '';
+                $member = Db::name('member')->where('member_id',$value['member_id'])->find();
+                $TemplateData[$k]['username']=isset($member['username'])?$member['username']:'';
+                $TemplateData[$k]['userimg']=isset($member['img'])?$member['img']:'';
                 $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-                $TemplateData[$k]['paper_size_long'] = isset($Populars[$k]['paper_size_long']) ? $Populars[$k]['paper_size_long'] : '';
-                $TemplateData[$k]['paper_size_wide'] = isset($Populars[$k]['paper_size_wide']) ? $Populars[$k]['paper_size_wide'] : '';
-                $TemplateData[$k]['paper_size_unit'] = isset($Populars[$k]['paper_size_unit']) ? $Populars[$k]['paper_size_unit'] : '';
-                $TemplateData[$k]['lable_size_wide'] = isset($Populars[$k]['lable_size_wide']) ? $Populars[$k]['lable_size_wide'] : '';
-                $TemplateData[$k]['lable_size_height'] = isset($Populars[$k]['lable_size_height']) ? $Populars[$k]['lable_size_height'] : '';
-                $TemplateData[$k]['lable_size_unit'] = isset($Populars[$k]['lable_size_unit']) ? $Populars[$k]['lable_size_unit'] : '';
+                $TemplateData[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
+                $TemplateData[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
+                $TemplateData[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
+                $TemplateData[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
+                $TemplateData[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
+                $TemplateData[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
 
             }
             $this->page($TemplateData,'Popular','page',4);
@@ -165,12 +167,12 @@ class Index extends CommonBaseHome
                 $UserNames = Db::name('admin')->where('admin_id', $value['admin_id'])->field('name')->select();
                 $TemplateData[$k]['username'] = isset($UserNames[0]['name']) ? $UserNames[0]['name'] : '';
                 $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-                $TemplateData[$k]['paper_size_long'] = isset($Populars[$k]['paper_size_long']) ? $Populars[$k]['paper_size_long'] : '';
-                $TemplateData[$k]['paper_size_wide'] = isset($Populars[$k]['paper_size_wide']) ? $Populars[$k]['paper_size_wide'] : '';
-                $TemplateData[$k]['paper_size_unit'] = isset($Populars[$k]['paper_size_unit']) ? $Populars[$k]['paper_size_unit'] : '';
-                $TemplateData[$k]['lable_size_wide'] = isset($Populars[$k]['lable_size_wide']) ? $Populars[$k]['lable_size_wide'] : '';
-                $TemplateData[$k]['lable_size_height'] = isset($Populars[$k]['lable_size_height']) ? $Populars[$k]['lable_size_height'] : '';
-                $TemplateData[$k]['lable_size_unit'] = isset($Populars[$k]['lable_size_unit']) ? $Populars[$k]['lable_size_unit'] : '';
+                $TemplateData[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
+                $TemplateData[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
+                $TemplateData[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
+                $TemplateData[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
+                $TemplateData[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
+                $TemplateData[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
 
             }
 
@@ -178,7 +180,27 @@ class Index extends CommonBaseHome
             return $this->fetch('');
         } else {
             //标签
+            $TemalateModel = Db::name('template');
+            $TemplateData = $TemalateModel->where([
+                'data_type' => 0,
+                'data_status' => 1,
+                'code_type'=>$Value
+            ])->select();
+            foreach ($TemplateData as $k => $value) {
+                $UserNames = Db::name('admin')->where('admin_id', $value['admin_id'])->field('name')->select();
+                $TemplateData[$k]['username'] = isset($UserNames[0]['name']) ? $UserNames[0]['name'] : '';
+                $Populars = Db::name('template_content')->where('template_id', $value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
+                $TemplateData[$k]['paper_size_long'] = isset($Populars[0]['paper_size_long']) ? $Populars[0]['paper_size_long'] : '';
+                $TemplateData[$k]['paper_size_wide'] = isset($Populars[0]['paper_size_wide']) ? $Populars[0]['paper_size_wide'] : '';
+                $TemplateData[$k]['paper_size_unit'] = isset($Populars[0]['paper_size_unit']) ? $Populars[0]['paper_size_unit'] : '';
+                $TemplateData[$k]['lable_size_wide'] = isset($Populars[0]['lable_size_wide']) ? $Populars[0]['lable_size_wide'] : '';
+                $TemplateData[$k]['lable_size_height'] = isset($Populars[0]['lable_size_height']) ? $Populars[0]['lable_size_height'] : '';
+                $TemplateData[$k]['lable_size_unit'] = isset($Populars[0]['lable_size_unit']) ? $Populars[0]['lable_size_unit'] : '';
 
+            }
+
+            $this->page($TemplateData,'Popular','page',4);
+            return $this->fetch('');
         }
 
 

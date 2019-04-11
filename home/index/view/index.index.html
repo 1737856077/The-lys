@@ -128,8 +128,8 @@
             <div class="lusheji-input-block">
                 <div class="menu_Navigation">
                     <ul>
-                        {foreach name='ConfigTemplateCodeType' id='data'}
-                        <a href="/index.php/index/index/templates/value/{$data}">
+                        {foreach name='ConfigTemplateCodeType' id='data' key='key'}
+                        <a href="/index.php/index/index/templates/value/{$key}">
                             <li>{$data}</li>
                         </a>
                         {/foreach}

@@ -26,7 +26,7 @@
                 <li class="select-list">
                     <dl id="select1">
                         <dt>行业：</dt>
-                        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+                        <dd class="select-all selected"><a onclick="removeCondition('IndustryId')" href="javascript:">全部</a></dd>
                         {foreach name='listUsageScenarios' id='data'}
                         <dd><a href="javascript:" onclick="req('IndustryId','{$data.id}')" >{$data.title}</a></dd>
                         {/foreach}
@@ -35,7 +35,7 @@
                 <li class="select-list">
                     <dl id="select2">
                         <dt>场景：</dt>
-                        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+                        <dd class="select-all selected"><a onclick="removeCondition('UsageScenariosId')" href="javascript:">全部</a></dd>
                         {foreach name='listIndustry' id='datas'}
                         <dd><a href="javascript:" onclick="req('UsageScenariosId','{$datas.id}')" >{$datas.title}</a></dd>
                         {/foreach}
@@ -44,7 +44,7 @@
                 <li class="select-list">
                     <dl id="select3">
                         <dt>条码类型：</dt>
-                        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+                        <dd class="select-all selected"><a onclick="removeCondition('ConfigTemplateCodeTypeId')" href="javascript:">全部</a></dd>
                         {foreach name='ConfigTemplateCodeType' id='datass' key='key'}
                         <dd><a href="javascript:" onclick="req('ConfigTemplateCodeTypeId','{$key} ')">{$datass}</a></dd>
                         {/foreach}
@@ -70,18 +70,118 @@
                 var c = ( !(ConfigTemplateCodeTypeId == "undefined" || ConfigTemplateCodeTypeId == null || ConfigTemplateCodeTypeId == ""))?("/ConfigTemplateCodeTypeId/"+ConfigTemplateCodeTypeId) : '';
                 $.ajax({
                     type: "POST",
-                    dataType: "json",
                     url: "/index.php/index/templates/chaxuns"+a+b+c,
                     data: $('#form1').serialize(),
                     success: function (result) {
-
+                        $(".xu").empty();
+                        for (var i =0; i<result.length; i++) {
+                           var html='';
+                            html+="  <li>";
+                            html+=" <a href='#' target='_blank'>";
+                            html+=" <div class='imgBox'>";
+                            html+="<a href='/index.php/index/templates/content/template_id/"+result[i]['template_id']+"'>";
+                            if (result[i]['img']==''){
+                                img = "__STATIC__/home/images/tpl_default.png"
+                            }else {
+                                img = "__STATIC__/result[i]['img']"
+                            }
+                            html+=("<img width='260px' height='220px' src='"+img+"'/>");
+                            html+=" </a>";
+                            html+="</div>";
+                            html+="</a>";
+                            html+=" <div class='interactive-box'>";
+                            html+="  <a href='#' target='_blank'>";
+                            html+=" <h2>"+result[i]['title']+"</h2>";
+                            html+=" </a>";
+                            html+="<div class='data-box'>";
+                            html+=" <div class='data-view'>";
+                            html+="  <span>纸张尺寸</span>";
+                            html+="<br><span> 标签尺寸</span>";
+                            if (result[i]['userimg']==''){
+                                userimg = "__STATIC__/home/images/user_default.jpg"
+                            }else {
+                                userimg = "__STATIC__/"+result[i]['userimg'];
+                            }
+                            html+="  <br><span><a class='user-list'><img src='"+userimg+"'>"+"</a>"+　result[i]['username']+"</span>";
+                            html+=" </div><div class='data-like'>";
+                            html+=result[i]['paper_size_long'];
+                            html+=result[i]['paper_size_unit'];
+                            html+="*";
+                            html+=result[i]['paper_size_wide'];
+                            html+=result[i]['paper_size_unit'];
+                            html+="<br/>";
+                            html+=result[i]['lable_size_wide'];
+                            html+=result[i]['lable_size_unit'];
+                            html+="*";
+                            html+=result[i]['lable_size_height'];
+                            html+=result[i]['lable_size_unit'];
+                            html+="</div></div></div></li>";
+                            $(".xu").append(html);
+                        }
                     },
                 });
             }
             // 移除筛选条件
             function removeCondition(id) {
-                document.getElementById(id).setAttribute("value", null);
-                document.getElementById("conditionForm").submit();
+                document.getElementById(id).setAttribute("value", '');
+                var IndustryId = $("#IndustryId").attr("value");
+                var UsageScenariosId = $("#UsageScenariosId").attr("value");
+                var ConfigTemplateCodeTypeId = $("#ConfigTemplateCodeTypeId").attr("value");
+                var a = ( !(IndustryId == "undefined" || IndustryId == null || IndustryId == ""))?("/IndustryId/"+IndustryId) : '';
+                var b = ( !(UsageScenariosId == "undefined" || UsageScenariosId == null || UsageScenariosId == ""))?("/UsageScenariosId/"+UsageScenariosId) : '';
+                var c = ( !(ConfigTemplateCodeTypeId == "undefined" || ConfigTemplateCodeTypeId == null || ConfigTemplateCodeTypeId == ""))?("/ConfigTemplateCodeTypeId/"+ConfigTemplateCodeTypeId) : '';
+                $.ajax({
+                    type: "POST",
+                    url: "/index.php/index/templates/chaxuns"+a+b+c,
+                    data: $('#form1').serialize(),
+                    success: function (result) {
+                        $(".xu").empty();
+                        for (var i =0; i<result.length; i++) {
+                            var html='';
+                            html+="  <li>";
+                            html+=" <a href='#' target='_blank'>";
+                            html+=" <div class='imgBox'>";
+                            html+="<a href='/index.php/index/templates/content/template_id/"+result[i]['template_id']+"'>";
+                            if (result[i]['img']==''){
+                                img = "__STATIC__/home/images/tpl_default.png"
+                            }else {
+                                img = "__STATIC__/result[i]['img']"
+                            }
+                            html+=("<img width='260px' height='220px' src='"+img+"'/>");
+                            html+=" </a>";
+                            html+="</div>";
+                            html+="</a>";
+                            html+=" <div class='interactive-box'>";
+                            html+="  <a href='#' target='_blank'>";
+                            html+=" <h2>"+result[i]['title']+"</h2>";
+                            html+=" </a>";
+                            html+="<div class='data-box'>";
+                            html+=" <div class='data-view'>";
+                            html+="  <span>纸张尺寸</span>";
+                            html+="<br><span> 标签尺寸</span>";
+                            if (result[i]['userimg']==''){
+                                userimg = "__STATIC__/home/images/user_default.jpg"
+                            }else {
+                                userimg = "__STATIC__/"+result[i]['userimg'];
+                            }
+                            html+="  <br><span><a class='user-list'><img src='"+userimg+"'>"+"</a>"+　result[i]['username']+"</span>";
+                            html+=" </div><div class='data-like'>";
+                            html+=result[i]['paper_size_long'];
+                            html+=result[i]['paper_size_unit'];
+                            html+="*";
+                            html+=result[i]['paper_size_wide'];
+                            html+=result[i]['paper_size_unit'];
+                            html+="<br/>";
+                            html+=result[i]['lable_size_wide'];
+                            html+=result[i]['lable_size_unit'];
+                            html+="*";
+                            html+=result[i]['lable_size_height'];
+                            html+=result[i]['lable_size_unit'];
+                            html+="</div></div></div></li>";
+                            $(".xu").append(html);
+                        }
+                    },
+                });
             }
         </script>
         <form action="/index.php/index/templates/chaxuns" id="ti" method="get">
@@ -110,7 +210,7 @@
                             <div class="data-view">
                                 <span>纸张尺寸</span>
                                 <br><span> 标签尺寸</span>
-                                <br><span><a class="user-list"><img src="{if $data.img == ''}__STATIC__/home/images/user_default.jpg{else/}__STATIC__/{$data.img}{/if}"
+                                <br><span><a class="user-list"><img src="{if $data.userimg == ''}__STATIC__/home/images/user_default.jpg{else/}__STATIC__/{$data.userimg}{/if}"
                                                                     title="{$data.username}"
                                                                     alt="{$data.username}"></a>　{$data.username}</span>
                             </div>

@@ -88,10 +88,10 @@ class Userconter extends CommonBase
             $info = $file->validate([
                 'size' => (1024*1024)*1,
                 'ext' => 'jpeg,jpg,png,bmp'
-            ])->move("static/uploads/");
+            ])->move("static/home/uploads/member");
             if ($info) {
                 $datas['img'] = $info->getSaveName();//头像
-
+                Session::set('userimg',  $datas['img']);
             } else {
                 $this->error($file->getError());
             }

@@ -49,7 +49,7 @@
                                 <div class="layui-upload" style="margin: 0 0 20px 110px;">
                                     <div class="layui-upload-list">
                                         {if condition="!empty($MemberData.img)"}
-                                        <img class="layui-upload-img" src="/static/uploads/{$Think.session.userimg}">
+                                        <img class="layui-upload-img" src="__STATIC__/home/uploads/member/{$Think.session.userimg}">
                                         {else/}
                                         <img class="layui-upload-img" src="__STATIC__/home/images/UserDefault.jpg">
                                         {/if}

@@ -77,15 +77,17 @@ class Templates extends CommonBaseHome
     {
         $Popular = Db::name('template ')->where('data_type',0)->where('data_status',1)->order('get_nums desc')->select();
         foreach($Popular as $k=>$value){
+            $member = Db::name('member')->where('member_id',$value['member_id'])->find();
             $UserNames = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
-            $Popular[$k]['username']=isset($UserNames[0]['name'])?$UserNames[0]['name']:'';
+            $Popular[$k]['username']=isset($member['username'])?$member['username']:'';
+            $Popular[$k]['userimg']=isset($member['img'])?$member['img']:'';
             $Populars= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
-            $Popular[$k]['paper_size_long']=isset($Populars['paper_size_long'])?$Populars['paper_size_long']:'';
-            $Popular[$k]['paper_size_wide']=isset($Populars['paper_size_wide'])?$Populars['paper_size_wide']:'';
-            $Popular[$k]['paper_size_unit']=isset($Populars['paper_size_unit'])?$Populars['paper_size_unit']:'';
-            $Popular[$k]['lable_size_wide']=isset($Populars['lable_size_wide'])?$Populars['lable_size_wide']:'';
-            $Popular[$k]['lable_size_height']=isset($Populars['lable_size_height'])?$Populars['lable_size_height']:'';
-            $Popular[$k]['lable_size_unit']=isset($Populars['lable_size_unit'])?$Populars['lable_size_unit']:'';
+            $Popular[$k]['paper_size_long']=isset($Populars[0]['paper_size_long'])?$Populars[0]['paper_size_long']:'';
+            $Popular[$k]['paper_size_wide']=isset($Populars[0]['paper_size_wide'])?$Populars[0]['paper_size_wide']:'';
+            $Popular[$k]['paper_size_unit']=isset($Populars[0]['paper_size_unit'])?$Populars[0]['paper_size_unit']:'';
+            $Popular[$k]['lable_size_wide']=isset($Populars[0]['lable_size_wide'])?$Populars[0]['lable_size_wide']:'';
+            $Popular[$k]['lable_size_height']=isset($Populars[0]['lable_size_height'])?$Populars[0]['lable_size_height']:'';
+            $Popular[$k]['lable_size_unit']=isset($Populars[0]['lable_size_unit'])?$Populars[0]['lable_size_unit']:'';
         }
         $this->page($Popular,'Popular','page',4);
         return $this->fetch();
@@ -158,25 +160,38 @@ class Templates extends CommonBaseHome
         $UsageScenariosId = isset($param['UsageScenariosId'])?$param['UsageScenariosId']:'';
         $ConfigTemplateCodeTypeId = isset($param['ConfigTemplateCodeTypeId'])?$param['ConfigTemplateCodeTypeId']:'';
         $_where = " data_status=1 AND data_type=0";
+        if(empty($IndustryId)and empty($UsageScenariosId) and empty($ConfigTemplateCodeTypeId)){
+            $data = $chaxun->where($_where)->select();
+            //查询模板详情信息 模板发布人
+
+            foreach($data as $k=>$value){
+                $member = Db::name('member')->where('member_id',$value['member_id'])->find();
+                $data[$k]['username']=isset($member['username'])?$member['username']:'';
+                $data[$k]['userimg']=isset($member['img'])?$member['img']:'';
+                $Populars= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
+                $data[$k]['paper_size_long']=isset($Populars[0]['paper_size_long'])?$Populars[0]['paper_size_long']:'';
+                $data[$k]['paper_size_wide']=isset($Populars[0]['paper_size_wide'])?$Populars[0]['paper_size_wide']:'';
+                $data[$k]['paper_size_unit']=isset($Populars[0]['paper_size_unit'])?$Populars[0]['paper_size_unit']:'';
+                $data[$k]['lable_size_wide']=isset($Populars[0]['lable_size_wide'])?$Populars[0]['lable_size_wide']:'';
+                $data[$k]['lable_size_height']=isset($Populars[0]['lable_size_height'])?$Populars[0]['lable_size_height']:'';
+                $data[$k]['lable_size_unit']=isset($Populars[0]['lable_size_unit'])?$Populars[0]['lable_size_unit']:'';
+            }
+            //未选择条件的数据
+                return $data;
+        }
+
         $where = array();
         //判断
         $where[] = $_where .=((!empty($IndustryId)? " AND industry_id =". $IndustryId:'').(!empty($UsageScenariosId)? " AND usage_scenarios_id =". $UsageScenariosId:'').(!empty($ConfigTemplateCodeTypeId)? " AND code_type =". $ConfigTemplateCodeTypeId:''));
-        $where[] = $_where .=(!empty($IndustryId)? " AND industry_id =". $IndustryId:'');
-        if (!empty($IndustryId) and !empty($UsageScenariosId)){
-            //两种
-            $where[] = $_where .=  " AND industry_id =". $IndustryId." AND usage_scenarios_id=" .$UsageScenariosId ;
-        }elseif (!empty($IndustryId)){
-            $where[] = $_where .=  " AND industry_id =". $IndustryId;
-        }elseif (!empty($UsageScenariosId)){
-            $where[] = $_where .=  " AND usage_scenarios_id=". $UsageScenariosId;
-        }
+
         $_where = end($where);
         $count = $chaxun->where($_where)
             ->select();
         //查询模板详情信息 模板发布人
         foreach($count as $k=>$value){
-            $UserNames = Db::name('admin')->where('admin_id',$value['admin_id'])->field('name')->select();
-            $count[$k]['username']=isset($UserNames[0]['name'])?$UserNames[0]['name']:'';
+            $member = Db::name('member')->where('member_id',$value['member_id'])->find();
+            $count[$k]['username']=isset($member['username'])?$member['username']:'';
+            $count[$k]['userimg']=isset($member['img'])?$member['img']:'';
             $Populars= Db::name('template_content')->where('template_id',$value['template_id'])->field('paper_size_long,paper_size_wide,paper_size_unit,lable_size_wide,lable_size_height,lable_size_unit')->select();
             $count[$k]['paper_size_long']=isset($Populars[0]['paper_size_long'])?$Populars[0]['paper_size_long']:'';
             $count[$k]['paper_size_wide']=isset($Populars[0]['paper_size_wide'])?$Populars[0]['paper_size_wide']:'';
@@ -185,7 +200,8 @@ class Templates extends CommonBaseHome
             $count[$k]['lable_size_height']=isset($Populars[0]['lable_size_height'])?$Populars[0]['lable_size_height']:'';
             $count[$k]['lable_size_unit']=isset($Populars[0]['lable_size_unit'])?$Populars[0]['lable_size_unit']:'';
         }
-        return json($count);
+        return $count;
+        $this->page($count,'Populars','page',20);
 
     }
 }
