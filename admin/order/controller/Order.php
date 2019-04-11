@@ -111,6 +111,9 @@ class Order extends CommonAdmin
 
         $order_no=htmlspecialchars(isset($param['order_no']) ? trim($param['order_no']) : '');
         $order_status=intval(isset($param['order_status']) ? trim($param['order_status']) : '0');
+        //订单金额
+        $order_score_real_pay = intval(isset($param['score_real_pay'])?$param['score_real_pay']:0);
+
         $gettime=time();
 
         if(empty($order_no) ){
@@ -118,6 +121,7 @@ class Order extends CommonAdmin
             exit;
         }
         $data=array(
+            'score_real_pay'=>$order_score_real_pay,
             'order_status'=>$order_status,
             'update_time'=>$gettime,
         );
