@@ -232,13 +232,13 @@
                 </ul>
     </nav>
 </header>
-<body onload="main();">
+<body onLoad="main();">
 <div class="top" id="top">
     <button id="save">
-        <a href="javascript:void(0)" target="_blank" onclick="save()">保存数据</a>
+        <a href="javascript:void(0)" target="_blank" onClick="save()">保存数据</a>
     </button>
     <button id="getPDF">
-        <a href="javascript:void(0)" target="_blank" onclick="showPdf()">显示pdf文档</a>
+        <a href="javascript:void(0)" target="_blank" onClick="showPdf()">显示pdf文档</a>
     </button>
     <button id="getPNG">png</button>
 </div>
@@ -360,8 +360,8 @@
                 <option value="cm">厘米(cm)</option>
             </select>
         </dd>
-        <dt><button onclick="showQRCode('png')">pdf</button></dt>
-        <dt><button onclick="showPdf()">pdfaaaaaaaaaa</button></dt>
+        <dt><button onClick="showQRCode('png')">pdf</button></dt>
+        <dt><button onClick="showPdf()">pdfaaaaaaaaaa</button></dt>
     </dl>
 </div>
 <div class="container-wrap">
@@ -551,6 +551,7 @@
     function save() {
         let data = {graph: getXML(globalGraph)}
         // 调用接口保存
+		data=JSON.stringify(data);
         console.log(data)
     }
 

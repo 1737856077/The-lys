@@ -42,4 +42,11 @@ class Publicinfo extends Controller
     public function headeruser(){
         return $this->fetch();
     }
+
+    /**
+     * @描述：公用头部-管理员信息
+     */
+    public function headeradmin(){
+        return $this->fetch();
+    }
 }

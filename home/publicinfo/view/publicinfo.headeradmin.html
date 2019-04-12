@@ -1,0 +1,13 @@
+{if $Think.session.adminname neq ''}
+<div class="user-center">
+    <ul class="unlogin">
+        <li><a href="/admin.php">后台</a><a href="/index.php/member/register/index">管理员：{$Think.session.adminname}</a></li>
+    </ul>
+</div>
+{else/}
+<div class="user-center">
+    <ul class="unlogin">
+        <li><a href="/admin.php">后台</a></li>
+    </ul>
+</div>
+{/if}
