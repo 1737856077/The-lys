@@ -87,6 +87,7 @@
 
                         <div class="user_muban_list">
                             <ul>
+                                {if condition="!empty($template)"}
                                 {foreach name='template' id='data'}
                                 <li>
 
@@ -117,6 +118,10 @@
                                     </div>
                                 </li>
                                 {/foreach}
+                                {/foreach}
+                                {else/}
+                                <h1>暂无数据</h1>
+                                {/if}
                             </ul>
                         </div>
                     </div>
@@ -127,6 +132,7 @@
                             {if condition="!empty($page)"}
                             {$page}
                             {/if}
+
                         </div>
                     </div>
 

@@ -73,7 +73,7 @@ class Templates extends CommonBase
         //最新模板
         $newtemplate = Db::name('template')
             ->where('member_id', $id)
-            ->where('data_type', 0)
+            ->where('data_type', 1)
             ->order('create_time desc')
             ->limit(4)
             ->select();
@@ -91,9 +91,8 @@ class Templates extends CommonBase
 
         $this->assign([
             'newtemplate' => $_newtemplate,
-            'template' => $_Popular,
         ]);
-      $this->page($_Popular,'template','page',8);
+      $this->page($_Popular,'template','page',1);
         return $this->fetch();
     }
 }
