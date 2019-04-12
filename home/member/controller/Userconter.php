@@ -192,8 +192,17 @@ class Userconter extends CommonBase
         $template_coontent['template_id'] = $datass;
 
         $template_content_result = Db::name('template_content')->insert($template_coontent);
-
-        if ($template_content_result) {
+        $sy_custom_database = Db::name('custom_database')->where('template_id',$templats_id)->find();
+        //获取模板对应的数据库
+        unset($sy_custom_database['database_id']);
+        unset($sy_custom_database['member_id']);
+        unset($sy_custom_database['template_id']);
+        $sy_custom_database['template_id']=$datass;
+        $sy_custom_database['member_id']=$member_id;
+        $sy_custom_database['title_value']= "table".'_'.$member_id . '_' . $templats_id."_".$datass;
+        $sy_custom_database['create_time']= time();
+        $sy_custom_database_data = Db::name('custom_database')->insert($sy_custom_database);
+        if ($template_content_result and $sy_custom_database_data) {
             $this->success('获取成功', '/index.php');
         } else {
             $this->error();

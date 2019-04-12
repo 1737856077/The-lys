@@ -83,7 +83,7 @@
                                                         </th>
                                                         <th>打印数量</th>
                                                         <th>订单状态</th>
-                                                        <th>交易操作</th>
+                                                        <th>支付状态</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -128,9 +128,19 @@
                                                             {/case}
                                                             {/switch}
                                                         </td>
-                                                        <td><a href="#" class="layui-btn  layui-btn-xs"
-                                                               target="_blank">再下一单</a>
+
+                                                        <td>
+                                                            {switch name="$orderdata.pay_status" }
+                                                            {case value="1"}
+                                                            <a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a>
+                                                            {/case}
+                                                            {case value="0"}
+                                                            <a href="" class="layui-btn layui-btn-danger layui-btn-sm" target="_blank">继续支付</a>
+                                                            {/case}
+                                                            {/switch}
                                                         </td>
+
+
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -143,6 +153,7 @@
                                     </div>
                                 </div>
                                 <!--新提交-->
+
                                 <div class="layui-tab-item">
                                     {if condition="isset($new)"}
                                     {foreach name='new' id='newdata'}
@@ -184,7 +195,15 @@
                                             <td>
                                                 <button class="layui-btn layui-btn-normal layui-btn-sm">新提交</button>
                                             </td>
-                                            <td><a href="#" class="layui-btn  layui-btn-xs" target="_blank">继续设计</a>
+                                            <td>
+                                                {switch name="$orderdata.pay_status" }
+                                                {case value="1"}
+                                                <a href="#" class="layui-btn  layui-btn-xs" target="_blank">再下一单</a>
+                                                {/case}
+                                                {case value="0"}
+                                                <a href="#" class="layui-btn layui-btn-danger layui-btn-sm" target="_blank">继续支付</a>
+                                                {/case}
+                                                {/switch}
                                             </td>
                                         </tr>
                                         </tbody>
