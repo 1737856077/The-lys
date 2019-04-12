@@ -135,7 +135,7 @@ class Home extends CommonBaseHome
             $MemberModel = Db::name('member');
             $MemberData = $MemberModel->where('member_id',Session::get('memberid'))->find();//用户信息
             if ($searchres){
-            $this->page($searchres,'datas','page',4);
+            $this->page($searchres,'datas','page',8);
             $this->assign('MemberData', $MemberData);
             return $this->fetch();}else{
                 $this->assign('NoData','无数据');

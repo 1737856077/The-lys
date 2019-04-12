@@ -89,7 +89,7 @@ class Templates extends CommonBaseHome
             $Popular[$k]['lable_size_height']=isset($Populars[0]['lable_size_height'])?$Populars[0]['lable_size_height']:'';
             $Popular[$k]['lable_size_unit']=isset($Populars[0]['lable_size_unit'])?$Populars[0]['lable_size_unit']:'';
         }
-        $this->page($Popular,'Popular','page',4);
+        $this->page($Popular,'Popular','page',8);
         return $this->fetch();
     }
 
