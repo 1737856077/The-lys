@@ -17,7 +17,7 @@
 {include file="publicinfo@publicinfo/header" /}
 
 <div id="wp" style="padding-top: 80px;">
-    <!--<form name="form1" method="post" action="__URL__/suborder" onsubmit="javascript:return subfun();">-->
+    <form name="form1" method="post" action="__URL__/suborder" onsubmit="javascript:return subfun();">
         <input type="hidden" name="memberid" id="memberid" value="{$memberid}" />
         <input type="hidden" name="templateId" id="templateId" value="{$getoneTemplate['template_id']}" />
         <input type="hidden" name="listPaper" id="listPaper" value='{:json_encode($listPaper)}' />

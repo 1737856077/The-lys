@@ -99,8 +99,9 @@ class Preorder extends CommonBase
                 $_price = $getonePaper['price_one'];
             }
         }
+
         // 计算总费用
-        $_priceTotal=price($printNum*$_price,2);
+        $_priceTotal=my_price($printNum*$_price,2);
 
         // 开启事务
         Db::startTrans();

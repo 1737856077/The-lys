@@ -60,6 +60,9 @@ class Paper extends CommonAdmin
         $thickness=intval(isset($param['thickness']) ? trim($param['thickness']) : '0');
         $thickness_unit=htmlspecialchars(isset($param['thickness_unit']) ? trim($param['thickness_unit']) : '');
         $price=my_price(isset($param['thickness']) ? trim($param['price']) : 0.00);
+        $price_one = intval(isset($param['price_one']))?trim($param['price_one']):0;
+        $price_two = intval(isset($param['price_two']))?trim($param['price_two']):0;
+        $price_three = intval(isset($param['price_three']))?trim($param['price_three']):0;
         $sort_rank=intval(isset($param['sort_rank']) ? trim($param['sort_rank']) : '50');
         $data_status=intval(isset($param['data_status']) ? trim($param['data_status']) : '0');
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
@@ -74,6 +77,9 @@ class Paper extends CommonAdmin
             'thickness'=>$thickness,
             'thickness_unit'=>$thickness_unit,
             'price'=>$price,
+            'price_one'=>$price_one,
+            'price_two'=>$price_two,
+            'price_three'=>$price_three,
             'sort_rank'=>$sort_rank,
             'data_status'=>$data_status,
             'data_desc'=>$data_desc,
@@ -105,12 +111,14 @@ class Paper extends CommonAdmin
     public function update(){
         $param = $this->request->post();
         $model=Db::name('paper');
-
         $id=intval(isset($param['id']) ? trim($param['id']) : '0');
         $title=htmlspecialchars(isset($param['title']) ? trim($param['title']) : '');
         $thickness=intval(isset($param['thickness']) ? trim($param['thickness']) : '0');
         $thickness_unit=htmlspecialchars(isset($param['thickness_unit']) ? trim($param['thickness_unit']) : '');
         $price=my_price(isset($param['thickness']) ? trim($param['price']) : 0.00);
+        $price_one = intval(isset($param['price_one']))?trim($param['price_one']):0;
+        $price_two = intval(isset($param['price_two']))?trim($param['price_two']):0;
+        $price_three = intval(isset($param['price_three']))?trim($param['price_three']):0;
         $sort_rank=intval(isset($param['sort_rank']) ? trim($param['sort_rank']) : '0');
         $data_status=intval(isset($param['data_status']) ? trim($param['data_status']) : '0');
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
@@ -125,6 +133,9 @@ class Paper extends CommonAdmin
             'thickness'=>$thickness,
             'thickness_unit'=>$thickness_unit,
             'price'=>$price,
+            'price_one'=>$price_one,
+            'price_two'=>$price_two,
+            'price_three'=>$price_three,
             'sort_rank'=>$sort_rank,
             'data_status'=>$data_status,
             'data_desc'=>$data_desc,

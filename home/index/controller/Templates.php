@@ -129,13 +129,16 @@ class Templates extends CommonBaseHome
      */
     public function content()
     {
+
         $param = $this->request->param();
         $templateid = intval(isset($param['template_id']) ? trim($param['template_id']) : 0);
         if (!$templateid) {
             echo '非法操作';
             exit();
         }
+        Db::name('template')->where('template_id',$templateid)->setInc('show_nums');
         $templateData = Db::name('template')->where('template_id', $templateid)->find();
+
         $template_content_data = Db::name('template_content')->where('template_id',$templateid)->find();
         $this->assign(
             [
