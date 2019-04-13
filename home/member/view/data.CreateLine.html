@@ -43,13 +43,13 @@
                     <div class="box-center">
                         <div class="Order_title">新建列</div>
                         <div class="liebiao">
-                            <form action="/index.php/member/data/SaveLine" method="post">
+                            <form action="/index.php/member/data/CreateLine" method="post">
                             <div class="layui-form-item">
                                 <label class="layui-form-label">列名称:</label>
                                 <div class="layui-input-inline">
-                                        <input type="text" name="title_value" value="">
-                                        <input type="hidden" name="CellId" value="{$CellId}">
-                                        <input type="hidden" name="DatabaseId" value="{$DatabaseId  }">
+                                        <input type="text" name="title" value="">
+                                        <input type="hidden" name="cellid" value="{$CellId}">
+                                        <input type="hidden" name="databaseid" value="{$DatabaseId}">
                                 </div>
                             </div>
                                 <div class="layui-form-item">

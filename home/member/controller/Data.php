@@ -328,26 +328,64 @@ class Data extends CommonBase
         {
             $CellData[] = $v;
         }
+        $this->assign('data',$param);
         $this->assign('TableName',$TableName);
         $this->assign('LineData',$LineData);
         $this->assign('CellData',$CellData);
         return $this->fetch();
     }
     //保存字段列表添加字段空值
-    public function SaveLine()
-    {
-        $param = $this->request->param();
-        dump($param);die();
-    }
+
     //添加字段
     public function CreateLine()
     {
         $param = $this->request->param();
+
         $CellId = htmlspecialchars(isset($param['cellid'])?$param['cellid']:'');
         $DatabaseId =htmlspecialchars(isset($param['databaseid'])?$param['databaseid']:'');
-        $title = htmlspecialchars(isset($param['title'])?$param['tiutle']:'');
+        $title = htmlspecialchars(isset($param['title'])?$param['title']:'');
+        $Cell_Type = htmlspecialchars(isset($param['cell_type'])?$param['cell_type']:'');
+        $Cell_Lenght = htmlspecialchars(isset($param['cell_lenght'])?$param['cell_lenght']:'');
         if (!empty($title)){
+            $data = [
+                'title_value'=>'cell'.time(),
+                'title'=>$title,
+                'cell_type'=>$Cell_Type,
+                'cell_lenght'=>$Cell_Lenght,
+                'database_id'=>$DatabaseId,
+                'table_id'=>$CellId,
+                'create_time'=>time()
+            ];
+            $res = Db::name('custom_data_cell')->insertGetId($data);
+            //查询更新字段的别名
+            $name = Db::name('custom_data_cell')->where('data_cell_id',$res)->find()['title_value'];
+            //取出列的值
+            $LineDataModel = Db::name('custom_table_data');
+            $LineDatas = $LineDataModel->where('table_id',$CellId)->select();
+            //插入空数据
+            $Data = [];
+            foreach ($LineDatas as $k=>$v)
+            {
+                $Data[] = json_decode($v['content'],true);
+                $Data[$k]['id']=$v['id'];
+            }
+            $Cell_Data = [];
+            foreach ($Data as $k=>$v){
+                $v["$name"]='';
+                $Cell_Data[]=$v;
+            }
 
+            foreach ($Cell_Data as $k=>$v){
+                $id = $v['id'];
+                unset($v['id']);
+                $d = ['content'=>json_encode($v)];
+                Db::name('custom_table_data')->where('id',$id)->update($d);
+            }
+            if ($res){
+                $this->success('创建成功',"/index.php/member/data/LineData/tableid/$CellId/database/$DatabaseId");
+            }else{
+                $this->error('创建失败');
+            }
         }else{
             $this->assign('CellId',$CellId);
             $this->assign('DatabaseId',$DatabaseId);
