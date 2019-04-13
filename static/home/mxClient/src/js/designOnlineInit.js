@@ -73,6 +73,11 @@ function main() {
 
 // 调用接口初始化数据
 function init(graph) {
+    let templateXML = document.getElementById('templateXML').value;
+    let templateLabelShape = document.getElementById('templateLabelShape').value;
+    let templateLabelSizeWide = document.getElementById('templateLabelSizeWide').value;
+    let templateLabelSizeHeight = document.getElementById('templateLabelSizeHeight').value;
+
     // 1 圆形 2 长方形
     let shape = {
         round: 1,
@@ -80,28 +85,12 @@ function init(graph) {
     }
     let response = {
         data: {
-            graph: `
-                        <mxGraphModel>
-                          <root>
-                            <mxCell id="0"/>
-                            <mxCell id="1" parent="0"/>
-                            <mxCell id="2" style="shape=rounded;rotation=189.324;" parent="1" vertex="1">
-                              <mxGeometry x="127.5" y="191.25" width="100" height="40" as="geometry"/>
-                            </mxCell>
-                            <mxCell id="3" style="" parent="1" vertex="1">
-                              <mxGeometry x="121.25" y="320" width="100" height="40" as="geometry"/>
-                            </mxCell>
-                            <mxCell id="4" style="shape=triangle" parent="1" vertex="1">
-                              <mxGeometry x="107.5" y="87.5" width="40" height="40" as="geometry"/>
-                            </mxCell>
-                          </root>
-                        </mxGraphModel>
-                    `,
-            shape: 1,
+            graph: templateXML,
+            shape: templateLabelShape,
             top: 1,
             left: 1,
-            width: 500,
-            height: 500
+            width: templateLabelSizeWide,
+            height: templateLabelSizeHeight
         }
     };
     // 初始化绘制图形区域
@@ -109,7 +98,7 @@ function init(graph) {
     $('#container').width(data.width).height(data.height)//.css({top:data.top,left:data.left})
     if (data.shape == shape.round) {
         console.log('round');
-        $('#container').css({borderRadius: '50%'});
+        $('#container').css({borderRadius: data.width/2+'px'});
     }
     if (data.shape == shape.rectangle) {
         console.log('rectangle')

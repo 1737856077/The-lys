@@ -116,7 +116,13 @@ function showQRCode(type) {
         html2canvas(document.querySelector("#container"), {
             onrendered: function (canvas) {
                 var base64Str = canvas.toDataURL(`image/png`);
-                console.log(base64Str)
+                document.getElementById('graphDataPng').value=base64Str;
+                //let img  = document.createElement('img')
+                //img.src = base64Str
+                //document.body.appendChild(img)
+                //console.log(base64Str)
+                // 提交表单
+                document.getElementById('form1').submit();
             }
         });
     }
@@ -175,9 +181,19 @@ $('#text-dist2').RangeSlider({min: 0, max: 100, step: 0.01, callback: change});
 
 // 保存数据格式
 function save() {
+    // XML
     let data = {graph: getXML(globalGraph)}
+    data=JSON.stringify(data);
+    // console.log(data)
+    document.getElementById('templateXML').value=data;
     // 调用接口保存
-    console.log(data)
+    // PNG
+    showQRCode('png');
+    // PDF
+    showPdf();
+
+    // 提交表单
+    //document.getElementById('form1').submit();
 }
 
 // 点击元素初始化右侧属性数据 width，height，top，left，angle
@@ -204,24 +220,46 @@ window.initProp = (cell, type) => {
 }
 // pdf
 function showPdf() {
-    var container = document.getElementById("container");
-    container.style.display = "block";
-    var url = 'Scripts/jQuery经典入门教程(绝对详细).pdf';
-    PDFJS.workerSrc = mxClientMyDir + 'src/js/pdf.worker.js';
-    PDFJS.getDocument(url).then(function getPdfHelloWorld(pdf) {
-        pdf.getPage(1).then(function getPageHelloWorld(page) {
-            var scale = 1;
-            var viewport = page.getViewport(scale);
-            var canvas = document.getElementById('the-canvas');
-            var context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            var renderContext = {
-                canvasContext: context,
-                viewport: viewport
-            };
-            page.render(renderContext);
+
+    var nodesToRecover = [];
+    var nodesToRemove = [];
+    var svgElem = $("#container").find('svg');
+    svgElem.each(function (index, node) {
+        var parentNode = node.parentNode;
+        var svg = node.outerHTML.trim();
+
+        var canvas = document.createElement('canvas');
+        canvg(canvas, svg);
+        if (node.style.position) {
+            canvas.style.position += node.style.position;
+            canvas.style.left += node.style.left;
+            canvas.style.top += node.style.top;
+        }
+
+        nodesToRecover.push({
+            parent: parentNode,
+            child: node
         });
+        parentNode.removeChild(node);
+
+        nodesToRemove.push({
+            parent: parentNode,
+            child: canvas
+        });
+        parentNode.appendChild(canvas);
+    });
+    html2canvas(document.querySelector("#container"), {
+        onrendered: function (canvas) {
+            var pageData = canvas.toDataURL('image/jpeg', 1.0);
+            //方向默认竖直，尺寸ponits，格式a4【595.28,841.89]
+            var pdf = new jsPDF('', 'pt', 'a4');
+            //需要dataUrl格式
+            pdf.addImage(pageData, 'JPEG', 0, 0, 500, 500 );
+            var _templatePdf = document.getElementById('templatePdf').value;
+            _templatePdf = _templatePdf=='' ? 'contentPDF_' + moment().format('YYYYMMDDhmmss') : _templatePdf;
+            _templatePdf = templatePDFDir + _templatePdf + '.pdf';
+            pdf.save(_templatePdf);
+        }
     });
 }
 
