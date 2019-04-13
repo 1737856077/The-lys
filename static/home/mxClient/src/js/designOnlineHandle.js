@@ -121,6 +121,8 @@ function showQRCode(type) {
                 //img.src = base64Str
                 //document.body.appendChild(img)
                 //console.log(base64Str)
+                // 提交表单
+                document.getElementById('form1').submit();
             }
         });
     }
@@ -181,6 +183,7 @@ $('#text-dist2').RangeSlider({min: 0, max: 100, step: 0.01, callback: change});
 function save() {
     // XML
     let data = {graph: getXML(globalGraph)}
+    data=JSON.stringify(data);
     // console.log(data)
     document.getElementById('templateXML').value=data;
     // 调用接口保存
@@ -190,7 +193,7 @@ function save() {
     showPdf();
 
     // 提交表单
-    document.getElementById('form1').submit();
+    //document.getElementById('form1').submit();
 }
 
 // 点击元素初始化右侧属性数据 width，height，top，left，angle

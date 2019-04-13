@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>设计中心</title>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script type="text/javascript" src="__STATIC__/home/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/home/js/onlineSetLable.js"></script>
+</head>
+<style type="text/css">
+    .spanerror{ padding-left: 15px; color: #f00; line-height: 20px;}
+</style>
+<body style="text-align: center;">
+<script type="text/javascript" src="__STATIC__/home/js/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/home/js/flow.js"></script>
+{include file="publicinfo@publicinfo/header" /}
+    <!-- 右侧边栏 -->
+    <div class="tool-panel" style="width: 800px; position: relative; margin: 0px auto 200px auto; text-align:left;">
+        <div class="tool-editor-panel">
+            <!--  -->
+            <div class="editor-panel-content">
+                <div class="editor-canvas-panel">
+
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title tab_tatle">
+                            <li class="layui-this">
+                                <p class="design-Order">标签设置<font color="#f00"> (需全部设置)</font></p>
+                            </li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item" style="display: block;">
+                                <form id="form1" name="form1" action="__URL__/index" method="post" enctype="multipart/form-data" onsubmit="javascript:return subfun();">
+                                    <input type="hidden" name="label_shape" id="label_shape" value="0" />
+                                    <input type="hidden" name="lable_size_wide" id="lable_size_wide" value="0}" />
+                                    <input type="hidden" name="lable_size_height" id="lable_size_height" value="0" />
+                                    <input type="hidden" name="label_spacing_level" id="label_spacing_level" value="0" />
+                                    <input type="hidden" name="label_spacing_vertical" id="label_spacing_vertical" value="0" />
+
+                                <fieldset class="layui-elem-field" style="width:95%; padding: 10px 0;">
+                                        <legend>标签名称：</legend>
+                                        <div class="yun-Label-box">
+                                            <div class="tool-mould-gay">
+                                                <input name="title" id="title" value="标签1" style="width: 700px;" onblur="onBlur_title()" />
+                                            </div>
+                                        </div>
+                                        <span id="span_title" class="spanerror"></span>
+                                 </fieldset>
+
+                                <fieldset class="layui-elem-field" style="width:95%; padding: 10px 0;">
+                                    <legend>标签形状：</legend>
+                                    <div class="yun-Label-box">
+                                        <div class="tool-mould-gay">
+                                            <select name="label_shape" id="label_shape" lay-filter="business" style="width: 300px;">
+                                                <option value="1">圆形</option>
+                                                <option value="2">矩形</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+
+                                <!--矩形标签尺寸-->
+
+                                <div class="tooltype01" style="">
+
+                                    <fieldset class="layui-elem-field" style="width:95%; padding: 10px 0;">
+                                        <legend>标签尺寸(mm)：</legend>
+                                        <div class="yun-Label-box">
+                                            <p class="yun_tab_tatle_tip">宽度</p>
+                                            <div class="layui-field-box" style=" width: 700px;float: left;">
+                                                <div id="yun_lable_width" class="demo-slider"></div>
+                                            </div>
+                                            <!--<div style=" width: 69px;float: left;margin-top: -6px;">-->
+                                                <!--<select name="interest" lay-filter="lable_width">-->
+                                                    <!--<option value=""></option>-->
+                                                    <!--<option value="0" selected="">毫米 (mm)</option>-->
+                                                    <!--<option value="1">厘米 (cm)</option>-->
+                                                    <!--<option value="2">英寸 (in)</option>-->
+                                                <!--</select>-->
+                                            <!--</div>-->
+                                        </div>
+                                        <span id="span_lable_size_wide" class="spanerror"></span>
+                                        <div class="yun-Label-box">
+                                            <p class="yun_tab_tatle_tip">高度</p>
+                                            <div class="layui-field-box" style=" width: 700px;float: left;">
+                                                <div id="yun_lable_height" class="demo-slider"></div>
+                                            </div>
+                                            <!--<div style=" width: 69px;float: left;margin-top: -6px;">-->
+                                                <!--<select name="interest" lay-filter="lable_height">-->
+                                                    <!--<option value=""></option>-->
+                                                    <!--<option value="0" selected="">毫米 (mm)</option>-->
+                                                    <!--<option value="1">厘米 (cm)</option>-->
+                                                    <!--<option value="2">英寸 (in)</option>-->
+                                                <!--</select>-->
+                                            <!--</div>-->
+                                        </div>
+                                        <span id="span_lable_size_height" class="spanerror"></span>
+                                    </fieldset>
+                                </div>
+
+                                <fieldset class="layui-elem-field" style="width:95%;  padding: 10px 0;">
+                                    <legend>标签打印顺序：</legend>
+                                    <div class="yun-Label-box">
+                                        <p class="yun_tab_tatle_tip">起始位置</p>
+                                        <div style="width: 300px;float: left;margin: -6px 0 0 10px;">
+                                            <select name="label_printing_order_position" lay-filter="label_printing_order_position" style="width:200px;">
+                                                <option value="0" selected="">左上</option>
+                                                <option value="1">左下</option>
+                                                <option value="2">右上</option>
+                                                <option value="3">右下</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="yun-Label-box">
+                                        <p class="yun_tab_tatle_tip">首选方向</p>
+                                        <div style="width: 300px;float: left;margin: -6px 0 0 10px;">
+                                            <select name="label_printing_order_direction" lay-filter="label_printing_order_direction" style="width:200px;">
+                                                <option value="0" selected="">垂直</option>
+                                                <option value="1">水平</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="layui-elem-field" style="width:95%;  padding: 10px 0;">
+                                    <legend>标签间距(mm)：</legend>
+                                    <div class="yun-Label-box">
+                                        <p class="yun_tab_tatle_tip">水平间距</p>
+                                        <div class="layui-field-box" style=" width: 700px;float: left;">
+                                            <div id="yun_lable_width04" class="demo-slider"></div>
+                                        </div>
+                                    </div>
+                                    <span id="span_label_spacing_level" class="spanerror"></span>
+                                    <div class="yun-Label-box">
+                                        <p class="yun_tab_tatle_tip">垂直间距</p>
+                                        <div class="layui-field-box" style=" width: 700px;float: left;">
+                                            <div id="yun_lable_height04" class="demo-slider"></div>
+                                        </div>
+                                    </div>
+                                    <span id="span_label_spacing_vertical" class="spanerror"></span>
+                                </fieldset>
+                                <button type="submit" style="float: right;margin-right:30px " class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__STATIC__/home/layui/layui.all.js"></script>
+    <script>
+        layui.use(['form', 'layedit', 'laydate', 'upload', 'slider'], function(){
+            var form = layui.form
+                ,layer = layui.layer
+                ,layedit = layui.layedit
+                ,laydate = layui.laydate
+                ,jq      = layui.jquery
+                ,slider = layui.slider;
+//
+            var ToolModular  = document.getElementById("Tool_Modular");
+            var tooleditor   = document.getElementById("tool_editor");
+            form.on('select(business)', function(data){
+                if (data.value == 0) {
+                    jq(".tooltype01").css({"display": "none"});
+                    jq(".tooltype02").css({"display": "none"});
+                    jq(".tooltype03").css({"display": "none"});
+                    jq(".tooltype04").css({"display": "none"});
+                }else if(data.value == 1){
+                    jq(".tooltype01").css({"display": "block"});
+                    jq(".tooltype02").css({"display": "none"});
+                    jq(".tooltype03").css({"display": "none"});
+                    jq(".tooltype04").css({"display": "none"});
+                }else if(data.value == 2){
+                    jq(".tooltype01").css({"display": "none"});
+                    jq(".tooltype02").css({"display": "block"});
+                    jq(".tooltype03").css({"display": "none"});
+                    jq(".tooltype04").css({"display": "none"});
+                }else if(data.value == 3){
+                    jq(".tooltype01").css({"display": "none"});
+                    jq(".tooltype02").css({"display": "none"});
+                    jq(".tooltype03").css({"display": "block"});
+                    jq(".tooltype04").css({"display": "none"});
+                }else if(data.value == 4){
+                    jq(".tooltype01").css({"display": "none"});
+                    jq(".tooltype02").css({"display": "none"});
+                    jq(".tooltype03").css({"display": "none"});
+                    jq(".tooltype04").css({"display": "block"});
+                }else{
+                    jq(".tooltype01").css({"display": "none"});
+                    jq(".tooltype02").css({"display": "none"});
+                    jq(".tooltype03").css({"display": "none"});
+                    jq(".tooltype04").css({"display": "none"});
+                }
+            });
+
+            $(".tool-editor-sidebar .tool-tabs__tab-list .tool-tabs__tab").click(function () {
+                $(".tool-tabs__tab").removeClass("tool-tabs__tab--active");
+                $(this).addClass("tool-tabs__tab--active");
+                $(".tool-tabs__content").attr("data-name", $(this).data("name"));
+                var that = this;
+                $(".tool-tab-panel").each(function (index, item) {
+                    if($(that).data("name") == $(item).data("name")){
+                        if ($(item).css('display') == 'block') {
+                            $(item).hide()
+                            $(".tool-tabs__content").attr("data-name", '');
+                        } else {
+                            $(item).show();
+                        }
+                    } else {
+                        $(item).hide()
+                    }
+                })
+            })
+
+            //矩形标签宽度输入框
+            slider.render({
+                elem: '#yun_lable_width'
+                ,input: true
+                ,theme: '#50a6f1'
+                ,max: 5000
+                ,change: function(value){
+                    //console.log(value) //动态获取滑块数值
+                    document.getElementById('lable_size_wide').value=value;
+                }
+            });
+            //矩形标签高度输入框
+            slider.render({
+                elem: '#yun_lable_height'
+                ,input: true
+                ,theme: '#50a6f1'
+                ,max: 5000
+                ,change: function(value){
+                    //console.log(value) //动态获取滑块数值
+                    document.getElementById('lable_size_height').value=value;
+                }
+            });
+
+            //标签间距-水平间距-输入框
+            slider.render({
+                elem: '#yun_lable_width04'
+                ,input: true
+                ,theme: '#50a6f1'
+                ,max: 1000
+                ,change: function(value){
+                    //console.log(value) //动态获取滑块数值
+                    document.getElementById('label_spacing_level').value=value;
+                }
+            });
+            //标签间距-垂直间距-输入框
+            slider.render({
+                elem: '#yun_lable_height04'
+                ,input: true
+                ,theme: '#50a6f1'
+                ,max: 1000
+                ,change: function(value){
+                    //console.log(value) //动态获取滑块数值
+                    document.getElementById('label_spacing_vertical').value=value;
+                }
+            });
+
+        });
+        $(document).ready(function () {
+            $('.pop-close').click(function () {
+                $('.bgPop,.pop').hide();
+            });
+            $('.click_pop').click(function () {
+                $('.bgPop,.pop').show();
+            });
+            $('.pop-close2').click(function () {
+                $('.bgPop2,.pop2').hide();
+            });
+            $('.click_pop2').click(function () {
+                $('.bgPop2,.pop2').show();
+            });
+            $('.pop-close3').click(function () {
+                $('.bgPop3,.pop3').hide();
+            });
+            $('.click_pop3').click(function () {
+                $('.bgPop3,.pop3').show();
+            });
+
+        })
+    </script>
+
+
+
+
+
+
+</div>
+{include file="publicinfo@publicinfo/footer" /}
+</body>
+</html>

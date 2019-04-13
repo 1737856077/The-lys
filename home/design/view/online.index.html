@@ -64,16 +64,23 @@
     <input type="hidden" name="templateId" id="templateId" value="{$templateId}" />
     <input type="hidden" name="adminId" id="adminId" value="{$adminId}" />
     <input type="hidden" name="memberId" id="memberId" value="{$memberId}" />
-    <input type="hidden" name="templateXML" id="templateXML" value="{:isset($getoneTemplate['xml']) ? $getoneTemplate['xml'] : ''}" />
+    <input type="hidden" name="templateXML" id="templateXML" value='{:isset($getoneTemplate['xml']) ? json_decode($getoneTemplate['xml']) : ''}' />
     <input type="hidden" name="templateImg" id="templateImg" value="{:isset($getoneTemplate['img']) ? $getoneTemplate['img'] : ''}" />
     <input type="hidden" name="templatePdf" id="templatePdf" value="{:isset($getoneTemplate['pdf']) ? $getoneTemplate['pdf'] : ''}" />
-    <input type="hidden" name="templateLabelShape" id="templateLabelShape" value="{:isset($getoneTemplateContent['label_shape']) ? $getoneTemplateContent['label_shape'] : 1}" />
-    <input type="hidden" name="templateLabelSizeWide" id="templateLabelSizeWide" value="{:isset($getoneTemplateContent['lable_size_wide']) ? $getoneTemplateContent['lable_size_wide'] : 500}" />
-    <input type="hidden" name="templateLabelSizeHeight" id="templateLabelSizeHeight" value="{:isset($getoneTemplateContent['lable_size_height']) ? $getoneTemplateContent['lable_size_height'] : 500}" />
+    <input type="hidden" name="templateLabelShape" id="templateLabelShape" value="{:isset($getoneTemplateContent['label_shape']) ? $getoneTemplateContent['label_shape'] : $label_shape}" />
+    <input type="hidden" name="templateLabelSizeWide" id="templateLabelSizeWide" value="{:isset($getoneTemplateContent['lable_size_wide']) ? $getoneTemplateContent['lable_size_wide'] : $lable_size_wide}" />
+    <input type="hidden" name="templateLabelSizeHeight" id="templateLabelSizeHeight" value="{:isset($getoneTemplateContent['lable_size_height']) ? $getoneTemplateContent['lable_size_height'] : $lable_size_height}" />
 
     <input type="hidden" name="graphDataPng" id="graphDataPng" value="" />
 
-    <input type="hidden" name="title" id="title" value="" />
+    <input type="hidden" name="title" id="title" value="{:isset($getoneTemplate['title']) ? $getoneTemplate['title'] : $title}" />
+    <!--<input type="hidden" name="label_shape" id="label_shape" value="{$label_shape}" />
+    <input type="hidden" name="lable_size_wide" id="lable_size_wide" value="{$lable_size_wide}" />
+    <input type="hidden" name="lable_size_height" id="lable_size_height" value="{$lable_size_height}" />-->
+    <input type="hidden" name="label_printing_order_position" id="label_printing_order_position" value="{:isset($getoneTemplateContent['label_printing_order_position']) ? $getoneTemplateContent['label_printing_order_position'] : $label_printing_order_position}" />
+    <input type="hidden" name="label_printing_order_direction" id="label_printing_order_direction" value="{:isset($getoneTemplateContent['label_printing_order_direction']) ? $getoneTemplateContent['label_printing_order_direction'] : $label_printing_order_direction}" />
+    <input type="hidden" name="label_spacing_level" id="label_spacing_level" value="{:isset($getoneTemplateContent['label_spacing_level']) ? $getoneTemplateContent['label_spacing_level'] : $label_spacing_level}" />
+    <input type="hidden" name="label_spacing_vertical" id="label_spacing_vertical" value="{:isset($getoneTemplateContent['label_spacing_vertical']) ? $getoneTemplateContent['label_spacing_vertical'] : $label_spacing_vertical}" />
 
     <input type="submit" name="submitTpl" id="submitTpl" value="提交" />
 </form>

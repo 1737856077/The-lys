@@ -40,6 +40,25 @@ class Online extends CommonBaseHome
         $adminId = intval(isset($param['adminId']) ? $param['adminId'] : 0) ;
         $this->assign("templateId",$templateId);
         $this->assign("adminId",$adminId);
+        // 取得标签设置信息 begin
+        $title= htmlspecialchars(isset($param['title']) ? $param['title'] : '') ;
+        $label_shape = intval(isset($param['label_shape']) ? $param['label_shape'] : 0) ;
+        $lable_size_wide = intval(isset($param['lable_size_wide']) ? $param['lable_size_wide'] : 0) ;
+        $lable_size_height = intval(isset($param['lable_size_height']) ? $param['lable_size_height'] : 0) ;
+        $label_printing_order_position= intval(isset($param['label_printing_order_position']) ? $param['label_printing_order_position'] : 0) ;
+        $label_printing_order_direction = intval(isset($param['label_printing_order_direction']) ? $param['label_printing_order_direction'] : 0) ;
+        $label_spacing_level = intval(isset($param['label_spacing_level']) ? $param['label_spacing_level'] : 0) ;
+        $label_spacing_vertical = intval(isset($param['label_spacing_vertical']) ? $param['label_spacing_vertical'] : 0) ;
+
+        $this->assign("title",$title);
+        $this->assign("label_shape",$label_shape);
+        $this->assign("lable_size_wide",$lable_size_wide);
+        $this->assign("lable_size_height",$lable_size_height);
+        $this->assign("label_printing_order_position",$label_printing_order_position);
+        $this->assign("label_printing_order_direction",$label_printing_order_direction);
+        $this->assign("label_spacing_level",$label_spacing_level);
+        $this->assign("label_spacing_vertical",$label_spacing_vertical);
+        // 取得标签设置信息 end
 
         $modelTemplate=Db::name('template');
         $modelTemplateContent=Db::name('template_content');
@@ -51,8 +70,12 @@ class Online extends CommonBaseHome
                 echo '数据错误！'; exit;
             }
             $getoneTemplateContent=$modelTemplateContent->where("template_id='$templateId'")->find();
+        }else{
+            // 没有设置过标签基础信息
+            if(empty($title)){
+                echo "<script language=\"javascript\">window.location.href='".url('online/setlable')."';</script>";
+            }
         }
-
         $memberId = Session::get('memberid');
         $this->assign("memberId",$memberId);
         $this->assign("getoneTemplate",$getoneTemplate);
@@ -66,16 +89,20 @@ class Online extends CommonBaseHome
         $adminId = intval(isset($param['adminId']) ? $param['adminId'] : 0) ;
         $memberId = intval(isset($param['memberId']) ? $param['memberId'] : 0) ;
         $templateXML = isset($param['templateXML']) ? $param['templateXML'] : '' ;
-        print_r($templateXML);
-        exit;
         $templateImg = isset($param['templateImg']) ? $param['templateImg'] : '' ;
         $templatePdf = isset($param['templatePdf']) ? $param['templatePdf'] : '' ;
         $templateLabelShape = intval(isset($param['templateLabelShape']) ? $param['templateLabelShape'] : 0) ;
         $templateLabelSizeWide = intval(isset($param['templateLabelSizeWide']) ? $param['templateLabelSizeWide'] : 0) ;
         $templateLabelSizeHeight = intval(isset($param['templateLabelSizeHeight']) ? $param['templateLabelSizeHeight'] : 0) ;
         $graphDataPng = isset($param['graphDataPng']) ? $param['graphDataPng'] : '' ;
-        $title = htmlspecialchars(isset($param['title']) ? $param['title'] : 'test') ;
-        $title = 'test';
+        $title= htmlspecialchars(isset($param['title']) ? $param['title'] : '') ;
+        $label_shape = $templateLabelShape;
+        $lable_size_wide = $templateLabelSizeWide;
+        $lable_size_height = $templateLabelSizeHeight;
+        $label_printing_order_position= intval(isset($param['label_printing_order_position']) ? $param['label_printing_order_position'] : 0) ;
+        $label_printing_order_direction = intval(isset($param['label_printing_order_direction']) ? $param['label_printing_order_direction'] : 0) ;
+        $label_spacing_level = intval(isset($param['label_spacing_level']) ? $param['label_spacing_level'] : 0) ;
+        $label_spacing_vertical = intval(isset($param['label_spacing_vertical']) ? $param['label_spacing_vertical'] : 0) ;
         $gettime=time();
         //print_r($param);
         //exit;
@@ -83,6 +110,12 @@ class Online extends CommonBaseHome
             echo '<script language="javascript">alert("参数错误，请重新提交！");history.go(-1);</script>';
             exit;
         }
+        if(!empty($templateXML)){
+            $templateXML = (Array)json_decode($templateXML);
+            $templateXML = $templateXML['graph'];
+            $templateXML = json_encode($templateXML);
+        }
+
         $modelTemplate=Db::name('template');
         $modelTemplateContent=Db::name('template_content');
 
@@ -143,7 +176,10 @@ class Online extends CommonBaseHome
         // 模版分类（0：公共模版；1：定制模版）
         $template_code=my_returnUUID();
         $data_type = $adminId>0 ? 1 : 0;
-        $img = base64_image_content($graphDataPng, "static/uploads/template/".date('Ymd').'/');
+        $_imgdir='static/uploads/template';
+        dircreate($_imgdir);
+        $img=base64_image_content($graphDataPng,$_imgdir);
+        
         $code_type = 0;
         if($qrOneTotal and $qrTwoTotal){
             $code_type = 2;
@@ -167,6 +203,18 @@ class Online extends CommonBaseHome
             );
             $modelTemplate->where("template_id='$templateId'")->update($data);
 
+            $dataTemplateContent  = array(
+                'label_shape' => $label_shape,
+                'lable_size_wide' => $lable_size_wide,
+                'lable_size_height' => $lable_size_height,
+                'label_printing_order_position' => $label_printing_order_position,
+                'label_printing_order_direction' => $label_printing_order_direction,
+                'label_spacing_level' => $label_spacing_level,
+                'label_spacing_vertical' => $label_spacing_vertical,
+                'update_time' => $gettime,
+            );
+            $modelTemplateContent->where("template_id='$templateId'")->update($dataTemplateContent);
+
         }else {/*insert*/
 
             $data = array(
@@ -185,11 +233,32 @@ class Online extends CommonBaseHome
                 'update_time' => $gettime,
             );
             $templateId = $modelTemplate->insertGetId($data);
+
+            $dataTemplateContent  = array(
+                'template_id' => $templateId,
+                'label_shape' => $label_shape,
+                'lable_size_wide' => $lable_size_wide,
+                'lable_size_height' => $lable_size_height,
+                'label_printing_order_position' => $label_printing_order_position,
+                'label_printing_order_direction' => $label_printing_order_direction,
+                'label_spacing_level' => $label_spacing_level,
+                'label_spacing_vertical' => $label_spacing_vertical,
+                'create_time' => $gettime,
+                'update_time' => $gettime,
+            );
+            $modelTemplateContent->insertGetId($dataTemplateContent);
         }
 
 
         $this->success("操作成功","/index.php/index/templates/content".'?template_id='.$templateId,3);
         exit;
+    }
+
+    /**
+     * @desc:设置标签基础参数
+     */
+    public function setlable(){
+        return $this->fetch();
     }
 }
 ?>
