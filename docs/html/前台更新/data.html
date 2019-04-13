@@ -1,0 +1,347 @@
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>列表页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="applicable-device"content="pc,mobile"/>
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+  <script src="js/jquery-1.7.2.min.js"></script>
+  <script src="js/jquery-1.7.2.min.js"></script>
+<script src="http://oss.sheetjs.com/js-xlsx/xlsx.full.min.js"></script>
+</head>
+
+
+<body>
+<header>
+<nav>
+<div class="logo"><a href="#"><img src="./images/logo.png"></a></div>
+<div class="menu">
+<div class="menu-box">
+<ul class="menu-list-content">
+<li><a href="/index.html" >首页</a></li>
+<li><a href="/list.html" >模板中心</a></li>
+<li><a href="/design.html" >开始设计</a></li>
+<li><a href="/customized.html" >模板定制</a></li>
+</ul>
+    </div>
+    <div class="user-center">
+    <!--未登录样式
+<ul class="unlogin">
+<li><a href="login.html">登录</a><a href="register.html">注册</a></li>
+</ul>   
+    </div>
+    -->
+
+  <!--登录后  -->
+<ul class="login">
+                <li class="user">
+                <div class="avatar-container-30">
+                 <a href="/user.html" class="user-list"><img src="http://t.cn/RCzsdCq" title="午夜设计尸" alt="午夜设计尸"></a>
+                    </div>
+                    <div class="menu-list user-box hide">
+                        <section><a href="/user.html" z-st="nav_userbox_name">午夜设计尸</a></section>
+                        <div class="user-box-list">
+                            <div class="user-box-list-area">
+                            <p class="works-manange"><a href="/user.html#Setup"><i class="lusheji lusheji_iconziliao"></i>资料设置</a></p>
+                            <p class="works-manange"><a href="/user.html#Template"><i class="lusheji lusheji_icontemplate-library"></i>模板管理</a></p>
+                            <p class="works-manange"><a href="/user.html#Order"><i class="lusheji lusheji_icondingdan"></i>订单中心</a></p>
+                            <p class="works-manange"><a href="/user.html#Data"><i class="lusheji lusheji_icontuiguang"></i>数据表</a></p>
+                            </div>
+                            <div class="user-box-list-area">
+                                <p class="works-manange"><a href="javascript:logout();"><i class="lusheji lusheji_icontuichu"></i>退出</a></p>
+                            </div>
+                        </div>
+                    </div>
+                  </li>
+            </ul>
+
+</nav>
+</header>
+
+
+<div id="wp">
+<div class="dbb">
+<div class="yun_position">  
+    <span>当前位置:</span><em>›</em>
+<a href="#">模板中心</a> <em>›</em> <a href="#">天气机械</a> <em>›</em> <a href="#">工艺管道焊口标签</a>
+</div>
+</div>
+<div class="yun_data_box2">
+<div class="Order_title">工艺管道焊口标签1</div>
+<div class="data_leading">
+<a  href="javascript:void(0)" class="layui-btn click_pop"><i class="lusheji lusheji_icondaoru"></i>导入EXCEL</a>
+<a onclick="downloadExl(jsono)" class="layui-btn" id="txsc"><i class="lusheji lusheji_icondaochu"></i>导出EXCEL</a>
+<a href="" download="我是导出来的测试文件.xlsx" id="downloadA"></a>
+</div>
+
+
+<table class="layui-table">
+  <colgroup>
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>名称</th>
+      <th>款号</th>
+      <th>颜色</th>
+      <th>尺码</th>
+      <th>材质</th>
+      <th>内里</th>
+      <th>操作</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+        var jsono = [{
+                        "名称": "工艺管道焊口标签1",
+                        "款号": "12",
+                        "颜色": "黄色"
+                     },{
+                        "名称": "工艺管道焊口标签1",
+                        "款号": "12",
+                        "颜色": "黄色"
+                     },{
+                        "名称": "工艺管道焊口标签1",
+                        "款号": "12",
+                        "颜色": "黄色"
+                     }];
+        var tmpDown; //导出的二进制对象
+        function downloadExl(json, type) {
+            //根据json数据，获取excel的第一行(例如:姓名、年龄、性别)存至map
+            var tmpdata = json[0];
+            json.unshift({});
+            var keyMap = []; //获取keys
+            for (var k in tmpdata) {
+                keyMap.push(k);
+                json[0][k] = k;
+            }
+            
+            
+            var tmpdata = [];
+            json.map((v, i) => keyMap.map((k, j) => Object.assign({}, {
+                v: v[k],
+                position: (j > 25 ? getCharCol(j) : String.fromCharCode(65 + j)) + (i + 1)
+            }))).reduce((prev, next) => prev.concat(next)).forEach((v, i) => tmpdata[v.position] = {
+                v: v.v
+            });
+            
+            //设置区域,比如表格从A1到D10
+            var outputPos = Object.keys(tmpdata); 
+            var tmpWB = {
+                SheetNames: ['mySheet'], //保存的表标题
+                Sheets: {
+                    'mySheet': Object.assign({},
+                        tmpdata, //内容
+                        {
+                            '!ref': outputPos[0] + ':' + outputPos[outputPos.length - 1] //设置填充区域
+                        })
+                }
+            };
+            
+            //创建二进制对象写入转换好的字节流
+            tmpDown = new Blob([s2ab(XLSX.write(tmpWB, 
+                {bookType: (type == undefined ? 'xlsx':type),bookSST: false, type: 'binary'}//这里的数据是用来定义导出的格式类型
+                ))], {
+                type: ""
+            });
+            
+            var href = URL.createObjectURL(tmpDown); //创建对象超链接
+            document.getElementById("downloadA").href = href; //绑定a标签
+            document.getElementById("downloadA").click(); //模拟点击实现下载
+            setTimeout(function() { //延时释放
+                URL.revokeObjectURL(tmpDown); //用URL.revokeObjectURL()来释放这个object URL
+            }, 100);
+        }
+ 
+        //字符串转字符流
+        function s2ab(s) { 
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        
+        //将指定的自然数转换为26进制表示。映射关系：[0-25] -> [A-Z]。
+        function getCharCol(n) {
+            let temCol = '',
+            s = '',
+            m = 0
+            while (n > 0) {
+                m = n % 26 + 1
+                s = String.fromCharCode(m + 64) + s
+                n = (n - m) / 26
+            }
+            return s
+        }
+    </script>
+<script>
+        /**
+         * FileReader共有4种读取方法：
+         * 1.readAsArrayBuffer(file)：将文件读取为ArrayBuffer。
+         * 2.readAsBinaryString(file)：将文件读取为二进制字符串
+         * 3.readAsDataURL(file)：将文件读取为Data URL
+         * 4.readAsText(file, [encoding])：将文件读取为文本，encoding缺省值为'UTF-8'
+         */
+        var wb;//读取完成的数据
+        var rABS = false; //是否将文件读取为二进制字符串
+ 
+        //开始导入
+        function importf(obj) {
+            if(!obj.files) {
+                return;
+            }
+            var f = obj.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var data = e.target.result;
+                if(rABS) {
+                    wb = XLSX.read(btoa(fixdata(data)), {//手动转化
+                        type: 'base64'
+                    });
+                } else {
+                    wb = XLSX.read(data, {
+                        type: 'binary'
+                    });
+                }
+                /**
+                 * wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
+                 * wb.Sheets[Sheet名]获取第一个Sheet的数据
+                 */
+                var excelJson = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+                document.getElementById("excelContent").innerHTML= JSON.stringify( excelJson );
+            };
+            if(rABS) {
+                reader.readAsArrayBuffer(f);
+            } else {
+                reader.readAsBinaryString(f);
+            }
+        }
+ 
+        //文件流转BinaryString
+        function fixdata(data) { 
+            var o = "",
+                l = 0,
+                w = 10240;
+            for(; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)));
+            o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
+            return o;
+        }
+    </script>
+
+</div>
+<!--遮罩层-->
+<div class="bgPop"></div>
+<!--弹出框-->
+<div class="pop">
+    <div class="pop-top">
+        <h2>导入EXCEL文件</h2>
+        <span class="pop-close"><i class="lusheji lusheji_iconclose-b" style="font-size: 40px;color: #000;"></i></span>
+    </div>
+    <div class="pop-content">
+        <div class="pop-content-right">
+             <form class="layui-form" action="">
+    <div class="layui-form-item">
+    <input type="file" onchange="importf(this)" />
+    <div id="excelContent" style="width: 100%;padding: 5px;height: 350px;overflow-y: auto;"></div>
+  </div>
+  <div class="layui-form-item">
+   <button class="layui-btn" style="position: absolute;bottom: 50px;right: 50px;" lay-submit lay-filter="formDemo">保存</button>
+  </div>
+</form>
+        </div>
+    </div>
+   
+</div>
+<script>
+    $(document).ready(function () {
+        $('.pop-close').click(function () {
+            $('.bgPop,.pop').hide();
+        });
+        $('.click_pop').click(function () {
+            $('.bgPop,.pop').show();
+        });
+    })
+
+</script>
+</div>
+
+<div class="footer">
+<div class="all-work-list">
+<div class="lt">
+<div class="bottom_logo clearfix">
+<div class="fl footer-logo-box">
+<img src="./images/bottom_logo.png" class="footer-logo">
+  <span class="footer-slogan">做标签 · 不求人</span>
+ </div>
+</div>
+ <span class="footer-slogan2">
+云标签倾力打造智能的标签在线编辑和打印管理平台。
+</span>
+
+ <span class="footer-slogan2">
+设计师可以在线编辑会员分享的成品标签，也可自行设计自己想要的模板。
+</span>
+
+ <span class="footer-slogan2">
+©lusheji.com, powered by lusheji Team。 
+</span>
+</div>
+
+<div class="rt">
+  <div class="bottom_logo clearfix">
+<div class="fl footer-logo-box">
+<img src="./images/weixin.png" class="footer-weixin"> <a href="#" target="_blank"><img src="./images/qq.png" class="footer-weixin"></a>
+</div>
+</div>
+ <span class="footer_phone">
+400-888-8888 
+</span>
+<span class="footer-slogan2">
+email@email.com
+</span>
+<span class="footer-slogan2">
+XXX省XX市XX路XX有限公司 
+</span>
+</div>
+</div>
+<script src="./layui/layui.all.js"></script>
+<script>
+layui.use(['form'], function(){
+  var form = layui.form
+});
+</script>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+   
+
+     
+         
+
