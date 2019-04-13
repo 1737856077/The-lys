@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="__STATIC__/home/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1107505_xtbjq84ebde.css">
+    <script type="text/javascript" src="__STATIC__/home/js/jquery-1.8.0.min.js"></script>
+    <style>
+        .fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input {
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+{include file="publicinfo@publicinfo/header" /}
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-tab">
+        {include file="member@userconter/menu" menutype="Data" /}
+
+        <!--主体区域-->
+
+        <!--资料设置开始-->
+        <div class="layui-tab-content layui-body">
+            <div class="layui-tab-item layui-show">
+                <div class="bgzt">
+                    <div class="box-center">
+                        <div class="Order_title">新建数据库</div>
+                        <div class="liebiao">
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">新建数据库:</label>
+                                <div class="layui-input-inline">
+                                    <form action="/index.php/member/data/bdb" method="post">
+                                        <input type="text" name="title_value" value="">
+                                        <input type="hidden" name="member_id" value="{$Think.session.memberid}">
+                                        <input type="hidden" name="template_id" value="">
+                                        <br><br>
+                                        <input type="submit" value="提交"	class="layui-btn">
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+
+            <!--资料资料设置结束-->
+
+        </div>
+        <!--主体区域end-->
+    </div>
+</div>
+<script src="__STATIC__/home/layui/layui.all.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

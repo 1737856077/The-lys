@@ -32,7 +32,6 @@ class Data extends CommonBase
         $memberid = Session::get('memberid');
         $data = Db::name('custom_database')->where('member_id', $memberid)->select();
         $n = Db::name('custom_database')->where('member_id',$memberid)->field('count(member_id) id')->select();
-        $this->assign('data', $data);
         $this->assign('databases', $data);
         $this->assign('n',$n);
         return $this->fetch();
@@ -46,20 +45,20 @@ class Data extends CommonBase
         $title = isset($param['title_value']) ? $param['title_value'] : 0;
         if ($title) {
             $param['template_id'] = isset($param['template_id']) ? htmlspecialchars($param['template_id']) : 0;
-            $data['title'] = 'usertable' . $id . '_' . $param['template_id'] . '_' . time();
-            $data['title_value'] = isset($param['title_value']) ? htmlspecialchars($param['title_value']) : 0;
+            $data['title_value'] = 'usertable' . $id . '_' . $param['template_id'] . '_' . time();
+            $data['title'] = isset($param['title_value']) ? htmlspecialchars($param['title_value']) : 0;
             $data['template_id'] = isset($param['template_id']) ? htmlspecialchars($param['template_id']) : 0;
             $data['member_id'] = $id;
             $data['create_time'] = time();
-            if (empty($data['title']) or empty($data['template_id']) or empty($data['member_id'])) {
+            if (empty($data['title'])  or empty($data['member_id'])) {
                 $this->error('错误');
             }
-            $data = Db::name('custom_database')->insert($data);
+
+            $data = Db::name('custom_database')->insertGetId($data);
             if ($data) {
-                $this->success('创建成功', '/index.php/member/userconter/index');
+                $this->success('创建成功','/index.php/member/data/index');
             } else {
-                $this->error('创建失败请检查', '/index.php/member/userconter/index');
-                echo 0;
+                $this->error('创建失败请检查', '/index.php/member/data/index');
             }
         } else {
             $data = array(
@@ -133,7 +132,6 @@ class Data extends CommonBase
         $this->assign('data', $data);
         return $this->fetch();
     }
-
     //新建数据表
     public function ntable()
     {
@@ -151,10 +149,9 @@ class Data extends CommonBase
                 $this->error('请求错误2');
             }
             $data['database_id'] = $database_id;
-            $data['title'] = $title;
-            $data['title_value'] = $title_value;
+            $data['title_value'] = $title;
+            $data['title'] =  $title_value;
             $data['create_time'] = time();
-            dump($data);
             $datas = Db::name('custom_table')->insert($data);
             if ($datas) {
                 $this->success('创建成功', "/index.php/member/data/table?databaseid=$database_id");
@@ -162,11 +159,12 @@ class Data extends CommonBase
                 $this->error('创建失败');
             }
         } else {
-            $data['id'] = $param['id'];
+            $data['id'] = $param['database_id'];
             $this->assign('data', $data);
             return $this->fetch();
         }
     }
+    //新建数据表页面
 
     //编辑数据表
     public function etable()
@@ -193,8 +191,8 @@ class Data extends CommonBase
             $this->error('请求失败');
         }
         $data = array(
-            'title' => $title,
-            'title_value' => $title_value,
+            'title' => $title_value,
+            'title_value' => $title,
             'update_time' => time()
         );
         $datas = Db::name('custom_table')->where('table_id', $id)->update($data);
@@ -296,6 +294,66 @@ class Data extends CommonBase
             $this->error('插入失败',"/index.php/member/data/bkzd/tableid/$tableid/databaseid/$databaseid");
         }
 
+    }
+
+    /**
+     * @9:00 lys  4/13 /数据库
+     */
+    //查看数据
+    public function LineData()
+    {
+        $param = $this->request->param();
+        $TableId = htmlspecialchars(isset($param['tableid'])?intval($param['tableid']):'');
+        $DatabaseId = htmlspecialchars(isset($param['database'])?$param['database']:'');
+        $DataModel = Db::name('custom_table_data');
+        $LineModel = Db::name('custom_data_cell');
+        //查询数据表名
+        $TableName = Db::name('custom_table')->where('table_id',$TableId)->field('title')->find();
+        $Data = $DataModel->where([
+            'database_id'=>$DatabaseId,
+            'table_id'=>$TableId
+        ])->field('content,id')->select();
+        $LineData = [];
+        //查询列的值
+        foreach ($Data as $key=>$v){
+            $LineData[] = json_decode($v['content'],true);
+        }
+        $CellDatas = $LineModel->where([
+            'database_id'=>$DatabaseId,
+            'table_id'=>$TableId
+        ])->field('title,data_cell_id,table_id,database_id')->select();
+        $CellData =[];
+        //查询列
+        foreach ($CellDatas as $k=>$v)
+        {
+            $CellData[] = $v;
+        }
+        $this->assign('TableName',$TableName);
+        $this->assign('LineData',$LineData);
+        $this->assign('CellData',$CellData);
+        return $this->fetch();
+    }
+    //保存字段列表添加字段空值
+    public function SaveLine()
+    {
+        $param = $this->request->param();
+        dump($param);die();
+    }
+    //添加字段
+    public function CreateLine()
+    {
+        $param = $this->request->param();
+        $CellId = htmlspecialchars(isset($param['cellid'])?$param['cellid']:'');
+        $DatabaseId =htmlspecialchars(isset($param['databaseid'])?$param['databaseid']:'');
+        $title = htmlspecialchars(isset($param['title'])?$param['tiutle']:'');
+        if (!empty($title)){
+
+        }else{
+            $this->assign('CellId',$CellId);
+            $this->assign('DatabaseId',$DatabaseId);
+            return $this->fetch();
+
+        }
     }
 
     public function bkzd()
