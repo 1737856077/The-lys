@@ -55,24 +55,35 @@
                             {foreach name='CellData' id="value" key="key"}
                             <th>{$value.title}</th>
                             {/foreach}
-                            <th style="float: right">操作 <a href="/index.php/member/data/CreateLine/cellid/{$data.tableid}/databaseid/{$data.database}"><i class="layui-icon">&#xe654;</i>   </a> </th>
+                            <th >
+                                操作<a
+                                    href="/index.php/member/data/CreateLine/cellid/{$data.tableid}/databaseid/{$data.database}"><i
+                                    class="layui-icon">&#xe654;</i> </a>
+                            </th>
                             </thead>
                             <tbody>
+                            <form action="/index.php/member/data/SaveDatas/tableid/{$data.tableid}/databaseid/{$data.database}">
+                            {foreach name="LineData" id="value" key="key"}
+                            <tr>
 
-                                {foreach name="LineData" id="value" key="key"}
-                                <tr>
-
-                                    {foreach name="value" id="values" key="key"}
-                                   <td>
-                                       <input style="width: 100%;border: none;" type="text" name="{$key}" value="{$values}">
-                                   </td>
-                                    {/foreach}
-                                <td><a href=""><i class="layui-icon">&#xe640;</i>   </a></td>
-                                </tr>
+                                {foreach name="value['content']" id="values" key="key"}
+                                <td>
+                                    <input style="width: 100%;border: none;" type="text" name="{$key}"
+                                           value="{$values}">
+                                </td>
                                 {/foreach}
-                            </tbody>
-                        </table>
+                                <td>
+                                    <a href=""><i class="layui-icon">&#xe640;</i> </a>
+                                </td>
+                            </tr>
+                                <input type="hidden" name="id" value="{$value.id}">
+                            {/foreach}
 
+                            </tbody>
+
+                        </table>
+                        <input type="submit"class="layui-btn layui-btn-normal" value="保存">
+                        </form>
                         <script>
                             var jsono = [{
                                 "名称": "工艺管道焊口标签1",

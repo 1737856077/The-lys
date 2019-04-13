@@ -316,7 +316,8 @@ class Data extends CommonBase
         $LineData = [];
         //查询列的值
         foreach ($Data as $key=>$v){
-            $LineData[] = json_decode($v['content'],true);
+            $LineData[]['content'] = json_decode($v['content'],true);
+            $LineData[$key]['id']=$v['id'];
         }
         $CellDatas = $LineModel->where([
             'database_id'=>$DatabaseId,
@@ -409,6 +410,17 @@ class Data extends CommonBase
 
         }
     }
+
+    public function saveDatas()
+    {
+        $param = $this->request->param();
+        dump($param);
+    }
+    /**
+     * end
+     */
+
+
 
     public function bkzd()
     {
