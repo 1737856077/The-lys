@@ -55,8 +55,6 @@
                             {foreach name='CellData' id="value" key="key"}
                             <th>{$value.title}</th>
                             {/foreach}
-                            <th style="float: left">序号</th>
-                            {$data|dump}
                             <th style="float: right">操作 <a href="/index.php/member/data/CreateLine/cellid/{$data.tableid}/databaseid/{$data.database}"><i class="layui-icon">&#xe654;</i>   </a> </th>
                             </thead>
                             <tbody>

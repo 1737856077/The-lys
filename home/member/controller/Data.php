@@ -356,13 +356,17 @@ class Data extends CommonBase
                 'table_id'=>$CellId,
                 'create_time'=>time()
             ];
+            //插入字段的id
             $res = Db::name('custom_data_cell')->insertGetId($data);
             //查询更新字段的别名
             $name = Db::name('custom_data_cell')->where('data_cell_id',$res)->find()['title_value'];
             //取出列的值
+
             $LineDataModel = Db::name('custom_table_data');
             $LineDatas = $LineDataModel->where('table_id',$CellId)->select();
             //插入空数据
+            //如果字段值基数存在
+            if (!empty($LineDatas)){
             $Data = [];
             foreach ($LineDatas as $k=>$v)
             {
@@ -385,6 +389,18 @@ class Data extends CommonBase
                 $this->success('创建成功',"/index.php/member/data/LineData/tableid/$CellId/database/$DatabaseId");
             }else{
                 $this->error('创建失败');
+            }
+            }else{
+                //插入字段值
+                $data = [$name=>"&nbsp;"];
+               $datas = json_encode($data,true);
+                $data = ['database_id'=>$DatabaseId,'table_id'=>$CellId,'content'=>$datas];
+                $res = Db::name('custom_table_data')->insert($data);
+                if ($res){
+                    $this->success('创建成功',"/index.php/member/data/LineData/tableid/$CellId/database/$DatabaseId");
+                }else{
+                    $this->error('创建失败');
+                }
             }
         }else{
             $this->assign('CellId',$CellId);
@@ -567,7 +583,6 @@ class Data extends CommonBase
                 'content'=>$content,
                 'create_time'=>time()
             ]; unset($data['if']);
-            dump($data);
             $datas = Db::name('custom_table_data')->insert($data);
         }else{
             $data = [
