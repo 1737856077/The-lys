@@ -1,0 +1,16 @@
+.get{width:100%; margin: 20px 0; background: #fff; border-top:1px solid #d8d8d7; border-bottom: 1px solid #d8d8d7; color: #2f2f2f; overflow: hidden;}
+.get li{width: 97%; padding: 10px 0; border-bottom:1px solid #d8d8d7; /* margin: 0 auto; */font-size: 14px; float: right }
+.get input {border: none;height: 30px;line-height: 30px;width: 90%; text-indent: 5px;}
+.get textarea{ height: 38px;line-height: 20px;resize: none;width: 97%; border: none;  overflow-y: hidden;  text-align: justify;}
+.get select{border: none; height: 28px; line-height: 28px; width: 96%; color: #5c5c5c;-webkit-appearance: none;color:#bbb; background: url(../images/right.png) right 10px no-repeat;}
+.get-place{position: relative; line-height: 30px;}
+.get-icon{background-position: -101px -12px;height: 18px;position: absolute;right: 5px;top: 15px;width: 20px;}
+.save-place{width: 90%; margin: 0 auto; position: relative; }
+.icon-place{float: left;height: 20px;width: 20px;}
+.icon-no-select{background-position: -73px -48px;}
+.icon-select{background-position: -91px -48px;}
+.save-place input{position: absolute; left: 0; top: 0; width: 20px; height: 20px;z-index: 2; opacity: 0}
+
+.blue-bc{width: 35%; height: 40px; background: #2595c9; border-radius: 5px; text-align: center; color: #fff; line-height:40px;border:none;   margin-right: 6%;  }
+.color-blacks{color: #5c5c5c !important; font-size: 14px; background: url(../images/site) no-repeat; background-size: 20px 39px}
+.blue-bcs{width: 35%; height: 40px;border:1px solid  #db5c1e; border-radius: 5px; text-align: center; color: #fff; line-height:40px;   margin-left: 4%; color: #db5c1e; background: none}

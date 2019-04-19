@@ -1,0 +1,14 @@
+.fans_content{ width: 100%; height: auto; overflow: hidden; background: #fff; padding: 2% 0%; margin-bottom: 30% }
+.fans_follow{ width: 100%; height: auto;border-top: 1px solid #d9d9d9 }
+.fans_follow a{ width: 94%; height: auto; display: inline-block; padding: 0 3%;}
+.fans_follow a img{ width: 16%; height: auto; display: inline-block;border-radius: 100%; margin-top: 2%;}
+.fans_r{ width: 81%; height: 67px; vertical-align: top; display: inline-block; padding-top: 3%}
+.fans_f{ width: 78%; height: auto; display: inline-block; float: left; padding-left: 2%}
+.fans_user{color:#333; font-size: 15px;}
+.fans_user span{ font-size: 14px; color:#333; opacity: .7; display: inline-block;}
+.fans_user span i{ font-style: normal;}
+.liuyan{color:#333; font-size: 14px; opacity: .7;padding-top: 2%}
+.guangzhu_yes{ background: url(../images/follow_yes.png)  center no-repeat; width:39px; height:25px; background-size: 25px; display: inline-block; float: right}
+.guangzhu_yes span{ font-size: 12px;  display: block; margin-top: 24px; color:#ff8000;}
+.guangzhu_no{ background: url(../images/follow_no.png)  center no-repeat; width:39px; height:25px; background-size: 25px; display: inline-block; float: right}
+.guangzhu_no span{ font-size: 12px;  display: block; margin-top: 24px; color:#333; opacity: .7}

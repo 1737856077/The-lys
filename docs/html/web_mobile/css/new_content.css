@@ -1,0 +1,56 @@
+.new_content { width: 100%; height: auto; overflow: hidden; margin: 0 auto;  }
+.new_content p { text-align: center; font-size: 14px; color:#9b9b9b; opacity: .5; line-height: 35px; }
+.sender { clear:both; overflow: hidden; padding-left: 3%}
+ .sender div:nth-of-type(1) {
+ float: left;
+}
+ .sender div:nth-of-type(2) {
+ background-color:#fff;
+ background:rgba(255, 255, 255, 0.6)!important;
+filter:Alpha(opacity=60);  /*　使用IE专属滤镜实现IE背景透明*/
+ float: left;
+  margin: 0 0px 10px 15px;
+  padding: 10px 0px 10px 0px;
+ border-radius:7px; font-size: 14px;text-align: justify;
+}
+.receiver div:first-child img,  .sender div:first-child img { width:50px; height: 50px; }
+.receiver { clear:both; overflow: hidden; padding-right: 3%}
+ .receiver div:nth-child(1) {
+ float: right;
+}
+ .receiver div:nth-of-type(2) {
+ float:right;
+ background-color: #97deff; background:rgba(151, 222, 255, 0.6)!important;
+filter:Alpha(opacity=60);  /*　使用IE专属滤镜实现IE背景透明*/
+ margin: 0 14px 10px 20px;
+ padding: 10px 0px 10px 10px;
+ border-radius:7px;
+ font-size: 14px;
+}
+.left_triangle { /* height:0px; width:0px; border-width:8px; border-style:solid; border-color:transparent #fff transparent transparent; */ position: relative; left:-9px; top:-9px;  opacity: 0.6; background: url(../images/s_l.png) no-repeat; width: 9px; height: 17px; }
+.right_triangle {/*  height:0px; width:0px; border-width:8px; border-style:solid; border-color:transparent transparent transparent #97deff; position: relative; right:-16px; top:3px;  opacity: 0.6; */  background: url(../images/s-r.png) no-repeat; width: 9px; height: 17px;position: relative; right:-9px; top:-9px;  opacity: 0.6;}
+.sender div span{ display:-webkit-box; color:#464646;}
+.receiver div span{ display:-webkit-box; color:#464646;}
+
+
+.flys_content{ width: 100%; height: auto; overflow: hidden; position: fixed; bottom:0; left:0; z-index: 10}
+.gif_footer{ width: 96%; height: 58px;background:#fff;border-top:1px solid #cccccc; margin-top: 4%; padding: 0 2%;}
+.gif_footer span.gif_l{ background: url(../images/commodity_016.png); width: 20px; height: 20px; display: inline-block; background-size: 20px; margin-top: 10px;vertical-align: middle}
+.gif_footer span.gif_r{ background: url(../images/gif_r.png); width: 21px; height: 21px; display: inline-block; background-size: 21px; margin-top: 10px;vertical-align: middle}
+.gif_footer textarea{  width: 65%;border-radius: 3px;height: 25px;padding: 5px;border: 1px solid #eeeded;resize: none;background: #eeeded;font-size: 14px;line-height: 25px; vertical-align: middle; margin-top: 10px;  overflow-y: hidden;white-space: nowrap;}
+input.sub_btn{ display: inline-block; width: 13%; height: 36px; line-height: 36px; text-align: center;color:#999999;  -webkit-appearance: none; background: none; font-size: 14px; margin-top: 5px; vertical-align: middle;}
+
+
+
+.send .on{background-position: left bottom;}
+
+.face{overflow: hidden;display: none; background: #fff; border-top: 1px solid #e3e3e3;  padding: 10px 0 10px 10px;}
+.face li{width: 22px;height: 22px;margin:3px;float: left;}
+
+.fly{ width:100%;overflow: hidden;display: none; background: #fff;border-top: 1px solid #e3e3e3;padding: 10px 0 10px 0;  }
+.flys{ width: 88%; height: auto; overflow: hidden;margin: 0 auto;}
+.fly_con{ width:120%; height: auto; margin: 0 auto;}
+.fly_con a{display: inline-block;  margin-right: 7%; float: left}
+.fly_con a dl{}
+.fly_con a dl dt img{ display: block; width: 50px;}
+.fly_con a dl dd{ text-align: center; font-size: 14px; padding-top: 5px}

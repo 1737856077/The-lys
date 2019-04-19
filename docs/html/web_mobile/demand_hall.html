@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>需求大厅</title>
+	<link type="text/css" rel="stylesheet" href="css/common.css">
+	<link type="text/css" rel="stylesheet" href="css/demand_hall.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".sx").click(function(){
+				$(".slide_form").slideToggle();
+			});
+		})
+	</script>
+</head>
+<body>
+<div class="colligate_box">
+	<div class="colligate">
+		<select type="text" class="sort">
+			<option value="">综合排序</option>
+			<option value="">综合排序1</option>
+			<option value="">综合排序2</option>
+			<option value="">综合排序3</option>
+			<option value="">综合排序4</option>
+		</select>
+		<!-- <i class="bottoms"><img src="images/bottoms.png" alt=""></i> -->
+		<button type="button" value="" class="sx">筛选<img src="images/bottoms-01.png" alt=""></button>
+		<form class="slide_form">
+		<section class="list-box" style="height: 290px;">
+			<section class="list">
+				<p>品类</p>
+				<ul class="list-select list-input">
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<!-- <i class="icon list-no-selected"></i> -->
+						<p>不限</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-no-selected"></i>
+						<p>化妆品</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-selected"></i>
+						<p>箱包</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-selected"></i>
+						<p>服装</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-no-selected"></i>
+						<p>电子</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-selected"></i>
+						<p>电器</p>
+					</li>
+				</ul>
+			</section>
+			<section class="list" style="border-bottom-width: 1px; border-bottom-color: rgb(229, 229, 229); border-bottom-style: solid;">
+				<p>地区</p>
+				<ul class="list-select list-input">
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-no-selected"></i>
+						<p>亚洲</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-no-selected"></i>
+						<p>非洲</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-selected"></i>
+						<p>欧洲</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-selected"></i>
+						<p>南美洲</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-no-selected"></i>
+						<p>北美洲</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-selected"></i>
+						<p>大洋洲</p>
+					</li>
+					
+				</ul>
+			</section>
+			<section class="list" style="border-bottom-width: 1px; border-bottom-color: rgb(229, 229, 229); border-bottom-style: solid;border-top:none">
+				<p>地区</p>
+				<ul class="list-select list-input">
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-no-selected"></i>
+						<p>全部</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-no-selected"></i>
+						<p>全付</p>
+					</li>
+					<li>
+						<input type="checkbox" class="list-select-input">
+						<i class="icon list-no-selected"></i>
+						<p>已付</p>
+					</li>
+				</ul>
+			</section>	
+			<input class="new_ch" value="重置" type="reset">
+			<button class="list-btn blue-btn">确 定</button>
+		</section>
+		</form>
+	</div>
+</div>
+<ul class="product">
+    	
+		<li>
+        	<a href="#">
+                <div class="product-img"><img src="images/hz_01.png"></div>
+                <div class="product-content">
+                    <p class="product-title">
+                        <img src="images/air.png">
+                        <span style="color:#5c5c5c">韩国</span>
+                        <span>裸妆粉底控裸妆粉底控油遮粉底</span>
+                    </p>
+                    <p class="product-dis color-grey">
+                        裸妆粉底控裸妆粉底控油遮粉底裸粉底
+                    </p>
+                    <div class="product-price">
+                        <p class="fl color-orange">¥<span>49.90</span></p>
+                        <p class="fr color-d-orange">悬赏金: <i>¥</i><span>36</span></p>
+                    </div>
+                </div>
+                <div class="product-num">x4</div>
+            </a>
+		</li>
+        
+		<li>
+        	<a href="#">
+                <div class="product-img"><img src="images/hz_03.png"></div>
+                <div class="product-content">
+                    <p class="product-title">
+                        <img src="images/air.png">
+                        <span style="color:#5c5c5c">韩国</span>
+                        <span>裸妆粉底控裸妆粉底控油遮</span>
+                    </p>
+                    <p class="product-dis color-grey">
+                        裸妆粉底控裸妆粉底控油遮粉底裸粉底
+                    </p>
+                    <div class="product-price">
+                        <p class="fl color-orange">¥<span>49.90</span></p>
+                        <p class="fr color-d-orange">悬赏金: <i>¥</i><span>36</span></p>
+                    </div>
+                </div>
+                <div class="product-num">x4</div>
+            </a>    
+		</li>
+		<li>
+        	<a href="#">
+                <div class="product-img"><img src="images/hz_02.png"></div>
+                <div class="product-content">
+                    <p class="product-title">
+                        <img src="images/air.png">
+                        <span style="color:#5c5c5c">韩国</span>
+                        <span>裸妆粉底控裸妆粉底</span>
+                    </p>
+                    <p class="product-dis color-grey">
+                        裸妆粉底控裸妆粉底控油遮粉底裸粉底
+                    </p>
+                    <div class="product-price">
+                        <p class="fl color-orange">¥<span>49.90</span></p>
+                        <p class="fr color-d-orange">悬赏金: <i>¥</i><span>36</span></p>
+                    </div>
+                </div>
+                <div class="product-num">x4</div>
+            </a>
+		</li>
+		<li>
+			<a href="#">
+                <div class="product-img"><img src="images/hz_03.png"></div>
+                <div class="product-content">
+                    <p class="product-title">
+                        <img src="images/air.png">
+                        <span style="color:#5c5c5c">韩国</span>
+                        <span>裸妆粉底控裸妆粉底</span>
+                    </p>
+                    <p class="product-dis color-grey">
+                        裸妆粉底控裸妆粉底控油遮粉底裸粉底
+                    </p>
+                    <div class="product-price">
+                        <p class="fl color-orange">¥<span>49.90</span></p>
+                        <p class="fr color-d-orange">悬赏金: <i>¥</i><span>36</span></p>
+                    </div>
+                </div>
+                <div class="product-num">x4</div>
+            </a>
+		</li>
+        <li>
+			<a href="#">
+                <div class="product-img"><img src="images/hz_03.png"></div>
+                <div class="product-content">
+                    <p class="product-title">
+                        <img src="images/air.png">
+                        <span style="color:#5c5c5c">韩国</span>
+                        <span>裸妆粉底控裸妆粉底</span>
+                    </p>
+                    <p class="product-dis color-grey">
+                        裸妆粉底控裸妆粉底控油遮粉底裸粉底
+                    </p>
+                    <div class="product-price">
+                        <p class="fl color-orange">¥<span>49.90</span></p>
+                        <p class="fr color-d-orange">悬赏金:¥<span>36</span></p>
+                    </div>
+                </div>
+                <div class="product-num">x4</div>
+            </a>
+		</li>
+	</ul>
+
+	<ul class="nav">
+			<li>
+            	<a href="#">
+                    <i class="icon nav-index nav-index-on"></i>
+                    <p>首页</p>                    
+                </a>
+			</li>
+			<!--class="nav-p-on"-->
+			<li>
+            	<a href="#">
+                    <i class="icon nav-buy nav-buy-off"></i>
+                    <p>买</p>  
+                    <b>1</b>                  
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon navs-buy navs-buy-off"></i>
+                    <p>消息</p>                    
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon nav-take nav-take-off"></i>
+                    <p>带</p>                   
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon nav-me nav-me-off"></i>
+                    <p>我</p>
+				</a>
+			</li>
+		</ul>
+</body>
+</html>

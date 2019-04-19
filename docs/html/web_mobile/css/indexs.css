@@ -1,0 +1,41 @@
+.ajax_lists{margin-top: 4%}
+.indes_y{ width: 100%; height: auto; overflow: hidden; margin-bottom: 20%}
+.index_con{ width: 93%; height: auto; padding: 0 2%; margin: 0 auto; border-top:1px solid #e5e5e5; border-left: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5; border-bottom: 3px solid #e1e1e1;background: #fff; margin-bottom: 
+20px;}
+.product_con{ width: 98%; height: auto; margin: 0 auto;}
+.yonghu{ width: 81%; height: auto; display: inline-block;}
+.yonghu img{ display: inline-block; width:12% ; margin-top: 3%; vertical-align: middle;}
+.yonghu h3{ display: inline-block; vertical-align: middle; font-size: 15px; color:#666666;  margin-top: 11px; font-weight: normal;}
+.yonghu_r{ width: 17%; height: auto; overflow: hidden; display: inline-block;text-align: right;vertical-align: middle;  margin-top: 7px;}
+.yonghu_r button.follow{ outline: none; background: none; border:1px solid #cacaca; border-radius: 3px 3px 3px 3px; width: 46px; height: 22px; line-height: 22px; display: inline-block; font-size: 12px}
+.yonghu_r button.follow.ok{background-color: #ff9c47;border-color: #ff9c47;color:#fff;}
+
+.banner_con{ width:100%; height: auto; margin-top: 4%}
+.banner_con img{ display: block; width: 100%; height: auto;}
+.product_title{width: 100%; height:auto; margin: 0 auto; padding-bottom: 10px;  border-bottom: 1px solid #e1e1e1; }
+.zjia{ width: 83%; height: auto; border-right:1px solid #e1e1e1; margin-top: 3%; display: inline-block; vertical-align: middle; }
+.zjia_title{ width: 100%;}
+.zjia_title h3{width: 77%;font-size: 14px; color:#333; display: inline-block; font-weight: normal;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+.zjia_title div{/* width: 20%; */ display: inline-block; float: right; margin-right: 10px}
+.zjia_title i{ display: inline-block; font-style: normal; color:#f87301; font-size: 12px;}
+.zjia_title span{ display: inline-block;color:#f87301; font-size: 13px;}
+.zjia p{ font-size: 13px;color:#868686; margin-top: 2%; line-height: 20px;padding-right: 4%; text-align: justify;}
+.zjia_r{width:14%; height: auto; display: inline-block;  padding-top:2%; text-align: center; vertical-align:middle;}
+.zjia_r i.collect{ font-style: normal;height:15px;display:block;background:url("../images/star.png") center top no-repeat;background-size: 15px auto;}
+.zjia_r i.collect.ok{background-image:url("../images/star_change.png");}
+.zjia_r span{ display: inline-block; color:#868686; font-size: 13px; 
+}
+
+.pinglun_bottom{ width: 100%; height: auto; overflow: hidden;  padding-top: 10px;  padding-bottom: 10px;}
+.pinglun_bottom ul{ width: 100%}
+.pinglun_bottom ul li{  width: 33%; height: 24px;line-height:24px;float: left;  text-align: center;border-right:1px solid #e1e1e1 }
+.pinglun_bottom ul li a{ width: 100%; display: inline-block;color:#868686; font-size: 12px; vertical-align: 
+middle}
+
+.pinglun_bottom ul li a i.comment{background: url("../images/comment.png") center center no-repeat;}
+.pinglun_bottom ul li a i.zan{background: url("../images/heart_01.png") center center no-repeat;}
+.pinglun_bottom ul li a i.comment,.pinglun_bottom ul li a i.zan{ font-style: normal; display:inline-block;width: 15px; vertical-align: middle; margin-right: 5px;height: 15px;background-size: 15px auto;}
+.pinglun_bottom ul li a i.zan.ok{background-image:url("../images/heart.png");}
+.pinglun_bottom ul li a p{display: inline-block; color:#868686; font-size: 12px; vertical-align: middle;}
+.pinglun_bottom ul li a span{ display: inline-block; color:#868686; font-size: 12px; vertical-align: middle; }
+.pinglun_bottom ul li a.yao{width: 72%; height: 24px; line-height: 24px; border:1px solid #2595c9; border-radius:3px 3px 3px 3px;background: #2595c9; text-align: center;color:#fff; display: inline-block;}

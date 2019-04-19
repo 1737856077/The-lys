@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>订单详情</title>
+	<link type="text/css" rel="stylesheet" href="css/common.css">
+	<link  type="text/css" rel="stylesheet" href="css/order_details.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var arr_a = $(".order_l li a");
+			var scroll_arr = [0,$(".seat").offset().top,$(".photo").offset().top,$(".pay_info").offset().top,$(".get_order").offset().top,$(".already_send").offset().top,$(".confirm_get").offset().top];
+			$(window).scroll(function(){
+				var scroll_top = 
+			});
+		})
+	</script>
+</head>
+<body>
+	<div class="order_top">
+		<h2>订单已提交成功!</h2>
+		<span>2015/08/25</span>
+		<div class="clear"></div>
+		<p>单号：20150825963658</p>
+	</div>
+	<div class="order_content">
+		<div class="order_l">
+			<ul>
+				<li class="cur"><a href="javascript:void(0)" class="order_01 orders"><i></i><span>订单已提交</span></a></li>
+				<li><a href="javascript:void(0)" class="order_02 orders"><i></i><span>购物位置</span></a></li>
+				<li><a href="javascript:void(0)" class="order_05 orders"><i></i><span>实物照片</span></a></li>
+				<li><a href="javascript:void(0)" class="order_03 orders"><i></i><span>支付信息</span></a></li>
+				<li><a href="javascript:void(0)" class="order_04 orders"><i></i><span>接单</span></a></li>
+				<li><a href="javascript:void(0)" class="order_06 orders"><i></i><span>已发货</span></a></li>
+				<li><a href="javascript:void(0)" class="order_07 orders"><i></i><span>确认收货</span></a></li>
+			</ul>
+		</div>
+		<div class="order_r">
+			<div class="order_company">
+				<img src="images/ba_box.png" alt="">
+				<div class="order_imgs">
+					<div>
+						<h2>韩国裸妆粉底CC粉底</h2>
+						<a href="">待付款</a>
+					</div>	
+					<div style="margin-top:2%">
+						<p>清爽<b></b>滋润型  125ml</p>
+						<span><i>¥</i>150.00</span>
+					</div>	
+					<p class="jianshu">x4</p>
+				</div>
+			</div>
+			<div class="order_heji">
+				<p class="heji">共<span>4</span>件商品</p>
+				<p class="heji_num"><b>合计：</b><span><i>¥</i>620</span></p>
+			</div>
+			
+			<div class="receiver">
+				<div class="receivers"><label for="">收货人名：</label><input type="text" value="刘庆艳"></div>
+				<div class="receivers"><label for="">手机号码：</label><input type="text" value="15601628091"></div>
+				<div class="receivers"><label for="">邮政编码：</label><input type="text" value="200333"></div>
+				<div class="receivers"><label for="">收货地址：</label><textarea name="" id="" cols="0" rows="">上海市</textarea></div>
+			</div>
+			
+			<div class="seat">
+				<p>购物位置</p>
+			</div>	
+
+		</div>
+	</div>
+	<!--order_content end-->
+	<div class="seat_map">
+		<img src="images/map.png" alt="">
+
+		<!--  -->
+	</div>
+	<!--seat_map end-->
+
+	<div class="bb">
+		<div class="bbes photo">
+			<h2>实物照片</h2>
+			<img src="images/bb.png" alt="">
+		</div>
+	</div>
+
+	<div class="bb">
+		
+	</div>
+	<div class="bb"  style="padding-bottom:0px">
+		<div class="bbes pay_info">
+			<h2>支付信息</h2>
+			<form action="">
+				<div class="zf">
+					<label for="">支付方式：</label>
+					<input type="text" value="微支付">
+				</div>
+				<div class="zf">
+					<label for="">支付金额：</label>
+					<input type="text" value="￥6650">
+				</div>
+				<div class="zf">
+					<label for="">支付时间：</label>
+					<input type="text" value="2015-09-11   15:13:09">
+				</div>
+				
+			</form>
+		</div>
+	</div>
+
+	<div class="bb">
+		<div class="bbes get_order">
+			<h2>接单</h2>
+			<form action="">
+				<div class="zf">
+					<label for="">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label>
+					<input type="text" value="烟雨蒙蒙">
+				</div>
+				<div class="zf">
+					<label for="">目&nbsp;&nbsp;的&nbsp;地：</label>
+					<input type="text" value="山东省济南市大明湖">
+				</div>
+				<div class="zf">
+					<label for="">出发时间：</label>
+					<input type="text" value="2015-09-11">
+				</div>
+				<div class="zf">
+					<label for="">回国时间：</label>
+					<input type="text" value="2015-09-11">
+				</div>
+				
+			</form>
+		</div>
+	</div>
+
+	<div class="bb">
+		<div class="bbes already_send">
+			<h2>已发货</h2>
+			<form action="">
+				<div class="zf">
+					<label for="">快递公司：</label>
+					<input type="text" value="烟雨蒙蒙">
+				</div>
+				<div class="zf">
+					<label for="">快递单号：</label>
+					<input type="text" value="山东省济南市大明湖">
+				</div>
+				<div class="zf">
+					<label for="">快递公司：</label>
+					<input type="text" value="2015-09-11">
+				</div>
+				<div class="bbes" style="border:0; margin-top:-10px">
+			<h2>购物小票</h2>
+			<img src="images/fapiao.png" alt="">
+		</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="bb">
+		<div class="bbes confirm_get">
+			<h2>确认收货</h2>
+			<form action="">
+				<div class="zf">
+					<label for="">收货人：</label>
+					<input type="text" value="烟雨蒙蒙">
+				</div>
+				<div class="zf">
+					<label for="">商品名称：</label>
+					<input type="text" value="山东省济南市大明湖">
+				</div>
+				<div class="zf">
+					<label for="">快递公司：</label>
+					<input type="text" value="2015-09-11">
+				</div>
+				
+			</form>
+		</div>
+	</div>
+	
+<div class="warn_icon">
+			<button type="button" class="warn_icon_l">返回个人中心</button>
+			<button type="button" class="warn_icon_r">提醒付款</button>
+		</div>
+
+
+</body>
+</html>

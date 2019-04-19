@@ -1,0 +1,17 @@
+.with_zh{font-size: 15px; color:#424242; padding:4% 0 4% 4%;}
+.with_zh p{ display: inline-block; font-size: 12px; color:#ff8208;}
+.with_zh p span{ display: inline-block; font-size: 20px;}
+
+.txje{ width: 96%; height: 44px; line-height: 44px; border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5; background: #fff; padding: 0 0 0 4%; color:#424242; font-size: 15px;}
+.txje input{ width: 75%; height: 44px; line-height: 44px; color:#424242; opacity: .3; display: inline-block; padding-left: 5%}
+.beizhu{font-size: 15px; color: #424242; opacity: .3; line-height: 44px; padding-left: 4%}
+.txzh{ width: 96%; height: 44px; line-height: 44px;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5; background: #fff; padding: 0 0 0 4%; color:#424242; font-size: 15px; position: relative;}
+.txzh select{ width: 76%; height: 44px; line-height: 44px; color:#424242; opacity: .3; display: inline-block;padding-left: 3%;   outline: none;appearance: none;-moz-appearance: none;-webkit-appearance: none;}
+a.ture_tx{ display: inline-block; width: 96%; height: 44px; line-height: 44px; margin-top: 5%; background: #2595c9; border-radius: 5px 5px 5px 5px; border:1px solid #2595c9;color:#fff; text-align: center; margin-left: 1.5%}
+
+.txzh i.with_top{ display: inline-block; background: url(../images/top.png) no-repeat;transform:rotate(90deg);
+-ms-transform:rotate(90deg); 	/* IE 9 */
+-moz-transform:rotate(90deg); 	/* Firefox */
+-webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+-o-transform:rotate(90deg); 	/* Opera */
+ position: absolute;right:4%; top:16px; width: 10%; height: 29px;background-size: 10px auto}

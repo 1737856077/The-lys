@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
+  <title>Document</title>
+  <script language="javascript" src="js/layer.m.js"  charset="UTF-8"></script>
+  <script>
+  function test1(){
+	layer.open({
+		title: [ //或直接title:'标题'
+        '标题',
+        'background-color:#0099CC; color:#fff;' //标题样式
+		],
+		content:'内容',
+		//time:'2'
+	})
+  }
+
+  function test2(){
+	layer.open({
+		style: 'width:100%;border:none; background-color:#78BA32; color:#fff;',
+		content:'默认地址修改成功',
+		time:2,
+		anim:true,
+		fixed:false,
+		top:0,
+		shade:false
+	})
+  }
+
+  function test3(){
+	layer.open({
+		btn: ['知道了'],
+		content:'收到东西记得给个好评哟，亲~~~',
+		shadeClose:false
+	})
+  }
+
+  function test4(){
+	layer.open({
+		btn: ['确认','取消'],
+		content:'海带乐园想要获取你的地理位置',
+		yes: function(){
+			layer.open({fixed:false,style:'text-align:center;',content: '你点了确认', time: 2});
+		}, no: function(){
+			layer.open({content: '你选择了取消', time: 1});
+		}
+	})
+  }
+
+  function test5(){
+	layer.open({
+		type:2
+	})
+  }
+  </script>
+ </head>
+ <body>
+  <button onclick="test1()">button1_for_test</button></br>
+  <button onclick="test2()">button2_for_test</button></br>
+  <button onclick="test3()">button3_for_test</button></br>
+  <button onclick="test4()">button4_for_test</button></br>
+  <button onclick="test5()">button5_for_test</button></br>
+  <button onclick="test6()">button6_for_test</button>
+ </body>
+</html>

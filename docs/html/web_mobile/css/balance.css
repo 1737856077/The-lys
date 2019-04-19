@@ -1,0 +1,18 @@
+.balance_hesder{ width: 100%; height: auto; overflow: hidden; background:#fff; border-bottom: 1px solid #d8d8d7; position: relative;}
+.balance_ye{ font-size: 13px; color: #989898; text-align: center;padding-top: 20px;}
+.rb{ font-size: 12px; text-align: center; color:#ff8208; margin: 0 auto;  padding-top: 5px;}
+.rb span{ font-size: 26px; font-weight: bold; display: inline-block;}
+a.zd{ display: inline-block; font-size: 14px; float: right; background: url(../images/right.png) right no-repeat; position: absolute;top:32%; right:5%; padding-right: 12px;color:#858585;  background-size: 7px auto;}
+.balance_hesder a.txian{ width: 94%; height: 30px; line-height: 30px; text-align: center; font-size: 14px; background-color: #2595c9; border-radius: 5px 5px 5px 5px; display: inline-block; color:#fff; margin: 20px 3%;}
+.why{ width:97%; height: auto; overflow: hidden; border-top: 1px solid #d8d8d7; border-bottom: 1px solid #d8d8d7; margin-top: 2%;background: #fff; padding-bottom: 4%; padding-left: 3%; margin-bottom: 
+24%}
+.why_yue{ width:100%; height: auto; overflow: hidden; margin: 0 auto; padding-top: 15px;}
+.why_yue p{font-size: 15px; color:#706e6e;}
+.why_yue ul{width: 96%; height: auto; overflow: hidden;font-size: 13px; color:#706e6e; padding-top: 5px;padding-left: 10px; }
+.why_yue ul li{ background: url(../images/li_l.png) left center no-repeat; line-height: 22px;background-size: 4px 4px;
+  padding-left: 10px;}
+.because{width: 100%; height: auto; overflow: hidden; margin: 0 auto; padding-top: 15px;}
+.because p{font-size: 15px; color:#706e6e;}
+.because span{font-size: 15px; color:#706e6e;display: block;}
+.because ul{ height: auto; overflow: hidden;font-size: 13px; color:#706e6e; padding-top: 5px;padding-left: 4% }
+.because ul li{ background: url(../images/li-l.png) left center no-repeat; line-height: 22px}

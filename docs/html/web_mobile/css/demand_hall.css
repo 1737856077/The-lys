@@ -1,0 +1,39 @@
+.colligate_box{width: 100%; height:auto; overflow: hidden;border-bottom: 1px solid #e5e5e5; position: fixed;top:0; left:0; z-index: 1}
+.colligate{ width: 94%; height: auto; overflow: hidden; background: #fff; padding: 2% 3%;  margin: 0 auto; position: relative;}
+select.sort{ width: 75%; height: 40px; line-height: 40px;opacity: .6; -webkit-appearance:none; border:1px solid #f87301;border-radius: 5px; font-size: 15px; padding-left: 2%; background: url(../images/bottoms.png) 97% no-repeat;color: #f87301;   background-size: 6% 23%; }
+
+.colligate i.bottoms{ display: block; width: 8px; position: absolute; top:25%; right:28%;  line-height: 22px;
+  vertical-align: middle;}
+.colligate button.sx{ display: inline-block; width: 20%; height: 40px;line-height: 40px; background:none; color:#434242;border:1px solid #717070;border-radius: 5px;}
+.colligate button.sx img{ width: 13px; display: inline-block; margin-left: 3px; vertical-align: middle;}
+.colligate .slide_form{display: none;}
+.list-box{width: 95%; overflow: hidden;margin: 0 auto; height: 0; }
+.list{ margin: 10px auto; position: relative; border-top:1px #e5e5e5 solid;  overflow: hidden;}
+.list p{float: left; line-height: 30px; color: #282828}
+.list-select{float: left; width: 85%; margin-left: 5px;}
+.list-select li{float: left; margin:5px 0px ;margin-right: 4.8%; position: relative;}
+.list-select li p{ line-height: 20px; font-size: 12px; color: #5c5c5c !important; height: 20px; overflow: hidden; margin-left:22px }
+.list-select-input{position: absolute; left: 4px; top: 3px;width: 20px; height: 20px; z-index: 2; background: url(../images/input_no.png) no-repeat; background-size: 15px;-webkit-appearance: none;}
+.list-select-input:checked{width: 15px; height: 15px;position: absolute; left: 4px; top: 3px; background: url(../images/input_yes.png) no-repeat; background-size: 15px;-webkit-appearance: none; }
+/* .list-selected{ width: 15px; height: 15px;position: absolute; left: 4px; top: 3px;background: url(../images/input_yes.png) no-repeat; background-size: 15px;}
+ */
+.list-more{position: absolute;  width: 20px; height: 16px; bottom: 5px; right: 0;}
+.list-more-up{background-position: -81px -18px;}
+.list-more-down{background-position: -81px -32px;}
+.blue-btn{width: 95%; height: 40px; background: #2595c9; border-radius: 5px; text-align: center; color: #fff; line-height:40px;border:none; margin: 0 auto 10px; display: block;}
+.new_ch{ width: 20%; height:30px; border:1px solid #f87301; color:#f87301; border-radius: 5px; text-align: center;font-size: 14px; ;line-height: 30px; margin: 10px auto; background-color: #fff; display: block;}
+.product{ width: 100%; height: auto; overflow: hidden; background: #fff;border-bottom: 1px #e5e5e5 solid; margin-bottom: 70px;margin-top:67px;}
+.product li{border-top: 1px #e5e5e5 solid; padding: 15px 1.5%; height: 80px; width: 100%; position: relative;}
+.product a{vertical-align: top}
+.product-img{width: 80px; height: 80px; top: 15px; left: 2.5%; position:absolute;}
+.product-img img{width: 100%; height: 100%}
+.product-content{margin-left: 100px;margin-right:51px;}
+.product-title{height: 20px; overflow: hidden; }
+.product-title span{line-height: 20px; color: #333333;vertical-align:top;}
+.product-dis{ line-height: 16px; height: 32px; overflow: hidden; font-size: 13px; margin-top: 5px; }
+.product-price{margin-top: 5px; line-height: 23px;}
+.product-price .fl span{font-size: 20px; }
+.product-price .fr span{font-size: 18px !important;}
+.product-num{position: absolute; right: 6%; top: 40px;}
+.product-title img{ width: 13px; display:inline-block; vertical-align: middle;}
+.color-d-orange i{ font-style: normal; font-size: 12px;}

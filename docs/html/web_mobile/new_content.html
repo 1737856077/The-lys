@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>消息内容</title>
+	<link type="text/css" rel="stylesheet" href="css/common.css">
+	<link  type="text/css" rel="stylesheet" href="css/new_content.css">
+	<script src="js/jquery.min.js"></script>
+	<!--<script type="javascript" src="js/fly.js"></script>-->
+</head>
+<body>
+	<div class="new_content list">
+		<p>09:34</p>
+	<div class="sender">
+      <div>
+          <img src="images/qq_01.png">
+      </div>
+	  <div>
+	      <div class="left_triangle"></div>
+	      <span> 你好！</span>
+	   </div>
+	</div>
+	<!-- Right -->
+	  <div class="receiver">
+	      <div>
+	          <img src="images/qq_02.png">
+	      </div>
+		   <div>
+	        <div class="right_triangle"></div>
+	        <span>你好,有什么事么？</span>
+		   </div> 
+	  </div>  
+	<div class="sender">
+      <div>
+          <img src="images/qq_01.png">
+      </div>
+	  <div style="width:57%">
+	      <div class="left_triangle"></div>
+	      <span> 确认商品信息。你是预定韩国赫拉气垫BB粉底（限量版），数量4支，对吧？</span>
+	   </div>
+	</div>
+	<div class="receiver">
+	      <div>
+	          <img src="images/qq_02.png">
+	      </div>
+		   <div>
+	        <div class="right_triangle"></div>
+	        <span>对的！</span>
+		   </div> 
+	  </div>  
+	  <div class="receiver">
+	      <div>
+	          <img src="images/qq_02.png">
+	      </div>
+		   <div>
+	        <div class="right_triangle"></div>
+	        <span>可以再加一支吗？</span>
+		   </div> 
+	  </div>  
+	<p>09:34</p>
+	<div class="sender">
+      <div>
+          <img src="images/qq_01.png">
+      </div>
+	  <div>
+	      <div class="left_triangle"></div>
+	      <span> 可以，数量是5支。</span>
+	   </div>
+	</div>
+		  <div class="receiver">
+	      <div>
+	          <img src="images/qq_02.png">
+	      </div>
+		   <div>
+	        <div class="right_triangle"></div>
+	        <span>好的，谢谢</span>
+		   </div> 
+	</div>
+		  <div class="receiver">
+	      <div>
+	          <img src="images/qq_02.png">
+	      </div>
+		   <div>
+	        <div class="right_triangle"></div>
+	        <span>123123123</span>
+		   </div> 
+	  </div>  
+	<p>09:34</p>
+	<div class="sender">
+      <div>
+          <img src="images/qq_01.png">
+      </div>
+	  <div>
+	      <div class="left_triangle"></div>
+	      <span> 456456456</span>
+	   </div>
+	</div>
+		  <div class="receiver">
+	      <div>
+	          <img src="images/qq_02.png">
+	      </div>
+		   <div>
+	        <div class="right_triangle"></div>
+	        <span>789789789</span>
+		   </div> 
+		</div>
+	</div>
+	<div style="height:60px;display:block;" id="div_block">
+	<a name="1F">&nbsp;</a>	
+	</div>
+	<div style="position:fixed;bottom:0px;width:100%;">
+	<div class="gif_footer send" >
+		<span class="gif_l"></span>
+		<span class="gif_r"></span>
+		<textarea name="" id="text" cols="0" rows="0" ></textarea>
+		<input type="button" class="sub_btn" value="发送">
+	</div>
+
+	<div class="face w500"></div>
+	<div class="fly">
+		<div class="flys">
+			<div class="fly_con">
+			<a href="javascript:void(0)">
+				<dl>
+					<dt><img src="images/zp.png" alt=""></dt>
+					<dd>照片</dd>
+				</dl>
+			</a>
+			<a href="javascript:void(0)">
+				<dl>
+					<dt><img src="images/wz.png" alt=""></dt>
+					<dd>照片</dd>
+				</dl>
+			</a>
+			<a href="javascript:void(0)">
+				<dl>
+					<dt><img src="images/wz.png" alt=""></dt>
+					<dd>照片</dd>
+				</dl>
+			</a>
+			<a href="javascript:void(0)">
+				<dl>
+					<dt><img src="images/wz.png" alt=""></dt>
+					<dd>照片</dd>
+				</dl>
+			</a>
+		</div>
+		</div>
+	</div>
+	</div>
+<script>
+var lanren = {
+		face:function(_this){
+			var target = $(_this).html();
+			if(target.length < 5){
+				$(_this).html("<img src='images/face/"+target+".gif' />")
+			}
+		},
+		faceimg:'',
+		imgs:function(min,max){
+			for(i=min;i<max;i++){  //通过循环创建60个表情，可扩展
+        		lanren.faceimg+='<li><a href="javascript:void(0)"><img src="images/face/'+(i+1)+'.gif" face="<emt>'+(i+1)+'</emt>"/></a></li>';
+    		};
+		},
+		cur:0
+	}
+$(function(){
+
+	//输入焦点移动至末尾
+	function setFocus(id){      
+		var t=$("#"+id).val(); 
+		$("#"+id).val("").focus().val(t);
+	}
+	/*var lanren = {
+		face:function(_this){
+			var target = $(_this).html();
+			if(target.length < 5){
+				$(_this).html("<img src='images/face/"+target+".gif' />")
+			}
+		},
+		faceimg:'',
+		imgs:function(min,max){
+			for(i=min;i<max;i++){  //通过循环创建60个表情，可扩展
+        		lanren.faceimg+='<li><a href="javascript:void(0)"><img src="images/face/'+(i+1)+'.gif" face="<emt>'+(i+1)+'</emt>"/></a></li>';
+    		};
+		},
+		cur:0
+	}*/
+	$('.list li emt').each(function(){
+		lanren.face(this);
+	});
+	$('.send .sub_btn').on('click',function(){
+		var content = $('.send textarea').val();
+		if(!content){
+			//alert('发布内容不能为空');
+			//$('.send textarea').focus();
+			return false;
+		}
+		$('.list').append("<div class='sender'><div><img src='images/qq_01.png'></div><div><div class='left_triangle'></div><span>"+content+"</span></div></div>");
+		$('.send textarea').val('');
+
+		document.getElementById('div_block').style.height="60px";
+		window.location.href="#1F";
+
+		$('.list emt').each(function(){
+			var target = $(this).html();
+			if(target.length < 5){
+				$(this).html("<img src='images/face/"+target+".gif' />");
+				$('.face').hide(0);
+			}
+		});
+	});
+	$('.send .gif_l').on('click',function(){
+		if(lanren.cur == 0){
+			$(this).addClass('on');
+			setFocus("text");
+			lanren.cur =1;
+			$('.face').show(0);
+			//$('#div_blcok').css("height","250px");
+			document.getElementById('div_block').style.height="250px";
+			window.location.href="#1F";
+			$('.fly').hide();
+		}else if(lanren.cur == 1){
+			$(this).removeClass('on');
+			$('.face').hide(0);
+			lanren.cur =0;
+			$('.fly').hide();
+			//$('#div_blcok').attr("style","height:70px");
+			document.getElementById('div_block').style.height="60px";
+			window.location.href="#1F";
+		}
+	})
+    lanren.imgs(0,60);
+    $('.face').append(lanren.faceimg);
+
+    //输入表情触发
+    $('.face li img').on('click',function(){
+		var target = $(this).attr('face');
+		var htmls = $('.send textarea').val();
+		$('.send textarea').val(htmls+target);
+		setFocus("text");
+		//$(this).parents('.face').hide(0);
+		//$('.send .gif_l').removeClass('on');
+		//lanren.cur =0;
+	});
+
+	//输入框点击后隐藏表情包
+	$("#text").click(function(){
+		$(".face").hide();
+		lanren.cur = 0;
+	});
+})
+
+$(function(){
+	$('.send span.gif_r').click(function(){
+		$('.fly').toggle();
+		var height = $("#div_block").height();
+		if(height == 160){
+			document.getElementById('div_block').style.height="60px";
+			window.location.href="#1F";
+		}else{
+			document.getElementById('div_block').style.height="160px";
+			window.location.href="#1F";
+		}
+		if(lanren.cur == 1){
+			$('.face').hide(0);
+			$('.send span.gif_l').removeClass('on');
+			lanren.cur =0;
+		}
+	})
+	})
+
+/*$("#text").focus(function(){
+	if(lanren.cur == 1){
+		$('.face').hide(0);
+		$('.send span.gif_l').removeClass('on');
+		lanren.cur =0;
+	}
+	$('.fly').hide();
+});*/
+
+
+</script>
+<!--代码部分end-->
+</body>
+</html>

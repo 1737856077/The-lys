@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>我的地址</title>
+	<link type="text/css" rel="stylesheet" href="css/common.css">
+	<link  type="text/css" rel="stylesheet" href="css/my_address.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var inputs = $(".address_con .addUser_l input");
+			$(".address_header").on("click",function(){
+				if($(this).hasClass("cancel")){
+					//变成编辑状态
+					$(this).removeClass("cancel").text("编辑");
+					$(".all_delete").hide();
+					
+				}else{
+					//变成取消状态
+					$(this).addClass("cancel").text("取消");
+					$(".all_delete").show();
+					
+				}
+			})
+
+			//全选删除
+			$(".all_delete").on("click","a.all",function(){
+				inputs.each(function(){
+					$(this).prop("checked",true);
+				});
+			}).on("click","a.del",function(){
+				inputs.each(function(){
+					if($(this).prop("checked")){
+						$(this).parents(".addUser").remove();
+					}
+				});
+			});
+		})
+	</script>
+</head>
+<body>
+	<div class="address_header">
+		<i><img src="images/bj.png" alt=""></i>编辑
+	</div>
+	<div class="address_con">
+		<div class="addUser" style="border:none">
+			<div class="addUser_l">
+				<input type="checkbox">
+			</div>
+			<div class="addUser_r">
+				<div class="addUsers"><span class="addUsers_l">诺一</span> <span class="addUsers_r">15601628091</span></div>
+				<div class="clear"></div>
+				<p class="dz">上海上海市</p>
+			</div>
+		</div>
+		<div class="addUser">
+			<div class="addUser_l">
+				<input type="checkbox">
+			</div>
+			<div class="addUser_r">
+				<div class="addUsers"><span class="addUsers_l">诺一</span> <span class="addUsers_r">15601628091</span></div>
+				<div class="clear"></div>
+				<p class="dz">上海上海市</p>
+			</div>
+		</div>
+		<div class="addUser">
+			<div class="addUser_l">
+				<input type="checkbox">
+			</div>
+			<div class="addUser_r">
+				<div class="addUsers"><span class="addUsers_l">诺一</span> <span class="addUsers_r">15601628091</span></div>
+				<div class="clear"></div>
+				<p class="dz">上海上海市</p>
+			</div>
+		</div>
+		<div class="addUser">
+			<div class="addUser_l">
+				<input type="checkbox">
+			</div>
+			<div class="addUser_r">
+				<div class="addUsers"><span class="addUsers_l">诺一</span> <span class="addUsers_r">15601628091</span></div>
+				<div class="clear"></div>
+				<p class="dz">上海上海市</p>
+			</div>
+		</div>
+		<div class="addUser">
+			<div class="addUser_l">
+				<input type="checkbox">
+			</div>
+			<div class="addUser_r">
+				<div class="addUsers"><span class="addUsers_l">诺一</span> <span class="addUsers_r">15601628091</span></div>
+				<div class="clear"></div>
+				<p class="dz">上海上海市</p>
+			</div>
+		</div>
+		<div class="addUser">
+			<div class="addUser_l">
+				<input type="checkbox">
+			</div>
+			<div class="addUser_r">
+				<div class="addUsers"><span class="addUsers_l">诺一</span> <span class="addUsers_r">15601628091</span></div>
+				<div class="clear"></div>
+				<p class="dz">上海上海市</p>
+			</div>
+		</div>
+	
+	</div>
+	<button type="button" class="deletes">
+		删除地址
+	</button>
+	<div class="all_delete">
+			<a href="javascript:void(0)" class="all">全选</a><a href="javascript:void(0)" class="del">删除</a>
+	</div>
+
+
+	<ul class="nav">
+			<li>
+            	<a href="#">
+                    <i class="icon nav-index nav-index-on"></i>
+                    <p>首页</p>                    
+                </a>
+			</li>
+			<!--class="nav-p-on"-->
+			<li>
+            	<a href="#">
+                    <i class="icon nav-buy nav-buy-off"></i>
+                    <p>买</p>  
+                    <b>1</b>                  
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon navs-buy navs-buy-off"></i>
+                    <p>消息</p>                    
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon nav-take nav-take-off"></i>
+                    <p>带</p>                   
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon nav-me nav-me-off"></i>
+                    <p>我</p>
+				</a>
+			</li>
+		</ul>
+</body>
+</html>

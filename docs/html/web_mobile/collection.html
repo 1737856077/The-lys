@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>收藏列表</title>
+	<link type="text/css" rel="stylesheet" href="css/common.css">
+	<link type="text/css" rel="stylesheet" href="css/collection.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var inputs = $(".coll_con .coll_l input");
+			$(".ppai-fr").on("click",function(){
+				if($(this).hasClass("cancel")){
+					//变成编辑状态
+					$(this).removeClass("cancel").text("编辑");
+					$(".all_delete").hide();
+					$(".coll_l").hide().next(".coll_r").css({"width":"96%"});
+					
+				}else{
+					//变成取消状态
+					$(this).addClass("cancel").text("取消");
+					$(".all_delete").show();
+					$(".coll_l").css({"display":"inline-block"}).next(".coll_r").css({"width":"91%"});
+				}
+			})
+
+			//全选删除
+			$(".all_delete").on("click","a.all",function(){
+				inputs.each(function(){
+					$(this).prop("checked",true);
+				});
+			}).on("click","a.del",function(){
+				inputs.each(function(){
+					if($(this).prop("checked")){
+						$(this).parents(".coll_company").remove();
+					}
+				});
+			});
+		})
+	</script>
+</head>
+<body>
+	<div class="ppai">
+		<div class="ppai-fl fl">品牌分类<i><img src="images/p_t.png" alt=""></i></div>
+		<div class="ppai-fr fr"><i><img src="images/bj.png" alt=""></i>编辑</div>
+	</div>
+	<div class="coll_con">
+		<div class="coll_company">
+			<div class="coll_l"><input type="checkbox"></div><div class="coll_r">
+				<img src="images/hz_01.png" alt="">
+				<div class="coll_title">
+					<h3>韩国裸妆粉底控油遮粉底</h3>
+					<p>丝滑奶茶触感遮瑕更水润超高回头率隔离防晒</p>
+					<span><i>¥</i>49.90</span>
+					<button type="button">我也要</button>
+				</div>
+			</div>
+		</div>
+		<div class="coll_company">
+			<div class="coll_l"><input type="checkbox"></div><div class="coll_r">
+				<img src="images/hz_04.png" alt="">
+				<div class="coll_title">
+					<h3>韩国裸妆粉底控油遮粉底</h3>
+					<p>丝滑奶茶触感遮瑕更水润超高回头率隔离防晒</p>
+					<span><i>¥</i>49.90</span>
+					<button type="button">我也要</button>
+				</div>
+			</div>
+		</div>
+		<div class="coll_company">
+			<div class="coll_l"><input type="checkbox"></div><div class="coll_r">
+				<img src="images/hz_02.png" alt="">
+				<div class="coll_title">
+					<h3>韩国裸妆粉底控油遮粉底</h3>
+					<p>丝滑奶茶触感遮瑕更水润超高回头率隔离防晒</p>
+					<span><i>¥</i>49.90</span>
+					<button type="button">我也要</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="coll_company">
+			<div class="coll_l">
+			 <input type="checkbox">
+			</div>
+			<div class="coll_r">
+				<img src="images/hz_04.png" alt="">
+				<div class="coll_title">
+					<h3>韩国裸妆粉底控油遮粉底</h3>
+					<p>丝滑奶茶触感遮瑕更水润超高回头率隔离防晒</p>
+					<span><i>¥</i>49.90</span>
+					<button type="button">我也要</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="coll_company">
+			<div class="coll_l"><input type="checkbox"></div>
+			  <div class="coll_r">
+				<img src="images/hz_03.png" alt="">
+				<div class="coll_title">
+					<h3>韩国裸妆粉底控油遮粉底</h3>
+					<p>丝滑奶茶触感遮瑕更水润超高回头率隔离防晒</p>
+					<span><i>¥</i>49.90</span>
+					<button type="button">我也要</button>
+				</div>
+			 </div>
+		</div>
+		
+		<div class="all_delete">
+			<a href="javascript:void(0)" class="all">全选</a><a href="javascript:void(0)" class="del">删除</a>
+		</div>
+	</div>
+
+	<ul class="nav">
+			<li>
+            	<a href="#">
+                    <i class="icon nav-index nav-index-on"></i>
+                    <p>首页</p>                    
+                </a>
+			</li>
+			<!--class="nav-p-on"-->
+			<li>
+            	<a href="#">
+                    <i class="icon nav-buy nav-buy-off"></i>
+                    <p>买</p>  
+                    <b>1</b>                  
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon navs-buy navs-buy-off"></i>
+                    <p>消息</p>                    
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon nav-take nav-take-off"></i>
+                    <p>带</p>                   
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon nav-me nav-me-off"></i>
+                    <p>我</p>
+				</a>
+			</li>
+		</ul>
+</body>
+</html>

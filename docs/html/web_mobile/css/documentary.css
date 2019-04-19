@@ -1,0 +1,27 @@
+.promptly_header{ width: 97%;height: auto;border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; background-color: #fff;padding: 15px 0 15px 3%;}
+.promptly_header img{ display: inline-block; width:25%;}
+.promptly_r{width:72%; height: auto; display: inline-block; vertical-align: top;padding-right: 1% }
+.promptly_r h3{color:#333333; font-weight: normal;font-size: 14px;  margin-top: 17px;
+  margin-left: 8px;}
+.promptly_r p{ line-height: 8px; color:#908e8e; padding-top: 4px;font-size: 14px;  margin-left: 8px;}
+.promptly_r p b{ font-size: 20px; vertical-align: 3px; font-style: normal;}
+.promptly_r span{ width: 96%; display: inline-block; text-align: right; font-size: 12px; color:#f87301;}
+.promptly_r span b{ font-style: normal;display: inline-block; font-size: 20px; font-weight: normal;}
+
+.promptly_content{height: auto;border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; background-color: #fff;padding: 15px 10px 15px; margin-top:2%}
+
+.promptly_box{ width: 100%; height: auto; margin-bottom: 4%}
+.promptly_box span{ display: inline-block; color:#282828; font-size: 15px;width: 25%}
+.promptly_box input{ display: inline-block; width: 75%; height: 44px; line-height: 44px;border:1px solid #e3e3e3;border-radius: 5px; box-sizing:border-box;padding-left: 2% }
+.promptly_box textarea{ display: inline-block; width: 75%; height: 70px;border:1px solid #e3e3e3;border-radius: 5px; resize : none; padding-top:1%;-moz-text-size-adjust:none;-webkit-text-size-adjust:none;text-size-adjust:none;box-sizing:border-box;padding-left: 2%  }
+
+.promptly_rs{ display: inline-block; width: 75%; height: auto; vertical-align: middle; background: url(../images/right.png) right 15px no-repeat;}
+.promptly_rs .tel{  display: inline-block;text-align: right;width: 68%;}
+  .site{ line-height: 25px; opacity: .3;  font-size: 14px;}
+
+
+.product{margin: 20px auto; text-align: center; position: relative; line-height: 28px;}
+.product-num{color: #5c5c5c; margin-right: 10px}
+.product-price{display: block; position: absolute; right: 0px; top: -2px; margin-right: 5%;color: #5c5c5c; }
+.product-price small{font-size: 20px;}
+.blue-btn{width: 95%; height: 40px; background: #2595c9; border-radius: 5px; text-align: center; color: #fff; line-height:40px;border:none; margin: 0 auto 10px; display: block; margin-bottom: 80px}

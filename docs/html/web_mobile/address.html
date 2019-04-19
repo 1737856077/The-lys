@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">	
+	<title>新增地址</title>
+	<link type="text/css" rel="stylesheet" href="css/common.css">
+	<link  type="text/css" rel="stylesheet" href="css/address.css">
+</head>
+<body>
+		<form>
+		<ul class="get">
+			<li><input type="text" placeholder="刘庆艳"></li>
+			<li><input type="text" placeholder="18721319294"></li>
+			<li class="get-place">
+				<select id="place-one" attr="">
+					  <option value ="">上海市</option>
+				</select>
+				<i class=""></i>
+			</li>
+			<li class="get-place" style="display:none">
+				<select id="place-tow" >
+					  <option value ="">选择市区</option>
+				</select>
+				<i class="icon get-icon"></i>
+			</li>
+			<li class="get-place"  style="display:none">
+				<select id="place-three">
+					  <option value ="">选择县区</option>
+					  
+				</select>
+				<i class="icon get-icon"></i>
+			</li>
+			<li><textarea placeholder="上海"></textarea></li>
+			<li style="border:none"><input type="text" placeholder="212000"></li>
+		</ul>
+		<div class="save-place">
+			<input type="checkbox" checked="checked">
+			<i class="icon icon-place icon-select"></i>
+			<p class="color-blacks">设置成默认收货地址</p>
+		</div>
+		<button class="blue-bc" style="margin-top:20px;">保 存</button>
+		<button class="blue-bcs" style="margin-top:20px;">删除</button>
+		</form>
+		<div class="position"></div>
+		<ul class="nav">
+			<li>
+            	<a href="#">
+                    <i class="icon nav-index nav-index-on"></i>
+                    <p>首页</p>                    
+                </a>
+			</li>
+			<!--class="nav-p-on"-->
+			<li>
+            	<a href="#">
+                    <i class="icon nav-buy nav-buy-off"></i>
+                    <p>买</p>  
+                    <b>1</b>                  
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon navs-buy navs-buy-off"></i>
+                    <p>消息</p>                    
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon nav-take nav-take-off"></i>
+                    <p>带</p>                   
+                </a>    
+			</li>
+			<li>
+            	<a href="#">
+                    <i class="icon nav-me nav-me-off"></i>
+                    <p>我</p>
+				</a>
+			</li>
+		</ul>
+	</body>
+	<script src="../static/js/jquery-1.7.2.min.js"></script>
+	<script>
+
+	$(function(){ 
+			var address_one = ['福建' , '浙江' , '广东' , '江苏'],
+				address_tow = { 
+				0:['福建1' , '福建2' , '福建3'],
+				1:['浙江1' , '浙江2' , '浙江3'],
+				2:['广东1' , '广东2' , '广东3'],
+				3:['江苏1' , '江苏2' , '江苏3']
+			},
+				address_three = { 
+					0 : { 
+						0:['福建11','福建12','福建13'],
+						1:['福建21','福建22','福建23'],	
+						2:['福建31','福建32','福建33']	
+					},
+					1 : { 
+						0:['浙江11','浙江12','浙江13'],
+						1:['浙江21','浙江22','浙江23'],
+						2:['浙江31','浙江32','浙江33']	
+					},
+					2 : { 
+						0:['广东11','广东12','广东13'],
+						1:['广东21','广东22','广东23'],	
+						2:['广东31','广东32','广东33']	
+					},
+					3 : { 
+						0:['江苏11','江苏12','江苏13'],
+						1:['江苏21','江苏22','江苏23'],
+						2:['江苏31','江苏32','江苏33']	
+					}
+				}
+			var option = { 
+				register_rule : $('.save-place'),
+				register_icon : $('.save-place').find('i'),
+				place_one : $('#place-one'),
+				place_tow : $('#place-tow'),
+				place_three : $('#place-three')
+			}
+			var page = function(){ 
+				this.init();
+				this.rule();
+				this.selects();
+			}
+			page.prototype.init = function(){
+				var html = ''; 
+				for(var i = 0 ; i < address_one.length ; i++){ 
+					html+='<option value ="'+i+'">'+address_one[i]+'</option>'
+				}
+				$(html).appendTo(option.place_one);
+			},
+			page.prototype.place_tow = function(k){ 
+				var html = ''; 
+				option.place_tow.html('<option value ="">选择市区</option>')
+				for(var i = 0 ; i < address_tow[k].length ; i++){ 
+					html+='<option value ="'+i+'">'+address_tow[k][i]+'</option>'
+				}
+				$(html).appendTo(option.place_tow);
+			},
+			page.prototype.place_three = function(k,j){ 
+				var html = ''; 
+				option.place_three.html('<option value ="">选择县区</option>')
+				for(var i = 0 ; i < address_three[k][j].length ; i++){ 
+					html+='<option value ="'+i+'">'+address_three[k][j][i]+'</option>'
+				}
+				$(html).appendTo(option.place_three);
+			},
+			page.prototype.rule = function(){ 
+				option.register_rule.bind('click tap',function(){ 
+					if(option.register_icon.hasClass('icon-no-select')){ 
+						option.register_icon.removeClass('icon-no-select').addClass('icon-select');
+					}else{ 
+						option.register_icon.removeClass('icon-select').addClass('icon-no-select');
+					}
+				});
+			},
+			page.prototype.selects = function(){
+				var _this = this; 
+				option.place_one.bind('change',function(){ 
+					var place_one_value = $(this).val(),
+						selects_value = $(this).attr('attr');
+					if(selects_value ==''){ 
+						if(place_one_value != ''){ 
+							_this.place_tow(place_one_value);
+							option.place_tow.parent().show();
+						}else{ 
+							option.place_tow.parent().hide();
+							option.place_three.parent().hide();
+						}
+					}else if(selects_value != place_one_value){ 
+						if(place_one_value != ''){ 
+							_this.place_tow(place_one_value);
+							option.place_three.parent().hide();
+						}else{ 
+							option.place_tow.parent().hide();
+							option.place_three.parent().hide();
+						}
+						
+					}
+
+					$(this).attr('attr',place_one_value);
+					
+				});
+
+				option.place_tow.bind('change',function(){ 
+					var place_one_value = $(option.place_one).val(),
+						place_tow_value = $(this).val();
+					if(place_tow_value != ''){ 
+						_this.place_three(place_one_value,place_tow_value)
+						option.place_three.parent().show();
+					}else{ 
+						option.place_three.parent().hide();
+					}
+				})
+			}
+
+			return new page();
+		});
+	</script>
+</html>

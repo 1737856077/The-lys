@@ -1,0 +1,12 @@
+.news_list{ width: 100%; height: auto; overflow:hidden; background: #fff;  margin-bottom: 80px;}
+.news_con{ width:100%;height: auto; border-bottom: 1px solid #d9d9d9; padding: 10px 0px;position: relative;}
+.news_con .nes{width: 93%; height: auto; overflow: hidden;margin: 0 auto;}
+.news_con a{width: 98%;}
+.news_l{ width: 13%; height: auto;  display: inline-block; vertical-align: top}
+.news_l img{ display: block; width:  86%;border-radius: 5px }
+.news_l span{ display:inline-block; position: absolute;left:10%; top:6%; background: #ed0101; width: 20px; height:20px; color:#fff; border-radius: 20px; font-size: 12px; text-align: center; line-height: 20px;}
+
+.news_r{width: 85%; display: inline-block;}
+.news_r_con h3{ font-size: 13px;color:#383737; font-weight: normal; display: inline-block;}
+.news_r_con span{ display: inline-block; font-size: 12px; float: right; color:#9b9b9b;}
+.news_r p{ font-size: 13px; color:#9b9b9b;  margin-top: 2px;}
