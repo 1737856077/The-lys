@@ -15,4 +15,3 @@ define('EXTEND_PATH', __DIR__ . '/extend/');
 require __DIR__ . '/thinkphp/start.php';
 
 
-
