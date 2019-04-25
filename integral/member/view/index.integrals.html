@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>账单</title>
+    <link href="__STATIC__/integral/css/user.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/integral/css/common1.css">
+    <link  type="text/css" rel="stylesheet" href="__STATIC__/integral/css/billl.css">
+</head>
+<body>
+<div class="bill_title">我的账单</div>
+<div class="bill_cons">
+    <div class="bill_con">
+        {foreach name="data" id="datas"}
+        <a href="javascript:void(0)" class="bill_01">
+            <div class="income">
+                <div class="income_l fl">
+                    <p class="zf">订单:{$datas.order_no}</p>
+                    {$datas.integral_type==2?"<img src='__STATIC__/integral/img/fu.png' alt=''>":"<img src='__STATIC__/integral/img/shou.png' alt=''>"}
+
+                    <p class="ye">￥<span>{$datas.price}</span></p>
+                </div>
+                <div class="income_r fr">
+                    <span class="year_r">{$datas.create_time|date="Y-m-d H:i:s",###}</span>
+                </div>
+            </div>
+        </a>
+       {/foreach}
+
+    </div>
+</div>
+
+<footer class="aui-footer aui-footer-fixed">
+    <a href="{:url('index/index/index')}"  class="aui-tabBar-item">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-loan"></i>
+                    </span>
+        <span  style="color: #4a4d54" class="aui-tabBar-item-text">首页</span>
+    </a>
+    <!--<a href="javascript:;" class="aui-tabBar-item">-->
+    <!--<span class="aui-tabBar-item-icon">-->
+    <!--<i class="icon icon-credit"></i>-->
+    <!--</span>-->
+    <!--<span class="aui-tabBar-item-text">直达</span>-->
+    <!--</a>-->
+    <a href="{:url('integral/index/index')}" class="aui-tabBar-item">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-meTo"></i>
+                    </span>
+        <span style="color: #4a4d54" class="aui-tabBar-item-text">积分兑换</span>
+    </a>
+    <!--<a href="javascript:;" class="aui-tabBar-item">-->
+    <!--<span class="aui-tabBar-item-icon">-->
+    <!--<i class="icon icon-my"></i>-->
+    <!--</span>-->
+    <!--<span class="aui-tabBar-item-text">关注</span>-->
+    <!--</a>-->
+    <a href="{:url('member/index/index')}" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-find"></i>
+                    </span>
+        <span style="color: #4a4d54" class="aui-tabBar-item-text">我的</span>
+    </a>
+</footer>
+</body>
+</html>

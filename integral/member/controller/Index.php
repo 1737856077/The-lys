@@ -16,9 +16,9 @@ class Index extends CommonIntegra
 {
     public function index()
     {
-        $admin = $this->request->param('adminid');
-        $admin = 4;//用户登录存session
-
+        $member_id = Session::get('memberid');
+        $member_data = Db::name('member')->where('id',$member_id)->find();
+        $this->assign('member_data',$member_data);
         return $this->fetch();
     }
 
@@ -88,9 +88,10 @@ class Index extends CommonIntegra
             );
             $res = Db::name('rceiving_address')->insertGetId($data);
             //保存默认
-            $data = Db::name('rceiving_address')->where('uid',$uid)->update(['data_type'=>0]);
-            $datas = Db::name('rceiving_address')->where('id',$res)->update(['data_type'=>1]);
-            if ($res){
+             Db::name('rceiving_address')->where('uid',$uid)->update(['data_type'=>0]);
+             Db::name('rceiving_address')->where('id',$res)->update(['data_type'=>1]);
+            dump($res);die();
+             if ($res){
                     return json(1);
             }else{
                 return json(0);
@@ -98,5 +99,39 @@ class Index extends CommonIntegra
         }else{
             return json(-1);
         }
+    }
+    /**
+     * 保存用户头像
+     */
+    public function userimg()
+    {
+        $request = Request::instance();
+        dump($request);die();
+        $file = $request->file('img');
+        if ($file) {
+            $info = $file->validate([
+                'size' => (1024*1024)*1,
+                'ext' => 'jpeg,jpg,png,bmp'
+            ])->move("static/home/uploads/member");
+            if ($info) {
+                $datas['img'] = $info->getSaveName();//头像
+                Session::set('userimg',  $datas['img']);
+            } else {
+                $this->error($file->getError());
+            }
+        }
+    }
+    //用户头像未完成页面ajax提交失败
+    /**
+     * 积分详情
+     */
+    public function integrals()
+    {
+        $param = $this->request->param();
+        $uid =htmlspecialchars(trim(($param['uid'])?$param['uid']:''));
+        $record_mdol = Db::name('member_integral_record');
+        $record_data = $record_mdol->where('uid',$uid)->order('create_time desc')->select();
+        $this->assign('data',$record_data);
+        return $this->fetch();
     }
 }
