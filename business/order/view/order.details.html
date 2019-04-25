@@ -1,4 +1,3 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"C:\phpStudy\PHPTutorial\WWW\sy/business/index\view\index.index.html";i:1555999582;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -82,13 +81,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商家管理页</title>
+    <title>订单详细页</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
-    <link href="/static/business/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/business/css/common.css" rel="stylesheet">
-    <script src="/static/business/s.txt"></script>
+    <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
+    <link href="__STATIC__/business/css/common.css" rel="stylesheet">
+    <script src="__STATIC__/business/s.txt"></script>
     <script type="text/javascript">
         if (navigator.appName == 'Microsoft Internet Explorer') {
             if (navigator.userAgent.indexOf("MSIE 5.0") > 0 || navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0) {
@@ -110,11 +109,13 @@
         };
     </script>
     <script>var require = {urlArgs: 'v=20170915'};</script>
-    <script type="text/javascript" src="/static/business/js/jquery-1.js"></script>
-    <script type="text/javascript" src="/static/business/js/bootstrap.js"></script>
-    <script type="text/javascript" src="/static/business/js/util.js"></script>
-    <script type="text/javascript" src="/static/business/js/common.js"></script>
-    <script type="text/javascript" src="/static/business/js/require.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
 </head>
 <body>
 <div class="loader" style="display:none">
@@ -128,38 +129,11 @@
             <div class="container ">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="https://weixin.zijiahei.com/">
-                        <img src="/static/business/img/logo.png" class="pull-left" width="110px" height="35px">
+                        <img src="__STATIC__/business/img/logo.png" class="pull-left" width="110px" height="35px">
                         <span class="version hidden">1.6.7</span>
                     </a>
                 </div>
-                <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-left">
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=platform&amp;">公众号</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=wxapp&amp;a=display&amp;do=home&amp;">小程序</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=webapp&amp;a=home&amp;do=display&amp;">PC</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=display&amp;">应用</a></li>
-                <li class="active"><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=system&amp;">系统</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;">站点</a></li>
-                <li><a href="http://s.we7.cc/" target="_blank">模块商城</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=store">商城</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown msg header-notice">
-                <a href="javascript:;" class="dropdown-toogle" data-toggle="dropdown"><span class="wi wi-bell"><span class="badge"></span></span>消息</a>
-                <div class="dropdown-menu">
-                <div class="clearfix top">消息<a href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice" class="pull-right">查看更多</a></div>
-                </div>
-                </li>					<li class="dropdown">
-                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="wi wi-user color-gray"></i><?php echo $name; ?> <span class="caret"></span></a>
-                <ul class="dropdown-menu color-gray" role="menu">
-                <li class="divider"></li>
-                <li>
-                <a href="/business.php/index/index/unlogin"><i class="fa fa-sign-out color-gray"></i> 退出系统</a>
-                </li>
-                </ul>
-                </li>
-                </ul>
-                </div>
+
             </div>
         </nav>
     </div>
@@ -171,7 +145,7 @@
                 <div class="content-head panel-heading main-panel-heading">
                     <span class="font-lg"><i class="wi wi-setting"></i> 商家管理</span></div>
                 <div class="panel-body clearfix main-panel-body menu-fixed">
-                    <div class="left-menu" style="min-height: 490px;">
+                    <div class="left-menu" style="min-height: 490px; position: static; top: 144.8px; height: 752px;">
                         <div class="left-menu-content">
 
                             <div class="panel panel-menu">
@@ -214,37 +188,37 @@
                                 </div>
                                 <ul class="list-group">
                                     <li class="list-group-item ">
-                                        <a href="/business.php/qrcode/productcode/index"
+                                        <a href="__ROOT__/business.php/qrcode/productcode/index"
                                            class="text-over">
                                             <i class="wi wi-user"></i>
                                             积分码列表 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href="/business.php/qrcode/createqrcode/add"
+                                        <a href="__ROOT__/business.php/qrcode/createqrcode/add"
                                            class="text-over">
                                             <i class="wi wi-user"></i>
                                             生成积分码 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href="/business.php/integral_info/information/index"
+                                        <a href="__ROOT__/business.php/integral_info/information/index"
                                            class="text-over">
                                             <i class="wi wi-user-group"></i>
                                             积分信息 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href="/business.php/gift/gift/gift"
+                                        <a href="__ROOT__/business.php/gift/gift/gift"
                                            class="text-over">
                                             <i class="wi wi-co-founder"></i>
                                             礼品管理 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href="/business.php/order/order/index"
+                                        <a href="__ROOT__/business.php/order/order/index"
                                            class="text-over">
                                             <i class="wi wi-co-founder"></i>
                                             订单管理 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href="/business.php/money/money/index"
+                                        <a href="__ROOT__/business.php/money/money/index"
                                            class="text-over">
                                             <i class="wi wi-co-founder"></i>
                                             财务中心 </a>
@@ -254,126 +228,148 @@
 
                         </div>
                     </div>
-                    <div class="right-content" style="min-height: 490px;">
-                        <!--系统管理首页-->
-                        <div class="welcome-container js-system-welcome ng-scope" ng-controller="WelcomeCtrl">
-                            <div class="ad-img we7-margin-bottom">
-                                <!-- ngRepeat: ad in ads -->
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="panel we7-panel account-stat">
-                                        <div class="panel-heading">微信公众号</div>
-                                        <div class="panel-body we7-padding-vertical">
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">当前状态</div>
-                                                <div class="num">
-                                                    <a href="#"
-                                                       class="color-default ng-binding">未开通</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">可升级应用</div>
-                                                <div class="num ng-binding">
-                                                    暂无
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">应用总数</div>
-                                                <div class="num">
-                                                    <a href="#"
-                                                       class="color-default ng-binding">暂无</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="panel we7-panel account-stat">
-                                        <div class="panel-heading">积分商城</div>
-                                        <div class="panel-body we7-padding-vertical">
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">当前状态</div>
-                                                <div class="num">
-                                                    <a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;do=not_installed&amp;account_type=4"
-                                                       class="color-default ng-binding">已开通</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">可升级应用</div>
-                                                <div class="num ng-binding">
-                                                    暂无
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">应用总数</div>
-                                                <div class="num">
-                                                    <a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;do=installed&amp;account_type=4"
-                                                       class="color-default ng-binding">暂无</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="modal-loading" style="width: 100%; display: none;">
-                                    <div style="text-align:center;background-color: transparent;">
-                                        <img style="width:48px; height:48px; margin-top:10px;margin-bottom:10px;"
-                                             src="%E6%AC%A2%E8%BF%8E%E9%A1%B5%20-%20%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86_files/loading.gif"
-                                             title="正在努力加载...">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ngIf: upgrade_show == 1 -->
-                            <div class="panel we7-panel database">
-                                <div class="panel-heading">
-                                    商家授权信息
-                                </div>
-                                <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                                <div class="panel-body clearfix">
-                                    <div class="col-sm-9">
-                                        <p>管理员:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo $vo['name']; ?></span></p>
-                                        <p>状态:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo !empty($vo['data_status'])?'正常':'冻结'; ?></span></p>
-                                        <p>描述:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo $vo['data_desc']; ?></span></p>
-                                        <p>有效期:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo $vo['expiration_date']; ?></span></p>
-                                        <p>账户余额:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo $vo['account']; ?></span></p>
-                                        <p>公司名称:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo $vo['company_title']; ?></span></p>
-                                        <!--<p>邮寄地址:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo $vo['express_address']; ?></span></p>-->
-                                        <p>最后授权时间:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo $vo['last_auth_time']; ?></span></p>
-                                        <p>剩余短信条数:&nbsp;&nbsp;&nbsp;&nbsp;<span><?php echo $vo['sms_num']; ?></span></p>
-                                    </div>
-                                </div>
-                                <?php endforeach; endif; else: echo "" ;endif; ?>
-                            </div>
-                            <div class="panel we7-panel apply-list ng-hide" ng-show="not_installed_show == 1">
-                                <div class="panel-heading">
-			<span class="pull-right">
-				<!-- ngIf: not_installed_module.app_count > 4 -->
-                <!-- ngIf: module.app_count > 4 && module.wxapp_count > 4 -->
-                <!-- ngIf: not_installed_module.wxapp_count > 4 -->
-			</span>
-                                    未安装应用
-                                </div>
-                                <div class="panel-body">
-                                    <!-- ngRepeat: module in not_installed_module.module -->
-                                </div>
-                            </div>
+                    <div class="right-content" style="min-height: 490px; margin-left: 0px;">
+                        <div class="we7-page-title">
+                            应用管理
                         </div>
-                        <!--end 系统管理首页-->
-                        <script type="text/javascript">
-                            $(function () {
-                                angular.module('systemApp').value('config', {
-                                    notices: null,
-                                    systemUpgradeUrl: "./index.php?c=home&a=welcome&do=get_system_upgrade&",
-                                    upgradeModulesUrl: "./index.php?c=home&a=welcome&do=get_upgrade_modules&",
-                                    moduleStatisticsUrl: "./index.php?c=home&a=welcome&do=get_module_statistics&"
-                                });
-                                angular.bootstrap($('.js-system-welcome'), ['systemApp']);
-                            });
-                        </script>
+                        <div class="js-system-module-detail ng-scope" ng-controller="detailCtrl">
+                            <table class="table we7-table table-hover table-form"
+                                   ng-show="show == 'base' || show == ''">
+                                <colgroup>
+                                    <col width="140px">
+                                    <col>
+                                    <col width="100px">
+                                </colgroup>
+                                <form action="{:url('order/add')}" method="post">
+                                    <tbody>
+                                    <tr>
+                                        <th class="text-left" colspan="3">订单详细信息</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">订单号</td>
+                                        <td class="ng-binding">
+                                            <input type="text" name="order_no" value="{$list.order_no}"
+                                                   style="border:none;">
+                                        </td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">购买数量</td>
+                                        <td colspan="2" class="ng-binding">
+                                            <input type="text" name="num" value="{$list.num}" style="border:none;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">商品总价</td>
+                                        <td colspan="2" class="ng-binding">
+                                            <input type="text" name="price_total" value="{$list.price_total}"
+                                                   style="border:none;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">应支付积分</td>
+                                        <td class="ng-binding">
+                                            <input type="text" name="pay_total" value="{$list.pay_total}"
+                                                   style="border:none;">
+                                        </td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">商品所属商家</td>
+                                        <td class="ng-binding">{$name}</td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">支付状态</td>
+                                        <td>
+                                            <input type="text" name="data_pay" value="{$list.data_pay?'已支付':'未支付'}"
+                                                   style="border:none;">
+                                        </td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">订单状态</td>
+                                        {if condition="($list.data_order eq 0)"}
+                                        <td><input type="text" name="data_order" style="border:none;" value="未确认"></td>
+                                        {elseif condition="$list.data_order eq 1"/}
+                                        <td><input type="text" name="data_order" style="border:none;" value="已确认"></td>
+                                        {elseif condition="$list.data_order eq 2"/}
+                                        <td><input type="text" name="data_order" style="border:none;" value="待发货"></td>
+                                        {elseif condition="$list.data_order eq 3"/}
+                                        <td><input type="text" name="data_order" style="border:none;" value="已发货"></td>
+                                        {else /}
+                                        <td><input type="text" name="data_order" style="border:none;" value="已确认发货">
+                                        </td>
+                                        {/if}
+                                        <td style="padding-right: 390px">
+                                            <select name="status" id="status">
+                                                <option value="">请选择</option>
+                                                <option value="1">已确认</option>
+                                                <option value="2">待发货</option>
+                                                <option value="3">已发货</option>
+                                                <option value="4">已确认收货</option>
+                                                <option value="5">退款</option>
+                                                <option value="6">已取消</option>
+                                            </select>
+                                            {if condition="($list.data_pay neq 0)"}
+                                        <td style="padding-right: 20px;" class="status">
+                                        <input type="hidden" value="{$list.id}" id="nn">
+                                            <a href="javascript:;">更改</a>
+                                        </td>
+                                        {else /}
+                                        <td style="padding-right: 20px;" class="status2">
+                                            <input type="hidden" value="{$list.id}" id="nn2">
+                                            <a href="javascript:;">更改</a>
+                                        </td>
+                                        {/if}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">物流信息</td>
+                                        <td>
+                                            <select name="log" id="">
+                                                <option value="1">顺丰快递</option>
+                                                <option value="2">中通快递</option>
+                                                <option value="3">圆通快递</option>
+                                                <option value="4">申通快递</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label"><input type="submit" value="提交信息"></td>
+                                    </tr>
+                                    </tbody>
+                                </form>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            $('.status2').click(function () {
+                alert('订单未支付状态，暂时不能更改订单状态');
+            })
+
+            $('.status').click(function () {
+                var id = document.getElementById("nn").value;
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "{:url('order/status')}?id="+id,//url
+                    data: $("select[name='status']").change(function(){
+                        $(this).val();
+                    }),
+                    success: function (result) {
+                        if(result == 1){
+                            alert('订单状态设置成功');
+                            window.location.href="{:url('order/index')}";
+                        }
+                    }
+                });
+            })
+        </script>
 
     </div>
     <div class="container-fluid footer text-center" role="footer">
