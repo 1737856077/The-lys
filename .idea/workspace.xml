@@ -6,32 +6,6 @@
       <change afterPath="$PROJECT_DIR$/business/alipay/view/authredirect.index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/business/common/controller/CommonSign.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/business/order/view/order.details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556012867-23.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556012975-23.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556013103-23.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556013247-23.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556013363-23.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556013479-23.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556013596-23.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556013735-23.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556159309-25.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556159432-25.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556159554-25.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/1556171887-25.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/24.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/log/201904/25.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/05378e861d23e6aeca62caffd61a27e7.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/2383eb5d6b644924315fdd69e0b320b7.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/3518b04b3b6f7b749acc40d5c8ef9b8a.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/3b85a426899f685e2699868624058d6d.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/76d7fbaa59a4d85b31eca6d702ae7765.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/7ceb102dd81fd4da41bd09ffd000f6d5.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/82fa95db0b83ff6eca0cb3a4c9925410.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/9402908efaa406659c89a6a536312615.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/9fec179d43a9c8eb8c655c423b78046a.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/bfc781d1750fc3002cea967b1ccb1228.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/d4bbdcd964ea9c4950a7b9c7f3cea1c0.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime/temp/dddb8b9e70ca6395e3973b613be5c8ac.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/static/business/layer/extend/layer.ext.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/static/business/layer/layer-min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/static/business/layer/layer.js" afterDir="false" />
@@ -55,9 +29,37 @@
       <change beforePath="$PROJECT_DIR$/business/money/view/money.index.html" beforeDir="false" afterPath="$PROJECT_DIR$/business/money/view/money.index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business/order/controller/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/business/order/controller/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business/order/view/order.index.html" beforeDir="false" afterPath="$PROJECT_DIR$/business/order/view/order.index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/log/201904/23.log" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/log/201904/23.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/3d37fd74a31e7dd4834c140ae5238585.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/3d37fd74a31e7dd4834c140ae5238585.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/4fa8c894bcb31eb4647171e60b94ebf6.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/4fa8c894bcb31eb4647171e60b94ebf6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/log/201904/1555918555-22.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/log/201904/18.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/log/201904/19.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/log/201904/22.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/log/201904/23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/0163a9a3ec7d1828016c42b344e03e66.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/04d43ab6e389c0543c403a9d4beea51f.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/0f1fe1376c608e7eebe1463d9bf31244.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/14d4607efd6bea018e78fe5332490d19.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/18dc455c773a28b67282eb0dbc05c478.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/198676c03926c9bde46a35860f36ab42.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/20b2a2a9d7345574353c0c20bca7fcc4.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/239ac109bc584b09616815254194c772.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/31f173b187612f860b811356365b28a6.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/34865ef87b497a310c344f56c05e5f50.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/395c2bbda2695fea7ad9bbb557d397a8.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/39acf83d55aac84d34fcd05d7efef189.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/3d37fd74a31e7dd4834c140ae5238585.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/4726f165ef65dab7b8eb415a637c2b09.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/4fa8c894bcb31eb4647171e60b94ebf6.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/6d9c29acc3fdbd092d6ea46568514f8c.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/97ca8e61a68b4abf4df54bc70c2c772d.php" beforeDir="false" afterPath="$PROJECT_DIR$/business/order/view/order.details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/99f38cde182c9cadf8108b97c126d0e7.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/a5de1b627d2d01a9c543f712d324c5ce.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/ab1ba02be42167f6c4a52c8ea9475284.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/d282a648264704e53831974562060711.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/e63888cec2d1686034bca89ad486ce13.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/e834ecf393e79120343030487785a07f.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/e84e20aea3f4c8e9f187dfe0b2e2171a.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/f1374dc0e0efdeb12f396ead833f99fb.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/f2ee3fcf79cb73c623fec8c430acde44.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,8 +192,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="247" />
-    <option name="y" value="143" />
+    <option name="x" value="275" />
+    <option name="y" value="78" />
     <option name="width" value="1400" />
     <option name="height" value="898" />
   </component>
@@ -245,6 +247,11 @@
               <item name="order" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -264,6 +271,7 @@
       <recent name="C:\phpStudy\PHPTutorial\WWW\sy\business\demo\pagepay" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\phpStudy\PHPTutorial\WWW\sy" />
       <recent name="C:\phpStudy\PHPTutorial\WWW\sy\business\order\view" />
       <recent name="C:\phpStudy\PHPTutorial\WWW\sy\static\business" />
       <recent name="C:\phpStudy\PHPTutorial\WWW\sy\business\common\controller" />
@@ -296,12 +304,12 @@
       <workItem from="1556011434108" duration="1399000" />
       <workItem from="1556066584250" duration="12250000" />
       <workItem from="1556088807385" duration="5212000" />
-      <workItem from="1556152946919" duration="28011000" />
+      <workItem from="1556152946919" duration="28301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47105000" />
+    <option name="totallyTimeSpent" value="47395000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -574,6 +582,9 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/business/order/controller/Order.php">
       <provider selected="true" editor-type-id="text-editor">
