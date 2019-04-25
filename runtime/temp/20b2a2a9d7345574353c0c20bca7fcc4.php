@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\Users\Administrator\Desktop\suyuan\sy/integral/integral\view\index.details.html";i:1555904735;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\Users\Administrator\Desktop\suyuan\sy/integral/integral\view\index.details.html";i:1556164223;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +43,7 @@
 </div>
 <div class="comm_footer">
     <ul>
-        <form action="<?php echo url('order/index/index'); ?>">
+        <form action="<?php echo url('order/index/index'); ?>" method="post">
             <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
             <input type="hidden" name="product_id" value="<?php echo $data['product_id']; ?>">
             <input type="hidden" name="admin_id" value="<?php echo $data['admin_id']; ?>">

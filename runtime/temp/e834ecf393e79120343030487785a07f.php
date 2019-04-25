@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"C:\Users\Administrator\Desktop\suyuan\sy/integral/order\view\index.index.html";i:1555926079;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"C:\Users\Administrator\Desktop\suyuan\sy/integral/order\view\index.index.html";i:1556173164;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +14,9 @@
     <link rel="stylesheet" type="text/css" href="/static/integral/css/lxsHeadFoot.css">
     <link rel="stylesheet" type="text/css" href="/static/integral/css/order_new.css" />
     <script src="/static/integral/js/jquery-2.1.4.min.js" ></script>
+    <script src="/static/integral/js/jquery-1.7.2.min.js" ></script>
+    <script src="/static/integral/js/jquery.js" ></script>
+
     <script></script>
     <style>
 
@@ -29,21 +32,60 @@
         <a href="javascript:history.go(-1)" style="color: azure" class="back"><<<<i class="iconBack"></i></a><span>订单填写</span><a class="more"><i class="iconDian"></i><i class="iconDian"></i><i class="iconDian"></i></a>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#num").change(function(){
+            var price =$("#price").text() ;
+            var num =$("#num").val() ;
+            $(".num").val(num)
+            var prices = price*num;
+            $(".integral").text(prices)
 
+            // $.ajax({
+            //     //几个参数需要注意一下
+            //     type: "POST",//方法类型
+            //     dataType: "json",//预期服务器返回的数据类型
+            //     url: "/users/login" ,//url
+            //     data: $('#form1').serialize(),
+            //     success: function (result) {
+            //
+            //     },
+            //
+            // });
+        });
+    });
+</script>
+<script>
+    // $(document).ready(function(){
+    //     $("#save").click(function(){
+    //         $.ajax({
+    //             //几个参数需要注意一下
+    //             type: "POST",//方法类型
+    //             dataType: "json",//预期服务器返回的数据类型
+    //             url: "/integral.php/order/index/suborder" ,//url
+    //             data:1,
+    //             success: function (result) {
+    //                     alert(1)
+    //             },
+    //
+    //         });
+    //     });
+    // });
+</script>
 
 <div class="j_main m-main">
 
-    <form action="" method="post" name="form_1">
+    <form>
 
         <div class="tit">
             <i></i>填写订单详情
         </div>
         <div class="txt">
-            <dt style="width: 96.5%;text-align: center">
-                <?php if(empty($product['images'])): ?>
-                <img src="/static/integral/img/nopic-107.png"  alt="">
+            <dt>
+                <?php if(empty($product_data['images'])): ?>
+                <img style="width: 100%" src="/static/integral/img/nopic-107.png"  alt="">
                 <?php else: ?>
-                <img src="/static/uploads/business/<?php echo $pdata['images']; ?>"  alt="">
+                <img style="width: 100%" src="/static/uploads/business/<?php echo $product_data['images']; ?>"  alt="">
                 <?php endif; ?>
             </dt>
             <dl>
@@ -52,16 +94,15 @@
             </dl>
             <dl>
                 <dt>产品</dt>
-                <dd class="line30"><?php echo $product_data['data_desc']; ?></dd>
+                <dd class="line30" ><?php echo $product_data['data_desc']; ?></dd>
             </dl>
             <dl>
                 <dt>产品单价</dt>
-                <dd>￥<?php echo $product_data['integral']; ?></dd>
+                <dd ><span style="float: left" id="price"><?php echo $product_data['integral']; ?></span></dd>
             </dl>
-            <dl class="J_price">
+            <dl>
                 <dt>购买数量</dt>
-                <dd class="box-flex-1 price pd0" id="adult_price_span">
-                    <span><span id="price_d"></span></span></dd><dd class="box-flex-2"><span class="subadd j_num"><span class="sub" data-type="adults"></span><input id="j_price_d_num" type="text" min="1" max="999" class="text_num" value="1" name="adult_num"><span class="add" data-type="adults"></span></span></dd>
+                    <input style="border: 1px solid" id="num"   class="num" type="text"  value="" name="num"></dd>
             </dl>
         </div>
         <div class="txt txt2 J_baoxian">
@@ -73,24 +114,47 @@
         </div>
         <?php else: ?>
         <div class="tit">
-            <i></i>收货地址确认<a href="<?php echo url('member/index/site'); ?>">请添加收地址货</a>
+            <i></i>收货地址确认
         </div>
         <div class="txt">
             <dl>
-               
+                <dt>姓名</dt>
+                <dd><input maxlength="20" type="text"  name="truename" class="o_man" placeholder="" value="<?php echo $rceiving_address['name']; ?>"></dd>
+            </dl>
+            <dl>
+                <dt>地址</dt>
+                <dd class="pd0"><input type="text" name="mobiletel" id="n_mobiletel" class="o_number"   value="<?php echo $rceiving_address['address']; ?>"></dd><dd style="width:8rem;-webkit-box-flex:inherit">
+            </dd>
             </dl>
         </div>
         <?php endif; ?>
 
     </form>
+
+    <form class="form1" action="/integral.php/order/index/suborder" method="post"  name="form1">
+        <div class="tit">
+            <i></i>添加备注
+        </div>
+        <div class="txt">
+            <input type="text" name="description" placeholder="备注" value="">
+        </div>
     <div class="submintFix">
         <dl>
             <dt>
                 <div class="price">
-                    订单总额 <span>￥<em class="j_all_money"></em></span>
+                    订单总额 <em>￥<em  class="integral"></em></em>
                 </div>
             </dt>
-            <dd class="sbmFix"><button type="button" id="save">提交订单</button></dd>
+
+                <input type="hidden" name="product_id" value="<?php echo $product_data['product_id']; ?>">
+                <input type="hidden" name="uid" value="<?php echo $member_data['uid']; ?>">
+                <input type="hidden" name="integral" value="<?php echo $product_data['integral']; ?>">
+                <input type="hidden" class="num" name="num" value="">
+                <input type="hidden" name="appid" value="<?php echo $product_data['appid']; ?>">
+                <input type="hidden" name="admin_id" value="<?php echo $product_data['admin_id']; ?>">
+                <input type="hidden" name="rceiving_address_id" value="<?php echo $rceiving_address['rceiving_address_id']; ?>">
+                <dd class="sbmFix"><button type="submit" class="save" id="save">提交订单</button></dd>
+            </form>
         </dl>
     </div>
 </div>

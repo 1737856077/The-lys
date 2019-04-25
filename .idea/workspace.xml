@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/integral/order/view/index.index.html" line="13" />
-  </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="80d9676e-7751-4f8b-9a2f-0291e3e87bb9" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+    <list default="true" id="81b17fcc-d45d-45dc-ae3d-c8baf16cce26" name="Default Changelist" comment="">
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
       <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,6 +18,7 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
+<<<<<<< HEAD
   <component name="FUSProjectUsageTrigger">
     <session id="85438510">
       <usages-collector id="statistics.lifecycle.project">
@@ -145,11 +147,21 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
               <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
+=======
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/database.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="560">
@@ -194,41 +206,17 @@
                 <element signature="n#style#0;n#span#1;n#a#1;n#footer#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#a#2;n#footer#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/business/index/view/index.index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="227" column="102" lean-forward="true" selection-start-line="227" selection-start-column="49" selection-end-line="227" selection-end-column="102" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>立即</find>
-      <find>__URL__</find>
-      <find>请</find>
-      <find>请与</find>
-      <find>/input&gt;</find>
-      <find>uuid</find>
-      <find>aui-tabBar-item</find>
-      <find>js</find>
-      <find>j_price_d_num</find>
-      <find>国庆</find>
-      <find>1</find>
-      <find>region</find>
-      <find>订单</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\Users\Administrator\Desktop\suyuan\sy</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -236,6 +224,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/integral/index/controller/Wx.php" />
         <option value="$PROJECT_DIR$/static/integral/css/login.css" />
         <option value="$PROJECT_DIR$/admin.php" />
@@ -270,38 +259,30 @@
         <option value="$PROJECT_DIR$/integral/member/controller/Index.php" />
         <option value="$PROJECT_DIR$/database.php" />
         <option value="$PROJECT_DIR$/integral/index/controller/Register.php" />
+=======
+        <option value="$PROJECT_DIR$/database.php" />
+        <option value="$PROJECT_DIR$/business/gift/view/gift.gift.html" />
+        <option value="$PROJECT_DIR$/business/integral_info/view/information.index.html" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/static/admin/lightbox2/package.json" />
-    </packageJsonPaths>
-  </component>
-  <component name="PhpServers">
-    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/topthink/think-image" />
+      <path value="$PROJECT_DIR$/vendor/topthink/think-helper" />
+      <path value="$PROJECT_DIR$/vendor/workerman/workerman" />
+      <path value="$PROJECT_DIR$/vendor/topthink/think-worker" />
+      <path value="$PROJECT_DIR$/vendor/topthink/think-installer" />
+      <path value="$PROJECT_DIR$/vendor/topthink/think-migration" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-queue" />
-      <path value="$PROJECT_DIR$/vendor/topthink/think-installer" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-oracle" />
-      <path value="$PROJECT_DIR$/vendor/topthink/think-worker" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-mongo" />
-      <path value="$PROJECT_DIR$/vendor/topthink/think-migration" />
-      <path value="$PROJECT_DIR$/vendor/topthink/think-helper" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-captcha" />
-      <path value="$PROJECT_DIR$/vendor/workerman/workerman" />
     </include_path>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds">
     <option name="x" value="54" />
     <option name="width" value="1937" />
@@ -335,6 +316,13 @@
         </selected-state>
       </profile-state>
     </entry>
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="372" />
+    <option name="y" value="-17" />
+    <option name="width" value="1400" />
+    <option name="height" value="898" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -348,6 +336,46 @@
               <item name="sy" type="b2602c69:ProjectViewProjectNode" />
               <item name="sy" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+              <item name="gift" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sy" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
           </expand>
           <select />
         </subPane>
@@ -356,8 +384,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="E:/phpStudy/PHPTutorial/WWW/paiban" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -378,6 +406,10 @@
       <recent name="C:\Users\Administrator\Desktop\suyuan\sy\integral\common\controller" />
       <recent name="C:\Users\Administrator\Desktop\suyuan\sy\integral" />
     </key>
+=======
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -396,10 +428,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="80d9676e-7751-4f8b-9a2f-0291e3e87bb9" name="默认更改列表" comment="" />
-      <created>1555559650350</created>
+      <changelist id="81b17fcc-d45d-45dc-ae3d-c8baf16cce26" name="Default Changelist" comment="" />
+      <created>1556011144988</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1555559650350</updated>
       <workItem from="1555559652780" duration="11242000" />
       <workItem from="1555634369924" duration="25439000" />
@@ -409,29 +442,49 @@
       <workItem from="1556066462249" duration="1194000" />
       <workItem from="1556075963064" duration="3602000" />
       <workItem from="1556153245162" duration="1665000" />
+=======
+      <updated>1556011144988</updated>
+      <workItem from="1556011148881" duration="233000" />
+      <workItem from="1556011434108" duration="473000" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="81083000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="0" width="1937" height="1032" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24047236" />
+=======
+    <option name="totallyTimeSpent" value="706000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25375536" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32918552" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3221709" />
+=======
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32963374" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -442,10 +495,8 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/integral/common/controller/CommonIntegra.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -454,64 +505,43 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/thinkphp/library/think/db/Query.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1044">
-          <caret line="1444" column="48" lean-forward="true" selection-start-line="1444" selection-start-column="48" selection-end-line="1444" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/ad-001.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/ad-002.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/banner.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/blue.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/headimg_16.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/icon-tag-001.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/index.html">
+=======
+    <entry file="file://$PROJECT_DIR$/business.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/loading.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/img/nopic-107.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/html/web_mobile/css/commodity.css">
+    <entry file="file://$PROJECT_DIR$/business/gift/view/gift.gift.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        <state relative-caret-position="1324">
+          <caret line="220" column="92" selection-start-line="220" selection-start-column="92" selection-end-line="220" selection-end-column="92" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/html/web_mobile/collection.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/html/web_mobile/commodity.html">
+    <entry file="file://$PROJECT_DIR$/business/gift/view/gift.edit.html">
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="128" column="83" lean-forward="true" selection-start-line="126" selection-start-column="3" selection-end-line="128" selection-end-column="83" />
+        <state relative-caret-position="-6306" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/business/index/view/index.index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="227" column="102" lean-forward="true" selection-start-line="227" selection-start-column="49" selection-end-line="227" selection-end-column="102" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/integral/css/commodity.html" />
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/embed.rnc">
+    <entry file="file://$PROJECT_DIR$/business/integral_info/view/information.index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="44" selection-start-line="44" selection-end-line="45" />
+        <state relative-caret-position="60">
+          <caret line="202" column="106" selection-start-line="202" selection-start-column="106" selection-end-line="202" selection-end-column="106" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/business/order/view/order.index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6747" />
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/static/integral/css/style1.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="771">
@@ -762,6 +792,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+=======
+    <entry file="file://$PROJECT_DIR$/business/money/view/money.index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6654" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+>>>>>>> 779e7149cee35203b6c8a17b129c4c842af0a1ff
         </state>
       </provider>
     </entry>
