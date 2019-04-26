@@ -18,6 +18,7 @@ class Information extends Controller
      */
     public function index()
     {
+        //查询会员表 显示用户的积分信息
         $id = Session::get('adminid');
         $name = Session::get('adminname');
         $list = Db::name('member')->where('admin_id',$id)->paginate(2);
