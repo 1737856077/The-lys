@@ -134,4 +134,28 @@ class Index extends CommonIntegra
         $this->assign('data',$record_data);
         return $this->fetch();
     }
+    /**
+     * 订单中心
+     */
+    public function sorder()
+    {
+        $param = $this->request->param();
+        $uid = htmlspecialchars(trim($param['uid'])?$param['uid']:'');
+        $order_model = Db::name('integral_order');
+        $order_data = $order_model->where('uid',$uid)->select();
+        foreach($order_data as $k=>$v)
+        {
+           $dat=Db::name('product_integral')->where('product_id',$v['product_id'])->field('images,title')->find();
+            $v['img'] = $dat['images'];
+            $v['title']=$dat['title'];
+           $order_data[$k]=$v;
+        }
+        $url= 'http://'.$_SERVER['HTTP_HOST']."/integral.php/member/index/sorder/"."uid/".$uid;
+        $page=isset($_GET['page'])? $_GET['page']:1;
+        $data=page_array(4,$page,$order_data,1);
+        $show=show_array(Session::get('page'),$url);
+        $this->assign('page',$show);//传到模板显示
+        $this->assign('data',$data);//数据
+        return $this->fetch('');
+    }
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link href="__STATIC__/integral/css/stylea.css"  rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<section class="aui-flexView">
+    <header class="aui-navBar aui-navBar-fixed">
+        <a href="/integral.php/member/index/index" class="aui-navBar-item">
+            <i class="icon icon-return"></i>
+        </a>
+        <div class="aui-center">
+            <span class="aui-center-title">我的订单</span>
+        </div>
+    </header>
+    <section class="aui-scrollView">
+        <div class="aui-tab" data-ydui-tab>
+            <div class="divHeight"></div>
+            <div class="tab-panel">
+                <div class="tab-panel-item tab-active">
+                    {foreach name="data" id="datas"}
+                    <div class="tab-item">
+                        <a href="javascript:void(0);" class="aui-well-item aui-well-item-clear">
+                            <div class="aui-well-item-hd">
+                                <img src="/static/uploads/business/{$datas.img}"alt="">
+                            </div>
+                            <div class="aui-well-item-bd">
+                                <h3>公司名称</h3>
+                            </div>
+                        </a>
+                        <div class="aui-mail-product">
+                            <a href="javascript:;" class="aui-mail-product-item">
+                                <div class="aui-mail-product-item-hd">
+                                    <img src="/static/uploads/business/{$datas.img}"alt="">
+                                </div>
+                                <div class="aui-mail-product-item-bd">
+                                    <p>{$datas.title}</p>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="javascript:;" class="aui-mail-payment">
+                            <p>
+                                共<em>{$datas.num}</em>
+                                件商品 实付款: ￥<i>{$datas.price_total}</i>
+                            </p>
+                        </a>
+                        <div class="aui-mail-button">
+                            {$datas.data_pay==4?"<a href='javascript:;'>再次兑换</a>":"<a href='javascript:;'>确认收货</a>"}
+                            <a href="/integral.php/member/order/orderdetail/order_no/{$datas.order_no}" class="aui-df-color">查看详情</a>
+                        </div>
+                    </div>
+                    {/foreach}
+{$page}
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>

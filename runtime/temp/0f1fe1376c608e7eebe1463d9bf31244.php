@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"C:\Users\Administrator\Desktop\suyuan\sy/integral/member\view\index.index.html";i:1556183591;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"C:\Users\Administrator\Desktop\suyuan\sy/integral/member\view\index.index.html";i:1556262708;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
 </head>
 <body>
 <section class="aui-flexView">
-    <?php echo dump($member_data); if(!empty($member_data)): ?>  <section class="aui-scrollView">
+    <?php if(!empty($member_data)): ?>  <section class="aui-scrollView">
     <div class="aui-flex aui-flex-user b-line">
         <div class="aui-ona-user">
             <?php if(empty($member_data['img'])): ?>
@@ -56,7 +56,7 @@
                 <h2>积分详情</h2>
             </div>
         </a>
-            <a href="javascript:;" class="aui-palace-grid">
+            <a href="/integral.php/member/index/sorder/uid/<?php echo $member_data['uid']; ?>" class="aui-palace-grid">
             <div class="aui-palace-grid-icon">
                 <img src="/static/integral/img/icon-time-003.png" alt="">
             </div>
@@ -67,65 +67,10 @@
     </div>
     <div class="divHeight"></div>
     <div class="aui-course-list">
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-001.png" alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>VIP特权</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-002.png"alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>我的特权</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-003.png" alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>我获得担保协议</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
         <div class="divHeight"></div>
-        <a href="javascript:;" class="aui-flex b-line">
+        <a href="/integral.php/member/index/sorder/uid/<?php echo $member_data['uid']; ?>" class="aui-flex b-line">
             <div class="aui-cou-img">
                 <img src="/static/integral/img/icon-tag-004.png"  alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>我的信用报告</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-005.png" alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>我的兑换码</h2>
-            </div>
-            <div class="aui-arrow">
-                <p style="color:#e26d20">领取惊喜</p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-006.png"  alt="">
             </div>
             <div class="aui-flex-box">
                 <h2>我的订单</h2>
@@ -134,96 +79,117 @@
                 <p></p>
             </div>
         </a>
-        <a href="javascript:;" class="aui-flex">
+        <a href="/integral.php/member/index/integrals/uid/<?php echo $member_data['uid']; ?>" class="aui-flex b-line">
             <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-007.png" alt="">
+                <img src="/static/integral/img/icon-tag-005.png" alt="">
             </div>
             <div class="aui-flex-box">
-                <h2>更换身份</h2>
-            </div>
-            <div class="aui-arrow">
-                <p>更换后原身份作废</p>
-            </div>
+                <h2>积分详情</h2>
+            </div> <div class="aui-arrow">
+            <p></p>
+        </div>
         </a>
-        <div class="divHeight"></div>
-        <a href="javascript:;" class="aui-flex">
+        <a href="/integral.php/member/order/site/uid/<?php echo $member_data['uid']; ?>" class="aui-flex b-line">
             <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-008.png" alt="">
+                <img src="/static/integral/img/icon-tag-006.png"  alt="">
             </div>
             <div class="aui-flex-box">
-                <h2>交易风险</h2>
+                <h2>我的地址</h2>
             </div>
             <div class="aui-arrow">
                 <p></p>
             </div>
         </a>
-        <div class="divHeight"></div>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-009.png"  alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>分享</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-010.png"  alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>设置</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-011.png"  alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>关于我们</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-012.png" alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>意见反馈</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-013.png"  alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>联系我们</h2>
-            </div>
-            <div class="aui-arrow">
-                <p></p>
-            </div>
-        </a>
-        <a href="javascript:;" class="aui-flex b-line">
-            <div class="aui-cou-img">
-                <img src="/static/integral/img/icon-tag-014.png"  alt="">
-            </div>
-            <div class="aui-flex-box">
-                <h2>版本更新</h2>
-            </div>
-            <div class="aui-arrow">
-                <p>当前版本1.2.0</p>
-            </div>
-        </a>
+        <!--<a href="javascript:;" class="aui-flex">-->
+            <!--<div class="aui-cou-img">-->
+                <!--<img src="/static/integral/img/icon-tag-007.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="aui-flex-box">-->
+                <!--<h2>更换身份</h2>-->
+            <!--</div>-->
+            <!--<div class="aui-arrow">-->
+                <!--<p>更换后原身份作废</p>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<div class="divHeight"></div>-->
+        <!--<a href="javascript:;" class="aui-flex">-->
+            <!--<div class="aui-cou-img">-->
+                <!--<img src="/static/integral/img/icon-tag-008.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="aui-flex-box">-->
+                <!--<h2>交易风险</h2>-->
+            <!--</div>-->
+            <!--<div class="aui-arrow">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<div class="divHeight"></div>-->
+        <!--<a href="javascript:;" class="aui-flex b-line">-->
+            <!--<div class="aui-cou-img">-->
+                <!--<img src="/static/integral/img/icon-tag-009.png"  alt="">-->
+            <!--</div>-->
+            <!--<div class="aui-flex-box">-->
+                <!--<h2>分享</h2>-->
+            <!--</div>-->
+            <!--<div class="aui-arrow">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<a href="javascript:;" class="aui-flex b-line">-->
+            <!--<div class="aui-cou-img">-->
+                <!--<img src="/static/integral/img/icon-tag-010.png"  alt="">-->
+            <!--</div>-->
+            <!--<div class="aui-flex-box">-->
+                <!--<h2>设置</h2>-->
+            <!--</div>-->
+            <!--<div class="aui-arrow">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<a href="javascript:;" class="aui-flex b-line">-->
+            <!--<div class="aui-cou-img">-->
+                <!--<img src="/static/integral/img/icon-tag-011.png"  alt="">-->
+            <!--</div>-->
+            <!--<div class="aui-flex-box">-->
+                <!--<h2>关于我们</h2>-->
+            <!--</div>-->
+            <!--<div class="aui-arrow">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<a href="javascript:;" class="aui-flex b-line">-->
+            <!--<div class="aui-cou-img">-->
+                <!--<img src="/static/integral/img/icon-tag-012.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="aui-flex-box">-->
+                <!--<h2>意见反馈</h2>-->
+            <!--</div>-->
+            <!--<div class="aui-arrow">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<a href="javascript:;" class="aui-flex b-line">-->
+            <!--<div class="aui-cou-img">-->
+                <!--<img src="/static/integral/img/icon-tag-013.png"  alt="">-->
+            <!--</div>-->
+            <!--<div class="aui-flex-box">-->
+                <!--<h2>联系我们</h2>-->
+            <!--</div>-->
+            <!--<div class="aui-arrow">-->
+                <!--<p></p>-->
+            <!--</div>-->
+        <!--</a>-->
+        <!--<a href="javascript:;" class="aui-flex b-line">-->
+            <!--<div class="aui-cou-img">-->
+                <!--<img src="/static/integral/img/icon-tag-014.png"  alt="">-->
+            <!--</div>-->
+            <!--<div class="aui-flex-box">-->
+                <!--<h2>版本更新</h2>-->
+            <!--</div>-->
+            <!--<div class="aui-arrow">-->
+                <!--<p>当前版本1.2.0</p>-->
+            <!--</div>-->
+        <!--</a>-->
 
     </div>
     <div style="height:60px;"></div>
