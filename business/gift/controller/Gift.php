@@ -41,6 +41,7 @@ class Gift extends Controller
             $data_desc = input('post.data_desc');
             $request = Request::instance();
             $file = $request->file('images');
+            $product_id = my_returnUUID();
             $validate = new Validate(
                 [
                     'title' => 'require',
@@ -71,6 +72,7 @@ class Gift extends Controller
                         'admin_id' => $id,
                         'images' => $info->getSaveName(),
                         'create_time' => time(),
+                        'product_id'=>$product_id,
                     ];
                 } else {
                     $this->error($file->getError());
@@ -94,6 +96,8 @@ class Gift extends Controller
     public function edit($id)
     {
         if (Request::instance()->isPost()) {
+            $param = $this->request->param();
+            $id = htmlspecialchars(isset($param['id']) ? $param['id'] : '');
             $title = input('post.title');
             $total = input('post.total');
             $integral = input('post.integral');

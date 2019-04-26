@@ -114,6 +114,8 @@
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/layer/layer.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/layer/layer-min.js"></script>
 </head>
 <body>
 <div class="loader" style="display:none">
@@ -233,7 +235,7 @@
                     <div class="right-content" style="min-height: 490px;">
                         <ul class="we7-page-tab">
                             <li class="active"><a
-                                    href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;">积分信息</a>
+                                    href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;">订单列表</a>
                             </li>
 
                         </ul>
@@ -243,11 +245,6 @@
                                 <input type="hidden" name="a" value="display">
                                 <input type="hidden" name="do" value="">
                                 <input type="hidden" name="type" value="">
-                                <!--<div class="input-group pull-left col-sm-4">
-                                    <input type="text" name="username" id="" class="form-control" placeholder="搜索用户名">
-                                    <span class="input-group-btn"><button class="btn btn-default"><i
-                                            class="fa fa-search"></i></button></span>
-                                </div>-->
                             </form>
 
                         </div>
@@ -266,27 +263,50 @@
                             </colgroup>
                             <tbody>
                             <tr>
-                                <th class="text-left">用户名</th>
-                                <th>所属商家</th>
-                                <th>联系方式</th>
-                                <th>积分余额</th>
-                                <th>已消费积分</th>
+                                <th class="text-left">订单号</th>
+                                <th>订单金额</th>
+                                <th>购买数量</th>
+                                <th>应支付积分</th>
+                                <th>支付状态</th>
+                                <th>订单状态</th>
                             </tr>
-                            {volist name="list" id="vo"}
+                            {foreach name="list" id="vo"}
                             <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
-                                <td class="text-left ng-binding" ng-bind="user.username">{$vo.username}</td>
-                                <td class="text-left ng-binding" ng-bind="user.username">{$name}</td>
-                                <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.moblie}</td>
-                                <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$vo.invoice_money}</td>
-                                <td class="color-default ng-binding" ng-bind="user.maxwebapp">000</td>
+                                <td class="color-default ng-binding" ng-bind="user.username">
+                                    <a href="{:url('order/details')}?id={$vo.id}">{$vo.order_no}</a>
+                                </td>
+                                <td class="color-default ng-binding" ng-bind="user.username">{$vo.price_total}</td>
+                                <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.num}</td>
+                                <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.pay_total}</td>
+                                <td class="color-default ng-binding" ng-bind="user.maxwxapp">
+                                    {$vo.data_pay?'已支付':'未支付'}
+                                </td>
+                                {if condition="($vo.data_order eq 0)"}
+                                <td class="color-default ng-binding status" ng-bind="user.maxwxapp">未确认</td>
+                                {elseif condition="$vo.data_order eq 1"/}
+                                <td class="color-default ng-binding " ng-bind="user.maxwxapp">已确认</td>
+                                {elseif condition="$vo.data_order eq 2"/}
+                                <td class="color-default ng-binding " ng-bind="user.maxwxapp">待发货</td>
+                                {elseif condition="$vo.data_order eq 3"/}
+                                <td class="color-default ng-binding " ng-bind="user.maxwxapp">已发货</td>
+                                {elseif condition="$vo.data_order eq 4"/}
+                                <td class="color-default ng-binding " ng-bind="user.maxwxapp">已确认收货</td>
+                                {elseif condition="$vo.data_order eq 5"/}
+                                <td class="color-default ng-binding " ng-bind="user.maxwxapp">退款</td>
+                                {else /}
+                                <td class="color-default ng-binding " ng-bind="user.maxwxapp">已取消</td>
+                                {/if}
+
                             </tr>
-                            {/volist}
+                            {/foreach}
                             </tbody>
                         </table>
                         <div class="text-right">
                             {$list->render()}
                         </div>
+                        <script>
 
+                        </script>
                     </div>
                 </div>
             </div>

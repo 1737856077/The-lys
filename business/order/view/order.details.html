@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">[uib-typeahead-popup].dropdown-menu {
+        display: block;
+    }</style>
+    <style type="text/css">.uib-time input {
+        width: 50px;
+    }</style>
+    <style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow, [uib-popover-popup].popover.top-left > .arrow, [uib-popover-popup].popover.top-right > .arrow, [uib-popover-popup].popover.bottom-left > .arrow, [uib-popover-popup].popover.bottom-right > .arrow, [uib-popover-popup].popover.left-top > .arrow, [uib-popover-popup].popover.left-bottom > .arrow, [uib-popover-popup].popover.right-top > .arrow, [uib-popover-popup].popover.right-bottom > .arrow, [uib-popover-html-popup].popover.top-left > .arrow, [uib-popover-html-popup].popover.top-right > .arrow, [uib-popover-html-popup].popover.bottom-left > .arrow, [uib-popover-html-popup].popover.bottom-right > .arrow, [uib-popover-html-popup].popover.left-top > .arrow, [uib-popover-html-popup].popover.left-bottom > .arrow, [uib-popover-html-popup].popover.right-top > .arrow, [uib-popover-html-popup].popover.right-bottom > .arrow, [uib-popover-template-popup].popover.top-left > .arrow, [uib-popover-template-popup].popover.top-right > .arrow, [uib-popover-template-popup].popover.bottom-left > .arrow, [uib-popover-template-popup].popover.bottom-right > .arrow, [uib-popover-template-popup].popover.left-top > .arrow, [uib-popover-template-popup].popover.left-bottom > .arrow, [uib-popover-template-popup].popover.right-top > .arrow, [uib-popover-template-popup].popover.right-bottom > .arrow {
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0;
+    }
+
+    [uib-popover-popup].popover, [uib-popover-html-popup].popover, [uib-popover-template-popup].popover {
+        display: block !important;
+    }</style>
+    <style type="text/css">.uib-datepicker-popup.dropdown-menu {
+        display: block;
+        float: none;
+        margin: 0;
+    }
+
+    .uib-button-bar {
+        padding: 10px 9px 2px;
+    }</style>
+    <style type="text/css">.uib-position-measure {
+        display: block !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .uib-position-scrollbar-measure {
+        position: absolute !important;
+        top: -9999px !important;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: scroll !important;
+    }
+
+    .uib-position-body-scrollbar-measure {
+        overflow: scroll !important;
+    }</style>
+    <style type="text/css">.uib-datepicker .uib-title {
+        width: 100%;
+    }
+
+    .uib-day button, .uib-month button, .uib-year button {
+        min-width: 100%;
+    }
+
+    .uib-left, .uib-right {
+        width: 100%
+    }</style>
+    <style type="text/css">.ng-animate.item:not(.left):not(.right) {
+        -webkit-transition: 0s ease-in-out left;
+        transition: 0s ease-in-out left
+    }</style>
+    <style type="text/css">@charset "UTF-8";
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }
+
+    .ng-animate-shim {
+        visibility: hidden;
+    }
+
+    .ng-anchor {
+        position: absolute;
+    }</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单详细页</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+    <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
+    <link href="__STATIC__/business/css/common.css" rel="stylesheet">
+    <script src="__STATIC__/business/s.txt"></script>
+    <script type="text/javascript">
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            if (navigator.userAgent.indexOf("MSIE 5.0") > 0 || navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0) {
+                alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+            }
+        }
+        window.sysinfo = {
+            'uid': '1', 'isfounder': 1,
+            'family': 'x',
+            'siteroot': 'https://weixin.zijiahei.com/',
+            'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=user&a=profile&do=bind',
+            'attachurl': 'https://weixin.zijiahei.com/attachment/',
+            'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
+            'attachurl_remote': '',
+            'module': {'url': '', 'name': ''},
+            'cookie': {'pre': '1b74_'},
+            'account': null,
+            'server': {'php': '5.4.45'},
+        };
+    </script>
+    <script>var require = {urlArgs: 'v=20170915'};</script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<div class="loader" style="display:none">
+    <div class="la-ball-clip-rotate">
+        <div></div>
+    </div>
+</div>
+<div data-skin="default" class="skin-default ">
+    <div class="head">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container ">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="https://weixin.zijiahei.com/">
+                        <img src="__STATIC__/business/img/logo.png" class="pull-left" width="110px" height="35px">
+                        <span class="version hidden">1.6.7</span>
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
+            <div class="panel panel-content main-panel-content ">
+                <div class="content-head panel-heading main-panel-heading">
+                    <span class="font-lg"><i class="wi wi-setting"></i> 商家管理</span></div>
+                <div class="panel-body clearfix main-panel-body menu-fixed">
+                    <div class="left-menu" style="min-height: 490px; position: static; top: 144.8px; height: 752px;">
+                        <div class="left-menu-content">
+
+                            <div class="panel panel-menu">
+                                <div class="panel-heading">
+                                    <span class="no-collapse">公众号<i
+                                            class="wi wi-appsetting pull-right setting"></i></span>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item ">
+                                        <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1"
+                                           class="text-over">
+                                            <i class="wi wi-wechat"></i>
+                                            微信公众号 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=1"
+                                           class="text-over">
+                                            <i class="wi wi-wx-apply"></i>
+                                            公众号应用 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=template&amp;"
+                                           class="text-over">
+                                            <i class="wi wi-wx-template"></i>
+                                            微官网模板 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=platform&amp;"
+                                           class="text-over">
+                                            <i class="wi wi-exploitsetting"></i>
+                                            微信开放平台 </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="panel panel-menu">
+                                <div class="panel-heading">
+                                    <span class="no-collapse">积分商城<i
+                                            class="wi wi-appsetting pull-right setting"></i></span>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/qrcode/productcode/index"
+                                           class="text-over">
+                                            <i class="wi wi-user"></i>
+                                            积分码列表 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/qrcode/createqrcode/add"
+                                           class="text-over">
+                                            <i class="wi wi-user"></i>
+                                            生成积分码 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/integral_info/information/index"
+                                           class="text-over">
+                                            <i class="wi wi-user-group"></i>
+                                            积分信息 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/gift/gift/gift"
+                                           class="text-over">
+                                            <i class="wi wi-co-founder"></i>
+                                            礼品管理 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/order/order/index"
+                                           class="text-over">
+                                            <i class="wi wi-co-founder"></i>
+                                            订单管理 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/money/money/index"
+                                           class="text-over">
+                                            <i class="wi wi-co-founder"></i>
+                                            财务中心 </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="right-content" style="min-height: 490px; margin-left: 0px;">
+                        <div class="we7-page-title">
+                            应用管理
+                        </div>
+                        <div class="js-system-module-detail ng-scope" ng-controller="detailCtrl">
+                            <table class="table we7-table table-hover table-form"
+                                   ng-show="show == 'base' || show == ''">
+                                <colgroup>
+                                    <col width="140px">
+                                    <col>
+                                    <col width="100px">
+                                </colgroup>
+                                <form action="{:url('order/add')}" method="post">
+                                    <tbody>
+                                    <tr>
+                                        <th class="text-left" colspan="3">订单详细信息</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">订单号</td>
+                                        <td class="ng-binding">
+                                            <input type="text" name="order_no" value="{$list.order_no}"
+                                                   style="border:none;">
+                                        </td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">购买数量</td>
+                                        <td colspan="2" class="ng-binding">
+                                            <input type="text" name="num" value="{$list.num}" style="border:none;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">商品总价</td>
+                                        <td colspan="2" class="ng-binding">
+                                            <input type="text" name="price_total" value="{$list.price_total}"
+                                                   style="border:none;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">应支付积分</td>
+                                        <td class="ng-binding">
+                                            <input type="text" name="pay_total" value="{$list.pay_total}"
+                                                   style="border:none;">
+                                        </td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">商品所属商家</td>
+                                        <td class="ng-binding">{$name}</td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">支付状态</td>
+                                        <td>
+                                            <input type="text" name="data_pay" value="{$list.data_pay?'已支付':'未支付'}"
+                                                   style="border:none;">
+                                        </td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">订单状态</td>
+                                        {if condition="($list.data_order eq 0)"}
+                                        <td><input type="text" name="data_order" style="border:none;" value="未确认"></td>
+                                        {elseif condition="$list.data_order eq 1"/}
+                                        <td><input type="text" name="data_order" style="border:none;" value="已确认"></td>
+                                        {elseif condition="$list.data_order eq 2"/}
+                                        <td><input type="text" name="data_order" style="border:none;" value="待发货"></td>
+                                        {elseif condition="$list.data_order eq 3"/}
+                                        <td><input type="text" name="data_order" style="border:none;" value="已发货"></td>
+                                        {else /}
+                                        <td><input type="text" name="data_order" style="border:none;" value="已确认发货">
+                                        </td>
+                                        {/if}
+                                        <td style="padding-right: 390px">
+                                            <select name="status" id="status">
+                                                <option value="">请选择</option>
+                                                <option value="1">已确认</option>
+                                                <option value="2">待发货</option>
+                                                <option value="3">已发货</option>
+                                                <option value="4">已确认收货</option>
+                                                <option value="5">退款</option>
+                                                <option value="6">已取消</option>
+                                            </select>
+                                            {if condition="($list.data_pay neq 0)"}
+                                        <td style="padding-right: 20px;" class="status">
+                                        <input type="hidden" value="{$list.id}" id="nn">
+                                            <a href="javascript:;">更改</a>
+                                        </td>
+                                        {else /}
+                                        <td style="padding-right: 20px;" class="status2">
+                                            <input type="hidden" value="{$list.id}" id="nn2">
+                                            <a href="javascript:;">更改</a>
+                                        </td>
+                                        {/if}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">物流信息</td>
+                                        <td>
+                                            <select name="log" id="">
+                                                <option value="1">顺丰快递</option>
+                                                <option value="2">中通快递</option>
+                                                <option value="3">圆通快递</option>
+                                                <option value="4">申通快递</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label"><input type="submit" value="提交信息"></td>
+                                    </tr>
+                                    </tbody>
+                                </form>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('.status2').click(function () {
+                alert('订单未支付状态，暂时不能更改订单状态');
+            })
+
+            $('.status').click(function () {
+                var id = document.getElementById("nn").value;
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "{:url('order/status')}?id="+id,//url
+                    data: $("select[name='status']").change(function(){
+                        $(this).val();
+                    }),
+                    success: function (result) {
+                        if(result == 1){
+                            alert('订单状态设置成功');
+                            window.location.href="{:url('order/index')}";
+                        }
+                    }
+                });
+            })
+        </script>
+
+    </div>
+    <div class="container-fluid footer text-center" role="footer">
+        <div class="friend-link">
+            红包管理系统
+        </div>
+        <div class="copyright">红包管理系统</div>
+        <div></div>
+    </div>
+</div>
+
+
+</body>
+</html>
