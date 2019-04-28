@@ -7,7 +7,7 @@
  */
 
 $newArray=require_once('config.php');
-$newArray['app_debug']=false;// 应用调试模式
-$newArray['app_trace']=false; // 应用Trace
+$newArray['app_debug']=true;// 应用调试模式
+$newArray['app_trace']=true; // 应用Trace
 $newArray['app_status']=''; // 应用模式状态
 return $newArray;
