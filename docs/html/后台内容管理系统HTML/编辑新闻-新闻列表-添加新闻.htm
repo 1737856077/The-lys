@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>账号信息 - 我的账户 - 用户管理</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<script src="./s.txt"></script><script type="text/javascript">
+    if(navigator.appName == 'Microsoft Internet Explorer'){
+        if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
+            alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+        }
+    }
+    window.sysinfo = {
+        'uid': '1',		'isfounder': 1,
+        'family': 'x',
+        'siteroot': 'https://weixin.zijiahei.com/',
+        'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=user&a=profile&do=bind',
+        'attachurl': 'https://weixin.zijiahei.com/attachment/',
+        'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
+        'attachurl_remote': '',
+        'module' : {'url' : '', 'name' : ''},
+        'cookie' : {'pre': '1b74_'},
+        'account' : null,
+        'server' : {'php' : '5.4.45'},
+    };
+</script>
+	<script>var require = { urlArgs: 'v=20170915' };</script>
+	<script type="text/javascript" src="js/jquery-1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/require.js"></script>
+</head>
+<body>
+<div class="loader" style="display:none">
+	<div class="la-ball-clip-rotate">
+		<div></div>
+	</div>
+</div>
+<div data-skin="default" class="skin-default ">
+	<div class="head">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container ">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="https://weixin.zijiahei.com/">
+						<img src="img/logo.png" class="pull-left" width="110px" height="35px">
+						<span class="version hidden">1.6.7</span>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=platform&amp;">公众号</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=wxapp&amp;a=display&amp;do=home&amp;">小程序</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=webapp&amp;a=home&amp;do=display&amp;">PC</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=display&amp;">应用</a></li>
+						<li class="active"><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=system&amp;">系统</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;">站点</a></li>
+						<li><a href="http://s.we7.cc/" target="_blank">模块商城</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=store">商城</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown msg header-notice">
+							<a href="javascript:;" class="dropdown-toogle" data-toggle="dropdown"><span class="wi wi-bell"><span class="badge"></span></span>消息</a>
+							<div class="dropdown-menu">
+								<div class="clearfix top">消息<a href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice" class="pull-right">查看更多</a></div>
+							</div>
+						</li>					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="wi wi-user color-gray"></i>admin <span class="caret"></span></a>
+						<ul class="dropdown-menu color-gray" role="menu">
+							<li>
+								<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;" target="_blank"><i class="wi wi-account color-gray"></i> 我的账号</a>
+							</li>
+							<li class="divider"></li>
+							<li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;" target="_blank"><i class="wi wi-update color-gray"></i> 自动更新</a></li>							<li><a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=updatecache&amp;" target="_blank"><i class="wi wi-cache color-gray"></i> 更新缓存</a></li>
+							<li class="divider"></li>
+							<li>
+								<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=logout&amp;"><i class="fa fa-sign-out color-gray"></i> 退出系统</a>
+							</li>
+						</ul>
+					</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+ 
+<div class="main" style="">
+<div class="container" style="">
+	<a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
+		<div class="panel panel-content main-panel-content " style="">
+		<div class="content-head panel-heading main-panel-heading">
+							<span class="font-lg"><i class="wi wi-setting"></i> 系统管理</span>					</div>
+	<div class="panel-body clearfix main-panel-body menu-fixed" style="">
+		<div class="left-menu" style="min-height: 490px;">
+						<div class="left-menu-content">
+								
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">公众号<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1" class="text-over">
+																																	<i class="wi wi-wechat"></i>
+																															 微信公众号										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=1" class="text-over">
+																																	<i class="wi wi-wx-apply"></i>
+																															公众号应用										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=template&amp;" class="text-over">
+																																	<i class="wi wi-wx-template"></i>
+																															微官网模板										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=platform&amp;" class="text-over">
+																																	<i class="wi wi-exploitsetting"></i>
+																															 微信开放平台										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">小程序<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=4" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															微信小程序										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=4" class="text-over">
+																																	<i class="wi wi-wxapp-apply"></i>
+																															小程序应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">系统首页<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;system_welcome=1" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															系统首页应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">PC<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=5" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															PC										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=5" class="text-over">
+																																	<i class="wi wi-wxapp-apply"></i>
+																															PC应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">帐户/用户<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;" class="text-over">
+																																	<i class="wi wi-user"></i>
+																															我的帐户										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;" class="text-over">
+																																	<i class="wi wi-user-group"></i>
+																															用户管理										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=founder&amp;a=display&amp;" class="text-over">
+																																	<i class="wi wi-co-founder"></i>
+																															副创始人组										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">权限管理<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=group&amp;" class="text-over">
+																																	<i class="wi wi-appjurisdiction"></i>
+																															应用权限组										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=group&amp;" class="text-over">
+																																	<i class="wi wi-userjurisdiction"></i>
+																															用户权限组										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">文章/公告<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item active">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=news&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															文章管理										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=notice&amp;" class="text-over">
+																																	<i class="wi wi-notice"></i>
+																															公告管理										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">消息提醒<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															消息提醒										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">统计<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=statistics&amp;a=account&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															访问统计										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">缓存<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=updatecache&amp;" class="text-over">
+																																	<i class="wi wi-update"></i>
+																															更新缓存										</a>
+									</li>
+																																			</ul>
+				</div>
+											</div>
+					</div>
+		<div class="right-content" style="min-height: 490px;">
+	<ol class="breadcrumb we7-breadcrumb">
+	<a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=news&amp;do=list&amp;"><i class="wi wi-back-circle"></i> </a>
+	<li>
+		<a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=news&amp;do=list&amp;">新闻列表</a>
+	</li>
+	<li>
+		添加新闻
+	</li>
+</ol>
+<div class="clearfix" style="">
+	<form action="./index.php?c=article&amp;a=news&amp;do=post&amp;" method="post" class="we7-form" role="form" id="form1" style="">
+		<input type="hidden" name="id" value="">
+		
+				<div class="form-group">
+					<label class="col-sm-2 control-label">新闻标题</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="title" placeholder="新闻标题">
+						<div class="help-block">请填写新闻标题</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">新闻分类</label>
+					<div class="col-sm-8">
+						<select name="cateid" id="cateid" class="form-control">
+							<option value="" selected="selected">==请选择新闻分类==</option>
+													</select>
+						<div class="help-block">还没有分类，点我 <a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=news&amp;do=category_post&amp;" target="_blank"><i class="fa fa-plus-circle"></i> 添加分类</a></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">缩略图</label>
+					<div class="col-sm-8">
+						
+		<script type="text/javascript">
+			function showImageDialog(elm, opts, options) {
+				require(["util"], function(util){
+					var btn = $(elm);
+					var ipt = btn.parent().prev();
+					var val = ipt.val();
+					var img = ipt.parent().next().children();
+					options = {'dest_dir':'articles','global':false,'class_extra':'','direct':true,'multiple':false,'fileSizeLimit':5120000};
+					util.image(val, function(url){
+						if(url.url){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.attachment);
+							ipt.attr("filename",url.filename);
+							ipt.attr("url",url.url);
+						}
+						if(url.media_id){
+							if(img.length > 0){
+								img.get(0).src = "";
+							}
+							ipt.val(url.media_id);
+						}
+					}, options);
+				});
+			}
+			function deleteImage(elm){
+				$(elm).prev().attr("src", "./resource/images/nopic.jpg");
+				$(elm).parent().prev().find("input").val("");
+			}
+		</script>
+		<div class="input-group ">
+			<input type="text" name="thumb" class="form-control" autocomplete="off">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" onclick="showImageDialog(this);">选择图片</button>
+			</span>
+		</div>
+		<div class="input-group " style="margin-top:.5em;">
+			<img src="%E7%BC%96%E8%BE%91%E6%96%B0%E9%97%BB-%E6%96%B0%E9%97%BB%E5%88%97%E8%A1%A8-%E6%B7%BB%E5%8A%A0%E6%96%B0%E9%97%BB_files/nopic.jpg" onerror="this.src='./resource/images/nopic.jpg'; this.title='图片未找到.'" class="img-responsive img-thumbnail" width="150">
+			<em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片" onclick="deleteImage(this)">×</em>
+		</div>					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-sm-8">
+						<div class="help-block"><input type="checkbox" id="autolitpic" name="autolitpic" value="1" checked="checked"><label class="checkbox" for="autolitpic">提取内容的第一个图片为缩略图</label></div>
+					</div>
+				</div>
+				<div class="form-group" style="">
+					<label class="col-sm-2 control-label">内容</label>
+					<div class="col-sm-8" style="">
+						<div style="" id="content" class="edui-default"><div id="edui1" class="edui-editor  edui-default" style="width: 729px; z-index: 999;"><div id="edui1_toolbarbox" class="edui-editor-toolbarbox edui-default"><div id="edui1_toolbarboxouter" class="edui-editor-toolbarboxouter edui-default"><div class="edui-editor-toolbarboxinner edui-default"><div id="edui2" class="edui-toolbar   edui-default" onselectstart="return false;" onmousedown='return $EDITORUI["edui2"]._onMouseDown(event, this);' style="-moz-user-select: none;"><div id="edui3" class="edui-box edui-button edui-for-fullscreen edui-default"><div id="edui3_state" onmousedown='$EDITORUI["edui3"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui3"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui3"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui3"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui3_body" unselectable="on" title="全屏" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui3"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui3"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui4" class="edui-box edui-button edui-for-source edui-default"><div id="edui4_state" onmousedown='$EDITORUI["edui4"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui4"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui4"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui4"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui4_body" unselectable="on" title="源代码" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui4"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui4"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui9" class="edui-box edui-button edui-for-preview edui-default"><div id="edui9_state" onmousedown='$EDITORUI["edui9"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui9"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui9"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui9"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui9_body" unselectable="on" title="预览" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui9"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui9"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui10" class="edui-box edui-separator  edui-default"></div><div id="edui11" class="edui-box edui-button edui-for-bold edui-default"><div id="edui11_state" onmousedown='$EDITORUI["edui11"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui11"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui11"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui11"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui11_body" unselectable="on" title="加粗" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui11"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui11"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui12" class="edui-box edui-button edui-for-italic edui-default"><div id="edui12_state" onmousedown='$EDITORUI["edui12"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui12"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui12"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui12"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui12_body" unselectable="on" title="斜体" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui12"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui12"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui13" class="edui-box edui-button edui-for-underline edui-default"><div id="edui13_state" onmousedown='$EDITORUI["edui13"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui13"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui13"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui13"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui13_body" unselectable="on" title="下划线" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui13"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui13"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui14" class="edui-box edui-button edui-for-strikethrough edui-default"><div id="edui14_state" onmousedown='$EDITORUI["edui14"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui14"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui14"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui14"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui14_body" unselectable="on" title="删除线" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui14"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui14"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui15" class="edui-box edui-splitbutton edui-for-forecolor edui-default edui-colorbutton"><div title="字体颜色" id="edui15_state" onmousedown='$EDITORUI["edui15"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui15"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui15"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui15"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-splitbutton-body edui-default"><div id="edui15_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui15"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div id="edui15_colorlump" class="edui-colorlump"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui15"]._onArrowClick();'></div></div></div></div><div id="edui18" class="edui-box edui-splitbutton edui-for-backcolor edui-default edui-colorbutton"><div title="背景色" id="edui18_state" onmousedown='$EDITORUI["edui18"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui18"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui18"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui18"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-splitbutton-body edui-default"><div id="edui18_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui18"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div id="edui18_colorlump" class="edui-colorlump"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui18"]._onArrowClick();'></div></div></div></div><div id="edui21" class="edui-box edui-separator  edui-default"></div><div id="edui22" class="edui-box edui-button edui-for-justifyleft edui-default"><div id="edui22_state" onmousedown='$EDITORUI["edui22"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui22"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui22"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui22"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui22_body" unselectable="on" title="居左对齐" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui22"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui22"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui23" class="edui-box edui-button edui-for-justifycenter edui-default"><div id="edui23_state" onmousedown='$EDITORUI["edui23"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui23"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui23"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui23"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui23_body" unselectable="on" title="居中对齐" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui23"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui23"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui24" class="edui-box edui-button edui-for-justifyright edui-default"><div id="edui24_state" onmousedown='$EDITORUI["edui24"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui24"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui24"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui24"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui24_body" unselectable="on" title="居右对齐" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui24"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui24"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui25" class="edui-box edui-separator  edui-default"></div><div id="edui26" class="edui-box edui-menubutton edui-for-insertorderedlist edui-default"><div title="有序列表" id="edui26_state" onmousedown='$EDITORUI["edui26"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui26"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui26"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui26"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-menubutton-body edui-default"><div id="edui26_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui26"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui26"]._onArrowClick();'></div></div></div></div><div id="edui39" class="edui-box edui-menubutton edui-for-insertunorderedlist edui-default"><div title="无序列表" id="edui39_state" onmousedown='$EDITORUI["edui39"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui39"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui39"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui39"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-menubutton-body edui-default"><div id="edui39_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui39"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui39"]._onArrowClick();'></div></div></div></div><div id="edui46" class="edui-box edui-button edui-for-blockquote edui-default"><div id="edui46_state" onmousedown='$EDITORUI["edui46"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui46"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui46"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui46"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui46_body" unselectable="on" title="引用" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui46"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui46"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui47" class="edui-box edui-splitbutton edui-for-emotion edui-default"><div title="表情" id="edui47_state" onmousedown='$EDITORUI["edui47"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui47"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui47"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui47"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-splitbutton-body edui-default"><div id="edui47_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui47"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui47"]._onArrowClick();'></div></div></div></div><div id="edui142" class="edui-box edui-button edui-for-插入图片 edui-default"><div id="edui142_state" onmousedown='$EDITORUI["edui142"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui142"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui142"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui142"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui142_body" unselectable="on" title="插入图片" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui142"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui142"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui143" class="edui-box edui-button edui-for-插入视频 edui-default"><div id="edui143_state" onmousedown='$EDITORUI["edui143"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui143"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui143"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui143"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui143_body" unselectable="on" title="插入视频" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui143"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui143"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui53" class="edui-box edui-button edui-for-link edui-default"><div id="edui53_state" onmousedown='$EDITORUI["edui53"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui53"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui53"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui53"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui53_body" unselectable="on" title="超链接" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui53"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui53"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui54" class="edui-box edui-button edui-for-removeformat edui-default"><div id="edui54_state" onmousedown='$EDITORUI["edui54"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui54"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui54"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui54"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui54_body" unselectable="on" title="清除格式" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui54"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui54"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui55" class="edui-box edui-separator  edui-default"></div><div id="edui56" class="edui-box edui-menubutton edui-for-rowspacingtop edui-default"><div title="段前距" id="edui56_state" onmousedown='$EDITORUI["edui56"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui56"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui56"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui56"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-menubutton-body edui-default"><div id="edui56_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui56"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui56"]._onArrowClick();'></div></div></div></div><div id="edui63" class="edui-box edui-menubutton edui-for-rowspacingbottom edui-default"><div title="段后距" id="edui63_state" onmousedown='$EDITORUI["edui63"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui63"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui63"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui63"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-menubutton-body edui-default"><div id="edui63_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui63"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui63"]._onArrowClick();'></div></div></div></div><div id="edui70" class="edui-box edui-menubutton edui-for-lineheight edui-default"><div title="行间距" id="edui70_state" onmousedown='$EDITORUI["edui70"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui70"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui70"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui70"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-menubutton-body edui-default"><div id="edui70_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui70"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui70"]._onArrowClick();'></div></div></div></div><div id="edui79" class="edui-box edui-button edui-for-indent edui-default"><div id="edui79_state" onmousedown='$EDITORUI["edui79"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui79"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui79"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui79"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui79_body" unselectable="on" title="首行缩进" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui79"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui79"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui80" class="edui-box edui-combox edui-for-paragraph edui-default"><div title="段落格式" id="edui80_state" onmousedown='$EDITORUI["edui80"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui80"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui80"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui80"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-combox-body edui-default"><div id="edui80_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui80"]._onButtonClick(event, this);'>段落格式</div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui80"]._onArrowClick();'></div></div></div></div><div id="edui89" class="edui-box edui-combox edui-for-fontfamily edui-default"><div title="字体" id="edui89_state" onmousedown='$EDITORUI["edui89"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui89"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui89"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui89"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-combox-body edui-default"><div id="edui89_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui89"]._onButtonClick(event, this);'>字体</div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui89"]._onArrowClick();'></div></div></div></div><div id="edui102" class="edui-box edui-combox edui-for-fontsize edui-default"><div title="字号" id="edui102_state" onmousedown='$EDITORUI["edui102"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui102"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui102"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui102"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-combox-body edui-default"><div id="edui102_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui102"]._onButtonClick(event, this);'>字号</div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui102"]._onArrowClick();'></div></div></div></div><div id="edui113" class="edui-box edui-separator  edui-default"></div><div id="edui114" class="edui-box edui-splitbutton edui-for-inserttable edui-default"><div title="插入表格" id="edui114_state" onmousedown='$EDITORUI["edui114"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui114"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui114"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui114"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-splitbutton-body edui-default"><div id="edui114_button_body" class="edui-box edui-button-body edui-default" onclick='$EDITORUI["edui114"]._onButtonClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div><div class="edui-box edui-splitborder edui-default"></div><div class="edui-box edui-arrow edui-default" onclick='$EDITORUI["edui114"]._onArrowClick();'></div></div></div></div><div id="edui117" class="edui-box edui-button edui-for-deletetable edui-default"><div id="edui117_state" onmousedown='$EDITORUI["edui117"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui117"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui117"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui117"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui117_body" unselectable="on" title="删除表格" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui117"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui117"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui118" class="edui-box edui-button edui-for-insertparagraphbeforetable edui-default"><div id="edui118_state" onmousedown='$EDITORUI["edui118"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui118"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui118"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui118"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui118_body" unselectable="on" title="表格前插入行" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui118"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui118"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui119" class="edui-box edui-button edui-for-insertrow edui-default"><div id="edui119_state" onmousedown='$EDITORUI["edui119"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui119"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui119"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui119"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui119_body" unselectable="on" title="前插入行" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui119"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui119"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui120" class="edui-box edui-button edui-for-deleterow edui-default"><div id="edui120_state" onmousedown='$EDITORUI["edui120"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui120"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui120"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui120"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui120_body" unselectable="on" title="删除行" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui120"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui120"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui121" class="edui-box edui-button edui-for-insertcol edui-default"><div id="edui121_state" onmousedown='$EDITORUI["edui121"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui121"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui121"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui121"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui121_body" unselectable="on" title="前插入列" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui121"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui121"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui122" class="edui-box edui-button edui-for-deletecol edui-default"><div id="edui122_state" onmousedown='$EDITORUI["edui122"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui122"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui122"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui122"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui122_body" unselectable="on" title="删除列" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui122"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui122"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui123" class="edui-box edui-button edui-for-mergecells edui-default"><div id="edui123_state" onmousedown='$EDITORUI["edui123"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui123"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui123"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui123"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui123_body" unselectable="on" title="合并多个单元格" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui123"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui123"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui124" class="edui-box edui-button edui-for-mergeright edui-default"><div id="edui124_state" onmousedown='$EDITORUI["edui124"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui124"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui124"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui124"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui124_body" unselectable="on" title="右合并单元格" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui124"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui124"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui125" class="edui-box edui-button edui-for-mergedown edui-default"><div id="edui125_state" onmousedown='$EDITORUI["edui125"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui125"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui125"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui125"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui125_body" unselectable="on" title="下合并单元格" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui125"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui125"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui126" class="edui-box edui-button edui-for-splittocells edui-default"><div id="edui126_state" onmousedown='$EDITORUI["edui126"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui126"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui126"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui126"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui126_body" unselectable="on" title="完全拆分单元格" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui126"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui126"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui127" class="edui-box edui-button edui-for-splittorows edui-default"><div id="edui127_state" onmousedown='$EDITORUI["edui127"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui127"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui127"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui127"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui127_body" unselectable="on" title="拆分成行" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui127"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui127"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui128" class="edui-box edui-button edui-for-splittocols edui-default"><div id="edui128_state" onmousedown='$EDITORUI["edui128"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui128"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui128"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui128"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui128_body" unselectable="on" title="拆分成列" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui128"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui128"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui129" class="edui-box edui-separator  edui-default"></div><div id="edui134" class="edui-box edui-button edui-for-anchor edui-default"><div id="edui134_state" onmousedown='$EDITORUI["edui134"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui134"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui134"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui134"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui134_body" unselectable="on" title="锚点" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui134"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui134"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui139" class="edui-box edui-button edui-for-map edui-default"><div id="edui139_state" onmousedown='$EDITORUI["edui139"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui139"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui139"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui139"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui139_body" unselectable="on" title="Baidu地图" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui139"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui139"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div><div class="edui-box edui-label edui-default"></div></div></div></div></div><div id="edui140" class="edui-box edui-button edui-for-print edui-default"><div id="edui140_state" onmousedown='$EDITORUI["edui140"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui140"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui140"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui140"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui140_body" unselectable="on" title="打印" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui140"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui140"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div><div id="edui141" class="edui-box edui-button edui-for-drafts edui-default"><div id="edui141_state" onmousedown='$EDITORUI["edui141"].Stateful_onMouseDown(event, this);' onmouseup='$EDITORUI["edui141"].Stateful_onMouseUp(event, this);' onmouseover='$EDITORUI["edui141"].Stateful_onMouseOver(event, this);' onmouseout='$EDITORUI["edui141"].Stateful_onMouseOut(event, this);' class="edui-default"><div class="edui-button-wrap edui-default"><div id="edui141_body" unselectable="on" title="从草稿箱加载" class="edui-button-body edui-default" onmousedown='return $EDITORUI["edui141"]._onMouseDown(event, this);' onclick='return $EDITORUI["edui141"]._onClick(event, this);'><div class="edui-box edui-icon edui-default"></div></div></div></div></div></div></div></div><div id="edui1_toolbarmsg" class="edui-editor-toolbarmsg edui-default" style="display:none;"><div id="edui1_upload_dialog" class="edui-editor-toolbarmsg-upload edui-default" onclick='$EDITORUI["edui1"].showWordImageDialog();'>点击上传</div><div class="edui-editor-toolbarmsg-close edui-default" onclick='$EDITORUI["edui1"].hideToolbarMsg();'>x</div><div id="edui1_toolbarmsg_label" class="edui-editor-toolbarmsg-label edui-default"></div><div style="height:0;overflow:hidden;clear:both;" class="edui-default"></div></div><div id="edui1_message_holder" class="edui-editor-messageholder edui-default" style="top: 82px; z-index: 1000;"></div></div><div id="edui1_iframeholder" class="edui-editor-iframeholder edui-default" style="width: 729px; height: 200px; z-index: 999; overflow: hidden;"><iframe id="ueditor_0" src="javascript:void(function(){document.open();document.write(&quot;<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml' class='view' ><head><style type='text/css'>.view{padding:0;word-wrap:break-word;cursor:text;height:90%;}
+body{margin:8px;font-family:sans-serif;font-size:16px;}p{margin:5px 0;}</style><link rel='stylesheet' type='text/css' href='https://weixin.zijiahei.com/web/resource/components/ueditor/themes/iframe.css'/></head><body class='view' ></body><script type='text/javascript'  id='_initialScript'>setTimeout(function(){editor = window.parent.UE.instants['ueditorInstant0'];editor._setup(document);},0);var _tmpScript = document.getElementById('_initialScript');_tmpScript.parentNode.removeChild(_tmpScript);</script></html>&quot;);document.close();}())" width="100%" height="100%" frameborder="0"></iframe></div><div id="edui1_bottombar" class="edui-editor-bottomContainer edui-default"><table class="edui-default"><tbody class="edui-default"><tr class="edui-default"><td id="edui1_elementpath" class="edui-editor-bottombar edui-default"></td><td id="edui1_wordcount" class="edui-editor-wordcount edui-default">字数统计</td><td id="edui1_scale" class="edui-editor-scale edui-default" style="display: none;"><div class="edui-editor-icon edui-default"></div></td></tr></tbody></table></div><div id="edui1_scalelayer" class="edui-default"></div></div></div><textarea name="content" type="text/plain" style="height: 200px; display: none;"></textarea>
+	<script type="text/javascript">
+		require(['util'], function(util){
+			util.editor('content', {
+			height : 200, 
+			dest_dir : '',
+			image_limit : 5120000,
+			allow_upload_video : true,
+			audio_limit : 5120000,
+			callback : ''
+			});
+		});
+	</script>					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">新闻来源</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="source" placeholder="新闻来源">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">新闻作者</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="author" placeholder="新闻作者">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">阅读次数</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="click" placeholder="阅读次数">
+						<div class="help-block">默认为0。您可以设置一个初始值,阅读次数会在该初始值上增加。</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">排序</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="displayorder" placeholder="阅读次数">
+						<div class="help-block">数字越大，越靠前。</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否显示</label>
+						
+					<div class="col-sm-8">
+						<input type="radio" id="is_display-1" name="is_display" value="1" checked="checked"> 
+						<label class="radio-inline" for="is_display-1">显示</label>
+						<input type="radio" name="is_display" id="is_display-0" value="0">
+						<label class="radio-inline" for="is_display-0"> 不显示</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">显示在首页</label>
+					<div class="col-sm-8">
+						<input type="radio" name="is_show_home" id="is_show_home-1" value="1" checked="checked"> 
+						<label class="radio-inline" for="is_show_home-1">是</label>
+						<input type="radio" name="is_show_home" id="is_show_home-0" value="0">
+						<label class="radio-inline" for="is_show_home-0"> 否</label>
+					</div>
+				</div>
+			
+		
+		<div class="form-group">
+			<div class="">
+				<input type="submit" class="btn btn-primary" name="submit" value="提交">
+				<input type="hidden" name="token" value="6fdd4b2a">
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	$(function(){
+		$('#form1').submit(function(){
+			if(!$.trim($(':text[name="title"]').val())) {
+				util.message('请填写新闻标题', '', 'error');
+				return false;
+			}
+			if(!$.trim($('#cateid').val())) {
+				util.message('请选择新闻分类', '', 'error');
+				return false;
+			}
+			if(!$.trim($('textarea[name="content"]').val())) {
+				util.message('请填写新闻内容', '', 'error');
+				return false;
+			}
+			return true;
+		});
+	});
+</script>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+	<div class="container-fluid footer text-center" role="footer">	
+		<div class="friend-link">
+							紫加黑微信商城管理系统					</div>
+		<div class="copyright">紫加黑微信商城管理系统</div>
+		<div></div>
+	</div>
+			</div>
+
+
+<div id="edui_fixedlayer" style="position: fixed; left: 0px; top: 0px; width: 0px; height: 0px;" class="edui-default"><div id="edui144" class="edui-popup  edui-bubble edui-default" onmousedown="return false;" style="display: none;"> <div id="edui144_body" class="edui-popup-body edui-default"> <iframe style="position:absolute;z-index:-1;left:0;top:0;background-color: transparent;" src="%E7%BC%96%E8%BE%91%E6%96%B0%E9%97%BB-%E6%96%B0%E9%97%BB%E5%88%97%E8%A1%A8-%E6%B7%BB%E5%8A%A0%E6%96%B0%E9%97%BB_files/a_002.htm" class="edui-default" width="100%" height="100%" frameborder="0"></iframe> <div class="edui-shadow edui-default"></div> <div id="edui144_content" class="edui-popup-content edui-default">  </div> </div></div></div></body></html>
