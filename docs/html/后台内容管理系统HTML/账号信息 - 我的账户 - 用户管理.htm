@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>账号信息 - 我的账户 - 用户管理</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<script src="./s.txt"></script><script type="text/javascript">
+    if(navigator.appName == 'Microsoft Internet Explorer'){
+        if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
+            alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+        }
+    }
+    window.sysinfo = {
+        'uid': '1',		'isfounder': 1,
+        'family': 'x',
+        'siteroot': 'https://weixin.zijiahei.com/',
+        'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=user&a=profile&do=bind',
+        'attachurl': 'https://weixin.zijiahei.com/attachment/',
+        'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
+        'attachurl_remote': '',
+        'module' : {'url' : '', 'name' : ''},
+        'cookie' : {'pre': '1b74_'},
+        'account' : null,
+        'server' : {'php' : '5.4.45'},
+    };
+</script>
+	<script>var require = { urlArgs: 'v=20170915' };</script>
+	<script type="text/javascript" src="js/jquery-1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/require.js"></script>
+</head>
+<body>
+<div class="loader" style="display:none">
+	<div class="la-ball-clip-rotate">
+		<div></div>
+	</div>
+</div>
+<div data-skin="default" class="skin-default ">
+	<div class="head">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container ">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="https://weixin.zijiahei.com/">
+						<img src="img/logo.png" class="pull-left" width="110px" height="35px">
+						<span class="version hidden">1.6.7</span>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=platform&amp;">公众号</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=wxapp&amp;a=display&amp;do=home&amp;">小程序</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=webapp&amp;a=home&amp;do=display&amp;">PC</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=display&amp;">应用</a></li>
+						<li class="active"><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=system&amp;">系统</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;">站点</a></li>
+						<li><a href="http://s.we7.cc/" target="_blank">模块商城</a></li>
+						<li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=store">商城</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown msg header-notice">
+							<a href="javascript:;" class="dropdown-toogle" data-toggle="dropdown"><span class="wi wi-bell"><span class="badge"></span></span>消息</a>
+							<div class="dropdown-menu">
+								<div class="clearfix top">消息<a href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice" class="pull-right">查看更多</a></div>
+							</div>
+						</li>					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="wi wi-user color-gray"></i>admin <span class="caret"></span></a>
+						<ul class="dropdown-menu color-gray" role="menu">
+							<li>
+								<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;" target="_blank"><i class="wi wi-account color-gray"></i> 我的账号</a>
+							</li>
+							<li class="divider"></li>
+							<li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;" target="_blank"><i class="wi wi-update color-gray"></i> 自动更新</a></li>							<li><a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=updatecache&amp;" target="_blank"><i class="wi wi-cache color-gray"></i> 更新缓存</a></li>
+							<li class="divider"></li>
+							<li>
+								<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=logout&amp;"><i class="fa fa-sign-out color-gray"></i> 退出系统</a>
+							</li>
+						</ul>
+					</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+<div class="main">
+<div class="container">
+	<a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
+		<div class="panel panel-content main-panel-content ">
+		<div class="content-head panel-heading main-panel-heading">
+							<span class="font-lg"><i class="wi wi-setting"></i> 系统管理</span>					</div>
+	<div class="panel-body clearfix main-panel-body menu-fixed">
+		<div class="left-menu" style="min-height: 490px; position: static; top: 144.8px; height: 752px;">
+						<div class="left-menu-content">
+								
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">公众号<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1" class="text-over">
+																																	<i class="wi wi-wechat"></i>
+																															 微信公众号										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=1" class="text-over">
+																																	<i class="wi wi-wx-apply"></i>
+																															公众号应用										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=template&amp;" class="text-over">
+																																	<i class="wi wi-wx-template"></i>
+																															微官网模板										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=platform&amp;" class="text-over">
+																																	<i class="wi wi-exploitsetting"></i>
+																															 微信开放平台										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">小程序<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=4" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															微信小程序										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=4" class="text-over">
+																																	<i class="wi wi-wxapp-apply"></i>
+																															小程序应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">系统首页<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;system_welcome=1" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															系统首页应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">PC<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=5" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															PC										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=5" class="text-over">
+																																	<i class="wi wi-wxapp-apply"></i>
+																															PC应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">帐户/用户<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item active">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;" class="text-over">
+																																	<i class="wi wi-user"></i>
+																															我的帐户										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;" class="text-over">
+																																	<i class="wi wi-user-group"></i>
+																															用户管理										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=founder&amp;a=display&amp;" class="text-over">
+																																	<i class="wi wi-co-founder"></i>
+																															副创始人组										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">权限管理<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=group&amp;" class="text-over">
+																																	<i class="wi wi-appjurisdiction"></i>
+																															应用权限组										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=group&amp;" class="text-over">
+																																	<i class="wi wi-userjurisdiction"></i>
+																															用户权限组										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">文章/公告<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=news&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															文章管理										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=notice&amp;" class="text-over">
+																																	<i class="wi wi-notice"></i>
+																															公告管理										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">消息提醒<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															消息提醒										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">统计<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=statistics&amp;a=account&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															访问统计										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">缓存<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=updatecache&amp;" class="text-over">
+																																	<i class="wi wi-update"></i>
+																															更新缓存										</a>
+									</li>
+																																			</ul>
+				</div>
+											</div>
+					</div>
+		<div class="right-content" style="min-height: 490px; margin-left: 0px;">
+	<ul class="we7-page-tab">
+	<li class="active"><a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;">我的账户</a></li>
+	<li><a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;do=bind&amp;">账号绑定</a></li>
+</ul>
+<div id="js-user-profile" ng-controller="UserProfileDisplay" class="ng-scope">
+			<div class="base">
+		<table class="table we7-table table-hover table-form">
+			<colgroup><col width="140px ">
+			<col>
+			<col width="120px">
+			</colgroup><tbody><tr>
+				<th class="text-left" colspan="3">账户设置</th>
+			</tr>
+			<tr>
+				<td class="table-label">头像</td>
+				<td><img ng-src="" class="img-circle" width="65px" height="65px"></td>
+				<td><div class="link-group"><a href="javascript:;" ng-click="changeAvatar()">修改</a></div></td>
+			</tr>
+			<tr>
+				<td class="table-label">用户</td>
+				<td ng-bind="user.username" class="ng-binding">admin</td>
+				<td><div class="link-group"><a href="#name" data-toggle="modal" data-target="" ng-click="editInfo('username', user.username)">修改</a></div></td>
+			</tr>
+			<tr>
+				<td class="table-label">密码</td>
+				<td>******</td>
+				<td><div class="link-group"><a href="javascript:;" data-toggle="modal" data-target="#pass">修改</a></div></td>
+			</tr>
+			
+						
+		</tbody></table>
+		<div class="modal fade" id="name" role="dialog">
+			<div class="we7-modal-dialog modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<div class="modal-title">修改用户名</div>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<input type="text" ng-model="userOriginal.username" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="用户名">
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="httpChange('username')">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="pass" role="dialog">
+			<div class="we7-modal-dialog modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<div class="modal-title">修改密码</div>
+					</div>
+					<div class="modal-body text-center">
+						<div class="we7-form" style="width: 450px; margin: 0 auto;">
+														<div class="form-group">
+								<label for="" class="control-label col-sm-2">原密码</label>
+								<div class="form-controls col-sm-10">
+									<input type="password" value="" class="form-control old-password">
+
+								</div>
+							</div>
+														<div class="form-group">
+								<label for="" class="control-label col-sm-2">新密码</label>
+								<div class="form-controls col-sm-10">
+									<input type="password" value="" class="form-control new-password">
+
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="control-label col-sm-2">确认新密码</label>
+								<div class="form-controls col-sm-10">
+									<input type="password" value="" class="form-control renew-password">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="httpChange('password')">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table we7-table table-hover table-form">
+			<colgroup><col width="140px ">
+			<col>
+			<col width="100px">
+			</colgroup><tbody><tr>
+				<th class="text-left" colspan="3">基础信息</th>
+			</tr>
+			<tr>
+				<td class="table-label">真实姓名</td>
+				<td ng-bind="profile.realname" class="ng-binding"></td>
+				<td><div class="link-group"><a href="javascript:;" data-toggle="modal" data-target="#realname" ng-click="editInfo('realname', profile.realname)">修改</a></div></td>
+			</tr>
+			<tr>
+				<td class="table-label">出生年月日</td>
+				<td ng-bind="profile.births" class="ng-binding"></td>
+				<td><div class="link-group"><a href="javascript:;" data-toggle="modal" data-target="#birth">修改</a></div></td>
+			</tr>
+			<tr>
+				<td class="table-label">邮寄地址</td>
+				<td ng-bind="profile.address" class="ng-binding"></td>
+				<td><div class="link-group"><a href="javascript:;" data-toggle="modal" data-target="#address" ng-click="editInfo('address', profile.address)">修改</a></div></td>
+			</tr>
+			<tr>
+				<td class="table-label">居住地址</td>
+				<td ng-bind="profile.resides" class="ng-binding"></td>
+				<td><div class="link-group"><a href="javascript:;" data-toggle="modal" data-target="#reside">修改</a></div></td>
+			</tr>
+			<tr>
+				<td class="table-label">上次登录时间</td>
+				<td ng-bind="user.last_visit" class="ng-binding">2019-04-16 09:56:55</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="table-label">上次登录IP</td>
+				<td ng-bind="user.lastip" class="ng-binding">123.14.76.33</td>
+				<td></td>
+			</tr>
+				<tr>
+					<td class="table-label">注册时间</td>
+					<td ng-bind="user.joindate" class="ng-binding">2018-01-09 15:27:44</td>
+					<td></td>
+				</tr>
+							<tr>
+					<td class="table-label">备注</td>
+					<td ng-bind="user.remark" class="ng-binding"></td>
+					<td><div class="link-group"><a href="javascript:;" data-toggle="modal" data-target="#remark" ng-click="editInfo('remark', user.remark)">修改</a></div></td>
+				</tr>
+					</tbody></table>
+		<div class="modal fade" id="realname" role="dialog">
+			<div class="we7-modal-dialog modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<div class="modal-title">修改真实姓名</div>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="userOriginal.realname">
+							<span class="help-block">请填写真实姓名</span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="httpChange('realname')">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="birth" role="dialog">
+			<div class="we7-modal-dialog modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<div class="modal-title">修改出生年月日</div>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							
+		<script type="text/javascript">
+			function handlerCalendar(elm) {
+				require(["moment"], function(moment){
+					var tpl = $(elm).parent().parent();
+					var year = tpl.find("select.tpl-year").val();
+					var month = tpl.find("select.tpl-month").val();
+					var day = tpl.find("select.tpl-day");
+					day[0].options.length = 1;
+					if(year && month) {
+						var date = moment(year + "-" + month, "YYYY-M");
+						var days = date.daysInMonth();
+						for(var i = 1; i <= days; i++) {
+							var opt = new Option(i, i);
+							day[0].options.add(opt);
+						}
+						if(day.attr("data-value")!=""){
+							day.val(day.attr("data-value"));
+						} else {
+							day[0].options[0].selected = "selected";
+						}
+					}
+				});
+			}
+			require([""], function(){
+				$(".tpl-calendar").each(function(){
+					handlerCalendar($(this).find("select.tpl-year")[0]);
+				});
+			});
+		</script><div class="row row-fix tpl-calendar">
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+			<select name="birth[year]" onchange="handlerCalendar(this)" class="form-control tpl-year">
+				<option value="">年</option><option value="1914">1914</option><option value="1915">1915</option><option value="1916">1916</option><option value="1917">1917</option><option value="1918">1918</option><option value="1919">1919</option><option value="1920">1920</option><option value="1921">1921</option><option value="1922">1922</option><option value="1923">1923</option><option value="1924">1924</option><option value="1925">1925</option><option value="1926">1926</option><option value="1927">1927</option><option value="1928">1928</option><option value="1929">1929</option><option value="1930">1930</option><option value="1931">1931</option><option value="1932">1932</option><option value="1933">1933</option><option value="1934">1934</option><option value="1935">1935</option><option value="1936">1936</option><option value="1937">1937</option><option value="1938">1938</option><option value="1939">1939</option><option value="1940">1940</option><option value="1941">1941</option><option value="1942">1942</option><option value="1943">1943</option><option value="1944">1944</option><option value="1945">1945</option><option value="1946">1946</option><option value="1947">1947</option><option value="1948">1948</option><option value="1949">1949</option><option value="1950">1950</option><option value="1951">1951</option><option value="1952">1952</option><option value="1953">1953</option><option value="1954">1954</option><option value="1955">1955</option><option value="1956">1956</option><option value="1957">1957</option><option value="1958">1958</option><option value="1959">1959</option><option value="1960">1960</option><option value="1961">1961</option><option value="1962">1962</option><option value="1963">1963</option><option value="1964">1964</option><option value="1965">1965</option><option value="1966">1966</option><option value="1967">1967</option><option value="1968">1968</option><option value="1969">1969</option><option value="1970">1970</option><option value="1971">1971</option><option value="1972">1972</option><option value="1973">1973</option><option value="1974">1974</option><option value="1975">1975</option><option value="1976">1976</option><option value="1977">1977</option><option value="1978">1978</option><option value="1979">1979</option><option value="1980" selected="selected">1980</option><option value="1981">1981</option><option value="1982">1982</option><option value="1983">1983</option><option value="1984">1984</option><option value="1985">1985</option><option value="1986">1986</option><option value="1987">1987</option><option value="1988">1988</option><option value="1989">1989</option><option value="1990">1990</option><option value="1991">1991</option><option value="1992">1992</option><option value="1993">1993</option><option value="1994">1994</option><option value="1995">1995</option><option value="1996">1996</option><option value="1997">1997</option><option value="1998">1998</option><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option>	</select>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+			<select name="birth[month]" onchange="handlerCalendar(this)" class="form-control tpl-month">
+				<option value="" selected="selected">月</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>	</select>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+			<select name="birth[day]" data-value="0" class="form-control tpl-day">
+				<option value="0" selected="selected">日</option>
+			</select>
+		</div>
+	</div>						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="httpChange('birth')">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="address" role="dialog">
+			<div class="we7-modal-dialog modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<div class="modal-title">修改邮寄地址</div>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<input class="form-control ng-pristine ng-untouched ng-valid ng-empty" type="text" ng-model="userOriginal.address">
+							<span class="help-block">请填写详细地址</span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="httpChange('address')">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="reside" role="dialog">
+			<div class="we7-modal-dialog modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<div class="modal-title">修改居住地址</div>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							
+		<script type="text/javascript">
+			require(["district"], function(dis){
+				$(".tpl-district-container").each(function(){
+					var elms = {};
+					elms.province = $(this).find(".tpl-province")[0];
+					elms.city = $(this).find(".tpl-city")[0];
+					elms.district = $(this).find(".tpl-district")[0];
+					var vals = {};
+					vals.province = $(elms.province).attr("data-value");
+					vals.city = $(elms.city).attr("data-value");
+					vals.district = $(elms.district).attr("data-value");
+					dis.render(elms, vals, {withTitle: true});
+				});
+			});
+		</script>
+		<div class="row row-fix tpl-district-container">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<select name="reside[province]" data-value="" class="form-control tpl-province">
+				<option value="" selected="selected">省/直辖市</option><option value="北京" pid="110000">北京</option><option value="天津" pid="120000">天津</option><option value="河北省" pid="130000">河北省</option><option value="山西省" pid="140000">山西省</option><option value="内蒙古自治区" pid="150000">内蒙古自治区</option><option value="辽宁省" pid="210000">辽宁省</option><option value="吉林省" pid="220000">吉林省</option><option value="黑龙江省" pid="230000">黑龙江省</option><option value="上海" pid="310000">上海</option><option value="江苏省" pid="320000">江苏省</option><option value="浙江省" pid="330000">浙江省</option><option value="安徽省" pid="340000">安徽省</option><option value="福建省" pid="350000">福建省</option><option value="江西省" pid="360000">江西省</option><option value="山东省" pid="370000">山东省</option><option value="河南省" pid="410000">河南省</option><option value="湖北省" pid="420000">湖北省</option><option value="湖南省" pid="430000">湖南省</option><option value="广东省" pid="440000">广东省</option><option value="广西壮族自治区" pid="450000">广西壮族自治区</option><option value="海南省" pid="460000">海南省</option><option value="重庆" pid="500000">重庆</option><option value="四川省" pid="510000">四川省</option><option value="贵州省" pid="520000">贵州省</option><option value="云南省" pid="530000">云南省</option><option value="西藏自治区" pid="540000">西藏自治区</option><option value="陕西省" pid="610000">陕西省</option><option value="甘肃省" pid="620000">甘肃省</option><option value="青海省" pid="630000">青海省</option><option value="宁夏回族自治区" pid="640000">宁夏回族自治区</option><option value="新疆维吾尔自治区" pid="650000">新疆维吾尔自治区</option><option value="台湾省" pid="710000">台湾省</option><option value="香港特别行政区" pid="810000">香港特别行政区</option><option value="澳门特别行政区" pid="820000">澳门特别行政区</option><option value="海外" pid="990000">海外</option></select>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<select name="reside[city]" data-value="" class="form-control tpl-city">
+				<option value="" selected="selected">市</option></select>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<select name="reside[district]" data-value="" class="form-control tpl-district">
+				<option value="" selected="selected">区/县</option></select>
+			</div>
+		</div>						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="httpChange('reside')">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="qq" role="dialog">
+			<div class="we7-modal-dialog modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<div class="modal-title">修改QQ</div>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<input type="text" ng-model="userOriginal.qq" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="qq">
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="httpChange('qq')">确定</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="remark" role="dialog">
+				<div class="we7-modal-dialog modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+							<div class="modal-title">修改备注</div>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<input type="text" ng-model="userOriginal.remark" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="备注">
+								<span class="help-block"></span>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" ng-click="httpChange('remark')">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="modal fade" id="mobile" role="dialog">
+		<div class="we7-modal-dialog modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+					<div class="modal-title">修改手机号</div>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" ng-model="userOriginal.mobile" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="mobile">
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="httpChange('mobile')">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+<script>
+require(['underscore'], function(){
+	angular.module('userProfile').value('config', {
+		user: {"uid":"1","groupid":"1","username":"admin","password":"1bd4a38656e855fe2e7a341e193d0b32907d1a5a","salt":"536595d5","type":"0","status":"0","joindate":"2018-01-09 15:27:44","joinip":"","lastvisit":"1555379815","lastip":"123.14.76.33","remark":"","starttime":"0","endtime":"0","owner_uid":"0","founder_groupid":"0","register_type":"0","openid":"","name":"admin","clerk_id":"1","store_id":0,"clerk_type":"2","last_visit":"2019-04-16 09:56:55","url":"https:\/\/weixin.zijiahei.com\/index.php?c=user&a=register&owner_uid=1"},
+		profile: null,
+		group_info: null,
+		groups: null,
+		wechats: null,
+		wxapps: null,
+		links: {
+			userPost: "./index.php?c=user&a=profile&do=post&",
+		},
+	});
+	angular.bootstrap($('#js-user-profile'), ['userProfile']);
+});
+</script>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+	<div class="container-fluid footer text-center" role="footer">	
+		<div class="friend-link">
+							紫加黑微信商城管理系统					</div>
+		<div class="copyright">紫加黑微信商城管理系统</div>
+		<div></div>
+	</div>
+			</div>
+
+
+</body></html>
