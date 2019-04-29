@@ -178,10 +178,10 @@
 <div id="main">
     <div id="tabhead" class="tab-head">
         <h2 id="tab1" class="selected" name="tab">付 款</h2>
-        <h2 id="tab2" name="tab">交 易 查 询</h2>
+        <!--<h2 id="tab2" name="tab">交 易 查 询</h2>
         <h2 id="tab3" name="tab">退 款</h2>
         <h2 id="tab4" name="tab">退 款 查 询</h2>
-        <h2 id="tab5" name="tab">交 易 关 闭</h2>
+        <h2 id="tab5" name="tab">交 易 关 闭</h2>-->
     </div>
         <form name=alipayment action=pagepay/pagepay.php method=post target="_blank">
             <div id="body1" class="show" name="divcontent">

@@ -8,13 +8,14 @@
 
 namespace app\money\controller;
 
-
 use think\Controller;
+use think\Loader;
 
 class Pay extends Controller
 {
     public function pagePay()
     {
+        Loader::import('demo.index',EXTEND_PATH,'.php');
         //商户订单号，商户网站订单系统中唯一订单号，必填
         $out_trade_no = trim($_POST['out_trade_no']);
         //订单名称，必填
@@ -24,12 +25,12 @@ class Pay extends Controller
         //商品描述，可空
         //$body = trim($_POST['body']);
         //构造参数
-        $payRequestBuilder = new \alipay\AlipayTradePagePayContentBuilder();
+        $payRequestBuilder = new \AlipayTradePagePayContentBuilder();
         // $payRequestBuilder->setBody($body);
         $payRequestBuilder->setSubject($subject);
         $payRequestBuilder->setTotalAmount($total_amount);
         $payRequestBuilder->setOutTradeNo($out_trade_no);
-        $aop = new \alipay\AlipayTradeService();
+        $aop = new \AlipayTradeService();
         /**
          *      * pagePay 电脑网站支付请求
          *      * @param $builder 业务参数，使用buildmodel中的对象生成。
@@ -44,7 +45,7 @@ class Pay extends Controller
     public function notify_url()
     {
         $arr = $_POST;
-        $alipaySevice = new \alipay\AlipayTradeService();
+        $alipaySevice = new \AlipayTradeService();
         $alipaySevice->writeLog(var_export($_POST, true));
         $result = $alipaySevice->check($arr);
 
