@@ -112,6 +112,6 @@ a, img {
 .fontw{font-family: "微软雅黑"}
 .position{height: 80px;}
 .icon {
-  background-image: url('../images/icons.png');
+  background-image: url('../../../docs/html/web_mobile/images/icons.png');
   background-size: 368px 76px;
   display: block;

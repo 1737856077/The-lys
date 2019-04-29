@@ -154,15 +154,33 @@ class Index extends CommonIntegra
         ];
         $member_integral_record_res = $member_integral_record_mode->insert($member_integral_record_data);
         if (!$member_integral_record_res){
-            $this->error('提交失败');
+
         }
-        $integral_order_detail_res = Db::name('integral_order_detail')->insert($data_detail);
+        $integral_order_detail_res = Db::name('integral_order_detail')->insertGetId($data_detail);
         if (!$integral_order_detail_res){
-            $this->error('提交失败');
+
         }
+
         $integral_order_res = Db::name('integral_order')->insertGetId($data);
-        if ($integral_order_res and $integral_order_detail_res){
-        $this->success('提交成功');
-        }
+        return $this->corder($integral_order_detail_res,$integral_order_res);
+
+    }
+    /**
+     * 查看订单
+     */
+    public function corder($a,$b)
+    {
+        $integral = Db::name('integral_order_detail')->where('id',$a)->find();
+        $integral_order = Db::name('integral_order')->where('id',$b)->find();
+        $product = Db::name('product_integral')->where('product_id',$integral_order['product_id'])->find();
+        $this->assign('product',$product);
+        $this->assign('data',$integral_order);
+        $this->assign('integral',$integral);
+        $this->assign([
+           'sheng'=>Db::name('region')->where('area_code',$integral['consignee_province_id'])->find()['area_name'],
+            'shi'=>Db::name('region')->where('area_code',$integral['consignee_city_id'])->find()['area_name'],
+            'qu'=>Db::name('region')->where('area_code',$integral['consignee_county_id'])->find()['area_name'],
+        ]);
+        return $this->fetch();
     }
 }

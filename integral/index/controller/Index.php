@@ -13,6 +13,13 @@ use think\Controller;
 class Index extends Controller
 {
     /**
+     * 测试
+     */
+    public function test()
+    {
+        return $this->fetch();
+    }
+    /**
      * 用户选择登录还是注册渲染模板
      */
     public function index(){
@@ -27,13 +34,15 @@ class Index extends Controller
             $memberid = Session::get('memberid');
             $MemberData = Db::name('member')->where('id',$memberid)->field('uid')->find();
             $uid =$MemberData['uid'] ;
-            //当前用户当前商家的积分总和
-            $MemberIntegral = Db::name('member_integral_record')->where([
-                'admin_id'=>$memberid,
+            //当前用户积分总和
+//            $MemberIntegral = Db::name('member_integral_record')->where([
+//                'uid'=>$uid
+//            ])->sum('price');a
+            $MemberIntegral = Db::name('member')->where([
                 'uid'=>$uid
-            ])->sum('price');
-            if($MemberIntegral>1){
-                $data = $MemberIntegral;
+            ])->field('invoice_money')->find();
+            if($MemberIntegral['invoice_money']>0.01){
+                $data = $MemberIntegral['invoice_money'];
             }else{
                 $data = '当前商家没有对应的积分';
             }

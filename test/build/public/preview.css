@@ -1,0 +1,174 @@
+.clearfix:after {
+  clear: both;
+  content: ' ';
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0
+}
+
+ul.clearfix li {
+  float: left
+}
+
+.clearfix {
+  *zoom: 1
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline
+}
+
+* {
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -icab-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box
+}
+
+@media screen and (max-device-width:960px) {
+  body {
+    -webkit-text-size-adjust: none
+  }
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block
+}
+
+html {
+  overflow-y: scroll;
+  overflow-x: hidden
+}
+
+select {
+  border: 1px solid #dee1e3;
+  font-size: 12px;
+  color: #333;
+  line-height: 12px
+}
+
+ul {
+  list-style: none
+}
+
+ol {
+  list-style: decimal inside
+}
+
+blockquote,
+q {
+  quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer
+}
+
+a:hover {
+  text-decoration: none
+}
+
+a:focus {
+  outline: 0
+}
+
+span {
+  color: inherit
+}
+
+a img {
+  vertical-align: middle
+}
+
+label[for] {
+  cursor: pointer
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background: #000;
+}
+
+#datav-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0f2a42;
+}
+
+#datav-loading img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -60px 0 0 -60px;
+  width: 120px;
+}
+
+#datav-loading img.text-logo {
+  margin-top: 60px;
+  margin-left: -50px;
+  width: 100px;
+}
+
+.datav-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.datav-layout .-datav-com.absolute {
+  position: absolute !important;
+  margin: 0 !important;
+}
+
+#datav-text-logo {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 50px;
+  z-index: 99999999;
+}

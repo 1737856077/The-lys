@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>我的地址</title>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/integral/css/common14.css">
+    <link  type="text/css" rel="stylesheet" href="__STATIC__/integral/css/my_address.css">
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var inputs = $(".address_con .addUser_l input");
+            $(".address_header").on("click",function(){
+                if($(this).hasClass("cancel")){
+                    //变成编辑状态
+                    $(this).removeClass("cancel").text("编辑");
+                    $(".all_delete").hide();
+
+                }else{
+                    //变成取消状态
+                    $(this).addClass("cancel").text("取消");
+                    $(".all_delete").show();
+
+                }
+            })
+
+            //全选删除
+            $(".all_delete").on("click","a.all",function(){
+                inputs.each(function(){
+                    $(this).prop("checked",true);
+                });
+            }).on("click","a.del",function(){
+                inputs.each(function(){
+                    if($(this).prop("checked")){
+                        $(this).parents(".addUser").remove();
+                    }
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="address_header">
+    <i><img src="images/bj.png" alt=""></i>地址
+</div>
+<div class="address_con">
+{foreach name="data" id="datas"}
+    <div class="addUser">
+        <div class="addUser_r">
+            <div class="addUsers">
+                <p >{$datas.name}</p>
+                <span style="margin-left: 10px" class="addUsers_r">
+                    <a href="">
+                        <img src="__STATIC__/integral/img/shanchu.png" alt="">
+                    </a>
+                </span>
+
+                <span class="addUsers_r">
+                     <a href="">
+                        <img src="__STATIC__/integral/img/bianji.png" alt="">
+                    </a>
+                </span>
+                <p>{$datas.tel}</p>
+            </div>
+            <div class="clear"></div>
+            <p class="dz">{$datas.sheng}{$datas.shi}{$datas.qu}</p>
+        </div>
+    </div>
+{/foreach}
+
+</div>
+<button type="button" class="deletes">
+    删除地址
+</button>
+
+</body>
+</html>

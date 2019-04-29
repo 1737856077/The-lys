@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>账号信息 - 我的账户 - 用户管理</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
+	<script src="./s.txt"></script><script type="text/javascript">
+	if(navigator.appName == 'Microsoft Internet Explorer'){
+		if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
+			alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+		}
+	}
+	window.sysinfo = {
+								'uid': '1',		'isfounder': 1,
+		'family': 'x',
+		'siteroot': 'https://weixin.zijiahei.com/',
+		'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=user&a=profile&do=bind',
+		'attachurl': 'https://weixin.zijiahei.com/attachment/',
+		'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
+		'attachurl_remote': '',
+		'module' : {'url' : '', 'name' : ''},
+		'cookie' : {'pre': '1b74_'},
+		'account' : null,
+		'server' : {'php' : '5.4.45'},
+	};
+	</script>
+	<script>var require = { urlArgs: 'v=20170915' };</script>
+	<script type="text/javascript" src="js/jquery-1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/require.js"></script>
+</head>
+<body>
+	<div class="loader" style="display:none">
+		<div class="la-ball-clip-rotate">
+			<div></div>
+		</div>
+	</div>
+<div data-skin="default" class="skin-default ">
+<div class="head">
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container ">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://weixin.zijiahei.com/">
+					<img src="img/logo.png" class="pull-left" width="110px" height="35px">
+					<span class="version hidden">1.6.7</span>
+				</a>
+			</div>
+						<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-left">
+															<li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=platform&amp;">公众号</a></li>
+										<li><a href="https://weixin.zijiahei.com/web/index.php?c=wxapp&amp;a=display&amp;do=home&amp;">小程序</a></li>
+										<li><a href="https://weixin.zijiahei.com/web/index.php?c=webapp&amp;a=home&amp;do=display&amp;">PC</a></li>
+										<li><a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=display&amp;">应用</a></li>
+										<li class="active"><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=system&amp;">系统</a></li>
+										<li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;">站点</a></li>
+										<li><a href="http://s.we7.cc/" target="_blank">模块商城</a></li>
+										<li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=store">商城</a></li>
+									</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown msg header-notice">
+    <a href="javascript:;" class="dropdown-toogle" data-toggle="dropdown"><span class="wi wi-bell"><span class="badge"></span></span>消息</a>
+    <div class="dropdown-menu">
+        <div class="clearfix top">消息<a href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice" class="pull-right">查看更多</a></div>
+    </div>
+</li>					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="wi wi-user color-gray"></i>admin <span class="caret"></span></a>
+						<ul class="dropdown-menu color-gray" role="menu">
+							<li>
+								<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;" target="_blank"><i class="wi wi-account color-gray"></i> 我的账号</a>
+							</li>
+							<li class="divider"></li>
+							<li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;" target="_blank"><i class="wi wi-update color-gray"></i> 自动更新</a></li>							<li><a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=updatecache&amp;" target="_blank"><i class="wi wi-cache color-gray"></i> 更新缓存</a></li>
+							<li class="divider"></li>
+							<li>
+								<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=logout&amp;"><i class="fa fa-sign-out color-gray"></i> 退出系统</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+					</div>
+	</nav>
+</div>
+ 
+<div class="main">
+<div class="container">
+	<a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
+		<div class="panel panel-content main-panel-content ">
+		<div class="content-head panel-heading main-panel-heading">
+							<span class="font-lg"><i class="wi wi-setting"></i> 系统管理</span>					</div>
+	<div class="panel-body clearfix main-panel-body menu-fixed">
+		<div class="left-menu" style="min-height: 490px; position: static; top: 144.8px; height: 752px;">
+						<div class="left-menu-content">
+								
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">公众号<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1" class="text-over">
+																																	<i class="wi wi-wechat"></i>
+																															 微信公众号										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=1" class="text-over">
+																																	<i class="wi wi-wx-apply"></i>
+																															公众号应用										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=template&amp;" class="text-over">
+																																	<i class="wi wi-wx-template"></i>
+																															微官网模板										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=platform&amp;" class="text-over">
+																																	<i class="wi wi-exploitsetting"></i>
+																															 微信开放平台										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">小程序<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=4" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															微信小程序										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=4" class="text-over">
+																																	<i class="wi wi-wxapp-apply"></i>
+																															小程序应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">系统首页<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;system_welcome=1" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															系统首页应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">PC<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=5" class="text-over">
+																																	<i class="wi wi-wxapp"></i>
+																															PC										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=5" class="text-over">
+																																	<i class="wi wi-wxapp-apply"></i>
+																															PC应用										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">帐户/用户<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item active">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;" class="text-over">
+																																	<i class="wi wi-user"></i>
+																															我的帐户										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;" class="text-over">
+																																	<i class="wi wi-user-group"></i>
+																															用户管理										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=founder&amp;a=display&amp;" class="text-over">
+																																	<i class="wi wi-co-founder"></i>
+																															副创始人组										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">权限管理<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=group&amp;" class="text-over">
+																																	<i class="wi wi-appjurisdiction"></i>
+																															应用权限组										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=group&amp;" class="text-over">
+																																	<i class="wi wi-userjurisdiction"></i>
+																															用户权限组										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">文章/公告<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=news&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															文章管理										</a>
+									</li>
+																																																															<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=article&amp;a=notice&amp;" class="text-over">
+																																	<i class="wi wi-notice"></i>
+																															公告管理										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">消息提醒<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															消息提醒										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">统计<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=statistics&amp;a=account&amp;" class="text-over">
+																																	<i class="wi wi-article"></i>
+																															访问统计										</a>
+									</li>
+																																			</ul>
+				</div>
+												
+								
+				
+
+								<div class="panel panel-menu">
+										<div class="panel-heading">
+						<span class="no-collapse">缓存<i class="wi wi-appsetting pull-right setting"></i></span>
+					</div>
+										<ul class="list-group">
+																																							<li class="list-group-item ">
+										<a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=updatecache&amp;" class="text-over">
+																																	<i class="wi wi-update"></i>
+																															更新缓存										</a>
+									</li>
+																																			</ul>
+				</div>
+											</div>
+					</div>
+		<div class="right-content" style="min-height: 490px; margin-left: 0px;">
+	<ul class="we7-page-tab">
+	<li><a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;">我的账户</a></li>
+	<li class="active"><a href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;do=bind&amp;">账号绑定</a></li>
+</ul>
+
+<!--账号绑定-->
+<div class="bind-account ng-scope" ng-controller="userBindCtrl">
+<div class="modal fade basic" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" id="myModalLabel">绑定手机号</h4>
+				</div>
+				<div class="modal-body material-content clearfix">
+					<div class="form-group input-group">
+						<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="输入手机号" ng-model="mobile">
+						<span class="input-group-btn">
+							<button class="btn btn-primary send-code ng-binding" ng-disabled="isDisable" ng-click="sendMessage(bindmobile.third_nickname)">发送验证码</button>
+						</span>
+					</div>
+					<div class="form-group input-group">
+						<input type="text" ng-model="imagecode" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="输入图形验证码">
+						<a href="javascript:;" class="input-group-btn imgverify" style="" ng-click="changeVerify()"><img ng-src="./index.php?c=utility&amp;a=code&amp;" style="width: 127px; height: 32px;" src="%E8%B4%A6%E5%8F%B7%E4%BF%A1%E6%81%AF%20-%20%E6%88%91%E7%9A%84%E8%B4%A6%E6%88%B7%20-%20%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86-%E8%B4%A6%E6%88%B7%E7%BB%91%E5%AE%9A_files/nopic-107.png"></a>
+					</div>
+					<div class="form-group">
+						<input type="text" ng-model="smscode" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="输入手机验证码">
+					</div>
+										<div class="form-group">
+						<input type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="输入密码">
+					</div>
+					<div class="form-group">
+						<input type="password" ng-model="repassword" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="再次输入密码">
+					</div>
+									</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="mobileBind(bindmobile.third_nickname, 3)">确定</button>
+					<button type="button" class="btn smscodebtn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div><table class="table we7-table table-hover table-form">
+	<colgroup><col width="140px ">
+	<col>
+	<col width="160px">
+	</colgroup><tbody><tr>
+		<th class="text-left" colspan="3">账号绑定</th>
+	</tr>
+	<tr>
+		<td class="table-label"><span class="wi wi-iphone color-default" style="font-size: 32px;"></span></td>
+		<td class="ng-binding"></td>
+		<td>
+			<div class="link-group">
+			<!-- ngIf: bindmobile.third_type == 3 -->
+			<!-- ngIf: bindmobile.third_type != 3 --><a href="javascript:;" data-toggle="modal" data-target="#myModal" ng-if="bindmobile.third_type != 3" class="ng-scope">绑定手机号</a><!-- end ngIf: bindmobile.third_type != 3 -->
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="table-label"><span class="wi wi-qq color-default" style="font-size: 32px;"></span></td>
+		<td class="ng-binding"></td>
+		<td>
+			<div class="link-group">
+				<!-- ngIf: bindqq.third_type == 1 -->
+				<!-- ngIf: bindqq.third_type != 1 && thirdlogin.qq.authstate == 1 -->
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="table-label"><span class="wi wi-wechat" style="font-size: 32px; color: #00bb00;"></span></td>
+		<td class="ng-binding"></td>
+		<td>
+			<div class="link-group">
+				<!-- ngIf: bindwechat.third_type == 2 -->
+				<!-- ngIf: bindwechat.third_type != 2 && thirdlogin.wechat.authstate == 1 -->
+			</div>
+		</td>
+	</tr>
+	
+	<!--end  账号绑定-->
+</tbody></table>
+</div>
+<script>
+	angular.module('userProfile').value('config',{
+		'bindqq': null,
+		'bindwechat': null,
+		'bindmobile': null,
+		'login_urls': {"system":true},
+		'thirdlogin' : {"system":{"appid":"","appsecret":"","authstate":""},"qq":{"appid":"","appsecret":"","authstate":""},"wechat":{"appid":"","appsecret":"","authstate":""},"mobile":{"appid":"","appsecret":"","authstate":""}},
+		'bind_sign': "null",
+		'image' : "./index.php?c=utility&a=code&",
+		'links':{
+			'img_verify_link': "./index.php?c=utility&a=code&",
+			'send_code_link': "./index.php?c=utility&a=verifycode&",
+			'valid_mobile_link' : "./index.php?c=user&a=profile&do=validate_mobile&",
+			'bind_mobile_link' : "./index.php?c=user&a=profile&do=bind_mobile&",
+			'unbind_third_link' : "./index.php?c=user&a=profile&do=unbind&",
+		},
+	});
+	angular.bootstrap($('.bind-account'), ['userProfile']);
+</script>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+	<div class="container-fluid footer text-center" role="footer">	
+		<div class="friend-link">
+							紫加黑微信商城管理系统					</div>
+		<div class="copyright">紫加黑微信商城管理系统</div>
+		<div></div>
+	</div>
+			</div>
+
+
+</body></html>
