@@ -2,22 +2,25 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>新闻管理</title>
+    <title>分类管理</title>
     <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
     <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
     <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
 </head>
 
 <body>
-<div class="cont_title">　你当前的位置：新闻中心-新闻管理</div>
+<div class="cont_title">　你当前的位置：新闻中心-新闻中心</div>
 
 <div class="con">
 
     <div class="conlist">
         <form name="form1" method="get" action="__URL__/index">
             <table class="listtable">
+
+
                 <tr class="tr1">
                     <td  colspan="7" class="tdlist">查询：
                         新闻标题 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
@@ -32,20 +35,61 @@
                 </tr>
             </table>
         </form>
-        <form  method="post" action="">
+        <form  method="post" action="__URL__/editinfo/action/save?{$paramUrl}">
             <table class="listtable">
                 <tr class="tr1">
                     <td colspan="6" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
                 </tr>
                 <tr class="tr1">
                     <td class="tdtit">ID</td>
-                    <td class="tdtit">上一级</td>
                     <td class="tdtit">父类</td>
                     <td class="tdtit">标题</td>
+                    <td class="tdtit">发布者</td>
+                    <td class="tdtit">关键字</td>
                     <td class="tdtit">首页推荐</td>
                     <td class="tdtit">类型</td>
                     <td class="tdtit">状态</td>
                 </tr>
+                {if condition="!empty($data)"}
+                {foreach name="data" id="vo"}
+                <tr class="tr1">
+                    <td class="tdlist">{$vo.class_id}</td>
+                    <td class="tdlist">{$vo.father}</td>
+                    <td class="tdlist">{$vo.title}</td>
+                    <td class="tdlist">{$vo.send_author}</td>
+                    <td class="tdlist">{$vo.keywords}</td>
+                    <td class="tdlist">
+                        {if condition="$vo.index_show eq 1"}
+                        <a class="statics{$vo.class_id}"  href="javascript:(0)" onclick="static3('{$vo.id}',1)">是</a>
+                        {else/}
+
+                        <a class="statics{$vo.class_id}" style="color: red" onclick="static4('{$vo.id}',0)" href="javascript:(0)">否</a>
+                        {/if}
+                    </td>
+                    <td class="tdlist">
+                        {switch name="$vo.data_type"}
+                        {case value="1"}图片新闻{/case}
+                        {case value="2"}单篇图文{/case}
+                        {default /}新闻列表
+                        {/switch}
+                    </td>
+                    <td class="tdlist">
+                        {if condition="$vo.data_status eq 1"}
+                        <a class="statics{$vo.class_id}"  href="javascript:(0)" onclick="static2('{$vo.id}',1)">正常</a>
+                        {else/}
+
+                        <a class="statics{$vo.class_id}" style="color: red" onclick="static1('{$vo.id}',0)" href="javascript:(0)">未审核</a>
+                        {/if}
+
+                    </td>
+                </tr>
+                {/foreach}
+                {else /}
+                <tr class="tr1">
+                    <td colspan="6" class="tdlist">暂无相关记录！ </td>
+                </tr>
+                {/if}
+
 
             </table>
             <div style="text-align:right; padding-right:40px;">
@@ -56,7 +100,60 @@
     </div>
 
 </div>
+<script>
+    function static2(a,b) {
+        var data  = a;
+        $.ajax({
+            type: "get",   //提交的方法
+            url:" __URL__/staticsave/class_id/"+data+"/id/1", //提交的地址
+            data:1,// 序列化表单值
+            dataType:"json",
+            success: function(datas) {  //成功
+                window.location.reload()
+            }
+        });
 
+    }
+    function static1(a,b) {
+        var data  = a;
+        $.ajax({
+            type: "get",   //提交的方法
+            url:"__URL__/staticsave/class_id/"+data+"/id/0", //提交的地址
+            data:1,// 序列化表单值
+            dataType:"json",
+            success: function(datas) {  //成功
+                window.location.reload()
+            }
+        });
+
+    }
+    function static3(a,b) {
+        var data  = a;
+        $.ajax({
+            type: "get",   //提交的方法
+            url:"__URL__/recommend/class_id/"+data+"/id/1", //提交的地址
+            data:1,// 序列化表单值
+            dataType:"json",
+            success: function(datas) {  //成功
+                window.location.reload()
+            }
+        });
+
+    }
+    function static4(a,b) {
+        var data  = a;
+        $.ajax({
+            type: "get",   //提交的方法
+            url:"__URL__/recommend/class_id/"+data+"/id/0", //提交的地址
+            data:1,// 序列化表单值
+            dataType:"json",
+            success: function(datas) {  //成功
+                window.location.reload()
+            }
+        });
+
+    }
+</script>
 
 </div>
 </body>

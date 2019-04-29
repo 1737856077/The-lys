@@ -1,17 +1,17 @@
 /*
  Navicat MySQL Data Transfer
 
- Source Server         : yunpai_sindns_c
+ Source Server         : 发
  Source Server Type    : MySQL
  Source Server Version : 50557
  Source Host           : 122.114.163.11:3306
- Source Schema         : yunpai_sindns_c
+ Source Schema         : tzs_sindns_com
 
  Target Server Type    : MySQL
  Target Server Version : 50557
  File Encoding         : 65001
 
- Date: 28/04/2019 13:55:42
+ Date: 29/04/2019 13:42:47
 */
 
 SET NAMES utf8mb4;
@@ -37,10 +37,11 @@ CREATE TABLE `sy_news`  (
   `source_address` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sort_rank` int(11) NULL DEFAULT NULL,
   `data_type` tinyint(1) NULL DEFAULT NULL,
+  `data_statusint` tinyint(1) NULL DEFAULT NULL,
+  `create_date` int(11) NULL DEFAULT NULL,
+  `update_date` int(11) NULL DEFAULT NULL,
   `data_status` tinyint(1) NULL DEFAULT NULL,
-  `create_date` datetime NULL DEFAULT NULL,
-  `update_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;

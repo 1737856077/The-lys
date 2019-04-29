@@ -74,7 +74,12 @@
                     <td>
                         <div style="margin-left: -170px" >
                             <p>内容</p>
-                            <textarea name="contents"  cols="30" rows="10"></textarea>
+                            <div id="div3">
+                                <p>请输入新闻内容</p>
+                            </div>
+                            <div>
+                                <input type="hidden" name="contents" value="" id="con" class="cont">
+                            </div>
                         </div>
                     </td>
                 </tr>
@@ -95,21 +100,14 @@
 <script type="text/javascript" src="__STATIC__/admin/js/wangEditor.min.js"></script>
 <script type="text/javascript">
     var E = window.wangEditor
-    var editor = new E('#editor')
+    var editor = new E('#div3')
     editor.create()
-
-
-</script>
-<script type="text/javascript">
     function f() {
-
-        var E = window.wangEditor
-        var editor = new E('#editor')
-        editor.create()
-       var data =  editor.txt.html()
-       $(".cont").val(data)
+        var data =  editor.txt.html()
+        $(".cont").val(data)
         $("#tj").click();
     }
+
 </script>
 </div>
 </body>

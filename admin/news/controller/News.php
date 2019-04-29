@@ -20,7 +20,27 @@ class News extends CommonBase
      */
     public function index()
     {
-        return $this->fetch();
+        $admin_id = Session::get('adminid');
+        if (!$admin_id){
+            echo '参数错误';
+            exit();
+        }
+        $admin_data = Db::name('admin')->where('admin_id',$admin_id)->find();
+        if ($admin_data['oskey']==1){
+            //所有分类
+            $news_class_data = Db::name('news')->select();
+            //添加所属分类
+            $news_class_datas = [];
+            foreach ($news_class_data as $k=>$v){
+                $v['father']=Db::name('news_class')->where('class_id',$v['class_id'])->field('title')->find()['title'];
+                $news_class_datas[] = $v;
+            }
+            $this->assign('data',$news_class_datas);
+            return $this->fetch();
+        }else{
+            echo '权限不足';
+            exit();
+        }
     }
     /**
      * 新闻页面添加
@@ -77,5 +97,61 @@ class News extends CommonBase
         }{
             return $this->error('发布失败请检查');
     }
+    }
+    /**
+     * 更改状态
+     */
+    public function staticsave()
+    {
+        $param = $this->request->param();
+        $id = htmlspecialchars(trim(isset($param['id'])?$param['id']:0));
+        $class_id = htmlspecialchars(trim(isset($param['class_id'])?$param['class_id']:''));
+        if (!$class_id){
+            echo "参数错误";
+            exit();
+        }
+        if ($id==1){
+            $res = Db::name('news')->where('id',$class_id)->update(['data_status'=>0]);
+            if ($res){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }else{
+            $res = Db::name('news')->where('id',$class_id)->update(['data_status'=>1]);
+            if ($res){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+    }
+    /**
+     * 首页推荐
+     */
+    public function recommend()
+    {
+        $param = $this->request->param();
+        $id = htmlspecialchars(trim(isset($param['id'])?$param['id']:0));
+        $class_id = htmlspecialchars(trim(isset($param['class_id'])?$param['class_id']:''));
+        if (!$class_id){
+            echo "参数错误";
+            exit();
+        }
+        if ($id==1){
+            $res = Db::name('news')->where('id',$class_id)->update(['index_show'=>0]);
+            if ($res){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }else{
+            $res = Db::name('news')->where('id',$class_id)->update(['index_show'=>1]);
+            if ($res){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
     }
 }
