@@ -109,13 +109,14 @@
         };
     </script>
     <script>var require = {urlArgs: 'v=20170915'};</script>
-    <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+    <!--<script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>-->
     <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
-    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
-    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/echarts.common.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/echarts.min.js"></script>
 </head>
 <body>
 <div class="loader" style="display:none">
@@ -252,81 +253,63 @@
                                         <th class="text-left" colspan="3">商家管理数据中心</th>
                                     </tr>
                                     <tr>
-                                        <td class="table-label">扫码数量：</td>
+                                        <td class="table-label">扫码记录：</td>
                                         <td class="ng-binding">
-                                            <input type="text" name="order_no" class="data1" value="000"
+                                            <input type="text" name="" value="{$count}"
                                                                                style="border:none;">
+                                            （次）
                                         </td>
                                         <td class="text-right"></td>
                                     </tr>
                                     <tr>
-                                        <td class="table-label">兑换产品数量：</td>
+                                        <td class="table-label">已兑换礼品：</td>
                                         <td colspan="2" class="ng-binding">
-                                            <input type="text" name="num" value="" style="border:none;">
+                                            <input type="text" name="" value="{$count2}" style="border:none;">
+                                            （个）
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="table-label">商品所属商家</td>
-                                        <td class="ng-binding"></td>
-                                        <td class="text-right"></td>
-                                    </tr>
+
                                     </tbody>
                                 </form>
                             </table>
+                            <div id="main" style="width: 600px; height: 400px;"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <script>
-            $.ajax({
+            /*$.ajax({
                 async: false,
-                url:"http://suyuan.localhost/admin.php/sinterface/dcolligate/index",
+                url:"http://suyuan.localhost/admin.php/sinterface/dscanrank/index",
                 type:'GET',
                 dataType:"json",
                 success: function(data){
-                    $('.data1').val(data.data.totalCompany)
+                     // $('.data1').val(data.data.totalCompany)
+                    alert(data.data.areaData[0].value);
                 }
-                });
-            app.title = '扫码数量显示';
-            option = {
-                color: ['#3398DB'],
-                tooltip : {
-                    trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                    }
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                xAxis : [
-                    {
-                        type : 'category',
-                        data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                        axisTick: {
-                            alignWithLabel: true
-                        }
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value'
-                    }
-                ],
-                series : [
-                    {
-                        name:'直接访问',
-                        type:'bar',
-                        barWidth: '60%',
-                        data:[10, 52, 200, 334, 390, 330, 220]
-                    }
-                ]
-            };
-
+                });*/
+            var myChart = echarts.init(document.getElementById('main'));
+            $.get(':url("data/add")').done(function (data) {
+                 console.log(data);
+                    myChart.setOption({
+                        title: {
+                            text: '区域扫码信息显示'
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: data.x
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            data: data.y,
+                            type: 'bar'
+                        }]
+                    });
+            });
+            // myChart.setOption(option);
         </script>
 
     </div>

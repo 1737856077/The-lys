@@ -13,6 +13,9 @@
       <path value="$PROJECT_DIR$/vendor/topthink/think-oracle" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-mongo" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-captcha" />
+      <path value="$PROJECT_DIR$/vendor/demo/lotusphp_runtime" />
+      <path value="$PROJECT_DIR$/vendor/demo/aop" />
+      <path value="$PROJECT_DIR$/vendor/demo/pagepay" />
     </include_path>
   </component>
 </project>
