@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">[uib-typeahead-popup].dropdown-menu {
+        display: block;
+    }</style>
+    <style type="text/css">.uib-time input {
+        width: 50px;
+    }</style>
+    <style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow, [uib-popover-popup].popover.top-left > .arrow, [uib-popover-popup].popover.top-right > .arrow, [uib-popover-popup].popover.bottom-left > .arrow, [uib-popover-popup].popover.bottom-right > .arrow, [uib-popover-popup].popover.left-top > .arrow, [uib-popover-popup].popover.left-bottom > .arrow, [uib-popover-popup].popover.right-top > .arrow, [uib-popover-popup].popover.right-bottom > .arrow, [uib-popover-html-popup].popover.top-left > .arrow, [uib-popover-html-popup].popover.top-right > .arrow, [uib-popover-html-popup].popover.bottom-left > .arrow, [uib-popover-html-popup].popover.bottom-right > .arrow, [uib-popover-html-popup].popover.left-top > .arrow, [uib-popover-html-popup].popover.left-bottom > .arrow, [uib-popover-html-popup].popover.right-top > .arrow, [uib-popover-html-popup].popover.right-bottom > .arrow, [uib-popover-template-popup].popover.top-left > .arrow, [uib-popover-template-popup].popover.top-right > .arrow, [uib-popover-template-popup].popover.bottom-left > .arrow, [uib-popover-template-popup].popover.bottom-right > .arrow, [uib-popover-template-popup].popover.left-top > .arrow, [uib-popover-template-popup].popover.left-bottom > .arrow, [uib-popover-template-popup].popover.right-top > .arrow, [uib-popover-template-popup].popover.right-bottom > .arrow {
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0;
+    }
+
+    [uib-popover-popup].popover, [uib-popover-html-popup].popover, [uib-popover-template-popup].popover {
+        display: block !important;
+    }</style>
+    <style type="text/css">.uib-datepicker-popup.dropdown-menu {
+        display: block;
+        float: none;
+        margin: 0;
+    }
+
+    .uib-button-bar {
+        padding: 10px 9px 2px;
+    }</style>
+    <style type="text/css">.uib-position-measure {
+        display: block !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .uib-position-scrollbar-measure {
+        position: absolute !important;
+        top: -9999px !important;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: scroll !important;
+    }
+
+    .uib-position-body-scrollbar-measure {
+        overflow: scroll !important;
+    }</style>
+    <style type="text/css">.uib-datepicker .uib-title {
+        width: 100%;
+    }
+
+    .uib-day button, .uib-month button, .uib-year button {
+        min-width: 100%;
+    }
+
+    .uib-left, .uib-right {
+        width: 100%
+    }</style>
+    <style type="text/css">.ng-animate.item:not(.left):not(.right) {
+        -webkit-transition: 0s ease-in-out left;
+        transition: 0s ease-in-out left
+    }</style>
+    <style type="text/css">@charset "UTF-8";
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }
+
+    .ng-animate-shim {
+        visibility: hidden;
+    }
+
+    .ng-anchor {
+        position: absolute;
+    }</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理设置 - 微信公众号管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+    <link href="__STATIC__/business/css/bootstrap.css"
+          rel="stylesheet">
+    <link href="__STATIC__/business/css/common.css"
+          rel="stylesheet">
+    <script src="__STATIC__/business/s.txt"></script>
+    <script type="text/javascript">
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            if (navigator.userAgent.indexOf("MSIE 5.0") > 0 || navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0) {
+                alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+            }
+        }
+        window.sysinfo = {
+            'uid': '1', 'isfounder': 1,
+            'family': 'x',
+            'siteroot': 'https://weixin.zijiahei.com/',
+            'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=account&a=post&acid=16&uniacid=16&account_type=1',
+            'attachurl': 'https://weixin.zijiahei.com/attachment/',
+            'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
+            'attachurl_remote': '',
+            'module': {'url': '', 'name': ''},
+            'cookie': {'pre': '1b74_'},
+            'account': null,
+            'server': {'php': '5.4.45'},
+        };
+    </script>
+    <script>var require = {urlArgs: 'v=20170915'};</script>
+    <script type="text/javascript"
+            src="__STATIC__/business/js/jquery-1.js"></script>
+    <script type="text/javascript"
+            src="__STATIC__/business/js/bootstrap.js"></script>
+    <script type="text/javascript"
+            src="__STATIC__/business/js/util.js"></script>
+    <script type="text/javascript"
+            src="__STATIC__/business/js/common.js"></script>
+    <script type="text/javascript"
+            src="__STATIC__/business/js/require.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="loadcss"
+            src="__STATIC__/business/js/loadcss.js"></script>
+    <link type="text/css" rel="stylesheet"
+          href="__STATIC__/business/js/jquery.css">
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="datetimepicker"
+            src="__STATIC__/business/js/jquery.js"></script>
+</head>
+<body>
+<div class="loader" style="display:none">
+    <div class="la-ball-clip-rotate">
+        <div></div>
+    </div>
+</div>
+<div data-skin="default" class="skin-default ">
+    <div class="head">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container ">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="https://weixin.zijiahei.com/">
+                        <img src="__STATIC__/business/img/logo.png"
+                             class="pull-left" width="110px" height="35px">
+                        <span class="version hidden">1.6.7</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
+            <div class="panel panel-content main-panel-content ">
+                <div class="content-head panel-heading main-panel-heading">
+                    <span class="font-lg"><i class="wi wi-setting"></i><a
+                            href="__ROOT__/business.php/index/index/index">商家管理</a> </span></div>
+                <div class="panel-body clearfix main-panel-body menu-fixed">
+                    <div class="left-menu" style="min-height: 682px; position: static; top: 145px; height: 944px;">
+                        <div class="left-menu-content">
+
+                            <div class="panel panel-menu">
+                                <div class="panel-heading">
+                                    <span class="no-collapse">公众号<i
+                                            class="wi wi-appsetting pull-right setting"></i></span>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/public_address/wpa/index"
+                                           class="text-over">
+                                            <i class="wi wi-wechat"></i>
+                                            微信公众号 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href=""
+                                           class="text-over">
+                                            <i class="wi wi-wx-apply"></i>
+                                            公众号应用 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href=""
+                                           class="text-over">
+                                            <i class="wi wi-wx-template"></i>
+                                            微官网模板 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href=""
+                                           class="text-over">
+                                            <i class="wi wi-exploitsetting"></i>
+                                            微信开放平台 </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="panel panel-menu">
+                                <div class="panel-heading">
+                                    <span class="no-collapse">积分商城<i
+                                            class="wi wi-appsetting pull-right setting"></i></span>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/qrcode/productcode/index"
+                                           class="text-over">
+                                            <i class="wi wi-user"></i>
+                                            积分码列表 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/qrcode/createqrcode/add"
+                                           class="text-over">
+                                            <i class="wi wi-user"></i>
+                                            生成积分码 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/integral_info/information/index"
+                                           class="text-over">
+                                            <i class="wi wi-user-group"></i>
+                                            积分信息 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/gift/gift/gift"
+                                           class="text-over">
+                                            <i class="wi wi-co-founder"></i>
+                                            礼品管理 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/order/order/index"
+                                           class="text-over">
+                                            <i class="wi wi-co-founder"></i>
+                                            订单管理 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/money/money/index"
+                                           class="text-over">
+                                            <i class="wi wi-co-founder"></i>
+                                            财务中心 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/data/data/index"
+                                           class="text-over">
+                                            <i class="wi wi-co-founder"></i>
+                                            数据中心 </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="right-content" style="min-height: 682px; margin-left: 0px;">
+                        <ol class="breadcrumb we7-breadcrumb">
+                            <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1"><i
+                                    class="wi wi-back-circle"></i> </a>
+                            <li>
+                                <a href="">公众号管理</a>
+                            </li>
+                            <li>公众号设置</li>
+                        </ol>
+                        <div class="media media-wechat-setting">
+                            <a class="media-left">
+		<span class="icon">
+						<i class="wi wi-wechat"></i>
+					</span>
+                                <img src="__STATIC__/uploads/business/{$content.img}"
+                                     class="wechat-img">
+                            </a>
+                            <div class="media-body media-middle ">
+                                <h4 class="media-heading color-dark">{$content.title}</h4>
+                                <span class="color-gray">
+							类型：认证服务号/认证媒体/政府订阅号					</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <a href=""
+                                   class="btn btn-primary" onclick="return confirm('确认放入回收站吗？')">停 用</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div id="js-account-manage-base" ng-controller="AccountManageBase" class="ng-scope">
+                            <table class="table we7-table table-hover table-form">
+                                <colgroup>
+                                    <col width="140px">
+                                    <col>
+                                    <col width="100px">
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th class="text-left" colspan="3">公众号设置</th>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">头像</td>
+                                    <td><img src="__STATIC__/uploads/business/{$content.img}" width="75px" height="75px"></td>
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;"
+                                                                   ng-click="changeImage('headimgsrc','16')">修改</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">二维码</td>
+                                    <td><img
+                                            src=""
+                                            width="75px" height="75px"></td>
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;"
+                                                                   ng-click="changeImage('qrcodeimgsrc','16')">修改</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">公众号名称</td>
+                                    <td class="ng-binding">{$content.title}</td>
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;" data-toggle="modal"
+                                                                   data-target="#name"
+                                                                   ng-click="editInfo('name', account.name)">修改</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">帐号</td>
+                                    <td class="ng-binding">{$content.btn_key}</td>
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;" data-toggle="modal"
+                                                                   data-target="#account"
+                                                                   ng-click="editInfo('account', account.account)">修改</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">原始ID</td>
+                                    <td ng-bind="account.original" class="ng-binding">gh_6f2fdafd8c35</td>
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;" data-toggle="modal"
+                                                                   data-target="#original"
+                                                                   ng-click="editInfo('original', account.original)">修改</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">类型</td>
+                                    <!-- ngIf: account.level == 1 -->
+                                    <!-- ngIf: account.level == 2 -->
+                                    <!-- ngIf: account.level == 3 -->
+                                    <!-- ngIf: account.level == 4 -->
+                                    <td ng-if="account.level == 4" class="ng-scope">认证服务号/认证媒体/政府订阅号</td>
+                                    <!-- end ngIf: account.level == 4 -->
+                                    <!-- ngIf: account.level == 0 -->
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;" data-toggle="modal"
+                                                                   data-target="#level"
+                                                                   ng-click="editInfo('level', account.level)">修改</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">接入方式</td>
+                                    <!-- ngIf: account.type == 1 -->
+                                    <td ng-if="account.type == 1" class="ng-scope">普通接入</td>
+                                    <!-- end ngIf: account.type == 1 -->
+                                    <!-- ngIf: account.type == 3 -->
+                                    <!-- ngIf: authstate && authurl -->
+                                    <td ng-if="authstate &amp;&amp; authurl" class="ng-scope">
+                                        <div class="link-group">
+                                            <a href="javascript:;" data-toggle="modal" data-target="#jointype"
+                                               ng-click="editInfo('type', account.type)">修改</a>
+                                        </div>
+                                    </td><!-- end ngIf: authstate && authurl -->
+                                </tr>
+
+                                <tr>
+                                    <td class="table-label">月访问总次数</td>
+                                    <!-- ngIf: account.highest_visit -->
+                                    <!-- ngIf: !account.highest_visit -->
+                                    <td ng-if="!account.highest_visit" class="ng-scope">不限次数</td>
+                                    <!-- end ngIf: !account.highest_visit -->
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;" data-toggle="modal"
+                                                                   data-target="#visit"
+                                                                   ng-click="editInfo('highest_visit', account.highest_visit)">修改</a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-label">到期时间</td>
+                                    <td><span ng-bind="account.end" class="ng-binding">永久</span><span
+                                            class="color-gray">（随该公众号主管理员的到期时间，未设置主管理员时默认为创始人）</span></td>
+                                    <td>
+                                        <!-- ngIf: founder || owner -->
+                                        <div class="link-group ng-scope" ng-if="founder || owner">
+                                            <a href="javascript:;" data-toggle="modal" data-target="#endtype"
+                                               ng-click="editInfo('endtype', account.endtype)">修改</a>
+
+
+                                        </div><!-- end ngIf: founder || owner -->
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="modal fade" id="name" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改公众号名称</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" ng-model="middleAccount.name"
+                                                       class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                       placeholder="公众号名称">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('name')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="account" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改公众号账号</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" ng-model="middleAccount.account"
+                                                       class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                       placeholder="公众号账号">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('account')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="original" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改公众号原始ID</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" ng-model="middleAccount.original"
+                                                       class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                       placeholder="公众号原始ID">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('original')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="level" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改公众号类型</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <select class="we7-select ng-pristine ng-untouched ng-valid ng-empty"
+                                                        ng-model="middleAccount.level">
+                                                    <option value="? undefined:undefined ?"
+                                                            selected="selected"></option>
+                                                    <option value="1" ng-selected="middleAccount.level == 1">普通订阅号
+                                                    </option>
+                                                    <option value="2" ng-selected="middleAccount.level == 2">普通服务号
+                                                    </option>
+                                                    <option value="3" ng-selected="middleAccount.level == 3">认证订阅号
+                                                    </option>
+                                                    <option value="4" ng-selected="middleAccount.level == 4">
+                                                        认证服务号/认证媒体/政府订阅号
+                                                    </option>
+                                                </select>
+                                                <span class="help-block">注意：即使公众平台显示为“未认证”, 但只要【公众号设置】/【账号详情】下【认证情况】显示资质审核通过, 即可认定为认证号.</span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('level')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="endtype" role="dialog">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">设置到期时间</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- ngIf: middleAccount.endtype == 1 || founder -->
+                                            <div class="form-group ng-scope"
+                                                 ng-if="middleAccount.endtype == 1 || founder">
+                                                <input id="endtype-1" type="radio" name="endtype" value="2"
+                                                       ng-model="middleAccount.endtype"
+                                                       ng-checked="middleAccount.endtype == 2"
+                                                       class="ng-pristine ng-untouched ng-valid ng-empty"><label
+                                                    for="endtype-1">设置期限</label>
+                                                <input id="endtype-2" type="radio" name="endtype" value="1"
+                                                       ng-model="middleAccount.endtype"
+                                                       ng-checked="middleAccount.endtype == 1"
+                                                       class="ng-pristine ng-untouched ng-valid ng-empty"><label
+                                                    for="endtype-2">永久</label>
+                                            </div><!-- end ngIf: middleAccount.endtype == 1 || founder -->
+                                            <div class="form-group ng-hide" ng-show="middleAccount.endtype == 2">
+                                                <input type="text" name="endtime" value="2019-04-30"
+                                                       placeholder="请选择日期时间" readonly="readonly"
+                                                       class="datetimepicker form-control" style="padding-left:12px;">
+                                                <script type="text/javascript">
+                                                    require(["datetimepicker"], function () {
+                                                        var option = {
+                                                            lang: "zh",
+                                                            step: 5,
+                                                            timepicker: false,
+                                                            closeOnDateSelect: true,
+                                                            format: "Y-m-d"
+                                                        };
+                                                        $(".datetimepicker[name = 'endtime']").datetimepicker(option);
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('endtime')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="visit" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改访问总次数（单位：月）</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="number" step="1" ng-model="middleAccount.highest_visit"
+                                                       class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                       placeholder="每月访问总次数">
+                                                <span class="help-block">设置为0，表示无任何限制</span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('highest_visit')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="jointype" role="dialog">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改接入方式</div>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <input id="type-1" type="radio" name="jointype" value="1"
+                                                   ng-model="middleAccount.type" ng-checked="middleAccount.type == 1"
+                                                   class="ng-pristine ng-untouched ng-valid ng-empty">
+                                            <label class="radio-inline" for="type-1">普通接入</label>
+                                            <input id="type-2" type="radio" name="jointype" value="3"
+                                                   ng-model="middleAccount.type" ng-checked="middleAccount.type == 3"
+                                                   class="ng-pristine ng-untouched ng-valid ng-empty">
+                                            <label class="radio-inline" for="type-2">授权接入</label>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('jointype')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table class="table we7-table table-hover table-form wechat-menu">
+                                <colgroup>
+                                    <col width="140px ">
+                                    <col>
+                                    <col width="100px">
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th class="text-left" colspan="3">自定义菜单通讯设置</th>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">AppId</td>
+                                    <td ng-bind="account.key" class="ng-binding">wx1b76da2035d63a71</td>
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;" data-toggle="modal"
+                                                                   data-target="#key"
+                                                                   ng-click="editInfo('key', account.key)">修改</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">AppSecret</td>
+                                    <td ng-bind="account.secret" class="ng-binding">71275a614ea92c03ad51fde351060011
+                                    </td>
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;" data-toggle="modal"
+                                                                   data-target="#secret"
+                                                                   ng-click="editInfo('secret', account.secret)">修改</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="modal fade" id="key" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改公众号AppId</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" ng-model="middleAccount.key"
+                                                       class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                       placeholder="公众号AppId">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('key')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="secret" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改公众号AppSecret</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" ng-model="middleAccount.secret"
+                                                       class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                       placeholder="公众号AppSecret">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                                    ng-click="httpChange('secret')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table wechat-communication">
+                                <colgroup>
+                                    <col width="160px">
+                                    <col>
+                                    <col width="230px">
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th class="text-left" colspan="3">公众平台通信</th>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">URL<p>(服务器地址)</p></td>
+                                    <td>
+                                        <a href="javascript:;" class="we7-padding-right ng-binding"
+                                           ng-bind="other.serviceUrl">https://weixin.zijiahei.com/api.php?id=16</a>
+                                    </td>
+                                    <td>
+                                        <div class="link-group"><a href="javascript:;" id="copy-0" clipboard=""
+                                                                   supported="supported" text="other.serviceUrl"
+                                                                   on-copied="success('0')" class="ng-isolate-scope">点击复制</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">Token<p>(令牌)</p></td>
+                                    <td>
+                                        <a href="javascript:;" class="we7-padding-right ng-binding"
+                                           ng-bind="account.token">junhfs2trsfn5hosw2gzpcwrd4ldui01</a>
+                                    </td>
+                                    <td>
+                                        <div class="link-group">
+                                            <a href="javascript:;" data-toggle="modal" data-target="#token">修改</a>
+                                            <a href="javascript:;" data-dismiss="modal" ng-click="httpChange('token')">生成新的</a>
+                                            <a href="javascript:;" id="copy-1" clipboard="" supported="supported"
+                                               text="account.token" on-copied="success('1')" class="ng-isolate-scope">点击复制</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-label">EncodingAESKey<p>(消息加解密密钥)</p></td>
+                                    <td>
+                                        <a href="javascript:;" class="we7-padding-right ng-binding"
+                                           ng-bind="account.encodingaeskey">ihFK0OPzUGyVTSXP0PVoNd7PVnItmDkOKNdxrvq7KiN</a>
+                                    </td>
+                                    <td>
+                                        <div class="link-group">
+                                            <a href="javascript:;" data-toggle="modal"
+                                               data-target="#encodingaeskey">修改</a>
+                                            <a href="javascript:;" data-dismiss="modal"
+                                               ng-click="httpChange('encodingaeskey')">生成新的</a>
+                                            <a href="javascript:;" id="copy-2" clipboard="" supported="supported"
+                                               text="account.encodingaeskey" on-copied="success('2')"
+                                               class="ng-isolate-scope">点击复制</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="modal fade" id="token" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改token</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" id="newtoken" class="form-control"
+                                                       placeholder="请填写新的公众号消息校验Token">
+                                                <span class="help-block">与公众平台接入设置值一致，必须为英文或者数字，长度为3到32个字符. 请妥善保管, Token 泄露将可能被窃取或篡改平台的操作数据.</span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary"
+                                                    ng-click="httpChange('token', 'edit')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="encodingaeskey" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="we7-modal-dialog modal-dialog we7-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <div class="modal-title">修改EncodingAESKey</div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" id="newencodingaeskey" class="form-control"
+                                                       placeholder="请填写新的公众号消息加解密Key">
+                                                <span class="help-block">与公众平台接入设置值一致，必须为英文或者数字，长度为43个字符. 请妥善保管, EncodingAESKey 泄露将可能被窃取或篡改平台的操作数据.</span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary"
+                                                    ng-click="httpChange('encodingaeskey', 'edit')">确定
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            angular.module('accountApp').value('config', {
+                                founder: true,
+                                owner: false,
+                                account: {
+                                    "acid": "16",
+                                    "uniacid": "16",
+                                    "token": "junhfs2trsfn5hosw2gzpcwrd4ldui01",
+                                    "access_token": "",
+                                    "encodingaeskey": "ihFK0OPzUGyVTSXP0PVoNd7PVnItmDkOKNdxrvq7KiN",
+                                    "level": "4",
+                                    "name": "\u7d2b\u52a0\u9ed1\u73af\u4fdd\u79d1\u6280",
+                                    "account": "zijiahei666",
+                                    "original": "gh_6f2fdafd8c35",
+                                    "signature": "",
+                                    "country": "",
+                                    "province": "",
+                                    "city": "",
+                                    "username": "",
+                                    "password": "",
+                                    "lastupdate": "0",
+                                    "key": "wx1b76da2035d63a71",
+                                    "secret": "71275a614ea92c03ad51fde351060011",
+                                    "styleid": "0",
+                                    "subscribeurl": "",
+                                    "auth_refresh_token": "",
+                                    "encrypt_key": "wx1b76da2035d63a71",
+                                    "type": "1",
+                                    "isconnect": "1",
+                                    "isdeleted": "0",
+                                    "endtime": "0",
+                                    "uid": "1",
+                                    "starttime": "0",
+                                    "groups": {
+                                        "7": {
+                                            "groupid": "7",
+                                            "uniacid": "16",
+                                            "title": "\u9ed8\u8ba4\u4f1a\u5458\u7ec4",
+                                            "credit": "0",
+                                            "orderlist": "0",
+                                            "isdefault": "1"
+                                        }
+                                    },
+                                    "setting": {
+                                        "uniacid": "16",
+                                        "passport": {
+                                            "focusreg": "1",
+                                            "item": "random",
+                                            "audit": "0",
+                                            "type": "password"
+                                        },
+                                        "oauth": {"account": "16", "host": ""},
+                                        "jsauth_acid": "0",
+                                        "uc": "",
+                                        "notify": "",
+                                        "creditnames": {
+                                            "credit1": {"title": "\u79ef\u5206", "enabled": 1},
+                                            "credit2": {"title": "\u4f59\u989d", "enabled": 1}
+                                        },
+                                        "creditbehaviors": {"activity": "credit1", "currency": "credit2"},
+                                        "welcome": "",
+                                        "default": "",
+                                        "default_message": "",
+                                        "shortcuts": "",
+                                        "payment": "",
+                                        "stat": "",
+                                        "menuset": "",
+                                        "default_site": "7",
+                                        "sync": "0",
+                                        "recharge": "",
+                                        "tplnotice": "",
+                                        "grouplevel": "0",
+                                        "mcplugin": "",
+                                        "exchange_enable": "0",
+                                        "coupon_type": "0",
+                                        "statistics": "",
+                                        "bind_domain": ""
+                                    },
+                                    "grouplevel": "0",
+                                    "logo": "https:\/\/weixin.zijiahei.com\/attachment\/headimg_16.jpg?time=1555332943",
+                                    "qrcode": "https:\/\/weixin.zijiahei.com\/attachment\/qrcode_16.jpg?time=1555332943",
+                                    "switchurl": ".\/index.php?c=account&a=display&do=switch&uniacid=16",
+                                    "sms": 0,
+                                    "setmeal": {
+                                        "uid": -1,
+                                        "username": "\u521b\u59cb\u4eba",
+                                        "timelimit": "\u672a\u8bbe\u7f6e",
+                                        "groupid": "-1",
+                                        "groupname": "\u6240\u6709\u670d\u52a1"
+                                    },
+                                    "end": "\u6c38\u4e45",
+                                    "endtype": 1,
+                                    "highest_visit": 0
+                                },
+                                uniaccount: {
+                                    "uniacid": "16",
+                                    "groupid": "0",
+                                    "name": "\u7d2b\u52a0\u9ed1\u73af\u4fdd\u79d1\u6280",
+                                    "description": "",
+                                    "default_acid": "16",
+                                    "rank": null,
+                                    "title_initial": "Z"
+                                },
+                                headimgsrc: "https://weixin.zijiahei.com/attachment/headimg_16.jpg",
+                                qrcodeimgsrc: "https://weixin.zijiahei.com/attachment/qrcode_16.jpg",
+                                authstate: "1",
+                                authurl: {
+                                    "errno": 1,
+                                    "url": "\u7f3a\u5c11\u63a5\u5165\u5e73\u53f0\u5173\u952e\u6570\u636e\uff0c\u7b49\u5f85\u5fae\u4fe1\u5f00\u653e\u5e73\u53f0\u63a8\u9001\u6570\u636e\uff0c\u8bf7\u5341\u5206\u949f\u540e\u518d\u8bd5\u6216\u662f\u68c0\u67e5\u201c\u6388\u6743\u4e8b\u4ef6\u63a5\u6536URL\u201d\u662f\u5426\u5199\u9519\uff08index.php?c=account&amp;a=auth&amp;do=ticket\u5730\u5740\u4e2d\u7684&amp;\u7b26\u53f7\u5bb9\u6613\u88ab\u66ff\u6362\u6210&amp;amp;\uff09"
+                                },
+                                links: {
+                                    basePost: "./index.php?c=account&a=post&do=base&acid=16&uniacid=16",
+                                    siteroot: "https://weixin.zijiahei.com/",
+                                },
+                            });
+                            angular.bootstrap($('#js-account-manage-base'), ['accountApp']);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid footer text-center" role="footer">
+        <div class="friend-link">
+            紫加黑微信商城管理系统
+        </div>
+        <div class="copyright">紫加黑微信商城管理系统</div>
+        <div></div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -81,7 +81,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>添加礼品页</title>
+    <title>公众号列表</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
@@ -109,6 +109,7 @@
         };
     </script>
     <script>var require = {urlArgs: 'v=20170915'};</script>
+    <script>var require = {urlArgs: 'v=20170915'};</script>
     <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
@@ -131,16 +132,16 @@
                         <span class="version hidden">1.6.7</span>
                     </a>
                 </div>
-
             </div>
         </nav>
     </div>
+
     <div class="main">
         <div class="container">
             <a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
             <div class="panel panel-content main-panel-content ">
                 <div class="content-head panel-heading main-panel-heading">
-                    <span class="font-lg"><i class="wi wi-setting"></i> <a href="__ROOT__/business.php/index/index/index">商家管理</a></span></div>
+                    <span class="font-lg"><i class="wi wi-setting"></i> 商家管理</span></div>
                 <div class="panel-body clearfix main-panel-body menu-fixed">
                     <div class="left-menu" style="min-height: 490px;">
                         <div class="left-menu-content">
@@ -152,25 +153,25 @@
                                 </div>
                                 <ul class="list-group">
                                     <li class="list-group-item ">
-                                        <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1"
+                                        <a href="__ROOT__/business.php/public_address/wpa/index"
                                            class="text-over">
                                             <i class="wi wi-wechat"></i>
                                             微信公众号 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=1"
+                                        <a href=""
                                            class="text-over">
                                             <i class="wi wi-wx-apply"></i>
                                             公众号应用 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=template&amp;"
+                                        <a href=""
                                            class="text-over">
                                             <i class="wi wi-wx-template"></i>
                                             微官网模板 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=platform&amp;"
+                                        <a href=""
                                            class="text-over">
                                             <i class="wi wi-exploitsetting"></i>
                                             微信开放平台 </a>
@@ -209,16 +210,22 @@
                                             礼品管理 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href=""
+                                        <a href="__ROOT__/business.php/order/order/index"
                                            class="text-over">
                                             <i class="wi wi-co-founder"></i>
                                             订单管理 </a>
                                     </li>
                                     <li class="list-group-item ">
-                                        <a href=""
+                                        <a href="__ROOT__/business.php/money/money/index"
                                            class="text-over">
                                             <i class="wi wi-co-founder"></i>
                                             财务中心 </a>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <a href="__ROOT__/business.php/data/data/index"
+                                           class="text-over">
+                                            <i class="wi wi-co-founder"></i>
+                                            数据中心 </a>
                                     </li>
                                 </ul>
                             </div>
@@ -226,70 +233,186 @@
                         </div>
                     </div>
                     <div class="right-content" style="min-height: 490px;">
-                        <div class="new-keyword">
-                            <ol class="breadcrumb we7-breadcrumb">
-                                <a href=""><i
-                                        class="wi wi-back-circle"></i> </a>
-                                <li>添加礼品</li>
-                            </ol>
-                            <form action="{:url('')}" class="we7-form ng-pristine ng-valid ng-scope" method="post"
-                                  id="js-user-create" ng-controller="UserCreate" enctype="multipart/form-data">
-
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-sm-2">商品名称</label>
-                                        <div class="form-controls col-sm-8">
-                                            <input type="text" name="title" id="title" placeholder="请输入商品名称">
-                                            <div class="help-block"></div>
-                                        </div>
-                                    </div>
-                                <div class="form-group">
-                                    <label for="" class="control-label col-sm-2">图片</label>
-                                    <div class="form-controls col-sm-8">
-                                        <input type="file" name="images" id="images" >
-                                    </div>
-                                </div>
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-sm-2">库存</label>
-                                        <div class="form-controls col-sm-8">
-                                            <input type="text" name="total" id="total" placeholder="请输入库存量">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-sm-2">所需积分</label>
-                                        <div class="form-controls col-sm-8">
-                                            <input type="text" name="integral" id="integral" placeholder="请输入商品所需积分">
-                                        </div>
-                                    </div>
-
-                                <div class="form-group">
-                                    <label for="" class="control-label col-sm-2">商品描述</label>
-                                    <div class="form-controls col-sm-8">
-                                        <textarea name="data_desc" rows="6" class="form-control ng-binding"
-                                                  ng-style="{'width': '600px'}" ng-bind="user.remark"
-                                                  placeholder="简述商品" style="width: 600px;"></textarea>
-                                    </div>
-                                </div>
-                                <input type="submit" name="submit" id="" value="提交" class="btn btn-primary"
-                                       style="padding: 6px 50px;">
-
+                        <div class="clearfix we7-margin-bottom">
+                            <form action="" class="form-inline  pull-left" method="get">
+                                <input type="hidden" name="c" value="account">
+                                <input type="hidden" name="a" value="manage">
                             </form>
+
+                            <div class="pull-right">
+                                <a href=""
+                                   class="btn btn-primary we7-padding-horizontal">添加公众号</a>
+                            </div>
+
+
                         </div>
-                        <script type="text/javascript">
-                            angular.module('userManageApp').value('config', {
-                                groups: {
-                                    "2": {
-                                        "id": "2",
-                                        "name": "\u9ec4\u91d1\u7528\u6237\u7ec4",
-                                        "package": "a:2:{i:0;i:1;i:1;i:-1;}"
-                                    },
-                                    "3": {
-                                        "id": "3",
-                                        "name": "\u4f53\u9a8c\u7528\u6237\u7ec4",
-                                        "package": "a:1:{i:0;i:1;}"
+                        <table class="table we7-table table-hover vertical-middle table-manage ng-scope"
+                               id="js-system-account-display" ng-controller="SystemAccountDisplay">
+                            <colgroup>
+                                <col width="120px">
+                                <col>
+                                <col width="200px">
+                                <col width="100px">
+                                <col width="260px">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th colspan="2" class="text-left">帐号</th>
+                                <th>有效期</th>
+                                <th>短信数(条)</th>
+                                <th class="text-right">操作</th>
+                            </tr>
+                            {volist name="weChap" id="vo"}
+                            <tr class="color-gray ng-scope" ng-repeat="list in lists">
+                                <td class="text-left td-link">
+                                    <img class="img-responsive icon" src="__STATIC__/uploads/business/{$vo.img}">
+                                </td>
+                                <td class="text-left">
+                                    <p style="color: black; font-size: 15px;">{$vo.title}</p>
+                                    <span class="color-gray ng-scope"
+                                                                        ng-if="list.level == 4"
+                                                                        title="认证服务号/认证媒体/政府订阅号">类型：认证服务号</span>
+                                   <span class="color-green ng-scope"
+                                                                            ng-if="list.isconnect == 1"><i
+                                        class="wi wi-right-sign"></i>已接入</span>
+                                </td>
+                                <td>
+                                    <p ng-bind="list.end" class="ng-binding">永久</p>
+                                </td>
+                                <td><p ng-bind="list.sms" class="ng-binding">0</p></td>
+                                <td class="vertical-middle table-manage-td">
+                                    <div class="link-group">
+                                        <a href="{:url('wpa/info')}">进入公众号</a>
+
+                                        <a ng-show="list.role == 'manager' || list.role == 'owner' || list.role == 'founder'|| list.role == 'vice_founder'"
+                                           href="{:url('wpa/set')}?id={$vo.id}">管理设置</a>
+
+
+                                    </div>
+                                    <div class="manage-option text-right">
+                                        <a href=""></a>
+                                        <a href=""></a>
+                                        <a href=""></a>
+                                        <a href=""></a>
+                                        <a ng-href="./index.php?c=account&amp;a=manage&amp;do=delete&amp;&amp;acid=16&amp;uniacid=16"
+                                           ng-show="list.role == 'owner' || list.role == 'founder' || list.role == 'vice_founder'"
+                                           onclick="if(!confirm('确认放入回收站吗？')) return false;" class="del"
+                                           href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;do=delete&amp;&amp;acid=16&amp;uniacid=16"></a>
+
+
+                                    </div>
+                                </td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                        <div class="text-right">
+                        </div>
+                        <script>
+                            $(function () {
+                                $('[data-toggle="tooltip"]').tooltip();
+                            });
+                            switch_url = "./index.php?c=account&a=display&do=switch&";
+                            angular.module('accountApp').value('config', {
+                                lists: {
+                                    "16": {
+                                        "acid": "16",
+                                        "uniacid": "16",
+                                        "token": "junhfs2trsfn5hosw2gzpcwrd4ldui01",
+                                        "access_token": "",
+                                        "encodingaeskey": "ihFK0OPzUGyVTSXP0PVoNd7PVnItmDkOKNdxrvq7KiN",
+                                        "level": "4",
+                                        "name": "\u7d2b\u52a0\u9ed1\u73af\u4fdd\u79d1\u6280",
+                                        "account": "zijiahei666",
+                                        "original": "gh_6f2fdafd8c35",
+                                        "signature": "",
+                                        "country": "",
+                                        "province": "",
+                                        "city": "",
+                                        "username": "",
+                                        "password": "",
+                                        "lastupdate": "0",
+                                        "key": "wx1b76da2035d63a71",
+                                        "secret": "71275a614ea92c03ad51fde351060011",
+                                        "styleid": "0",
+                                        "subscribeurl": "",
+                                        "auth_refresh_token": "",
+                                        "encrypt_key": "wx1b76da2035d63a71",
+                                        "type": "1",
+                                        "isconnect": "1",
+                                        "isdeleted": "0",
+                                        "endtime": "0",
+                                        "uid": "1",
+                                        "starttime": "0",
+                                        "groups": {
+                                            "7": {
+                                                "groupid": "7",
+                                                "uniacid": "16",
+                                                "title": "\u9ed8\u8ba4\u4f1a\u5458\u7ec4",
+                                                "credit": "0",
+                                                "orderlist": "0",
+                                                "isdefault": "1"
+                                            }
+                                        },
+                                        "setting": {
+                                            "uniacid": "16",
+                                            "passport": {
+                                                "focusreg": "1",
+                                                "item": "random",
+                                                "audit": "0",
+                                                "type": "password"
+                                            },
+                                            "oauth": {"account": "16", "host": ""},
+                                            "jsauth_acid": "0",
+                                            "uc": "",
+                                            "notify": "",
+                                            "creditnames": {
+                                                "credit1": {"title": "\u79ef\u5206", "enabled": 1},
+                                                "credit2": {"title": "\u4f59\u989d", "enabled": 1}
+                                            },
+                                            "creditbehaviors": {"activity": "credit1", "currency": "credit2"},
+                                            "welcome": "",
+                                            "default": "",
+                                            "default_message": "",
+                                            "shortcuts": "",
+                                            "payment": "",
+                                            "stat": "",
+                                            "menuset": "",
+                                            "default_site": "7",
+                                            "sync": "0",
+                                            "recharge": "",
+                                            "tplnotice": "",
+                                            "grouplevel": "0",
+                                            "mcplugin": "",
+                                            "exchange_enable": "0",
+                                            "coupon_type": "0",
+                                            "statistics": "",
+                                            "bind_domain": ""
+                                        },
+                                        "grouplevel": "0",
+                                        "logo": "https:\/\/weixin.zijiahei.com\/attachment\/headimg_16.jpg?time=1555332943",
+                                        "qrcode": "https:\/\/weixin.zijiahei.com\/attachment\/qrcode_16.jpg?time=1555332943",
+                                        "switchurl": ".\/index.php?c=account&a=display&do=switch&uniacid=16",
+                                        "sms": 0,
+                                        "setmeal": {
+                                            "uid": -1,
+                                            "username": "\u521b\u59cb\u4eba",
+                                            "timelimit": "\u672a\u8bbe\u7f6e",
+                                            "groupid": "-1",
+                                            "groupname": "\u6240\u6709\u670d\u52a1"
+                                        },
+                                        "end": "\u6c38\u4e45",
+                                        "role": "founder"
                                     }
                                 },
+                                links: {
+                                    switch: switch_url,
+                                    post: "./index.php?c=account&a=post&",
+                                    postUser: "./index.php?c=account&a=post-user&",
+                                    del: "./index.php?c=account&a=manage&do=delete&",
+                                }
                             });
-                            angular.bootstrap($('#js-user-create'), ['userManageApp']);
+                            angular.bootstrap($('#js-system-account-display'), ['accountApp']);
                         </script>
                     </div>
                 </div>
@@ -299,9 +422,9 @@
     </div>
     <div class="container-fluid footer text-center" role="footer">
         <div class="friend-link">
-            红包系统管理
+            紫加黑微信商城管理系统
         </div>
-        <div class="copyright">红包系统管理</div>
+        <div class="copyright">紫加黑微信商城管理系统</div>
         <div></div>
     </div>
 </div>
