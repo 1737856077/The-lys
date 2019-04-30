@@ -11,7 +11,7 @@
 <body>
 <div class="commodity_top">  <a href="javascript:void(0)" class="commodity_02">
     {if condition="empty($data.images)"}
-    <img src="__STATIC__/integral/img/nopic-107.png" alt="">
+    <img src="__STATIC__/integral/img/nopic-107.png"  alt="">
     {else /}
     <img src="__STATIC__/uploads/business/{$data.images}"  alt="">
     {/if}
@@ -22,9 +22,9 @@
 <div class="commodity_banner">
     <a href="javascript:void(0)" class="commodity_top_l">
         {if condition="empty($data.images)"}
-        <img src="__STATIC__/integral/img/nopic-107.png" alt="">
+        <img src="__STATIC__/integral/img/nopic-107.png" style="height: 60px;width: 60px" alt="">
         {else /}
-        <img src="__STATIC__/uploads/business/{$data.images}"  alt="">
+        <img src="__STATIC__/uploads/business/{$data.images}" style="height: 60px;width: 60px"   alt="">
         {/if}
         <span>{$data.title}</span>
     </a>

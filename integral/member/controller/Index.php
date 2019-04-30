@@ -54,7 +54,10 @@ class Index extends CommonIntegra
      */
     public function sitesave()
     {
+
         $param = $this->request->param();
+
+        $save = htmlspecialchars(isset($param['save'])?$param['save']:'');
         $uid = htmlspecialchars(isset($param['uid'])?$param['uid']:'');
         $admin_id = htmlspecialchars(isset($param['admin_id'])?$param['admin_id']:'');
         $name = htmlspecialchars(isset($param['name'])?$param['name']:'');
@@ -67,38 +70,76 @@ class Index extends CommonIntegra
         $code = htmlspecialchars(isset($param['code'])?$param['code']:'');
         $data_type = htmlspecialchars(isset($param['data_type'])?$param['data_type']:'');
         $data_status = htmlspecialchars(isset($param['data_status'])?$param['data_status']:'');
+        $site = htmlspecialchars(trim(isset($param['site'])?$param['site']:''));
         //接收到的地区为默认添加地区
-        if (!empty($qu) and !empty($uid) and !empty($name)){
-            $data = array(
-                'rceiving_address_id'=>my_returnUUID(),
-                'uid'=>$uid,
-                'admin_id'=>$admin_id,
-                'name'=>$name,
-                'tel'=>$tel,
-                'area_country_id'=>1,
-                'province_id'=>$sheng,
-                'city_id'=>$shi,
-                'county_id'=>$qu,
-                'address'=>$address,
-                'code'=>$code,
-                'user_type'=>0,
-                'data_type'=>$data_type,
-                'data_status'=>$data_status,
-                'create_time'=>time()
-            );
-            $res = Db::name('rceiving_address')->insertGetId($data);
-            //保存默认
-             Db::name('rceiving_address')->where('uid',$uid)->update(['data_type'=>0]);
-             Db::name('rceiving_address')->where('id',$res)->update(['data_type'=>1]);
-            dump($res);die();
-             if ($res){
-                    return json(1);
-            }else{
-                return json(0);
-            }
-        }else{
-            return json(-1);
-        }
+       if (empty($save)){
+           if (!empty($qu) and !empty($uid) and !empty($name)){
+               $data = array(
+                   'rceiving_address_id'=>my_returnUUID(),
+                   'uid'=>$uid,
+                   'admin_id'=>$admin_id,
+                   'name'=>$name,
+                   'tel'=>$tel,
+                   'area_country_id'=>1,
+                   'province_id'=>$sheng,
+                   'city_id'=>$shi,
+                   'county_id'=>$qu,
+                   'address'=>$address,
+                   'code'=>$code,
+                   'user_type'=>0,
+                   'data_type'=>$data_type,
+                   'data_status'=>$data_status,
+                   'create_time'=>time()
+               );
+               $res = Db::name('rceiving_address')->insertGetId($data);
+               //保存默认
+               if ($data_type==1){
+                   Db::name('rceiving_address')->where('uid',$uid)->update(['data_type'=>0]);
+                   Db::name('rceiving_address')->where('id',$res)->update(['data_type'=>1]);
+               }
+               if ($res){
+                   return json(1);
+               }else{
+                   return json(0);
+               }
+           }else{
+               return json(-1);
+           }
+       }else{
+           if (!empty($qu) and !empty($uid) and !empty($name)){
+               $data = array(
+                   'rceiving_address_id'=>my_returnUUID(),
+                   'uid'=>$uid,
+                   'admin_id'=>$admin_id,
+                   'name'=>$name,
+                   'tel'=>$tel,
+                   'area_country_id'=>1,
+                   'province_id'=>$sheng,
+                   'city_id'=>$shi,
+                   'county_id'=>$qu,
+                   'address'=>$address,
+                   'code'=>$code,
+                   'user_type'=>0,
+                   'data_type'=>$data_type,
+                   'data_status'=>$data_status,
+                   'create_time'=>time()
+               );
+               $res = Db::name('rceiving_address')->where('id',$site)->update($data);
+               //保存默认
+               if ($data_type==1){
+                   Db::name('rceiving_address')->where('uid',$uid)->update(['data_type'=>0]);
+                   Db::name('rceiving_address')->where('id',$site)->update(['data_type'=>1]);
+               }
+
+               if ($res){
+                   return json(1);
+               }else{
+                   return json(0);
+               }
+           }else{
+               return json(-1);
+           }
+       }
     }
     /**
      * 保存用户头像
@@ -137,7 +178,7 @@ class Index extends CommonIntegra
     /**
      * 订单中心
      */
-    public function sorder()
+        public function sorder()
     {
         $param = $this->request->param();
         $uid = htmlspecialchars(trim($param['uid'])?$param['uid']:'');

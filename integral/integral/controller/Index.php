@@ -19,7 +19,7 @@ class Index extends CommonIntegra
     public function index()
     {
         $admin_id = $this->request->param('adminid');
-        $admin_id = 4;//用户登录存session
+        $admin_id = Session::get('adminid');
         $productData = Db::name('product_integral')->where('admin_id',$admin_id)->where('data_status',1)->paginate(10);
         $this->assign('data',$productData);
         return $this->fetch();

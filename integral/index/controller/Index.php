@@ -29,7 +29,7 @@ class Index extends Controller
             $param = $this->request->param();
             //测试默认值 admin为传过来的为商家管理员的id
             Session::delete('admin_id');
-            $admin_id = 4;
+            $admin_id = 1;
             Session::set('admin_id',$admin_id);
             $memberid = Session::get('memberid');
             $MemberData = Db::name('member')->where('id',$memberid)->field('uid')->find();

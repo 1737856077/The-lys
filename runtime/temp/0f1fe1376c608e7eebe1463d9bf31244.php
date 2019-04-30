@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"C:\Users\Administrator\Desktop\suyuan\sy/integral/member\view\index.index.html";i:1556262708;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"C:\Users\Administrator\Desktop\suyuan\sy/integral/member\view\index.index.html";i:1556279950;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>

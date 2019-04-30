@@ -17,15 +17,15 @@
 <div class="con">
 
     <div class="conlist">
-        <form name="form1" method="get" action="__URL__/index">
+        <form name="form1" method="get" action="__URL__/index/id/1">
             <table class="listtable">
-
-
                 <tr class="tr1">
                     <td  colspan="7" class="tdlist">查询：
-                        分类名称 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
-                        状态 <select name="SearchStatus" id="SearchStatus">
-                            <option value="">请选择</option>
+                        分类名称 <input type="text" name="value" id="SearchTitle" value="{$SearchTitle}" />　
+                        状态 <select name="data_type" id="SearchStatus">
+                            <option value="0">新闻列表</option>
+                            <option value="1">图片新闻</option>
+                            <option value="2">单篇图文</option>
                         </select>
                         <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
 
@@ -42,17 +42,24 @@
                 </tr>
                 <tr class="tr1">
                     <td class="tdtit">ID</td>
-                    <td class="tdtit">父类</td>
+                    <td class="tdtit">所属栏目</td>
                     <td class="tdtit">标题</td>
                     <td class="tdtit">首页推荐</td>
                     <td class="tdtit">类型</td>
                     <td class="tdtit">状态</td>
+                    <td class="tdtit">操作</td>
                 </tr>
                 {if condition="!empty($data)"}
                 {foreach name="data" id="vo"}
                 <tr class="tr1">
                     <td class="tdlist">{$vo.class_id}</td>
+
+                    {if condition="!empty($vo.father)"}
                     <td class="tdlist">{$vo.father}</td>
+                        {else/}
+                    <td class="tdlist">顶级栏目</td>
+                        {/if}
+
                     <td class="tdlist">{$vo.title}</td>
                     <td class="tdlist">
                         {if condition="$vo.index_show eq 1"}
@@ -78,6 +85,10 @@
                         {/if}
 
                     </td>
+                    <td class="tdlist">
+                        <a href="javascript:(0)" onclick="deletes()">删除</a>
+                        <a href="__URL__/alteradd/id/{$vo.class_id}">修改</a>
+                    </td>
                 </tr>
                 {/foreach}
                 {else /}
@@ -97,6 +108,18 @@
 
 </div>
 <script>
+    function deletes() {
+            $.ajax({
+                type: "get",   //提交的方法
+                url:"__URL__/delete/id/{$vo.class_id}", //提交的地址
+                data:1,// 序列化表单值
+                dataType:"json",
+                success: function(datas) {  //成功
+                    window.location.reload()
+                }
+            });
+
+    }
     function static2(a,b) {
        var data  = a;
         $.ajax({

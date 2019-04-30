@@ -6,7 +6,12 @@
     <title>我的地址</title>
     <link type="text/css" rel="stylesheet" href="__STATIC__/integral/css/common14.css">
     <link  type="text/css" rel="stylesheet" href="__STATIC__/integral/css/my_address.css">
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/lxs_index.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/lxsHeadFoot.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/order_new.css" />
+    <script src="__STATIC__/integral/js/jquery-2.1.4.min.js" ></script>
     <script type="text/javascript">
         $(function(){
             var inputs = $(".address_con .addUser_l input");
@@ -38,29 +43,52 @@
             });
         })
     </script>
+    <script>
+        function deletes(data) {
+            if(confirm("确实要删除吗？")){
+                $.ajax({
+                    type: "get",   //提交的方法
+                    url:"__URL__/deletesite/id/"+data, //提交的地址
+                    data:1,// 序列化表单值
+                    dataType:"json",
+                    success: function(datas) {  //成功
+                        if (datas==1){
+                            window.location.reload()
+                        } else {
+                            alert('删除失败');
+                        }
+                    }
+                });
+            }
+
+
+        }
+    </script>
 </head>
 <body>
-<div class="address_header">
-    <i><img src="images/bj.png" alt=""></i>地址
+<div class="content">
+    <div style="background: #FF4945" class="headTop">
+        <a href="/integral.php/member/index/index" style="color: azure" class="back"><<<<i class="iconBack"></i></a><span>地址</span><a class="more"><i class="iconDian"></i><i class="iconDian"></i><i class="iconDian"></i></a>
+    </div>
 </div>
 <div class="address_con">
 {foreach name="data" id="datas"}
     <div class="addUser">
         <div class="addUser_r">
             <div class="addUsers">
-                <p >{$datas.name}</p>
+                <p class="dz">{$datas.name}</p>
                 <span style="margin-left: 10px" class="addUsers_r">
-                    <a href="">
+                    <a href="javascript:(0)" onclick="deletes('{$datas.id}')">
                         <img src="__STATIC__/integral/img/shanchu.png" alt="">
                     </a>
                 </span>
 
                 <span class="addUsers_r">
-                     <a href="">
+                     <a href="__URL__/createsite/id/{$datas.id}">
                         <img src="__STATIC__/integral/img/bianji.png" alt="">
                     </a>
                 </span>
-                <p>{$datas.tel}</p>
+                <p class="dz">{$datas.tel}</p>
             </div>
             <div class="clear"></div>
             <p class="dz">{$datas.sheng}{$datas.shi}{$datas.qu}</p>
@@ -69,8 +97,8 @@
 {/foreach}
 
 </div>
-<button type="button" class="deletes">
-    删除地址
+<button style="background: #FF4945" type="button" class="deletes">
+    <a href="/integral.php/member/index/site"> 新增位置</a>
 </button>
 
 </body>

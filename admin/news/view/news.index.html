@@ -17,16 +17,13 @@
 <div class="con">
 
     <div class="conlist">
-        <form name="form1" method="get" action="__URL__/index">
+        <form name="form1" method="get" action="__URL__/index/id/1">
             <table class="listtable">
 
 
                 <tr class="tr1">
                     <td  colspan="7" class="tdlist">查询：
-                        新闻标题 <input type="text" name="SearchTitle" id="SearchTitle" value="{$SearchTitle}" />　
-                        状态 <select name="SearchStatus" id="SearchStatus">
-                            <option value="">请选择</option>
-                        </select>
+                        新闻标题 <input type="text" name="value" id="SearchTitle" value="{$SearchTitle}" />　
                         <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
 
                     <td   class="tdlist">
@@ -42,13 +39,14 @@
                 </tr>
                 <tr class="tr1">
                     <td class="tdtit">ID</td>
-                    <td class="tdtit">父类</td>
+                    <td class="tdtit">栏目</td>
                     <td class="tdtit">标题</td>
                     <td class="tdtit">发布者</td>
                     <td class="tdtit">关键字</td>
                     <td class="tdtit">首页推荐</td>
                     <td class="tdtit">类型</td>
                     <td class="tdtit">状态</td>
+                    <td class="tdtit">操作</td>
                 </tr>
                 {if condition="!empty($data)"}
                 {foreach name="data" id="vo"}
@@ -82,6 +80,10 @@
                         {/if}
 
                     </td>
+                    <td class="tdlist">
+                        <a href="javascript:(0)" onclick="deletes()">删除</a>
+                        <a href="__URL__/alteradd/id/{$vo.id}">修改</a>
+                    </td>
                 </tr>
                 {/foreach}
                 {else /}
@@ -101,6 +103,20 @@
 
 </div>
 <script>
+
+    function deletes() {
+        $.ajax({
+            type: "get",   //提交的方法
+            url:"__URL__/delete/id/{$vo.id}", //提交的地址
+            data:1,// 序列化表单值
+            dataType:"json",
+            success: function(datas) {  //成功
+                window.location.reload()
+            }
+        });
+
+    }
+
     function static2(a,b) {
         var data  = a;
         $.ajax({

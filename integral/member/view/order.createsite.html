@@ -83,26 +83,27 @@
 <div class="j_main m-main">
 
     <form  class="form1" id="form1" >
-        <input type="hidden" name="uid" value="{$member_data.uid}">
-        <input type="hidden" name="admin_id" value="{$member_data.admin_id}">
+        <input type="hidden" name="site" value="{$data.id}">
+        <input type="hidden" name="uid" value="{$data.uid}">
+        <input type="hidden" name="admin_id" value="{$data.admin_id}">
         <div class="tit">
             <i></i>地址详情
         </div>
         <div class="txt">
             <dl>
                 <dt>姓名</dt>
-                <input type="text" name="name" placeholder="请填写联系姓名" value="">
+                <input type="text" name="name" placeholder="请填写联系姓名" value="{$data.name}">
             </dl>
             <dl>
                 <dt>手机</dt>
-                <input type="text" name="tel" value="{$member_data.moblie}">
+                <input type="text" name="tel" value="{$data.tel}">
             </dl>
             <dl class="J_price">
                 <dt>请选择地址</dt>
             </dl>
             <dl>
                 <select style="" id="sheng" name="sheng">
-                    <option value="">请选择省份</option>
+                    <option value="{$data.province_id}">{$data.sheng}</option>
                     {volist name="region" id="vo"}
                     <option value='{$vo.area_code}'>{$vo.area_name}</option>
                     {/volist}
@@ -111,29 +112,29 @@
             </dl>
             <dl>
                 <select style="" id="city"  name="city">
-                    <option value="">请选择城市</option>
+                    <option value="{$data.city_id}">{$data.shi}</option>
                 </select>
 
             </dl>
             <dl>
 
                 <select style="" id="qu"  name="qu">
-                    <option value="">请选择区</option>
+                    <option value="{$data.county_id}">{$data.qu}</option>
                 </select>
 
             </dl>
             <!--<dl>-->
-                <!--<select style="" id="jie"  name="jie">-->
-                    <!--<option value="">请选择街道</option>-->
-                <!--</select>-->
+            <!--<select style="" id="jie"  name="jie">-->
+            <!--<option value="">请选择街道</option>-->
+            <!--</select>-->
             <!--</dl>-->
             <dl class="J_price">
                 <dt>详细地址</dt>
-                <input type="text" name="address" value="">
+                <input type="text" name="address" value="{$data.address}">
             </dl>
             <dl class="J_price">
                 <dt>邮政编码</dt>
-                <input type="text" name="code" value="">
+                <input type="text" name="code" value="{$data.code}">
             </dl>
             <input type="hidden" name="data_type" value="0">
             <input type="hidden" name="data_status" value="1">
@@ -144,8 +145,9 @@
         </div>
         <div class="txt txt2 J_baoxian">
         </div>
-     <div class="aui-list-spell">
-                <input type="button" value="保存" onclick="login()">
+        <input type="hidden" name="save" value="1">
+        <div class="aui-list-spell">
+            <input type="button" value="保存" onclick="login()">
         </div>
     </form>
 </div>
@@ -159,16 +161,16 @@
             url: "{:url('member/index/sitesave')}" ,//url
             data: $('#form1').serialize(),
             success: function (result) {
-            switch (result) {
-                case -1:
-                    alert('请填写信息');
-                    break;
-                case 0:
-                    alert("添加失败");
-                    break;
-                default:
-                     window.location.href="{:url('member/order/site')}?uid={$member_data.uid}"
-            }
+                switch (result) {
+                    case -1:
+                        alert('请填写信息');
+                        break;
+                    case 0:
+                        alert("添加失败");
+                        break;
+                    default:
+                        window.location.href="{:url('member/order/site')}?uid={$member_data.uid}"
+                }
             }
 
         });
@@ -180,7 +182,7 @@
         var sheng = $('#sheng').val();
         $.ajax({
             type: 'post',
-            url: '__URL__/shi',
+            url: '/integral.php/member/index/shi',
             data: 'shi=' + $('#sheng').val(),
             dataType: "json",
             success: function (data) {
@@ -211,7 +213,7 @@
 
             $.ajax({
                 type: 'post',
-                url: '__URL__/shi',
+                url: '/integral.php/member/index/shi',
                 data: {'shi': sheng, 'shi': shi},
                 dataType: "json",
                 success: function (data) {
@@ -239,7 +241,7 @@
 
             $.ajax({
                 type: 'post',
-                url: '__URL__/shi',
+                url: '/integral.php/member/index/shi',
                 data: {'shi': shi},
                 dataType: "json",
                 success: function (data) {

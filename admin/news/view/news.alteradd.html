@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>添加新闻</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/jquery.js"></script>
+</head>
+
+<body>
+<div class="cont_title">　你当前的位置：新闻中心-添加新闻</div>
+
+<div class="con">
+    <div class="conlist">
+        <form action="__URL__/altersaveadd" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit();">
+            <table class="listtable">
+                <tr class="tr1">
+                    <td colspan="2" class="tit">添加新闻</td>
+                </tr>
+
+                <tr class="tr1">
+                    <td class="tdl">标题<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="title" id="name" type="text" onBlur="Onblur_name()" value="{$data.title}" />　<span class="showErrorMessage" id="span_name"></span>
+                    </td>
+                </tr>
+                <tr  class="tr1">
+                    <td class="tdl">分类<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <select name="class_id" id="">
+
+                            <option value="{$class_data.class_id}">{$class_data.title}</option>
+                            {foreach name="class" id="vo"}
+                            <option value="{$vo.class_id}">{$vo.title}</option>
+                            {/foreach}
+                        </select>
+                    </td>
+                    <input type="hidden" name="id" value="{$data.id}">
+
+                </tr>
+                <tr class="tr1">
+                    <td  class="tdl">推荐</td>
+                    <td class="tdr" style="padding-top:5px;">
+                        {if condition="$data.index_show == 1"}
+                        <input name="index_show" type="radio" value="1" checked="checked"/>是
+                        <input name="index_show" type="radio" value="0" />否
+                        {else/}
+                        <input name="index_show" type="radio" value="1" />是
+                        <input name="index_show" type="radio" value="0" checked="checked" />否
+                        {/if}
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td  class="tdl">优化(关键字)</td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input type="text" name="keywords" value="{$data.keywords}">
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td  class="tdl">优化(描述)</td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input type="text" name="description" value="{$data.keywords}">
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td  class="tdl">作者</td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input type="text" name="send_author" value="{$data.send_author}">
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td></td>
+                    <td>
+                        <div style="margin-left: -170px" >
+                            <p>内容</p>
+                            <div id="div3">
+                                <p>{$data.contents}</p>
+                            </div>
+                            <div>
+                                <input type="hidden" name="contents" value="" id="con" class="cont">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl"></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input type="submit" style="display: none;" id="tj" name="Submit" />　
+                        <input type="button"  name="Submit" onclick="f()" value="提交"  class="buttomorger" />　
+                        <input type="button" name="button" value="返回"  class="buttomorger" onClick="javascript:history.go(-1);" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+    </div>
+</div>
+<script type="text/javascript" src="__STATIC__/admin/js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#div3')
+    editor.create()
+    function f() {
+        var data =  editor.txt.html()
+        $(".cont").val(data)
+        $("#tj").click();
+    }
+
+</script>
+</div>
+</body>
+</html>

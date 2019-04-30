@@ -11,6 +11,7 @@ namespace app\member\controller;
 
 use app\common\controller\CommonIntegra;
 use think\Db;
+use think\Session;
 
 class order extends CommonIntegra
 {
@@ -48,6 +49,7 @@ class order extends CommonIntegra
         $uid = htmlspecialchars(trim(isset($param['uid'])) ? $param['uid'] : '');
         if (empty($uid)) {
             echo '参数错误';
+            die();
         }
         $rceiving_address_data = Db::name('rceiving_address')->where('uid', $uid)->select();
         foreach ($rceiving_address_data as $k => $v) {
@@ -57,6 +59,47 @@ class order extends CommonIntegra
            $rceiving_address_datas[]=$v;
         }
         $this->assign('data',$rceiving_address_datas);
+        return $this->fetch();
+    }
+    /**
+     * 删除地址
+     */
+    public function deletesite()
+    {
+        $param = $this->request->param();
+        $id = htmlspecialchars(trim(isset($param['id'])?$param['id']:''));
+        if (empty($id)){
+            echo "参数错误";
+            exit();
+        }
+        $res = Db::name('rceiving_address')->where('id',$id)->delete();
+        if ($res){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    /**
+     * 修改地址
+     */
+    public function createsite()
+    {
+        $param = $this->request->param();
+        $id = htmlspecialchars(trim(isset($param['id'])?$param['id']:''));
+        if (!$id){
+            echo '参数错误';
+            exit();
+        }
+        $memberid = Session::get('memberid');
+        $member_data = Db::name('member')->where('id', $memberid)->find();
+        $this->assign('member_data', $member_data);
+        $region = Db::name('region')->where('area_type', 2)->field('area_name,area_code')->select();
+        $this->assign('region', $region);
+        $data = Db::name('rceiving_address')->where('id',$id)->find();
+        $data['sheng'] = Db::name('region')->where('area_code',$data['province_id'])->find()['area_name'];
+        $data['shi'] = Db::name('region')->where('area_code',$data['city_id'])->find()['area_name'];
+        $data['qu'] = Db::name('region')->where('area_code',$data['county_id'])->find()['area_name'];
+        $this->assign('data',$data);
         return $this->fetch();
     }
 }

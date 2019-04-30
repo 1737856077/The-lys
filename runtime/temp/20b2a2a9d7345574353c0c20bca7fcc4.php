@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\Users\Administrator\Desktop\suyuan\sy/integral/integral\view\index.details.html";i:1556164223;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\Users\Administrator\Desktop\suyuan\sy/integral/integral\view\index.details.html";i:1556594935;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
 <body>
 <div class="commodity_top">  <a href="javascript:void(0)" class="commodity_02">
     <?php if(empty($data['images'])): ?>
-    <img src="/static/integral/img/nopic-107.png" alt="">
+    <img src="/static/integral/img/nopic-107.png"  alt="">
     <?php else: ?>
     <img src="/static/uploads/business/<?php echo $data['images']; ?>"  alt="">
     <?php endif; ?>
@@ -23,9 +23,9 @@
 <div class="commodity_banner">
     <a href="javascript:void(0)" class="commodity_top_l">
         <?php if(empty($data['images'])): ?>
-        <img src="/static/integral/img/nopic-107.png" alt="">
+        <img src="/static/integral/img/nopic-107.png" style="height: 60px;width: 60px" alt="">
         <?php else: ?>
-        <img src="/static/uploads/business/<?php echo $data['images']; ?>"  alt="">
+        <img src="/static/uploads/business/<?php echo $data['images']; ?>" style="height: 60px;width: 60px"   alt="">
         <?php endif; ?>
         <span><?php echo $data['title']; ?></span>
     </a>

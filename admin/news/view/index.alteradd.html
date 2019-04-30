@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>分类编辑</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+</head>
+
+<body>
+<div class="cont_title">　你当前的位置：新闻中心-分类编辑</div>
+
+<div class="con">
+
+    <div class="conlist">
+        <form action="__URL__/save" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit();">
+            <table class="listtable">
+                <tr class="tr1">
+                    <td colspan="2" class="tit">编辑分类</td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">分类名<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="title" id="name" type="text" onBlur="Onblur_name()" value="{$data.title}" />　<span class="showErrorMessage" id="span_name"></span>
+                    </td>
+                </tr>
+                <tr  class="tr1">
+                    <td class="tdl">级别<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <select name="father_id" id="">
+                            {if condition="!empty($class)"}
+                            <option value='{$datas.class_id}'>{$datas.title}</option>
+                            {foreach name="class" id="vo"}
+                            <option value="{$vo.class_id}">{$vo.title}</option>
+                            {/foreach}
+                            {else/}
+                            <option value='0'>顶级分类</option>
+                            {/if}
+                        </select>
+                    </td>
+                    <input type="hidden" name="class_id" value="{$data.class_id}">
+
+                </tr>
+                <tr class="tr1">
+                    <td  class="tdl">首页推荐</td>
+                    <td class="tdr" style="padding-top:5px;">
+                        {if condition="$data.index_show == 1"}
+                        <input name="index_show" type="radio" value="1" checked="checked"/>是
+                        <input name="index_show" type="radio" value="0" />否
+
+                        {else/}
+                        <input name="index_show" type="radio" value="1" />是
+                        <input name="index_show" type="radio" value="0" checked="checked"/>否
+
+                        {/if}
+                       </td>
+                </tr>
+                <tr class="tr1">
+                    <td  class="tdl">类型</td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <select name="data_type">
+                            {switch name="$data.data_type"}
+                            {case value="1"}<option value="{$data.data_type}">图片新闻</option>{/case}
+                            {case value="2"}<option value="{$data.data_type}">单篇图文</option>{/case}
+                            {default /}<option value="{$data.data_type}">新闻列表</option>
+                            {/switch}
+                            <option value="0">新闻列表</option>
+                            <option value="1">图片新闻</option>
+                            <option value="2">单篇图文</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl"></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input type="submit" name="Submit" value="提交"  class="buttomorger" />　
+                        <input type="button" name="button" value="返回"  class="buttomorger" onClick="javascript:history.go(-1);" />
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+</div>
+</body>
+</html>
