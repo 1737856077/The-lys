@@ -34,3 +34,14 @@ ALTER TABLE `sy_product_code` ADD `tel` VARCHAR(32) NULL AFTER `contacts`;
 ALTER TABLE `sy_product_code_info` ADD `code_plain_query_time` INT(11) NULL DEFAULT '0' AFTER `code_cipher_query_total`;
 ALTER TABLE `sy_product_code_info` ADD `code_plain_query_total` INT(11) NULL DEFAULT '0' AFTER `code_plain_query_time`;
 
+/*=== 2019-05-02==*/
+CREATE TABLE IF NOT EXISTS `sy_domain_access_record` (
+  `access_record_id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain_name` varchar(64) NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `data_type` tinyint(1) NOT NULL DEFAULT '0',
+  `data_status` tinyint(1) NOT NULL DEFAULT '0',
+  `create_time` int(11) NOT NULL DEFAULT '0',
+  `update_time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`access_record_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
