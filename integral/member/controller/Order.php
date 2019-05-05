@@ -40,6 +40,7 @@ class order extends CommonIntegra
         return $this->fetch();
     }
 
+
     /**
      * 地址管理
      */
@@ -102,4 +103,24 @@ class order extends CommonIntegra
         $this->assign('data',$data);
         return $this->fetch();
     }
+    /**
+     * 设为默认
+     */
+    public function sitedf()
+    {
+        $param = $this->request->param();
+        $id = htmlspecialchars(isset($param['id'])?$param['id']:'');
+        $uid = htmlspecialchars(isset($param['uid'])?$param['uid']:'');
+        if (!$id or !$uid){
+            echo '请求错误';
+        }
+        $data = Db::name('rceiving_address')->where('uid',$uid)->update(['data_type'=>0]);
+        $datas = Db::name('rceiving_address')->where('id',$id)->update(['data_type'=>1]);
+        if ($datas){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+
 }

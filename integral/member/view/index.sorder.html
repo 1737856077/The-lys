@@ -8,6 +8,92 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
     <meta content="telephone=no" name="format-detection"/>
     <link href="__STATIC__/integral/css/stylea.css"  rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/layer.css"/>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+    <script language="javascript" src="__STATIC__/integral/js/layer.m.js"  charset="UTF-8"></script>
+    <script>
+        function test1(){
+            layer.open({
+                style: 'width:100%;border:none; background-color:#78BA32; color:#fff;',
+                content:'收货成功',
+                time:2,
+                anim:true,
+                fixed:false,
+                top:50,
+                shade:false
+            })
+        }
+        function test2(){
+            layer.open({
+                style: 'width:100%;border:none; background-color:#FF4945; color:#fff;',
+                content:'请检查',
+                time:2,
+                anim:true,
+                fixed:false,
+                top:50,
+                shade:false
+            })
+        }
+        function test3(){
+            layer.open({
+                style: 'width:100%;border:none; background-color:#78BA32; color:#fff;',
+                content:'订单删除成功',
+                time:2,
+                anim:true,
+                fixed:false,
+                top:50,
+                shade:false
+            })
+        }
+        function test4(){
+            layer.open({
+                style: 'width:100%;border:none; background-color:#FF4945; color:#fff;',
+                content:'订单删除失败',
+                time:2,
+                anim:true,
+                fixed:false,
+                top:50,
+                shade:false
+            })
+        }
+        function deorder(data) {
+            var data = data;
+            $.ajax({
+                type:'get',
+                url:'__URL__/deorder/order_no/'+data,
+                dataType:'json',
+                data:1,
+                success:function (data) {
+                    if (data==1){
+                        test3()
+                        window.location.reload()
+                    }else {
+                        test4()
+                        window.location.reload()
+                    }
+                }
+            })
+        }
+        function affirm(data) {
+            var data = data;
+            $.ajax({
+                type:'get',
+                url:'__URL__/affirm/order_no/'+data,
+                dataType:'json',
+                data:1,
+                success:function (data) {
+                  if (data==1){
+                      test1()
+                      window.location.reload()
+                  }else {
+                      test2()
+                      window.location.reload()
+                  }
+                }
+            })
+        }
+    </script>
 </head>
 <body>
 
@@ -27,14 +113,6 @@
                 <div class="tab-panel-item tab-active">
                     {foreach name="data" id="datas"}
                     <div class="tab-item">
-                        <a href="javascript:void(0);" class="aui-well-item aui-well-item-clear">
-                            <div class="aui-well-item-hd">
-                                <img src="/static/uploads/business/{$datas.img}"alt="">
-                            </div>
-                            <div class="aui-well-item-bd">
-                                <h3>公司名称</h3>
-                            </div>
-                        </a>
                         <div class="aui-mail-product">
                             <a href="javascript:;" class="aui-mail-product-item">
                                 <div class="aui-mail-product-item-hd">
@@ -52,8 +130,12 @@
                             </p>
                         </a>
                         <div class="aui-mail-button">
-                            {$datas.data_pay==4?"<a href='javascript:;'>再次兑换</a>":"<a href='javascript:;'>确认收货</a>"}
-                            <a href="/integral.php/member/order/orderdetail/order_no/{$datas.order_no}" class="aui-df-color">查看详情</a>
+                            {if condition="$datas.data_order == 4"}
+                            <a href="javascript:(0)" onclick="deorder('{$datas.order_no}')">删除订单</a>
+                            {else/}
+                            <a  href="javascript:(0)" onclick="affirm('{$datas.order_no}')">确认收货</a>
+                            {/if}
+                            <a  href="/integral.php/member/order/orderdetail/order_no/{$datas.order_no}" class="aui-df-color">查看详情</a>
                         </div>
                     </div>
                     {/foreach}

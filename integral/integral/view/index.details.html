@@ -13,7 +13,7 @@
     {if condition="empty($data.images)"}
     <img src="__STATIC__/integral/img/nopic-107.png"  alt="">
     {else /}
-    <img src="__STATIC__/uploads/business/{$data.images}"  alt="">
+    <img  src="__STATIC__/uploads/business/{$data.images}"  alt="">
     {/if}
 </a>
 
@@ -21,13 +21,8 @@
 </div>
 <div class="commodity_banner">
     <a href="javascript:void(0)" class="commodity_top_l">
-        {if condition="empty($data.images)"}
-        <img src="__STATIC__/integral/img/nopic-107.png" style="height: 60px;width: 60px" alt="">
-        {else /}
-        <img src="__STATIC__/uploads/business/{$data.images}" style="height: 60px;width: 60px"   alt="">
-        {/if}
-        <span>{$data.title}</span>
-    </a>
+        {$data.title}
+            </a>
     <div class="commodity_title">
         <a href=""><h3>{$data.data_desc}</h3></a>
         <div style="color: red">
@@ -47,11 +42,11 @@
             <input type="hidden" name="product_id" value="{$data.product_id}">
             <input type="hidden" name="admin_id" value="{$data.admin_id}">
             <input type="hidden" name="appid" value="{$data.appid}">
-            <input class="comm_f_04"   type="submit" value="立即兑换">
+            <input   class="comm_f_04"  style="background: #DF3033;color: #0D1529"  type="submit" value="立即兑换">
         </form>
     </ul>
 </div>
-<footer class="aui-footer aui-footer-fixed">
+<footer class="aui-footer aui-footer-fixed" style="display: none" >
     <a href="{:url('index/index/index')}"  class="aui-tabBar-item">
                     <span class="aui-tabBar-item-icon">
                         <i class="icon icon-loan"></i>

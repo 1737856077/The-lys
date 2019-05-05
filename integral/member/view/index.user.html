@@ -21,10 +21,10 @@
         <div class="aui-ona-user">
             {if condition="empty($member_data.img)"}
             <form class="form1" id="form1" action="" enctype="multipart/form-data">
-            <img src="__STATIC__/integral/img/user.png"  alt=""> <input onchange="save()" name="img" type="file" style="display:block;width:70px;height: 70px;opacity:0;margin-top: -70px;position:absolute" />
+                <img src="__STATIC__/integral/img/user.png"  alt=""> <input onchange="save()" name="img" type="file" style="display:block;width:70px;height: 70px;opacity:0;margin-top: -70px;position:absolute" />
             </form>
             <input type="hidden" name="uid" id="uid" class="uid" value="{$member_data.uid}">
-                {else/}
+            {else/}
             <form action="" id="form1"  class="form1" enctype="multipart/form-data">
                 <img src="__STATIC__/integral/user/{$member_data.img}"  alt=""> <input onchange="save()" name="img" type="file" style="display:block;width:70px;height: 70px;opacity:0;margin-top: -70px;position:absolute" />
             </form>
@@ -46,13 +46,13 @@
                     contentType: false,
                     processData: false,
                     success: function (result) {
-                      if (result==1){
-                          test()
-                          window.location.reload()
-                      } else {
-                          test1()
-                          window.location.reload()
-                      }
+                        if (result==1){
+                            test()
+                            window.location.reload()
+                        } else {
+                            test1()
+                            window.location.reload()
+                        }
                     },
                 });
             }
@@ -79,7 +79,7 @@
                 })
             }
         </script>
-            <h1>{$member_data.username}</h1>
+        <h1>{$member_data.username}</h1>
 
     </div>
     <div class="aui-palace">
@@ -91,7 +91,7 @@
                 <h2>积分详情</h2>
             </div>
         </a>
-            <a href="__URL__/sorder/uid/{$member_data.uid}" class="aui-palace-grid">
+        <a href="__URL__/sorder/uid/{$member_data.uid}" class="aui-palace-grid">
             <div class="aui-palace-grid-icon">
                 <img src="__STATIC__/integral/img/icon-time-003.png" alt="">
             </div>
@@ -156,85 +156,6 @@
 
             </div>
         </a>
-        <!--<a href="javascript:;" class="aui-flex">-->
-            <!--<div class="aui-cou-img">-->
-                <!--<img src="__STATIC__/integral/img/icon-tag-008.png" alt="">-->
-            <!--</div>-->
-            <!--<div class="aui-flex-box">-->
-                <!--<h2>修改密码</h2>-->
-            <!--</div>-->
-            <!--<div class="aui-arrow">-->
-                <!--<p></p>-->
-            <!--</div>-->
-        <!--</a>-->
-        <!--<div class="divHeight"></div>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-            <!--<div class="aui-cou-img">-->
-                <!--<img src="__STATIC__/integral/img/icon-tag-009.png"  alt="">-->
-            <!--</div>-->
-            <!--<div class="aui-flex-box">-->
-                <!--<h2>分享</h2>-->
-            <!--</div>-->
-            <!--<div class="aui-arrow">-->
-                <!--<p></p>-->
-            <!--</div>-->
-        <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-            <!--<div class="aui-cou-img">-->
-                <!--<img src="__STATIC__/integral/img/icon-tag-010.png"  alt="">-->
-            <!--</div>-->
-            <!--<div class="aui-flex-box">-->
-                <!--<h2>设置</h2>-->
-            <!--</div>-->
-            <!--<div class="aui-arrow">-->
-                <!--<p></p>-->
-            <!--</div>-->
-        <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-            <!--<div class="aui-cou-img">-->
-                <!--<img src="__STATIC__/integral/img/icon-tag-011.png"  alt="">-->
-            <!--</div>-->
-            <!--<div class="aui-flex-box">-->
-                <!--<h2>关于我们</h2>-->
-            <!--</div>-->
-            <!--<div class="aui-arrow">-->
-                <!--<p></p>-->
-            <!--</div>-->
-        <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-            <!--<div class="aui-cou-img">-->
-                <!--<img src="__STATIC__/integral/img/icon-tag-012.png" alt="">-->
-            <!--</div>-->
-            <!--&lt;!&ndash;<div class="aui-flex-box">&ndash;&gt;-->
-                <!--&lt;!&ndash;<h2>意见反馈</h2>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--<div class="aui-arrow">-->
-                <!--<p></p>-->
-            <!--</div>-->
-        <!--</a>-->
-            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                <!--<div class="aui-cou-img">-->
-                    <!--<img src="__STATIC__/integral/img/icon-tag-013.png"  alt="">-->
-                <!--</div>-->
-                <!--<div class="aui-flex-box">-->
-                    <!--<h2>联系我们</h2>-->
-                <!--</div>-->
-                <!--<div class="aui-arrow">-->
-                    <!--<p></p>-->
-                <!--</div>-->
-            <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-            <!--<div class="aui-cou-img">-->
-                <!--<img src="__STATIC__/integral/img/icon-tag-014.png"  alt="">-->
-            <!--</div>-->
-            <!--<div class="aui-flex-box">-->
-                <!--<h2>版本更新</h2>-->
-            <!--</div>-->
-            <!--<div class="aui-arrow">-->
-                <!--<p>当前版本1.2.0</p>-->
-            <!--</div>-->
-        <!--</a>-->
-
     </div>
     <div style="height:60px;"></div>
 
@@ -251,24 +172,14 @@
                     </span>
             <span  style="color: #4a4d54" class="aui-tabBar-item-text">首页</span>
         </a>
-        <!--<a href="javascript:;" class="aui-tabBar-item">-->
-        <!--<span class="aui-tabBar-item-icon">-->
-        <!--<i class="icon icon-credit"></i>-->
-        <!--</span>-->
-        <!--<span class="aui-tabBar-item-text">直达</span>-->
-        <!--</a>-->
+
         <a href="{:url('integral/index/index')}" class="aui-tabBar-item">
                     <span class="aui-tabBar-item-icon">
                         <i class="icon icon-meTo"></i>
                     </span>
             <span style="color: #4a4d54" class="aui-tabBar-item-text">积分兑换</span>
         </a>
-        <!--<a href="javascript:;" class="aui-tabBar-item">-->
-        <!--<span class="aui-tabBar-item-icon">-->
-        <!--<i class="icon icon-my"></i>-->
-        <!--</span>-->
-        <!--<span class="aui-tabBar-item-text">关注</span>-->
-        <!--</a>-->
+
         <a href="{:url('member/index/index')}" class="aui-tabBar-item ">
                     <span class="aui-tabBar-item-icon">
                         <i class="icon icon-find"></i>

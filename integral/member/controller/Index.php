@@ -10,6 +10,7 @@ namespace app\member\controller;
 
 use app\common\controller\CommonIntegra;
 use think\Db;
+use think\Request;
 use think\Session;
 
 class Index extends CommonIntegra
@@ -146,14 +147,15 @@ class Index extends CommonIntegra
      */
     public function userimg()
     {
+        $param= $this->request->param();
+        $uid = htmlspecialchars(isset($param['uid'])?$param['uid']:'');
         $request = Request::instance();
-        dump($request);die();
         $file = $request->file('img');
         if ($file) {
             $info = $file->validate([
                 'size' => (1024*1024)*1,
                 'ext' => 'jpeg,jpg,png,bmp'
-            ])->move("static/home/uploads/member");
+            ])->move("static/integral/user");
             if ($info) {
                 $datas['img'] = $info->getSaveName();//头像
                 Session::set('userimg',  $datas['img']);
@@ -161,10 +163,16 @@ class Index extends CommonIntegra
                 $this->error($file->getError());
             }
         }
+        $res = Db::name('member')->where('uid',$uid)->update(['img'=>$datas['img']]);
+        if ($res){
+            return json(1);
+        }else{
+            return json(0);
+        }
     }
     //用户头像未完成页面ajax提交失败
     /**
-     * 积分详情
+     * 积分详情-
      */
     public function integrals()
     {
@@ -172,8 +180,36 @@ class Index extends CommonIntegra
         $uid =htmlspecialchars(trim(($param['uid'])?$param['uid']:''));
         $record_mdol = Db::name('member_integral_record');
         $record_data = $record_mdol->where('uid',$uid)->order('create_time desc')->select();
+        $MemberIntegral = Db::name('member')->where([
+            'uid'=>$uid
+        ])->field('invoice_money')->find();
+        if($MemberIntegral['invoice_money']>0.01){
+            $data = $MemberIntegral['invoice_money'];
+        }else{
+            $data = '当前商家没有对应的积分';
+        }
         $this->assign('data',$record_data);
+        $this->assign('invoice_money',$data);
         return $this->fetch();
+    }
+    /**
+     * 自动收货
+     */
+    public function consignee($uid)
+    {
+        if (!$uid){
+            echo '参数错误';
+            exit();
+        }
+        $data = Db::name('integral_order')->where('uid',$uid)->select();
+        //收货时间上限
+        $times =60*60*24*15;
+        foreach($data as $k=>$v)
+        {
+           if (time()>($v['create_time']+$times)) {
+               Db::name('integral_order')->where('order_no',$v['order_no'])->update(['data_order'=>4]);
+           }
+        }
     }
     /**
      * 订单中心
@@ -181,9 +217,14 @@ class Index extends CommonIntegra
         public function sorder()
     {
         $param = $this->request->param();
-        $uid = htmlspecialchars(trim($param['uid'])?$param['uid']:'');
+        $uid = htmlspecialchars(isset($param['uid'])?$param['uid']:'');
+        if (!$uid){
+            echo '参数错误';
+            exit();
+        }
+        $this->consignee($uid);
         $order_model = Db::name('integral_order');
-        $order_data = $order_model->where('uid',$uid)->select();
+        $order_data = $order_model->where('uid',$uid)->order('create_time')->select();
         foreach($order_data as $k=>$v)
         {
            $dat=Db::name('product_integral')->where('product_id',$v['product_id'])->field('images,title')->find();
@@ -198,5 +239,48 @@ class Index extends CommonIntegra
         $this->assign('page',$show);//传到模板显示
         $this->assign('data',$data);//数据
         return $this->fetch('');
+    }
+    /**
+     * 确认收货
+     */
+    public function affirm()
+    {
+        $param = $this->request->param();
+        $order_no = htmlspecialchars(isset($param['order_no'])?$param['order_no']:'');
+        if (!$order_no){
+            echo '参数错误';exit();
+        }
+        $data = Db::name('integral_order')->where('order_no',$order_no)->update(['data_order'=>4]);
+        if ($data){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    /**
+     * 删除订单
+     */
+    public function deorder()
+    {
+        $param = $this->request->param();
+        $order_no = htmlspecialchars(isset($param['order_no'])?$param['order_no']:'');
+        if (!$order_no){
+            echo '<script language="javascript">alert("参数错误");history.go(-1);</script>';
+            die();
+        }
+        $res = Db::name('integral_order')->where('order_no',$order_no)->delete();
+            Db::name('integral_order_detail')->where('order_no',$order_no)->delete();
+            if ($res){
+                return json(1);
+            }else{
+                return json(0);
+            }
+    }
+    /**
+     * 渲染用户中心
+     */
+    public function user()
+    {
+        return $this->fetch();
     }
 }

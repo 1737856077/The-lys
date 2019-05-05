@@ -93,6 +93,13 @@ class Index extends CommonIntegra
         $pay_total = $price_total;
         $pay_real = $price_total;
         $pay_real_account = ($member_data['invoice_money']-$price_total);//用户剩余积分
+        //库存是否足够
+        $nums = Db::name('product_integral')->where('product_id',$product_id)->field('total')->find()['total'];
+        $nums = $nums-$num;
+        if ($nums<0.01){
+            echo '<script language="javascript">alert("库存不足！");history.go(-1);</script>';
+            exit;
+        }
         if ($pay_real_account<0.01){
             echo '<script language="javascript">alert("账户余额不足！");history.go(-1);</script>';
             exit;
@@ -139,6 +146,8 @@ class Index extends CommonIntegra
             'pay_time'=>time()
 
         ];
+        //减少库存
+        $prres = Db::name('product_integral')->where('product_id',$product_id)->update(['total'=>$nums]);
         //积分操作
         $member_integral_record_mode = Db::name('member_integral_record');
         $member_integral_record_data = [
