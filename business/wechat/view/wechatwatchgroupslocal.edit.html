@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>微信分组管理-粉丝分组管理-编辑粉丝分组</title>
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/WechatWatchGroupsLocalAdd.js"></script>
+</head>
+<style type="text/css">
+.ErrorRed{ color:#e74649; /* padding-left: 2%; */ font-size: 14px; display: inline-block;}
+</style>
+
+<body>
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; <a href="{:U('WechatWatchGroupsLocal/index')}">粉丝分组管理</a>&nbsp;>&nbsp; 编辑粉丝分组
+  
+                </div>
+
+                <!--column end-->    
+
+ <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1"  autocomplete="off" onsubmit="javascript:return funsubmit_add();">               
+				 <input type="hidden" name="openid" id="openid"  value="{$getone['wechat_openid']}" />
+                 <div class="clas_box" id="div_replay_news" style="padding-bottom:0px; ">  
+                	
+                    <div class="class_con">
+                        <label for="">昵称</label>
+                         <input type="text"  value="{$getone['nickname']}" disabled="disabled"  />
+                    </div>
+                    <div class="tab_cons" style="width:100%; border-bottom:0px;" id="div_groups_id">
+                                <label for="" style=" height:50px;">所属分组<font class="ErrorRed">*</font></label>
+                                <volist name="ListMemberGroups" id="value">
+                                <php>$_CHECKED = in_array($value['member_groups_id'],$getone['MemberGroupsArr']) ? 'checked="checked"' : "" ;</php>
+                                <span class="fit"><label for="groups_id_{$value['member_groups_id']}" style="text-align:left; padding-left:8px;"><input type="checkbox" name="groups_id[]" id="groups_id_{$value['member_groups_id']}" value="{$value['member_groups_id']}"  {$_CHECKED} >&nbsp;&nbsp;{$value['title']}</label></span>
+                                </volist>
+                                <span style="color:#F00;" id="span_groups_id"></span>
+                    </div>
+                </div>
+                
+                <div class="clas_box" style=" margin-top:0px; padding-top:0px;">  
+                    <div class="de_y">
+                    <button type="submit" class="de_y_l" style="background:#00b6ea">确定</button>
+                    <button type="button" class="de_y_r" style="background:#9b8975" onclick="location.href='__URL__/index';" >返回</button>
+                    </div>
+                </div>
+                <!-- classify end -->   
+</form>			
+        </div>
+        
+        
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>会员管理-会员列表</title>
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/Member.js"></script>
+</head>
+<body>
+        
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:U('Index/index')}">首页</a>&nbsp;>&nbsp; <a >会员管理</a>&nbsp;>&nbsp; <a>会员列表</a>
+					</p>   
+                </div>
+                <div class="div_height_15"></div>	
+                <!-- add end --> 
+                <form action="__URL__/index" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit_search();" autocomplete="off">
+               <div class="Member">
+                    <div class="member_l">
+                    	<a class="selecs" style="width:100px;" href="__URL__/index">显示全部</a>
+                        <!--<a class="append_j" style="width:100px;" href="javascript:vivo(0)">刷新粉丝</a>-->
+                        <div class="careful"></div>
+                    </div>
+                     <div class="paixu">
+                     	
+                        <input type="text" name="SearchTel" id="SearchTel" onblur="if (value=='') {value='输入手机号'}" onfocus="if(value=='输入手机号') {value=''}" value="<php>if(empty($SearchTel)){echo '输入手机号';}else{ echo $SearchTel;}</php>" class="text_titles">
+                        <input type="submit" class="cast" value="搜索">
+                        <span style="color:#F00;" id="span_SearchTel"></span>
+                    </div>
+                </div>
+                </form>
+                 <form action="__URL__/editinfo" method="post" enctype="multipart/form-data" name="form1" id="form1"  autocomplete="off">   
+                <div class="mid" id="div_wechat_list">
+                    <table class="mid_con"  style="border-collapse:collapse;">
+                    	<tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                        	<!--<td class="mid_one"><input type="checkbox" id="chkAll" name="chkAll" onclick="CheckAll(this.form)" value="checkbox" /></td>-->
+                        	<td class="mid_one">序号</td>
+                            <!--<td class="mid_th">uid</td>-->
+                            <td class="mid_th">昵称</td>
+                            <td class="mid_th">手机号</td>
+                            <td class="mid_th">头像</td>
+                            <td class="mid_th">稍客认证</td>
+                            <td class="mid_th">状态</td>
+                            <td class="mid_th">注册时间</td>
+                            <!--<td class="mid_s">操作</td>-->
+                        </tr>
+                        
+						<volist name="List" id="value">
+                            <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                            	<!--<td><input type="checkbox" name="sqt[]" value="{$value['wechat_openid']}" /></td>-->
+                                <td>{$value['member_id']}</td>
+                                <!--<td>{$value['uid']}</td>-->
+                                <td>{$value['nickname']}</td>
+                                <td>{$value['moblie']}</td>
+                                <td><img src="{$value['headimgurl']}" width="50" height="50" /></td>
+                                <td>
+                                <if condition="$value['data_authentication'] eq '1'"><font color="#006600">已认证</font>
+                                <elseif condition="$value['data_authentication'] eq '2'" /><font color="#FF6600">审核中</font>
+                                <else/><font color="#999999">未认证</font>
+                                </if>  
+                                </td>
+                                <td>
+                                <if condition="$value['data_status'] eq '1'"><font color="#006600">已审</font>
+                                <elseif condition="$value['data_status'] eq '2'" /><font color="#ff0000">已冻结</font>
+                                <else/><font color="#999999">未审</font>
+                                </if>  
+                                </td>
+                                <td>{$value['create_time']|date='Y-m-d',###}</td>
+                            </tr>
+                        </volist>
+                      	<php>if(!$count){</php>
+                            <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                                <td colspan="7">暂无相关数据！</td>
+                            </tr>
+                       <php>}</php>
+                    </table>
+                    
+                    <div class="interpret">
+                    	<div class="page">{$page}</div>
+                    </div>
+                    
+                    <br /><br />
+                </div>
+                </form>
+                <!-- mid end -->
+		
+        </div>
+</body>
+</html>

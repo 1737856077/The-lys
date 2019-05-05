@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
+</head>
+<body>
+<div class="menus_r">
+    <div id="con_two_1">
+        <div class="maps">
+            <i></i>
+            <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; <a href="{:U('Material/index')}">素材列表</a>&nbsp;>&nbsp; <a href="javascript:void(0);">添加多媒体素材</a></p>
+        </div>
+        <!--column end-->
+        <form action="{:U('Material/insertMedia')}" method="post" enctype="multipart/form-data">
+            <div class="clas_box">
+                <div class="class_con">
+                    <label for="title">文章标题</label>
+                    <input type="text" name="title" id="title"/>
+                    <span>最多支持50字</span>
+                </div>
+                <div class="class_con">
+                    <label for="data_type">多媒体类型</label>
+                    <select name="data_type" id="data_type" class="l_xiang">
+                        <option value="image">图片</option>
+                        <option value="voice">语音</option>
+                        <option value="video">视频</option>
+                        <option value="thumb">缩略图</option>
+                    </select>
+                </div>
+                <div class="class_con">
+                    <label for="introduction">简介</label>
+                    <input type="text" name="introduction" id="introduction" />
+                </div>
+                <div class="class_con">
+                    <label for="media">上传多媒体</label>
+                    <input type="file" name="media" id="media" style="width:165px; " />
+                    <span>图片支持JPG、PNG、GIF格式，大小4M！</span>
+                </div>
+                <div class="de_y">
+                    <button type="submit" class="de_y_l" style="background:#00b6ea">确定</button>
+                    <button type="button" class="de_y_r" style="background:#9b8975">返回</button>
+                </div>
+                <span class="by">Powered by Ecomma.net</span>
+            </div>
+        </form>
+        <!-- classify end -->
+    </div>
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+</body>
+</html>

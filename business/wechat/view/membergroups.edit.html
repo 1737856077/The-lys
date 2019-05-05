@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>微信分组管理-编辑本地分组</title>
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/MemberGroupsAdd.js"></script>
+</head>
+<style type="text/css">
+.ErrorRed{ color:#e74649; /* padding-left: 2%; */ font-size: 14px; display: inline-block;}
+</style>
+
+<body>
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; 编辑本地分组
+  
+                </div>
+
+                <!--column end-->    
+
+ <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit_add();" autocomplete="off">               
+				 <input type="hidden" name="id" id="id"  value="{$getone['member_groups_id']}" />
+                 <div class="clas_box" id="div_replay_news" style="padding-bottom:0px; ">  
+                	
+                    <div class="class_con">
+                        <label for="">分组名称</label>
+                         <input type="text" name="title" id="title" value="{$getone['title']}" maxlength="10" onKeyPress="return noStrs(event);" onblur="onblur_title()" />
+                         <span style="color:#F00;" id="span_title"></span>
+                    </div>
+
+                </div>
+                
+                <div class="clas_box" style=" margin-top:0px; padding-top:0px;">  
+                    <div class="de_y">
+                    <button type="submit" class="de_y_l" style="background:#00b6ea">确定</button>
+                    <button type="button" class="de_y_r" style="background:#9b8975" onclick="location.href='__URL__/index';" >返回</button>
+                    </div>
+                </div>
+                <!-- classify end -->   
+</form>			
+        </div>
+        
+        
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>微信素材管理-音乐素材列表</title>
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
+</head>
+<body>
+        
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信素材管理&nbsp;>&nbsp; 音乐素材列表
+					</p>   
+                </div>
+                <div class="div_height_15"></div>
+                <!-- add end --> 
+				<div class="Member">
+                    <div class="member_l">
+                    	<a class="selecs" style="width:100px;" href="__URL__/add">添加音乐素材</a>
+                        <div class="careful"></div>
+                    </div>
+                     
+                </div>	
+                 <form action="" method="post" enctype="multipart/form-data" name="form1" id="form1" autocomplete="off">   
+                <div class="mid" id="div_wechat_list">
+                    <table class="mid_con"  style="border-collapse:collapse;">
+                    	<tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                        	<td class="mid_one">ID</td>
+                            <td class="mid_th">标题</td>
+                            <td class="mid_th">音乐</td>
+                            <td class="mid_th">缩略图</td>
+                            <td class="mid_th">添加时间</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        
+						<volist name="List" id="value">
+                            <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                                <td>{$value['id']}</td>
+                                <td>{$value['title']}</td>
+                                <td><audio src="{$value['url']}"  id="audio_id" controls="controls"  >您的浏览器不支持 audio 标签。</audio></td>
+                                <td><img src="{$value['thumb_url']}" height="70" width="90" alt="" /></td>
+                                <td>{$value['create_time']|date='Y-m-d H:i:s',###}</td>
+                                <td>
+                                	<a href="__URL__/edit/id/{$value['id']}">编辑</a>　
+                                    <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+                      	<php>if(!$count){</php>
+                            <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                                <td colspan="6">暂无相关数据！</td>
+                            </tr>
+                       <php>}</php>
+                    </table>
+                    
+                    <div class="interpret">
+                    	<div class="page">{$page}</div>
+                    </div>
+                    
+                    <br /><br />
+                </div>
+                </form>
+                <!-- mid end -->
+		
+        </div>
+</body>
+</html>
