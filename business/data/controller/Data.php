@@ -36,11 +36,4 @@ class Data extends Controller
         return $this->fetch();
     }
 
-    public function add()
-    {
-        $arr['x'] = [1,2,3,4,5];
-        $arr['y'] = [1,2,3,4,5];
-        return json($arr);
-    }
-
 }

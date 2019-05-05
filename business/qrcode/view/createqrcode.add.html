@@ -44,14 +44,21 @@
                         <td colspan="2" class="tit">生成积分码</td>
                     </tr>
                     <tr class="tr1">
-                        <td class="tdl">产品:<span style="color:#f00;">*</span></td>
+                    <td class="tdl">产品:<span style="color:#f00;">*</span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <select name="product_id">
+                            {foreach $listProduct as $value}
+                            <option value="{$value['product_id']}">{$value['title']}</option>
+                            {/foreach}
+                        </select>
+                        <span id="span_product_id" style="color:#f00;"></span>
+                    </td>
+                </tr>
+                    <tr class="tr1">
+                        <td class="tdl">对应积分:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
-                            <select name="product_id">
-                                {foreach $listProduct as $value}
-                                <option value="{$value['product_id']}">{$value['title']}</option>
-                                {/foreach}
-                            </select>
-                            <span id="span_product_id" style="color:#f00;"></span>
+                            <input type="text" name="integral_num" placeholder="请输入对应积分数量" style="height: 30px;">
+                            <span id="integral_num" style="color:#f00;"></span>
                         </td>
                     </tr>
                     <tr class="tr1">

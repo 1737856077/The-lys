@@ -67,6 +67,7 @@ class Createqrcode extends CommonBase
         $ModelAdmin=Db::name('admin');
 
         $product_id=htmlspecialchars(isset($param['product_id']) ? trim($param['product_id']) : '');
+        $integral_num=htmlspecialchars(isset($param['integral_num']) ? trim($param['integral_num']) : '');
         $title=htmlspecialchars(isset($param['title']) ? trim($param['title']) : '');
         $level=htmlspecialchars(isset($param['level']) ? trim($param['level']) : 'L');
         $size=htmlspecialchars(isset($param['size']) ? intval($param['size']) : 1);
@@ -143,6 +144,7 @@ class Createqrcode extends CommonBase
             'data_desc'=>$data_desc,
             'create_time'=>$gettime,
             'update_time'=>$gettime,
+            'integral_num'=>$integral_num,
         );
         $ReturnID=$ModelProductCode->insert($data);
         if(!$ReturnID){
@@ -201,6 +203,7 @@ class Createqrcode extends CommonBase
                 'compress_code'=>$_compress_code,
                 'create_time'=>$gettime,
                 'update_time'=>$gettime,
+                'integral_num'=>$integral_num,
             );
             $data_product_code_info['images']='';
             if($actionType == 1) {

@@ -112,11 +112,11 @@
     <!--<script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>-->
     <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/jquery.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/echarts.common.min.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/echarts.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery.js"></script>
+    <!--<script type="text/javascript" src="__STATIC__/business/js/require.js"></script>-->
+
 </head>
 <body>
 <div class="loader" style="display:none">
@@ -257,7 +257,7 @@
                                         <td class="ng-binding">
                                             <input type="text" name="" value="{$count}"
                                                                                style="border:none;">
-                                            （次）
+                                            （次数）
                                         </td>
                                         <td class="text-right"></td>
                                     </tr>
@@ -265,51 +265,205 @@
                                         <td class="table-label">已兑换礼品：</td>
                                         <td colspan="2" class="ng-binding">
                                             <input type="text" name="" value="{$count2}" style="border:none;">
-                                            （个）
+                                            （数量）
                                         </td>
                                     </tr>
 
                                     </tbody>
                                 </form>
                             </table>
-                            <div id="main" style="width: 600px; height: 400px;"></div>
+                            <div id="main" style="width: 500px; height: 300px;"></div>
+                            <div id="main2" style="width: 500px; height: 300px;"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <script>
-            /*$.ajax({
-                async: false,
-                url:"http://suyuan.localhost/admin.php/sinterface/dscanrank/index",
-                type:'GET',
-                dataType:"json",
-                success: function(data){
-                     // $('.data1').val(data.data.totalCompany)
-                    alert(data.data.areaData[0].value);
+            function ajax(){
+                var ajaxData = {
+                    type:arguments[0].type || "GET",
+                    url:arguments[0].url || "",
+                    async:arguments[0].async || "true",
+                    data:arguments[0].data || null,
+                    dataType:arguments[0].dataType || "text",
+                    contentType:arguments[0].contentType || "application/x-www-form-urlencoded",
+                    beforeSend:arguments[0].beforeSend || function(){},
+                    success:arguments[0].success || function(){},
+                    error:arguments[0].error || function(){}
                 }
-                });*/
+                ajaxData.beforeSend()
+                var xhr = createxmlHttpRequest();
+                xhr.responseType=ajaxData.dataType;
+                xhr.open(ajaxData.type,ajaxData.url,ajaxData.async);
+                xhr.setRequestHeader("Content-Type",ajaxData.contentType);
+                xhr.send(convertData(ajaxData.data));
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4) {
+                        if(xhr.status == 200){
+                            ajaxData.success(xhr.response)
+                        }else{
+                            ajaxData.error()
+                        }
+                    }
+                }
+            }
+
+            function createxmlHttpRequest() {
+                if (window.ActiveXObject) {
+                    return new ActiveXObject("Microsoft.XMLHTTP");
+                } else if (window.XMLHttpRequest) {
+                    return new XMLHttpRequest();
+                }
+            }
+
+            function convertData(data){
+                if( typeof data === 'object' ){
+                    var convertResult = "" ;
+                    for(var c in data){
+                        convertResult+= c + "=" + data[c] + "&";
+                    }
+                    convertResult=convertResult.substring(0,convertResult.length-1)
+                    return convertResult;
+                }else{
+                    return data;
+                }
+            }
+        </script>
+        <script>
             var myChart = echarts.init(document.getElementById('main'));
-            $.get(':url("data/add")').done(function (data) {
-                 console.log(data);
-                    myChart.setOption({
+            var nameArr = [];
+            var valueArr = [];
+            ajax({
+                type:"GET",
+                url:"http://suyuan.localhost/admin.php/sinterface/dscanrank/index",
+                dataType:"json",
+                beforeSend:function(){
+                    //some js code
+                },
+                success:function(data){
+                    // alert(data.data.areaData[0].name);
+                    for (var i = 0;i < data.data.areaData.length;i++){
+                       nameArr.push(data.data.areaData[i].name);
+                       valueArr.push(data.data.areaData[i].value);
+                    }
+                    var option = {
                         title: {
-                            text: '区域扫码信息显示'
+                            text: '区域扫码数据显示'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['地区']
                         },
                         xAxis: {
-                            type: 'category',
-                            data: data.x
+                            data: nameArr
                         },
-                        yAxis: {
-                            type: 'value'
-                        },
+                        yAxis: {},
                         series: [{
-                            data: data.y,
-                            type: 'bar'
+                            name: '数量',
+                            type: 'bar',
+                            data: valueArr
                         }]
-                    });
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                }
+            })
+            //定位数据
+            var SecChart  = echarts.init(document.getElementById('main2'));
+            myChart.showLoading();
+
+            $.get('data/asset/geo/HK.json', function (geoJson) {
+
+                myChart.hideLoading();
+
+                echarts.registerMap('HK', geoJson);
+
+                myChart.setOption(option = {
+                    title: {
+                        text: '香港18区人口密度 （2011）',
+                        subtext: '人口密度数据来自Wikipedia',
+                        sublink: 'http://zh.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E8%A1%8C%E6%94%BF%E5%8D%80%E5%8A%83#cite_note-12'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{b}<br/>{c} (p / km2)'
+                    },
+                    toolbox: {
+                        show: true,
+                        orient: 'vertical',
+                        left: 'right',
+                        top: 'center',
+                        feature: {
+                            dataView: {readOnly: false},
+                            restore: {},
+                            saveAsImage: {}
+                        }
+                    },
+                    visualMap: {
+                        min: 800,
+                        max: 50000,
+                        text:['High','Low'],
+                        realtime: false,
+                        calculable: true,
+                        inRange: {
+                            color: ['lightskyblue','yellow', 'orangered']
+                        }
+                    },
+                    series: [
+                        {
+                            name: '香港18区人口密度',
+                            type: 'map',
+                            mapType: 'HK', // 自定义扩展图表类型
+                            itemStyle:{
+                                normal:{label:{show:true}},
+                                emphasis:{label:{show:true}}
+                            },
+                            data:[
+                                {name: '中西区', value: 20057.34},
+                                {name: '湾仔', value: 15477.48},
+                                {name: '东区', value: 31686.1},
+                                {name: '南区', value: 6992.6},
+                                {name: '油尖旺', value: 44045.49},
+                                {name: '深水埗', value: 40689.64},
+                                {name: '九龙城', value: 37659.78},
+                                {name: '黄大仙', value: 45180.97},
+                                {name: '观塘', value: 55204.26},
+                                {name: '葵青', value: 21900.9},
+                                {name: '荃湾', value: 4918.26},
+                                {name: '屯门', value: 5881.84},
+                                {name: '元朗', value: 4178.01},
+                                {name: '北区', value: 2227.92},
+                                {name: '大埔', value: 2180.98},
+                                {name: '沙田', value: 9172.94},
+                                {name: '西贡', value: 3368},
+                                {name: '离岛', value: 806.98}
+                            ],
+                            // 自定义名称映射
+                            nameMap: {
+                                'Central and Western': '中西区',
+                                'Eastern': '东区',
+                                'Islands': '离岛',
+                                'Kowloon City': '九龙城',
+                                'Kwai Tsing': '葵青',
+                                'Kwun Tong': '观塘',
+                                'North': '北区',
+                                'Sai Kung': '西贡',
+                                'Sha Tin': '沙田',
+                                'Sham Shui Po': '深水埗',
+                                'Southern': '南区',
+                                'Tai Po': '大埔',
+                                'Tsuen Wan': '荃湾',
+                                'Tuen Mun': '屯门',
+                                'Wan Chai': '湾仔',
+                                'Wong Tai Sin': '黄大仙',
+                                'Yau Tsim Mong': '油尖旺',
+                                'Yuen Long': '元朗'
+                            }
+                        }
+                    ]
+                });
             });
-            // myChart.setOption(option);
         </script>
 
     </div>
