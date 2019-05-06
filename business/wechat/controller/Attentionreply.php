@@ -106,8 +106,8 @@ class Attentionreply extends UserCommon{
 		$text_description=htmlspecialchars(trim($_POST['text_description']));
 		
 		require_once './Public/Lib/UploadFile.php';
-		import('ORG.Util.Image');
-		$Image = new Image();
+		//import('ORG.Util.Image');
+		//$Image = new Image();
 		
 		$_dir_time=date('Ymd');
 		$_dir='./Public/Uploads/AutomaticReply/'. $_dir_time;
@@ -115,8 +115,12 @@ class Attentionreply extends UserCommon{
 			if (!file_exists($_dir)) {mkdir($_dir, 0777, true);}
 			if(empty($news_link_url) and $_FILES['news_images']['size']>0){
 				$news_link_url=upface($_dir."/","news_images");
-				$news_link_url=$Image->thumb($_dir."/".$news_link_url, $_dir."/"."thumb_".$news_link_url,"",C('AutomaticReply_Width'),C('AutomaticReply_Height'));
-				$news_link_url=parent::GetServerHostUrl().str_replace(".", '', $_dir)."/".$news_link_url;
+                $Image = Image::open($_dir."/".$news_link_url);
+				//$news_link_url=$Image->thumb($_dir."/".$news_link_url, $_dir."/"."thumb_".$news_link_url,"",C('AutomaticReply_Width'),C('AutomaticReply_Height'));
+                $news_link_url=$_dir."/"."thumb_".$news_link_url;
+                $Image->thumb(config('AutomaticReply_Width'), config('AutomaticReply_Height'))
+                    ->save($news_link_url);
+                $news_link_url=parent::GetServerHostUrl().str_replace(".", '', $_dir)."/".$news_link_url;
 			}
 		
 			if(empty($news_link_url) or empty($news_title) or empty($news_description) or empty($news_url)
@@ -145,7 +149,11 @@ class Attentionreply extends UserCommon{
 			if (!file_exists($_dir)) {mkdir($_dir, 0777, true);}
 			if(empty($image_link_url) and $_FILES['image_images']['size']>0){
 				$image_link_url=upface($_dir."/","image_images");
-				$image_link_url=$Image->thumb($_dir."/".$image_link_url, $_dir."/"."thumb_".$image_link_url,"",C('AutomaticReply_Width'),C('AutomaticReply_Height'));
+                $Image = Image::open($_dir."/".$image_link_url);
+				//$image_link_url=$Image->thumb($_dir."/".$image_link_url, $_dir."/"."thumb_".$image_link_url,"",C('AutomaticReply_Width'),C('AutomaticReply_Height'));
+                $image_link_url=$_dir."/"."thumb_".$image_link_url;
+                $Image->thumb(config('AutomaticReply_Width'), config('AutomaticReply_Height'))
+                    ->save($image_link_url);
 				$image_link_url=parent::GetServerHostUrl().str_replace(".", '', $_dir)."/".$image_link_url;
 			}
 				
@@ -227,17 +235,21 @@ class Attentionreply extends UserCommon{
 		$text_description=htmlspecialchars(trim($_POST['text_description']));
 		
 		require_once './Public/Lib/UploadFile.php';
-		import('ORG.Util.Image');
-		$Image = new Image();
+		//import('ORG.Util.Image');
+		//$Image = new Image();
 		
 		$_dir_time=date('Ymd');
 		$_dir='./Public/Uploads/AutomaticReply/'. $_dir_time;
 		if($msgtype=="news"){//图文消息			
 			if (!file_exists($_dir)) {mkdir($_dir, 0777, true);}
 			if(empty($news_link_url) and $_FILES['news_images']['size']>0){
-				$news_link_url=upface($_dir."/","news_images");	
-				$news_link_url=$Image->thumb($_dir."/".$news_link_url, $_dir."/"."thumb_".$news_link_url,"",C('AutomaticReply_Width'),C('AutomaticReply_Height'));
-				$news_link_url=parent::GetServerHostUrl().str_replace(".", '', $_dir)."/".$news_link_url;
+				$news_link_url=upface($_dir."/","news_images");
+                $Image = Image::open($_dir."/".$news_link_url);
+				//$news_link_url=$Image->thumb($_dir."/".$news_link_url, $_dir."/"."thumb_".$news_link_url,"",C('AutomaticReply_Width'),C('AutomaticReply_Height'));
+                $news_link_url=$_dir."/"."thumb_".$news_link_url;
+                $Image->thumb(config('AutomaticReply_Width'), config('AutomaticReply_Height'))
+                    ->save($news_link_url);
+                $news_link_url=parent::GetServerHostUrl().str_replace(".", '', $_dir)."/".$news_link_url;
 			}
 				
 			if(empty($news_link_url) or empty($news_title) or empty($news_description) or empty($news_url)
@@ -266,8 +278,12 @@ class Attentionreply extends UserCommon{
 			if (!file_exists($_dir)) {mkdir($_dir, 0777, true);}
 			if(empty($image_link_url) and $_FILES['image_images']['size']>0){
 				$image_link_url=upface($_dir."/","image_images");
-				$image_link_url=$Image->thumb($_dir."/".$image_link_url, $_dir."/"."thumb_".$image_link_url,"",C('AutomaticReply_Width'),C('AutomaticReply_Height'));
-				$image_link_url=parent::GetServerHostUrl().str_replace(".", '', $_dir)."/".$image_link_url;
+                $Image = Image::open($_dir."/".$image_link_url);
+				//$image_link_url=$Image->thumb($_dir."/".$image_link_url, $_dir."/"."thumb_".$image_link_url,"",C('AutomaticReply_Width'),C('AutomaticReply_Height'));
+                $image_link_url=$_dir."/"."thumb_".$image_link_url;
+                $Image->thumb(config('AutomaticReply_Width'), config('AutomaticReply_Height'))
+                    ->save($image_link_url);
+                $image_link_url=parent::GetServerHostUrl().str_replace(".", '', $_dir)."/".$image_link_url;
 			}
 			
 			if(empty($image_link_url) ){

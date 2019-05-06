@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>修改密码</title>
+            <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+            <meta content="yes" name="apple-mobile-web-app-capable"/>
+            <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+            <meta content="telephone=no" name="format-detection"/>
+            <link href="__STATIC__/integral/css/user.css" rel="stylesheet" type="text/css"/>
+            <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+            <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/layer.css"/>
+            <script language="javascript" src="__STATIC__/integral/js/layer.m.js"  charset="UTF-8"></script>
+
+        </head>
+<body>
+<section class="aui-flexView">
+    {if condition="!empty($member_data)"}  <section class="aui-scrollView">
+    <div class="aui-flex aui-flex-user b-line">
+        <div class="aui-ona-user">
+            {if condition="empty($member_data.img)"}
+            <form class="form1" id="form1" action="" enctype="multipart/form-data">
+                <img src="__STATIC__/integral/img/user.png"  alt=""> <input onchange="save()" name="img" type="file" style="display:block;width:70px;height: 70px;opacity:0;margin-top: -70px;position:absolute" />
+            </form>
+            <input type="hidden" name="uid" id="uid" class="uid" value="{$member_data.uid}">
+            {else/}
+            <form action="" id="form1"  class="form1" enctype="multipart/form-data">
+                <img src="__STATIC__/integral/user/{$member_data.img}"  alt=""> <input onchange="save()" name="img" type="file" style="display:block;width:70px;height: 70px;opacity:0;margin-top: -70px;position:absolute" />
+            </form>
+            <input type="hidden" name="uid" id="uid" class="uid" value="{$member_data.uid}">
+            {/if}
+        </div>
+        <script>
+            function save() {
+                var formData = new FormData($("#form1")[0]);
+                var uid = $("#uid").val();
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/integral.php/member/index/userimg/uid/"+uid ,//url
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        if (result==1){
+                            test()
+                            window.location.reload()
+                        } else {
+                            test1()
+                            window.location.reload()
+                        }
+                    },
+                });
+            }
+            function test(){
+                layer.open({
+                    style: 'width:100%;border:none; background-color:#78BA32; color:#fff;',
+                    content:'头像更新成功',
+                    time:2,
+                    anim:true,
+                    fixed:false,
+                    top:50,
+                    shade:false
+                })
+            }
+            function test1(){
+                layer.open({
+                    style: 'width:100%;border:none; background-color:#78BA32; color:#fff;',
+                    content:'更新失败',
+                    time:2,
+                    anim:true,
+                    fixed:false,
+                    top:50,
+                    shade:false
+                })
+            }
+        </script>
+
+        <script>
+            function validate() {
+                var pwd1 = document.getElementById("pwd1").value;
+                var pwd2 = document.getElementById("pwd2").value;
+                <!-- 对比两次输入的密码 -->
+                if(pwd1 == pwd2) {
+                    document.getElementById("tongguo").innerHTML="<font color='green'>两次密码相同</font>";
+                }
+                else {
+                    document.getElementById("tongguo").innerHTML="<font color='red'>两次密码不相同</font>";
+                }
+            }
+        </script>
+        <script>
+            function alter() {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/integral.php/member/user/SavePwd" ,//url
+                    data: $('.form1').serialize(),
+                    success: function (result) {
+                            alert(result['msg'])
+                }
+            })
+            }
+        </script>
+    </div>
+
+    <div class="divHeight"></div>
+    <form class="form1" action="">
+    <div class="aui-course-list">
+        <div class="divHeight"></div>
+        <a href="javascript:;" class="aui-flex">
+        <div>
+            <p style="width: 5rem">原密码:  </p>
+        </div>
+        <div class="aui-flex-box">
+            <input type="password" name="pwd" value="" placeholder="原密码">
+        </div>
+        </a>
+        <a href="javascript:;" class="aui-flex">
+            <div>
+                <p style="width: 5rem">新 密 码:  </p>
+            </div>
+            <div class="aui-flex-box">
+                <input type="password" name="pwd1" id="pwd1" value="" placeholder="新密码">
+            </div>
+        </a>
+        <a href="javascript:;" class="aui-flex">
+            <div>
+                <p style="width:5rem">确认密码:</p>
+            </div>
+            <div class="aui-flex-box">
+                <input type="password" name="pwd2" id="pwd2" onkeyup="validate()" value="" placeholder="确认密码">
+            </div>
+        </a>
+        <p id="tongguo"></p>
+        <input type="button" style="border: 0px;width: 20rem;text-align: center;background: #ff0021" value="修改" onclick="alter()">
+    </div>
+
+    <div style="height:60px;"></div>
+    </form>
+</section>
+    {else /}
+    错误
+    {/if}
+
+
+    <footer class="aui-footer aui-footer-fixed">
+        <a href="{:url('index/index/index')}"  class="aui-tabBar-item">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-loan"></i>
+                    </span>
+            <span  style="color: #4a4d54" class="aui-tabBar-item-text">首页</span>
+        </a>
+        <!--<a href="javascript:;" class="aui-tabBar-item">-->
+        <!--<span class="aui-tabBar-item-icon">-->
+        <!--<i class="icon icon-credit"></i>-->
+        <!--</span>-->
+        <!--<span class="aui-tabBar-item-text">直达</span>-->
+        <!--</a>-->
+        <a href="{:url('integral/index/index')}" class="aui-tabBar-item">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-meTo"></i>
+                    </span>
+            <span style="color: #4a4d54" class="aui-tabBar-item-text">积分兑换</span>
+        </a>
+        <!--<a href="javascript:;" class="aui-tabBar-item">-->
+        <!--<span class="aui-tabBar-item-icon">-->
+        <!--<i class="icon icon-my"></i>-->
+        <!--</span>-->
+        <!--<span class="aui-tabBar-item-text">关注</span>-->
+        <!--</a>-->
+        <a href="{:url('member/index/index')}" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-find"></i>
+                    </span>
+            <span style="color: #4a4d54" class="aui-tabBar-item-text">我的</span>
+        </a>
+    </footer>
+</section>
+
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>

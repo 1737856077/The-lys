@@ -176,6 +176,7 @@ class Index extends CommonIntegra
      */
     public function integrals()
     {
+
         $param = $this->request->param();
         $uid =htmlspecialchars(trim(($param['uid'])?$param['uid']:''));
         $record_mdol = Db::name('member_integral_record');
@@ -186,7 +187,7 @@ class Index extends CommonIntegra
         if($MemberIntegral['invoice_money']>0.01){
             $data = $MemberIntegral['invoice_money'];
         }else{
-            $data = '当前商家没有对应的积分';
+                $data = '当前商家没有对应的积分';
         }
         $this->assign('data',$record_data);
         $this->assign('invoice_money',$data);
@@ -281,6 +282,9 @@ class Index extends CommonIntegra
      */
     public function user()
     {
+        $member_id = Session::get('memberid');
+        $member_data = Db::name('member')->where('id',$member_id)->find();
+        $this->assign('member_data',$member_data);
         return $this->fetch();
     }
 }

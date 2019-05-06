@@ -13,7 +13,16 @@ use think\Request;
 use think\Db;
 use think\Session;
 use think\model;
-class Api extends Controller
-{
+use \app\wechat\controller\HomeCommonAction;
+use \app\wechat\controller\HomeGetWinXinInfoAction;
+class Api extends HomeCommonAction{
 
+    private $GetUserOpenid="";
+
+    public function index(){
+        $GetWinXinInfoAction=new HomeGetWinXinInfoAction();
+        $this->GetUserOpenid=$GetWinXinInfoAction->GetOpenid();
+        echo $this->GetUserOpenid;
+        exit;
+    }
 }

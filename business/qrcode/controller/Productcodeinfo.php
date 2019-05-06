@@ -84,7 +84,7 @@ class Productcodeinfo extends CommonBase
         $PNG_WEB_DIR = config('upload_config.upload_root').'qrcode/'.$getoneProductCode['product_id'].'/'.$_dateYMD.'/';
         include_once './extend/lib/qrcode/qrlib.php';
 
-        $qrurl_data=$this->ConfigQrData['web_host'].'integral.php/index/index/index?code_info_id=';
+        $qrurl_data=$this->ConfigQrData['web_host'].'integral.php/index/index/product?code_info_id=';
         $_List=array();
         foreach ($List as $key=>$value){
             $errorCorrectionLevel=empty($value['qr_level']) ? 'L' : $value['qr_level'] ;

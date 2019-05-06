@@ -98,7 +98,7 @@ class Getwinxininfo extends Controller
 
 	private function __CreateOauthUrlForCode($redirectUrl)
 	{
-		$urlObj["appid"] = APP_ID;
+		$urlObj["appid"] = Session::get('WeiXinConfig_APP_ID');;
 		$urlObj["redirect_uri"] = "$redirectUrl";
 		$urlObj["response_type"] = "code";
 		$urlObj["scope"] = "snsapi_base";
@@ -109,8 +109,8 @@ class Getwinxininfo extends Controller
 
 	private function __CreateOauthUrlForOpenid($code)
 	{
-		$urlObj["appid"] = APP_ID;
-		$urlObj["secret"] = APP_SECRET;
+		$urlObj["appid"] = Session::get('WeiXinConfig_APP_ID');
+		$urlObj["secret"] = Session::get('WeiXinConfig_APP_SECRET');
 		$urlObj["code"] = $code;
 		$urlObj["grant_type"] = "authorization_code";
 		$bizString = $this->ToUrlParams($urlObj);
