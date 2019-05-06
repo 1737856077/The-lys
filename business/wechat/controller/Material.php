@@ -72,7 +72,7 @@ class Material extends CommonBaseHome{
             $this->error('非法上传方法');
         }
 
-        $Public = new Public();
+        $Public = new PublicAction();
         $token = $Public->accessToken();
 
         //判断样式
@@ -114,7 +114,7 @@ class Material extends CommonBaseHome{
 
     /*删除永久素材*/
     public function delMedia($media_id = '') {
-        $Public = new Public();
+        $Public = new PublicAction();
         $token = $Public->accessToken();
         $url = 'https://api.weixin.qq.com/cgi-bin/material/del_material?access_token='.$token;
         $data = '{"media_id":"'.$media_id.'"}';
@@ -236,7 +236,7 @@ class Material extends CommonBaseHome{
                 );
         }
         if(empty($data_arr)) $this->error("此图文已经添加过",'',3);
-        $Public = new Public();
+        $Public = new PublicAction();
         $token = $Public->accessToken();
         $url = 'https://api.weixin.qq.com/cgi-bin/material/add_news?access_token='.$token;
 
@@ -343,7 +343,7 @@ class Material extends CommonBaseHome{
 
     /*获取永久素材列表*/
     public function getMediaList($type='news',$offset=0) {
-        $Public = new Public();
+        $Public = new PublicAction();
         $token = $Public->accessToken();
 
         $url = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token='.$token;
@@ -356,7 +356,7 @@ class Material extends CommonBaseHome{
 
     /*获取素材总数*/
     public function getMediaCount() {
-        $Public = new Public();
+        $Public = new PublicAction();
         $token = $Public->accessToken();
         $url = 'https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token='.$token;
         echo file_get_contents($url);

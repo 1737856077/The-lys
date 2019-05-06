@@ -22,7 +22,7 @@ class PublicAction extends Controller{
     	if ($data->expire_time < time()) {
     		// 如果是企业号用以下URL获取access_token
     		// $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
-    		$url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.C('WeiXin_AppID').'&secret='.C('WeiXin_AppSecret');
+    		$url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.Session::get('WeiXinConfig_APP_ID').'&secret='.Session::get('WeiXinConfig_APP_SECRET');
             wirtefile($url);
             $file_content=file_get_contents($url);
             wirtefile($file_content);
