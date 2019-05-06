@@ -20,5 +20,12 @@ $newArray['yubiaoqian']=array(
     'url'=>'https://openapi.alipay.com/gateway.do',
 );
 
-
+$NewConfig=array(
+    'APP_STATUS' => 'debug',//应用调试模式状态
+    'AutomaticReply_Width' => 600,//微信自动回复图片-上传图片的宽度
+    'AutomaticReply_Height' => 600,//微信自动回复图片-上传图片的高度
+    'WebConfig_Debug' => true,//开启调试模式
+    'WebConfig_Debug_Openid' => 'ojC3OvmfQ6o9_i2IoGVS6Y0aKdJU',//开启调试模式后，调试状态下的openid
+);
+$newArray=array_merge($newArray,$NewConfig);
 return $newArray;
