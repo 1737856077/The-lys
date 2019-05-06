@@ -24,8 +24,8 @@ return [
     ],
 
     //二维码配置信息
-    'qr_data'=>['query_url'=>'https://tzs.sindns.com/integral.php/index/index/index',//二维码的查询地址
-        'web_host'=>'https://tzs.sindns.com/',//二维码的查询-域名地址
+    'qr_data'=>['query_url'=>'http://tzs.sindns.com/integral.php/index/index/index',//二维码的查询地址
+        'web_host'=>'http://tzs.sindns.com/',//二维码的查询-域名地址
     ],
 
     // 管理员状态

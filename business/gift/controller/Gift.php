@@ -22,7 +22,7 @@ class Gift extends Controller
     public function gift()
     {
         $id = Session::get('adminid');
-        $list = Db::name('product_integral')->where('admin_id', $id)->paginate(2);
+        $list = Db::name('product_integral')->where('admin_id', $id)->paginate(3);
         $this->assign('list', $list);
         return $this->fetch();
     }

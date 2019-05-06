@@ -273,7 +273,7 @@
                             <tbody>
                             <tr>
                                 <th class="text-left">用户名</th>
-                                <th>所属商家</th>
+                                <!--<th>所属商家</th>-->
                                 <th>联系方式</th>
                                 <th>积分余额</th>
                                 <th>已消费积分</th>
@@ -281,16 +281,17 @@
                             {volist name="list" id="vo"}
                             <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
                                 <td class="text-left ng-binding" ng-bind="user.username">{$vo.username}</td>
-                                <td class="text-left ng-binding" ng-bind="user.username">{$name}</td>
+                                <!--<td class="text-left ng-binding" ng-bind="user.username"></td>-->
                                 <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.moblie}</td>
                                 <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$vo.invoice_money}</td>
-                                <td class="color-default ng-binding" ng-bind="user.maxwebapp">000</td>
+                                <td class="color-default ng-binding" ng-bind="user.maxwebapp">{$vo.price}</td>
+
                             </tr>
                             {/volist}
                             </tbody>
                         </table>
                         <div class="text-right">
-                            {$list->render()}
+
                         </div>
 
                     </div>
