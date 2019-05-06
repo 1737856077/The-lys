@@ -59,6 +59,7 @@ class Index extends CommonIntegra
      */
     public function suborder()
     {
+
         $param = $this->request->param();
         $description = htmlspecialchars(trim(isset($param['description'])?$param['description']:''));
         $product_id = htmlspecialchars(trim(isset($param['product_id'])?$param['product_id']:''));
@@ -69,25 +70,33 @@ class Index extends CommonIntegra
         $admin_id = htmlspecialchars(intval(isset($param['admin_id'])?$param['admin_id']:''));
         $rceiving_address_id = htmlspecialchars(isset($param['rceiving_address_id'])?$param['rceiving_address_id']:'');
         if (empty($product_id) or  empty($uid) or empty($rceiving_address_id)){
-            echo '<script language="javascript">alert("参数错误！");history.go(-1);</script>';
-            exit;
+           return json([
+                'code'=>0,
+                'msg'=>'请添加收货地址'
+            ]);
         }
         $order_no = date("ymdhis").mt_rand(1000,9999);
         $product_data = Db::name('product_integral')->where('product_id',$product_id)->find();
         if (empty($product_data)){
-            echo '<script language="javascript">alert("无商品内容！");history.go(-1);</script>';
-            exit;
+            return json([
+                'code'=>-1,
+                'msg'=>'无商品'
+            ]);
         }
         $member_data = Db::name('member')->where('uid',$uid)->find();
         if (empty($member_data)){
-            echo '<script language="javascript">alert("参数错误！");history.go(-1);</script>';
-            exit;
+            return json([
+                'code'=>0,
+                'msg'=>'参数错误'
+            ]);
         }
         //计算积分
         $price = $product_data['integral'];
         if ($num<1){
-            echo '<script language="javascript">alert("购买商品不能小于1件！");history.go(-1);</script>';
-            exit;
+            return json([
+                'code'=>-2,
+                'msg'=>'购买商品不能小于一件'
+            ]);
         }
         $price_total = ($price*$num);
         $pay_total = $price_total;
@@ -97,12 +106,16 @@ class Index extends CommonIntegra
         $nums = Db::name('product_integral')->where('product_id',$product_id)->field('total')->find()['total'];
         $nums = $nums-$num;
         if ($nums<0.01){
-            echo '<script language="javascript">alert("库存不足！");history.go(-1);</script>';
-            exit;
+            return json([
+                'code'=>-3,
+                'msg'=>'库存不足'
+            ]);
         }
         if ($pay_real_account<0.01){
-            echo '<script language="javascript">alert("账户余额不足！");history.go(-1);</script>';
-            exit;
+            return json([
+                'code'=>-4,
+                'msg'=>'账户余额不足'
+            ]);
         }
         //订单
         Db::name('member')->where('uid',$uid)->update(['invoice_money'=>$pay_real_account]);
@@ -171,7 +184,13 @@ class Index extends CommonIntegra
         }
 
         $integral_order_res = Db::name('integral_order')->insertGetId($data);
-        return $this->corder($integral_order_detail_res,$integral_order_res);
+//        return $this->corder($integral_order_detail_res,$integral_order_res);
+        return json([
+            'code'=>1,
+            'msg'=>'兑换成功',
+            'a'=>$integral_order_detail_res,
+            'b'=>$integral_order_res
+        ]);
 
     }
     /**
@@ -179,6 +198,12 @@ class Index extends CommonIntegra
      */
     public function corder($a,$b)
     {
+        $param = $this->request->param();
+        $a = htmlspecialchars(isset($param['a'])?$param['a']:'');
+        $b = htmlspecialchars(isset($param['b'])?$param['b']:'');
+        if (!$a or !$b ){
+         echo '请求错误';die();
+        }
         $integral = Db::name('integral_order_detail')->where('id',$a)->find();
         $integral_order = Db::name('integral_order')->where('id',$b)->find();
         $product = Db::name('product_integral')->where('product_id',$integral_order['product_id'])->find();

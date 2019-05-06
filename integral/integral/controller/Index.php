@@ -18,9 +18,8 @@ class Index extends CommonIntegra
      */
     public function index()
     {
-        $admin_id = $this->request->param('adminid');
-        $admin_id = Session::get('adminid');
-        $productData = Db::name('product_integral')->where('admin_id',$admin_id)->where('data_status',1)->paginate(10);
+        $admin_id = Session::get('admin_id');
+        $productData = Db::name('product_integral')->where('admin_id',$admin_id)->where('data_status',1)->select();
         $this->assign('data',$productData);
         return $this->fetch();
     }

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>用户中心</title>
-    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
-    <meta content="yes" name="apple-mobile-web-app-capable"/>
-    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
-    <meta content="telephone=no" name="format-detection"/>
-    <link href="__STATIC__/integral/css/user.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
-    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/layer.css"/>
-    <script language="javascript" src="__STATIC__/integral/js/layer.m.js"  charset="UTF-8"></script>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>修改密码</title>
+            <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+            <meta content="yes" name="apple-mobile-web-app-capable"/>
+            <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+            <meta content="telephone=no" name="format-detection"/>
+            <link href="__STATIC__/integral/css/user.css" rel="stylesheet" type="text/css"/>
+            <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+            <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/layer.css"/>
+            <script language="javascript" src="__STATIC__/integral/js/layer.m.js"  charset="UTF-8"></script>
 
-</head>
+        </head>
 <body>
 <section class="aui-flexView">
     {if condition="!empty($member_data)"}  <section class="aui-scrollView">
@@ -79,115 +79,73 @@
                 })
             }
         </script>
-        <h1>{$member_data.username}</h1>
 
+        <script>
+            function validate() {
+                var pwd1 = document.getElementById("pwd1").value;
+                var pwd2 = document.getElementById("pwd2").value;
+                <!-- 对比两次输入的密码 -->
+                if(pwd1 == pwd2) {
+                    document.getElementById("tongguo").innerHTML="<font color='green'>两次密码相同</font>";
+                }
+                else {
+                    document.getElementById("tongguo").innerHTML="<font color='red'>两次密码不相同</font>";
+                }
+            }
+        </script>
+        <script>
+            function alter() {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/integral.php/member/user/SavePwd" ,//url
+                    data: $('.form1').serialize(),
+                    success: function (result) {
+                            alert(result['msg'])
+                }
+            })
+            }
+        </script>
     </div>
-    <div class="aui-palace">
-        <a href="/integral.php/member/user/AlterPwd/uid/{$member_data.id}" class="aui-palace-grid">
-            <div class="aui-palace-grid-icon">
-                <img src="__STATIC__/integral/img/icon-tag-008.png" alt="">
-            </div>
-            <div class="aui-palace-grid-text">
-                <h2>修改密码</h2>
-            </div>
-        </a>
-        <a href="/integral.php/index/index/unlogin" class="aui-palace-grid">
-            <div class="aui-palace-grid-icon">
-                <img src="__STATIC__/integral/img/TC.png" alt="">
-            </div>
-            <div class="aui-palace-grid-text">
-                <h2>退出登录</h2>
-            </div>
-        </a>
-    </div>
+
     <div class="divHeight"></div>
+    <form class="form1" action="">
     <div class="aui-course-list">
         <div class="divHeight"></div>
-        <!--<a href="javascript:;" class="aui-flex">-->
-        <!--<div class="aui-cou-img">-->
-        <!--<img src="__STATIC__/integral/img/icon-tag-008.png" alt="">-->
-        <!--</div>-->
-        <!--<div class="aui-flex-box">-->
-        <!--<h2>修改密码</h2>-->
-        <!--</div>-->
-        <!--<div class="aui-arrow">-->
-        <!--<p></p>-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--<div class="divHeight"></div>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-        <!--<div class="aui-cou-img">-->
-        <!--<img src="__STATIC__/integral/img/icon-tag-009.png"  alt="">-->
-        <!--</div>-->
-        <!--<div class="aui-flex-box">-->
-        <!--<h2>分享</h2>-->
-        <!--</div>-->
-        <!--<div class="aui-arrow">-->
-        <!--<p></p>-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-        <!--<div class="aui-cou-img">-->
-        <!--<img src="__STATIC__/integral/img/icon-tag-010.png"  alt="">-->
-        <!--</div>-->
-        <!--<div class="aui-flex-box">-->
-        <!--<h2>设置</h2>-->
-        <!--</div>-->
-        <!--<div class="aui-arrow">-->
-        <!--<p></p>-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-        <!--<div class="aui-cou-img">-->
-        <!--<img src="__STATIC__/integral/img/icon-tag-011.png"  alt="">-->
-        <!--</div>-->
-        <!--<div class="aui-flex-box">-->
-        <!--<h2>关于我们</h2>-->
-        <!--</div>-->
-        <!--<div class="aui-arrow">-->
-        <!--<p></p>-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-        <!--<div class="aui-cou-img">-->
-        <!--<img src="__STATIC__/integral/img/icon-tag-012.png" alt="">-->
-        <!--</div>-->
-        <!--&lt;!&ndash;<div class="aui-flex-box">&ndash;&gt;-->
-        <!--&lt;!&ndash;<h2>意见反馈</h2>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--<div class="aui-arrow">-->
-        <!--<p></p>-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-        <!--<div class="aui-cou-img">-->
-        <!--<img src="__STATIC__/integral/img/icon-tag-013.png"  alt="">-->
-        <!--</div>-->
-        <!--<div class="aui-flex-box">-->
-        <!--<h2>联系我们</h2>-->
-        <!--</div>-->
-        <!--<div class="aui-arrow">-->
-        <!--<p></p>-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--<a href="javascript:;" class="aui-flex b-line">-->
-        <!--<div class="aui-cou-img">-->
-        <!--<img src="__STATIC__/integral/img/icon-tag-014.png"  alt="">-->
-        <!--</div>-->
-        <!--<div class="aui-flex-box">-->
-        <!--<h2>版本更新</h2>-->
-        <!--</div>-->
-        <!--<div class="aui-arrow">-->
-        <!--<p>当前版本1.2.0</p>-->
-        <!--</div>-->
-        <!--</a>-->
-
+        <a href="javascript:;" class="aui-flex">
+        <div>
+            <p style="width: 5rem">原密码:  </p>
+        </div>
+        <div class="aui-flex-box">
+            <input type="password" name="pwd" value="" placeholder="原密码">
+        </div>
+        </a>
+        <a href="javascript:;" class="aui-flex">
+            <div>
+                <p style="width: 5rem">新 密 码:  </p>
+            </div>
+            <div class="aui-flex-box">
+                <input type="password" name="pwd1" id="pwd1" value="" placeholder="新密码">
+            </div>
+        </a>
+        <a href="javascript:;" class="aui-flex">
+            <div>
+                <p style="width:5rem">确认密码:</p>
+            </div>
+            <div class="aui-flex-box">
+                <input type="password" name="pwd2" id="pwd2" onkeyup="validate()" value="" placeholder="确认密码">
+            </div>
+        </a>
+        <p id="tongguo"></p>
+        <input type="button" style="border: 0px;width: 20rem;text-align: center;background: #ff0021" value="修改" onclick="alter()">
     </div>
-    <div style="height:60px;"></div>
 
+    <div style="height:60px;"></div>
+    </form>
 </section>
     {else /}
-    1234
+    错误
     {/if}
 
 
@@ -224,6 +182,12 @@
         </a>
     </footer>
 </section>
+
+</body>
+</html>
+</title>
+</head>
+<body>
 
 </body>
 </html>

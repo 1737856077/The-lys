@@ -53,6 +53,7 @@ class order extends CommonIntegra
             die();
         }
         $rceiving_address_data = Db::name('rceiving_address')->where('uid', $uid)->select();
+        $rceiving_address_datas = [];
         foreach ($rceiving_address_data as $k => $v) {
             $v['sheng'] = Db::name('region')->where('area_code', $v['province_id'])->find()['area_name'];
             $v['shi'] = Db::name('region')->where('area_code', $v['city_id'])->find()['area_name'];

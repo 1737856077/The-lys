@@ -41,6 +41,7 @@ class Register extends Controller
             'moblie' => $moblie,
             'username' => $username,
             'pwd' => $pwd,
+            'admin_id'=>Session::get('admin_id'),
             'uid'=> my_returnUUID(),
             'data_status' => 1,
             'create_time' => time()
@@ -95,8 +96,6 @@ class Register extends Controller
         Session::delete('memberid');
         Session::set('username', $getone["username"]);
         Session::set('memberid', $getone["id"]);
-        //添加日志 begin
-        //添加日志 end
        return json(array('msg' => '登录成功', 'code' => 0));
         }
 }
