@@ -12,9 +12,9 @@
         <div id="con_two_1" style="display: block;">
             <div class="maps">
                 <i></i>
-                <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; <a href="javascript:void(0);">微信素材管理</a>&nbsp;>&nbsp; <a href="javascript:void(0);">图文列表</a></p>
+                <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; <a href="javascript:void(0);">微信素材管理</a>&nbsp;>&nbsp; <a href="javascript:void(0);">图文列表</a></p>
                 <div class="maps_r">
-                    <form action="{:U('Material/articles')}" method="post">
+                    <form action="{:url('Material/articles')}" method="post">
                         <input type="text" name="title"  class="sou_l"/>
                         <input type="submit" class="sou_r" value="搜索" />
                     </form>
@@ -27,7 +27,7 @@
                     <a href="javascript:void(0)" class="selecs unselected">反选</a>
                     <a href="javascript:void(0)" class="selecs select_f">取消</a>
                     <a href="javascript:void(0)" class="delete_s">删除</a>
-                    <a href="{:U('Material/addArticle')}" class="append_j">新增图文</a>
+                    <a href="{:url('Material/addArticle')}" class="append_j">新增图文</a>
                     <button id="addWeChat" class="a5" type="button" style="width:150px;">添加微信多图文素材</button>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                             </td>
                             <td>{$vo.update_time|date="Y-m-d H:i:s",###}</td>
                             <td>
-                                <a href="{:U('Material/editArticle',array('atr_id'=>$vo['atr_id']))}">编辑</a> |
+                                <a href="{:url('Material/editArticle',array('atr_id'=>$vo['atr_id']))}">编辑</a> |
                                 <a href="javascript:void(0);" class="del-atr" data-id="{$vo.atr_id}">删除</a></td>
                         </tr>
                     </volist>
@@ -97,7 +97,7 @@ $(function(){
             $("input:checked").each(function () {
                 var myself = $(this).parents('tr');
                 var id = myself.data('id');
-                $.post('{:U("Material/delArticleDb")}', {atr_id: id}, function (data) {
+                $.post('{:url("Material/delArticleDb")}', {atr_id: id}, function (data) {
                     //console.log(data);
                     if (data.status == 1) {
                         myself.remove();
@@ -113,7 +113,7 @@ $(function(){
     $(".del-atr").on('click',function(){
         var atrId = $(this).data('id');
         if(confirm("您是否确认删除ID: "+atrId+" 的素材?")){
-            location.href = "{:U('Material/delArticleDb')}/atr_id/"+atrId;
+            location.href = "{:url('Material/delArticleDb')}/atr_id/"+atrId;
         }
     });
 
@@ -124,7 +124,7 @@ $(function(){
             atrIds +=$(this).parent().next('td').text()+',';
         });
         if(atrIds != ''){
-            location.href = "{:U('Material/insertArticles')}/atr_id/"+atrIds;
+            location.href = "{:url('Material/insertArticles')}/atr_id/"+atrIds;
         }else{
             alert('请选择需要添加的图文素材')
         }

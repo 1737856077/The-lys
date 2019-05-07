@@ -45,3 +45,292 @@ CREATE TABLE IF NOT EXISTS `sy_domain_access_record` (
   `update_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`access_record_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+/*=== 2019-05-07==*/
+CREATE TABLE IF NOT EXISTS `sy_sms_send_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(32) DEFAULT '',
+  `mobile` varchar(11) DEFAULT '',
+  `content` varchar(2000) DEFAULT NULL,
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`,`uid`) USING BTREE
+) ENGINE=MRG_MyISAM DEFAULT CHARSET=utf8 INSERT_METHOD=LAST UNION=(`sy_sms_send_log_1`);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sy_sms_send_log_1`
+--
+
+CREATE TABLE IF NOT EXISTS `sy_sms_send_log_1` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(32) DEFAULT NULL,
+  `mobile` varchar(11) DEFAULT NULL,
+  `content` varchar(2000) DEFAULT NULL,
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`,`uid`) USING BTREE
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sy_sms_send_monitor`
+--
+
+CREATE TABLE IF NOT EXISTS `sy_sms_send_monitor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobile` varchar(11) NOT NULL,
+  `date_ymd` date DEFAULT '0000-00-00',
+  `date_h` varchar(2) DEFAULT '00',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mobile` (`mobile`) USING BTREE
+) ENGINE=MRG_MyISAM DEFAULT CHARSET=utf8 INSERT_METHOD=LAST UNION=(`sy_sms_send_monitor_1`);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sy_sms_send_monitor_1`
+--
+
+CREATE TABLE IF NOT EXISTS `sy_sms_send_monitor_1` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobile` varchar(11) NOT NULL,
+  `date_ymd` date DEFAULT '0000-00-00',
+  `date_h` varchar(2) DEFAULT '00',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mobile` (`mobile`) USING BTREE
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sy_sms_template`
+--
+
+CREATE TABLE IF NOT EXISTS `sy_sms_template` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) NOT NULL,
+  `content` varchar(2000) NOT NULL, 
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`) USING BTREE
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sy_wechat_watch`
+--
+
+CREATE TABLE IF NOT EXISTS `sy_wechat_watch` (
+  `wechat_watch_id` int(11) NOT NULL AUTO_INCREMENT,
+  `wechat_openid` varchar(32) NOT NULL,
+  `uid` varchar(32) DEFAULT '',
+  `developer_account` varchar(32) NOT NULL,
+  `nickname` varchar(32) DEFAULT NULL,
+  `sex` tinyint(1) DEFAULT '0',
+  `province` varchar(32) DEFAULT NULL,
+  `city` varchar(32) DEFAULT NULL,
+  `country` varchar(16) DEFAULT NULL,
+  `headimgurl` varchar(256) DEFAULT NULL,
+  `privilege` varchar(500) DEFAULT NULL,
+  `unionid` varchar(64) DEFAULT NULL,
+  `wechat_groups_id` int(11) DEFAULT '0',
+  `member_groups_id` varchar(255) DEFAULT '1',
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`wechat_watch_id`),
+  UNIQUE KEY `wechat_watch_id` (`wechat_watch_id`,`wechat_openid`) USING BTREE
+) ENGINE=MRG_MyISAM DEFAULT CHARSET=utf8 INSERT_METHOD=LAST UNION=(`sy_wechat_watch_1`);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `sy_wechat_watch_1`
+--
+
+CREATE TABLE IF NOT EXISTS `sy_wechat_watch_1` (
+  `wechat_watch_id` int(11) NOT NULL AUTO_INCREMENT,
+  `wechat_openid` varchar(32) NOT NULL,
+  `uid` varchar(32) DEFAULT '',
+  `developer_account` varchar(32) NOT NULL,
+  `nickname` varchar(32) DEFAULT NULL,
+  `sex` tinyint(1) DEFAULT '0',
+  `province` varchar(32) DEFAULT NULL,
+  `city` varchar(32) DEFAULT NULL,
+  `country` varchar(16) DEFAULT NULL,
+  `headimgurl` varchar(256) DEFAULT NULL,
+  `privilege` varchar(500) DEFAULT NULL,
+  `unionid` varchar(64) DEFAULT NULL,
+  `wechat_groups_id` int(11) DEFAULT '0',
+  `member_groups_id` varchar(255) DEFAULT '1',
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`wechat_watch_id`),
+  UNIQUE KEY `wechat_watch_id` (`wechat_watch_id`,`wechat_openid`) USING BTREE
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `sy_wechat_atricles` (
+  `atr_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `media_id` varchar(255) DEFAULT '',
+  `title` varchar(255) DEFAULT '',
+  `digest` text,
+  `thumb_media_id` varchar(255) DEFAULT '',
+  `author` varchar(255) DEFAULT '',
+  `show_cover_pic` tinyint(1) DEFAULT '0',
+  `content` text,
+  `content_source_url` varchar(255) DEFAULT '',
+  `thumb_url` varchar(255) DEFAULT '',
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` varchar(32) DEFAULT '',
+  `data_status` tinyint(1) unsigned DEFAULT '0',
+  `create_time` int(11) unsigned DEFAULT '0',
+  `update_time` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`atr_id`),
+  UNIQUE KEY `atr_id` (`atr_id`) USING BTREE,
+  KEY `media_id` (`media_id`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `sy_wechat_groups` (
+  `id` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `count_member` int(11) DEFAULT '0',
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `sy_wechat_mass_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `is_to_all` tinyint(1) DEFAULT '0',
+  `group_id` int(11) DEFAULT '0',
+  `touser` text,
+  `media_id` varchar(64) DEFAULT NULL,
+  `msgtype` varchar(12) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` varchar(5000) DEFAULT NULL,
+  `thumb_media_id` varchar(64) DEFAULT NULL,
+  `msg_id` varchar(64) DEFAULT NULL,
+  `msg_data_id` varchar(64) DEFAULT NULL,
+  `send_type` varchar(12) DEFAULT NULL,
+  `del_status` tinyint(1) DEFAULT '0',
+  `from_username` varchar(64) DEFAULT NULL,
+  `send_status` varchar(32) DEFAULT NULL,
+  `total_count` int(11) DEFAULT '0',
+  `filter_count` int(11) DEFAULT '0',
+  `sent_count` int(11) DEFAULT '0',
+  `error_count` int(11) DEFAULT '0',
+  `send_time` int(11) DEFAULT '0',
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `sy_wechat_material` (
+  `media_id` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT '',
+  `url` varchar(255) DEFAULT '',
+  `introduction` text,
+  `atricles_id` varchar(255) DEFAULT '',
+  `local_path` varchar(255) DEFAULT '',
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` varchar(32) DEFAULT '',
+  `data_status` tinyint(1) unsigned DEFAULT '0',
+  `create_time` int(11) unsigned DEFAULT '0',
+  `update_time` int(11) unsigned DEFAULT '0',
+  PRIMARY KEY (`media_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `sy_wechat_material_music` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `hd_url` varchar(255) DEFAULT NULL,
+  `introduction` varchar(1000) DEFAULT NULL,
+  `thumb_url` varchar(255) DEFAULT NULL,
+  `thumb_media_id` varchar(255) DEFAULT NULL,
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` varchar(32) DEFAULT NULL,
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `sy_wechat_watch_send_info` (
+  `id` int(11) NOT NULL,
+  `send_info_id` varchar(32) NOT NULL,
+  `msg_type` varchar(32) DEFAULT NULL,
+  `msg_id` bigint(20) DEFAULT '0',
+  `from_username` varchar(64) DEFAULT NULL,
+  `to_username` varchar(64) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `pic_url` varchar(255) DEFAULT NULL,
+  `media_id` varchar(64) DEFAULT NULL,
+  `voice_rormat` varchar(16) DEFAULT NULL,
+  `thumb_media_id` varchar(64) DEFAULT NULL,
+  `location_x` varchar(32) DEFAULT NULL,
+  `location_y` varchar(32) DEFAULT NULL,
+  `map_scale` tinyint(3) DEFAULT '0',
+  `address_label` varchar(64) DEFAULT NULL,
+  `msg_time` int(11) DEFAULT '0',
+  `appid` varchar(32) DEFAULT '',
+  `admin_id` int(11) DEFAULT '0',
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `sy_sms_template` VALUES ('1', '手机号绑定验证码短信', '验证码：{$code}，有效时间{$time}分钟,如不是本人操作，请忽略！','',0, '0', '1', '0', '0');
+INSERT INTO `sy_sms_template` VALUES ('2', '注册成功短信', '亲爱的“{$username}”会员，恭喜您成为蝌蚪溯源的会员。', '',0, '0', '1', '0', '0');
+

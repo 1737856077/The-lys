@@ -145,7 +145,7 @@ class Wechatmenu extends UserCommon{
 				exit;
 			}
 		}
-		$ModelWechatMenu=new Model("WechatMenu");
+		$ModelWechatMenu=Db::name("WechatMenu");
 		
 		if($father_id==0){//查看一级菜单是否超过3个
 			$count=$ModelWechatMenu->where("father_id=0")->count();
@@ -217,7 +217,7 @@ class Wechatmenu extends UserCommon{
 				exit;
 			}
 		}
-		$ModelWechatMenu=new Model("WechatMenu");
+		$ModelWechatMenu=Db::name("WechatMenu");
 		
 		if($father_id==0){//查看一级菜单是否超过3个
 			$count=$ModelWechatMenu->where("father_id=0 AND id!='$id'")->count();
@@ -274,7 +274,7 @@ class Wechatmenu extends UserCommon{
 		//print_r($info);exit;
 		
 		//添空老数据
-		$ModelWechatMenu->query("TRUNCATE ".C("DB_PREFIX")."wechat_menu");
+		$ModelWechatMenu->query("TRUNCATE sy_wechat_menu");
 		foreach ($info as $key=>$value){
 			$value=(Array)$value;
 			//insert
@@ -286,26 +286,28 @@ class Wechatmenu extends UserCommon{
 			//扫码推事件且弹出“消息接收中”提示框//弹出系统拍照发图
 			//弹出拍照或者相册发图//弹出微信相册发图器
 			//弹出地理位置选择器
-			if($value["type"]=="click" or $value["type"]=="scancode_push"
-				or $value["type"]=="scancode_waitmsg" or $value["type"]=="pic_sysphoto"
-				or $value["type"]=="pic_photo_or_album" or $value["type"]=="pic_weixin"
-				or $value["type"]=="location_select" 
-			){
-				$data["btn_key"]=$value["key"];
-			}else if($value["type"]=="view"){//跳转URL
-				$data["url"]=$value["url"];
-			}else if($value["type"]=="media_id" or $value["type"]=="view_limited"){//下发消息（除文本消息）//跳转图文消息URL
-				$data["media_id"]=$value["media_id"];
-			}
+            if(isset($value["type"])) {
+                if ($value["type"] == "click" or $value["type"] == "scancode_push"
+                    or $value["type"] == "scancode_waitmsg" or $value["type"] == "pic_sysphoto"
+                    or $value["type"] == "pic_photo_or_album" or $value["type"] == "pic_weixin"
+                    or $value["type"] == "location_select"
+                ) {
+                    $data["btn_key"] = $value["key"];
+                } else if ($value["type"] == "view") {//跳转URL
+                    $data["url"] = $value["url"];
+                } else if ($value["type"] == "media_id" or $value["type"] == "view_limited") {//下发消息（除文本消息）//跳转图文消息URL
+                    $data["media_id"] = $value["media_id"];
+                }
+            }
 			$data["data_sort"]="50";
-			$data["data_type"]=$value["type"];
+			$data["data_type"]=isset($value["type"]) ? $value["type"] : '';
 			$data["data_status"]="1";
 			$data["create_time"]=$gettime;
 			$data["update_time"]=$gettime;
-			$returnid=$ModelWechatMenu->add($data);
+			$returnid=$ModelWechatMenu->insertGetId($data);
 				
 			//查看是否有子菜单	begin
-			$sub_button=(Array)$value["type"];	
+			$sub_button=(Array)$value["sub_button"];
 			if(count($sub_button)){	
 				foreach ($sub_button as $k=>$val){
 					$val=(Array)$val;
@@ -334,7 +336,7 @@ class Wechatmenu extends UserCommon{
 					$data["data_status"]="1";
 					$data["create_time"]=$gettime;
 					$data["update_time"]=$gettime;
-					$ModelWechatMenu->add($data);
+					$ModelWechatMenu->insertGetId($data);
 					
 				}
 			}
@@ -448,7 +450,7 @@ class Wechatmenu extends UserCommon{
 	
 	//微信同步微信菜单接口
 	public function WechatMenuSync(){
-		include_once './Public/Lib/functions.php';
+		//include_once './Public/Lib/functions.php';
 		$PublicAction=new PublicAction();
 		$Token=$PublicAction->accessToken();
 		$url="https://api.weixin.qq.com/cgi-bin/menu/get?access_token=".$Token;
@@ -461,7 +463,7 @@ class Wechatmenu extends UserCommon{
 	
 	//微信菜单创建接口
 	public function WechatMenuCreate($data){
-		include_once './Public/Lib/functions.php';
+		//include_once './Public/Lib/functions.php';
 		$PublicAction=new PublicAction();
 		$Token=$PublicAction->accessToken();
 		$url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$Token;

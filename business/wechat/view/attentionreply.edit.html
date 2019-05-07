@@ -35,7 +35,7 @@ $(window).resize();
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; 编辑关注回复</p>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; 编辑关注回复</p>
   
                 </div>
 
@@ -192,8 +192,8 @@ $(window).resize();
         
 <div id="dialogBg" style="display:none;">
 	<div id="dialog">
-    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:U('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
-        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:U('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
     
 		<div class="menus_r_openwindow" id="div_material_image" style="display:none;  overflow-x: hidden; ">
         		<input type="hidden" name="PageMaterial_image" id="PageMaterial_image" value="1" autocomplete="off" />

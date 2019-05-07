@@ -11,10 +11,10 @@
     <div id="con_two_1">
         <div class="maps">
             <i></i>
-            <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; <a href="{:U('Material/index')}">素材列表</a>&nbsp;>&nbsp; <a href="javascript:void(0);">添加多媒体素材</a></p>
+            <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; <a href="{:url('Material/index')}">素材列表</a>&nbsp;>&nbsp; <a href="javascript:void(0);">添加多媒体素材</a></p>
         </div>
         <!--column end-->
-        <form action="{:U('Material/insertMedia')}" method="post" enctype="multipart/form-data">
+        <form action="{:url('Material/insertMedia')}" method="post" enctype="multipart/form-data">
             <div class="clas_box">
                 <div class="class_con">
                     <label for="title">文章标题</label>

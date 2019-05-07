@@ -41,7 +41,7 @@
         <div id="con_two_1" style="display: block;">
             <div class="maps">
                 <i></i>
-                <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; <a href="{:U('Material/articles')}">图文列表</a>&nbsp;>&nbsp; <a href="">图文回复</a></p>
+                <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; <a href="{:url('Material/articles')}">图文列表</a>&nbsp;>&nbsp; <a href="">图文回复</a></p>
                 <div class="maps_r">
                     <input type="text"  class="sou_l"/>
                     <input type="button" class="sou_r" value="搜索" />
@@ -49,7 +49,7 @@
             </div>
             <!--column end-->
             <div class="clas_box">
-                <form action="{:U('Material/updateArticleDb')}" method="post">
+                <form action="{:url('Material/updateArticleDb')}" method="post">
                     <div class="class_con">
                         <label for="title">标题</label>
                         <input type="text" name="title" id="title" value="{$info.title}"/>
@@ -106,8 +106,8 @@
 <div id="dialogBg" style="display:none;">
 	<div id="dialog">
     
-		<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:U('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
-        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:U('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+		<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
     
 		<div class="menus_r_openwindow" id="div_material_image" style="display:none;  overflow-x: hidden; ">
         		<input type="hidden" name="PageMaterial_image" id="PageMaterial_image" value="1" autocomplete="off" />

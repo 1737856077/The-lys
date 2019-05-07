@@ -20,7 +20,7 @@
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信菜单管理&nbsp;>&nbsp; 添加菜单
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信菜单管理&nbsp;>&nbsp; 添加菜单
   
                 </div>
 				<div class="div_height_15"></div>
@@ -114,8 +114,8 @@
        
 <div id="dialogBg" style="display:none;">
 	<div id="dialog">
-    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:U('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
-        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:U('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
         
     	<div class="menus_r" id="div_material_mpnews" style="display:block;">
         		<input type="hidden" name="PageMaterial_news" id="PageMaterial_news" value="2" autocomplete="off" />
