@@ -285,4 +285,8 @@ return [
     'WebConfig_Debug' => true,//开启调试模式
     'WebConfig_Debug_Openid' => 'ojC3OvmfQ6o9_i2IoGVS6Y0aKdJU',//开启调试模式后，调试状态下的openid
 
+    //短信账号资料
+    'SMS_UID'				=>'22222',
+    'SMS_USERNAME'			=>'蝌蚪溯源',
+    'SMS_PWD'				=>'fdsfds',
 ];
