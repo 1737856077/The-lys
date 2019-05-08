@@ -106,7 +106,7 @@ class Wechatwatchgroupslocal extends UserCommon{
 		);
 		$ModelWechatWatch->where("wechat_openid='$openid'")->save($data);
 
-		$this->success("操作成功！",__URL__."/index",3);
+		$this->success("操作成功！",url("Wechatwatchgroupslocal/index"),3);
 		exit;
 	}
 
@@ -151,7 +151,7 @@ class Wechatwatchgroupslocal extends UserCommon{
 			}
 		}
 
-		$this->success("操作成功！",__URL__."/index",3);
+		$this->success("操作成功！",url("Wechatwatchgroupslocal/index"),3);
 		exit;
 	}
 

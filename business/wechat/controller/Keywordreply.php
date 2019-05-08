@@ -15,6 +15,7 @@ use think\Paginator;
 use think\File;
 use think\Image;
 use \app\wechat\controller\UserCommon;
+use think\Config;
 class Keywordreply extends UserCommon{
 	
 	public function index(){
@@ -259,9 +260,9 @@ class Keywordreply extends UserCommon{
 		}
 		
 		
-		$ModelAutomaticReply->add($data);
+		$ModelAutomaticReply->insertGetId($data);
 		
-		$this->success("添加成功！",__URL__."/index/SearchMsgType/$msgtype",3);
+		$this->success("添加成功！",url("keywordreply/index")."?SearchMsgType=$msgtype",3);
 		exit;
 	}
 	
@@ -435,7 +436,7 @@ class Keywordreply extends UserCommon{
 		
 		$ModelAutomaticReply->where("id='$id'")->save($data);
 	
-		$this->success("编辑成功！",__URL__."/index/SearchMsgType/$msgtype",3);
+		$this->success("编辑成功！",url("keywordreply/index")."SearchMsgType=$msgtype",3);
 		exit;
 	}
 	
@@ -449,7 +450,7 @@ class Keywordreply extends UserCommon{
 		if(empty($getone)){ echo "paramer error!"; exit;  }
 		$MsgType=$getone["msgtype"];
 		$ModelAutomaticReply->where("id='$id'")->delete();
-		$this->success("操作成功！",__URL__."/index/SearchMsgType/$MsgType",3);
+		$this->success("操作成功！",url("keywordreply/index")."SearchMsgType=$MsgType",3);
 		exit;
 	}
 }

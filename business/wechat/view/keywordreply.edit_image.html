@@ -3,14 +3,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>关键词回复-编辑图片回复</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/KeywordReply_AddImage.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicMaterialAjax.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/KeywordReply_AddImage.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicMaterialAjax.js"></script>
 </head>
 <style type="text/css">
 
@@ -48,13 +48,13 @@ $(window).resize();
                  <div class="clas_box" id="div_replay_news" style="margin-top:0px; padding-top:22px; padding-bottom:0px; ">
                   <div class="class_con">
                         <label for="">消息类型</label>
-                        <input type="text"  value="<if condition="$MsgType eq 'news'">图文消息
-                           <elseif condition="$MsgType eq 'music'"/>音乐消息             
-                           <elseif condition="$MsgType eq 'video'"/>视频消息
-                           <elseif condition="$MsgType eq 'voice'"/>语音消息
-                           <elseif condition="$MsgType eq 'image'"/>图片消息
-                           <elseif condition="$MsgType eq 'text'"/>文本消息
-                           </if>
+                        <input type="text"  value="{if condition="$MsgType eq 'news'"}图文消息
+                           {elseif condition="$MsgType eq 'music'"/}音乐消息             
+                           {elseif condition="$MsgType eq 'video'"/}视频消息
+                           {elseif condition="$MsgType eq 'voice'"/}语音消息
+                           {elseif condition="$MsgType eq 'image'"/}图片消息
+                           {elseif condition="$MsgType eq 'text'"/}文本消息
+                           {/if}
                            " disabled="disabled" />
                     </div>
                      <div class="class_con">

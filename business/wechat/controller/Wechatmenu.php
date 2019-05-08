@@ -16,6 +16,7 @@ use think\File;
 use think\Image;
 use \app\wechat\controller\UserCommon;  
 use \app\wechat\controller\PublicAction;
+use think\Config;
 class Wechatmenu extends UserCommon{
 	
 	//显示主页面
@@ -176,9 +177,9 @@ class Wechatmenu extends UserCommon{
 		$data["update_time"]=$gettime;
 		
 		
-		$ModelWechatMenu->add($data);
+		$ModelWechatMenu->insertGetId($data);
 		
-		$this->success("操作成功！",__URL__."/index",3);
+		$this->success("操作成功！",url("wechatmenu/index"),3);
 		exit;
 	}
 	
@@ -247,7 +248,7 @@ class Wechatmenu extends UserCommon{
 		
 		$ModelWechatMenu->where("id='$id'")->save($data);
 		
-		$this->success("操作成功！",__URL__."/index",3);
+		$this->success("操作成功！",url("wechatmenu/index"),3);
 		exit;
 	}
 
@@ -258,7 +259,7 @@ class Wechatmenu extends UserCommon{
 		$ModelWechatMenu=Db::name("WechatMenu");
 		$ModelWechatMenu->where("id='$id'")->delete();
 		
-		$this->success("操作成功！",__URL__."/index",3);
+		$this->success("操作成功！",url("wechatmenu/index"),3);
 		exit;
 	}
 	
@@ -344,7 +345,7 @@ class Wechatmenu extends UserCommon{
 		}		
 		
 		if($type==0){
-			$this->success("同步成功！",__URL__."/index",3);
+			$this->success("同步成功！",url("wechatmenu/index"),3);
 			exit;
 		}
 	}
@@ -440,10 +441,10 @@ class Wechatmenu extends UserCommon{
 		//echo $json;exit;
 		$info=$this->WechatMenuCreate($json);
 		if($info["errcode"]=="0"){
-			$this->success("微信菜单创建成功！",__URL__."/index",3);
+			$this->success("微信菜单创建成功！",url("wechatmenu/index"),3);
 			exit;
 		}else{
-			$this->error("微信菜单创建失败！原因：".json_encode($info),__URL__."/index",3);
+			$this->error("微信菜单创建失败！原因：".json_encode($info),url("wechatmenu/index"),3);
 			exit;
 		}
 	}

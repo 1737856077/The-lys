@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信分组管理-微信分组管理</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
 
 </head>
 <body>
@@ -34,7 +34,7 @@
                             <td class="mid_s">操作</td>
                         </tr>
                         
-						<volist name="List" id="value">
+						{foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td>{$value['id']}</td>
                                 <td>{$value['name']}</td>
@@ -44,7 +44,7 @@
                                     <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>
                                 </td>
                             </tr>
-                        </volist>
+                        {/foreach}
                       	<php>if(!$count){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="4">暂无相关数据！</td>

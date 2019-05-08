@@ -25,9 +25,16 @@ class Money extends Controller
         return $this->fetch();
     }
 
-    public function recharge()
+    /**
+     * @return 消费明细查询
+     */
+    public function consumption()
     {
-        
+        //查询当前商家下的用户
+        $id = Session::get('adminid');
+        $mon = Db::name('alipay_pay_record')->where('admin_id',$id)->select();
+        $this->assign('list',$mon);
+        return $this->fetch();
     }
 
 }

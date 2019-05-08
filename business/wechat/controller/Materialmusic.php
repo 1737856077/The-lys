@@ -14,7 +14,8 @@ use think\model;
 use think\Paginator;
 use think\File;
 use think\Image;
-use \app\wechat\controller\UserCommon; 
+use \app\wechat\controller\UserCommon;
+use think\Config;
 class Materialmusic extends UserCommon{
 	
 	//显示列表页面
@@ -87,7 +88,7 @@ class Materialmusic extends UserCommon{
 		
 		$ModelWechatMaterialMusic->where("id='$id'")->delete();
 		
-		$this->success("操作成功！",__URL__."/index",3);
+		$this->success("操作成功！",url("Materialmusic/index"),3);
 		exit;
 	}
 	
@@ -134,9 +135,9 @@ class Materialmusic extends UserCommon{
 		$data["data_status"]="1";
 		$data["create_time"]=$gettime;
 		$data["update_time"]=$gettime;
-		$ModelWechatMaterialMusic->add($data);
+		$ModelWechatMaterialMusic->insertGetId($data);
 		
-		$this->success("添加成功！",__URL__."/index",3);
+		$this->success("添加成功！",url("Materialmusic/index"),3);
 		exit;
 	}
 	
@@ -191,7 +192,7 @@ class Materialmusic extends UserCommon{
 		$data["update_time"]=$gettime;
 		$ModelWechatMaterialMusic->where("id='$id'")->save($data);
 		
-		$this->success("编辑成功！",__URL__."/index",3);
+		$this->success("编辑成功！",url("Materialmusic/index"),3);
 		exit;
 	}
 	

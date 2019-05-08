@@ -3,8 +3,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
 </head>
 <body style="height:auto;">
 <div class="menus">
@@ -43,7 +43,7 @@
                         <td class="mid_f">更新时间</td>
                         <td class="mid_s">操作</td>
                     </tr>
-                    <volist name="info" id="vo">
+                    {foreach name="info" id="vo"}
                         <tr class="mid_02" style="border-left:3px solid #cfbba9" data-id="{$vo.atr_id}">
                             <td><input type="checkbox" class="mids_o"/></td>
                             <td>{$vo.atr_id}</td>
@@ -51,7 +51,7 @@
                             <td>
                                 <eq name="vo.data_status" value="1">
                                     已上传
-                                <else/>
+                                {else/}
                                     未上传
                                 </eq>
                             </td>
@@ -60,7 +60,7 @@
                                 <a href="{:url('Material/editArticle',array('atr_id'=>$vo['atr_id']))}">编辑</a> |
                                 <a href="javascript:void(0);" class="del-atr" data-id="{$vo.atr_id}">删除</a></td>
                         </tr>
-                    </volist>
+                    {/foreach}
                 </table>
                 <div class="reveal">
                     <div class="page">{$page}</div>
@@ -70,7 +70,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
 <script>
 $(function(){
     //全选

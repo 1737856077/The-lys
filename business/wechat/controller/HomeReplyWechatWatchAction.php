@@ -122,7 +122,7 @@ class HomeReplyWechatWatchAction extends Controller{
 						"create_time"=>$gettime,
 						"update_time"=>$gettime,
 				);
-				$ModelWechatWatchSendInfo->add($dataWechatWatchSendInfo);
+				$ModelWechatWatchSendInfo->insertGetId($dataWechatWatchSendInfo);
 			}
 			//news:图文消息；music：音乐消息；video：视频消息；voice：语音消息；image：图片消息；text：文本消息；
 			if($getoneAutomaticReply["msgtype"]=="news"){//news:图文消息；

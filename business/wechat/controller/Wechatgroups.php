@@ -88,12 +88,12 @@ class Wechatgroups extends UserCommon{
 		$data["id"]=$info->id;
 		if($data["id"]){
 			
-			$ModelWechatGroups->add($data);
+			$ModelWechatGroups->insertGetId($data);
 			
-			$this->success("添加成功！",__URL__."/index",3);
+			$this->success("添加成功！",url("Wechatgroups/index"),3);
 			exit;
 		}else{
-			$this->error("添加失败！原因：".json_encode($info),__URL__."/index",3);
+			$this->error("添加失败！原因：".json_encode($info),url("Wechatgroups/index"),3);
 			exit;
 		}
 	}
@@ -123,10 +123,10 @@ class Wechatgroups extends UserCommon{
 				
 			$ModelWechatGroups->where("id='$id'")->save($data);
 				
-			$this->success("编辑成功！",__URL__."/index",3);
+			$this->success("编辑成功！",url("Wechatgroups/index"),3);
 			exit;
 		}else{
-			$this->error("编辑失败！原因：".json_encode($info),__URL__."/index",3);
+			$this->error("编辑失败！原因：".json_encode($info),url("Wechatgroups/index"),3);
 			exit;
 		}
 	}
@@ -146,7 +146,7 @@ class Wechatgroups extends UserCommon{
 		
 			$ModelWechatGroups->where("id='$id'")->delete();
 		
-			$this->success("操作成功！",__URL__."/index",3);
+			$this->success("操作成功！",url("Wechatgroups/index"),3);
 			exit;
 		//}else{
 			//$this->error("操作失败！原因：".json_encode($info),__URL__."/index",3);
@@ -182,7 +182,7 @@ class Wechatgroups extends UserCommon{
 						"create_time"=>$gettime,
 						"update_time"=>$gettime,
 				);
-				$ModelWechatGroups->add($data);
+				$ModelWechatGroups->insertGetId($data);
 			}
 		}
 		
@@ -192,7 +192,7 @@ class Wechatgroups extends UserCommon{
 			$ModelWechatGroups->where("id>=0")->delete();
 		}
 		if($type==0){
-			$this->success("同步成功！",__URL__."/index",3);
+			$this->success("同步成功！",url("Wechatgroups/index"),3);
 			exit;
 		}
 		
