@@ -34,16 +34,16 @@ class Information extends Controller
             $order[] = Db::name('member_integral_record ')->where('uid', $k1['uid'])->sum('price');
         }
         //合并数组数据
-        $arr = [];
         foreach ($member as $value=>$k){
-            $k['price'] =$order["$value"];
+            $k['price'] = $order["$value"];
             $arr[] = $k;
         }
         //分页样式
-        /*$url= 'http://'.$_SERVER['HTTP_HOST']."/business.php/integral_info/information/index/;
+       $url= 'http://'.$_SERVER['HTTP_HOST']."/business.php/integral_info/information/index/";
         $page=isset($_GET['page'])? $_GET['page']:1;
+        $arr=page_array(4,$page,$arr,1);
         $show=show_array(Session::get('page'),$url);
-        $this->assign('page',$show);//传到模板显示*/
+        $this->assign('page',$show);//传到模板显示
         $this->assign('list',$arr);
         return $this->fetch();
     }

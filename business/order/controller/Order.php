@@ -21,7 +21,7 @@ class Order extends Controller
     public function index()
     {
         $id = Session::get('adminid');
-        $list = Db::name('integral_order')->where('admin_id', $id)->paginate(3);
+        $list = Db::name('integral_order')->where('admin_id', $id)->paginate(5);
         $this->assign('list', $list);
         return $this->fetch();
     }
