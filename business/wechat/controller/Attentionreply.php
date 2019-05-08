@@ -15,6 +15,7 @@ use think\Paginator;
 use think\File;
 use think\Image;
 use \app\wechat\controller\UserCommon;
+use think\Config;
 class Attentionreply extends UserCommon{
 	
 	public function index(){
@@ -199,9 +200,9 @@ class Attentionreply extends UserCommon{
 		}
 		
 		$ModelAutomaticReply=Db::name('AutomaticReply');
-		$ModelAutomaticReply->add($data);
+		$ModelAutomaticReply->insertGetId($data);
 		
-		$this->success("添加成功！",__URL__."/index",3);
+		$this->success("添加成功！",url("attentionreply/index"),3);
 		exit;
 	}
 	
@@ -327,7 +328,7 @@ class Attentionreply extends UserCommon{
 		$ModelAutomaticReply=Db::name('AutomaticReply');
 		$ModelAutomaticReply->where("id='$id'")->save($data);
 		
-		$this->success("更新成功！",__URL__."/index",3);
+		$this->success("更新成功！",url("attentionreply/index"),3);
 		exit;
 	}
 	

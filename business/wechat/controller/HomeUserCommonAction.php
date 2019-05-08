@@ -81,7 +81,7 @@ class HomeUserCommonAction extends HomeCommonAction{
 						"create_time"=>$gettime,
 						"update_time"=>$gettime,
 			);
-			$returnid=$ModelWechatWatch->add($dataWechatWatch);
+			$returnid=$ModelWechatWatch->insertGetId($dataWechatWatch);
 		}
 	}
 	

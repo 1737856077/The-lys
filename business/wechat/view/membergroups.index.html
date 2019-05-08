@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信分组管理-本地分组管理</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
 
 </head>
 <body>
@@ -13,7 +13,7 @@
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; 本地分组管理
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; 本地分组管理
 					</p>   
                 </div>
                 <div class="div_height_15"></div>
@@ -33,22 +33,22 @@
                             <td class="mid_s">操作</td>
                         </tr>
                         
-						<volist name="List" id="value">
+						{foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td>{$value['member_groups_id']}</td>
                                 <td>{$value['title']}</td>
                                 <td>{$value['count_member']}</td>
                                 <td>
                                 <a href="__URL__/edit/id/{$value['member_groups_id']}">编辑</a>　
-                                <if condition="$value['member_groups_id'] eq '1'">
+                                {if condition="$value['member_groups_id'] eq '1'">
                                     <font color="#CCCCCC">删除</font>
-                                <else/>
+                                {else/}
                                     <a href="__URL__/delete/id/{$value['member_groups_id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>
-                                </if>
+                                {/if}
                                     
                                 </td>
                             </tr>
-                        </volist>
+                        {/foreach}
                       	<php>if(!$count){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="4">暂无相关数据！</td>

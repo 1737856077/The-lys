@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>关键词回复-图文回复</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
 
 </head>
 <body>
@@ -13,26 +13,26 @@
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; 关键词回复&nbsp;>&nbsp; 
-                    	<a><if condition="$SearchMsgType eq 'news'"><!--图文消息-->图文回复
-                           <elseif condition="$SearchMsgType eq 'music'"/><!--音乐消息-->音乐回复               
-                           <elseif condition="$SearchMsgType eq 'video'"/><!--视频消息-->视频回复
-                           <elseif condition="$SearchMsgType eq 'voice'"/><!--语音消息-->语音回复
-                           <elseif condition="$SearchMsgType eq 'image'"/><!--图片消息-->图片回复
-                           <elseif condition="$SearchMsgType eq 'text'"/><!--文本消息-->文本回复
-                           </if>                 
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; 关键词回复&nbsp;>&nbsp; 
+                    	<a>{if condition="$SearchMsgType eq 'news'"}<!--图文消息-->图文回复
+                           {elseif condition="$SearchMsgType eq 'music'"/}<!--音乐消息-->音乐回复               
+                           {elseif condition="$SearchMsgType eq 'video'"/}<!--视频消息-->视频回复
+                           {elseif condition="$SearchMsgType eq 'voice'"/}<!--语音消息-->语音回复
+                           {elseif condition="$SearchMsgType eq 'image'"/}<!--图片消息-->图片回复
+                           {elseif condition="$SearchMsgType eq 'text'"/}<!--文本消息-->文本回复
+                           {/if}                 
                         </a>
 					</p>   
                 </div>
                 <div class="div_height_15"></div>
                 <!-- add end --> 
                <ul class="tab_menu">
-                        <a <eq name="SearchMsgType" value="news">class="selected"<else/>href="__URL__/index/SearchMsgType/news"</eq>><li>图文回复</li></a>
-                        <a <eq name="SearchMsgType" value="music">class="selected"<else/>href="__URL__/index/SearchMsgType/music"</eq>><li>音乐回复</li></a>
-                        <a <eq name="SearchMsgType" value="video">class="selected"<else/>href="__URL__/index/SearchMsgType/video"</eq>><li>视频回复</li></a>
-                        <a <eq name="SearchMsgType" value="voice">class="selected"<else/>href="__URL__/index/SearchMsgType/voice"</eq>><li>语音回复</li></a>
-                        <a <eq name="SearchMsgType" value="image">class="selected"<else/>href="__URL__/index/SearchMsgType/image"</eq>><li>图片回复</li></a>
-                        <a <eq name="SearchMsgType" value="text">class="selected"<else/>href="__URL__/index/SearchMsgType/text"</eq>><li>文本回复</li></a>
+                        <a <if name="SearchMsgType" value="news">class="selected"{else/}href="__URL__/index/SearchMsgType/news"</if>><li>图文回复</li></a>
+                        <a <if name="SearchMsgType" value="music">class="selected"{else/}href="__URL__/index/SearchMsgType/music"</if>><li>音乐回复</li></a>
+                        <a <if name="SearchMsgType" value="video">class="selected"{else/}href="__URL__/index/SearchMsgType/video"</if>><li>视频回复</li></a>
+                        <a <if name="SearchMsgType" value="voice">class="selected"{else/}href="__URL__/index/SearchMsgType/voice"</if>><li>语音回复</li></a>
+                        <a <if name="SearchMsgType" value="image">class="selected"{else/}href="__URL__/index/SearchMsgType/image"</if>><li>图片回复</li></a>
+                        <a <if name="SearchMsgType" value="text">class="selected"{else/}href="__URL__/index/SearchMsgType/text"</if>><li>文本回复</li></a>
                </ul>
                <div class="Member">
                     <div class="member_l" style="width:700px;">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="mid">
                     <table class="mid_con"  style="border-collapse:collapse;">
-                    	<if condition="$SearchMsgType eq 'news'"><!--图文消息-->
+                    	{if condition="$SearchMsgType eq 'news'"}<!--图文消息-->
                         <tr class="mid_01" style="border-left:3px solid #e4e3e3">
                         	<td class="mid_th">关键词</td>
                             <td class="mid_th">图片</td>
@@ -57,7 +57,7 @@
                             <td class="mid_th">消息类型</td>
                             <td class="mid_s">操作</td>
                         </tr>
-                        <elseif condition="$SearchMsgType eq 'music'"/><!--音乐消息-->
+                        {elseif condition="$SearchMsgType eq 'music'"/}<!--音乐消息-->
                         <tr class="mid_01" style="border-left:3px solid #e4e3e3">
                         	<td class="mid_th">关键词</td>
                             <!--<td class="mid_th">缩略图的媒体id</td>-->
@@ -67,7 +67,7 @@
                             <td class="mid_th">消息类型</td>
                             <td class="mid_s">操作</td>
                         </tr>
-                        <elseif condition="$SearchMsgType eq 'video'"/><!--视频消息-->
+                        {elseif condition="$SearchMsgType eq 'video'"/}<!--视频消息-->
                         <tr class="mid_01" style="border-left:3px solid #e4e3e3">
                         	<td class="mid_th">关键词</td>
                             <!--<td class="mid_th">media_id</td>-->
@@ -76,14 +76,14 @@
                             <td class="mid_th">消息类型</td>
                             <td class="mid_s">操作</td>
                         </tr>
-                        <elseif condition="$SearchMsgType eq 'voice'"/><!--语音消息-->
+                        {elseif condition="$SearchMsgType eq 'voice'"/}<!--语音消息-->
                         <tr class="mid_01" style="border-left:3px solid #e4e3e3">
                         	<td class="mid_th">关键词</td>
                             <!--<td class="mid_th">media_id</td>-->
                             <td class="mid_th">消息类型</td>
                             <td class="mid_s">操作</td>
                         </tr>
-                        <elseif condition="$SearchMsgType eq 'image'"/><!--图片消息-->
+                        {elseif condition="$SearchMsgType eq 'image'"/}<!--图片消息-->
                         <tr class="mid_01" style="border-left:3px solid #e4e3e3">
                         	<td class="mid_th">关键词</td>
                             <!--<td class="mid_th">media_id</td>-->
@@ -91,23 +91,23 @@
                             <td class="mid_th">消息类型</td>
                             <td class="mid_s">操作</td>
                         </tr>
-                        <elseif condition="$SearchMsgType eq 'text'"/><!--文本消息-->
+                        {elseif condition="$SearchMsgType eq 'text'"/}<!--文本消息-->
                         <tr class="mid_01" style="border-left:3px solid #e4e3e3">
                         	<td class="mid_th">关键词</td>
                             <td class="mid_th">文本</td>
                             <td class="mid_th">消息类型</td>
                             <td class="mid_s">操作</td>
                         </tr>
-                        </if>
+                        {/if}
                         
-						<if condition="$SearchMsgType eq 'news'"><!--图文消息-->
-                            <volist name="List" id="value">
+						{if condition="$SearchMsgType eq 'news'"}<!--图文消息-->
+                            {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                             	<td>{$value['key_word']}</td>
                                 <td>
-                                    <if condition="$value['link_url'] eq ''">暂无图片
-                                    <else/><img src="{$value['link_url']}" alt="" width="140" height="100" />
-                                    </if>
+                                    {if condition="$value['link_url'] eq ''"}暂无图片
+                                    {else/}<img src="{$value['link_url']}" alt="" width="140" height="100" />
+                                    {/if}
                                 </td>
                                 <td>{$value['title']}</td>
                                 <td>{$value['description']}</td>
@@ -118,14 +118,14 @@
                                     <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
                                 </td>
                             </tr>
-                            </volist>
+                            {/foreach}
                             <php>if(!count($List)){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="7">暂无相关数据！</td>
                             </tr>
                             <php>}</php>
-                        <elseif condition="$SearchMsgType eq 'music'"/><!--音乐消息-->
-                            <volist name="List" id="value">
+                        {elseif condition="$SearchMsgType eq 'music'"/}<!--音乐消息-->
+                            {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                             	<td>{$value['key_word']}</td>
                                 <!--<td>
@@ -140,14 +140,14 @@
                                     <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
                                 </td>
                             </tr>
-                            </volist>
+                            {/foreach}
                             <php>if(!count($List)){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="7">暂无相关数据！</td>
                             </tr>
                             <php>}</php>
-                        <elseif condition="$SearchMsgType eq 'video'"/><!--视频消息-->
-                            <volist name="List" id="value">
+                        {elseif condition="$SearchMsgType eq 'video'"/}<!--视频消息-->
+                            {foreach name="List" id="value"}
                              <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                              	<td>{$value['key_word']}</td>
                                 <!--<td>{$value['media_id']}</td>-->
@@ -159,14 +159,14 @@
                                     <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
                                 </td>
                             </tr>
-                            </volist>
+                            {/foreach}
                             <php>if(!count($List)){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="6">暂无相关数据！</td>
                             </tr>
                             <php>}</php>
-                        <elseif condition="$SearchMsgType eq 'voice'"/><!--语音消息-->
-                            <volist name="List" id="value">
+                        {elseif condition="$SearchMsgType eq 'voice'"/}<!--语音消息-->
+                            {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                             	<td>{$value['key_word']}</td>
                                 <!--<td>{$value['media_id']}</td>-->
@@ -176,21 +176,21 @@
                                     <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
                                 </td>
                             </tr>
-                            </volist>
+                            {/foreach}
                             <php>if(!count($List)){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="4">暂无相关数据！</td>
                             </tr>
                             <php>}</php>
-                        <elseif condition="$SearchMsgType eq 'image'"/><!--图片消息-->
-                            <volist name="List" id="value">
+                        {elseif condition="$SearchMsgType eq 'image'"/}<!--图片消息-->
+                            {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                             	<td>{$value['key_word']}</td>
                                 <!--<td>{$value['media_id']}</td>-->
                                 <td>
-                                    <if condition="$value['link_url'] eq ''">暂无图片
-                                    <else/><img src="{$value['link_url']}" alt="" width="140" height="100" />
-                                    </if>
+                                    {if condition="$value['link_url'] eq ''"}暂无图片
+                                    {else/}<img src="{$value['link_url']}" alt="" width="140" height="100" />
+                                    {/if}
                                 </td>
                                 <td>图片消息</td>
                                 <td>
@@ -198,14 +198,14 @@
                                     <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
                                 </td>
                             </tr>
-                            </volist>
+                            {/foreach}
                             <php>if(!count($List)){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="5">暂无相关数据！</td>
                             </tr>
                             <php>}</php>
-                        <elseif condition="$SearchMsgType eq 'text'"/><!--文本消息-->
-                            <volist name="List" id="value">
+                        {elseif condition="$SearchMsgType eq 'text'"/}<!--文本消息-->
+                            {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                             	<td>{$value['key_word']}</td>
                                 <td>{$value['description']}</td>
@@ -215,13 +215,13 @@
                                     <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
                                 </td>
                             </tr>
-                            </volist>
+                            {/foreach}
                             <php>if(!count($List)){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="4">暂无相关数据！</td>
                             </tr>
                             <php>}</php>
-                        </if>
+                        {/if}
                       
                     </table>
                     <div class="interpret">

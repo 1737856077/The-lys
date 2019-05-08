@@ -14,7 +14,8 @@ use think\model;
 use think\Paginator;
 use think\File;
 use think\Image;
-use \app\wechat\controller\UserCommon; 
+use \app\wechat\controller\UserCommon;
+use think\Config;
 class Member extends UserCommon{
 	
 	//显示用户列表

@@ -3,12 +3,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信分组管理-粉丝分组管理-编辑粉丝分组</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
 </head>
 <style type="text/css">
 .ErrorRed{ color:#e74649; /* padding-left: 2%; */ font-size: 14px; display: inline-block;}
@@ -18,7 +18,7 @@
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; <a href="{:U('WechatWatchGroups/index')}">粉丝分组管理</a>&nbsp;>&nbsp; 编辑粉丝分组
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; <a href="{:url('WechatWatchGroups/index')}">粉丝分组管理</a>&nbsp;>&nbsp; 编辑粉丝分组
   
                 </div>
 
@@ -34,9 +34,9 @@
                     </div>
                     <div class="class_con">
                         <label for="">所属分组</label>&nbsp;&nbsp;&nbsp;<select class="" name="groups_id" id="groups_id" style="margin-left:0px">
-                            	<volist name="ListWechatGroups" id="value" key="key">	
-                                <option value="{$value['id']}" <if condition="$getone['wechat_groups_id'] eq $value['id']">selected="selected"</if> >{$value['name']}</option>
-                             	</volist>   
+                            	{foreach name="ListWechatGroups" id="value" key="key">	
+                                <option value="{$value['id']}" {if condition="$getone['wechat_groups_id'] eq $value['id']"}selected="selected"{/if} >{$value['name']}</option>
+                             	{/foreach}   
                          </select>
                     </div>
 

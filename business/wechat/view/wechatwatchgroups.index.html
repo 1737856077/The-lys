@@ -3,20 +3,20 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信分组管理-粉丝分组管理</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/WechatWatchGroups_Index.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/WechatWatchGroups_Index.js"></script>
 </head>
 <body>
         
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; 粉丝分组管理
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; 粉丝分组管理
 					</p>   
                 </div>
                 <div class="div_height_15"></div>	
@@ -51,7 +51,7 @@
                             <td class="mid_s">操作</td>
                         </tr>
                         
-						<volist name="List" id="value">
+						{foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                             	<td><input type="checkbox" name="sqt[]" value="{$value['wechat_openid']}" /></td>
                                 <td>{$value['wechat_watch_id']}</td>
@@ -61,15 +61,15 @@
                                 <td><img src="{$value['headimgurl']}" width="50" height="50" /></td>
                                 <td>{$value['create_time']|date='Y-m-d',###}</td>
                                 <td>
-                                <if condition="$value['data_status'] eq '1'"><font color="#006600">已关注</font>
-                                <else/><font color="#999999">已取消</font>
-                                </if>  
+                                {if condition="$value['data_status'] eq '1'"><font color="#006600">已关注</font>
+                                {else/}<font color="#999999">已取消</font>
+                                {/if}  
                                 </td>
                                 <td>
                                     <a href="__URL__/edit/openid/{$value['wechat_openid']}">编辑分组</a>　
                                 </td>
                             </tr>
-                        </volist>
+                        {/foreach}
                       	<php>if(!$count){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="8">暂无相关数据！</td>
@@ -84,9 +84,9 @@
                     		<input type="hidden" name="checkclass" id="checkclass" value="1" />
                     		<button class="a7" type="submit" style="width:180px; float:left;" onClick="checkclassfun('11');">将选中的粉丝移动到</button>
                     		<select class="register" name="groups_id" id="groups_id">
-                            	<volist name="ArrayWechatGroups" id="value" key="key">	
+                            	{foreach name="ArrayWechatGroups" id="value" key="key">	
                                 <option value="{$key}">{$value}</option>
-                             	</volist>   
+                             	{/foreach}   
                             </select>
                             <span style="color:#F00;" id="span_from_submit"></span>
                     </div>

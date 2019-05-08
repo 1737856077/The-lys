@@ -13,6 +13,7 @@ use think\Db;
 use think\Session;
 use think\model;
 use \app\wechat\controller\HomeCommonAction;
+use think\Config;
 class HomeGetWinXinInfoAction extends HomeCommonAction
 {
 	public function GetOpenid()

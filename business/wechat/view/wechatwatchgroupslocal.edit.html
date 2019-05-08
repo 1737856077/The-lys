@@ -3,13 +3,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信分组管理-粉丝分组管理-编辑粉丝分组</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/WechatWatchGroupsLocalAdd.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/WechatWatchGroupsLocalAdd.js"></script>
 </head>
 <style type="text/css">
 .ErrorRed{ color:#e74649; /* padding-left: 2%; */ font-size: 14px; display: inline-block;}
@@ -19,7 +19,7 @@
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; <a href="{:U('WechatWatchGroupsLocal/index')}">粉丝分组管理</a>&nbsp;>&nbsp; 编辑粉丝分组
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; <a href="{:url('WechatWatchGroupsLocal/index')}">粉丝分组管理</a>&nbsp;>&nbsp; 编辑粉丝分组
   
                 </div>
 
@@ -35,10 +35,10 @@
                     </div>
                     <div class="tab_cons" style="width:100%; border-bottom:0px;" id="div_groups_id">
                                 <label for="" style=" height:50px;">所属分组<font class="ErrorRed">*</font></label>
-                                <volist name="ListMemberGroups" id="value">
+                                {foreach name="ListMemberGroups" id="value"}
                                 <php>$_CHECKED = in_array($value['member_groups_id'],$getone['MemberGroupsArr']) ? 'checked="checked"' : "" ;</php>
                                 <span class="fit"><label for="groups_id_{$value['member_groups_id']}" style="text-align:left; padding-left:8px;"><input type="checkbox" name="groups_id[]" id="groups_id_{$value['member_groups_id']}" value="{$value['member_groups_id']}"  {$_CHECKED} >&nbsp;&nbsp;{$value['title']}</label></span>
-                                </volist>
+                                {/foreach}
                                 <span style="color:#F00;" id="span_groups_id"></span>
                     </div>
                 </div>

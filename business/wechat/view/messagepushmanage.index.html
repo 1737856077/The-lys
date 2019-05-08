@@ -3,15 +3,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信消息推送-消息推送</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/MessagePushManage.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/UserCity.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicMaterialPushAjax.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/MessagePushManage.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/UserCity.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicMaterialPushAjax.js"></script>
 </head>
 <style type="text/css">
 
@@ -36,7 +36,7 @@ $(window).resize();
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信消息推送&nbsp;>&nbsp; 消息推送</p>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信消息推送&nbsp;>&nbsp; 消息推送</p>
   
                 </div>
 				<div class="div_height_15"></div>
@@ -49,18 +49,18 @@ $(window).resize();
                         <label for="">推送分组</label>
                         <select name="groups_id" id="groups_id"  class="l_xiang" autocomplete="off">
                             <option value="" >所有粉丝</option>
-                            <volist name="ListWechatGroups" id="value">
+                            {foreach name="ListWechatGroups" id="value"}
                             <option value="{$value['id']}" >{$value['name']}({$value['count_member']}位粉丝)</option>
-                            </volist>
+                            {/foreach}
                         </select>
                     </div>
                  <div class="class_con">
                         <label for="">推送地区</label>
                         <select name="province_id" id="province_id"  class="l_xiang" autocomplete="off" onChange="GetAreaCityOneID(this.value)">
                             <option value="" >所有地区</option>
-                            <volist name="ListCity" id="value">
+                            {foreach name="ListCity" id="value"}
                             <option value="{$value['city_id']}" >{$value['title']}</option>
-                            </volist>
+                            {/foreach}
                         </select>
                         <select name="city_id" id="city_id"  class="l_xiang" autocomplete="off">
                             <option value="" >请选择</option>
@@ -108,8 +108,8 @@ $(window).resize();
         
 <div id="dialogBg" style="display:none;">
 	<div id="dialog">
-    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:U('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
-        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:U('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
     	<div class="menus_r" id="div_material_mpnews" style="display:block;">
         		<input type="hidden" name="PageMaterial_news" id="PageMaterial_video" value="2" autocomplete="off" />
         		<div class="maps" style="margin-left:0px; margin-top:0px;">
@@ -122,12 +122,12 @@ $(window).resize();
                         	<td class="mid_thr">标题</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialArticles" id="value">
+                        {foreach name="ListWechatMaterialArticles" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>
+                        {/foreach}
                         
                     	</tbody>
                     </table>
@@ -170,12 +170,12 @@ $(window).resize();
                             <td class="mid_thr">文件</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialVideo" id="value">
+                        {foreach name="ListWechatMaterialVideo" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>	
+                        {/foreach}	
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialVideo)<=10){</php>
@@ -197,12 +197,12 @@ $(window).resize();
                             <td class="mid_thr">文件</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialVoice" id="value">
+                        {foreach name="ListWechatMaterialVoice" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>
+                        {/foreach}
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialVoice)<=10){</php>

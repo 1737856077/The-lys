@@ -3,18 +3,18 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
 </head>
 <body>
 <div class="menus_r">
     <div id="con_two_1">
         <div class="maps">
             <i></i>
-            <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; <a href="{:U('Material/index')}">素材列表</a>&nbsp;>&nbsp; <a href="javascript:void(0);">添加多媒体素材</a></p>
+            <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; <a href="{:url('Material/index')}">素材列表</a>&nbsp;>&nbsp; <a href="javascript:void(0);">添加多媒体素材</a></p>
         </div>
         <!--column end-->
-        <form action="{:U('Material/insertMedia')}" method="post" enctype="multipart/form-data">
+        <form action="{:url('Material/insertMedia')}" method="post" enctype="multipart/form-data">
             <div class="clas_box">
                 <div class="class_con">
                     <label for="title">文章标题</label>
@@ -50,6 +50,6 @@
     </div>
 </div>
 
-<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
 </body>
 </html>

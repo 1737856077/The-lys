@@ -3,14 +3,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>关键词回复-编辑视频回复</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/KeywordReply_AddVideo.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicMaterialAjax.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/KeywordReply_AddVideo.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicMaterialAjax.js"></script>
 </head>
 <style type="text/css">
 
@@ -35,7 +35,7 @@ $(window).resize();
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; <a href="{:U('KeywordReply/index')}">关键词回复</a>&nbsp;>&nbsp; 编辑视频回复</p>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; <a href="{:url('KeywordReply/index')}">关键词回复</a>&nbsp;>&nbsp; 编辑视频回复</p>
   
                 </div>
 				<div class="div_height_15"></div>
@@ -48,13 +48,13 @@ $(window).resize();
                  <div class="clas_box" id="div_replay_news" style="margin-top:0px; padding-top:22px; padding-bottom:0px; ">
                  <div class="class_con">
                         <label for="">消息类型</label>
-                        <input type="text"  value="<if condition="$MsgType eq 'news'">图文消息
-                           <elseif condition="$MsgType eq 'music'"/>音乐消息             
-                           <elseif condition="$MsgType eq 'video'"/>视频消息
-                           <elseif condition="$MsgType eq 'voice'"/>语音消息
-                           <elseif condition="$MsgType eq 'image'"/>图片消息
-                           <elseif condition="$MsgType eq 'text'"/>文本消息
-                           </if>
+                        <input type="text"  value="{if condition="$MsgType eq 'news'"}图文消息
+                           {elseif condition="$MsgType eq 'music'"/}音乐消息             
+                           {elseif condition="$MsgType eq 'video'"/}视频消息
+                           {elseif condition="$MsgType eq 'voice'"/}语音消息
+                           {elseif condition="$MsgType eq 'image'"/}图片消息
+                           {elseif condition="$MsgType eq 'text'"/}文本消息
+                           {/if}
                            " disabled="disabled" />
                     </div>
                     <div class="class_con">
@@ -94,8 +94,8 @@ $(window).resize();
 <div id="dialogBg" style="display:none;">
 	<div id="dialog">
     
-		<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:U('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
-        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:U('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+		<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
 		<div class="menus_r_openwindow" id="div_material_video" style="display:none;">
         		<input type="hidden" name="PageMaterial_video" id="PageMaterial_video" value="1" autocomplete="off" />
         		<div class="maps" style="margin-top: 0px; margin-left:0px;">

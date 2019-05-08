@@ -3,20 +3,20 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信菜单-菜单列表</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/WechatWatchGroups_Index.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/WechatWatchGroups_Index.js"></script>
 </head>
 <body>
         
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信菜单&nbsp;>&nbsp; 菜单列表
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信菜单&nbsp;>&nbsp; 菜单列表
 					</p>   
                 </div>
                 <div class="div_height_15"></div>
@@ -38,63 +38,63 @@
                             <td class="mid_th">二级菜单</td>
                             <td class="mid_th">描述</td>
                             <td class="mid_th">类型</td>
-                            <td class="mid_th">跳转的url</td>
+                            <td class="mid_th" style="width: 300px;">跳转的url</td>
                             <!--<td class="mid_th">按钮的key</td>-->
                             <td class="mid_th">素材</td>
                             <td class="mid_s">操作</td>
                         </tr>
                        
-						<volist name="list" id="value">
+						{foreach name="list" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td>{$value['id']}</td>
                                 <td>{$value['title']}</td>
                                 <td>&nbsp;</td>
                                 <td>{$value['description']}</td>
                                 <td>
-                                <if condition="$value['data_type'] eq 'click'">点击推事件
-                                <elseif  condition="$value['data_type'] eq 'view'" />跳转URL
-                                <elseif  condition="$value['data_type'] eq 'scancode_push'" />扫码推事件
-                                <elseif  condition="$value['data_type'] eq 'scancode_waitmsg'" />扫码推事件且弹出“消息接收中”提示框
-                                <elseif  condition="$value['data_type'] eq 'pic_sysphoto'" />弹出系统拍照发图
-                                <elseif  condition="$value['data_type'] eq 'pic_photo_or_album'" />弹出拍照或者相册发图
-                                <elseif  condition="$value['data_type'] eq 'pic_weixin'" />弹出微信相册发图器
-                                <elseif  condition="$value['data_type'] eq 'location_select'" />弹出地理位置选择器
-                                <elseif  condition="$value['data_type'] eq 'media_id'" />下发消息（除文本消息）
-                                <elseif  condition="$value['data_type'] eq 'view_limited'" />跳转图文消息URL
-                                </if> 
+                                    {if condition="$value['data_type'] eq 'click'"}点击推事件
+                                    {elseif  condition="$value['data_type'] eq 'view'" /}跳转URL
+                                    {elseif  condition="$value['data_type'] eq 'scancode_push'" /}扫码推事件
+                                    {elseif  condition="$value['data_type'] eq 'scancode_waitmsg'" /}扫码推事件且弹出“消息接收中”提示框
+                                    {elseif  condition="$value['data_type'] eq 'pic_sysphoto'" /}弹出系统拍照发图
+                                    {elseif  condition="$value['data_type'] eq 'pic_photo_or_album'" /}弹出拍照或者相册发图
+                                    {elseif  condition="$value['data_type'] eq 'pic_weixin'" /}弹出微信相册发图器
+                                    {elseif  condition="$value['data_type'] eq 'location_select'" /}弹出地理位置选择器
+                                    {elseif  condition="$value['data_type'] eq 'media_id'" /}下发消息（除文本消息）
+                                    {elseif  condition="$value['data_type'] eq 'view_limited'" /}跳转图文消息URL
+                                    {/if}
                                 </td>
-                                <td>{$value['url']}</td>
+                                <td style="width: 300px; word-break:break-all;">{$value['url']}</td>
                                 <!--<td>{$value['btn_key']}</td>-->
                                 <td>{$value['MaterialTitle']}</td>
                                 <td>
                                     <a href="__URL__/edit/id/{$value['id']}">编辑</a>　
-                                    <if condition="count($value['ChildrenList']) eq '0'">
+                                    {if condition="count($value['ChildrenList']) eq '0'"}
                                     <a href="__URL__/del/id/{$val['id']}"  onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
-                                    <else/>
+                                    {else/}
                                     <font color="#bbbbbb">删除</font>　
-                                	</if>
+                                    {/if}
                                 </td>
                             </tr>
-                            <volist name="value['ChildrenList']" id="val">
+                        {foreach name="value['ChildrenList']" id="val"}
                              <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td>{$val['id']}</td>
                                 <td>|--</td>
                                 <td>{$val['title']}&nbsp;</td>
                                 <td>{$val['description']}</td>
                                 <td>
-                                <if condition="$val['data_type'] eq 'click'">点击推事件
-                                <elseif  condition="$val['data_type'] eq 'view'" />跳转URL
-                                <elseif  condition="$val['data_type'] eq 'scancode_push'" />扫码推事件
-                                <elseif  condition="$val['data_type'] eq 'scancode_waitmsg'" />扫码推事件且弹出“消息接收中”提示框
-                                <elseif  condition="$val['data_type'] eq 'pic_sysphoto'" />弹出系统拍照发图
-                                <elseif  condition="$val['data_type'] eq 'pic_photo_or_album'" />弹出拍照或者相册发图
-                                <elseif  condition="$val['data_type'] eq 'pic_weixin'" />弹出微信相册发图器
-                                <elseif  condition="$val['data_type'] eq 'location_select'" />弹出地理位置选择器
-                                <elseif  condition="$val['data_type'] eq 'media_id'" />下发消息（除文本消息）
-                                <elseif  condition="$val['data_type'] eq 'view_limited'" />跳转图文消息URL
-                                </if>
+                                    {if condition="$val['data_type'] eq 'click'"}点击推事件
+                                    {elseif  condition="$val['data_type'] eq 'view'" /}跳转URL
+                                    {elseif  condition="$val['data_type'] eq 'scancode_push'" /}扫码推事件
+                                    {elseif  condition="$val['data_type'] eq 'scancode_waitmsg'" /}扫码推事件且弹出“消息接收中”提示框
+                                    {elseif  condition="$val['data_type'] eq 'pic_sysphoto'" /}弹出系统拍照发图
+                                    {elseif  condition="$val['data_type'] eq 'pic_photo_or_album'" /}弹出拍照或者相册发图
+                                    {elseif  condition="$val['data_type'] eq 'pic_weixin'" /}弹出微信相册发图器
+                                    {elseif  condition="$val['data_type'] eq 'location_select'" /}弹出地理位置选择器
+                                    {elseif  condition="$val['data_type'] eq 'media_id'" /}下发消息（除文本消息）
+                                    {elseif  condition="$val['data_type'] eq 'view_limited'" /}跳转图文消息URL
+                                    {/if}
                                 </td>
-                                <td>{$val['url']}</td>
+                                <td style="width: 300px; word-break:break-all;">{$val['url']}</td>
                                 <!--<td>{$val['btn_key']}</td>-->
                                 <td>{$val['MaterialTitle']}</td>
                                 <td>
@@ -102,17 +102,16 @@
                                     <a href="__URL__/del/id/{$val['id']}"  onClick="javascript:return confirm('确定要删除吗？');">删除</a>　
                                 </td>
                             </tr>
-                            </volist>
-                            
-                        </volist>
-                      	<php>if(!count($list)){</php>
+                            {/foreach}
+
+                        {/foreach}
+                      	{if(!count($list))}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="8">暂无相关数据！</td>
                             </tr>
-                       <php>}</php>
+                        {/if}
                     </table>
-                    
-                    <div class="interpret">{$page}</div>
+
                     <div class="Member" style="height:200px;">
                         <div style="width:100%;" class="member_l">
                             <label>备注：</label>

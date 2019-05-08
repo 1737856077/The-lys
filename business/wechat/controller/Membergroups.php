@@ -14,7 +14,8 @@ use think\model;
 use think\Paginator;
 use think\File;
 use think\Image;
-use \app\wechat\controller\UserCommon; 
+use \app\wechat\controller\UserCommon;
+use think\Config;
 class Membergroups extends UserCommon{
 
 	public function index(){
@@ -84,8 +85,8 @@ class Membergroups extends UserCommon{
 			exit;
 		}
 
-		$ModelMemberGroups->add($data);
-		$this->success("添加成功！",__URL__."/index",3);
+		$ModelMemberGroups->insertGetId($data);
+		$this->success("添加成功！",url("Membergroups/index"),3);
 		exit;
 	}
 
@@ -115,7 +116,7 @@ class Membergroups extends UserCommon{
 		$data["update_time"]=$gettime;
 
 		$ModelMemberGroups->where("member_groups_id='$id'")->save($data);
-		$this->success("编辑成功！",__URL__."/index",3);
+		$this->success("编辑成功！",url("Membergroups/index"),3);
 		exit;
 	}
 
@@ -131,7 +132,7 @@ class Membergroups extends UserCommon{
 
 		$ModelMemberGroups->where("member_groups_id='$id'")->delete();
 
-		$this->success("操作成功！",__URL__."/index",3);
+		$this->success("操作成功！",url("Membergroups/index"),3);
 		exit;		
 	}
 

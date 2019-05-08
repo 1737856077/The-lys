@@ -3,15 +3,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>编辑关注回复</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/AttentionReply.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/AttentionReplyAdd.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicMaterialAjax.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/AttentionReply.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/AttentionReplyAdd.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicMaterialAjax.js"></script>
 </head>
 <style type="text/css">
 
@@ -35,7 +35,7 @@ $(window).resize();
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; 编辑关注回复</p>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; 编辑关注回复</p>
   
                 </div>
 
@@ -44,12 +44,12 @@ $(window).resize();
                     <div class="class_con">
                         <label for="">消息类型</label>
                         <select name=""  class="l_xiang" onchange="SelectMsgType(this.value)" autocomplete="off">
-                            <option value="news" <if condition="$getone['msgtype'] eq 'news'">selected="selected"</if> >图文消息</option>
-                            <option value="music" <if condition="$getone['msgtype'] eq 'music'">selected="selected"</if> >音乐消息</option>
-                            <option value="video" <if condition="$getone['msgtype'] eq 'video'">selected="selected"</if> >视频消息</option>
-                            <option value="voice" <if condition="$getone['msgtype'] eq 'voice'">selected="selected"</if> >语音消息</option>
-                            <option value="image" <if condition="$getone['msgtype'] eq 'image'">selected="selected"</if> >图片消息</option>
-                            <option value="text" <if condition="$getone['msgtype'] eq 'text'">selected="selected"</if> >文本消息</option>
+                            <option value="news" {if condition="$getone['msgtype'] eq 'news'"}selected="selected"{/if} >图文消息</option>
+                            <option value="music" {if condition="$getone['msgtype'] eq 'music'"}selected="selected"{/if} >音乐消息</option>
+                            <option value="video" {if condition="$getone['msgtype'] eq 'video'"}selected="selected"{/if} >视频消息</option>
+                            <option value="voice" {if condition="$getone['msgtype'] eq 'voice'"}selected="selected"{/if} >语音消息</option>
+                            <option value="image" {if condition="$getone['msgtype'] eq 'image'"}selected="selected"{/if} >图片消息</option>
+                            <option value="text" {if condition="$getone['msgtype'] eq 'text'"}selected="selected"{/if} >文本消息</option>
                         </select>
                     </div>
                 </div>    
@@ -57,7 +57,7 @@ $(window).resize();
  				<input type="hidden" name="msgtype" id="msgtype" value="{$getone['msgtype']}" />
                 <input type="hidden" name="id" id="id" value="{$getone['id']}" />
                 
-                <div class="clas_box" id="div_replay_news" style="margin-top:0px; padding-top:0px; padding-bottom:0px; <if condition="$getone['msgtype'] eq 'news'">display:block; <else/>display:none;</if>">  
+                <div class="clas_box" id="div_replay_news" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'news'"}display:block; {else/}display:none;{/if}">  
                 	<div class="class_con">
                         <label for="">图片</label>
                          <input type="text" name="news_link_url" id="news_link_url" value="{$getone['link_url']}" onblur="onblur_news_link_url()" />
@@ -90,7 +90,7 @@ $(window).resize();
                     </div>
                 </div>
                 
-                <div class="clas_box" id="div_replay_music" style="margin-top:0px; padding-top:0px; padding-bottom:0px; <if condition="$getone['msgtype'] eq 'music'">display:block; <else/>display:none;</if>">  
+                <div class="clas_box" id="div_replay_music" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'music'"}display:block; {else/}display:none;{/if}">  
  
                     <div class="class_con">
                         <label for="">标题</label>
@@ -124,7 +124,7 @@ $(window).resize();
                     </div>
                 </div>
                 
-                <div class="clas_box" id="div_replay_video" style="margin-top:0px; padding-top:0px; padding-bottom:0px; <if condition="$getone['msgtype'] eq 'video'">display:block; <else/>display:none;</if>">  
+                <div class="clas_box" id="div_replay_video" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'video'"}display:block; {else/}display:none;{/if}">  
                     <div class="class_con">
                         <label for="">视频的MediaId</label>
                          <input type="text" name="video_media_id" id="video_media_id" value="{$getone['media_id']}" onblur="onblur_video_media_id()" />
@@ -144,7 +144,7 @@ $(window).resize();
                     </div>
                 </div>
                 
-                <div class="clas_box" id="div_replay_voice" style="margin-top:0px; padding-top:0px; padding-bottom:0px; <if condition="$getone['msgtype'] eq 'voice'">display:block; <else/>display:none;</if>">  
+                <div class="clas_box" id="div_replay_voice" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'voice'"}display:block; {else/}display:none;{/if}">  
                     <div class="class_con">
                         <label for="">语音的MediaId</label>
                          <input type="text" name="voice_media_id" id="voice_media_id" value="{$getone['media_id']}"  onblur="onblur_voice_media_id()" />
@@ -153,7 +153,7 @@ $(window).resize();
                     </div>
                 </div>
                 
-                <div class="clas_box" id="div_replay_image" style="margin-top:0px; padding-top:0px; padding-bottom:0px; <if condition="$getone['msgtype'] eq 'image'">display:block; <else/>display:none;</if>">  
+                <div class="clas_box" id="div_replay_image" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'image'"}display:block; {else/}display:none;{/if}">  
                 	<div class="class_con">
                         <label for="">图片</label>
                          <input type="text" name="image_link_url" id="image_link_url" value="{$getone['link_url']}" onKeyPress="return noStrs(event);" onblur="onblur_image_link_url()" />
@@ -169,7 +169,7 @@ $(window).resize();
                     </div>  
                 </div>
                 
-                <div class="clas_box" id="div_replay_text" style="margin-top:0px; padding-top:0px; padding-bottom:0px; <if condition="$getone['msgtype'] eq 'text'">display:block; <else/>display:none;</if>">  
+                <div class="clas_box" id="div_replay_text" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'text'"}display:block; {else/}display:none;{/if}">  
                     <div class="class_con">
                         <label for="">文本</label>
                          <textarea name="text_description" id="text_description" maxlength="150" style="width:528px; height:100px;" onKeyPress="return noStrs(event);" onblur="onblur_text_description()">{$getone['description']}</textarea>
@@ -192,8 +192,8 @@ $(window).resize();
         
 <div id="dialogBg" style="display:none;">
 	<div id="dialog">
-    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:U('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
-        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:U('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
     
 		<div class="menus_r_openwindow" id="div_material_image" style="display:none;  overflow-x: hidden; ">
         		<input type="hidden" name="PageMaterial_image" id="PageMaterial_image" value="1" autocomplete="off" />
@@ -227,12 +227,12 @@ $(window).resize();
                             <td class="mid_thr">文件</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialVideo" id="value">
+                        {foreach name="ListWechatMaterialVideo" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterialVideo('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>	
+                        {/foreach}	
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialVideo)<=10){</php>
@@ -254,12 +254,12 @@ $(window).resize();
                             <td class="mid_thr">文件</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialVoice" id="value">
+                        {foreach name="ListWechatMaterialVoice" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterialVoice('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>
+                        {/foreach}
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialVoice)<=10){</php>
@@ -282,13 +282,13 @@ $(window).resize();
                             <td class="mid_thr">标题</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                       	<volist name="ListWechatMaterialMusic" id="value">
+                       	{foreach name="ListWechatMaterialMusic" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td><img src="{$value['thumb_url']}" height="100" width="150" alt="" /></td>
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterialMusic('{$value['url']}','{$value['hd_url']}','{$value['thumb_media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>
+                        {/foreach}
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialMusic)<=10){</php>

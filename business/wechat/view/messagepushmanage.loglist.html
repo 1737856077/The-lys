@@ -3,19 +3,19 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信消息推送-推送记录</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
 </head>
 <body>
         
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:U('Index/main')}">首页</a>&nbsp;>&nbsp; <a href="{:U('MessagePushManage/index')}">微信消息推送</a>&nbsp;>&nbsp; 推送记录
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; <a href="{:url('MessagePushManage/index')}">微信消息推送</a>&nbsp;>&nbsp; 推送记录
 					</p>   
                 </div>
                 <!-- add end --> 
@@ -34,31 +34,31 @@
                             <td class="mid_s">发送的结果</td>
                         </tr>
                         
-						<volist name="List" id="value">
+						{foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td>{$value['id']}</td>
                                 <td>
-                                <if condition="$value['msgtype'] eq 'mpnews'">图文消息
-                                <elseif condition="$value['msgtype'] eq 'text'" />文本消息
-                                <elseif condition="$value['msgtype'] eq 'voice'" />语音消息
-                                <elseif condition="$value['msgtype'] eq 'music'" />音乐消息
-                                <elseif condition="$value['msgtype'] eq 'image'" />图片消息
-                                <elseif condition="$value['msgtype'] eq 'video'" />视频消息
-                                <elseif condition="$value['msgtype'] eq 'wxcard'" />卡券消息
-                                </if>
+                                {if condition="$value['msgtype'] eq 'mpnews'"}图文消息
+                                {elseif condition="$value['msgtype'] eq 'text'" /}文本消息
+                                {elseif condition="$value['msgtype'] eq 'voice'" /}语音消息
+                                {elseif condition="$value['msgtype'] eq 'music'" /}音乐消息
+                                {elseif condition="$value['msgtype'] eq 'image'" /}图片消息
+                                {elseif condition="$value['msgtype'] eq 'video'" /}视频消息
+                                {elseif condition="$value['msgtype'] eq 'wxcard'" /}卡券消息
+                                {/if}
                                 </td>
                                 <td>{$value['total_count']}</td>
                                 <td>{$value['sent_count']}</td>
                                 <td>{$value['error_count']}</td>
                                 <td>{$value['create_time']|date='Y-m-d',###}</td>
                                 <td>
-                                <if condition="$value['send_status'] eq 'send success'"><font color="#006600">发送成功</font>
-                                <elseif condition="$value['send_status'] eq ''" /><font color="#999999">已提交</font>
-                                <else/><font color="#999999">发送失败</font>
-                                </if>  
+                                {if condition="$value['send_status'] eq 'send success'"}<font color="#006600">发送成功</font>
+                                {elseif condition="$value['send_status'] eq ''" /}<font color="#999999">已提交</font>
+                                {else/}<font color="#999999">发送失败</font>
+                                {/if}  
                                 </td>
                             </tr>
-                        </volist>
+                        {/foreach}
                       	<php>if(!$count){</php>
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="8">暂无相关数据！</td>

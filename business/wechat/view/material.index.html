@@ -3,12 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-    <link href="__PUBLIC__/Admin/lightbox2/dist/css/lightbox.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <link href="__STATIC__/admin/lightbox2/dist/css/lightbox.css" rel="stylesheet">
     <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
-    <link href="__PUBLIC__/Admin/remodal/remodal.css" rel="stylesheet">
-    <link href="__PUBLIC__/Admin/remodal/remodal-default-theme.css" rel="stylesheet">
+    <link href="__STATIC__/admin/remodal/remodal.css" rel="stylesheet">
+    <link href="__STATIC__/admin/remodal/remodal-default-theme.css" rel="stylesheet">
     <style>
         .bor_cen tr td {
             color:#333;
@@ -33,7 +33,7 @@
             <i></i>
             <p class="current">您当前的位置：<a href="">首页</a>&nbsp;>&nbsp; <a href="">微信素材管理</a>&nbsp;>&nbsp; <a href="">素材列表</a></p>
             <div class="maps_r">
-                <form action="{:U('Material/index')}" method="post">
+                <form action="{:url('Material/index')}" method="post">
                     <input type="text" name="title"  class="sou_l"/>
                     <input type="submit" class="sou_r" value="搜索" />
                 </form>
@@ -46,8 +46,8 @@
                 <a href="javascript:void(0)" class="form_qx from_false unselected">反选</a>
                 <a href="javascript:void(0)" class="form_qx from_q select_f">取消</a>
                 <a href="javascript:void(0)" class="sc from_de">删除</a>
-                <a href="{:U('Material/addMedia')}" class="tjwzhang add_article">添加素材</a>
-                <a href="{:U('Material/SyncAllList')}" class="a5">同步素材</a>
+                <a href="{:url('Material/addMedia')}" class="tjwzhang add_article">添加素材</a>
+                <a href="{:url('Material/SyncAllList')}" class="a5">同步素材</a>
             </div>
             <table class="bor_cen"  style="border-collapse:collapse;">
                 <thead>
@@ -62,26 +62,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                <volist name="info" id="vo">
+                {foreach name="info" id="vo"}
                     <tr  class="mid_02" style="border-left:3px solid #cfbba9" data-id="{$vo.media_id}">
                         <td class="mid_one" style="border-right:1px solid #e4e3e3"><input type="checkbox" /></td>
                         <td class="mid_t">
                                 <div class="clip">
-                                    <if condition="$vo.data_type eq image">
+                                    {if condition="$vo.data_type eq image">
                                     <a href="{$vo.url}" data-lightbox="roadtrip">{$vo.title}</a>
-                                    <elseif condition="$vo.data_type eq video"/>
+                                    {elseif condition="$vo.data_type eq video"/>
                                     <div class="remodal-bg">
                                         <div id="qunit"></div>
                                         <a href="#" id="video-title" data-remodal-target="modal" data-url="{$vo.local_path}">{$vo.title}</a>
                                     </div>
-                                    <elseif condition="$vo.data_type eq voice" />
+                                    {elseif condition="$vo.data_type eq voice" />
                                     <div class="remodal-bg">
                                         <div id="voice-qunit"></div>
                                         <a href="#" id="voice-title" data-remodal-target="voice-modal" data-url="{$vo.local_path}">{$vo.title}</a>
                                     </div>
                                     <else />
                                         {$vo.title}
-                                    </if>
+                                    {/if}
                                 </div>
                             </td>
                         <td class="mid_one" style="text-align:center">{$vo.data_type}</td>
@@ -89,7 +89,7 @@
                         <td class="mid_one">
                             <eq name="vo.data_status" value="1">
                                 同步
-                            <else/>
+                            {else/}
                                 未同步
                             </eq>
                         </td>
@@ -98,7 +98,7 @@
                             <a href="javascript:void(0);" data-id="{$vo.media_id}" class="del">删除</a>
                         </td>
                     </tr>
-                </volist>
+                {/foreach}
                 </tbody>
             </table>
             <div class="interpret">
@@ -121,17 +121,17 @@
     </audio>
 </div>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
-<script src="__PUBLIC__/Admin/lightbox2/dist/js/lightbox.min.js"></script>
+<script src="__STATIC__/admin/lightbox2/dist/js/lightbox.min.js"></script>
 <script src="http://vjs.zencdn.net/c/video.js"></script>
-<script src="__PUBLIC__/Admin/remodal/remodal.js"></script>
+<script src="__STATIC__/admin/remodal/remodal.js"></script>
 <script>
 $(function(){
     //删除
     $(".del").on('click',function(){
         var mediaId = $(this).data('id');
-        //console.log("{:U(Material/delMedia)}/media_id/"+mediaId);
+        //console.log("{:url(Material/delMedia)}/media_id/"+mediaId);
         if(confirm("您是否确认删除<"+mediaId+">?")){
-                location.href = "{:U('Material/delMedia')}/media_id/"+mediaId;
+                location.href = "{:url('Material/delMedia')}/media_id/"+mediaId;
         }
     });
 
@@ -165,7 +165,7 @@ $(function(){
             $("input:checked").each(function () {
                 var myself = $(this).parents('tr');
                 var id = myself.data('id');
-                $.post('{:U("Material/delMedia")}', {media_id: id}, function (data) {
+                $.post('{:url("Material/delMedia")}', {media_id: id}, function (data) {
                     //console.log(data);
                     if (data.status == 1) {
                         myself.remove();
