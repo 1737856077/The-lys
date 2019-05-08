@@ -26,7 +26,7 @@
             <input type="hidden" name="uid" id="uid" class="uid" value="{$member_data.uid}">
                 {else/}
             <form action="" id="form1"  class="form1" enctype="multipart/form-data">
-                <img src="__STATIC__/integral/user/{$member_data.img}"  alt=""> <input onchange="save()" name="img" type="file" style="display:block;width:70px;height: 70px;opacity:0;margin-top: -70px;position:absolute" />
+                <img src="{$member_data.img}"  alt=""> <input onchange="save()" name="img" type="file" style="display:block;width:70px;height: 70px;opacity:0;margin-top: -70px;position:absolute" />
             </form>
             <input type="hidden" name="uid" id="uid" class="uid" value="{$member_data.uid}">
             {/if}
