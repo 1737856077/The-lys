@@ -13,6 +13,7 @@ use think\Db;
 use think\Session;
 use think\model;
 use think\Paginator;
+use think\Config;
 class PublicAction extends Controller{
 
     /*获取accessToken*/

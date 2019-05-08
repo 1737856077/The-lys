@@ -16,6 +16,7 @@ use think\Session;
 use think\Cookie;
 use think\model;
 use \app\wechat\controller\HomeReplyWechatWatchAction;
+use think\Config;
 class HomeCommonAction extends Controller{
 	private $postObj=null;
 	private $fromUsername="";
@@ -93,7 +94,7 @@ class HomeCommonAction extends Controller{
 							);
 							
 							$GetUserInfoWechatArray["nickname"]=empty($GetUserInfoWechatArray["nickname"]) ? "游客" : $GetUserInfoWechatArray["nickname"];
-							//$returnid=$ModelWechatWatch->add($dataWechatWatch);
+							//$returnid=$ModelWechatWatch->insertGetId($dataWechatWatch);
 							$ModelWechatWatch->query("INSERT INTO `".config('DB_PREFIX')."wechat_watch` (wechat_openid,
 																									developer_account,
 																									`nickname`,

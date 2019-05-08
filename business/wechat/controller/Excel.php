@@ -76,7 +76,7 @@ class Excel extends UserCommon{
 				$add_arr['update_time'] = $add_arr['create_time'];
 				//dump($add_arr);
 				
-				$res = $db_member ->add($add_arr);
+				$res = $db_member ->insertGetId($add_arr);
 				if($res){
 					echo "OK";
 				}else{
@@ -91,7 +91,7 @@ class Excel extends UserCommon{
 			
 		}
 		echo "FINISH</br>";
-		echo "<a href='http://".$_SERVER['HTTP_HOST']."/admin.php/Excel/address'>点击进入下一步</a>";
+		echo "<a href='http://".$_SERVER['HTTP_HOST']."/business.php/wechat/excel/address'>点击进入下一步</a>";
 	}
 
 	public function address(){
@@ -188,7 +188,7 @@ class Excel extends UserCommon{
 			$add_rceiving_address['create_time'] = $b['create_time']+mt_rand(30025,102400);
 			$add_rceiving_address['update_time'] = $add_rceiving_address['create_time'];
 
-			$res = $db_address->add($add_rceiving_address);
+			$res = $db_address->insertGetId($add_rceiving_address);
 			if($res){
 				echo "OK";
 			}else{
@@ -203,7 +203,7 @@ class Excel extends UserCommon{
 		
 			
 		echo "FINISH</br>";
-		echo "<a href='http://".$_SERVER['HTTP_HOST']."/admin,php/Excel/index'>点击进入下一步</a>";
+		echo "<a href='http://".$_SERVER['HTTP_HOST']."/business,php/wechat/excel/index'>点击进入下一步</a>";
 	}
 
 
@@ -220,7 +220,7 @@ class Excel extends UserCommon{
 			$upload->savePath = './Public/Uploads/Excel/'.date("Y-m-d",time()).'/'; //设置附件上传目录
 			//$upload->savePath = "./Public/Uploads/Excel/".date("Y-m-d",time())."/";
 			if(!$upload->upload()) {
-				$this->error("文件上传失败！错误信息：".$upload->getErrorMsg(),"__URL__/index");
+				$this->error("文件上传失败！错误信息：".$upload->getErrorMsg(),url("attentionreply/index"));
 			}else{
 				$info = $upload->getUploadFileInfo();
 				//dump($info);
@@ -334,7 +334,7 @@ class Excel extends UserCommon{
 				
 				
 				
-				$id_demand = $db_demand->add($add_demand);
+				$id_demand = $db_demand->insertGetId($add_demand);
 				
 				if($id_demand){
 					echo "demand--OK!";
@@ -379,7 +379,7 @@ class Excel extends UserCommon{
 				$add_trip['create_time'] = $add_demand['create_time']+mt_rand(102400,204800);
 				$add_trip['update_time'] = $add_trip['create_time'];
 
-				$id_trip = $db_trip->add($add_trip);
+				$id_trip = $db_trip->insertGetId($add_trip);
 				if($id_trip){
 					echo "trip--OK!";
 				}else{
@@ -404,7 +404,7 @@ class Excel extends UserCommon{
 
 				//dump($add_order);
 				
-				$id_order = $db_order->add($add_order);
+				$id_order = $db_order->insertGetId($add_order);
 				if($id_order){
 					echo "order--OK!";
 				}else{
@@ -461,7 +461,7 @@ class Excel extends UserCommon{
 
 				//dump($add_order_datail);
 				//exit;
-				$id_order_detail = $db_order_detail->add($add_order_datail);
+				$id_order_detail = $db_order_detail->insertGetId($add_order_datail);
 				//dump($db_order_detail);
 				//dump($id_order_detail);
 				if($id_order_detail){

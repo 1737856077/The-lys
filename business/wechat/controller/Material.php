@@ -42,8 +42,6 @@ class Material extends CommonBaseHome{
         return $this->fetch();
     }
 
-
-
     public function addMedia() {
         return $this->fetch();
     }
@@ -105,8 +103,8 @@ class Material extends CommonBaseHome{
         $data['create_time'] = $nowtime;
         $data['update_time'] = $nowtime;
 
-        if($Material->add($data)){
-            $this->success('添加微信多媒体素材成功！',U('Material/index'),3);
+        if($Material->insertGetId($data)){
+            $this->success('添加微信多媒体素材成功！',url('Material/index'),3);
         }else{
             $this->error('数据库插入错误！','',3);
         }
@@ -125,7 +123,7 @@ class Material extends CommonBaseHome{
         $where['media_id'] = $media_id;
         $res = $Material->where($where)->delete();
         if(!$res) $this->error('删除数据库数据错误','',3);
-        $this->success('删除数据成功',U('Material/index'),3);
+        $this->success('删除数据成功',url('Material/index'),3);
     }
 
 
@@ -167,8 +165,8 @@ class Material extends CommonBaseHome{
         $Atricles->create_time = $nowtime;
         $Atricles->update_time = $nowtime;
         $Atricles->data_status = 0;
-        if(!$Atricles->add()) $this->error("插入数据库错误",'',3);
-        $this->success("保存数据成功",U('Material/articles'),3);
+        if(!$Atricles->insertGetId()) $this->error("插入数据库错误",'',3);
+        $this->success("保存数据成功",url('Material/articles'),3);
     }
 
     /*删除数据库图文*/
@@ -177,7 +175,7 @@ class Material extends CommonBaseHome{
         $where['atr_id'] = $atr_id;
         $res = $Atricles->where($where)->delete();
         if(!$res) $this->error("删除数据错误",'',3);
-        $this->success("删除数据成功！",U('Material/articles'),3);
+        $this->success("删除数据成功！",url('Material/articles'),3);
     }
 
     /*编辑图文素材for数据库*/
@@ -202,7 +200,7 @@ class Material extends CommonBaseHome{
         $res = $Atricles->where($where)->save();
         //echo  $Atricles->_sql();exit;
         if(!$res) $this->error("更新数据库错误",'',3);
-        $this->success("更新数据成功",U('Material/articles'),3);
+        $this->success("更新数据成功",url('Material/articles'),3);
     }
 
 
@@ -268,10 +266,10 @@ class Material extends CommonBaseHome{
         }
         $data_material['create_time']  = $nowtime;
         $data_material['update_time']  = $nowtime;
-        $res = $Material->add($data_material);
+        $res = $Material->insertGetId($data_material);
 
         if(!$res) $this->error("添加数据库错误",'',3);
-        $this->success("添加微信图文素材成功",U('Material/articles'),3);
+        $this->success("添加微信图文素材成功",url('Material/articles'),3);
     }
 
 
@@ -288,7 +286,7 @@ class Material extends CommonBaseHome{
         $this->Sync('news');
         $map['data_status'] = 0;
         $Material->where($map)->delete();
-        $this->success("同步完成",U('Material/index'),3);
+        $this->success("同步完成",url('Material/index'),3);
 
     }
 
@@ -326,7 +324,7 @@ class Material extends CommonBaseHome{
                 }
             }
 
-            $res = $Material->add($data,$options=array(),$replace=true);
+            $res = $Material->insertGetId($data,$options=array(),$replace=true);
             //echo $Material->_sql();exit;
 
         }

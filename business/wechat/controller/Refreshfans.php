@@ -28,7 +28,7 @@ class Refreshfans extends UserCommon{
 		
 		$info=$this->WechatGetListOpenid($next_openid);
 		if(!empty($info["errcode"])){
-			$this->error("刷新粉丝失败！原因：".json_encode($info),U('WechatWatchGroupsLocal/index'),3);
+			$this->error("刷新粉丝失败！原因：".json_encode($info),url('WechatWatchGroupsLocal/index'),3);
 			exit;
 		}
 		
@@ -41,7 +41,7 @@ class Refreshfans extends UserCommon{
 		$PublicAction=new PublicAction();
 		$gettime=time();
 		if(!$total){//没有粉丝，清空粉丝表
-			$this->success("操作成功！",U('WechatWatchGroupsLocal/index'),3);
+			$this->success("操作成功！",url('WechatWatchGroupsLocal/index'),3);
 			exit;
 		}
 		
@@ -90,7 +90,7 @@ class Refreshfans extends UserCommon{
 							"create_time"=>$gettime,
 							"update_time"=>$gettime,
 					);
-					$returnid=$ModelWechatWatch->add($dataWechatWatch);
+					$returnid=$ModelWechatWatch->insertGetId($dataWechatWatch);
 				}
 			}else if($getone["nickname"]=="游客"){//信息刷新
 				//取得粉丝资料
@@ -121,10 +121,10 @@ class Refreshfans extends UserCommon{
 			$ModelWechatWatch->where("wechat_openid NOT IN('".implode("','", $Session_RefreshFansOpenids)."')")->delete();//删除没关注的粉丝
 			session("RefreshFansOpenids",null);//清空session
 			//echo $ModelWechatWatch->getLastSql();exit;
-			$this->success("刷新完成：$total/$total",U('WechatWatchGroupsLocal/index'),3);
+			$this->success("刷新完成：$total/$total",url('WechatWatchGroupsLocal/index'),3);
 			exit;
 		}else{//发送进行中
-			$this->success("刷新进行中，已刷新：".($page*$display_num)."/$total",__URL__."/index/page/$last_page/next_openid/$next_openid",1);
+			$this->success("刷新进行中，已刷新：".($page*$display_num)."/$total",url("Refreshfans/index")."/page/$last_page/next_openid/$next_openid",1);
 			exit;
 		}
 		

@@ -3,14 +3,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信菜单管理-添加菜单</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/WechatMenuAdd.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicMaterialPushAjax.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/WechatMenuAdd.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicMaterialPushAjax.js"></script>
 </head>
 <style type="text/css">
 .ErrorRed{ color:#e74649; /* padding-left: 2%; */ font-size: 14px; display: inline-block;}
@@ -34,9 +34,9 @@
                         <label for="">父级菜单</label>　
                          <select class="" name="father_id" id="father_id">
                          		<option value="0">一级菜单</option>
-                            	<volist name="ListWechatMenu" id="value" key="key">	
+                            	{foreach name="ListWechatMenu" id="value" key="key">	
                                 <option value="{$value['id']}">{$value['title']}</option>
-                             	</volist>   
+                             	{/foreach}   
                          </select>
                     </div>
                      <div class="class_con">
@@ -135,12 +135,12 @@
                         	<td class="mid_thr">标题</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialArticles" id="value">
+                        {foreach name="ListWechatMaterialArticles" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>
+                        {/foreach}
                         
                     	</tbody>
                     </table>
@@ -195,12 +195,12 @@
                             <td class="mid_thr">文件</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialVideo" id="value">
+                        {foreach name="ListWechatMaterialVideo" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>	
+                        {/foreach}	
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialVideo)<=10){</php>
@@ -228,12 +228,12 @@
                             <td class="mid_thr">文件</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialVoice" id="value">
+                        {foreach name="ListWechatMaterialVoice" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>
+                        {/foreach}
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialVoice)<=10){</php>

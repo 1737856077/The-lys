@@ -14,7 +14,8 @@ use think\model;
 use think\Paginator;
 use think\File;
 use think\Image;
-use \app\wechat\controller\UserCommon; 
+use \app\wechat\controller\UserCommon;
+use think\Config;
 class Messagepushmanage extends UserCommon{
 	
 	//显示消息推送主页面
@@ -171,19 +172,19 @@ class Messagepushmanage extends UserCommon{
 					"update_time"=>$gettime,
 			);
 				
-			$ModelWechatMassLog->add($data);
+			$ModelWechatMassLog->insertGetId($data);
 			//wirtefile($ModelWechatMassLog->getLastSql());
 			
 		}else{
-			$this->error("发送失败！原因：".json_encode($info),__URL__."/index",3);
+			$this->error("发送失败！原因：".json_encode($info),url("Messagepushmanage/index"),3);
 			exit;
 		}
 		
 		if($page==$total_page){//当前页等于总页面，发送完成
-			$this->success("发送完成！$countWechatWatch/$countWechatWatch",__URL__."/index",3);
+			$this->success("发送完成！$countWechatWatch/$countWechatWatch",url("Messagepushmanage/index"),3);
 			exit;
 		}else{//发送进行中
-			$this->success("发送进行中，已发送：".($page*$display_num)."/$countWechatWatch",__URL__."/insert/page/$last_page".$paramter,1);
+			$this->success("发送进行中，已发送：".($page*$display_num)."/$countWechatWatch",url("Messagepushmanage/insert")."/page/$last_page".$paramter,1);
 			exit;
 		}
 		

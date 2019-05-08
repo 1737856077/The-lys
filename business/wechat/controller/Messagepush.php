@@ -164,19 +164,19 @@ class Messagepush extends UserCommon{
 					"update_time"=>$gettime,
 			);
 				
-			$ModelWechatMassLog->add($data);
+			$ModelWechatMassLog->insertGetId($data);
 			//wirtefile($ModelWechatMassLog->getLastSql());
 			
 		}else{
-			$this->error("发送失败！原因：".json_encode($info),__URL__."/index",3);
+			$this->error("发送失败！原因：".json_encode($info),url("Messagepush/index"),3);
 			exit;
 		}
 		
 		if($page==$total_page){//当前页等于总页面，发送完成
-			$this->success("发送完成！$countWechatWatch/$countWechatWatch",__URL__."/index",3);
+			$this->success("发送完成！$countWechatWatch/$countWechatWatch",url("Messagepush/index"),3);
 			exit;
 		}else{//发送进行中
-			$this->success("发送进行中，已发送：".($page*$display_num)."/$countWechatWatch",__URL__."/insert/page/$last_page".$paramter,1);
+			$this->success("发送进行中，已发送：".($page*$display_num)."/$countWechatWatch",url("Messagepush/insert")."/page/$last_page".$paramter,1);
 			exit;
 		}
 		

@@ -15,6 +15,7 @@ use think\model;
 use think\Paginator;
 use think\File;
 use think\Image;
+use think\Config;
 class Getwinxininfo extends Controller
 {
 	public function GetOpenid()

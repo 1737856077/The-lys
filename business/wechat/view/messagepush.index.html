@@ -3,15 +3,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>微信消息推送-消息推送</title>
-	<link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/index.css"/>
-    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Admin/css/public.css"/>
-	<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/javascript/myString.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/javascript/function.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicUser.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/MessagePush.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/MessagePushCity.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/Admin/js/PublicMaterialPushAjax.js"></script>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/MessagePush.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/MessagePushCity.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/wechat/PublicMaterialPushAjax.js"></script>
 </head>
 <style type="text/css">
 
@@ -48,17 +48,17 @@ $(window).resize();
                   <div class="tab_cons" style="width:100%; border-bottom:0px;" id="div_groups_id">
                                 <label for="" style=" height:50px;">推送分组</label>
                                 <label for="groups_id_all" style="text-align:left; padding-left:8px; color:#ff6600; " ><input type="checkbox" name="groups_id_all" id="groups_id_all" value="1" onclick="onclick_groups_id_all(this)">&nbsp;&nbsp;所有粉丝</label>
-                                <volist name="ListMemberGroups" id="value">
+                                {foreach name="ListMemberGroups" id="value"}
                                 <span class="fit"><label for="groups_id_{$value['member_groups_id']}" style="text-align:left; padding-left:8px;"><input type="checkbox" name="groups_id[]" id="groups_id_{$value['member_groups_id']}" value="{$value['member_groups_id']}" onclick="onclick_groups_id(this)" >&nbsp;&nbsp;{$value['title']}</label></span>
-                                </volist>
+                                {/foreach}
                                 <span style="color:#F00;" id="span_groups_id"></span>
                   </div>  
                 <div class="class_con">
                                     <label for="">推送地区</label>
                        <select name="province_id" size="10"  class="l_xiang" id="province_id" onChange="GetAreaCityOneID(this.value)" autocomplete="off" style=" height:200px;">
-                           <volist name="ListCity" id="value">
+                           {foreach name="ListCity" id="value"}
                              <option value="{$value['city_id']}" >{$value['title']}</option>
-                           </volist>
+                           {/foreach}
                        </select>
                        <select name="city_id" size="10" multiple="multiple"  class="l_xiang" id="city_id" autocomplete="off" style=" height:200px;">
                        </select>
@@ -130,12 +130,12 @@ $(window).resize();
                         	<td class="mid_thr">标题</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialArticles" id="value">
+                        {foreach name="ListWechatMaterialArticles" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>
+                        {/foreach}
                         
                     	</tbody>
                     </table>
@@ -178,12 +178,12 @@ $(window).resize();
                             <td class="mid_thr">文件</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialVideo" id="value">
+                        {foreach name="ListWechatMaterialVideo" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>	
+                        {/foreach}	
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialVideo)<=10){</php>
@@ -205,12 +205,12 @@ $(window).resize();
                             <td class="mid_thr">文件</td>
                             <td class="mid_thr">选择</td>
                         </tr>
-                        <volist name="ListWechatMaterialVoice" id="value">
+                        {foreach name="ListWechatMaterialVoice" id="value"}
                         <tr style="border-left:3px solid #cfbba9" class="mid_02">
                             <td>{$value['title']}</td>
                             <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
                         </tr>
-                        </volist>
+                        {/foreach}
                     	</tbody>
                     </table>
                     <php>if(count($ListWechatMaterialVoice)<=10){</php>

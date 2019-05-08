@@ -90,10 +90,10 @@ class Wechatwatchgroups extends UserCommon{
 			
 			$ModelWechatWatch->where("wechat_openid='$openid'")->save($data);
 		
-			$this->success("操作成功！",__URL__."/index",3);
+			$this->success("操作成功！",url("Wechatwatchgroups/index"),3);
 			exit;
 		}else{
-			$this->error("操作失败！原因：".json_encode($info),__URL__."/index",3);
+			$this->error("操作失败！原因：".json_encode($info),url("Wechatwatchgroups/index"),3);
 			exit;
 		}
 	}
@@ -118,10 +118,10 @@ class Wechatwatchgroups extends UserCommon{
 			foreach ($openid_list as $key=>$val){	
 				$ModelWechatWatch->where("wechat_openid='$val'")->save($data);
 			}
-			$this->success("操作成功！",__URL__."/index",3);
+			$this->success("操作成功！",url("Wechatwatchgroups/index"),3);
 			exit;
 		}else{
-			$this->error("操作失败！原因：".json_encode($info),__URL__."/index",3);
+			$this->error("操作失败！原因：".json_encode($info),url("Wechatwatchgroups/index"),3);
 			exit;
 		}
 	
