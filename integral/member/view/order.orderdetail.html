@@ -64,6 +64,11 @@
         <div class="aui-cp-edu b-line">
             <div class="aui-san-sml"></div>
             <div class="aui-flex aui-flex-ed">
+                <div class="aui-flex-box" style="color:#333; font-size:15px;">
+                  费用详情
+                </div>
+            </div>
+            <div class="aui-flex aui-flex-ed">
                 <div class="aui-flex-box">
                     商品总价 <em>￥{$integral_order_data.price_total}</em>
                 </div>
@@ -86,8 +91,9 @@
         </div>
         <div class="divHeight b-line"></div>
         <div class="aui-flex aui-flex-text-sml b-line">
+
             <div class="aui-flex-box">
-                <p>
+               <p>
                     <em>订单编号:</em>
                     {$integral_order_data.order_no}
 
@@ -95,6 +101,26 @@
                 <p>
                     <em>下单时间:</em>
                     {$integral_order_data.create_time|date="Y-m-d H:i:s",###}
+                </p>
+                <p>
+                    <em>订单状态</em>
+                    {switch name="$integral_order_data['data_order']" }
+                    {case value="0"}
+                    未确认
+                    {/case}
+                    {case value="1"}
+                    已确认
+                    {/case}
+                    {case value="2"}
+                    待发货
+                    {/case}
+                    {case value="3"}
+                    已发货[待收货/待收货]
+                    {/case}
+                    {default /}
+                    已确认收货
+
+                    {/switch}
                 </p>
             </div>
         </div>

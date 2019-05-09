@@ -164,7 +164,7 @@ class Index extends CommonIntegra
         //积分操作
         $member_integral_record_mode = Db::name('member_integral_record');
         $member_integral_record_data = [
-            'intrgral_record_id' => my_returnUUID(),
+            'integral_record_id' => my_returnUUID(),
             'uid'=>$uid,
             'price'=>$price_total,
             'order_no'=>$order_no,

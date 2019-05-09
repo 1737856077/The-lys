@@ -561,3 +561,19 @@ function http($url, $params, $method = 'GET', $header = array(), $multi = false)
     if($error) throw new Exception('请求发生错误：' . $error);
     return  $data;
 }
+
+/**
+ * api 数据返回
+ * @param  [int] $code [结果码 200:正常/4**数据问题/5**服务器问题]
+ * @param  [string] $msg  [接口要返回的提示信息]
+ * @param  [array]  $data [接口要返回的数据]
+ * @return [string]       [最终的json数据]
+ */
+function return_msg($code, $msg = '', $data = []) {
+    /*********** 组合数据  ***********/
+    $return_data['code'] = $code;
+    $return_data['msg']  = $msg;
+    $return_data['data'] = $data;
+    /*********** 返回信息并终止脚本  ***********/
+    echo json_encode($return_data);die;
+}
