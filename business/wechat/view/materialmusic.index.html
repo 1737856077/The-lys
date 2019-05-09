@@ -52,11 +52,11 @@
                                 </td>
                             </tr>
                         {/foreach}
-                      	<php>if(!$count){</php>
+                      	{if(!$count)}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="6">暂无相关数据！</td>
                             </tr>
-                       <php>}</php>
+                       {/if}
                     </table>
                     
                     <div class="interpret">

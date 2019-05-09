@@ -27,12 +27,17 @@ class Membergroups extends UserCommon{
 
 		$_where="";
 		$count = $ModelMemberGroups->where(" 1 $_where ")->count();
-		import("ORG.Util.Page");
-		$Page=new Page($count, $num);
-		$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
-		$show=$Page->show();
+		//import("ORG.Util.Page");
+		//$Page=new Page($count, $num);
+		//$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
+		//$show=$Page->show();
 
-		$List=$ModelMemberGroups->where(" 1 $_where ")->order("member_groups_id DESC")->page($p.','.$num)->select();
+		//$List=$ModelMemberGroups->where(" 1 $_where ")->order("member_groups_id DESC")->page($p.','.$num)->select();
+        $List=$ModelMemberGroups->where($_where)
+            ->order('member_groups_id DESC')
+            ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
+        $show=$List->render();
+
 		$_List=array();
 		foreach ($List as $key=>$value){
 			$countWechatWatch=$ModelWechatWatch->where("FIND_IN_SET('$value[member_groups_id]',member_groups_id)")->count();
@@ -115,7 +120,7 @@ class Membergroups extends UserCommon{
 		$data["title"]=$title;
 		$data["update_time"]=$gettime;
 
-		$ModelMemberGroups->where("member_groups_id='$id'")->save($data);
+		$ModelMemberGroups->where("member_groups_id='$id'")->update($data);
 		$this->success("编辑成功！",url("Membergroups/index"),3);
 		exit;
 	}

@@ -22,25 +22,25 @@ class HomeUserCommonAction extends HomeCommonAction{
 		//header("Content-Type:text/html; charset=utf-8");
 		//import('ORG.Util.Session');
 		//import('ORG.Util.Cookie');
-		load("extend");	
+		//load("extend");
 		
 		$GetWinXinInfoAction=new HomeGetWinXinInfoAction();
 		$GetUserOpenid=$GetWinXinInfoAction->GetOpenid();
 		$this->_wechat_openid=$GetUserOpenid;
 		$this->SynchronizationWechatWatch($GetUserOpenid);//同步Openid
 		
-		$countMember=M('Member')->where("wechat_openid='$GetUserOpenid'")->count();
-		$this->memInfo = M('Member')->where("wechat_openid='123456'")->select();
+		$countMember=Db::table('Member')->where("wechat_openid='$GetUserOpenid'")->count();
+		$this->memInfo = Db::table('Member')->where("wechat_openid='123456'")->select();
 		if(!$countMember){
 			//echo "亲！需要您绑定手机号后才可以操作，谢谢！"; exit;
-			echo "<script type=\"text/javascript\">location.href='".U('Register/index')."';</script>";exit;
+			echo "<script type=\"text/javascript\">location.href='".url('Register/index')."';</script>";exit;
 			$JumpParameters=array("LeftTitle"=>"随便逛逛",
-					"LeftUrl"=>U("Take/index"),
+					"LeftUrl"=>url("Take/index"),
 					"RightTitle"=>"注册",
-					"RightUrl"=>U('Register/index'),
+					"RightUrl"=>url('Register/index'),
 			);
 			$this->assign("JumpParameters",$JumpParameters);
-			$this->error("亲！需要您注册后才可以操作，点击下方“注册”立刻去注册，谢谢！",U('Register/index'),3);
+			$this->error("亲！需要您注册后才可以操作，点击下方“注册”立刻去注册，谢谢！",url('Register/index'),3);
 			exit;
 		}
 	}

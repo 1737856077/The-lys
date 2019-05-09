@@ -53,7 +53,8 @@ class Attentionreply extends UserCommon{
 	
 	//显示编辑页面
 	public function edit(){
-		$id=isset($_POST["id"]) ? intval(trim($_POST['id'])) : intval($_GET['id']);
+        $param = $this->request->param();
+		$id=isset($param["id"]) ? intval(trim($param['id'])) : 0;
 		if(!$id){ echo "paramter error!"; exit;}
 		
 		$ModelAutomaticReply=Db::name('AutomaticReply');
@@ -326,7 +327,7 @@ class Attentionreply extends UserCommon{
 		}
 		
 		$ModelAutomaticReply=Db::name('AutomaticReply');
-		$ModelAutomaticReply->where("id='$id'")->save($data);
+		$ModelAutomaticReply->where("id='$id'")->update($data);
 		
 		$this->success("更新成功！",url("attentionreply/index"),3);
 		exit;

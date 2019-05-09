@@ -123,7 +123,7 @@
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="7">暂无相关数据！</td>
                             </tr>
-                            <php>}</php>
+                            {/if}
                         {elseif condition="$SearchMsgType eq 'music'"/}<!--音乐消息-->
                             {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
@@ -145,7 +145,7 @@
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="7">暂无相关数据！</td>
                             </tr>
-                            <php>}</php>
+                            {/if}
                         {elseif condition="$SearchMsgType eq 'video'"/}<!--视频消息-->
                             {foreach name="List" id="value"}
                              <tr class="mid_02" style="border-left:3px solid #f5da8c;">
@@ -164,7 +164,7 @@
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="6">暂无相关数据！</td>
                             </tr>
-                            <php>}</php>
+                            {/if}
                         {elseif condition="$SearchMsgType eq 'voice'"/}<!--语音消息-->
                             {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
@@ -181,7 +181,7 @@
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="4">暂无相关数据！</td>
                             </tr>
-                            <php>}</php>
+                            {/if}
                         {elseif condition="$SearchMsgType eq 'image'"/}<!--图片消息-->
                             {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
@@ -203,7 +203,7 @@
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="5">暂无相关数据！</td>
                             </tr>
-                            <php>}</php>
+                            {/if}
                         {elseif condition="$SearchMsgType eq 'text'"/}<!--文本消息-->
                             {foreach name="List" id="value"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
@@ -220,7 +220,7 @@
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="4">暂无相关数据！</td>
                             </tr>
-                            <php>}</php>
+                            {/if}
                         {/if}
                       
                     </table>

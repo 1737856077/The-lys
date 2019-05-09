@@ -190,7 +190,7 @@ class Materialmusic extends UserCommon{
 		$data["thumb_url"]=$thumb_url;
 		$data["thumb_media_id"]=$music_thumb_media_id;		
 		$data["update_time"]=$gettime;
-		$ModelWechatMaterialMusic->where("id='$id'")->save($data);
+		$ModelWechatMaterialMusic->where("id='$id'")->update($data);
 		
 		$this->success("编辑成功！",url("Materialmusic/index"),3);
 		exit;
