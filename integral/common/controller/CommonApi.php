@@ -17,7 +17,7 @@ class CommonApi extends Controller {
     protected function _initialize() {
         parent::_initialize();
         $this->request = Request::instance();
-//        $this->check_time($this->request->only(['time']));
+        $this->check_time($this->request->only(['time']));
 //        $this->check_token($this->request->param());
     }
     /**
@@ -69,12 +69,7 @@ class CommonApi extends Controller {
         $app_token = $arr['token']; // api传过来的token
         /*********** 服务器端生成token  ***********/
         unset($arr['token']);
-        $service_token = '';
-        foreach ($arr as $key => $value) {
-            $service_token .= md5($value);
-        }
-
-        $service_token = md5('api_' . $service_token . '_api'); // 服务器端即时生成的token
+        $service_token = md5('api_' . time() . '_api'); // 服务器端即时生成的token
         /*********** 对比token,返回结果  ***********/
         if ($app_token !== $service_token) {
             $this->return_msg(400, 'token值不正确!');
