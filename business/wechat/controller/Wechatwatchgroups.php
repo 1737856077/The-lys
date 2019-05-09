@@ -32,13 +32,17 @@ class Wechatwatchgroups extends UserCommon{
 		if(!empty($SearchName)){$_where.=" AND nickname LIKE '%".$SearchName."%'";}
 		
 		$count = $ModelWechatWatch->where(" 1 $_where ")->count();
-		import("ORG.Util.Page");
-		$Page=new Page($count, $num,$paramter);
-		$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
-		$show=$Page->show();
+		//import("ORG.Util.Page");
+		//$Page=new Page($count, $num,$paramter);
+		//$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
+		//$show=$Page->show();
 		
-		$List=$ModelWechatWatch->where(" 1 $_where ")->order("wechat_watch_id DESC")->page($p.','.$num)->select();
-		
+		//$List=$ModelWechatWatch->where(" 1 $_where ")->order("wechat_watch_id DESC")->page($p.','.$num)->select();
+        $List=$ModelWechatWatch->where($_where)
+            ->order('wechat_watch_id DESC')
+            ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
+        $show=$List->render();
+
 		//取得分组
 		$ListWechatGroups=$ModelWechatGroups->order("id ASC")->select();
 		$ArrayWechatGroups=array();
@@ -88,7 +92,7 @@ class Wechatwatchgroups extends UserCommon{
 						"update_time"=>$gettime,
 			);
 			
-			$ModelWechatWatch->where("wechat_openid='$openid'")->save($data);
+			$ModelWechatWatch->where("wechat_openid='$openid'")->update($data);
 		
 			$this->success("操作成功！",url("Wechatwatchgroups/index"),3);
 			exit;
@@ -116,7 +120,7 @@ class Wechatwatchgroups extends UserCommon{
 					"update_time"=>$gettime,
 			);
 			foreach ($openid_list as $key=>$val){	
-				$ModelWechatWatch->where("wechat_openid='$val'")->save($data);
+				$ModelWechatWatch->where("wechat_openid='$val'")->update($data);
 			}
 			$this->success("操作成功！",url("Wechatwatchgroups/index"),3);
 			exit;

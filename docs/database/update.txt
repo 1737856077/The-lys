@@ -334,3 +334,40 @@ CREATE TABLE IF NOT EXISTS `sy_wechat_watch_send_info` (
 INSERT INTO `sy_sms_template` VALUES ('1', '手机号绑定验证码短信', '验证码：{$code}，有效时间{$time}分钟,如不是本人操作，请忽略！','',0, '0', '1', '0', '0');
 INSERT INTO `sy_sms_template` VALUES ('2', '注册成功短信', '亲爱的“{$username}”会员，恭喜您成为蝌蚪溯源的会员。', '',0, '0', '1', '0', '0');
 
+/*=== 2019-05-09==*/
+CREATE TABLE `sy_automatic_reply` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `msgtype` varchar(10) NOT NULL DEFAULT 'text',
+  `key_word` varchar(64) DEFAULT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `content` text,
+  `link_url` varchar(256) DEFAULT NULL,
+  `hq_link_url` varchar(256) DEFAULT NULL,
+  `thumb_media_id` varchar(256) DEFAULT NULL,
+  `media_id` varchar(64) DEFAULT NULL,
+  `url` varchar(256) DEFAULT NULL,
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sy_automatic_reply
+-- ----------------------------
+INSERT INTO `sy_automatic_reply` VALUES ('1', 'text', null, '欢迎关注', '终于等到亲啦！\r\n', '欢迎关注', 'http://hai.w.suixin.com/Public/home/images/hot.jpg', '', 'JNUnx8UY9mMOYvEyK5PFDxtKVKTZlBZF8pUb4Gc-jus', 'OhiFD9XFbtcF1DUS1nX14R4mCGfXTWVxnSezZhsq6_0', 'http://hai.w.suixin.com/index.php', '0', '1', '0', '1447751369');
+INSERT INTO `sy_automatic_reply` VALUES ('29', 'text', '111', null, '终于等到亲啦！\r\n', null, null, null, null, null, null, '1', '1', '1442884043', '1442884043');
+
+
+CREATE TABLE `sy_member_groups` (
+  `member_groups_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `data_type` tinyint(1) DEFAULT '0',
+  `data_status` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT '0',
+  `update_time` int(11) DEFAULT '0',
+  PRIMARY KEY (`member_groups_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

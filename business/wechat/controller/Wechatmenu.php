@@ -246,7 +246,7 @@ class Wechatmenu extends UserCommon{
 		$data["data_type"]=$data_type;
 		$data["update_time"]=$gettime;		
 		
-		$ModelWechatMenu->where("id='$id'")->save($data);
+		$ModelWechatMenu->where("id='$id'")->update($data);
 		
 		$this->success("操作成功！",url("wechatmenu/index"),3);
 		exit;

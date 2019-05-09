@@ -59,12 +59,16 @@ class Messagepushmanage extends UserCommon{
 		
 		$_where="";
 		$count = $ModelWechatMassLog->where(" 1 $_where ")->count();
-		import("ORG.Util.Page");
-		$Page=new Page($count, $num);
-		$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
-		$show=$Page->show();
+		//import("ORG.Util.Page");
+		//$Page=new Page($count, $num);
+		//$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
+		//$show=$Page->show();
 		
-		$List=$ModelWechatMassLog->where(" 1 $_where ")->order("id DESC")->page($p.','.$num)->select();
+		//$List=$ModelWechatMassLog->where(" 1 $_where ")->order("id DESC")->page($p.','.$num)->select();
+        $List=$ModelWechatMassLog->where($_where)
+            ->order('id DESC')
+            ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
+        $show=$List->render();
 		
 		$this->assign("count",$count);
 		$this->assign("List",$List);

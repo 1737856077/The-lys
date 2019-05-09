@@ -12,6 +12,8 @@ use think\Request;
 use think\Db;
 use think\Session;
 use think\model;
+use think\Image;
+use \app\wechat\controller\HomeCommonAction;
 class HomePublicAction extends Controller{
     /**
      * 从微信接口获取文件
@@ -21,7 +23,7 @@ class HomePublicAction extends Controller{
      * @return string
      */
     public function saveWeiXinFileImage($media_id='',$filename='',$path='./Public/Uploads/',$width=600,$height=600){
-    	$CommonAction=A("Common");
+    	$CommonAction=new HomeCommonAction();
     	
     	$filepath=$path;
  	
@@ -37,12 +39,17 @@ class HomePublicAction extends Controller{
         $result = file_put_contents($path,$fileInfo['body']);
         if($result === FALSE ) return 0;
         
-        import('ORG.Util.Image');
-        $Image = new Image();
-        $ret=$Image->thumb($filepath."big_".$filename, $filepath.$filename,"",$width,$height);
-        if($ret==false){return 0;}
-        $ret=$Image->thumb($filepath."big_".$filename, $filepath."thumb_".$filename,"",200,200);
-        if($ret==false){return 0;}
+        //import('ORG.Util.Image');
+        //$Image = new Image();
+        //$ret=$Image->thumb($filepath."big_".$filename, $filepath.$filename,"",$width,$height);
+        //if($ret==false){return 0;}
+        //$ret=$Image->thumb($filepath."big_".$filename, $filepath."thumb_".$filename,"",200,200);
+        //if($ret==false){return 0;}
+        $Image = Image::open($filepath."big_".$filename);
+        $Image->thumb($width, $height)
+            ->save($filepath.$filename);
+        $Image->thumb(200, 200)
+            ->save($filepath."thumb_".$filename);
         @unlink($filepath."big_".$filename);
         
         return $filename;
@@ -80,7 +87,7 @@ class HomePublicAction extends Controller{
 	
 	//自动生成用户名
 	public function SystemAutoMemberName($str){
-		$getoneMember=M("Member")->where("moblie='$str'")->find();
+		$getoneMember=Db::table("Member")->where("moblie='$str'")->find();
 		if(!empty($getoneMember)){//已存在相同
 			$str=substr($str, 0,11);
 			$str=$str.(randstr(2,"upper"));

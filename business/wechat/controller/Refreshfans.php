@@ -21,14 +21,14 @@ class Refreshfans extends UserCommon{
 	//刷新粉丝
 	public function index(){
 		set_time_limit(0);//设置时间不超时
-		$next_openid=htmlspecialchars(trim($_GET['next_openid'])) ;
+		$next_openid=htmlspecialchars(trim(isset($_GET['next_openid']) ? $_GET['next_openid'] : '')) ;
 		$page=isset($_GET['page']) ? intval($_GET['page']) : 1;
 		$page = $page ? $page : 1 ;//当前页
 		$display_num=1000;//每页显示记录数
 		
 		$info=$this->WechatGetListOpenid($next_openid);
 		if(!empty($info["errcode"])){
-			$this->error("刷新粉丝失败！原因：".json_encode($info),url('WechatWatchGroupsLocal/index'),3);
+			$this->error("刷新粉丝失败！原因：".json_encode($info),url('Wechatwatchgroupslocal/index'),3);
 			exit;
 		}
 		
@@ -41,7 +41,7 @@ class Refreshfans extends UserCommon{
 		$PublicAction=new PublicAction();
 		$gettime=time();
 		if(!$total){//没有粉丝，清空粉丝表
-			$this->success("操作成功！",url('WechatWatchGroupsLocal/index'),3);
+			$this->success("操作成功！",url('Wechatwatchgroupslocal/index'),3);
 			exit;
 		}
 		
@@ -84,7 +84,7 @@ class Refreshfans extends UserCommon{
 							"city"=>$GetUserInfoWechatArray["city"],
 							"country"=>$GetUserInfoWechatArray["country"],
 							"headimgurl"=>$GetUserInfoWechatArray["headimgurl"],
-							"privilege"=>$GetUserInfoWechatArray["privilege"],
+							"privilege"=>isset($GetUserInfoWechatArray["privilege"]) ? $GetUserInfoWechatArray["privilege"] : '',
 							"wechat_groups_id"=>"$GetUserInfoWechatArray[groupid]",
 							"data_status"=>"1",
 							"create_time"=>$gettime,
@@ -107,7 +107,7 @@ class Refreshfans extends UserCommon{
 							"data_status"=>"1",
 							"update_time"=>$gettime,
 					);
-					$ModelWechatWatch->where("wechat_openid='$val'")->save($dataWechatWatch);
+					$ModelWechatWatch->where("wechat_openid='$val'")->update($dataWechatWatch);
 				}
 			}else{
 				if($getone["data_status"]!="1"){//设置状态
@@ -121,7 +121,7 @@ class Refreshfans extends UserCommon{
 			$ModelWechatWatch->where("wechat_openid NOT IN('".implode("','", $Session_RefreshFansOpenids)."')")->delete();//删除没关注的粉丝
 			session("RefreshFansOpenids",null);//清空session
 			//echo $ModelWechatWatch->getLastSql();exit;
-			$this->success("刷新完成：$total/$total",url('WechatWatchGroupsLocal/index'),3);
+			$this->success("刷新完成：$total/$total",url('Wechatwatchgroupslocal/index'),3);
 			exit;
 		}else{//发送进行中
 			$this->success("刷新进行中，已刷新：".($page*$display_num)."/$total",url("Refreshfans/index")."/page/$last_page/next_openid/$next_openid",1);

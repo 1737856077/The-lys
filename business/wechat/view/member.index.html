@@ -30,7 +30,7 @@
                     </div>
                      <div class="paixu">
                      	
-                        <input type="text" name="SearchTel" id="SearchTel" onblur="if (value=='') {value='输入手机号'}" onfocus="if(value=='输入手机号') {value=''}" value="<php>if(empty($SearchTel)){echo '输入手机号';}else{ echo $SearchTel;}</php>" class="text_titles">
+                        <input type="text" name="SearchTel" id="SearchTel" onblur="if (value=='') {value='输入手机号'}" onfocus="if(value=='输入手机号') {value=''}" value="{if(empty($SearchTel)){echo '输入手机号';}else{ echo $SearchTel;}</php>" class="text_titles">
                         <input type="submit" class="cast" value="搜索">
                         <span style="color:#F00;" id="span_SearchTel"></span>
                     </div>
@@ -75,11 +75,11 @@
                                 <td>{$value['create_time']|date='Y-m-d',###}</td>
                             </tr>
                         {/foreach}
-                      	<php>if(!$count){</php>
+                      	{if(!$count)}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="7">暂无相关数据！</td>
                             </tr>
-                       <php>}</php>
+                       {/if}
                     </table>
                     
                     <div class="interpret">

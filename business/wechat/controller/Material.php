@@ -21,24 +21,35 @@ class Material extends CommonBaseHome{
     public function index($title='') {
         $title = trim($title);
         $Material =Db::name('Wechat_material');
-        import('ORG.Util.Page');
-        if(empty($title)) {
-            $count = $Material->count();
-            $Page = new Page($count, 25);
-            $info = $Material->order('create_time desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
-        }else{
+        //import('ORG.Util.Page');
+        $where = [];
+        if(!empty($title)) {
             $where['title'] = array('like',"%{$title}%");
-            $count = $Material->where($where)->count();
-            $Page = new Page($count, 25);
-            $info = $Material->where($where)->order('create_time desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
-
         }
-        $Page->parameter .=  "title=".urlencode($title);
-        $Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
-        $show = $Page->show();
+        //if(empty($title)) {
+            //$count = $Material->count();
+            //$Page = new Page($count, 25);
+            //$info = $Material->order('create_time desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        //}else{
+            //$where['title'] = array('like',"%{$title}%");
+            //$count = $Material->where($where)->count();
+            //$Page = new Page($count, 25);
+            //$info = $Material->where($where)->order('create_time desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
+
+        //}
+        //$Page->parameter .=  "title=".urlencode($title);
+        //$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
+        //$show = $Page->show();
+        $_where="";
+        $count = $Material->where($where)->count();
+        $List=$Material->where($where)
+            ->order('create_time DESC')
+            ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
+        $show=$List->render();
+
         //dump($info);
         $this->assign('page',$show);
-        $this->assign('info',$info);
+        $this->assign('info',$List);
         return $this->fetch();
     }
 
@@ -133,8 +144,11 @@ class Material extends CommonBaseHome{
         $Atricles =Db::name('Wechat_atricles');
         import('ORG.Util.Page');
 
-
-        if(empty($title)) {
+        $where = [];
+        if(!empty($title)) {
+            $where['title'] = array('like',"%{$title}%");
+        }
+        /*if(empty($title)) {
             $count = $Atricles->count();
             $Page = new Page($count,25);
             $info = $Atricles->order('create_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
@@ -143,12 +157,17 @@ class Material extends CommonBaseHome{
             $count = $Atricles->where($where)->count();
             $Page = new Page($count,25);
             $info = $Atricles->where($where)->order('create_time desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-        }
-        $Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
-        $show = $Page->show();
+        }*/
+        //$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
+        //$show = $Page->show();
+        $List=$Atricles->where($where)
+            ->order('create_time DESC')
+            ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
+        $show=$List->render();
+
         //dump($info);
         $this->assign('page',$show);
-        $this->assign('info',$info);
+        $this->assign('info',$List);
         return $this->fetch();
     }
 
@@ -251,7 +270,7 @@ class Material extends CommonBaseHome{
             $where['atr_id'] = $val;
             $data['data_status'] = 1;
             $data['update_time'] = $nowtime;
-            $res = $Atricles->where($where)->save($data);
+            $res = $Atricles->where($where)->update($data);
             if(!$res) $this->error('更新数据库错误','',3);
         }
 
@@ -278,7 +297,7 @@ class Material extends CommonBaseHome{
         $Material =Db::name('Wechat_material');
         $where['data_status'] = 1;
         $data['data_status'] = 0;
-        $Material->where($where)->save($data);
+        $Material->where($where)->update($data);
 
         $this->Sync('image');
         $this->Sync('video');

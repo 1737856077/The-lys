@@ -11,6 +11,7 @@ use think\Request;
 use think\Db;
 use think\Session;
 use think\model;
+use \app\wechat\controller\HomeCommonAction;
 class HomeConsumptionPushAction extends Controller{
 	
 	/*
@@ -37,7 +38,7 @@ class HomeConsumptionPushAction extends Controller{
 					}
 				}';
 	
-		$CommonAction=new CommonAction();
+		$CommonAction=new HomeCommonAction();
 		
 		$posturl="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".$CommonAction->GetAccessToken();
 		$CommonAction->PostSend($posturl,$jsonstr);

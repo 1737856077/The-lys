@@ -23,15 +23,24 @@ class HomeCommonAction extends Controller{
 	private $toUsername="";
 	private $msgType="";
 	private $host="";
+
+	public $CommonTOKEN="lianyuwechat";
+    public $CommonAPP_ID="wxc18fa831272ac730";
+    public $CommonAPP_SECRET="8eaa03d4dd154ddc50736d77085956c2";
+
 	//public  $productCategory;
 	//public  $areaList;
 	/*自动运行的方法*/
+    /*function _initialize() {
+        include_once './admin/public/lib/functions.php';
+    }*/
 	function _initialize() {
-		//header("Content-Type:text/html; charset=utf-8");
+        include_once './admin/public/lib/functions.php';
+		header("Content-Type:text/html; charset=utf-8");
 		//import('ORG.Util.Session');
 		//import('ORG.Util.Cookie');
 		//load("extend");
-
+        //wirtefile('test');
 		if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 			$postStr = $GLOBALS ['HTTP_RAW_POST_DATA'];
 			//wirtefile($postStr);
@@ -52,14 +61,14 @@ class HomeCommonAction extends Controller{
 						//wirtefile("ins_".$postObj->Event."|$_fromUsername]");
 						$countWechatWatch=$ModelWechatWatch->where("wechat_openid='$_fromUsername'")->count();
 						$GetUserInfoWechatArray=$this->GetUserInfoWechat($_fromUsername);
-						
+                        //wirtefile(json_encode($GetUserInfoWechatArray));
 						if($countWechatWatch){//已存在
 							if(empty($GetUserInfoWechatArray["nickname"])){//没拉取到信息
 														
 								$dataWechatWatch=array("data_status"=>"1",
 										"update_time"=>$gettime,
 								);
-								$ModelWechatWatch->where("wechat_openid='".$_fromUsername."'")->save($dataWechatWatch);
+								$ModelWechatWatch->where("wechat_openid='".$_fromUsername."'")->update($dataWechatWatch);
 							}else{
 								$dataWechatWatch=array("nickname"=>"$GetUserInfoWechatArray[nickname]",
 														"sex"=>"$GetUserInfoWechatArray[sex]",
@@ -67,13 +76,13 @@ class HomeCommonAction extends Controller{
 														"city"=>"$GetUserInfoWechatArray[city]",
 														"country"=>"$GetUserInfoWechatArray[country]",
 														"headimgurl"=>"$GetUserInfoWechatArray[headimgurl]",
-														"privilege"=>"$GetUserInfoWechatArray[privilege]",
+														"privilege"=>isset($GetUserInfoWechatArray['privilege']) ? $GetUserInfoWechatArray['privilege'] : '',
 														"wechat_groups_id"=>"$GetUserInfoWechatArray[groupid]",
 														"data_status"=>"1",
 														"update_time"=>$gettime,
 								);
-								$ModelWechatWatch->where("wechat_openid='".$_fromUsername."'")->save($dataWechatWatch);
-								$ModelMember->where("wechat_openid='".$_fromUsername."'")->setField("username",$GetUserInfoWechatArray["nickname"]);
+								$ModelWechatWatch->where("wechat_openid='".$_fromUsername."'")->update($dataWechatWatch);
+								//$ModelMember->where("wechat_openid='".$_fromUsername."'")->setField("username",$GetUserInfoWechatArray["nickname"]);
 							}
 							
 
@@ -86,16 +95,16 @@ class HomeCommonAction extends Controller{
 													"city"=>$GetUserInfoWechatArray["city"],
 													"country"=>$GetUserInfoWechatArray["country"],
 													"headimgurl"=>$GetUserInfoWechatArray["headimgurl"],
-													"privilege"=>$GetUserInfoWechatArray["privilege"],
+													"privilege"=>isset($GetUserInfoWechatArray['privilege']) ? $GetUserInfoWechatArray['privilege'] : '',
 													"wechat_groups_id"=>"$GetUserInfoWechatArray[groupid]",
 													"data_status"=>"1",
 													"create_time"=>$gettime,
 													"update_time"=>$gettime,
 							);
 							
-							$GetUserInfoWechatArray["nickname"]=empty($GetUserInfoWechatArray["nickname"]) ? "游客" : $GetUserInfoWechatArray["nickname"];
+							$GetUserInfoWechatArray["nickname"]=!isset($GetUserInfoWechatArray["nickname"]) ? "游客" : $GetUserInfoWechatArray["nickname"];
 							//$returnid=$ModelWechatWatch->insertGetId($dataWechatWatch);
-							$ModelWechatWatch->query("INSERT INTO `".config('DB_PREFIX')."wechat_watch` (wechat_openid,
+							$ModelWechatWatch->query("INSERT INTO `sy_wechat_watch` (wechat_openid,
 																									developer_account,
 																									`nickname`,
 																									`sex`,
@@ -116,7 +125,7 @@ class HomeCommonAction extends Controller{
 									'$GetUserInfoWechatArray[city]',
 									'$GetUserInfoWechatArray[country]',
 									'$GetUserInfoWechatArray[headimgurl]',
-									'$GetUserInfoWechatArray[privilege]',
+									'',
 									'$GetUserInfoWechatArray[groupid]',
 									1,
 									$gettime,
@@ -128,7 +137,7 @@ class HomeCommonAction extends Controller{
 						//推送欢迎信息 begin
 						$ReplyWechatWatchAction=new HomeReplyWechatWatchAction();
 						$_xml=$ReplyWechatWatchAction->AttentionReply($postObj->FromUserName,$postObj->ToUserName);
-						//wirtefile($_xml);
+						wirtefile($_xml);
 						echo $_xml;
 						//推送欢迎信息 end
 					}else if($postObj->Event=="unsubscribe"){//unsubscribe(取消订阅) 
@@ -147,8 +156,8 @@ class HomeCommonAction extends Controller{
 												"update_time"=>time(),
 						);
 						
-						$ModelWechatMassLog->where("msg_id='$msg_id'")->save($dataWechatMassLog);
-						wirtefile(json_encode($postObj));
+						$ModelWechatMassLog->where("msg_id='$msg_id'")->update($dataWechatMassLog);
+						//wirtefile(json_encode($postObj));
 					}
 					
 				}else if($postObj->MsgType=="text"){//用户发送文本[关键词]信息
@@ -186,7 +195,7 @@ class HomeCommonAction extends Controller{
     		return config('WebConfig_Debug_Openid');
     		exit;
     	}
-		$file_content=file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APP_ID."&secret=".APP_SECRET."&code=".$code."&grant_type=authorization_code");
+		$file_content=file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$this->CommonAPP_ID."&secret=".$this->CommonAPP_SECRET."&code=".$code."&grant_type=authorization_code");
     	$file_content=(Array)json_decode($file_content);
     
     	return $file_content["openid"];
@@ -206,7 +215,7 @@ class HomeCommonAction extends Controller{
     
     //获取用户基本信息
     public function GetUserInfoWechat($openid){
-    	//wirtefile("https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$this->GetAccessToken()."&openid=".$openid."&lang=zh_CN");
+    	wirtefile("https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$this->GetAccessToken()."&openid=".$openid."&lang=zh_CN");
     	$file_content=file_get_contents("https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$this->GetAccessToken()."&openid=".$openid."&lang=zh_CN");
     	//wirtefile($file_content);
     	if(stripos($file_content,"errcode")!==false){wirtefile($file_content);}
@@ -218,8 +227,8 @@ class HomeCommonAction extends Controller{
     public function GetUserInfoWechatUserInfo($openid){
     	//wirtefile("https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$this->GetAccessToken()."&openid=".$openid."&lang=zh_CN");
     	$file_content=file_get_contents("https://api.weixin.qq.com/sns/userinfo?access_token=".$this->GetAccessTokenUserInfo()."&openid=".$openid."&lang=zh_CN");
-    	wirtefile($file_content);
-    	if(stripos($file_content,"errcode")!==false){wirtefile($file_content);}
+    	//wirtefile($file_content);
+    	if(stripos($file_content,"errcode")!==false){/*wirtefile($file_content);*/}
     	$file_content=(Array)json_decode($file_content);
     
     	return $file_content;
@@ -248,23 +257,33 @@ class HomeCommonAction extends Controller{
     //获取token
 	public function GetAccessToken(){
 		// access_token 应该全局存储与更新，以下代码以写入到文件中做示例
-		$data = json_decode(file_get_contents("access_token.json"));
-		if ($data->expire_time < time()) {
+		$data = json_decode(file_get_contents("access_token_home.json"));
+        $data = (Array)$data;
+        if(count($data)){
+            if ($data['expire_time'] > time()) {
+                $access_token = $data['access_token'];
+                return $access_token;
+            }
+        }
+		//if ($data->expire_time < time()) {
 			// 如果是企业号用以下URL获取access_token
 			// $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
-			$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".APP_ID."&secret=".APP_SECRET."";
-			$res = json_decode(file_get_contents($url));
+			$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$this->CommonAPP_ID."&secret=".$this->CommonAPP_SECRET."";
+			//wirtefile($url);
+            $res = json_decode(file_get_contents($url));
 			$access_token = $res->access_token;
 			if ($access_token) {
-				$data->expire_time = time() + 7000;
-				$data->access_token = $access_token;
-				$fp = fopen("access_token.json", "w");
+                $data=array();
+                $data['expire_time'] = time() + 7000;
+                $data['access_token'] = $access_token;
+				$fp = fopen("access_token_home.json", "w");
 				fwrite($fp, json_encode($data));
 				fclose($fp);
 			}
-		} else {
-			$access_token = $data->access_token;
-		}
+		//} else {
+			//$access_token = $data->access_token;
+		//}
+        //wirtefile($access_token);
 		return $access_token;
 	
 	}    
@@ -272,21 +291,29 @@ class HomeCommonAction extends Controller{
 	public function GetAccessTokenUserInfo(){
 		// access_token 应该全局存储与更新，以下代码以写入到文件中做示例
 		$data = json_decode(file_get_contents("access_token_snsapi_userinfo.json"));
-		if ($data->expire_time < time()) {
+        $data = (Array)$data;
+        if(count($data)){
+            if ($data['expire_time'] > time()) {
+                $access_token = $data['access_token'];
+                return $access_token;
+            }
+        }
+		//if ($data->expire_time < time()) {
 			// 如果是企业号用以下URL获取access_token
-			$url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APP_ID."&secret=".APP_SECRET."&code=CODE&grant_type=authorization_code";
+			$url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".$this->CommonAPP_ID."&secret=".$this->CommonAPP_SECRET."&code=CODE&grant_type=authorization_code";
 			$res = json_decode(file_get_contents($url));
 			$access_token = $res->access_token;
 			if ($access_token) {
-				$data->expire_time = time() + 7000;
-				$data->access_token = $access_token;
+                $data=array();
+                $data['expire_time'] = time() + 7000;
+                $data['access_token'] = $access_token;
 				$fp = fopen("access_token_snsapi_userinfo.json", "w");
 				fwrite($fp, json_encode($data));
 				fclose($fp);
 			}
-		} else {
-			$access_token = $data->access_token;
-		}
+		//} else {
+			//$access_token = $data->access_token;
+		//}
 		return $access_token;
 	
 	}   

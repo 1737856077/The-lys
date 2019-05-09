@@ -22,22 +22,30 @@ class Wechatwatchgroupslocal extends UserCommon{
 		$ModelWechatWatch=Db::name('WechatWatch');
 		$ModelMemberGroups=Db::name('MemberGroups');
 
-		$SearchName=isset($_POST["SearchName"]) ? htmlspecialchars(trim($_POST['SearchName'])) : htmlspecialchars($_GET['SearchName']);
+		$SearchName=isset($_POST["SearchName"]) ? htmlspecialchars(trim($_POST['SearchName'])) : '';
 		$paramter="/SearchName/$SearchName/";
 
 		$p=isset($_GET['p']) ? intval($_GET['p']) : 1;
 		$num=20;
 
-		$_where=" AND data_status=1";
+		$_where = '1';
+		$_where.=" AND data_status=1";
 		if(!empty($SearchName)){$_where.=" AND nickname LIKE '%".$SearchName."%'";}
 
-		$count = $ModelWechatWatch->where(" 1 $_where ")->count();
-		import("ORG.Util.Page");
-		$Page=new Page($count, $num,$paramter);
-		$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
-		$show=$Page->show();
+        if($_where=='1'){$_where='';}
+		$count = $ModelWechatWatch->where($_where)->count();
+		//import("ORG.Util.Page");
+		//$Page=new Page($count, $num,$paramter);
+		//$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
+		//$show=$Page->show();
 
-		$List=$ModelWechatWatch->where(" 1 $_where ")->order("wechat_watch_id DESC")->page($p.','.$num)->select();
+		//$List=$ModelWechatWatch->where(" 1 $_where ")->order("wechat_watch_id DESC")->page($p.','.$num)->select();
+
+
+        $List=$ModelWechatWatch->where($_where)
+            ->order('wechat_watch_id DESC')
+            ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
+        $show=$List->render();
 
 		//取得分组
 		$ListMemberGroups=$ModelMemberGroups->order("member_groups_id ASC")->select();
@@ -104,7 +112,7 @@ class Wechatwatchgroupslocal extends UserCommon{
 		$data=array("member_groups_id"=>$groups_id,
 					"update_time"=>$gettime,
 		);
-		$ModelWechatWatch->where("wechat_openid='$openid'")->save($data);
+		$ModelWechatWatch->where("wechat_openid='$openid'")->update($data);
 
 		$this->success("操作成功！",url("Wechatwatchgroupslocal/index"),3);
 		exit;
@@ -135,7 +143,7 @@ class Wechatwatchgroupslocal extends UserCommon{
 				$data=array("member_groups_id"=>implode(",", $getone["MemberGroupsArr"]),
 						"update_time"=>$gettime,
 				);
-				$ModelWechatWatch->where("wechat_openid='$val'")->save($data);
+				$ModelWechatWatch->where("wechat_openid='$val'")->update($data);
 			}
 		}else if($checkclass==11){//将选中的粉丝移动到
 			foreach ($openid_list as $key=>$val){
@@ -147,7 +155,7 @@ class Wechatwatchgroupslocal extends UserCommon{
 				$data=array("member_groups_id"=>implode(",", $getone["MemberGroupsArr"]),
 						"update_time"=>$gettime,
 				);
-				$ModelWechatWatch->where("wechat_openid='$val'")->save($data);
+				$ModelWechatWatch->where("wechat_openid='$val'")->update($data);
 			}
 		}
 

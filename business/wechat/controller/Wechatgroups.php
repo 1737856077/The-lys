@@ -25,12 +25,16 @@ class Wechatgroups extends UserCommon{
 		
 		$_where="";
 		$count = $ModelWechatGroups->where(" 1 $_where ")->count();
-		import("ORG.Util.Page");
-		$Page=new Page($count, $num);
-		$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
-		$show=$Page->show();
+		//import("ORG.Util.Page");
+		//$Page=new Page($count, $num);
+		//$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
+		//$show=$Page->show();
 		
-		$List=$ModelWechatGroups->where(" 1 $_where ")->order("id DESC")->page($p.','.$num)->select();
+		//$List=$ModelWechatGroups->where(" 1 $_where ")->order("id DESC")->page($p.','.$num)->select();
+        $List=$ModelWechatGroups->where($_where)
+            ->order('id DESC')
+            ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
+        $show=$List->render();
 		
 		//$this->SyncGroup(1);//同步微信分组
 		
@@ -121,7 +125,7 @@ class Wechatgroups extends UserCommon{
 		$info=$this->WechatGroupsEdit($id,$title);
 		if($info["errcode"]=="0"){
 				
-			$ModelWechatGroups->where("id='$id'")->save($data);
+			$ModelWechatGroups->where("id='$id'")->update($data);
 				
 			$this->success("编辑成功！",url("Wechatgroups/index"),3);
 			exit;
@@ -173,7 +177,7 @@ class Wechatgroups extends UserCommon{
 							"count_member"=>$value["count"],
 							"update_time"=>$gettime,
 				);
-				$ModelWechatGroups->where("id='$value[id]'")->save($data);
+				$ModelWechatGroups->where("id='$value[id]'")->update($data);
 			}else{
 				//insert
 				$data=array("id"=>$value["id"],

@@ -15,7 +15,7 @@
         <div class="menus_r">
         		<div class="maps">
                     <i></i>
-                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; <a href="{:url('MessagePushManage/index')}">微信消息推送</a>&nbsp;>&nbsp; 推送记录
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; <a href="{:url('Messagepushmanage/index')}">微信消息推送</a>&nbsp;>&nbsp; 推送记录
 					</p>   
                 </div>
                 <!-- add end --> 
@@ -59,11 +59,11 @@
                                 </td>
                             </tr>
                         {/foreach}
-                      	<php>if(!$count){</php>
+                      	{if(!$count)}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="8">暂无相关数据！</td>
                             </tr>
-                       <php>}</php>
+                       {/if}
                     </table>
                     
                     <div class="interpret">
