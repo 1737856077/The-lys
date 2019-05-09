@@ -37,4 +37,9 @@ class Money extends Controller
         return $this->fetch();
     }
 
+    public function money()
+    {
+        return $this->fetch();
+    }
+
 }
