@@ -43,7 +43,7 @@ class Register extends Controller
         if (!$code){
             return_msg(400, '请输入验证码');
         }
-        if (time() - $last_time > 600) {
+        if (time() - $last_time > 60) {
             return_msg(400, '验证超时,请在一分钟内验证!');
         }
         /*********** 检测验证码是否正确  ***********/

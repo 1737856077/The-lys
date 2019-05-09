@@ -253,4 +253,46 @@ class Index extends Controller
             die();
         }
     }
+    /**
+     * 更新密码
+     */
+    public function uppwd()
+    {
+        $param = $this->request->param();
+        $mobile = htmlspecialchars(isset($param['mobile'])?$param['mobile']:'');
+        $code =htmlspecialchars(isset($param['code'])?$param['code']:'');
+        $pwd = htmlspecialchars(isset($param['pwd'])?$param['pwd']:'');
+        $pwds = htmlspecialchars(isset($param['pwds'])?$param['pwds']:'');
+        if (empty($mobile)) {
+            return_msg(400, '请输入手机号!');
+        }
+        /*********** 检查用户手机是否注册 *******/
+        $member_res = Db::name('member')->where('moblie',$mobile)->find();
+        if (empty($member_res)){
+            return_msg(400,'用户不存在');
+        }
+        /*********** 检测是否超时  ***********/
+        $last_time = session($mobile . '_last_send_time');
+        if (!$code){
+            return_msg(400, '请输入验证码');
+        }
+        if (time() - $last_time > 60) {
+            return_msg(400, '验证超时,请在一分钟内验证!');
+        }
+        /*********** 检测验证码是否正确  ***********/
+        $md5_code = md5($mobile . '_' . md5($code));
+        if (session($mobile . "_code") !== $md5_code) {
+            return_msg(400, '验证码不正确!');
+        }
+        /*********** 不管正确与否,每个验证码只验证一次  ***********/
+        session($mobile . '_code', null);
+        if (!$pwd==$pwds){
+            return_msg(400,'两次输入的密码不一致');
+        }
+        $res = Db::name('member')->where('moblie',$mobile)->insert(['pwd'=>$pwd]);
+        if (!$res){
+            return_msg(400,'更新失败');
+        }
+        return_msg(200,'更新成功');
+    }
 }

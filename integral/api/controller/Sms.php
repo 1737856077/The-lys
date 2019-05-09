@@ -55,6 +55,7 @@ class Sms extends CommonApi
         /**验证手机号**/
         $phone      = htmlspecialchars(isset($this->request->param()['phone'])?$this->request->param()['phone']:'');
         $is_phone = preg_match('/^1[34578]\d{9}$/', $phone) ? 1 : '';
+        $param  = $this->request->param();
         if (!$is_phone) {
             $this->return_msg(400,   '请输入正确的手机号');
         }
@@ -62,15 +63,24 @@ class Sms extends CommonApi
 //        $this->check_exist($phone);
         /*********** 检查验证码请求频率 30秒一次  ***********/
         if (session("?" . $phone . '_last_send_time')) {
-            if (time() - session($phone . '_last_send_time') < 1) {
+            if (time() - session($phone . '_last_send_time') < 30) {
                 $this->return_msg(400,   '手机验证码,每30秒只能发送一次!');
             }
         }
         /*********** 生成验证码  ***********/
         $code = $this->make_code(6);
-
+        /***********验证注册 申请 **********/
         /**********验证手机是否存在*********/
-        $this->check_exist($phone);
+        $id = isset($param['id'])?$param['id']:'';
+        if (!empty($id)){
+
+            $member_res = Db::name('member')->where('moblie',$phone)->find();
+            if (empty($member_res)){
+                $this->return_msg(400,'无用户请前往注册');
+            }
+        }else{
+            $this->check_exist($phone);
+        }
         /*********** 使用session存储验证码, 方便比对, md5加密   ***********/
         $md5_code = md5($phone . '_' . md5($code));
         session($phone . '_code', $md5_code);
