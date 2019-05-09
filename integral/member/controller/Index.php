@@ -157,7 +157,7 @@ class Index extends CommonIntegra
                 'ext' => 'jpeg,jpg,png,bmp'
             ])->move("static/integral/user");
             if ($info) {
-                $datas['img'] = $info->getSaveName();//头像
+                $datas['img'] = "/static/integral/user/".$info->getSaveName();//头像
                 Session::set('userimg',  $datas['img']);
             } else {
                 $this->error($file->getError());
