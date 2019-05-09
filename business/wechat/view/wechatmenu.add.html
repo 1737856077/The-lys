@@ -144,9 +144,9 @@
                         
                     	</tbody>
                     </table>
-                    	<php>if(count($ListWechatMaterialArticles)<=10){</php>
+                    	{if(count($ListWechatMaterialArticles)<=10)}
                         <div class="interpret" style="margin-left:0px; text-align:center;" id="link_news" > 亲，没有更多了哈...</div>
-                        <php>}else{</php>
+                        {else/}
                         <div class="interpret" style="margin-left:0px; text-align:center;" id="link_news" onclick="AjaxMaterialSearchInfo('news')">点击加载更多...</div>
                         {/if}
                 </div>
@@ -203,9 +203,9 @@
                         {/foreach}	
                     	</tbody>
                     </table>
-                    <php>if(count($ListWechatMaterialVideo)<=10){</php>
+                    {if(count($ListWechatMaterialVideo)<=10)}
                     <div class="interpret" style="margin-left:0px; text-align:center;" id="link_video" > 亲，没有更多了哈...</div>
-                    <php>}else{</php>
+                    {else/}
                     <div class="interpret" style="margin-left:0px; text-align:center;" id="link_video" onclick="AjaxMaterialSearchInfo('video')">点击加载更多...</div>
                     {/if}
                 </div>
@@ -236,9 +236,9 @@
                         {/foreach}
                     	</tbody>
                     </table>
-                    <php>if(count($ListWechatMaterialVoice)<=10){</php>
+                    {if(count($ListWechatMaterialVoice)<=10)}
                     <div class="interpret" style="margin-left:0px; text-align:center;" id="link_voice" > 亲，没有更多了哈...</div>
-                    <php>}else{</php>
+                    {else/}
                     <div class="interpret" style="margin-left:0px; text-align:center;" id="link_voice" onclick="AjaxMaterialSearchInfo('voice')">点击加载更多...</div>
                     {/if}
                 </div>

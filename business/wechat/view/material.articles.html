@@ -49,11 +49,11 @@
                             <td>{$vo.atr_id}</td>
                             <td>{$vo.title}</td>
                             <td>
-                                <eq name="vo.data_status" value="1">
+                                {if name="vo.data_status" value="1"}
                                     已上传
                                 {else/}
                                     未上传
-                                </eq>
+                                {/if}
                             </td>
                             <td>{$vo.update_time|date="Y-m-d H:i:s",###}</td>
                             <td>

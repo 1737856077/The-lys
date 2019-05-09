@@ -30,7 +30,7 @@
                     </div>
                      <div class="paixu">
                      	
-                        <input type="text" name="SearchName" id="SearchName" onblur="if (value=='') {value='输入粉丝昵称'}" onfocus="if(value=='输入粉丝昵称') {value=''}" value="<php>if(empty($SearchName)){echo '输入粉丝昵称';}else{ echo $SearchName;}</php>" class="text_titles">
+                        <input type="text" name="SearchName" id="SearchName" onblur="if (value=='') {value='输入粉丝昵称'}" onfocus="if(value=='输入粉丝昵称') {value=''}" value="{if(empty($SearchName)){echo '输入粉丝昵称';}else{ echo $SearchName;}</php>" class="text_titles">
                         <input type="submit" class="cast" value="搜索">
                         <span style="color:#F00;" id="span_SearchName"></span>
                     </div>
