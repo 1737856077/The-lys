@@ -193,6 +193,8 @@
 <header class="am-header">
     <h1>商家年费</h1>
 </header>
+<script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+<script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
 <div id="main">
     <div id="tabhead" class="tab-head">
     </div>
@@ -201,17 +203,22 @@
             <dl class="content">
                 <dt>商户订单号 ：</dt>
                 <dd>
-                    <input id="WIDout_trade_no" name="WIDout_trade_no"/>
+                    <input id="WIDout_trade_no" name="WIDout_trade_no" readonly="readonly"/>
                 </dd>
                 <hr class="one_line">
                 <dt>订单名称 ：</dt>
                 <dd>
-                    <input  name="WIDsubject" value="商家年费"/>
+                    <!--<input  name="WIDsubject" value="商家年费"/>-->
+                    <select name="WIDsubject" id="status">
+                        <option value="1">商家年费 1年</option>
+                        <option value="2">商家年费 2年送1年</option>
+                        <option value="3">商家年费 3年送1年</option>
+                    </select>
                 </dd>
                 <hr class="one_line">
                 <dt>付款金额 ：</dt>
                 <dd>
-                    <input  name="WIDtotal_amount" value="0.01"/>
+                    <input  name="WIDtotal_amount" value="0.01" class="money1" readonly="readonly"/>
                 </dd>
                 <hr class="one_line">
                 <dt>商品描述：</dt>
@@ -230,6 +237,22 @@
             </dl>
         </div>
     </form>
+    <script>
+        $('#status').click(function () {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "{:url('money/status')}",//url
+                data: $("select[name='WIDsubject']").change(function(){
+                    $(this).val();
+                }),
+                success: function (result) {
+                    $('.money1').val(result);
+                }
+            });
+        });
+    </script>
     <div id="foot">
         <ul class="foot-ul">
             <li>

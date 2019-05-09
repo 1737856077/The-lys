@@ -36,10 +36,27 @@ class Money extends Controller
         $this->assign('list',$mon);
         return $this->fetch();
     }
-
+    //支付订单页
     public function money()
     {
         return $this->fetch();
+    }
+    //订单 金额
+    public function status()
+    {
+        //获取续费时间
+        $param = $this->request->param();
+        $status = htmlspecialchars(isset($param['WIDsubject']) ? $param['WIDsubject'] : '');
+        //判断金额
+        if($status == 1){
+            $money = 0.01;
+        }elseif ($status == 2){
+            $money = 2*0.01;
+        }elseif ($status == 3){
+            $money = 3*0.01;
+        }
+//        dump($money);die;
+        return json($money);
     }
 
 }
