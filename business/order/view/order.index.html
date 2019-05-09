@@ -118,6 +118,12 @@
     <script type="text/javascript" src="__STATIC__/business/layer/layer-min.js"></script>
 </head>
 <body>
+<style>
+    a:hover{
+        color: red;
+    }
+
+</style>
 <div class="loader" style="display:none">
     <div class="la-ball-clip-rotate">
         <div></div>
@@ -278,7 +284,7 @@
                             </tr>
                             {foreach name="list" id="vo"}
                             <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
-                                <td class="color-default ng-binding" ng-bind="user.username">
+                                <td class="color-default ng-binding" ng-bind="user.username" id="order">
                                     <a href="{:url('order/details')}?id={$vo.id}">{$vo.order_no}</a>
                                 </td>
                                 <td class="color-default ng-binding" ng-bind="user.username">{$vo.price_total}</td>
