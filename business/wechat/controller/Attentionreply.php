@@ -81,31 +81,32 @@ class Attentionreply extends UserCommon{
 	
 	//提交添加表单
 	public function insert(){
-		$msgtype=htmlspecialchars(trim($_POST['msgtype']));
+	    $param = $this->request->param();
+		$msgtype=htmlspecialchars(trim($param['msgtype']));
 		$gettime=time();
 		
-		$news_link_url=htmlspecialchars(trim($_POST['news_link_url']));
-		//$news_images=htmlspecialchars(trim($_POST['news_images']));
-		$news_title=htmlspecialchars(trim($_POST['news_title']));
-		$news_description=htmlspecialchars(trim($_POST['news_description']));
-		$news_url=htmlspecialchars(trim($_POST['news_url']));
+		$news_link_url=htmlspecialchars(trim($param['news_link_url']));
+		//$news_images=htmlspecialchars(trim($param['news_images']));
+		$news_title=htmlspecialchars(trim($param['news_title']));
+		$news_description=htmlspecialchars(trim($param['news_description']));
+		$news_url=htmlspecialchars(trim($param['news_url']));
 		
-		$music_title=htmlspecialchars(trim($_POST['music_title']));
-		$music_description=htmlspecialchars(trim($_POST['music_description']));
-		$music_link_url=htmlspecialchars(trim($_POST['music_link_url']));
-		$music_hq_link_url=htmlspecialchars(trim($_POST['music_hq_link_url']));
-		$music_thumb_media_id=htmlspecialchars(trim($_POST['music_thumb_media_id']));
+		$music_title=htmlspecialchars(trim($param['music_title']));
+		$music_description=htmlspecialchars(trim($param['music_description']));
+		$music_link_url=htmlspecialchars(trim($param['music_link_url']));
+		$music_hq_link_url=htmlspecialchars(trim($param['music_hq_link_url']));
+		$music_thumb_media_id=htmlspecialchars(trim($param['music_thumb_media_id']));
 		
-		$video_media_id=htmlspecialchars(trim($_POST['video_media_id']));
-		$video_title=htmlspecialchars(trim($_POST['video_title']));
-		$video_description=htmlspecialchars(trim($_POST['video_description']));
+		$video_media_id=htmlspecialchars(trim($param['video_media_id']));
+		$video_title=htmlspecialchars(trim($param['video_title']));
+		$video_description=htmlspecialchars(trim($param['video_description']));
 		
-		$voice_media_id=htmlspecialchars(trim($_POST['voice_media_id']));
+		$voice_media_id=htmlspecialchars(trim($param['voice_media_id']));
 		
-		$image_link_url=htmlspecialchars(trim($_POST['image_link_url']));
-		$image_media_id=htmlspecialchars(trim($_POST['image_media_id']));
+		$image_link_url=htmlspecialchars(trim($param['image_link_url']));
+		$image_media_id=htmlspecialchars(trim($param['image_media_id']));
 		
-		$text_description=htmlspecialchars(trim($_POST['text_description']));
+		$text_description=htmlspecialchars(trim($param['text_description']));
 		
 		require_once './Public/Lib/UploadFile.php';
 		//import('ORG.Util.Image');
@@ -209,32 +210,33 @@ class Attentionreply extends UserCommon{
 	
 	//提交编辑表单
 	public function update(){
-		$msgtype=htmlspecialchars(trim($_POST['msgtype']));
-		$id=intval(trim($_POST['id']));
+	    $param = $this->request->param();
+		$msgtype=htmlspecialchars(trim($param['msgtype']));
+		$id=intval(trim($param['id']));
 		$gettime=time();
 		
-		$news_link_url=htmlspecialchars(trim($_POST['news_link_url']));
-		//$news_images=htmlspecialchars(trim($_POST['news_images']));
-		$news_title=htmlspecialchars(trim($_POST['news_title']));
-		$news_description=htmlspecialchars(trim($_POST['news_description']));
-		$news_url=htmlspecialchars(trim($_POST['news_url']));
+		$news_link_url=htmlspecialchars(trim($param['news_link_url']));
+		//$news_images=htmlspecialchars(trim($param['news_images']));
+		$news_title=htmlspecialchars(trim($param['news_title']));
+		$news_description=htmlspecialchars(trim($param['news_description']));
+		$news_url=htmlspecialchars(trim($param['news_url']));
 		
-		$music_title=htmlspecialchars(trim($_POST['music_title']));
-		$music_description=htmlspecialchars(trim($_POST['music_description']));
-		$music_link_url=htmlspecialchars(trim($_POST['music_link_url']));
-		$music_hq_link_url=htmlspecialchars(trim($_POST['music_hq_link_url']));
-		$music_thumb_media_id=htmlspecialchars(trim($_POST['music_thumb_media_id']));
+		$music_title=htmlspecialchars(trim($param['music_title']));
+		$music_description=htmlspecialchars(trim($param['music_description']));
+		$music_link_url=htmlspecialchars(trim($param['music_link_url']));
+		$music_hq_link_url=htmlspecialchars(trim($param['music_hq_link_url']));
+		$music_thumb_media_id=htmlspecialchars(trim($param['music_thumb_media_id']));
 		
-		$video_media_id=htmlspecialchars(trim($_POST['video_media_id']));
-		$video_title=htmlspecialchars(trim($_POST['video_title']));
-		$video_description=htmlspecialchars(trim($_POST['video_description']));
+		$video_media_id=htmlspecialchars(trim($param['video_media_id']));
+		$video_title=htmlspecialchars(trim($param['video_title']));
+		$video_description=htmlspecialchars(trim($param['video_description']));
 		
-		$voice_media_id=htmlspecialchars(trim($_POST['voice_media_id']));
+		$voice_media_id=htmlspecialchars(trim($param['voice_media_id']));
 		
-		$image_link_url=htmlspecialchars(trim($_POST['image_link_url']));
-		$image_media_id=htmlspecialchars(trim($_POST['image_media_id']));
+		$image_link_url=htmlspecialchars(trim($param['image_link_url']));
+		$image_media_id=htmlspecialchars(trim($param['image_media_id']));
 		
-		$text_description=htmlspecialchars(trim($_POST['text_description']));
+		$text_description=htmlspecialchars(trim($param['text_description']));
 		
 		require_once './Public/Lib/UploadFile.php';
 		//import('ORG.Util.Image');

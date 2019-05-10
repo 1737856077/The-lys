@@ -52,9 +52,10 @@ class Messagepushmanage extends UserCommon{
 	
 	//显示群发日志列表页面
 	public function loglist(){
+	    $param = $this->request->param();
 		$ModelWechatMassLog=Db::name('WechatMassLog');
 		
-		$p=isset($_GET['p']) ? intval($_GET['p']) : 1;
+		$p=isset($param['p']) ? intval($param['p']) : 1;
 		$num=20;
 		
 		$_where="";
@@ -79,12 +80,13 @@ class Messagepushmanage extends UserCommon{
 	
 	//提交推送信息表单
 	public function insert(){
-		$groups_id=isset($_POST['groups_id']) ? (trim($_POST['groups_id'])) : $_GET['groups_id'] ;
-		$province_id=isset($_POST['province_id']) ? intval(trim($_POST['province_id'])) : intval(trim($_GET['province_id'])) ;
-		$city_id=isset($_POST['city_id']) ? intval(trim($_POST['city_id'])) : intval(trim($_GET['city_id'])) ;
-		$msgtype=isset($_POST['msgtype']) ? htmlspecialchars(trim($_POST['msgtype'])) : htmlspecialchars(trim($_GET['msgtype'])) ;
-		$media_id=isset($_POST['media_id']) ? htmlspecialchars(trim($_POST['media_id'])) : htmlspecialchars(trim($_GET['media_id'])) ;
-		$description=isset($_POST['description']) ? htmlspecialchars(trim($_POST['description'])) : htmlspecialchars(urldecode($_GET['description'])) ;
+        $param = $this->request->param();
+		$groups_id=isset($param['groups_id']) ? (trim($param['groups_id'])) : $param['groups_id'] ;
+		$province_id=isset($param['province_id']) ? intval(trim($param['province_id'])) : intval(trim($param['province_id'])) ;
+		$city_id=isset($param['city_id']) ? intval(trim($param['city_id'])) : intval(trim($param['city_id'])) ;
+		$msgtype=isset($param['msgtype']) ? htmlspecialchars(trim($param['msgtype'])) : htmlspecialchars(trim($param['msgtype'])) ;
+		$media_id=isset($param['media_id']) ? htmlspecialchars(trim($param['media_id'])) : htmlspecialchars(trim($param['media_id'])) ;
+		$description=isset($param['description']) ? htmlspecialchars(trim($param['description'])) : htmlspecialchars(urldecode($param['description'])) ;
 		$gettime=time();
 		$is_to_all = $groups_id=="" ? "true" : "false" ;
 		$is_to_all_data = $groups_id=="" ? 1 : 0 ;
@@ -129,7 +131,7 @@ class Messagepushmanage extends UserCommon{
 			echo "<script language=\"javascript\">alert(\"群发信息推送粉丝总数量不能小于2位！\");history.go(-1);</script>";
 			exit;
 		}
-		$page=isset($_GET['page']) ? intval($_GET['page']) : 1;
+		$page=isset($param['page']) ? intval($param['page']) : 1;
 		$page = $page ? $page : 1 ;//当前页
 		$display_num=1000;//每页显示记录数
 		if($display_num>=10){

@@ -22,6 +22,7 @@ class Publicmaterial extends CommonBaseHome{
 	 * @描述：查询除了音乐之外的所有素材
 	 */
 	public function AjaxMaterial(){
+        $param = $this->request->param();
 		$ListArray=array("count"=>0,
 				"page"=>0,
 				"last_page"=>0,
@@ -29,8 +30,8 @@ class Publicmaterial extends CommonBaseHome{
 				"list"=>array(),
 		);
 		
-		$page = isset($_POST["page"]) ? intval(trim($_POST["page"])) : intval($_GET["page"]);
-		$MsgType = isset($_POST['MsgType']) ? $_POST['MsgType'] : $_GET['MsgType'] ;
+		$page = isset($param["page"]) ? intval(trim($param["page"])) : intval($param["page"]);
+		$MsgType = isset($param['MsgType']) ? $param['MsgType'] : $param['MsgType'] ;
 		$MsgType=htmlspecialchars(trim($MsgType));
 		if(empty($MsgType)){ $MsgType="news";  }
 		
@@ -86,9 +87,9 @@ class Publicmaterial extends CommonBaseHome{
 				"total_page"=>0,
 				"list"=>array(),
 		);
-		
-		$page = isset($_POST["page"]) ? intval(trim($_POST["page"])) : intval($_GET["page"]);
-		$MsgType = isset($_POST['MsgType']) ? $_POST['MsgType'] : $_GET['MsgType'] ;
+        $param = $this->request->param();
+		$page = isset($param["page"]) ? intval(trim($param["page"])) : intval($param["page"]);
+		$MsgType = isset($param['MsgType']) ? $param['MsgType'] : $param['MsgType'] ;
 		$MsgType=htmlspecialchars(trim($MsgType));
 		if(empty($MsgType)){ $MsgType="music";  }
 		

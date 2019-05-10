@@ -17,7 +17,7 @@ use think\File;
 use think\Image;
 use \app\wechat\controller\CommonBaseHome;
 use \app\wechat\controller\PublicAction;
-class Material extends CommonBaseHome{
+class Material extends UserCommon {
     public function index($title='') {
         $title = trim($title);
         $Material =Db::name('Wechat_material');
@@ -53,8 +53,8 @@ class Material extends CommonBaseHome{
         return $this->fetch();
     }
 
-    public function addMedia() {
-        return $this->fetch();
+    public function addmedia() {
+       return $this->fetch();
     }
 
     /*新增永久多媒体素材*/
@@ -66,6 +66,7 @@ class Material extends CommonBaseHome{
         if ($_FILES["media"]["error"] > 0){
             $this->error('上传文件错误! 错误代码:'.$_FILES['media']['error'],'',3);
         }
+
         $dir = 'Public/Uploads/Multimedia/';
         $name = date('YmdHis').mt_rand(0000,9999);
         //$expand_arr = explode('/',$_FILES['media']['type']);
@@ -83,7 +84,6 @@ class Material extends CommonBaseHome{
 
         $Public = new PublicAction();
         $token = $Public->accessToken();
-
         //判断样式
         if($data_type=='image' || $data_type=='voice' || $data_type=='thumb'){
             $url =  'https://api.weixin.qq.com/cgi-bin/material/add_material?access_token='.$token.'&type='.$data_type;
@@ -171,7 +171,7 @@ class Material extends CommonBaseHome{
         return $this->fetch();
     }
 
-    public function addArticle() {
+    public function addarticle() {
         return $this->fetch();
     }
 
@@ -179,12 +179,14 @@ class Material extends CommonBaseHome{
     /*添加图文到数据库*/
     public function insertArticleDb() {
         $nowtime = time();
+        $param = $this->request->param();
         $Atricles =Db::name('Wechat_atricles');
-        $Atricles->create();
-        $Atricles->create_time = $nowtime;
-        $Atricles->update_time = $nowtime;
-        $Atricles->data_status = 0;
-        if(!$Atricles->insertGetId()) $this->error("插入数据库错误",'',3);
+        $param['create_time'] = $nowtime;
+        $param['update_time'] = $nowtime;
+        $param['data_status'] = 0;
+        if(!$Atricles->insertGetId($param)){
+            $this->error("插入数据库错误",'',3);
+        };
         $this->success("保存数据成功",url('Material/articles'),3);
     }
 
@@ -198,7 +200,7 @@ class Material extends CommonBaseHome{
     }
 
     /*编辑图文素材for数据库*/
-    public function editArticle($atr_id='') {
+    public function editarticle($atr_id='') {
         $Atricles =Db::name('Wechat_atricles');
         $where['atr_id'] = $atr_id;
         $info = $Atricles->where($where)->find();
@@ -210,13 +212,12 @@ class Material extends CommonBaseHome{
 
     /*更新图文素材FOR数据库*/
     public function updateArticleDb($atr_id='') {
+        $param = $this->request->param();
+        $atr_id = htmlspecialchars(isset($param['atr_id'])?$param['atr_id']:'');
         if(empty($atr_id)) $this->error('请选择正确的文章！','',3);
-        $where['atr_id'] = $atr_id;
-        $nowtime = time();
         $Atricles =Db::name('Wechat_atricles');
-        $Atricles->create();
-        $Atricles->update_time = $nowtime;
-        $res = $Atricles->where($where)->save();
+        $param['update_time'] = time();
+        $res = $Atricles->where('atr_id',$atr_id)->update($param);
         //echo  $Atricles->_sql();exit;
         if(!$res) $this->error("更新数据库错误",'',3);
         $this->success("更新数据成功",url('Material/articles'),3);

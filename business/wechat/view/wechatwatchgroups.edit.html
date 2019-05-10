@@ -35,7 +35,7 @@
                     <div class="class_con">
                         <label for="">所属分组</label>&nbsp;&nbsp;&nbsp;<select class="" name="groups_id" id="groups_id" style="margin-left:0px">
                             	{foreach name="ListWechatGroups" id="value" key="key">	
-                                <option value="{$value['id']}" {if condition="$getone['wechat_groups_id'] eq $value['id']"}selected="selected"{/if} >{$value['name']}</option>
+                                <option value="{$value['id']}" {if condition="$getone['wechat_groups_id'] = $value['id']"}selected="selected"{/if} >{$value['name']}</option>
                              	{/foreach}   
                          </select>
                     </div>

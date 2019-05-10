@@ -321,7 +321,8 @@ class HomeCommonAction extends Controller{
 	//第一次接入时使用
 	public function valid()
     {
-        $echoStr = $_GET["echostr"];
+        $param = $this->request->param();
+        $echoStr = $param["echostr"];
 
         //valid signature , option
         if($this->checkSignature()){
@@ -333,14 +334,15 @@ class HomeCommonAction extends Controller{
     //第一次接入时使用
 	private function checkSignature()
 	{
+        $param = $this->request->param();
         // you must define TOKEN by yourself
         if (!defined("TOKEN")) {
             throw new Exception('TOKEN is not defined!');
         }
         
-        $signature = $_GET["signature"];
-        $timestamp = $_GET["timestamp"];
-        $nonce = $_GET["nonce"];
+        $signature = $param["signature"];
+        $timestamp = $param["timestamp"];
+        $nonce = $param["nonce"];
         		
 		$token = TOKEN;
 		$tmpArr = array($token, $timestamp, $nonce);

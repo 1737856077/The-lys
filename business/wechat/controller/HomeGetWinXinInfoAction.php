@@ -18,6 +18,7 @@ class HomeGetWinXinInfoAction extends HomeCommonAction
 {
 	public function GetOpenid()
 	{
+        $param = $this->request->param();
 		if(config('WebConfig_Debug')){
 			return config('WebConfig_Debug_Openid');
 			exit;
@@ -30,7 +31,7 @@ class HomeGetWinXinInfoAction extends HomeCommonAction
 		}
 		if(empty($WeiXin_Openid)){
 			//通过code获得openid
-			if (!isset($_GET['code'])){
+			if (!isset($param['code'])){
 				//触发微信返回code码
 				$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].__SELF__);
 				$url = $this->__CreateOauthUrlForCode($baseUrl);
@@ -38,7 +39,8 @@ class HomeGetWinXinInfoAction extends HomeCommonAction
 				exit();
 			} else {
 				//获取code码，以获取openid
-				$code = $_GET['code'];
+                $param = $this->request->param();
+				$code = $param['code'];
 				$openid = $this->getOpenidFromMp($code);
 				//wirtefile("excel1:".json_encode($openid));
 				if(is_array($openid) or is_object($openid)){
@@ -55,8 +57,8 @@ class HomeGetWinXinInfoAction extends HomeCommonAction
 	
 	//未授权用户，取得用户基本信息
 	public function GetOpenidUserInfo()
-	{
-			if (!isset($_GET['code'])){
+	{ $param = $this->request->param();
+			if (!isset($param['code'])){
 				//触发微信返回code码
 				$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].__SELF__);
 				$url = $this->__CreateOauthUrlForCodeUserInfo($baseUrl);
@@ -64,7 +66,7 @@ class HomeGetWinXinInfoAction extends HomeCommonAction
 				exit();
 			} else {
 				//获取code码，以获取openid
-				$code = $_GET['code'];
+				$code = $param['code'];
 				$openid = $this->GetOpenidFromMpUserInfo($code);
 				
 				$data = json_decode(file_get_contents("access_token_snsapi_userinfo.json"));

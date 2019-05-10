@@ -18,9 +18,10 @@ use \app\wechat\controller\UserCommon;
 class Wechatgroups extends UserCommon{
 	
 	public function index(){
+        $param = $this->request->param();
 		$ModelWechatGroups=Db::name('WechatGroups');
 		
-		$p=isset($_GET['p']) ? intval($_GET['p']) : 1;
+		$p=isset($param['p']) ? intval($param['p']) : 1;
 		$num=20;
 		
 		$_where="";
@@ -51,7 +52,8 @@ class Wechatgroups extends UserCommon{
 	
 	//显示编辑页面
 	public function edit(){
-		$id = isset($_POST['id']) ? intval(trim($_POST['id'])) : intval($_GET['id']) ;
+        $param = $this->request->param();
+		$id = isset($param['id']) ? intval(trim($param['id'])) : intval($param['id']) ;
 		if(!$id){ echo "paramer error!"; exit;  }
 		
 		$ModelWechatGroups=Db::name('WechatGroups');
@@ -63,7 +65,8 @@ class Wechatgroups extends UserCommon{
 	
 	//提交添加表单
 	public function insert(){
-		$title=htmlspecialchars(trim($_POST['title']));
+        $param = $this->request->param();
+		$title=htmlspecialchars(trim($param['title']));
 		$gettime=time();
 		
 		if(empty($title)){
@@ -104,8 +107,9 @@ class Wechatgroups extends UserCommon{
 	
 	//提交编辑表单
 	public function update(){
-		$id=htmlspecialchars(trim($_POST['id']));
-		$title=htmlspecialchars(trim($_POST['title']));
+        $param = $this->request->param();
+		$id=htmlspecialchars(trim($param['id']));
+		$title=htmlspecialchars(trim($param['title']));
 		$gettime=time();
 		
 		if(empty($title)){
@@ -137,7 +141,8 @@ class Wechatgroups extends UserCommon{
 	
 	//删除分组：还需调试，post删除未返回值
 	public function delete(){
-		$id = isset($_POST['id']) ? intval(trim($_POST['id'])) : intval($_GET['id']) ;
+        $param = $this->request->param();
+		$id = isset($param['id']) ? intval(trim($param['id'])) : intval($param['id']) ;
 		if(!$id){ echo "paramer error!"; exit;  }
 		
 		$ModelWechatGroups=Db::name('WechatGroups');

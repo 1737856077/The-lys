@@ -52,7 +52,7 @@
                                 </td>
                             </tr>
                         {/foreach}
-                      	{if(!$count)}
+                        {if condition="empty($count)"}
                             <tr class="mid_02" style="border-left:3px solid #f5da8c;">
                                 <td colspan="6">暂无相关数据！</td>
                             </tr>
@@ -60,7 +60,7 @@
                     </table>
                     
                     <div class="interpret">
-                    	<div class="page">{$page}</div>
+                    {//<div class="page">{$page}</div>
                     </div>
                     
                     <br /><br />

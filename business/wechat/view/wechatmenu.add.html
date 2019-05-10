@@ -34,9 +34,9 @@
                         <label for="">父级菜单</label>　
                          <select class="" name="father_id" id="father_id">
                          		<option value="0">一级菜单</option>
-                            	{foreach name="ListWechatMenu" id="value" key="key">	
-                                <option value="{$value['id']}">{$value['title']}</option>
-                             	{/foreach}   
+                             {foreach name="ListWechatMenu" id="vo"}
+                             <option value="{$vo.id}">{$vo.title}</option>
+                             {/foreach}
                          </select>
                     </div>
                      <div class="class_con">

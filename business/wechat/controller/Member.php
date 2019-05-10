@@ -20,13 +20,14 @@ class Member extends UserCommon{
 	
 	//显示用户列表
 	public function index(){
+        $param = $this->request->param();
 		$ModelMember=Db::name('Member');
 		$ModelWechatWatch=Db::name('WechatWatch');
 		
-		$SearchTel=isset($_POST["SearchTel"]) ? htmlspecialchars(trim($_POST['SearchTel'])) : htmlspecialchars($_GET['SearchTel']);
+		$SearchTel=isset($param["SearchTel"]) ? htmlspecialchars(trim($param['SearchTel'])) : htmlspecialchars($param['SearchTel']);
 		$paramter="/SearchTel/$SearchTel/";
 		
-		$p=isset($_GET['p']) ? intval($_GET['p']) : 1;
+		$p=isset($param['p']) ? intval($param['p']) : 1;
 		$num=20;
 		
 		$_where="";

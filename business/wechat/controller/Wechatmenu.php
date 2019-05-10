@@ -81,16 +81,17 @@ class Wechatmenu extends UserCommon{
 	
 	//显示编辑页面
 	public function edit(){
-		$id = isset($_POST['id']) ? intval(trim($_POST['id'])) : intval($_GET['id']) ;
+        $param = $this->request->param();
+		$id = isset($param['id']) ? intval(trim($param['id'])) : intval($param['id']) ;
 		if(!$id){ echo "paramer error!"; exit;  }
-		
+
 		$ModelWechatMenu=Db::name("WechatMenu");
 		$ModelWechatMaterial=Db::name('WechatMaterial');
-		
+
 		$getone=$ModelWechatMenu->where("id='$id'")->find();
 		if(empty($getone)){ echo "paramer error!"; exit;  }
 		$ListWechatMenu=$ModelWechatMenu->where("data_status=1 AND father_id=0")->order("data_sort ASC,id ASC")->select();
-		
+
 		$ListWechatMaterialImages=$ModelWechatMaterial->where("data_type='image' ")->order("create_time DESC")
 		->limit("0,10")->select();
 		$ListWechatMaterialVideo=$ModelWechatMaterial->where("data_type='video' ")->order("create_time DESC")
@@ -101,8 +102,8 @@ class Wechatmenu extends UserCommon{
 		->limit("0,10")->select();
 		$ListWechatMaterialThumb=$ModelWechatMaterial->where("data_type='thumb' ")->order("create_time DESC")
 		->limit("0,10")->select();
-		
-		$this->assign("ListWechatMenu",$ListWechatMenu);		
+
+		$this->assign("ListWechatMenu",$ListWechatMenu);
 		$this->assign("getone",$getone);
 		$this->assign("ListWechatMaterialImages",$ListWechatMaterialImages);
 		$this->assign("ListWechatMaterialVideo",$ListWechatMaterialVideo);
@@ -111,19 +112,20 @@ class Wechatmenu extends UserCommon{
 		$this->assign("ListWechatMaterialThumb",$ListWechatMaterialThumb);
 		return $this->fetch();
 	}
-	
+
 	//提交添加表单
 	public function insert(){
-		$father_id=intval(trim($_POST['father_id']));
-		$data_type=htmlspecialchars(trim($_POST['data_type']));
-		$title=htmlspecialchars(trim($_POST['title']));
-		$url=htmlspecialchars(trim($_POST['url']));
-		$btn_key=htmlspecialchars(trim($_POST['btn_key']));
-		$media_id=htmlspecialchars(trim($_POST['media_id']));
-		$data_sort=intval(trim($_POST['data_sort']));
-		$description=htmlspecialchars(trim($_POST['description']));
+        $param = $this->request->param();
+		$father_id=intval(trim($param['father_id']));
+		$data_type=htmlspecialchars(trim($param['data_type']));
+		$title=htmlspecialchars(trim($param['title']));
+		$url=htmlspecialchars(trim($param['url']));
+		$btn_key=htmlspecialchars(trim($param['btn_key']));
+		$media_id=htmlspecialchars(trim($param['media_id']));
+		$data_sort=intval(trim($param['data_sort']));
+		$description=htmlspecialchars(trim($param['description']));
 		$gettime=time();
-		
+
 		if(empty($title)){
 			echo "<script language=\"javascript\">alert(\"必填项不能为空！\");history.go(-1);</script>";
 			exit;
@@ -147,7 +149,7 @@ class Wechatmenu extends UserCommon{
 			}
 		}
 		$ModelWechatMenu=Db::name("WechatMenu");
-		
+
 		if($father_id==0){//查看一级菜单是否超过3个
 			$count=$ModelWechatMenu->where("father_id=0")->count();
 			if($count>=3){
@@ -161,8 +163,8 @@ class Wechatmenu extends UserCommon{
 				echo "<script language=\"javascript\">alert(\"添加失败，二级菜单最多只能添加5个！\");history.go(-1);</script>";
 				exit;
 			}
-		}		
-		
+		}
+
 		$data=array();
 		$data["father_id"]=$father_id;
 		$data["title"]=$title;
@@ -175,27 +177,28 @@ class Wechatmenu extends UserCommon{
 		$data["data_status"]="1";
 		$data["create_time"]=$gettime;
 		$data["update_time"]=$gettime;
-		
-		
+
+
 		$ModelWechatMenu->insertGetId($data);
-		
+
 		$this->success("操作成功！",url("wechatmenu/index"),3);
 		exit;
 	}
-	
+
 	//提交编辑表单
 	public function update(){
-		$id=intval(trim($_POST['id']));
-		$father_id=intval(trim($_POST['father_id']));
-		$data_type=htmlspecialchars(trim($_POST['data_type']));
-		$title=htmlspecialchars(trim($_POST['title']));
-		$url=htmlspecialchars(trim($_POST['url']));
-		$btn_key=htmlspecialchars(trim($_POST['btn_key']));
-		$media_id=htmlspecialchars(trim($_POST['media_id']));
-		$data_sort=intval(trim($_POST['data_sort']));
-		$description=htmlspecialchars(trim($_POST['description']));
+        $param = $this->request->param();
+		$id=intval(trim($param['id']));
+		$father_id=intval(trim($param['father_id']));
+		$data_type=htmlspecialchars(trim($param['data_type']));
+		$title=htmlspecialchars(trim($param['title']));
+		$url=htmlspecialchars(trim($param['url']));
+		$btn_key=htmlspecialchars(trim($param['btn_key']));
+		$media_id=htmlspecialchars(trim($param['media_id']));
+		$data_sort=intval(trim($param['data_sort']));
+		$description=htmlspecialchars(trim($param['description']));
 		$gettime=time();
-		
+
 		if(empty($title)){
 			echo "<script language=\"javascript\">alert(\"必填项不能为空！\");history.go(-1);</script>";
 			exit;
@@ -219,7 +222,7 @@ class Wechatmenu extends UserCommon{
 			}
 		}
 		$ModelWechatMenu=Db::name("WechatMenu");
-		
+
 		if($father_id==0){//查看一级菜单是否超过3个
 			$count=$ModelWechatMenu->where("father_id=0 AND id!='$id'")->count();
 			if($count>=3){
@@ -234,7 +237,7 @@ class Wechatmenu extends UserCommon{
 				exit;
 			}
 		}
-		
+
 		$data=array();
 		$data["father_id"]=$father_id;
 		$data["title"]=$title;
@@ -244,17 +247,18 @@ class Wechatmenu extends UserCommon{
 		$data["media_id"]=$media_id;
 		$data["data_sort"]=$data_sort;
 		$data["data_type"]=$data_type;
-		$data["update_time"]=$gettime;		
-		
+		$data["update_time"]=$gettime;
+
 		$ModelWechatMenu->where("id='$id'")->update($data);
-		
+
 		$this->success("操作成功！",url("wechatmenu/index"),3);
 		exit;
 	}
 
 	//删除菜单
 	public function del(){
-		$id = isset($_POST['id']) ? intval(trim($_POST['id'])) : intval($_GET['id']) ;
+        $param = $this->request->param();
+		$id = isset($param['id']) ? intval(trim($param['id'])) : intval($param['id']) ;
 		if(!$id){ echo "paramer error!"; exit;  }
 		$ModelWechatMenu=Db::name("WechatMenu");
 		$ModelWechatMenu->where("id='$id'")->delete();

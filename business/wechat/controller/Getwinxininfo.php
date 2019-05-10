@@ -20,10 +20,11 @@ class Getwinxininfo extends Controller
 {
 	public function GetOpenid()
 	{
+        $param = $this->request->param();
 		$WeiXin_Openid=Session::get("WeiXin_Openid");
 		if(empty($WeiXin_Openid)){
 			//通过code获得openid
-			if (!isset($_GET['code'])){
+			if (!isset($param['code'])){
 				//触发微信返回code码
 				$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].__SELF__);
 				$url = $this->__CreateOauthUrlForCode($baseUrl);
@@ -31,7 +32,7 @@ class Getwinxininfo extends Controller
 				exit();
 			} else {
 				//获取code码，以获取openid
-				$code = $_GET['code'];
+				$code = $param['code'];
 				$openid = $this->getOpenidFromMp($code);
 				Session::set("WeiXin_Openid", $openid);	
 				return $openid;

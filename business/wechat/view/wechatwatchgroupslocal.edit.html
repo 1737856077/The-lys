@@ -36,7 +36,7 @@
                     <div class="tab_cons" style="width:100%; border-bottom:0px;" id="div_groups_id">
                                 <label for="" style=" height:50px;">所属分组<font class="ErrorRed">*</font></label>
                                 {foreach name="ListMemberGroups" id="value"}
-                                <php>$_CHECKED = in_array($value['member_groups_id'],$getone['MemberGroupsArr']) ? 'checked="checked"' : "" ;</php>
+                                {php}$_CHECKED = in_array($value['member_groups_id'],$getone['MemberGroupsArr']) ? 'checked="checked"' : "" ;{/php}
                                 <span class="fit"><label for="groups_id_{$value['member_groups_id']}" style="text-align:left; padding-left:8px;"><input type="checkbox" name="groups_id[]" id="groups_id_{$value['member_groups_id']}" value="{$value['member_groups_id']}"  {$_CHECKED} >&nbsp;&nbsp;{$value['title']}</label></span>
                                 {/foreach}
                                 <span style="color:#F00;" id="span_groups_id"></span>

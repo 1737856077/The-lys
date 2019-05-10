@@ -63,41 +63,41 @@
                 </thead>
                 <tbody>
                 {foreach name="info" id="vo"}
-                    <tr  class="mid_02" style="border-left:3px solid #cfbba9" data-id="{$vo.media_id}">
-                        <td class="mid_one" style="border-right:1px solid #e4e3e3"><input type="checkbox" /></td>
-                        <td class="mid_t">
-                                <div class="clip">
-                                    {if condition="$vo.data_type eq image">
-                                    <a href="{$vo.url}" data-lightbox="roadtrip">{$vo.title}</a>
-                                    {elseif condition="$vo.data_type eq video"/>
-                                    <div class="remodal-bg">
-                                        <div id="qunit"></div>
-                                        <a href="#" id="video-title" data-remodal-target="modal" data-url="{$vo.local_path}">{$vo.title}</a>
-                                    </div>
-                                    {elseif condition="$vo.data_type eq voice" />
-                                    <div class="remodal-bg">
-                                        <div id="voice-qunit"></div>
-                                        <a href="#" id="voice-title" data-remodal-target="voice-modal" data-url="{$vo.local_path}">{$vo.title}</a>
-                                    </div>
-                                    <else />
-                                        {$vo.title}
-                                    {/if}
-                                </div>
-                            </td>
-                        <td class="mid_one" style="text-align:center">{$vo.data_type}</td>
-                        <td class="mid_f">{$vo.atricles_id}</td>
-                        <td class="mid_one">
-                            {if name="vo.data_status" value="1"}
-                                同步
-                            {else/}
-                                未同步
+                <tr  class="mid_02" style="border-left:3px solid #cfbba9" data-id="{$vo.media_id}">
+                    <td class="mid_one" style="border-right:1px solid #e4e3e3"><input type="checkbox" /></td>
+                    <td class="mid_t">
+                        <div class="clip">
+                            {if condition="$vo.data_type = 'image'">
+                            <a href="{$vo.url}" data-lightbox="roadtrip">{$vo.title}</a>
+                            {elseif condition="$vo.data_type = 'video'"/>
+                            <div class="remodal-bg">
+                                <div id="qunit"></div>
+                                <a href="#" id="video-title" data-remodal-target="modal" data-url="{$vo.local_path}">{$vo.title}</a>
+                            </div>
+                            {elseif condition="$vo.data_type = 'voice'" />
+                            <div class="remodal-bg">
+                                <div id="voice-qunit"></div>
+                                <a href="#" id="voice-title" data-remodal-target="voice-modal" data-url="{$vo.local_path}">{$vo.title}</a>
+                            </div>
+                            <else />
+                            {$vo.title}
                             {/if}
-                        </td>
-                        <td class="mid_f" style="text-align:center">{$vo.create_time|date="Y-m-d",###}</td>
-                        <td class="mid_s" style="text-align:center">
-                            <a href="javascript:void(0);" data-id="{$vo.media_id}" class="del">删除</a>
-                        </td>
-                    </tr>
+                        </div>
+                    </td>
+                    <td class="mid_one" style="text-align:center">{$vo.data_type}</td>
+                    <td class="mid_f">{$vo.atricles_id}</td>
+                    <td class="mid_one">
+                        {if condition="$vo.data_status = 1"}
+                        同步
+                        {else/}
+                        未同步
+                        {/if}
+                    </td>
+                    <td class="mid_f" style="text-align:center">{$vo.create_time|date="Y-m-d",###}</td>
+                    <td class="mid_s" style="text-align:center">
+                        <a href="javascript:void(0);" data-id="{$vo.media_id}" class="del">删除</a>
+                    </td>
+                </tr>
                 {/foreach}
                 </tbody>
             </table>
@@ -129,7 +129,6 @@ $(function(){
     //删除
     $(".del").on('click',function(){
         var mediaId = $(this).data('id');
-        //console.log("{:url(Material/delMedia)}/media_id/"+mediaId);
         if(confirm("您是否确认删除<"+mediaId+">?")){
                 location.href = "{:url('Material/delMedia')}/media_id/"+mediaId;
         }

@@ -20,9 +20,10 @@ class Refreshfans extends UserCommon{
 	
 	//刷新粉丝
 	public function index(){
+        $param = $this->request->param();
 		set_time_limit(0);//设置时间不超时
-		$next_openid=htmlspecialchars(trim(isset($_GET['next_openid']) ? $_GET['next_openid'] : '')) ;
-		$page=isset($_GET['page']) ? intval($_GET['page']) : 1;
+		$next_openid=htmlspecialchars(trim(isset($param['next_openid']) ? $param['next_openid'] : '')) ;
+		$page=isset($param['page']) ? intval($param['page']) : 1;
 		$page = $page ? $page : 1 ;//当前页
 		$display_num=1000;//每页显示记录数
 		

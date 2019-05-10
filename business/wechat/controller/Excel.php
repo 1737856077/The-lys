@@ -208,7 +208,8 @@ class Excel extends UserCommon{
 
 
 	public function excel_up(){
-		$act = $_POST['act'];
+	    $param = $this->request->param();
+		$act = $param['act'];
 		//$this->show('上传处理', 'utf-8');exit();
 
 		if($act == "upload"){//文件上传

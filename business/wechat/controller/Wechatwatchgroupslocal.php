@@ -19,13 +19,14 @@ class Wechatwatchgroupslocal extends UserCommon{
 
 	//显示用户分组主界面
 	public function index(){
+        $param = $this->request->param();
 		$ModelWechatWatch=Db::name('WechatWatch');
 		$ModelMemberGroups=Db::name('MemberGroups');
 
-		$SearchName=isset($_POST["SearchName"]) ? htmlspecialchars(trim($_POST['SearchName'])) : '';
+		$SearchName=isset($param["SearchName"]) ? htmlspecialchars(trim($param['SearchName'])) : '';
 		$paramter="/SearchName/$SearchName/";
 
-		$p=isset($_GET['p']) ? intval($_GET['p']) : 1;
+		$p=isset($param['p']) ? intval($param['p']) : 1;
 		$num=20;
 
 		$_where = '1';
@@ -77,7 +78,8 @@ class Wechatwatchgroupslocal extends UserCommon{
 
 	//显示编辑分组界面
 	public function edit(){
-		$openid=isset($_POST["openid"]) ? htmlspecialchars(trim($_POST['openid'])) : htmlspecialchars($_GET['openid']);
+        $param = $this->request->param();
+		$openid=isset($param["openid"]) ? htmlspecialchars(trim($param['openid'])) : htmlspecialchars($param['openid']);
 
 		$ModelWechatWatch=Db::name('WechatWatch');
 		$ModelMemberGroups=Db::name('MemberGroups');
@@ -95,8 +97,9 @@ class Wechatwatchgroupslocal extends UserCommon{
 
 	//提交编辑分组表单
 	public function update(){
-		$openid=htmlspecialchars(trim($_POST['openid']));
-		$groups_id=$_POST['groups_id'];
+        $param = $this->request->param();
+		$openid=htmlspecialchars(trim($param['openid']));
+		$groups_id=$param['groups_id'];
 		$gettime=time();
 
 		if(empty($openid)){
@@ -120,9 +123,10 @@ class Wechatwatchgroupslocal extends UserCommon{
 
 	//全选操作
 	public function editinfo(){
-		$openid_list=$_POST['sqt'];
-		$groups_id=intval(trim($_POST['groups_id']));
-		$checkclass=intval(trim($_POST['checkclass']));
+        $param = $this->request->param();
+		$openid_list=$param['sqt'];
+		$groups_id=intval(trim($param['groups_id']));
+		$checkclass=intval(trim($param['checkclass']));
 		$gettime=time();
 
 		if(!count($openid_list)){

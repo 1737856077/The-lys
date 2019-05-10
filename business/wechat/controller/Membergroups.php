@@ -19,10 +19,11 @@ use think\Config;
 class Membergroups extends UserCommon{
 
 	public function index(){
+	    $param = $this->request->param();
 		$ModelMemberGroups=Db::name('MemberGroups');
 		$ModelWechatWatch=Db::name('WechatWatch');
 
-		$p=isset($_GET['p']) ? intval($_GET['p']) : 1;
+		$p=isset($param['p']) ? intval($param['p']) : 1;
 		$num=20;
 
 		$_where="";
@@ -58,7 +59,8 @@ class Membergroups extends UserCommon{
 
 	//显示编辑页面
 	public function edit(){
-		$id = isset($_POST['id']) ? intval(trim($_POST['id'])) : intval($_GET['id']) ;
+        $param = $this->request->param();
+		$id = isset($param['id']) ? intval(trim($param['id'])) : intval($param['id']) ;
 		if(!$id){ echo "paramer error!"; exit;  }
 
 		$ModelMemberGroups=Db::name('MemberGroups');
@@ -70,7 +72,8 @@ class Membergroups extends UserCommon{
 
 	//提交添加表单
 	public function insert(){
-		$title=htmlspecialchars(trim($_POST['title']));
+        $param = $this->request->param();
+		$title=htmlspecialchars(trim($param['title']));
 		$gettime=time();
 
 		if(empty($title)){
@@ -97,8 +100,9 @@ class Membergroups extends UserCommon{
 
 	//提交编辑表单
 	public function update(){
-		$id=htmlspecialchars(trim($_POST['id']));
-		$title=htmlspecialchars(trim($_POST['title']));
+        $param = $this->request->param();
+		$id=htmlspecialchars(trim($param['id']));
+		$title=htmlspecialchars(trim($param['title']));
 		$gettime=time();
 
 		if(empty($title)){
@@ -127,7 +131,8 @@ class Membergroups extends UserCommon{
 
 	//删除分组：还需调试，post删除未返回值
 	public function delete(){
-		$id = isset($_POST['id']) ? intval(trim($_POST['id'])) : intval($_GET['id']) ;
+	    $param = $this->request->param();
+		$id = isset($param['id']) ? intval(trim($param['id'])) : intval($param['id']) ;
 		if(!$id){ echo "paramer error!"; exit;  }
 		if($id==1){echo "默认分组不能删除!"; exit;}
 

@@ -54,14 +54,15 @@ class Messagepush extends UserCommon{
 	
 	//提交推送信息表单
 	public function insert(){
-		$groups_id_all=intval(trim($_POST['groups_id_all']));
-		$groups_id=$_POST['groups_id'];
-		$province_id=intval(trim($_POST['province_id']));
-		$city_id=intval(trim($_POST['city_id']));
-		$push_address=$_POST['push_address'];
-		$msgtype=isset($_POST['msgtype']) ? htmlspecialchars(trim($_POST['msgtype'])) : htmlspecialchars(trim($_GET['msgtype'])) ;
-		$media_id=isset($_POST['media_id']) ? htmlspecialchars(trim($_POST['media_id'])) : htmlspecialchars(trim($_GET['media_id'])) ;
-		$description=isset($_POST['description']) ? htmlspecialchars(trim($_POST['description'])) : htmlspecialchars(urldecode($_GET['description'])) ;
+        $param = $this->request->param();
+		$groups_id_all=intval(trim($param['groups_id_all']));
+		$groups_id=$param['groups_id'];
+		$province_id=intval(trim($param['province_id']));
+		$city_id=intval(trim($param['city_id']));
+		$push_address=$param['push_address'];
+		$msgtype=isset($param['msgtype']) ? htmlspecialchars(trim($param['msgtype'])) : htmlspecialchars(trim($param['msgtype'])) ;
+		$media_id=isset($param['media_id']) ? htmlspecialchars(trim($param['media_id'])) : htmlspecialchars(trim($param['media_id'])) ;
+		$description=isset($param['description']) ? htmlspecialchars(trim($param['description'])) : htmlspecialchars(urldecode($param['description'])) ;
 		$gettime=time();
 		$is_to_all = $groups_id=="" ? "true" : "false" ;
 		$is_to_all_data = $groups_id=="" ? 1 : 0 ;
@@ -115,7 +116,7 @@ class Messagepush extends UserCommon{
 			echo "<script language=\"javascript\">alert(\"群发信息推送粉丝总数量不能小于2位！\");history.go(-1);</script>";
 			exit;
 		}
-		$page=isset($_GET['page']) ? intval($_GET['page']) : 1;
+		$page=isset($param['page']) ? intval($param['page']) : 1;
 		$page = $page ? $page : 1 ;//当前页
 		$display_num=1000;//每页显示记录数
 		if($display_num>=10){

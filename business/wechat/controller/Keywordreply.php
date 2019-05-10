@@ -19,7 +19,8 @@ use think\Config;
 class Keywordreply extends UserCommon{
 	
 	public function index(){
-		$SearchMsgType = isset($_POST['SearchMsgType']) ? $_POST['SearchMsgType'] : $_GET['SearchMsgType'] ;
+	    $param = $this->request->param();
+	    $SearchMsgType = isset($param['SearchMsgType']) ? $param['SearchMsgType'] : $param['SearchMsgType'] ;
 		$SearchMsgType=urldecode($SearchMsgType);
 		if(empty($SearchMsgType)){ $SearchMsgType="news";  }
 		if($SearchMsgType=="news_material"){ $SearchMsgType="news";  }
@@ -27,7 +28,7 @@ class Keywordreply extends UserCommon{
 		
 		$ModelAutomaticReply=Db::name('AutomaticReply');
 		
-		$p=isset($_GET['p']) ? intval($_GET['p']) : 1;
+		$p=isset($param['p']) ? intval($param['p']) : 1;
 		$num=20;
 		
 		$_where=" AND data_type=1";
@@ -54,7 +55,8 @@ class Keywordreply extends UserCommon{
 	
 	//显示添加页面
 	public function add(){
-		$MsgType = isset($_POST['MsgType']) ? $_POST['MsgType'] : $_GET['MsgType'] ;
+	    $param = $this->request->param();
+		$MsgType = isset($param['MsgType']) ? $param['MsgType'] : $param['MsgType'] ;
 		$MsgType=htmlspecialchars(trim($MsgType));
 		if(empty($MsgType)){ $MsgType="news";  }
 		
@@ -76,7 +78,8 @@ class Keywordreply extends UserCommon{
 	
 	//显示编辑页面
 	public function edit(){
-		$id = isset($_POST['id']) ? intval(trim($_POST['id'])) : intval($_GET['id']) ;
+	    $param = $this->request->param();
+		$id = isset($param['id']) ? intval(trim($param['id'])) : intval($param['id']) ;
 		if(!$id){ echo "paramer error!"; exit;  }
 		
 		$ModelAutomaticReply=Db::name('AutomaticReply');
@@ -106,33 +109,34 @@ class Keywordreply extends UserCommon{
 	
 	//提交添加表单
 	public function insert(){
-		$msgtype=htmlspecialchars(trim($_POST['msgtype']));
-		$key_word=htmlspecialchars(trim($_POST['key_word']));
+	    $param = $this->request->param();
+		$msgtype=htmlspecialchars(trim($param['msgtype']));
+		$key_word=htmlspecialchars(trim($param['key_word']));
 		$gettime=time();
 		
-		$news_media_id=htmlspecialchars(trim($_POST['news_media_id']));
-		$news_link_url=htmlspecialchars(trim($_POST['news_link_url']));
-		//$news_images=htmlspecialchars(trim($_POST['news_images']));
-		$news_title=htmlspecialchars(trim($_POST['news_title']));
-		$news_description=htmlspecialchars(trim($_POST['news_description']));
-		$news_url=htmlspecialchars(trim($_POST['news_url']));
+		$news_media_id=htmlspecialchars(trim($param['news_media_id']));
+		$news_link_url=htmlspecialchars(trim($param['news_link_url']));
+		//$news_images=htmlspecialchars(trim($param['news_images']));
+		$news_title=htmlspecialchars(trim($param['news_title']));
+		$news_description=htmlspecialchars(trim($param['news_description']));
+		$news_url=htmlspecialchars(trim($param['news_url']));
 		
-		$music_title=htmlspecialchars(trim($_POST['music_title']));
-		$music_description=htmlspecialchars(trim($_POST['music_description']));
-		$music_link_url=htmlspecialchars(trim($_POST['music_link_url']));
-		$music_hq_link_url=htmlspecialchars(trim($_POST['music_hq_link_url']));
-		$music_thumb_media_id=htmlspecialchars(trim($_POST['music_thumb_media_id']));
+		$music_title=htmlspecialchars(trim($param['music_title']));
+		$music_description=htmlspecialchars(trim($param['music_description']));
+		$music_link_url=htmlspecialchars(trim($param['music_link_url']));
+		$music_hq_link_url=htmlspecialchars(trim($param['music_hq_link_url']));
+		$music_thumb_media_id=htmlspecialchars(trim($param['music_thumb_media_id']));
 		
-		$video_media_id=htmlspecialchars(trim($_POST['video_media_id']));
-		$video_title=htmlspecialchars(trim($_POST['video_title']));
-		$video_description=htmlspecialchars(trim($_POST['video_description']));
+		$video_media_id=htmlspecialchars(trim($param['video_media_id']));
+		$video_title=htmlspecialchars(trim($param['video_title']));
+		$video_description=htmlspecialchars(trim($param['video_description']));
 		
-		$voice_media_id=htmlspecialchars(trim($_POST['voice_media_id']));
+		$voice_media_id=htmlspecialchars(trim($param['voice_media_id']));
 		
-		$image_link_url=htmlspecialchars(trim($_POST['image_link_url']));
-		$image_media_id=htmlspecialchars(trim($_POST['image_media_id']));
+		$image_link_url=htmlspecialchars(trim($param['image_link_url']));
+		$image_media_id=htmlspecialchars(trim($param['image_media_id']));
 		
-		$text_description=htmlspecialchars(trim($_POST['text_description']));
+		$text_description=htmlspecialchars(trim($param['text_description']));
 		
 		$ModelAutomaticReply=Db::name('AutomaticReply');
 		$ModelWechatMaterial=Db::name('WechatMaterial');
@@ -272,34 +276,35 @@ class Keywordreply extends UserCommon{
 	
 	//提交编辑表单
 	public function update(){
-		$id=intval(trim($_POST['id']));
-		$msgtype=htmlspecialchars(trim($_POST['msgtype']));
-		$key_word=htmlspecialchars(trim($_POST['key_word']));
+	    $param = $this->request->param();
+		$id=intval(trim($param['id']));
+		$msgtype=htmlspecialchars(trim($param['msgtype']));
+		$key_word=htmlspecialchars(trim($param['key_word']));
 		$gettime=time();
 	
-		$news_media_id=htmlspecialchars(trim($_POST['news_media_id']));
-		$news_link_url=htmlspecialchars(trim($_POST['news_link_url']));
-		//$news_images=htmlspecialchars(trim($_POST['news_images']));
-		$news_title=htmlspecialchars(trim($_POST['news_title']));
-		$news_description=htmlspecialchars(trim($_POST['news_description']));
-		$news_url=htmlspecialchars(trim($_POST['news_url']));
+		$news_media_id=htmlspecialchars(trim($param['news_media_id']));
+		$news_link_url=htmlspecialchars(trim($param['news_link_url']));
+		//$news_images=htmlspecialchars(trim($param['news_images']));
+		$news_title=htmlspecialchars(trim($param['news_title']));
+		$news_description=htmlspecialchars(trim($param['news_description']));
+		$news_url=htmlspecialchars(trim($param['news_url']));
 	
-		$music_title=htmlspecialchars(trim($_POST['music_title']));
-		$music_description=htmlspecialchars(trim($_POST['music_description']));
-		$music_link_url=htmlspecialchars(trim($_POST['music_link_url']));
-		$music_hq_link_url=htmlspecialchars(trim($_POST['music_hq_link_url']));
-		$music_thumb_media_id=htmlspecialchars(trim($_POST['music_thumb_media_id']));
+		$music_title=htmlspecialchars(trim($param['music_title']));
+		$music_description=htmlspecialchars(trim($param['music_description']));
+		$music_link_url=htmlspecialchars(trim($param['music_link_url']));
+		$music_hq_link_url=htmlspecialchars(trim($param['music_hq_link_url']));
+		$music_thumb_media_id=htmlspecialchars(trim($param['music_thumb_media_id']));
 	
-		$video_media_id=htmlspecialchars(trim($_POST['video_media_id']));
-		$video_title=htmlspecialchars(trim($_POST['video_title']));
-		$video_description=htmlspecialchars(trim($_POST['video_description']));
+		$video_media_id=htmlspecialchars(trim($param['video_media_id']));
+		$video_title=htmlspecialchars(trim($param['video_title']));
+		$video_description=htmlspecialchars(trim($param['video_description']));
 	
-		$voice_media_id=htmlspecialchars(trim($_POST['voice_media_id']));
+		$voice_media_id=htmlspecialchars(trim($param['voice_media_id']));
 	
-		$image_link_url=htmlspecialchars(trim($_POST['image_link_url']));
-		$image_media_id=htmlspecialchars(trim($_POST['image_media_id']));
+		$image_link_url=htmlspecialchars(trim($param['image_link_url']));
+		$image_media_id=htmlspecialchars(trim($param['image_media_id']));
 	
-		$text_description=htmlspecialchars(trim($_POST['text_description']));
+		$text_description=htmlspecialchars(trim($param['text_description']));
 	
 		$ModelAutomaticReply=Db::name('AutomaticReply');
 		$ModelWechatMaterial=Db::name('WechatMaterial');
@@ -446,7 +451,8 @@ class Keywordreply extends UserCommon{
 	
 	//删除
 	public function delete(){
-		$id = isset($_POST['id']) ? intval(trim($_POST['id'])) : intval($_GET['id']) ;
+	    $param = $this->request->param();
+		$id = isset($param['id']) ? intval(trim($param['id'])) : intval($param['id']) ;
 		if(!$id){ echo "paramer error!"; exit;  }
 		
 		$ModelAutomaticReply=Db::name('AutomaticReply');
