@@ -9,7 +9,9 @@
 namespace app\money\controller;
 
 use think\Controller;
+use think\Db;
 use think\Loader;
+use think\Session;
 
 class Pay extends Controller
 {
@@ -21,7 +23,18 @@ class Pay extends Controller
         $WIDout_trade_no = $param['WIDout_trade_no'];
         $WIDsubject = $param['WIDsubject'];
         $WIDtotal_amount = $param['WIDtotal_amount'];
-//        dump($WIDsubject);die;
+        //添加数据库
+        $data = [
+            'order_no'=>$WIDout_trade_no,
+            'admin_id'=>Session::get('adminid'),
+            'amount'=>$WIDtotal_amount,
+            'num'=>$WIDsubject,
+            'pay_status'=>0,
+            'pay_type'=>0,
+            'pay_method'=>1,
+            'create_time'=>time(),
+        ];
+        Db::name('order')->insert($data);
 //        $WIDsubject='标题';
         $this->assign("WIDout_trade_no",$WIDout_trade_no);
         $this->assign("WIDsubject",$WIDsubject);

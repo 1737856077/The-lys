@@ -272,15 +272,15 @@
                             </colgroup>
                             <tbody>
                             <tr>
-                                <th class="text-left">订单名称</th>
+                                <th class="text-left">订单号</th>
                                 <th>订单金额</th>
                                 <th>消费时间</th>
                             </tr>
                             {if condition="!empty($list)"}
                             {volist name="list" id="vo"}
                             <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
-                                <td class="text-left ng-binding" ng-bind="user.username">{$vo.subject}</td>
-                                <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.total_amount}</td>
+                                <td class="text-left ng-binding" ng-bind="user.username">{$vo.order_no}</td>
+                                <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.amount}</td>
                                 <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$vo.create_time|date="Y-m-d",###}</td>
                             </tr>
                             {/volist}
@@ -293,7 +293,8 @@
                             {/if}
                             </tbody>
                         </table>
-                        <div class="text-right" style="width: 100px;">
+                        <div class="text-right">
+                            {$list->render()}
                         </div>
 
                     </div>

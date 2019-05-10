@@ -32,7 +32,7 @@ class Money extends Controller
     {
         //查询当前商家下的用户
         $id = Session::get('adminid');
-        $mon = Db::name('alipay_pay_record')->where('admin_id',$id)->select();
+        $mon = Db::name('order')->where('admin_id',$id)->paginate(5);
         $this->assign('list',$mon);
         return $this->fetch();
     }
@@ -57,6 +57,25 @@ class Money extends Controller
         }
 //        dump($money);die;
         return json($money);
+    }
+
+    /**
+     * 计算续费后 到期时间
+     */
+    public function time()
+    {
+        //获取该商家续费年数
+        $id = Session::get('adminid');
+        $year = Db::name('order')->where('admin_id',$id)->field('num')->find();
+        $num = implode(',',$year);
+        //获取商家到期时间
+        $year1 = Db::name('admin_business')->where('admin_id',$id)->field('expiration_date')->find();
+        $num2 = implode(',',$year1);
+        //计算续费时间
+        $new_time = $num*365*24*60*60;
+        $new = date('Y-m-d H:i:s',$num2+$new_time);
+        $new1 = strtotime($new);
+        Db::name('admin_business')->where('admin_id',$id)->update(['expiration_date'=>$new1]);
     }
 
 }

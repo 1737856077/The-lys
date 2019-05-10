@@ -22,6 +22,7 @@ class Index extends Controller
     {
         $name = Session::get('adminname');
         $id = Session::get('adminid');
+
         if(Session::has('adminname')){
             $list = Db::name('admin_business')
                 ->alias('b')

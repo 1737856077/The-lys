@@ -263,61 +263,16 @@
                         <!--系统管理首页-->
                         <div class="welcome-container js-system-welcome ng-scope" ng-controller="WelcomeCtrl">
                             <div class="ad-img we7-margin-bottom">
-                                <!-- ngRepeat: ad in ads -->
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="panel we7-panel account-stat">
                                         <div class="panel-heading">微信公众号</div>
-                                        <!--<div class="panel-body we7-padding-vertical">
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">当前状态</div>
-                                                <div class="num">
-                                                    <a href="#"
-                                                       class="color-default ng-binding">未开通</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">可升级应用</div>
-                                                <div class="num ng-binding">
-                                                    暂无
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">应用总数</div>
-                                                <div class="num">
-                                                    <a href="#"
-                                                       class="color-default ng-binding">暂无</a>
-                                                </div>
-                                            </div>
-                                        </div>-->
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="panel we7-panel account-stat">
                                         <div class="panel-heading">积分商城</div>
-                                        <!--<div class="panel-body we7-padding-vertical">
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">当前状态</div>
-                                                <div class="num">
-                                                    <a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;do=not_installed&amp;account_type=4"
-                                                       class="color-default ng-binding">已开通</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">可升级应用</div>
-                                                <div class="num ng-binding">
-                                                    暂无
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 text-center">
-                                                <div class="title">应用总数</div>
-                                                <div class="num">
-                                                    <a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;do=installed&amp;account_type=4"
-                                                       class="color-default ng-binding">暂无</a>
-                                                </div>
-                                            </div>
-                                        </div>-->
                                     </div>
                                 </div>
                                 <div id="modal-loading" style="width: 100%; display: none;">
@@ -336,15 +291,13 @@
                                 {volist name="list" id="vo"}
                                 <div class="panel-body clearfix">
                                     <div class="col-sm-9">
-                                        <p>管理员:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.name}</span></p>
-                                        <p>状态:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.data_status? '正常':'冻结'}</span></p>
-                                        <p>描述:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.data_desc}</span></p>
-                                        <p>有效期:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.expiration_date}</span></p>
-                                        <p>账户余额:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.account}</span></p>
-                                        <p>公司名称:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.company_title}</span></p>
-                                        <!--<p>邮寄地址:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.express_address}</span></p>-->
-                                        <p>最后授权时间:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.last_auth_time}</span></p>
-                                        <p>剩余短信条数:&nbsp;&nbsp;&nbsp;&nbsp;<span>{$vo.sms_num}</span></p>
+                                        <p>管理员:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.name}" readonly="readonly" style="border:none;"></p>
+                                        <p>状态:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.data_status? '正常':'冻结'}" readonly="readonly" style="border:none;"></p>
+                                        <p>描述:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.data_desc}" readonly="readonly" style="border:none;"></p>
+                                        <p>有效期:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.expiration_date|date='Y-m-d',###}" readonly="readonly" style="border:none;"></p>
+                                        <p>公司名称:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.company_title}" readonly="readonly" style="border:none;"></p>
+                                        <p>最后授权时间:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.last_auth_time}" readonly="readonly" style="border:none;"></p>
+                                        <p>剩余短信条数:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.sms_num}" readonly="readonly" style="border:none;"></p>
                                     </div>
                                 </div>
                                 {/volist}
@@ -352,14 +305,10 @@
                             <div class="panel we7-panel apply-list ng-hide" ng-show="not_installed_show == 1">
                                 <div class="panel-heading">
 			<span class="pull-right">
-				<!-- ngIf: not_installed_module.app_count > 4 -->
-                <!-- ngIf: module.app_count > 4 && module.wxapp_count > 4 -->
-                <!-- ngIf: not_installed_module.wxapp_count > 4 -->
 			</span>
                                     未安装应用
                                 </div>
                                 <div class="panel-body">
-                                    <!-- ngRepeat: module in not_installed_module.module -->
                                 </div>
                             </div>
                         </div>
