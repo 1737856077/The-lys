@@ -44,6 +44,7 @@ class Index extends Controller
         $id = Session::get('adminid');
 
         if(Session::has('adminname')){
+            //商家信息
             $list = Db::name('admin_business')
                 ->alias('b')
                 ->field("a.name,b.*")

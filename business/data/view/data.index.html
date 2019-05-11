@@ -116,6 +116,9 @@
     <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/jquery.js"></script>
     <!--<script type="text/javascript" src="__STATIC__/business/js/require.js"></script>-->
+    <script src="https://echarts.baidu.com/examples/vendors/echarts/echarts.min.js?_v_=1553896255267"></script>
+    <script src="https://api.map.baidu.com/api?v=2.0&ak=vNUoBXKEGEDead0HRrxd6BkR8SgDxrVF"></script>
+    <script src="https://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1553896255267"></script>
 
 </head>
 <body>
@@ -189,6 +192,7 @@
         <script src="https://echarts.baidu.com/examples/vendors/echarts/echarts.min.js?_v_=1553896255267"></script>
         <script src="https://api.map.baidu.com/api?v=2.0&ak=vNUoBXKEGEDead0HRrxd6BkR8SgDxrVF"></script>
         <script src="https://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1553896255267"></script>
+
         <script>
             function ajax(){
                 var ajaxData = {
@@ -239,8 +243,8 @@
                     return data;
                 }
             }
-        </script>
-        <script>
+
+
             var myChart = echarts.init(document.getElementById('main'));
             var nameArr = [];
             var valueArr = [];

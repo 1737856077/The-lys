@@ -75,7 +75,8 @@ class Money extends Controller
         $new_time = $num*365*24*60*60;
         $new = date('Y-m-d H:i:s',$num2+$new_time);
         $new1 = strtotime($new);
-        Db::name('admin_business')->where('admin_id',$id)->update(['expiration_date'=>$new1]);
+        $res = Db::name('admin_business')->where('admin_id',$id)->update(['expiration_date'=>$new1]);
+        $this->redirect('index/index/index');
     }
 
 }
