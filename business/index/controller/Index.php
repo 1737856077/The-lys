@@ -15,8 +15,8 @@ use think\Session;
 
 class Index extends Controller
 {
-    public function admin()
-    {
+
+    public function _initialize(){
         $name = Session::get('adminname');
         $id = Session::get('adminid');
 
@@ -33,6 +33,7 @@ class Index extends Controller
         }else{
             $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
         }
+
     }
     /**
      * @return 商家首页
