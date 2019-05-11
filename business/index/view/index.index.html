@@ -132,32 +132,45 @@
                     </a>
                 </div>
                 <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-left">
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=platform&amp;">公众号</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=wxapp&amp;a=display&amp;do=home&amp;">小程序</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=webapp&amp;a=home&amp;do=display&amp;">PC</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=display&amp;">应用</a></li>
-                <li class="active"><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=system&amp;">系统</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;">站点</a></li>
-                <li><a href="http://s.we7.cc/" target="_blank">模块商城</a></li>
-                <li><a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=store">商城</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown msg header-notice">
-                <a href="javascript:;" class="dropdown-toogle" data-toggle="dropdown"><span class="wi wi-bell"><span class="badge"></span></span>消息</a>
-                <div class="dropdown-menu">
-                <div class="clearfix top">消息<a href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice" class="pull-right">查看更多</a></div>
-                </div>
-                </li>					<li class="dropdown">
-                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="wi wi-user color-gray"></i>{$name} <span class="caret"></span></a>
-                <ul class="dropdown-menu color-gray" role="menu">
-                <li class="divider"></li>
-                <li>
-                <a href="__URL__/unlogin"><i class="fa fa-sign-out color-gray"></i> 退出系统</a>
-                </li>
-                </ul>
-                </li>
-                </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=platform&amp;">公众号</a>
+                        </li>
+                        <li><a href="https://weixin.zijiahei.com/web/index.php?c=wxapp&amp;a=display&amp;do=home&amp;">小程序</a>
+                        </li>
+                        <li><a href="https://weixin.zijiahei.com/web/index.php?c=webapp&amp;a=home&amp;do=display&amp;">PC</a>
+                        </li>
+                        <li><a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=display&amp;">应用</a></li>
+                        <li class="active"><a
+                                href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=system&amp;">系统</a>
+                        </li>
+                        <li><a href="https://weixin.zijiahei.com/web/index.php?c=cloud&amp;a=upgrade&amp;">站点</a></li>
+                        <li><a href="http://s.we7.cc/" target="_blank">模块商城</a></li>
+                        <li>
+                            <a href="https://weixin.zijiahei.com/web/index.php?c=home&amp;a=welcome&amp;do=ext&amp;m=store">商城</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown msg header-notice">
+                            <a href="javascript:;" class="dropdown-toogle" data-toggle="dropdown"><span
+                                    class="wi wi-bell"><span class="badge"></span></span>消息</a>
+                            <div class="dropdown-menu">
+                                <div class="clearfix top">消息<a
+                                        href="https://weixin.zijiahei.com/web/index.php?c=message&amp;a=notice"
+                                        class="pull-right">查看更多</a></div>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i
+                                    class="wi wi-user color-gray"></i>{$name} <span class="caret"></span></a>
+                            <ul class="dropdown-menu color-gray" role="menu">
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="__URL__/unlogin"><i class="fa fa-sign-out color-gray"></i> 退出系统</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -168,7 +181,8 @@
             <a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
             <div class="panel panel-content main-panel-content ">
                 <div class="content-head panel-heading main-panel-heading">
-                    <span class="font-lg"><i class="wi wi-setting"></i><a href="__ROOT__/business.php/index/index/index">商家管理</a> </span></div>
+                    <span class="font-lg"><i class="wi wi-setting"></i><a
+                            href="__ROOT__/business.php/index/index/index">商家管理</a> </span></div>
                 <div class="panel-body clearfix main-panel-body menu-fixed">
                     <div class="left-menu" style="min-height: 490px;">
                         <div class="left-menu-content">
@@ -291,13 +305,31 @@
                                 {volist name="list" id="vo"}
                                 <div class="panel-body clearfix">
                                     <div class="col-sm-9">
-                                        <p>管理员:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.name}" readonly="readonly" style="border:none;"></p>
-                                        <p>状态:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.data_status? '正常':'冻结'}" readonly="readonly" style="border:none;"></p>
-                                        <p>描述:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.data_desc}" readonly="readonly" style="border:none;"></p>
-                                        <p>有效期:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.expiration_date|date='Y-m-d',###}" readonly="readonly" style="border:none;"></p>
-                                        <p>公司名称:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.company_title}" readonly="readonly" style="border:none;"></p>
-                                        <p>最后授权时间:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.last_auth_time}" readonly="readonly" style="border:none;"></p>
-                                        <p>剩余短信条数:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.sms_num}" readonly="readonly" style="border:none;"></p>
+                                        <p>管理员:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.name}"
+                                                                              readonly="readonly" style="border:none;">
+                                        </p>
+                                        <p>状态:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
+                                                                             value="{$vo.data_status? '正常':'冻结'}"
+                                                                             readonly="readonly" style="border:none;">
+                                        </p>
+                                        <p>描述:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.data_desc}"
+                                                                             readonly="readonly" style="border:none;">
+                                        </p>
+
+                                        <p>有效期:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
+                                                                              value="{$vo.expiration_date|date='Y-m-d',###}"
+                                                                              readonly="readonly" style="border:none;">
+                                        </p>
+                                        <p>公司名称:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.company_title}"
+                                                                               readonly="readonly" style="border:none;">
+                                        </p>
+                                        <p>最后授权时间:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
+                                                                                 value="{$vo.last_auth_time}"
+                                                                                 readonly="readonly"
+                                                                                 style="border:none;"></p>
+                                        <p>剩余短信条数:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.sms_num}"
+                                                                                 readonly="readonly"
+                                                                                 style="border:none;"></p>
                                     </div>
                                 </div>
                                 {/volist}
