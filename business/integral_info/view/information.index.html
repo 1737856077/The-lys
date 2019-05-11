@@ -88,27 +88,6 @@
     <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
     <link href="__STATIC__/business/css/common.css" rel="stylesheet">
     <script src="__STATIC__/business/s.txt"></script>
-    <script type="text/javascript">
-        if (navigator.appName == 'Microsoft Internet Explorer') {
-            if (navigator.userAgent.indexOf("MSIE 5.0") > 0 || navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0) {
-                alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
-            }
-        }
-        window.sysinfo = {
-            'uid': '1', 'isfounder': 1,
-            'family': 'x',
-            'siteroot': 'https://weixin.zijiahei.com/',
-            'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=user&a=profile&do=bind',
-            'attachurl': 'https://weixin.zijiahei.com/attachment/',
-            'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
-            'attachurl_remote': '',
-            'module': {'url': '', 'name': ''},
-            'cookie': {'pre': '1b74_'},
-            'account': null,
-            'server': {'php': '5.4.45'},
-        };
-    </script>
-    <script>var require = {urlArgs: 'v=20170915'};</script>
     <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
@@ -121,193 +100,79 @@
         <div></div>
     </div>
 </div>
-<div data-skin="default" class="skin-default ">
-    <div class="head">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container ">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="https://weixin.zijiahei.com/">
-                        <img src="__STATIC__/business/img/logo.png" class="pull-left" width="110px" height="35px">
-                        <span class="version hidden">1.6.7</span>
-                    </a>
-                </div>
+
+<div class="panel panel-content main-panel-content ">
+    <div class="panel-body clearfix main-panel-body menu-fixed">
+        <div class="right-content" style="min-height: 490px;">
+            <ul class="we7-page-tab">
+                <li class="active"><a
+                        href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;">积分信息</a>
+                </li>
+
+            </ul>
+            <div class="keyword-list-head clearfix we7-margin-bottom">
+                <form action="" method="get">
+                    <input type="hidden" name="c" value="user">
+                    <input type="hidden" name="a" value="display">
+                    <input type="hidden" name="do" value="">
+                    <input type="hidden" name="type" value="">
+                    <!--<div class="input-group pull-left col-sm-4">
+                        <input type="text" name="username" id="" class="form-control" placeholder="搜索用户名">
+                        <span class="input-group-btn"><button class="btn btn-default"><i
+                                class="fa fa-search"></i></button></span>
+                    </div>-->
+                </form>
 
             </div>
-        </nav>
-    </div>
+            <table class="table we7-table table-hover table-manage vertical-middle ng-scope"
+                   id="js-users-display" ng-controller="UsersDisplay">
+                <colgroup>
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="180px">
+                    <col width="140px">
+                    <col width="140px">
+                    <col width="140px">
+                    <col width="160px">
+                    <col width="150px">
+                    <col width="150px">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th class="text-left">用户名</th>
+                    <!--<th>所属商家</th>-->
+                    <th>联系方式</th>
+                    <th>积分余额</th>
+                    <th>已消费积分</th>
+                </tr>
+                {volist name="list" id="vo"}
+                <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
+                    <td class="text-left ng-binding" ng-bind="user.username">{$vo.username}</td>
+                    <!--<td class="text-left ng-binding" ng-bind="user.username"></td>-->
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.moblie}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$vo.invoice_money}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxwebapp">{$vo.price}</td>
 
-    <div class="main">
-        <div class="container">
-            <a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
-            <div class="panel panel-content main-panel-content ">
-                <div class="content-head panel-heading main-panel-heading">
-                    <span class="font-lg"><i class="wi wi-setting"></i> <a href="__ROOT__/business.php/index/index/index">商家管理</a></span></div>
-                <div class="panel-body clearfix main-panel-body menu-fixed">
-                    <div class="left-menu" style="min-height: 490px;">
-                        <div class="left-menu-content">
-
-                            <div class="left-menu-content">
-
-                                <div class="panel panel-menu">
-                                    <div class="panel-heading">
-                                    <span class="no-collapse">公众号<i
-                                            class="wi wi-appsetting pull-right setting"></i></span>
-                                    </div>
-                                    <ul class="list-group">
-                                        <li class="list-group-item ">
-                                            <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1"
-                                               class="text-over">
-                                                <i class="wi wi-wechat"></i>
-                                                微信公众号 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=1"
-                                               class="text-over">
-                                                <i class="wi wi-wx-apply"></i>
-                                                公众号应用 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=template&amp;"
-                                               class="text-over">
-                                                <i class="wi wi-wx-template"></i>
-                                                微官网模板 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=platform&amp;"
-                                               class="text-over">
-                                                <i class="wi wi-exploitsetting"></i>
-                                                微信开放平台 </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="panel panel-menu">
-                                    <div class="panel-heading">
-                                    <span class="no-collapse">积分商城<i
-                                            class="wi wi-appsetting pull-right setting"></i></span>
-                                    </div>
-                                    <ul class="list-group">
-                                        <li class="list-group-item ">
-                                            <a href="__ROOT__/business.php/qrcode/productcode/index"
-                                               class="text-over">
-                                                <i class="wi wi-user"></i>
-                                                积分码列表 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="__ROOT__/business.php/qrcode/createqrcode/add"
-                                               class="text-over">
-                                                <i class="wi wi-user"></i>
-                                                生成积分码 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="__ROOT__/business.php/integral_info/information/index"
-                                               class="text-over">
-                                                <i class="wi wi-user-group"></i>
-                                                积分信息 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="__ROOT__/business.php/gift/gift/gift"
-                                               class="text-over">
-                                                <i class="wi wi-co-founder"></i>
-                                                礼品管理 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="__ROOT__/business.php/order/order/index"
-                                               class="text-over">
-                                                <i class="wi wi-co-founder"></i>
-                                                订单管理 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="__ROOT__/business.php/money/money/index"
-                                               class="text-over">
-                                                <i class="wi wi-co-founder"></i>
-                                                财务中心 </a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <a href="__ROOT__/business.php/data/data/index"
-                                               class="text-over">
-                                                <i class="wi wi-co-founder"></i>
-                                                数据中心 </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="right-content" style="min-height: 490px;">
-                        <ul class="we7-page-tab">
-                            <li class="active"><a
-                                    href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;">积分信息</a>
-                            </li>
-
-                        </ul>
-                        <div class="keyword-list-head clearfix we7-margin-bottom">
-                            <form action="" method="get">
-                                <input type="hidden" name="c" value="user">
-                                <input type="hidden" name="a" value="display">
-                                <input type="hidden" name="do" value="">
-                                <input type="hidden" name="type" value="">
-                                <!--<div class="input-group pull-left col-sm-4">
-                                    <input type="text" name="username" id="" class="form-control" placeholder="搜索用户名">
-                                    <span class="input-group-btn"><button class="btn btn-default"><i
-                                            class="fa fa-search"></i></button></span>
-                                </div>-->
-                            </form>
-
-                        </div>
-                        <table class="table we7-table table-hover table-manage vertical-middle ng-scope"
-                               id="js-users-display" ng-controller="UsersDisplay">
-                            <colgroup>
-                                <col width="150px">
-                                <col width="150px">
-                                <col width="180px">
-                                <col width="140px">
-                                <col width="140px">
-                                <col width="140px">
-                                <col width="160px">
-                                <col width="150px">
-                                <col width="150px">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="text-left">用户名</th>
-                                <!--<th>所属商家</th>-->
-                                <th>联系方式</th>
-                                <th>积分余额</th>
-                                <th>已消费积分</th>
-                            </tr>
-                            {volist name="list" id="vo"}
-                            <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
-                                <td class="text-left ng-binding" ng-bind="user.username">{$vo.username}</td>
-                                <!--<td class="text-left ng-binding" ng-bind="user.username"></td>-->
-                                <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.moblie}</td>
-                                <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$vo.invoice_money}</td>
-                                <td class="color-default ng-binding" ng-bind="user.maxwebapp">{$vo.price}</td>
-
-                            </tr>
-                            {/volist}
-                            </tbody>
-                        </table>
-                        <div class="text-right" style="width: 100px;">
-                            {$page}
-                        </div>
-
-                    </div>
-                </div>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+            <div class="text-right" style="width: 100px;">
+                {$page}
             </div>
-        </div>
 
-    </div>
-    <div class="container-fluid footer text-center" role="footer">
-        <div class="friend-link">
-            红包管理系统
         </div>
-        <div class="copyright">红包管理系统</div>
-        <div></div>
     </div>
 </div>
+
+<div class="container-fluid footer text-center" role="footer">
+    <div class="friend-link">
+        红包管理系统
+    </div>
+    <div class="copyright">红包管理系统</div>
+    <div></div>
+</div>
+
 
 </body>
 </html>

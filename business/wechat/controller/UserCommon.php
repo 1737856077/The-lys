@@ -25,8 +25,8 @@ class UserCommon extends CommonBase{
 		
 		/*调试时注册微信配置参数SESSION begin*/
         Session::set('WeiXinConfig_Token','lianyuwechat');
-        Session::set('WeiXinConfig_APP_ID','wxc18fa831272ac730');
-        Session::set('WeiXinConfig_APP_SECRET','8eaa03d4dd154ddc50736d77085956c2');
+        Session::set('WeiXinConfig_APP_ID','wxb8d7d0f77e16a9fe');
+        Session::set('WeiXinConfig_APP_SECRET','e3aedffe336958d1e2ce8e6e4c28eaf3');
 		/*调试时注册微信配置参数SESSION end*/
 		if(!Session::has('WeiXinConfig_APP_ID')){
 		    echo '非法操作！';exit;

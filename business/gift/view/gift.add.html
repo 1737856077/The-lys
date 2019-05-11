@@ -81,34 +81,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>添加礼品页</title>
+    <title>积分信息页</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
     <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
     <link href="__STATIC__/business/css/common.css" rel="stylesheet">
     <script src="__STATIC__/business/s.txt"></script>
-    <script type="text/javascript">
-        if (navigator.appName == 'Microsoft Internet Explorer') {
-            if (navigator.userAgent.indexOf("MSIE 5.0") > 0 || navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0) {
-                alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
-            }
-        }
-        window.sysinfo = {
-            'uid': '1', 'isfounder': 1,
-            'family': 'x',
-            'siteroot': 'https://weixin.zijiahei.com/',
-            'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=user&a=profile&do=bind',
-            'attachurl': 'https://weixin.zijiahei.com/attachment/',
-            'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
-            'attachurl_remote': '',
-            'module': {'url': '', 'name': ''},
-            'cookie': {'pre': '1b74_'},
-            'account': null,
-            'server': {'php': '5.4.45'},
-        };
-    </script>
-    <script>var require = {urlArgs: 'v=20170915'};</script>
     <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
@@ -121,189 +100,85 @@
         <div></div>
     </div>
 </div>
-<div data-skin="default" class="skin-default ">
-    <div class="head">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container ">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="https://weixin.zijiahei.com/">
-                        <img src="__STATIC__/business/img/logo.png" class="pull-left" width="110px" height="35px">
-                        <span class="version hidden">1.6.7</span>
-                    </a>
-                </div>
 
-            </div>
-        </nav>
-    </div>
-    <div class="main">
-        <div class="container">
-            <a href="javascript:;" class="js-big-main button-to-big color-gray" title="加宽">宽屏</a>
-            <div class="panel panel-content main-panel-content ">
-                <div class="content-head panel-heading main-panel-heading">
-                    <span class="font-lg"><i class="wi wi-setting"></i> <a href="__ROOT__/business.php/index/index/index">商家管理</a></span></div>
-                <div class="panel-body clearfix main-panel-body menu-fixed">
-                    <div class="left-menu" style="min-height: 490px;">
-                        <div class="left-menu-content">
+<div class="panel panel-content main-panel-content ">
+    <div class="panel-body clearfix main-panel-body menu-fixed">
+        <div class="right-content" style="min-height: 490px;">
+            <div class="new-keyword">
+                <ol class="breadcrumb we7-breadcrumb">
+                    <a href=""><i
+                            class="wi wi-back-circle"></i> </a>
+                    <li>添加礼品</li>
+                </ol>
+                <form action="{:url('')}" class="we7-form ng-pristine ng-valid ng-scope" method="post"
+                      id="js-user-create" ng-controller="UserCreate" enctype="multipart/form-data">
 
-                            <div class="panel panel-menu">
-                                <div class="panel-heading">
-                                    <span class="no-collapse">公众号<i
-                                            class="wi wi-appsetting pull-right setting"></i></span>
-                                </div>
-                                <ul class="list-group">
-                                    <li class="list-group-item ">
-                                        <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1"
-                                           class="text-over">
-                                            <i class="wi wi-wechat"></i>
-                                            微信公众号 </a>
-                                    </li>
-                                    <li class="list-group-item ">
-                                        <a href="https://weixin.zijiahei.com/web/index.php?c=module&amp;a=manage-system&amp;account_type=1"
-                                           class="text-over">
-                                            <i class="wi wi-wx-apply"></i>
-                                            公众号应用 </a>
-                                    </li>
-                                    <li class="list-group-item ">
-                                        <a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=template&amp;"
-                                           class="text-over">
-                                            <i class="wi wi-wx-template"></i>
-                                            微官网模板 </a>
-                                    </li>
-                                    <li class="list-group-item ">
-                                        <a href="https://weixin.zijiahei.com/web/index.php?c=system&amp;a=platform&amp;"
-                                           class="text-over">
-                                            <i class="wi wi-exploitsetting"></i>
-                                            微信开放平台 </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="panel panel-menu">
-                                <div class="panel-heading">
-                                    <span class="no-collapse">积分商城<i
-                                            class="wi wi-appsetting pull-right setting"></i></span>
-                                </div>
-                                <ul class="list-group">
-                                    <li class="list-group-item ">
-                                        <a href="__ROOT__/business.php/qrcode/productcode/index"
-                                           class="text-over">
-                                            <i class="wi wi-user"></i>
-                                            积分码列表 </a>
-                                    </li>
-                                    <li class="list-group-item ">
-                                        <a href="__ROOT__/business.php/qrcode/createqrcode/add"
-                                           class="text-over">
-                                            <i class="wi wi-user"></i>
-                                            生成积分码 </a>
-                                    </li>
-                                    <li class="list-group-item ">
-                                        <a href="__ROOT__/business.php/integral_info/information/index"
-                                           class="text-over">
-                                            <i class="wi wi-user-group"></i>
-                                            积分信息 </a>
-                                    </li>
-                                    <li class="list-group-item ">
-                                        <a href="__ROOT__/business.php/gift/gift/gift"
-                                           class="text-over">
-                                            <i class="wi wi-co-founder"></i>
-                                            礼品管理 </a>
-                                    </li>
-                                    <li class="list-group-item ">
-                                        <a href=""
-                                           class="text-over">
-                                            <i class="wi wi-co-founder"></i>
-                                            订单管理 </a>
-                                    </li>
-                                    <li class="list-group-item ">
-                                        <a href=""
-                                           class="text-over">
-                                            <i class="wi wi-co-founder"></i>
-                                            财务中心 </a>
-                                    </li>
-                                </ul>
-                            </div>
-
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">商品名称</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="title" id="title" placeholder="请输入商品名称">
+                            <div class="help-block"></div>
                         </div>
                     </div>
-                    <div class="right-content" style="min-height: 490px;">
-                        <div class="new-keyword">
-                            <ol class="breadcrumb we7-breadcrumb">
-                                <a href=""><i
-                                        class="wi wi-back-circle"></i> </a>
-                                <li>添加礼品</li>
-                            </ol>
-                            <form action="{:url('')}" class="we7-form ng-pristine ng-valid ng-scope" method="post"
-                                  id="js-user-create" ng-controller="UserCreate" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">图片</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="file" name="images" id="images" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">库存</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="total" id="total" placeholder="请输入库存量">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">所需积分</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="integral" id="integral" placeholder="请输入商品所需积分">
+                        </div>
+                    </div>
 
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-sm-2">商品名称</label>
-                                        <div class="form-controls col-sm-8">
-                                            <input type="text" name="title" id="title" placeholder="请输入商品名称">
-                                            <div class="help-block"></div>
-                                        </div>
-                                    </div>
-                                <div class="form-group">
-                                    <label for="" class="control-label col-sm-2">图片</label>
-                                    <div class="form-controls col-sm-8">
-                                        <input type="file" name="images" id="images" >
-                                    </div>
-                                </div>
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-sm-2">库存</label>
-                                        <div class="form-controls col-sm-8">
-                                            <input type="text" name="total" id="total" placeholder="请输入库存量">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-sm-2">所需积分</label>
-                                        <div class="form-controls col-sm-8">
-                                            <input type="text" name="integral" id="integral" placeholder="请输入商品所需积分">
-                                        </div>
-                                    </div>
-
-                                <div class="form-group">
-                                    <label for="" class="control-label col-sm-2">商品描述</label>
-                                    <div class="form-controls col-sm-8">
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">商品描述</label>
+                        <div class="form-controls col-sm-8">
                                         <textarea name="data_desc" rows="6" class="form-control ng-binding"
                                                   ng-style="{'width': '600px'}" ng-bind="user.remark"
                                                   placeholder="简述商品" style="width: 600px;"></textarea>
-                                    </div>
-                                </div>
-                                <input type="submit" name="submit" id="" value="提交" class="btn btn-primary"
-                                       style="padding: 6px 50px;">
-
-                            </form>
                         </div>
-                        <script type="text/javascript">
-                            angular.module('userManageApp').value('config', {
-                                groups: {
-                                    "2": {
-                                        "id": "2",
-                                        "name": "\u9ec4\u91d1\u7528\u6237\u7ec4",
-                                        "package": "a:2:{i:0;i:1;i:1;i:-1;}"
-                                    },
-                                    "3": {
-                                        "id": "3",
-                                        "name": "\u4f53\u9a8c\u7528\u6237\u7ec4",
-                                        "package": "a:1:{i:0;i:1;}"
-                                    }
-                                },
-                            });
-                            angular.bootstrap($('#js-user-create'), ['userManageApp']);
-                        </script>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <input type="submit" name="submit" id="" value="提交" class="btn btn-primary"
+                           style="padding: 6px 50px;">
 
-    </div>
-    <div class="container-fluid footer text-center" role="footer">
-        <div class="friend-link">
-            红包系统管理
+                </form>
+            </div>
+            <script type="text/javascript">
+                angular.module('userManageApp').value('config', {
+                    groups: {
+                        "2": {
+                            "id": "2",
+                            "name": "\u9ec4\u91d1\u7528\u6237\u7ec4",
+                            "package": "a:2:{i:0;i:1;i:1;i:-1;}"
+                        },
+                        "3": {
+                            "id": "3",
+                            "name": "\u4f53\u9a8c\u7528\u6237\u7ec4",
+                            "package": "a:1:{i:0;i:1;}"
+                        }
+                    },
+                });
+                angular.bootstrap($('#js-user-create'), ['userManageApp']);
+            </script>
         </div>
-        <div class="copyright">红包系统管理</div>
-        <div></div>
     </div>
+</div>
+
+<div class="container-fluid footer text-center" role="footer">
+    <div class="friend-link">
+        红包管理系统
+    </div>
+    <div class="copyright">红包管理系统</div>
+    <div></div>
 </div>
 
 

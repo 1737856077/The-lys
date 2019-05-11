@@ -15,10 +15,49 @@ use think\Session;
 
 class Index extends Controller
 {
+    public function admin()
+    {
+        $name = Session::get('adminname');
+        $id = Session::get('adminid');
+
+        if(Session::has('adminname')){
+            $list = Db::name('admin_business')
+                ->alias('b')
+                ->field("a.name,b.*")
+                ->join('admin a','b.admin_id = a.admin_id')
+                ->where('b.admin_id',$id)
+                ->select();
+            $this->assign('list',$list);
+            $this->assign('name',$name);
+            return $this->fetch();
+        }else{
+            $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
+        }
+    }
     /**
      * @return 商家首页
      */
     public function index()
+    {
+        $name = Session::get('adminname');
+        $id = Session::get('adminid');
+
+        if(Session::has('adminname')){
+            $list = Db::name('admin_business')
+                ->alias('b')
+                ->field("a.name,b.*")
+                ->join('admin a','b.admin_id = a.admin_id')
+                ->where('b.admin_id',$id)
+                ->select();
+            $this->assign('list',$list);
+            $this->assign('name',$name);
+            return $this->fetch();
+        }else{
+            $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
+        }
+
+    }
+    public function index1()
     {
         $name = Session::get('adminname');
         $id = Session::get('adminid');
@@ -130,6 +169,18 @@ class Index extends Controller
         Session::delete('admin_role_id');
 
         echo "<script language=\"javascript\">window.open('".url('index/index')."','_top');</script>";
+    }
+    public function main(){
+        return $this->fetch();
+
+    }
+
+    public function header(){
+        return $this->fetch();
+    }
+
+    public function menu(){
+        return $this->fetch();
     }
 
 }

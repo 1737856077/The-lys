@@ -28,7 +28,7 @@ class Data extends Controller
             ->select();*/
         $product = Db::name('product_code_info')->where('admin_id',$id)->where('code_status',1)->select();
         $count = count($product);
-//        dump($count);die;
+//        dump($count);die; 
         //兑换的产品数量数据
         $id = Session::get('adminid');
         $con = Db::name('integral_order')->where('admin_id',$id)->field('order_no')->select();
