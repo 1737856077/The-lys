@@ -35,6 +35,10 @@ class Index extends Controller
         }
 
     }
+    public function admin()
+    {
+        return $this->fetch();
+    }
     /**
      * @return 商家首页
      */
