@@ -43,6 +43,13 @@ class HomeCommonAction extends Controller{
         //wirtefile('test');
 		if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 			$postStr = $GLOBALS ['HTTP_RAW_POST_DATA'];
+            /*$postStr = '<xml><ToUserName><![CDATA[gh_02bd989123c0]]></ToUserName>
+<FromUserName><![CDATA[oZRzLtxCWOKNCt89CVUtcDoem-C0]]></FromUserName>
+<CreateTime>1557656217</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>';*/
 			//wirtefile($postStr);
 			if (! empty ( $postStr )) {
 				$this->postObj =$postObj= simplexml_load_string ( $postStr, 'SimpleXMLElement', LIBXML_NOCDATA );				
@@ -137,8 +144,8 @@ class HomeCommonAction extends Controller{
 						//推送欢迎信息 begin
 						$ReplyWechatWatchAction=new HomeReplyWechatWatchAction();
 						$_xml=$ReplyWechatWatchAction->AttentionReply($postObj->FromUserName,$postObj->ToUserName);
-						wirtefile($_xml);
 						echo $_xml;
+                        wirtefile($_xml);
 						//推送欢迎信息 end
 					}else if($postObj->Event=="unsubscribe"){//unsubscribe(取消订阅) 
 						$ModelWechatWatch->where("wechat_openid='".$postObj->FromUserName."'")->setField("data_status", 0);
