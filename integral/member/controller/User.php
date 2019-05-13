@@ -18,7 +18,7 @@ class User extends CommonIntegra
     /**
      * 渲染修改密码
      */
-    public function AlterPwd()
+    public function alterpwd()
     {
         $param = $this->request->param();
         $id = htmlspecialchars(trim(isset($param['uid'])?$param['uid']:''));

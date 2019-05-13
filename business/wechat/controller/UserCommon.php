@@ -24,7 +24,7 @@ class UserCommon extends CommonBase{
 		parent::_initialize();
 		
 		/*调试时注册微信配置参数SESSION begin*/
-        Session::set('WeiXinConfig_Token','lianyuwechat');
+        Session::set('WeiXinConfig_Token','weixin');
         Session::set('WeiXinConfig_APP_ID','wxb8d7d0f77e16a9fe');
         Session::set('WeiXinConfig_APP_SECRET','e3aedffe336958d1e2ce8e6e4c28eaf3');
 		/*调试时注册微信配置参数SESSION end*/
