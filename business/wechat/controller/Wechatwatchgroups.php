@@ -22,24 +22,25 @@ class Wechatwatchgroups extends UserCommon{
         $param = $this->request->param();
 		$ModelWechatWatch=Db::name('WechatWatch');
 		$ModelWechatGroups=Db::name('WechatGroups');
-		
-		$SearchName=isset($param["SearchName"]) ? htmlspecialchars(trim($param['SearchName'])) : htmlspecialchars($param['SearchName']);
+
+//        $SearchName=isset($param["SearchName"]) ? htmlspecialchars(trim($param['SearchName'])):'');
+        $SearchName = isset($param['SearchName'])?htmlspecialchars($param['SearchName']):'';
 		$paramter="/SearchName/$SearchName/";
 		
 		$p=isset($param['p']) ? intval($param['p']) : 1;
 		$num=20;
 		
 		$_where=" AND data_status=1";
-		if(!empty($SearchName)){$_where.=" AND nickname LIKE '%".$SearchName."%'";}
-		
+		$map= [];
+		if(!empty($SearchName)){ $map['nickname'] = ['like', '%' . $SearchName . '%'];}
 		$count = $ModelWechatWatch->where(" 1 $_where ")->count();
 		//import("ORG.Util.Page");
 		//$Page=new Page($count, $num,$paramter);
 		//$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
 		//$show=$Page->show();
-		
+
 		//$List=$ModelWechatWatch->where(" 1 $_where ")->order("wechat_watch_id DESC")->page($p.','.$num)->select();
-        $List=$ModelWechatWatch->where($_where)
+        $List=$ModelWechatWatch->where($map)->where('data_status',1)
             ->order('wechat_watch_id DESC')
             ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
         $show=$List->render();

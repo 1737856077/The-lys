@@ -54,17 +54,51 @@ class PublicAction extends Controller{
     /*curl 模拟POST提交*/
     public function curlPost($url, $data = null)
     {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url); // 要访问的地址
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); // 对认证证书来源的检查
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0); // 从证书中检查SSL加密算法是否存在
-        curl_setopt($curl, CURLOPT_POST, 1); // 发送一个常规的Post请求
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data); // Post提交的数据包
-        curl_setopt($curl, CURLOPT_HEADER, 0); // 显示返回的Header区域内容
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); // 获取的信息以文件流的形式返回
-        $output = curl_exec($curl);
-        curl_close($curl); // 关闭CURL会话
+//        $curl = curl_init();
+//        curl_setopt($curl, CURLOPT_URL, $url); // 要访问的地址
+//        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); // 对认证证书来源的检查
+//        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0); // 从证书中检查SSL加密算法是否存在
+//        curl_setopt($curl, CURLOPT_POST, 1); // 发送一个常规的Post请求
+//        curl_setopt($curl, CURLOPT_POSTFIELDS, $data); // Post提交的数据包
+//        curl_setopt($curl, CURLOPT_HEADER, 0); // 显示返回的Header区域内容
+//        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); // 获取的信息以文件流的形式返回
+//        $output = curl_exec($curl);
+//        curl_close($curl); // 关闭CURL会话
+//        return $output;
+        $ch = curl_init();
+
+        //指定URL
+        curl_setopt($ch, CURLOPT_URL, $url);
+
+        //设定请求后返回结果
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        //声明使用POST方式来进行发送
+        curl_setopt($ch, CURLOPT_POST, 1);
+
+        //发送什么数据呢
+        @curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+
+        //忽略证书
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+        //忽略header头信息
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+
+        //设置超时时间
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+
+        //发送请求
+        $output = curl_exec($ch);
+
+        //关闭curl
+        curl_close($ch);
+        //返回数据
         return $output;
+
+
     }
     
     //获取用户基本信息

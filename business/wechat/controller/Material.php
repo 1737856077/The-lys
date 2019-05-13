@@ -81,7 +81,6 @@ class Material extends UserCommon {
         }else{
             $this->error('非法上传方法');
         }
-
         $Public = new PublicAction();
         $token = $Public->accessToken();
         //判断样式
@@ -94,7 +93,6 @@ class Material extends UserCommon {
         }else{
             $this->error('请选择正确的格式','',3);
         }
-
         $result_json = $Public->curlPost($url,$data);
         $result_arr = json_decode($result_json,true);
 //        dump($path);
@@ -113,8 +111,8 @@ class Material extends UserCommon {
         $data['local_path'] = $dir.$name.$expand;
         $data['create_time'] = $nowtime;
         $data['update_time'] = $nowtime;
-
-        if($Material->insertGetId($data)){
+        $res = $Material->insert($data);
+        if($res){
             $this->success('添加微信多媒体素材成功！',url('Material/index'),3);
         }else{
             $this->error('数据库插入错误！','',3);
@@ -122,11 +120,12 @@ class Material extends UserCommon {
     }
 
     /*删除永久素材*/
-    public function delMedia($media_id = '') {
+    public function delmedia($media_id = '') {
         $Public = new PublicAction();
         $token = $Public->accessToken();
         $url = 'https://api.weixin.qq.com/cgi-bin/material/del_material?access_token='.$token;
         $data = '{"media_id":"'.$media_id.'"}';
+
         $result_json = $Public->curlPost($url,$data);
         $result_arr = json_decode($result_json,true);
         if($result_arr['errcode'] != 0) $this->error("删除微信永久素材失败！错误代码：".$result_arr['errcode'].", 错误信息：".$result_arr['errmsg'],'',3);

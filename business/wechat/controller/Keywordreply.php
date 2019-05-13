@@ -20,7 +20,7 @@ class Keywordreply extends UserCommon{
 	
 	public function index(){
 	    $param = $this->request->param();
-	    $SearchMsgType = isset($param['SearchMsgType']) ? $param['SearchMsgType'] : $param['SearchMsgType'] ;
+	    $SearchMsgType = isset($param['SearchMsgType']) ? $param['SearchMsgType'] : '' ;
 		$SearchMsgType=urldecode($SearchMsgType);
 		if(empty($SearchMsgType)){ $SearchMsgType="news";  }
 		if($SearchMsgType=="news_material"){ $SearchMsgType="news";  }
@@ -30,18 +30,16 @@ class Keywordreply extends UserCommon{
 		
 		$p=isset($param['p']) ? intval($param['p']) : 1;
 		$num=20;
-		
-		$_where=" AND data_type=1";
-		if(!empty($SearchMsgType)){ $_where.=" AND msgtype='$SearchMsgType'"; }		
-		
-		$count = $ModelAutomaticReply->where(" 1 $_where ")->count();
+		$map = [];
+        if(!empty($SearchName)){ $map['msgtype'] = ['like', '%' . $SearchMsgType . '%'];}
+		$count = $ModelAutomaticReply->where($map)->where('data_status',1)->count();
 		//import("ORG.Util.Page");
 		//$Page=new Page($count, $num,$parameter);
 		//$Page->setConfig('theme', "<span class='pre'>%upPage%</span><span class='page-one'>%linkPage% </span><span class='pre'>%downPage%</span> <span class='totle'>共 %totalRow% 条</span> ");
 		//$show=$Page->show();
 		
 		//$List=$ModelAutomaticReply->where(" 1 $_where ")->order("id DESC")->page($p.','.$num)->select();
-        $List=$ModelAutomaticReply->where($_where)
+        $List=$ModelAutomaticReply->where($map)->where('data_status',1)
             ->order('id DESC')
             ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
         $show=$List->render();
@@ -56,24 +54,24 @@ class Keywordreply extends UserCommon{
 	//显示添加页面
 	public function add(){
 	    $param = $this->request->param();
-		$MsgType = isset($param['MsgType']) ? $param['MsgType'] : $param['MsgType'] ;
+		$MsgType = isset($param['MsgType']) ? $param['MsgType'] :'';
 		$MsgType=htmlspecialchars(trim($MsgType));
 		if(empty($MsgType)){ $MsgType="news";  }
-		
+
 		$ModelWechatMaterial=Db::name('WechatMaterial');
 		$ModelWechatMaterialMusic=Db::name('WechatMaterialMusic');
-		
+
 		$ListWechatMaterialImages=$ModelWechatMaterial->where("data_type='image' ")->select();
 		$ListWechatMaterialVideo=$ModelWechatMaterial->where("data_type='video' ")->select();
 		$ListWechatMaterialVoice=$ModelWechatMaterial->where("data_type='voice' ")->select();
 		$ListWechatMaterialMusic=$ModelWechatMaterialMusic->where("data_type='music' ")->select();
-		
+
 		$this->assign("ListWechatMaterialImages",$ListWechatMaterialImages);
 		$this->assign("ListWechatMaterialVideo",$ListWechatMaterialVideo);
 		$this->assign("ListWechatMaterialVoice",$ListWechatMaterialVoice);
 		$this->assign("ListWechatMaterialMusic",$ListWechatMaterialMusic);
 		$this->assign("MsgType",$MsgType);
-		$this->display("add_".$MsgType);
+		return $this->fetch("add_".$MsgType);
 	}
 	
 	//显示编辑页面
@@ -110,34 +108,27 @@ class Keywordreply extends UserCommon{
 	//提交添加表单
 	public function insert(){
 	    $param = $this->request->param();
-		$msgtype=htmlspecialchars(trim($param['msgtype']));
-		$key_word=htmlspecialchars(trim($param['key_word']));
+	    $msgtype = isset($param['msgtype'])?htmlspecialchars(trim($param['msgtype'])):'';
+        $key_word = isset($param['key_word'])?htmlspecialchars(trim($param['key_word'])):'';
 		$gettime=time();
-		
-		$news_media_id=htmlspecialchars(trim($param['news_media_id']));
-		$news_link_url=htmlspecialchars(trim($param['news_link_url']));
-		//$news_images=htmlspecialchars(trim($param['news_images']));
-		$news_title=htmlspecialchars(trim($param['news_title']));
-		$news_description=htmlspecialchars(trim($param['news_description']));
-		$news_url=htmlspecialchars(trim($param['news_url']));
-		
-		$music_title=htmlspecialchars(trim($param['music_title']));
-		$music_description=htmlspecialchars(trim($param['music_description']));
-		$music_link_url=htmlspecialchars(trim($param['music_link_url']));
-		$music_hq_link_url=htmlspecialchars(trim($param['music_hq_link_url']));
-		$music_thumb_media_id=htmlspecialchars(trim($param['music_thumb_media_id']));
-		
-		$video_media_id=htmlspecialchars(trim($param['video_media_id']));
-		$video_title=htmlspecialchars(trim($param['video_title']));
-		$video_description=htmlspecialchars(trim($param['video_description']));
-		
-		$voice_media_id=htmlspecialchars(trim($param['voice_media_id']));
-		
-		$image_link_url=htmlspecialchars(trim($param['image_link_url']));
-		$image_media_id=htmlspecialchars(trim($param['image_media_id']));
-		
-		$text_description=htmlspecialchars(trim($param['text_description']));
-		
+        $news_media_id = isset($param['news_media_id'])?htmlspecialchars(trim($param['news_media_id'])):'';
+        $news_link_url = isset($param['news_link_url'])?htmlspecialchars(trim($param['news_link_url'])):'';
+        $news_title = isset($param['news_title'])?htmlspecialchars(trim($param['news_title'])):'';
+        $news_description = isset($param['news_description'])?htmlspecialchars(trim($param['news_description'])):'';
+        $news_url = isset($param['news_url'])?htmlspecialchars(trim($param['news_url'])):'';
+        $music_title = isset($param['music_title'])?htmlspecialchars(trim($param['music_title'])):'';
+        $music_description = isset($param['music_description'])?htmlspecialchars(trim($param['music_description'])):'';
+        $music_link_url = isset($param['music_link_url'])?htmlspecialchars(trim($param['music_link_url'])):'';
+        $music_hq_link_url = isset($param['music_hq_link_url'])?htmlspecialchars(trim($param['music_hq_link_url'])):'';
+        $music_thumb_media_id = isset($param['music_thumb_media_id'])?htmlspecialchars(trim($param['music_thumb_media_id'])):'';
+        $video_media_id = isset($param['video_media_id'])?htmlspecialchars(trim($param['video_media_id'])):'';
+        $video_title = isset($param['video_title'])?htmlspecialchars(trim($param['video_title'])):'';
+        $video_description = isset($param['video_description'])?htmlspecialchars(trim($param['video_description'])):'';
+        $voice_media_id = isset($param['voice_media_id'])?htmlspecialchars(trim($param['voice_media_id'])):'';
+        $image_link_url = isset($param['image_link_url'])?htmlspecialchars(trim($param['image_link_url'])):'';
+        $image_media_id = isset($param['image_media_id'])?htmlspecialchars(trim($param['image_media_id'])):'';
+        $text_description = isset($param['text_description'])?htmlspecialchars(trim($param['text_description'])):'';
+
 		$ModelAutomaticReply=Db::name('AutomaticReply');
 		$ModelWechatMaterial=Db::name('WechatMaterial');
 		$ModelWechatAtricles=Db::name('WechatAtricles');

@@ -27,12 +27,21 @@
                 <div class="div_height_15"></div>
                 <!-- add end --> 
                <ul class="tab_menu">
-                        <a <if name="SearchMsgType" value="news">class="selected"{else/}href="__URL__/index/SearchMsgType/news"</if>><li>图文回复</li></a>
+                        <a class="selected" href="__URL__/index/SearchMsgType/news"><li>图文回复</li></a>
                         <a <if name="SearchMsgType" value="music">class="selected"{else/}href="__URL__/index/SearchMsgType/music"</if>><li>音乐回复</li></a>
                         <a <if name="SearchMsgType" value="video">class="selected"{else/}href="__URL__/index/SearchMsgType/video"</if>><li>视频回复</li></a>
                         <a <if name="SearchMsgType" value="voice">class="selected"{else/}href="__URL__/index/SearchMsgType/voice"</if>><li>语音回复</li></a>
                         <a <if name="SearchMsgType" value="image">class="selected"{else/}href="__URL__/index/SearchMsgType/image"</if>><li>图片回复</li></a>
                         <a <if name="SearchMsgType" value="text">class="selected"{else/}href="__URL__/index/SearchMsgType/text"</if>><li>文本回复</li></a>
+                   {switch name="SearchMsgType" }
+                   {case value="news" break="0或1"} <a class="selected" href="__URL__/index/SearchMsgType/news"><li>图文回复</li></a>{/case}
+                   {case value="music"} <a class="selected" href="__URL__/index/SearchMsgType/music"><li>音乐回复</li></a>{/case}
+                   {case value="video"} <a class="selected" href="__URL__/index/SearchMsgType/video"><li>视频回复</li></a>{/case}
+                   {case value="voice"} <a class="selected" href="__URL__/index/SearchMsgType/voice"><li>语音回复</li></a>{/case}
+                   {case value="image"} <a class="selected" href="__URL__/index/SearchMsgType/image"><li>图片回复</li></a>{/case}
+                   {case value="text"} <a class="selected" href="__URL__/index/SearchMsgType/text"><li>文本回复</li></a>{/case}
+                   {default /}默认
+                   {/switch}
                </ul>
                <div class="Member">
                     <div class="member_l" style="width:700px;">
