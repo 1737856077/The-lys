@@ -56,45 +56,45 @@ class HomeConsumptionPushAction extends Controller{
 	 */
 	public function AutomaticReply($articles,$ToUserName,$FromUserName,$MsgType="news"){
 		$CreateTime=time();
-		$xml='<xml>
-						<ToUserName><![CDATA['.$ToUserName.']]></ToUserName>
-						<FromUserName><![CDATA['.$FromUserName.']]></FromUserName>
-						<CreateTime>'.$CreateTime.'</CreateTime>
-						<MsgType><![CDATA['.$MsgType.']]></MsgType>';
+		$xml='<xml>';
+        $xml.='<ToUserName><![CDATA['.$ToUserName.']]></ToUserName>';
+						$xml.='<FromUserName><![CDATA['.$FromUserName.']]></FromUserName>';
+						$xml.='<CreateTime>'.$CreateTime.'</CreateTime>';
+						$xml.='<MsgType><![CDATA['.$MsgType.']]></MsgType>';
 		if($MsgType=="news"){//图文消息
-			$xml.='<ArticleCount>'.count($articles).'</ArticleCount>
-				   <Articles>';
+			$xml.='<ArticleCount>'.count($articles).'</ArticleCount>';
+            $xml.='<Articles>';
 						foreach($articles as $key=>$value){
-							$xml.='<item>
-									<Title><![CDATA['.$value['title'].']]></Title>
-									<Description><![CDATA['.$value['description'].']]></Description>
-									<PicUrl><![CDATA['.$value['picurl'].']]></PicUrl>
-									<Url><![CDATA['.$value['url'].']]></Url>
-									</item>';
+							$xml.='<item>';
+									$xml.='<Title><![CDATA['.$value['title'].']]></Title>';
+									$xml.='<Description><![CDATA['.$value['description'].']]></Description>';
+									$xml.='<PicUrl><![CDATA['.$value['picurl'].']]></PicUrl>';
+									$xml.='<Url><![CDATA['.$value['url'].']]></Url>';
+									$xml.='</item>';
 						}
 			$xml.='</Articles>';
 		}else if($MsgType=="music"){//音乐消息
-			$xml.='<Music>
-						<Title><![CDATA['.$articles['title'].']]></Title>
-						<Description><![CDATA['.$articles['description'].']]></Description>
-						<MusicUrl><![CDATA['.$articles['music_url'].']]></MusicUrl>
-						<HQMusicUrl><![CDATA['.$articles['hd_music_url'].']]></HQMusicUrl>
-						<ThumbMediaId><![CDATA['.$articles['media_id'].']]></ThumbMediaId>
-					</Music>';
+			$xml.='<Music>';
+						$xml.='<Title><![CDATA['.$articles['title'].']]></Title>';
+						$xml.='<Description><![CDATA['.$articles['description'].']]></Description>';
+						$xml.='<MusicUrl><![CDATA['.$articles['music_url'].']]></MusicUrl>';
+						$xml.='<HQMusicUrl><![CDATA['.$articles['hd_music_url'].']]></HQMusicUrl>';
+						$xml.='<ThumbMediaId><![CDATA['.$articles['media_id'].']]></ThumbMediaId>';
+					$xml.='</Music>';
 		}else if($MsgType=="video"){//视频消息
-			$xml.='<Video>
-						<MediaId><![CDATA['.$articles['media_id'].']]></MediaId>
-						<Title><![CDATA['.$articles['title'].']]></Title>
-						<Description><![CDATA['.$articles['description'].']]></Description>
-				</Video>';
+			$xml.='<Video>';
+            $xml.='<MediaId><![CDATA['.$articles['media_id'].']]></MediaId>';
+            $xml.='<Title><![CDATA['.$articles['title'].']]></Title>';
+            $xml.='<Description><![CDATA['.$articles['description'].']]></Description>';
+            $xml.='</Video>';
 		}else if($MsgType=="voice"){//语音消息
-			$xml.='<Voice>
-						<MediaId><![CDATA['.$articles['media_id'].']]></MediaId>
-					</Voice>';
+			$xml.='<Voice>';
+            $xml.='<MediaId><![CDATA['.$articles['media_id'].']]></MediaId>';
+            $xml.='</Voice>';
 		}else if($MsgType=="image"){//图片消息
-			$xml.='<Image>
-						<MediaId><![CDATA['.$articles['media_id'].']]></MediaId>
-				</Image>';
+			$xml.='<Image>';
+            $xml.='<MediaId><![CDATA['.$articles['media_id'].']]></MediaId>';
+            $xml.='</Image>';
 		}else if($MsgType=="text"){//文本消息
 			$xml.='<Content><![CDATA['.$articles.']]></Content>';
 		}
