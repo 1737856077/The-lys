@@ -81,7 +81,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>积分信息页</title>
+    <title>发票申请</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
@@ -108,43 +108,62 @@
                 <ol class="breadcrumb we7-breadcrumb">
                     <a href=""><i
                             class="wi wi-back-circle"></i> </a>
-                    <li>添加礼品</li>
+                    <li>发票申请</li>
                 </ol>
                 <form action="{:url('')}" class="we7-form ng-pristine ng-valid ng-scope" method="post"
                       id="js-user-create" ng-controller="UserCreate" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">商品名称</label>
+                        <label for="" class="control-label col-sm-2">申请单号</label>
                         <div class="form-controls col-sm-8">
-                            <input type="text" name="title" id="title" placeholder="请输入商品名称">
+                            <input type="text" name="order_no" id="order_no" placeholder="请输入单号">
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">图片</label>
+                        <label for="" class="control-label col-sm-2">抬头类型</label>
                         <div class="form-controls col-sm-8">
-                            <input type="file" name="images" id="images" >
+                            <select name="head_type" id="head_type">
+                                <option value="0">个人/非企业抬头</option>
+                                <option value="1">公司抬头</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">库存</label>
+                        <label for="" class="control-label col-sm-2">发票抬头</label>
                         <div class="form-controls col-sm-8">
-                            <input type="text" name="total" id="total" placeholder="请输入库存量">
+                            <input type="text" name="title" id="title" placeholder="请输入发票抬头">
+                            <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">所需积分</label>
+                        <label for="" class="control-label col-sm-2">开票金额</label>
                         <div class="form-controls col-sm-8">
-                            <input type="text" name="integral" id="integral" placeholder="请输入商品所需积分">
+                            <input type="text" name="price" id="price" placeholder="请输入开票金额">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">邮寄详细地址</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="express_address" id="express_address" placeholder="请输入邮寄详细地址">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">商品描述</label>
+                        <label for="" class="control-label col-sm-2">发票内容</label>
+                        <div class="form-controls col-sm-8">
+                                        <textarea name="content" rows="6" class="form-control ng-binding"
+                                                  ng-style="{'width': '600px'}" ng-bind="user.remark"
+                                                  placeholder="请输入发票内容" style="width: 600px;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">备注</label>
                         <div class="form-controls col-sm-8">
                                         <textarea name="data_desc" rows="6" class="form-control ng-binding"
                                                   ng-style="{'width': '600px'}" ng-bind="user.remark"
-                                                  placeholder="简述商品" style="width: 600px;"></textarea>
+                                                  placeholder="请输入备注信息" style="width: 600px;"></textarea>
                         </div>
                     </div>
                     <input type="submit" name="submit" id="" value="提交" class="btn btn-primary"

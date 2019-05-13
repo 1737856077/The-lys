@@ -139,26 +139,20 @@
                 </colgroup>
                 <tbody>
                 <tr>
-                    <th class="text-left">用户名</th>
-                    <!--<th>所属商家</th>-->
-                    <th>联系方式</th>
-                    <th>积分余额</th>
-                    <th>已消费积分</th>
+                    <th class="text-left">生码总积分</th>
+                    <th>扫码总积分</th>
+                    <th>已兑换积分</th>
+                    <th>剩余积分</th>
                 </tr>
-                {volist name="list" id="vo"}
                 <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
-                    <td class="text-left ng-binding" ng-bind="user.username">{$vo.username}</td>
-                    <!--<td class="text-left ng-binding" ng-bind="user.username"></td>-->
-                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.moblie}</td>
-                    <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$vo.invoice_money}</td>
-                    <td class="color-default ng-binding" ng-bind="user.maxwebapp">{$vo.price}</td>
-
+                    <td class="text-left ng-binding" ng-bind="user.username">{$integral}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$integral1}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$integral2}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxwebapp">{$integral3}</td>
                 </tr>
-                {/volist}
                 </tbody>
             </table>
             <div class="text-right" style="width: 100px;">
-                {$page}
             </div>
 
         </div>

@@ -19,32 +19,24 @@ class Information extends Controller
      */
     public function index()
     {
+        //获取生码总积分
         $id = Session::get('adminid');
-        //查询会员表 显示用户的积分信息
-        //查询该商家的所有用户
-        $member = Db::name('member')->where('admin_id', $id)->select();
-        //根据用户查询出对应uid
-        $uid = '';
-        foreach ($member as $value => $k) {
-            $uid[] = Db::name('member')->where('username', $k['username'])->field('uid')->find();
+        $num = Db::name('product_code')->where('admin_id',$id)->field('num')->select();
+        $integral = '';
+        foreach ($num as $k=>$v){
+            $integral += $v['num'];
         }
-        //根据uid 查询对应的订单号
-        $order = '';
-        foreach ($uid as $v => $k1) {
-            $order[] = Db::name('member_integral_record ')->where('uid', $k1['uid'])->sum('price');
-        }
-        //合并数组数据
-        foreach ($member as $value=>$k){
-            $k['price'] = $order["$value"];
-            $arr[] = $k;
-        }
-        //分页样式
-       $url= 'http://'.$_SERVER['HTTP_HOST']."/business.php/integral_info/information/index/";
-        $page=isset($_GET['page'])? $_GET['page']:1;
-        $arr=page_array(4,$page,$arr,1);
-        $show=show_array(Session::get('page'),$url);
-        $this->assign('page',$show);//传到模板显示
-        $this->assign('list',$arr);
+        //获取扫码的积分
+        $integral1 = Db::name('member')->where('admin_id',$id)->sum('invoice_money');
+        //已兑换商品所用积分
+        $integral2 = Db::name('integral_order')->where('admin_id',$id)->sum('pay_real');
+        //剩余积分总数
+        $integral3 = $integral1-$integral2;
+
+        $this->assign('integral',$integral);
+        $this->assign('integral1',$integral1);
+        $this->assign('integral2',$integral2);
+        $this->assign('integral3',$integral3);
         return $this->fetch();
     }
 }
