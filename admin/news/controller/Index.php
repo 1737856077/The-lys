@@ -95,12 +95,12 @@ class Index extends CommonBase
     public function save()
     {
         $param = $this->request->param();
-        $title = htmlspecialchars(trim($param['title'])?$param['title']:'');
-        $level = htmlspecialchars(trim($param['level'])?$param['level']:0);
-        $index_show = htmlspecialchars(trim($param['index_show'])?$param['index_show']:'');
-        $father_id = htmlspecialchars(trim($param['father_id'])?$param['father_id']:'');
-        $data_type = htmlspecialchars(trim($param['data_type'])?$param['data_type']:'');
-        $class_id = htmlspecialchars(trim(isset($param['class_id'])?$param['class_id']:''));
+        $title = htmlspecialchars(isset($param['title'])?$param['title']:'');
+        $level = htmlspecialchars(isset($param['level'])?$param['level']:0);
+        $index_show = htmlspecialchars(isset($param['index_show'])?$param['index_show']:'');
+        $father_id = htmlspecialchars(isset($param['father_id'])?$param['father_id']:'');
+        $data_type = htmlspecialchars(isset($param['data_type'])?$param['data_type']:'');
+        $class_id = htmlspecialchars(isset($param['class_id'])?$param['class_id']:'');
         if (!$title){
             echo '参数错误';
             exit();
@@ -126,11 +126,12 @@ class Index extends CommonBase
     public function saveadd()
     {
         $param = $this->request->param();
-        $title = htmlspecialchars(trim($param['title'])?$param['title']:'');
-        $level = htmlspecialchars(trim($param['level'])?$param['level']:0);
-        $index_show = htmlspecialchars(trim($param['index_show'])?$param['index_show']:'');
-        $father_id = htmlspecialchars(trim($param['father_id'])?$param['father_id']:'');
-        $data_type = htmlspecialchars(trim($param['data_type'])?$param['data_type']:'');
+        $title = htmlspecialchars(isset($param['title'])?$param['title']:'');
+        $level = htmlspecialchars(isset($param['level'])?$param['level']:0);
+        $index_show = htmlspecialchars(isset($param['index_show'])?$param['index_show']:'');
+        $father_id = htmlspecialchars(isset($param['father_id'])?$param['father_id']:'');
+        $data_type = htmlspecialchars(isset($param['data_type'])?$param['data_type']:'');
+        $class_id = htmlspecialchars(isset($param['class_id'])?$param['class_id']:'');
         if (!$title){
             echo '参数错误';
             exit();

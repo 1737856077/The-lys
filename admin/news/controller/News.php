@@ -21,6 +21,7 @@ class News extends CommonBase
     public function index()
     {
         $param = $this->request->param();
+
         $id = htmlspecialchars(trim(isset($param['id'])?$param['id']:''));
         if (empty($id)){
             $admin_id = Session::get('adminid');
@@ -46,7 +47,7 @@ class News extends CommonBase
             }
         }else{
             $value = htmlspecialchars(isset($param['value'])?$param['value']:'');
-            $where['title'] = ['like', '%' . $value . '%'];
+            $where['title'] = array('like','%'.$value.'%');
             if ($value){
                 $res = Db::name('news')->where($where)->select();
                 $news_class_datas = [];

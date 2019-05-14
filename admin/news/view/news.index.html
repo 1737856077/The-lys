@@ -23,7 +23,7 @@
 
                 <tr class="tr1">
                     <td  colspan="7" class="tdlist">查询：
-                        新闻标题 <input type="text" name="value" id="SearchTitle" value="{$SearchTitle}" />　
+                        新闻标题 <input type="text" name="value" id="SearchTitle" value=""/>　
                         <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
 
                     <td   class="tdlist">
@@ -32,7 +32,7 @@
                 </tr>
             </table>
         </form>
-        <form  method="post" action="__URL__/editinfo/action/save?{$paramUrl}">
+        <form  method="post" action="__URL__/editinfo/action/save">
             <table class="listtable">
                 <tr class="tr1">
                     <td colspan="6" class="tit">列表　<a href="__URL__/index">显示全部</a>　</td>
@@ -81,7 +81,7 @@
 
                     </td>
                     <td class="tdlist">
-                        <a href="javascript:(0)" onclick="deletes()">删除</a>
+                        <a href="javascript:(0)" onclick="deletes('{$vo.id}')">删除</a>
                         <a href="__URL__/alteradd/id/{$vo.id}">修改</a>
                     </td>
                 </tr>
@@ -104,10 +104,11 @@
 </div>
 <script>
 
-    function deletes() {
+    function deletes(a) {
+        var data = a
         $.ajax({
             type: "get",   //提交的方法
-            url:"__URL__/delete/id/{$vo.id}", //提交的地址
+            url:"__URL__/delete/id/"+a, //提交的地址
             data:1,// 序列化表单值
             dataType:"json",
             success: function(datas) {  //成功
