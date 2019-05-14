@@ -105,7 +105,7 @@
         </script>
         {if condition="empty($rceiving_address)"}
         <div class="tit">
-            <i></i><a href="{:url('member/index/site')}?id={$product_data.product_id}">请添加收地址货</a>
+            <i></i><a href="{:url('member/index/site')}?id={$product_data.id}">请添加收地址货</a>
         </div>
         {else /}
         <div class="tit">
@@ -150,9 +150,9 @@
                 <input type="hidden" name="appid" value="{$product_data.appid}">
                 <input type="hidden" name="admin_id" value="{$product_data.admin_id}">
                 <input type="hidden" name="rceiving_address_id" value="{$rceiving_address.rceiving_address_id}">
-                <dd class="sbmFix">
-                    <a href="javascript:(0)" style="color: red" type="submit" class="save" onclick="tj()" id="save">确认兑换</a>
-                </dd>
+                <a href="javascript:(0)" style="color: red;" type="submit" class="save" onclick="tj()" id="save">  <dd  class="sbmFix">
+                    确认兑换
+                </dd></a>
             </dl>
         </div>
     </form>

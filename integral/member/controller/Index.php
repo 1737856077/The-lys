@@ -28,11 +28,14 @@ class Index extends CommonIntegra
      */
     public function site()
     {
+        $param = $this->request->param();
+        $product_id = isset($param['id'])?$param['id']:'';
         $memberid = Session::get('memberid');
         $member_data = Db::name('member')->where('id', $memberid)->find();
         $this->assign('member_data', $member_data);
         $region = Db::name('region')->where('area_type', 2)->field('area_name,area_code')->select();
         $this->assign('region', $region);
+        $this->assign('product_id',$product_id);
         return $this->fetch();
     }
 

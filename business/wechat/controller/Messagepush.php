@@ -55,11 +55,13 @@ class Messagepush extends UserCommon{
 	//提交推送信息表单
 	public function insert(){
         $param = $this->request->param();
-		$groups_id_all=intval(trim($param['groups_id_all']));
-		$groups_id=$param['groups_id'];
-		$province_id=intval(trim($param['province_id']));
-		$city_id=intval(trim($param['city_id']));
-		$push_address=$param['push_address'];
+		$groups_id_all=isset($param['groups_id_all'])?intval(trim($param['groups_id_all'])):'';
+        $groups_id=isset($param['groups_id'])?intval(trim($param['groups_id'])):'';
+        $province_id=isset($param['province_id'])?intval(trim($param['province_id'])):'';
+        $city_id=isset($param['city_id'])?intval(trim($param['city_id'])):'';
+        $push_address=isset($param['push_address'])?intval(trim($param['push_address'])):'';
+        $groups_id_all=isset($param['groups_id_all'])?intval(trim($param['groups_id_all'])):'';
+        $groups_id_all=isset($param['groups_id_all'])?intval(trim($param['groups_id_all'])):'';
 		$msgtype=isset($param['msgtype']) ? htmlspecialchars(trim($param['msgtype'])) : htmlspecialchars(trim($param['msgtype'])) ;
 		$media_id=isset($param['media_id']) ? htmlspecialchars(trim($param['media_id'])) : htmlspecialchars(trim($param['media_id'])) ;
 		$description=isset($param['description']) ? htmlspecialchars(trim($param['description'])) : htmlspecialchars(urldecode($param['description'])) ;

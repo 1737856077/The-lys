@@ -26,6 +26,7 @@ class order extends CommonIntegra
             echo '参数错误';
             exit();
         }
+
         $integral_order_data = Db::name('integral_order')->where('order_no', $order_no)->find();
         $integral_order_detail_Data = Db::name('integral_order_detail')->where('order_no', $order_no)->find();
         $product = Db::name('product_integral')->where('product_id', $integral_order_data['product_id'])->find();

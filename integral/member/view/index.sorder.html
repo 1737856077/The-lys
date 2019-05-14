@@ -130,6 +130,15 @@
                             </p>
                         </a>
                         <div class="aui-mail-button">
+                            {switch name="$datas.data_order" }
+                            {case value="0"}<a href="javascript:(0)">未确认订单</a>{/case}
+                            {case value="1"}<a href="javascript:(0)">已确认订单</a>{/case}
+                            {case value="2"}<a href="javascript:(0)">待发货</a>{/case}
+                            {case value="3"}<a href="javascript:(0)">已发货</a>{/case}
+                            {case value="4"}<a href="javascript:(0)">已确认收货</a>{/case}
+                            {case value="5"}<a href="javascript:(0)">退款</a>{/case}
+                            {default /}<a href="javascript:(0)">取消</a>
+                            {/switch}
                             {if condition="$datas.data_order == 4"}
                             <a href="javascript:(0)" onclick="deorder('{$datas.order_no}')">删除订单</a>
                             {else/}

@@ -92,7 +92,7 @@ class Index extends CommonIntegra
         }
         //计算积分
         $price = $product_data['integral'];
-        if ($num<1){
+        if ($num<0.1){
             return json([
                 'code'=>-2,
                 'msg'=>'购买商品不能小于一件'
@@ -105,7 +105,7 @@ class Index extends CommonIntegra
         //库存是否足够
         $nums = Db::name('product_integral')->where('product_id',$product_id)->field('total')->find()['total'];
         $nums = $nums-$num;
-        if ($nums<0.01){
+        if ($nums<0){
             return json([
                 'code'=>-3,
                 'msg'=>'库存不足'
@@ -175,9 +175,9 @@ class Index extends CommonIntegra
             'create_time'=>time()
         ];
         $member_integral_record_res = $member_integral_record_mode->insert($member_integral_record_data);
-        if (!$member_integral_record_res){
-
-        }
+//        if (!$member_integral_record_res){
+//
+//        }
         $integral_order_detail_res = Db::name('integral_order_detail')->insertGetId($data_detail);
         if (!$integral_order_detail_res){
 
