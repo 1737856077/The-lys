@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>积分信息页</title>
+    <title>财务中心</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
@@ -68,7 +68,14 @@
                                         <td class="table-label">发票申请</td>
                                         <td>******</td>
                                         <td>
-                                            <div class="link-group"><a href="javascript:;" class="shen">申请</a></div>
+                                            <div class="link-group"><a href="{:url('money/invoice')}" class="shen">申请</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">发票申请进度</td>
+                                        <td>******</td>
+                                        <td>
+                                            <div class="link-group"><a href="{:url('money/invoice_list')}" class="shen">查看</a></div>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -79,11 +86,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            $('.shen').click(function () {
-                alert('该功能未启用');
-            });
-        </script>
     </div>
 
 </div>

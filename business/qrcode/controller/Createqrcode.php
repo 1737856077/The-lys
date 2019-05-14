@@ -122,6 +122,8 @@ class Createqrcode extends CommonBase
         $matrixPointSize = 4;
         $matrixPointSize = min(max((int)$size, 1), 10);
 
+        //积分码的总积分
+        $num = $product_code_num*$integral_num;
         $product_code_id=my_returnUUID();
         $data=array(
             'product_code_id'=>$product_code_id,
@@ -145,6 +147,7 @@ class Createqrcode extends CommonBase
             'create_time'=>$gettime,
             'update_time'=>$gettime,
             'integral_num'=>$integral_num,
+            'num'=>$num,
         );
         $ReturnID=$ModelProductCode->insert($data);
         if(!$ReturnID){
@@ -204,6 +207,7 @@ class Createqrcode extends CommonBase
                 'create_time'=>$gettime,
                 'update_time'=>$gettime,
                 'integral_num'=>$integral_num,
+                'num'=>$num,
             );
             $data_product_code_info['images']='';
             if($actionType == 1) {

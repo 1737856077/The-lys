@@ -2,7 +2,9 @@
 namespace app\money\controller;
 use think\Controller;
 use think\Db;
+use think\Request;
 use think\Session;
+use think\Validate;
 
 /**
  * Created by PhpStorm.
@@ -77,6 +79,70 @@ class Money extends Controller
         $new1 = strtotime($new);
         $res = Db::name('admin_business')->where('admin_id',$id)->update(['expiration_date'=>$new1]);
         $this->redirect('index/index/index');
+    }
+
+    /**
+     * @return 发票申请
+     */
+    public function invoice()
+    {
+        if(Request::instance()->isPost()){
+            //申请逻辑
+            $param = $this->request->param();
+            //验证信息
+            $validate = new Validate(
+                [
+                    'order_no' => 'require',
+                    'head_type' => 'require',
+                    'title' => 'require',
+                    'price' => 'require',
+                    'express_address' => 'require',
+                ]);
+            $data1 = ([
+                'order_no' => $param['order_no'],
+                'head_type' => $param['head_type'],
+                'title' => $param['title'],
+                'price' => $param['price'],
+                'express_address' => $param['express_address'],
+            ]);
+            if (!$validate->check($data1)) {
+                $this->error($validate->getError(),'money/invoice');
+            }
+            //添加数据
+            $data = [
+                'order_no' => $param['order_no'],
+                'head_type' => $param['head_type'],
+                'title' => $param['title'],
+                'price' => $param['price'],
+                'invoice_id' => my_returnUUID(),
+                'data_status' => 0,
+                'express_address' => $param['express_address'],
+                'admin_id' => Session::get('adminid'),
+                'create_time' => time(),
+            ];
+            $res = Db::name('business_invoice')->insert($data);
+            if($res){
+                $this->success('已提交申请','money/index');
+            }else{
+                $this->success('提交申请失败');
+            }
+
+        }else{
+            return $this->fetch();
+        }
+
+    }
+
+    /**
+     * @return 发票申请列表
+     */
+    public function invoice_list()
+    {
+        //查询发票申请列表
+        $id = Session::get('adminid');
+        $list = Db::name('business_invoice')->where('admin_id',$id)->paginate(5);
+        $this->assign('list',$list);
+        return $this->fetch();
     }
 
 }

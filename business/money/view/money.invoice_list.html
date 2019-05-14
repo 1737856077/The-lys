@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发票列表</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+    <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
+    <link href="__STATIC__/business/css/common.css" rel="stylesheet">
+    <script src="__STATIC__/business/s.txt"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
+    <style>
+        a:hover{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<style>
+    a:hover{
+        color: red;
+    }
+</style>
+<div class="loader" style="display:none">
+    <div class="la-ball-clip-rotate">
+        <div></div>
+    </div>
+</div>
+
+<div class="panel panel-content main-panel-content ">
+    <div class="panel-body clearfix main-panel-body menu-fixed">
+        <div class="right-content" style="min-height: 490px;">
+            <ul class="we7-page-tab">
+                <li class="active"><a
+                        href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;">发票申请列表</a>
+                </li>
+
+            </ul>
+            <div class="keyword-list-head clearfix we7-margin-bottom">
+                <form action="" method="get">
+                    <input type="hidden" name="c" value="user">
+                    <input type="hidden" name="a" value="display">
+                    <input type="hidden" name="do" value="">
+                    <input type="hidden" name="type" value="">
+                </form>
+
+            </div>
+            <table class="table we7-table table-hover table-manage vertical-middle ng-scope"
+                   id="js-users-display" ng-controller="UsersDisplay">
+                <colgroup>
+                    <col width="150px">
+                    <col width="150px">
+                    <col width="180px">
+                    <col width="140px">
+                    <col width="140px">
+                    <col width="140px">
+                    <col width="160px">
+                    <col width="150px">
+                    <col width="150px">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th class="text-left">单号</th>
+                    <th>发票抬头</th>
+                    <th>开票金额</th>
+                    <th>发票税号</th>
+                    <th>发票内容</th>
+                    <th>开票类型</th>
+                    <th>邮寄地址</th>
+                    <th>快递单号</th>
+                    <th>申请状态</th>
+                    <th>申请时间</th>
+                </tr>
+                {foreach name="list" id="vo"}
+                <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
+                    <td class="color-default ng-binding" ng-bind="user.username" id="order">{$vo.order_no}</td>
+                    <td class="color-default ng-binding" ng-bind="user.username">{$vo.title}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.price}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.invoice_tax_number}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.content}</td>
+                    {if condition="($vo.invoice_type eq 0)"}
+                    <td class="color-default ng-binding status" ng-bind="user.maxwxapp">电子版</td>
+                    {else /}
+                    <td class="color-default ng-binding " ng-bind="user.maxwxapp">纸质</td>
+                    {/if}
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.express_address}</td>
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.delivery_express_numbe}</td>
+                    {if condition="($vo.data_status eq 0)"}
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">已提交</td>
+                    {elseif condition="$vo.data_status eq 1"/}
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">申请已确认</td>
+                    {elseif condition="$vo.data_status eq 3"/}
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">票据已发货</td>
+                    {else /}
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">票据已确认收货</td>
+                    {/if}
+
+                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.create_time |date="Y-m-d",### }</td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            <div class="text-right">
+                {$list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

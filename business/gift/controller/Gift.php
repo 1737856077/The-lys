@@ -22,7 +22,7 @@ class Gift extends Controller
     public function gift()
     {
         $id = Session::get('adminid');
-        $list = Db::name('product_integral')->where('admin_id', $id)->paginate(3);
+        $list = Db::name('product_integral')->where('admin_id', $id)->order('id','desc')->paginate(3);
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -56,7 +56,8 @@ class Gift extends Controller
                 'data_desc' => $data_desc,
             ]);
             if (!$validate->check($data1)) {
-                dump($validate->getError());
+                $this->error($validate->getError(),'gift/add');
+//                dump($validate->getError());
             }
             if ($file) {
                 $info = $file->validate([
@@ -170,6 +171,28 @@ class Gift extends Controller
         } else {
             return $this->success('切换失败');
         }
+    }
+
+    /**
+     * 礼品删除
+     */
+    public function del($id)
+    {
+        //根据id查询出商品
+        $res = Db::name('product_integral')->where('id',$id)->delete();
+        if($res){
+            $this->success('删除成功','gift/gift');
+        }else{
+            $this->error('删除失败');
+        }
+    }
+
+    /**
+     * @return 批量删除
+     */
+    public function dels($id)
+    {
+
     }
 
 }
