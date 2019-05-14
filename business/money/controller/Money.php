@@ -140,7 +140,7 @@ class Money extends Controller
     {
         //查询发票申请列表
         $id = Session::get('adminid');
-        $list = Db::name('business_invoice')->where('admin_id',$id)->paginate(5);
+        $list = Db::name('business_invoice')->where('admin_id',$id)->order('id','desc')->paginate(5);
         $this->assign('list',$list);
         return $this->fetch();
     }

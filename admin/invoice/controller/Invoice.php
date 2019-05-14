@@ -18,7 +18,7 @@ class invoice extends Controller
     public function index()
     {
         //查询申请工单
-        $list = Db::name('business_invoice')->select();
+        $list = Db::name('business_invoice')->where('data_status','<',3)->order('id','desc')->select();
         $this->assign('list',$list);
         return $this->fetch();
     }
@@ -31,7 +31,25 @@ class invoice extends Controller
     {
         if(Request::instance()->isPost()){
             //处理逻辑
-
+            $param = $this->request->param();
+            if($param['delivery_express_id'] == 1){
+                $kuaidi = '顺丰快递';
+            }else{
+                $kuaidi = '中通快递';
+            }
+            $data = [
+                'invoice_tax_number'=>$param['invoice_tax_number'],
+                'delivery_express_id'=>$kuaidi,
+                'delivery_express_number'=>$param['delivery_express_number'],
+                'delivery_send_time'=>time(),
+                'data_status'=>3,
+            ];
+            $res = Db::name('business_invoice')->where('id',$id)->update($data);
+            if($res){
+                $this->success('处理成功','invoice/index');
+            }else{
+                $this->error('处理失败');
+            }
         }else{
             //获取待处理工单信息
             $list = Db::name('business_invoice')->where('id',$id)->find();

@@ -124,61 +124,61 @@
                             <td class="table-label">订单号</td>
                             <td class="ng-binding">
                                 <input type="text" name="order_no" value="{$list.order_no}"
-                                       style="border:none;">
+                                       style="border:none;" readonly="readonly">
                             </td>
                             <td class="text-right"></td>
                         </tr>
                         <tr>
+                            <td class="table-label">商品图片</td>
+                            <td colspan="2" class="ng-binding">
+                                <img src="__STATIC__/uploads/business/{$list.images}" style="width: 90px;height: 70px;">
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="table-label">购买数量</td>
                             <td colspan="2" class="ng-binding">
-                                <input type="text" name="num" value="{$list.num}" style="border:none;">
+                                <input type="text" name="num" value="{$list.num}" style="border:none;" readonly="readonly">
                             </td>
                         </tr>
                         <tr>
                             <td class="table-label">商品总价</td>
                             <td colspan="2" class="ng-binding">
                                 <input type="text" name="price_total" value="{$list.price_total}"
-                                       style="border:none;">
+                                       style="border:none;" readonly="readonly">
                             </td>
                         </tr>
                         <tr>
-                            <td class="table-label">应支付积分</td>
+                            <td class="table-label">支付积分</td>
                             <td class="ng-binding">
                                 <input type="text" name="pay_total" value="{$list.pay_total}"
-                                       style="border:none;">
+                                       style="border:none;" readonly="readonly">
                             </td>
-                            <td class="text-right"></td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">商品所属商家</td>
-                            <td class="ng-binding">{$name}</td>
                             <td class="text-right"></td>
                         </tr>
                         <tr>
                             <td class="table-label">支付状态</td>
                             <td>
                                 <input type="text" name="data_pay" value="{$list.data_pay?'已支付':'未支付'}"
-                                       style="border:none;">
+                                       style="border:none;" readonly="readonly">
                             </td>
                             <td class="text-right"></td>
                         </tr>
                         <tr>
                             <td class="table-label">订单状态</td>
                             {if condition="($list.data_order eq 0)"}
-                            <td><input type="text" name="data_order" style="border:none;" value="未确认"></td>
+                            <td><input type="text" name="data_order" style="border:none;" value="未确认" readonly="readonly"></td>
                             {elseif condition="$list.data_order eq 1"/}
-                            <td><input type="text" name="data_order" style="border:none;" value="已确认"></td>
+                            <td><input type="text" name="data_order" style="border:none;" value="已确认" readonly="readonly"></td>
                             {elseif condition="$list.data_order eq 2"/}
-                            <td><input type="text" name="data_order" style="border:none;" value="待发货"></td>
+                            <td><input type="text" name="data_order" style="border:none;" value="待发货" readonly="readonly"></td>
                             {elseif condition="$list.data_order eq 3"/}
-                            <td><input type="text" name="data_order" style="border:none;" value="已发货"></td>
+                            <td><input type="text" name="data_order" style="border:none;" value="已发货" readonly="readonly"></td>
                             {else /}
-                            <td><input type="text" name="data_order" style="border:none;" value="已确认发货">
+                            <td><input type="text" name="data_order" style="border:none;" value="已确认发货" readonly="readonly">
                             </td>
                             {/if}
                             <td style="padding-right: 390px">
                                 <select name="status" id="status">
-                                    <option value="">请选择</option>
                                     <option value="1">已确认</option>
                                     <option value="2">待发货</option>
                                     <option value="3">已发货</option>
@@ -208,6 +208,12 @@
                                     <option value="3">圆通快递</option>
                                     <option value="4">申通快递</option>
                                 </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">快递单号</td>
+                            <td colspan="2" class="ng-binding">
+                                <input type="text" name="delivery_express_number" value="" style="border:none;" placeholder="请填入快递单号">
                             </td>
                         </tr>
                         <tr>

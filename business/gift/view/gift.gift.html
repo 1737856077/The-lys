@@ -122,18 +122,27 @@
                                 class="fa fa-search"></i></button></span>
                     </div>-->
                 </form>
-                <div class="pull-right">
-                    <a href="{:url('gift/add')}" class="btn btn-primary">+添加礼品</a>
-                </div>
+                <form action="" id="commodity">
+                    <div class="pull-right">
+                        <a href="{:url('gift/add')}" class="btn btn-primary">+添加礼品</a>
+                    </div>
 
-                <div class="pull-right">
-                    <a href="{:url('gift/dels')}" class="btn btn-primary" id="del">批量删除</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="pull-right">
-                    <a href="{:url('gift/add')}" class="btn btn-primary">批量下架</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>
+                    <div class="pull-right">
+                        <a href="javascript:;" class="btn btn-primary" id="del">批量删除</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="pull-right">
+                        <a href="javascript:;" class="btn btn-primary" id="xia">批量下架</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="pull-right">
+                        <a href="javascript:;" class="btn btn-primary" id="qu">取消</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="pull-right">
+                        <a href="javascript:;" class="btn btn-primary" id="xuan">全选</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
             </div>
             <table class="table we7-table table-hover table-manage vertical-middle ng-scope"
                    id="js-users-display" ng-controller="UsersDisplay">
@@ -150,37 +159,30 @@
                 </colgroup>
                 <tbody>
                 <tr>
-                    <th class="text-left" id="chk">
-                        <input type="checkbox" >全选
-                    </th>
+                    <th class="text-left"></th>
                     <th class="text-left">礼品名</th>
                     <th>图片</th>
                     <th>库存</th>
                     <th>所需积分</th>
                     <th>添加时间</th>
-                    <th>礼品描述</th>
-                    <th>状态</th>
                     <th class="text-right">操作</th>
                 </tr>
                 {volist name="list" id="vo"}
                 <tr ng-repeat="user in users" ng-if="users" class="ng-scope" id="$vo.id">
-                    <td class="text-left ng-binding" ng-bind="user.username">
-                        <input type="checkbox" name="check" value="{$vo.id}">
+                    <td>
+                        <input type="checkbox" name="chk[]" value="{$vo.id}">
                     </td>
                     <td class="text-left ng-binding" ng-bind="user.username">{$vo.title}</td>
                     <td class="text-left ng-binding" ng-bind="user.username">
-                        <img src="__STATIC__/uploads/business/{$vo.images}" alt="">
+                        <img src="__STATIC__/uploads/business/{$vo.images}" alt="" style="width: 90px;height: 70px;">
                     </td>
                     <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.total}</td>
                     <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$vo.integral}</td>
                     <td class="color-default ng-binding" ng-bind="user.maxwebapp">{$vo.create_time|date="Y-m-d",###}
                     </td>
-                    <td>
-                        <span ng-bind="user.joindate" class="ng-binding">{$vo.data_desc}</span>
-                    </td>
-                    <td>
+                    <!--<td>
                         <span ng-bind="user.endtime" class="ng-binding">{$vo.data_status? '上架':'下架'}</span>
-                    </td>
+                    </td>-->
                     <td class="vertical-middle table-manage-td">
                         <div class="link-group ng-scope" ng-if="!user.founder">
                             <a href="{:url('gift/edit')}?id={$vo.id}">编辑</a>
@@ -192,6 +194,7 @@
                 {/volist}
                 </tbody>
             </table>
+            </form>
             <div class="text-right">
                 {$list->render()}
             </div>
@@ -199,12 +202,49 @@
         </div>
         <script>
             //全选全不选
-            $('#chk').click(function () {
-                $("[name=check]:checkbox").prop("checked",true);
+            $('#xuan').click(function () {
+                $('input[name="chk[]"]').attr('checked', true);
+            })
+            $('#qu').click(function () {
+                $('input[name="chk[]"]').attr('checked', false);
             })
             //批量删除
             $('#del').click(function () {
-
+                var data = $("#commodity").serialize();
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "GET",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "{:url('gift/dels')}",//url
+                    data:data,
+                    success: function (result) {
+                        if(result){
+                            alert('批量删除成功');
+                            window.location.href="{:url('gift/gift')}";
+                        }else {
+                            alert('批量删除失败');
+                        }
+                    }
+                });
+                })
+            //批量下架
+            $('#xia').click(function () {
+                var data = $("#commodity").serialize();
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "GET",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "{:url('gift/shelf')}",//url
+                    data:data,
+                    success: function (result) {
+                        if(result){
+                            alert('批量下架成功');
+                            window.location.href="{:url('gift/gift')}";
+                        }else {
+                            alert('批量下架成功');
+                        }
+                    }
+                });
             })
         </script>
     </div>

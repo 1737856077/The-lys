@@ -18,7 +18,7 @@
     <div class="con">
     
     	<div class="conlist">
-        <form action="" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit();">
+        <form action="{:url('invoice/edit')}?id={$list.id}" method="post" enctype="multipart/form-data">
         	<table class="listtable">
             	<tr class="tr1">
                 	<td colspan="2" class="tit">待处理发票信息</td>
@@ -27,19 +27,19 @@
                <tr class="tr1">
                     <td class="tdl">单号<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="order_no" id="order_no" type="text" onBlur="Onblur_name()" value="{$list.order_no}" />
+                        <input name="order_no" id="order_no" type="text" onBlur="Onblur_name()" value="{$list.order_no}" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr class="tr1">
                     <td class="tdl">发票抬头<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="title" id="title" type="text" onBlur="Onblur_name()" value="{$list.title}" />
+                        <input name="title" id="title" type="text" onBlur="Onblur_name()" value="{$list.title}" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr class="tr1">
                     <td class="tdl">开票金额<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="price" id="price" type="text" onBlur="Onblur_name()" value="{$list.price}" />
+                        <input name="price" id="price" type="text" onBlur="Onblur_name()" value="{$list.price}" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr class="tr1">
@@ -52,25 +52,34 @@
                 <tr class="tr1">
                     <td class="tdl">开票类型<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="invoice_type" id="invoice_type" type="text" onBlur="Onblur_name()" value="{$list.invoice_type}" />
+                        <input name="invoice_type" id="invoice_type" type="text" value="纸质" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr class="tr1">
                     <td class="tdl">邮寄地址<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="express_address" id="express_address" type="text" onBlur="Onblur_name()" value="{$list.express_address}" />
+                        <input name="express_address" id="express_address" type="text" onBlur="Onblur_name()" value="{$list.express_address}" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr class="tr1">
                     <td class="tdl">发票内容<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="content" id="content" type="text" onBlur="Onblur_name()" value="{$list.content}" />
+                        <input name="content" id="content" type="text" onBlur="Onblur_name()" value="{$list.content}" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr class="tr1">
-                    <td class="tdl">发票内容<span style="color:#f00;"></span></td>
+                    <td class="tdl">选择快递<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="data_desc" id="data_desc" type="text" onBlur="Onblur_name()" value="{$list.data_desc}" />
+                        <select name="delivery_express_id" id="delivery_express_id">
+                            <option value="1">顺丰快递</option>
+                            <option value="2">中通快递</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">快递单号<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="delivery_express_number" id="delivery_express_number" type="text" onBlur="Onblur_name()" placeholder="请填写快递单号" />
                     </td>
                 </tr>
                 <tr class="tr1">
@@ -80,7 +89,6 @@
                  </td>
                </tr>
             </table>
-     
       </form>      
         </div>
     

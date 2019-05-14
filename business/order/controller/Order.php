@@ -21,7 +21,13 @@ class Order extends Controller
     public function index()
     {
         $id = Session::get('adminid');
-        $list = Db::name('integral_order')->where('admin_id', $id)->paginate(5);
+        $list = Db::name('integral_order')
+            ->alias('i')
+            ->join('product_integral p','i.product_id = p.product_id')
+            ->field('i.*,p.images')
+            ->where('i.admin_id', $id)
+            ->paginate(3);
+//        dump($list);die;
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -35,7 +41,12 @@ class Order extends Controller
         $param = $this->request->param();
         //根据订单id查询
         $id = htmlspecialchars(intval(isset($param['id']) ? $param['id'] : ''));
-        $list = Db::name('integral_order')->where("id",$id)->find();
+        $list = Db::name('integral_order')
+            ->alias('i')
+            ->join('product_integral p','i.product_id = p.product_id')
+            ->field('i.*,p.images')
+            ->where('i.id', $id)
+            ->find();
         $this->assign('list', $list);
         $this->assign('name', $name);
         return $this->fetch();
@@ -50,6 +61,7 @@ class Order extends Controller
         $param = $this->request->param();
         $order_no =  htmlspecialchars(isset($param['order_no']) ? $param['order_no'] : '');
         $log =  htmlspecialchars(isset($param['log']) ? $param['log'] : '');
+        $delivery_express_number =  htmlspecialchars(isset($param['delivery_express_number']) ? $param['delivery_express_number'] : '');
         //判断订单是否支付
         if($param['data_pay'] == '未支付'){
             $this->error('订单未支付，请先提醒用户支付');
@@ -57,6 +69,8 @@ class Order extends Controller
             $data = [
                 'order_no'=>$order_no,
                 'delivery_express_id'=>$log,
+                'delivery_express_number'=>$delivery_express_number,
+                'create_time'=>time(),
             ];
             $res = Db::name('integral_order_detail')->insert($data);
             if($res){

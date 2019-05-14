@@ -190,9 +190,33 @@ class Gift extends Controller
     /**
      * @return 批量删除
      */
-    public function dels($id)
+    public function dels()
     {
+        //获取数据
+        $param = $this->request->param();
+        foreach ($param['chk'] as $k=>$v){
+            $res = Db::name('product_integral')->where('id',$v)->delete();
+        }
+        //执行删除
+        return json($res);
 
+    }
+
+    /**
+     * 礼品批量下架
+     */
+    public function shelf()
+    {
+        //获取数据
+        $param = $this->request->param();
+        //状态更改
+        $data = [
+            'data_status'=>0,
+        ];
+        foreach ($param['chk'] as $k=>$v){
+            $res = Db::name('product_integral')->where('id',$v)->update($data);
+        }
+        return json($res);
     }
 
 }
