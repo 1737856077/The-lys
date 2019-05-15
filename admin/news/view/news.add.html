@@ -41,6 +41,7 @@
                             {/if}
                         </select>
                     </td>
+                    <input type="hidden" name="img" id="sc" class="sc" value="">
                     <input type="hidden" name="admin_id" value="{$Think.session.admin_id}">
 
                 </tr>
@@ -137,8 +138,12 @@
         str = str.replace(/&nbsp;/ig, '')
         return str
     }
-
-    editor.create()
+    editor.customConfig.uploadImgHooks ={
+        success: function (xhr, editor, result) {
+               $("#sc").val(result['url'])
+        }
+    }
+        editor.create()
     function f() {
         var data =  editor.txt.html()
         $(".cont").val(data)
