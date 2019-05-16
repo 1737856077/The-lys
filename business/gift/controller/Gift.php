@@ -39,6 +39,7 @@ class Gift extends Controller
             $total = input('post.total');
             $integral = input('post.integral');
             $data_desc = input('post.data_desc');
+            $price = input('post.market_price');
             $request = Request::instance();
             $file = $request->file('images');
             $product_id = my_returnUUID();
@@ -48,12 +49,14 @@ class Gift extends Controller
                     'total' => 'require',
                     'integral' => 'require',
                     'data_desc' => 'require',
+                    'price' => 'require',
                 ]);
             $data1 = ([
                 'title' => $title,
                 'total' => $total,
                 'integral' => $integral,
                 'data_desc' => $data_desc,
+                'price' => $price,
             ]);
             if (!$validate->check($data1)) {
                 $this->error($validate->getError(),'gift/add');
@@ -74,6 +77,7 @@ class Gift extends Controller
                         'images' => $info->getSaveName(),
                         'create_time' => time(),
                         'product_id'=>$product_id,
+                        'price'=>$price,
                     ];
                 } else {
                     $this->error($file->getError());
