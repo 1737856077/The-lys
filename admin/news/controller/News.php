@@ -11,6 +11,7 @@ namespace app\news\controller;
 
 use app\common\controller\CommonBase;
 use think\Db;
+use think\Request;
 use think\Session;
 
 class News extends CommonBase
@@ -83,19 +84,43 @@ class News extends CommonBase
         }
     }
     /**
+     * 保存图片
+     */
+    public function saveaddimg()
+    {
+        // 获取表单上传的文件，例如上传了一张图片
+        $file = request()->file('image');
+        if($file){
+            //将传入的图片移动到框架应用根目录/public/uploads/editorimg 目录下，ROOT_PATH是根目录下，DS是代表斜杠 /
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads'. DS . 'editorimg');
+            if ($info) {
+                $img_info = str_replace('\\', '/',$info->getSaveName());
+                $url   = "/public/uploads/editorimg/".$img_info ;
+                $datas = ["errno" => 0, "data" => [$url],"url"=>$url];
+                return json($datas);
+            } else {
+                // 上传失败获取错误信息
+                echo $file->getError();
+            }
+        }
+    }
+    /**
      * 保存新闻内容
      */
     public function saveadd()
     {
+
         $param = $this->request->param();
-       $title = htmlspecialchars(trim($param['title'])?$param['title']:'');
-        $class_id = htmlspecialchars(trim($param['class_id'])?$param['class_id']:'');
-        $admin_id = htmlspecialchars(trim($param['admin_id'])?$param['admin_id']:'');
-        $index_show = htmlspecialchars(trim($param['index_show'])?$param['index_show']:'');
-        $keywords = htmlspecialchars(trim($param['keywords'])?$param['keywords']:'');
-        $description = htmlspecialchars(trim($param['description'])?$param['description']:'');
-        $send_author = htmlspecialchars(trim($param['send_author'])?$param['send_author']:'');
-        $contents = htmlspecialchars(trim($param['contents'])?$param['contents']:'');
+        $img = htmlspecialchars(trim($param['img'])?$param['img']:'');
+        $title = htmlspecialchars(trim(isset($param['title'])?$param['title']:''));
+        $class_id = htmlspecialchars(trim(isset($param['class_id'])?$param['class_id']:''));
+        $admin_id = htmlspecialchars(trim(isset($param['admin_id'])?$param['admin_id']:''));
+        $index_show = htmlspecialchars(trim(isset($param['index_show'])?$param['index_show']:''));
+        $keywords = htmlspecialchars(trim(isset($param['keywords'])?$param['keywords']:''));
+        $description = htmlspecialchars(trim(isset($param['description'])?$param['description']:''));
+        $send_author = htmlspecialchars(trim(isset($param['send_author'])?$param['send_author']:''));
+        $contents = htmlspecialchars(trim(isset($param['contents'])?$param['contents']:''));
+        $id = htmlspecialchars(trim(isset($param['id'])?$param['id']:''));
         if(empty($title) or empty($class_id)){
             echo '参数错误';
             exit();
@@ -104,6 +129,7 @@ class News extends CommonBase
             'title'=>$title,
             'class_id'=>$class_id,
             'admin_id'=>$admin_id,
+            'image'=>$img,
             'index_show'=>$index_show,
             'keywords'=>$keywords,
             'description'=>$description,
@@ -216,6 +242,7 @@ class News extends CommonBase
     public function altersaveadd()
     {
         $param = $this->request->param();
+        $img = htmlspecialchars(trim($param['img'])?$param['img']:'');
         $title = htmlspecialchars(trim(isset($param['title'])?$param['title']:''));
         $class_id = htmlspecialchars(trim(isset($param['class_id'])?$param['class_id']:''));
         $admin_id = htmlspecialchars(trim(isset($param['admin_id'])?$param['admin_id']:''));
@@ -231,6 +258,7 @@ class News extends CommonBase
         }
         $data = [
             'title'=>$title,
+            'image'=>$img,
             'class_id'=>$class_id,
             'admin_id'=>$admin_id,
             'index_show'=>$index_show,

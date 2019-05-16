@@ -20,7 +20,7 @@ class Index extends Controller
         $name = Session::get('adminname');
         $id = Session::get('adminid');
 //
-//        if(Session::has('adminname')){
+//
             $list = Db::name('admin_business')
                 ->alias('b')
                 ->field("a.name,b.*")
@@ -30,21 +30,30 @@ class Index extends Controller
             $this->assign('list',$list);
             $this->assign('name',$name);
 //            return $this->fetch();
-//        }else{
-//$this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
-//}
+//
 
     }
     public function admin()
-    {
-        return $this->fetch();
+    {if(Session::has('adminname')){
+        return $this->fetch(); }else{
+    $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
+    }
     }
     /**
      * @return 商家首页
      */
     public function index()
     {
+<<<<<<< HEAD
         return $this->fetch();
+=======
+
+        if(Session::has('adminname')){
+            return $this->fetch(); }else{
+            $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
+        }
+
+>>>>>>> 3b2b557a1a198d01c5306ffaf5b3c128d53b9411
     }
 
     /**
