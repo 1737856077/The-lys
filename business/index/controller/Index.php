@@ -19,8 +19,7 @@ class Index extends Controller
     public function _initialize(){
         $name = Session::get('adminname');
         $id = Session::get('adminid');
-//
-//
+
             $list = Db::name('admin_business')
                 ->alias('b')
                 ->field("a.name,b.*")
@@ -29,8 +28,8 @@ class Index extends Controller
                 ->select();
             $this->assign('list',$list);
             $this->assign('name',$name);
-//            return $this->fetch();
-//
+            return $this->fetch();
+
 
     }
     public function admin()
@@ -44,16 +43,7 @@ class Index extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         return $this->fetch();
-=======
-
-        if(Session::has('adminname')){
-            return $this->fetch(); }else{
-            $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
-        }
-
->>>>>>> 3b2b557a1a198d01c5306ffaf5b3c128d53b9411
     }
 
     /**

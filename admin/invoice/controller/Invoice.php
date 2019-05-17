@@ -38,7 +38,6 @@ class invoice extends Controller
                 $kuaidi = '中通快递';
             }
             $data = [
-                'invoice_tax_number'=>$param['invoice_tax_number'],
                 'delivery_express_id'=>$kuaidi,
                 'delivery_express_number'=>$param['delivery_express_number'],
                 'delivery_send_time'=>time(),

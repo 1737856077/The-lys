@@ -69,10 +69,8 @@
                 </colgroup>
                 <tbody>
                 <tr>
-                    <th class="text-left">单号</th>
                     <th>发票抬头</th>
                     <th>开票金额</th>
-                    <th>发票税号</th>
                     <th>发票内容</th>
                     <th>开票类型</th>
                     <th>邮寄地址</th>
@@ -82,10 +80,8 @@
                 </tr>
                 {foreach name="list" id="vo"}
                 <tr ng-repeat="user in users" ng-if="users" class="ng-scope">
-                    <td class="color-default ng-binding" ng-bind="user.username" id="order">{$vo.order_no}</td>
                     <td class="color-default ng-binding" ng-bind="user.username">{$vo.title}</td>
                     <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.price}</td>
-                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.invoice_tax_number}</td>
                     <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.content}</td>
                     {if condition="($vo.invoice_type eq 0)"}
                     <td class="color-default ng-binding status" ng-bind="user.maxwxapp">电子版</td>

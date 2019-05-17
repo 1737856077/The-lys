@@ -60,15 +60,11 @@ class Gift extends Controller
             $title = input('post.title');
             $total = input('post.total');
             $integral = input('post.integral');
-            $data_desc = input('post.data_desc');
+            $data_desc =  htmlspecialchars(stripslashes($_POST['data_desc']));
             $price = input('post.market_price');
             $request = Request::instance();
             $file = $request->file('images');
             $product_id = my_returnUUID();
-
-            //获取文本编辑器上传的图片
-
-
             $validate = new Validate(
                 [
                     'title' => 'require',
@@ -150,7 +146,7 @@ class Gift extends Controller
                 'data_desc' => $data_desc,
             ]);
             if (!$validate->check($data1)) {
-                dump($validate->getError());
+                $this->error($validate->getError(),'gift/edit');
             }
             if ($file) {
                 $info = $file->validate([
@@ -179,7 +175,8 @@ class Gift extends Controller
             }
         } else {
             $content = Db::name('product_integral')->where("id", $id)->find();
-            $this->assign('content', $content);
+            $this->assign('content',$content);
+            $this->assign('content2', html_entity_decode($content['data_desc']));
             return $this->fetch();
         }
     }

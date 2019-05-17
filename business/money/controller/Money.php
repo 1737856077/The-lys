@@ -92,33 +92,34 @@ class Money extends Controller
             //验证信息
             $validate = new Validate(
                 [
-                    'order_no' => 'require',
-                    'head_type' => 'require',
-                    'title' => 'require',
                     'price' => 'require',
+                    'title' => 'require',
+                    'taxpayer_number' => 'require',
                     'express_address' => 'require',
+                    'phone' => 'require',
                 ]);
             $data1 = ([
-                'order_no' => $param['order_no'],
-                'head_type' => $param['head_type'],
-                'title' => $param['title'],
                 'price' => $param['price'],
+                'title' => $param['title'],
+                'taxpayer_number' => $param['taxpayer_number'],
                 'express_address' => $param['express_address'],
+                'phone' => $param['phone'],
             ]);
             if (!$validate->check($data1)) {
                 $this->error($validate->getError(),'money/invoice');
             }
             //添加数据
             $data = [
-                'order_no' => $param['order_no'],
-                'head_type' => $param['head_type'],
-                'title' => $param['title'],
                 'price' => $param['price'],
+                'title' => $param['title'],
+                'taxpayer_number' => $param['taxpayer_number'],
                 'invoice_id' => my_returnUUID(),
                 'data_status' => 0,
                 'express_address' => $param['express_address'],
                 'admin_id' => Session::get('adminid'),
                 'create_time' => time(),
+                'phone' => $param['phone'],
+                'account' => $param['account'],
             ];
             $res = Db::name('business_invoice')->insert($data);
             if($res){
@@ -128,6 +129,10 @@ class Money extends Controller
             }
 
         }else{
+            //获取该商家 消费金额总数
+            $id = Session::get('adminid');
+            $num = Db::name('order')->where('admin_id',$id)->sum('amount');
+            $this->assign('num',$num);
             return $this->fetch();
         }
 

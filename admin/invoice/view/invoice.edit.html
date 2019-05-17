@@ -23,11 +23,10 @@
             	<tr class="tr1">
                 	<td colspan="2" class="tit">待处理发票信息</td>
                 </tr>
-               
                <tr class="tr1">
-                    <td class="tdl">单号<span style="color:#f00;"></span></td>
+                    <td class="tdl">申请金额<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="order_no" id="order_no" type="text" onBlur="Onblur_name()" value="{$list.order_no}" readonly="readonly"/>
+                        <input name="price" id="price" type="text" onBlur="Onblur_name()" value="{$list.price}" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr class="tr1">
@@ -37,22 +36,9 @@
                     </td>
                 </tr>
                 <tr class="tr1">
-                    <td class="tdl">开票金额<span style="color:#f00;"></span></td>
+                    <td class="tdl">纳税人识别号<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="price" id="price" type="text" onBlur="Onblur_name()" value="{$list.price}" readonly="readonly"/>
-                    </td>
-                </tr>
-                <tr class="tr1">
-                    <td class="tdl">发票税号<span style="color:#f00;"></span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input name="invoice_tax_number" id="invoice_tax_number" type="text" onBlur="Onblur_name()"   placeholder="请输入发票税号"/>
-                    </td>
-                </tr>
-
-                <tr class="tr1">
-                    <td class="tdl">开票类型<span style="color:#f00;"></span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <input name="invoice_type" id="invoice_type" type="text" value="纸质" readonly="readonly"/>
+                        <input name="taxpayer_number" id="taxpayer_number" type="text" onBlur="Onblur_name()" value="{$list.taxpayer_number}" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr class="tr1">
@@ -62,9 +48,27 @@
                     </td>
                 </tr>
                 <tr class="tr1">
+                    <td class="tdl">开户行及账号<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="" id="" type="text" onBlur="Onblur_name()" value="{$list.account}" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">收件人手机号<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="phone" id="phone" type="text" onBlur="Onblur_name()" value="{$list.phone}" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">备注<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="data_desc" id="data_desc" type="text" onBlur="Onblur_name()" value="{$list.content}" readonly="readonly" style="width: 250px;height: 50px;"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
                     <td class="tdl">发票内容<span style="color:#f00;"></span></td>
                     <td class="tdr" style="padding-top:5px;">
-                        <input name="content" id="content" type="text" onBlur="Onblur_name()" value="{$list.content}" readonly="readonly"/>
+                        <input name="content" id="content" type="text" onBlur="Onblur_name()" value="{$list.content}" readonly="readonly" style="width: 250px;height: 50px;"/>
                     </td>
                 </tr>
                 <tr class="tr1">

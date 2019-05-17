@@ -26,6 +26,7 @@ class Order extends Controller
             ->join('product_integral p','i.product_id = p.product_id')
             ->field('i.*,p.images')
             ->where('i.admin_id', $id)
+            ->order('id','desc')
             ->paginate(3);
 //        dump($list);die;
         $this->assign('list', $list);

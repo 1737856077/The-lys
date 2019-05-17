@@ -8,15 +8,8 @@
  */
 
 namespace app\sinterface\controller;
-<<<<<<< HEAD
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
-
-=======
-
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
->>>>>>> 3b2b557a1a198d01c5306ffaf5b3c128d53b9411
 use app\common\controller\CommonBaseHome;
 use think\Db;
 
