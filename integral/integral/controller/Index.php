@@ -31,6 +31,7 @@ class Index extends CommonIntegra
         $param = $this->request->param();
         $productId = $param['id'];
         $productData = Db::name('product_integral')->where('id',$productId)->find();
+        $productData['data_desc'] = html_entity_decode($productData['data_desc']);
         $this->assign('data',$productData);
         return $this->fetch();
     }

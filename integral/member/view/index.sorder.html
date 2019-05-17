@@ -142,7 +142,10 @@
                             {if condition="$datas.data_order == 4"}
                             <a href="javascript:(0)" onclick="deorder('{$datas.order_no}')">删除订单</a>
                             {else/}
+                                {if condition="$datas.data_order >2"}
                             <a  href="javascript:(0)" onclick="affirm('{$datas.order_no}')">确认收货</a>
+                            {else/}
+                            {/if}
                             {/if}
                             <a  href="/integral.php/member/order/orderdetail/order_no/{$datas.order_no}" class="aui-df-color">查看详情</a>
                         </div>

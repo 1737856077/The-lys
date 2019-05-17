@@ -192,6 +192,10 @@ class Index extends CommonIntegra
         }else{
                 $data = '当前商家没有对应的积分';
         }
+        $zhong = $record_mdol->where('uid',$uid)->where('integral_type=0 or integral_type=1')->field('price')->sum('price');
+        $x = $record_mdol->where('uid',$uid)->where('integral_type=2')->field('price')->sum('price');
+        $this->assign('zhong',$zhong);
+        $this->assign('x',$x);
         $this->assign('data',$record_data);
         $this->assign('invoice_money',$data);
         return $this->fetch();
