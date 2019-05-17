@@ -247,40 +247,61 @@
 
             //礼品兑换数量
             var myChart2 = echarts.init(document.getElementById('exchang'));
-            option = {
-                title : {
-                    text: '礼品兑换数量显示',
-                    subtext: '',
-                    x:'center'
+            var title = [];
+            var num = [];
+            var ratio = [];
+            ajax({
+                type:"GET",
+                url:"http://suyuan.localhost/admin.php/sinterface/Hotcommodity/index",
+                dataType: "json",
+                beforeSend:function(){
+                    //some js code
                 },
-                tooltip : {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
-                },
-                series : [
-                    {
-                        name: '访问来源',
-                        type: 'pie',
-                        radius : '55%',
-                        center: ['50%', '60%'],
-                        data:[
-                            {value:335, name:'直接访问'},
-                            {value:310, name:'邮件营销'},
-                            {value:234, name:'联盟广告'},
-                            {value:135, name:'视频广告'},
-                            {value:1548, name:'搜索引擎'}
-                        ],
-                        itemStyle: {
-                            emphasis: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        }
+                success:function(data){
+                       // alert(data);
+                    for (var i = 0;i < data.data.length;i++){
+                        title.push(data.data[i].title);
+                        num.push(data.data[i].num);
+                        ratio.push(data.data[i].ratio);
                     }
-                ]
-            };
-            myChart2.setOption(option);
+                    /*for (var k = 0;k<3;k++){
+                        data1 = [
+                            {value:num[k],name:title[k]},
+                        ]
+                    }*/
+                    var option = {
+                        title : {
+                            text: '礼品兑换数量显示',
+                            subtext: '',
+                            x:'center'
+                        },
+                        tooltip : {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        series : [
+                            {
+                                name: '访问来源',
+                                type: 'pie',
+                                radius : '55%',
+                                center: ['50%', '60%'],
+                                data: [
+                                    {value:num[0],name:title[0]},
+                                    {value:num[1],name:title[1]},
+                                ],
+                                itemStyle: {
+                                    emphasis: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    myChart2.setOption(option);
+                }
+            })
 
             //区域扫码数据显示
             var myChart = echarts.init(document.getElementById('main'));
