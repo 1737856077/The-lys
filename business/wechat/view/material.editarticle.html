@@ -63,8 +63,15 @@
                     <div class="class_con">
                         <label for="show_cover_pic">显示封面</label>
                         <select name="show_cover_pic" id="show_cover_pic" class="l_xiang">
-                            <option value="0" <eq name="info.show_cover_pic" value="0">selected="selected"{/if} >不显示</option>
-                            <option value="1" <eq name="info.show_cover_pic" value="1">selected="selected"{/if} >显示</option>
+                            {if condition="$info.show_cover_pic = 1"}
+                            <option value="0" >显示</option>
+                            <option value="1" >不显示</option>
+                            {else/}
+                            <option value="1" >不显示</option>
+                            <option value="0" >显示</option>
+                            {/if}
+
+
                         </select>
                     </div>
                     <div class="class_con">
