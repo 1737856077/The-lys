@@ -28,6 +28,28 @@ class Gift extends Controller
     }
 
     /**
+     * 保存图片
+     */
+    public function saveaddimg()
+    {
+        // 获取表单上传的文件，例如上传了一张图片
+        $file = request()->file('image');
+        if($file){
+            //将传入的图片移动到框架应用根目录/public/uploads/editorimg 目录下，ROOT_PATH是根目录下，DS是代表斜杠 /
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads'. DS . 'editorimg');
+            if ($info) {
+                $img_info = str_replace('\\', '/',$info->getSaveName());
+                $url   = "/public/uploads/editorimg/".$img_info ;
+                $datas = ["errno" => 0, "data" => [$url],"url"=>$url];
+                return json($datas);
+            } else {
+                // 上传失败获取错误信息
+                echo $file->getError();
+            }
+        }
+    }
+
+    /**
      * @return 添加礼品
      */
     public function add()
@@ -39,21 +61,28 @@ class Gift extends Controller
             $total = input('post.total');
             $integral = input('post.integral');
             $data_desc = input('post.data_desc');
+            $price = input('post.market_price');
             $request = Request::instance();
             $file = $request->file('images');
             $product_id = my_returnUUID();
+
+            //获取文本编辑器上传的图片
+
+
             $validate = new Validate(
                 [
                     'title' => 'require',
                     'total' => 'require',
                     'integral' => 'require',
                     'data_desc' => 'require',
+                    'market_price' => 'require',
                 ]);
             $data1 = ([
                 'title' => $title,
                 'total' => $total,
                 'integral' => $integral,
                 'data_desc' => $data_desc,
+                'market_price' => $price,
             ]);
             if (!$validate->check($data1)) {
                 $this->error($validate->getError(),'gift/add');
@@ -74,6 +103,7 @@ class Gift extends Controller
                         'images' => $info->getSaveName(),
                         'create_time' => time(),
                         'product_id'=>$product_id,
+                        'market_price'=>$price,
                     ];
                 } else {
                     $this->error($file->getError());
@@ -141,7 +171,6 @@ class Gift extends Controller
                     $this->error($file->getError());
                 }
             }
-//            dump($data);
             $res = Db::name('product_integral')->where('id', $id)->update($data);
             if ($res) {
                 return $this->success('编辑成功', 'gift/gift');

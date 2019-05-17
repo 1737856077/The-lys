@@ -90,12 +90,10 @@
     <script src="__STATIC__/business/s.txt"></script>
     <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/jquery.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+   <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
-    <script type="text/javascript" src="__STATIC__/uedtior/ueditor.config.js"></script>
-    <script type="text/javascript" src="__STATIC__/uedtior/ueditor.all.js"></script>
+   <!--<script type="text/javascript" src="__STATIC__/business/js/require.js"></script>-->
 
 </head>
 <body>
@@ -114,7 +112,7 @@
                             class="wi wi-back-circle"></i> </a>
                     <li>添加礼品</li>
                 </ol>
-                <form action="{:url('')}" class="we7-form ng-pristine ng-valid ng-scope" method="post"
+                <form action="{:url('gift/add')}" class="we7-form ng-pristine ng-valid ng-scope" method="post"
                       id="js-user-create" ng-controller="UserCreate" enctype="multipart/form-data">
 
                     <div class="form-group">
@@ -125,7 +123,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">图片</label>
+                        <label for="" class="control-label col-sm-2">主图片</label>
                         <div class="form-controls col-sm-8">
                             <input type="file" name="images" id="images">
                         </div>
@@ -137,28 +135,82 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="" class="control-label col-sm-2">市场售价</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="market_price" id="market_price" placeholder="请输入商品市场价格">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="" class="control-label col-sm-2">所需积分</label>
                         <div class="form-controls col-sm-8">
                             <input type="text" name="integral" id="integral" placeholder="请输入商品所需积分">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">商品详情</label>
-                        <div class="form-controls col-sm-8">
-                            <textarea name="data_desc" id="data_desc" cols="30" rows="10"></textarea>
-                            <script type="text/javascript">
-                                UE.getEditor("data_desc");//实例化编辑器  传参,id为将要被替换的容器。
-                            </script>
-                        </div>
+                        <label for="" class="control-label col-sm-2">礼品详情</label>
                     </div>
+                    <div class="form-group">
+                        <input type="hidden" name="img" id="sc" class="sc" value="">
+                        <div id="editor" style="width: 900px;"></div>
+                        <div style="width: 900px;">
+                            <input type="hidden" name="data_desc" id="data_desc" class="data_desc">
+                        </div>
 
-                    <input type="submit" name="submit" id="" value="提交" class="btn btn-primary"
-                           style="padding: 6px 50px;">
+                    </div>
+                    <input type="submit" name="submit" id="su" class="btn btn-primary" style="display: none;">
+                    <input type="button" name="submit" value="提交" class="btn btn-primary" onclick="f()" style="padding: 6px 50px;">
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="__STATIC__/admin/js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 关闭粘贴样式的过滤  //官网给的不起作用
+    editor.customConfig.pasteFilterStyle = false
+    // 忽略粘贴内容中的图片
+    editor.customConfig.pasteIgnoreImg = true
+    //绿色部分是对图片的设置，本地上传
+    editor.customConfig.debug = true;
+    editor.customConfig.uploadFileName = 'image';                       //上传的文件名
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.customConfig.uploadImgServer = "saveaddimg";  // 上传图片到服务器
+    editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;         //图片的尺寸
+    editor.customConfig.uploadImgMaxLength = 5;                     //最多上传多少
+    editor.customConfig.uploadImgParams = {
+        type: 'editor'  // 属性值会自动进行 encode ，此处无需 encode
+    };
 
+    // 自定义处理粘贴的文本内容
+    this.editor.customConfig.pasteTextHandle = function (lineContent) {
+        // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
+        if (lineContent == '' && !lineContent) return ''
+        var str = lineContent
+        str = str.replace(/<xml>[\s\S]*?<\/xml>/ig, '')
+        str = str.replace(/<style>[\s\S]*?<\/style>/ig, '')
+        str = str.replace(/<\/?[^>]*>/g, '')
+        str = str.replace(/[ | ]*\n/g, '\n')
+        str = str.replace(/&nbsp;/ig, '')
+        return str
+    }
+    editor.customConfig.uploadImgHooks ={
+        success: function (xhr, editor, result) {
+            $("#sc").val(result['url'])
+        }
+    }
+    var $lineContent = $('#lineContent')
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $lineContent.val(html)
+    }
+    editor.create()
+    function f() {
+        var data =  editor.txt.html()
+        $(".data_desc").val(data)
+        $("#su").click();
+    }
+</script>
 </body>
 </html>

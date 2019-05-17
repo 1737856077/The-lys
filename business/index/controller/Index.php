@@ -44,12 +44,16 @@ class Index extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
+        return $this->fetch();
+=======
 
         if(Session::has('adminname')){
             return $this->fetch(); }else{
             $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
         }
 
+>>>>>>> 3b2b557a1a198d01c5306ffaf5b3c128d53b9411
     }
 
     /**
