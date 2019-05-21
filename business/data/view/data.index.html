@@ -264,11 +264,8 @@
                         num.push(data.data[i].num);
                         ratio.push(data.data[i].ratio);
                     }
-                    /*for (var k = 0;k<3;k++){
-                        data1 = [
-                            {value:num[k],name:title[k]},
-                        ]
-                    }*/
+                    console.log(title);
+                    console.log(num);
                     var option = {
                         title : {
                             text: '礼品兑换数量显示',
@@ -288,6 +285,13 @@
                                 data: [
                                     {value:num[0],name:title[0]},
                                     {value:num[1],name:title[1]},
+                                    {value:num[2],name:title[2]},
+                                    {value:num[4],name:title[4]},
+                                    {value:num[5],name:title[5]},
+                                    {value:num[6],name:title[6]},
+                                    {value:num[7],name:title[7]},
+                                    {value:num[8],name:title[8]},
+                                    {value:num[9],name:title[9]},
                                 ],
                                 itemStyle: {
                                     emphasis: {

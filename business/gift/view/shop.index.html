@@ -81,7 +81,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>礼品管理页</title>
+    <title>礼品分类管理页</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
@@ -92,7 +92,7 @@
     <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
+    <!--<script type="text/javascript" src="__STATIC__/business/js/require.js"></script>-->
 </head>
 <body>
 <div class="loader" style="display:none">
@@ -106,7 +106,7 @@
         <div class="right-content" style="min-height: 490px;">
             <ul class="we7-page-tab">
                 <li class="active"><a
-                        href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;">礼品列表</a>
+                        href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;">礼品分类列表</a>
                 </li>
 
             </ul>
@@ -122,30 +122,12 @@
                                 class="fa fa-search"></i></button></span>
                     </div>-->
                 </form>
-                <form action="" id="commodity">
-                    <div class="pull-right">
-                        <a href="{:url('gift/add')}" class="btn btn-primary">+添加礼品</a>
-                    </div>
-
-                    <div class="pull-right">
-                        <a href="javascript:;" class="btn btn-primary" id="del">批量删除</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </div>
-                    <div class="pull-right">
-                        <a href="javascript:;" class="btn btn-primary" id="xia">批量下架</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </div>
-                    <div class="pull-right">
-                        <a href="javascript:;" class="btn btn-primary" id="qu">取消</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </div>
-                    <div class="pull-right">
-                        <a href="javascript:;" class="btn btn-primary" id="xuan">全选</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </div>
+                <div class="pull-right">
+                    <a href="{:url('shop/add')}" class="btn btn-primary">+添加分类</a>
+                </div>
             </div>
             <table class="table we7-table table-hover table-manage vertical-middle ng-scope"
-                   id="js-users-display" ng-controller="UsersDisplay">
+                   id="js-users-display" ng-controller="UsersDisplay" id="imgtable">
                 <colgroup>
                     <col width="150px">
                     <col width="150px">
@@ -159,95 +141,59 @@
                 </colgroup>
                 <tbody>
                 <tr>
+                    <th class="text-left">所属类别</th>
+                    <th class="text-left">礼品名称</th>
+                    <th class="text-left">添加时间</th>
                     <th class="text-left"></th>
-                    <th class="text-left">礼品名</th>
-                    <th>图片</th>
-                    <th>类别</th>
-                    <th>库存</th>
-                    <th>所需积分</th>
-                    <th>添加时间</th>
-                    <th class="text-right">操作</th>
                 </tr>
                 {volist name="list" id="vo"}
                 <tr ng-repeat="user in users" ng-if="users" class="ng-scope" id="$vo.id">
-                    <td>
-                        <input type="checkbox" name="chk[]" value="{$vo.id}">
-                    </td>
-                    <td class="text-left ng-binding" ng-bind="user.username">{$vo.title}</td>
+                    {if condition="$vo.pid eq 0"}
                     <td class="text-left ng-binding" ng-bind="user.username">
-                        <img src="__STATIC__/uploads/business/{$vo.images}" alt="" style="width: 90px;height: 70px;">
+                        顶级分类
                     </td>
-                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.name}</td>
-                    <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.total}</td>
-                    <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$vo.integral}</td>
-                    <td class="color-default ng-binding" ng-bind="user.maxwebapp">{$vo.create_time|date="Y-m-d",###}
+                    {else/}
+                    <td class="text-left ng-binding" ng-bind="user.username">
+                        {$vo.title}
                     </td>
-                    <!--<td>
-                        <span ng-bind="user.endtime" class="ng-binding">{$vo.data_status? '上架':'下架'}</span>
-                    </td>-->
+                    {/if}
+                    <td class="text-left ng-binding" ng-bind="user.username">
+                        {$vo.name}
+                    </td>
+
+                    <td class="text-left ng-binding" ng-bind="user.username">
+                        {$vo.create_time|date="Y-m-d",###}
+                    </td>
                     <td class="vertical-middle table-manage-td">
                         <div class="link-group ng-scope" ng-if="!user.founder">
-                            <a href="{:url('gift/edit')}?id={$vo.id}">编辑</a>
-                            <a href="{:url('gift/status')}?id={$vo.id}">{$vo.data_status? '下架':'上架'}</a>
-                            <a href="{:url('gift/del')}?id={$vo.id}">删除</a>
+                            <a href="javascript:;" onclick="f('{$vo.id}')" class="dels">删除分类</a>
                         </div>
                     </td>
                 </tr>
                 {/volist}
                 </tbody>
             </table>
-            </form>
             <div class="text-right">
-                {$list->render()}
             </div>
-
         </div>
         <script>
-            //全选全不选
-            $('#xuan').click(function () {
-                $('input[name="chk[]"]').attr('checked', true);
-            })
-            $('#qu').click(function () {
-                $('input[name="chk[]"]').attr('checked', false);
-            })
-            //批量删除
-            $('#del').click(function () {
-                var data = $("#commodity").serialize();
-                $.ajax({
-                    //几个参数需要注意一下
-                    type: "GET",//方法类型
-                    dataType: "json",//预期服务器返回的数据类型
-                    url: "{:url('gift/dels')}",//url
-                    data:data,
-                    success: function (result) {
-                        if(result){
-                            alert('批量删除成功');
-                            window.location.href="{:url('gift/gift')}";
-                        }else {
-                            alert('批量删除失败');
+            function f(data){
+                var id = data;
+                    $.ajax({
+                        //几个参数需要注意一下
+                        type: "GET",//方法类型
+                        dataType: "json",//预期服务器返回的数据类型
+                        url: "{:url('shop/del')}?id="+id,//url
+                        success: function (result) {
+                            if(result == 1){
+                                alert('此礼品有子级分类，不可直接删除');
+                            }else if (result == 2){
+                                alert('删除成功');
+                                window.location.reload();
+                            }
                         }
-                    }
-                });
-                })
-            //批量下架
-            $('#xia').click(function () {
-                var data = $("#commodity").serialize();
-                $.ajax({
-                    //几个参数需要注意一下
-                    type: "GET",//方法类型
-                    dataType: "json",//预期服务器返回的数据类型
-                    url: "{:url('gift/shelf')}",//url
-                    data:data,
-                    success: function (result) {
-                        if(result){
-                            alert('批量下架成功');
-                            window.location.href="{:url('gift/gift')}";
-                        }else {
-                            alert('批量下架成功');
-                        }
-                    }
-                });
-            })
+                    });
+            }
         </script>
     </div>
 </div>

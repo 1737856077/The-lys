@@ -22,7 +22,14 @@ class Gift extends Controller
     public function gift()
     {
         $id = Session::get('adminid');
-        $list = Db::name('product_integral')->where('admin_id', $id)->order('id','desc')->paginate(3);
+        $list = Db::name('product_integral')
+            ->alias('p')
+            ->join('class c','p.class_id = c.id')
+            ->field('p.*,c.name')
+            ->where('p.admin_id', $id)
+            ->order('p.id','desc')
+            ->paginate(3);
+//        dump($list);die;
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -54,10 +61,11 @@ class Gift extends Controller
      */
     public function add()
     {
+        $id = Session::get('adminid');
         if (Request::instance()->isPost()) {
             //提交逻辑
-            $id = Session::get('adminid');
             $title = input('post.title');
+            $class_id = input('post.pid');
             $total = input('post.total');
             $integral = input('post.integral');
             $data_desc =  htmlspecialchars(stripslashes($_POST['data_desc']));
@@ -68,6 +76,7 @@ class Gift extends Controller
             $validate = new Validate(
                 [
                     'title' => 'require',
+                    'class_id' => 'require',
                     'total' => 'require',
                     'integral' => 'require',
                     'data_desc' => 'require',
@@ -75,6 +84,7 @@ class Gift extends Controller
                 ]);
             $data1 = ([
                 'title' => $title,
+                'class_id' => $class_id,
                 'total' => $total,
                 'integral' => $integral,
                 'data_desc' => $data_desc,
@@ -92,6 +102,7 @@ class Gift extends Controller
                 if ($info) {
                     $data = [
                         'title' => $title,
+                        'class_id' => $class_id,
                         'total' => $total,
                         'integral' => $integral,
                         'data_desc' => $data_desc,
@@ -112,6 +123,8 @@ class Gift extends Controller
                 return $this->error('添加失败');
             }
         } else {
+            $name1 = Db::name('class')->where('admin_id',$id)->select();
+            $this->assign('name',$name1);
             return $this->fetch();
         }
 
