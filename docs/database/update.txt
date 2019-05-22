@@ -56,7 +56,7 @@ ALTER TABLE `sy_product_content` ADD `manufacturing_enterprise` VARCHAR(64) NULL
 ALTER TABLE `sy_product_content` ADD `business_enterprise` VARCHAR(64) NULL AFTER `manufacturing_enterprise`; 
 ALTER TABLE `sy_product_content` ADD `technical_guidance` VARCHAR(64) NULL AFTER `business_enterprise`; 
 ALTER TABLE `sy_product_content` ADD `hotline` VARCHAR(64) NULL AFTER `technical_guidance`; 
-
+ALTER TABLE `sy_news_class` ADD `class_type` TINYINT(1) NULL DEFAULT '0' AFTER `product_template_id`; 
 
 
 

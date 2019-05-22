@@ -88,12 +88,15 @@
                  </li>
                  {/if}
 
-                  {if auth('product/product/index') }
+                  {if auth('product/product/index')  or  auth('product/producttemplate/index') or auth('product/productvisit/index')}
                   <li class="tab">
                     <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">产品管理</a><em></em></div>
                     <ul class="ct" style="display:none;">
                         {if auth('product/product/index')}
                         <li><a href="__ROOT__/admin.php/product/product/index" target="mainframe">产品列表　</a></li>
+                        {/if}
+                        {if auth('product/producttemplate/index')}
+                        <li><a href="__ROOT__/admin.php/product/producttemplate/index" target="mainframe">产品模版　</a></li>
                         {/if}
                         {if auth('product/productvisit/index')}
                         <li><a href="__ROOT__/admin.php/product/product/index" target="mainframe">溯源统计　</a></li>
@@ -115,6 +118,21 @@
                          {/if}
                          {if auth('qrcode/qrreport/index')}
                          <li><a href="__ROOT__/admin.php/qrcode/qrreport/index" target="mainframe">二维码统计</a></li>
+                         {/if}
+                     </ul>
+                     <hr>
+                 </li>
+                 {/if}
+
+                 {if auth('news/index/index') or  auth('news/news/index') }
+                 <li class="tab">
+                     <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">新闻中心</a><em></em></div>
+                     <ul class="ct" style="display:none;">
+                         {if auth('news/index/index')}
+                         <li><a href="__ROOT__/admin.php/news/index/index" target="mainframe">新闻分类</a></li>
+                         {/if}
+                         {if auth('news/news/index')}
+                         <li><a href="__ROOT__/admin.php/news/news/index" target="mainframe">新闻列表</a></li>
                          {/if}
                      </ul>
                      <hr>
