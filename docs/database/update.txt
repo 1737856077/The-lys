@@ -45,3 +45,22 @@ CREATE TABLE IF NOT EXISTS `sy_domain_access_record` (
   `update_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`access_record_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+/*=== 2019-05-22==*/
+ALTER TABLE `sy_product_content` ADD `generic_name` VARCHAR(64) NULL AFTER `is_image`; 
+ALTER TABLE `sy_product_content` ADD `identification_code` VARCHAR(32) NULL AFTER `is_image`; 
+ALTER TABLE `sy_product_content` ADD `registration_information` VARCHAR(64) NULL AFTER `generic_name`; 
+ALTER TABLE `sy_product_content` ADD `batch_number` VARCHAR(64) NULL AFTER `registration_information`; 
+ALTER TABLE `sy_product_content` ADD `inspection_information` VARCHAR(64) NULL AFTER `batch_number`; 
+ALTER TABLE `sy_product_content` ADD `manufacturing_enterprise` VARCHAR(64) NULL AFTER `inspection_information`; 
+ALTER TABLE `sy_product_content` ADD `business_enterprise` VARCHAR(64) NULL AFTER `manufacturing_enterprise`; 
+ALTER TABLE `sy_product_content` ADD `technical_guidance` VARCHAR(64) NULL AFTER `business_enterprise`; 
+ALTER TABLE `sy_product_content` ADD `hotline` VARCHAR(64) NULL AFTER `technical_guidance`; 
+
+
+
+
+
+
+
+
