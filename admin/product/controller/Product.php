@@ -102,6 +102,17 @@ class Product extends CommonBase
         $ModelAdmin=Db::name('admin');
 
         $title=htmlspecialchars(isset($param['title']) ? trim($param['title']) : '');
+
+        $identification_code=htmlspecialchars(isset($param['identification_code']) ? trim($param['identification_code']) : '');
+        $generic_name=htmlspecialchars(isset($param['generic_name']) ? trim($param['generic_name']) : '');
+        $registration_information=htmlspecialchars(isset($param['registration_information']) ? trim($param['registration_information']) : '');
+        $batch_number=htmlspecialchars(isset($param['batch_number']) ? trim($param['batch_number']) : '');
+        $inspection_information=htmlspecialchars(isset($param['inspection_information']) ? trim($param['inspection_information']) : '');
+        $manufacturing_enterprise=htmlspecialchars(isset($param['manufacturing_enterprise']) ? trim($param['manufacturing_enterprise']) : '');
+        $business_enterprise=htmlspecialchars(isset($param['business_enterprise']) ? trim($param['business_enterprise']) : '');
+        $technical_guidance=htmlspecialchars(isset($param['technical_guidance']) ? trim($param['technical_guidance']) : '');
+        $hotline=htmlspecialchars(isset($param['hotline']) ? trim($param['hotline']) : '');
+
         $IMAGES='';
         $data_status=htmlspecialchars(isset($param['data_status']) ? intval($param['data_status']) : 0);
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
@@ -159,9 +170,33 @@ class Product extends CommonBase
             'create_time'=>$gettime,
             'update_time'=>$gettime,
         );
-        $ReturnID=$ModelProduct->insert($data);
+        $ReturnID=$ModelProduct->insertGetId($data);
         if($ReturnID){
-            $this->success("操作成功",url("product/index"),3);
+            $rr = $ModelProduct->where('id',$ReturnID)->find();
+            $content =  [
+                'identification_code'  =>$identification_code,
+                'generic_name'=>$generic_name,
+                'registration_information'=>$registration_information,
+                'batch_number'=>$batch_number,
+                'inspection_information'=>$inspection_information,
+                'manufacturing_enterprise'=>$manufacturing_enterprise,
+                'business_enterprise'=>$business_enterprise,
+                'technical_guidance'=>$technical_guidance,
+                'hotline'=>$hotline,
+                'title'=>$title,
+                'product_id'=>$rr['product_id'],
+                'product_content_id'=>my_returnUUID(),
+                'create_time'=>$gettime,
+                'update_time'=>$gettime,
+                'is_image'=>0
+            ];
+            $res = Db::name('product_content')->insert($content);
+            if ($res){
+                $this->success("操作成功",url("product/index"),3);
+            }else{
+                Db::name('product')->where('$ReturnID')->delete();
+                $this->error("操作失败",url("product/index"),3);
+            }
         }else{
             $this->error("操作失败",url("product/index"),3);
         }

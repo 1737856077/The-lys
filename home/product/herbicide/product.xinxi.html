@@ -74,41 +74,102 @@
         </div>
         <div class="maintableBox">
             <div class="contentBox">
-                <p class="title">生产经营信息</p>
+           <div style="text-align: center">
+               <img style="height:190px;text-align: center; display: inline-block;
+  height: auto;
+  width: 200px;
+  border-radius:10px 10px 10px 10px;
+  max-width: 100%;" src="__STATIC__/home/images_herbicide/img/swipers01.jpg" alt="">
+           </div>
                 <table border="0" cellspacing="0" cellpadding="0" width="100%" class="table01 bor-top">
                     <tr>
-                        <th>生产企业:</th>
-                        <td>云南勐牛生物技术有限公司</td>
+                        <th>标识码:</th>
+                        <td>{$getoneProductContent['identification_code']?$getoneProductContent['identification_code']:'标识码不见了'}</td>
                     </tr>
                     <tr>
-                        <th>生产日期:</th>
-                        <td>{:$getoneProductCode['manufacture_date'] == 0 ? '' : date('Y年m月d日',$getoneProductCode['manufacture_date'])}</td>
-                    </tr>
-                    <tr>
-                        <th>生产批次:</th>
-                        <td>{$getoneProductCode['production_batch']}</td>
-                    </tr>
-                    <tr>
-                        <th>查询次数:</th>
-                        <td>第
-                            {if condition="$getoneProductCodeInfo['code_plain_query_total']>=1"}{$getoneProductCodeInfo['code_plain_query_total']}
-                            {else /}
-                             0
-                            {/if}次查询
+                        <th>通用名:</th>
+                        <td>
+                            {$getoneProductContent['generic_name']? $getoneProductContent['generic_name'] :"名称不见了" }
                         </td>
                     </tr>
                     <tr>
+                        <th>商品名:</th>
+                        <td>
+                            {$getoneProductContent['title']? $getoneProductContent['title'] :"名称不见了" }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>登记信息:</th>
+                        <td>
+                            {$getoneProductContent['registration_information']? $getoneProductContent['registration_information'] :"登记不见了" }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>生产批号:</th>
+                        <td>
+                            {$getoneProductContent['batch_number']? $getoneProductContent['batch_number'] :"生产批号不见了" }
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>检验信息:</th>
+                        <td>
+                            {$getoneProductContent['inspection_information']? $getoneProductContent['inspection_information'] :"检验信息不见了" }</td>
+                    </tr>
+                    <tr>
+                        <th>生产企业:</th>
+                        <td>
+                            云南勐牛生物技术有限公司   </td>
+                    </tr>
+                    <tr>
                         <th>经营企业:</th>
-                        <td>{$getoneProductCode['business_enterprise']}</td>
+                        <td>
+                            {$getoneProductContent['business_enterprise']? $getoneProductContent['business_enterprise'] :"经营企业不见了" }
+                        </td>
                     </tr>
                     <tr>
-                        <th>经 营 者:</th>
-                        <td>{$getoneProductCode['contacts']}</td>
+                        <th>技术指导:</th>
+                        <td>
+                            {$getoneProductContent['technical_guidance']? $getoneProductContent['technical_guidance'] :"技术指导不见了" }</td>
                     </tr>
                     <tr>
-                        <th>联系方式:</th>
-                        <td>{$getoneProductCode['tel']}</td>
+                        <th>服务热线:</th>
+                        <td>
+                            {$getoneProductContent['hotline']? $getoneProductContent['hotline'] :"服务热线不见了" }</td>
                     </tr>
+
+                    <!--<tr>-->
+                        <!--<th>生产企业:</th>-->
+                        <!--<td>云南勐牛生物技术有限公司</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>生产日期:</th>-->
+                        <!--<td>{:$getoneProductCode['manufacture_date'] == 0 ? '' : date('Y年m月d日',$getoneProductCode['manufacture_date'])}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>生产批次:</th>-->
+                        <!--<td>{$getoneProductCode['production_batch']}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>查询次数:</th>-->
+                        <!--<td>第-->
+                            <!--{if condition="$getoneProductCodeInfo['code_plain_query_total']>=1"}{$getoneProductCodeInfo['code_plain_query_total']}-->
+                            <!--{else /}-->
+                             <!--0-->
+                            <!--{/if}次查询-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>经营企业:</th>-->
+                        <!--<td>{$getoneProductCode['business_enterprise']}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>经 营 者:</th>-->
+                        <!--<td>{$getoneProductCode['contacts']}</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<th>联系方式:</th>-->
+                        <!--<td>{$getoneProductCode['tel']}</td>-->
+                    <!--</tr>-->
                 </table>
             </div>
         </div>
