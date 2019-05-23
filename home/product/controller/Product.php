@@ -557,9 +557,11 @@ class Product extends CommonBase
         //查询产品码信息
         $getoneProductCode=$ModelProductCode->where("product_code_id='$getoneProductCodeInfo[product_code_id]'")->find();
         //查询产品内容信息
-        $getoneProductContent = $ModelProductContent->where('product_id',$getoneProductCodeInfo['product_id'])->find();
+        $listProductContent = $ModelProductContent->where('product_id',$getoneProductCodeInfo['product_id'])
+            ->order("data_sort ASC,create_time ASC")
+            ->select();
         $this->assign('param',$param);
-        $this->assign('getoneProductContent',$getoneProductContent);
+        $this->assign('listProductContent',$listProductContent);
         $this->assign('getoneProductCode',$getoneProductCode);
         $this->assign('getoneProductCodeInfo',$getoneProductCodeInfo);
         return $this->fetch('xinxi');

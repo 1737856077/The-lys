@@ -82,61 +82,14 @@
   max-width: 100%;" src="__STATIC__/home/images_herbicide/img/swipers01.jpg" alt="">
            </div>
                 <table border="0" cellspacing="0" cellpadding="0" width="100%" class="table01 bor-top">
-                    <tr>
-                        <th>标识码:</th>
-                        <td>{$getoneProductContent['identification_code']?$getoneProductContent['identification_code']:'标识码不见了'}</td>
-                    </tr>
-                    <tr>
-                        <th>通用名:</th>
-                        <td>
-                            {$getoneProductContent['generic_name']? $getoneProductContent['generic_name'] :"名称不见了" }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>商品名:</th>
-                        <td>
-                            {$getoneProductContent['title']? $getoneProductContent['title'] :"名称不见了" }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>登记信息:</th>
-                        <td>
-                            {$getoneProductContent['registration_information']? $getoneProductContent['registration_information'] :"登记不见了" }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>生产批号:</th>
-                        <td>
-                            {$getoneProductContent['batch_number']? $getoneProductContent['batch_number'] :"生产批号不见了" }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>检验信息:</th>
-                        <td>
-                            {$getoneProductContent['inspection_information']? $getoneProductContent['inspection_information'] :"检验信息不见了" }</td>
-                    </tr>
-                    <tr>
-                        <th>生产企业:</th>
-                        <td>
-                            云南勐牛生物技术有限公司   </td>
-                    </tr>
-                    <tr>
-                        <th>经营企业:</th>
-                        <td>
-                            {$getoneProductContent['business_enterprise']? $getoneProductContent['business_enterprise'] :"经营企业不见了" }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>技术指导:</th>
-                        <td>
-                            {$getoneProductContent['technical_guidance']? $getoneProductContent['technical_guidance'] :"技术指导不见了" }</td>
-                    </tr>
-                    <tr>
-                        <th>服务热线:</th>
-                        <td>
-                            {$getoneProductContent['hotline']? $getoneProductContent['hotline'] :"服务热线不见了" }</td>
-                    </tr>
-
+                    {foreach $listProductContent as $value}
+                        {if $value['content'] != ''}
+                        <tr>
+                            <th>{$value['title']}:</th>
+                            <td>{$value['content']}</td>
+                        </tr>
+                        {/if}
+                    {/foreach}
                     <!--<tr>-->
                         <!--<th>生产企业:</th>-->
                         <!--<td>云南勐牛生物技术有限公司</td>-->
