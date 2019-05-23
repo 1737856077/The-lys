@@ -20,6 +20,7 @@ class Productcode extends CommonBase
      * @描述：信息列表页面
      */
     public function  index(){
+        $id = Session::get('adminid');
         $param = $this->request->param();
         //查询
         $SearchTitle = isset($param['SearchTitle']) ? trim(htmlspecialchars(urldecode($param['SearchTitle']))) : '' ;
@@ -64,6 +65,7 @@ class Productcode extends CommonBase
         $resultArr=array();
         $List=$ModelProductCode->where($_where)
             ->where($_whereIn)
+            ->where('admin_id',$id)
             ->order('create_time DESC')
             ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
         $show=$List->render();
