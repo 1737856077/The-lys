@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>财务中心</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+    <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
+    <link href="__STATIC__/business/css/common.css" rel="stylesheet">
+    <script src="__STATIC__/business/s.txt"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
+</head>
+<body>
+<div class="loader" style="display:none">
+    <div class="la-ball-clip-rotate">
+        <div></div>
+    </div>
+</div>
+
+<div class="panel panel-content main-panel-content ">
+    <div class="panel-body clearfix main-panel-body menu-fixed">
+                    <div class="right-content" style="min-height: 490px; margin-left: 0px;">
+                        <ul class="we7-page-tab">
+                            <li class="active"><a
+                                    href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=profile&amp;">我的账户</a>
+                            </li>
+                        </ul>
+                        <div id="js-user-profile" ng-controller="UserProfileDisplay" class="ng-scope">
+                            <div class="base">
+                                <table class="table we7-table table-hover table-form">
+                                    <colgroup>
+                                        <col width="140px ">
+                                        <col>
+                                        <col width="120px">
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <th class="text-left" colspan="3">账户信息</th>
+                                    </tr>
+                                    <!--<tr>
+                                        <td class="table-label">账户余额</td>
+                                        <td ng-bind="user.username" class="ng-binding"><span>{$money['account']}&nbsp;&nbsp;&nbsp;&nbsp;(元)</span></td>
+                                    </tr>-->
+                                    <tr>
+                                        <td class="table-label">消费明细</td>
+                                        <td>******</td>
+                                        <td>
+                                            <div class="link-group"><a href="{:url('money/consumption')}">查看</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">商家续费</td>
+                                        <td>******</td>
+                                        <td>
+                                            <!--<div class="link-group"><a href="__ROOT__/onlinepay/alipay/index" >充值</a></div>-->
+                                            <div class="link-group"><a href="{:url('money/money')}" >续费</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">发票申请</td>
+                                        <td>******</td>
+                                        <td>
+                                            <div class="link-group"><a href="{:url('money/invoice')}" class="shen">申请</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-label">发票申请进度</td>
+                                        <td>******</td>
+                                        <td>
+                                            <div class="link-group"><a href="{:url('money/invoice_list')}" class="shen">查看</a></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>发票管理</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/Admin.js"></script>
+</head>
+
+<body>
+<div class="container">
+	
+    <div class="cont_title">　你当前的位置：后台管理 &nbsp;-&nbsp; 系统管理员&nbsp;-&nbsp;<a href="">发票管理</a> - 处理发票</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <form action="{:url('invoice/edit')}?id={$list.id}" method="post" enctype="multipart/form-data">
+        	<table class="listtable">
+            	<tr class="tr1">
+                	<td colspan="2" class="tit">待处理发票信息</td>
+                </tr>
+               <tr class="tr1">
+                    <td class="tdl">申请金额<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="price" id="price" type="text" onBlur="Onblur_name()" value="{$list.price}" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">发票抬头<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="title" id="title" type="text" onBlur="Onblur_name()" value="{$list.title}" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">纳税人识别号<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="taxpayer_number" id="taxpayer_number" type="text" onBlur="Onblur_name()" value="{$list.taxpayer_number}" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">邮寄地址<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="express_address" id="express_address" type="text" onBlur="Onblur_name()" value="{$list.express_address}" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">开户行及账号<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="" id="" type="text" onBlur="Onblur_name()" value="{$list.account}" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">收件人手机号<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="phone" id="phone" type="text" onBlur="Onblur_name()" value="{$list.phone}" readonly="readonly"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">备注<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="data_desc" id="data_desc" type="text" onBlur="Onblur_name()" value="{$list.content}" readonly="readonly" style="width: 250px;height: 50px;"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">发票内容<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="content" id="content" type="text" onBlur="Onblur_name()" value="{$list.content}" readonly="readonly" style="width: 250px;height: 50px;"/>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">选择快递<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <select name="delivery_express_id" id="delivery_express_id">
+                            <option value="1">顺丰快递</option>
+                            <option value="2">中通快递</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="tdl">快递单号<span style="color:#f00;"></span></td>
+                    <td class="tdr" style="padding-top:5px;">
+                        <input name="delivery_express_number" id="delivery_express_number" type="text" onBlur="Onblur_name()" placeholder="请填写快递单号" />
+                    </td>
+                </tr>
+                <tr class="tr1">
+                	<td class="tdl"></td>
+                 <td class="tdr" style="padding-top:5px;">
+                  <input type="submit" name="Submit" value="提交"  class="buttomorger" />　
+                 </td>
+               </tr>
+            </table>
+      </form>      
+        </div>
+    
+    </div>
+    
+    
+</div>
+
+
+
+</body>
+</html>

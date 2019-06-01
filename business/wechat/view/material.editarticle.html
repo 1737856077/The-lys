@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html style="overflow-y:scroll">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/PublicMaterialAddAjax.js"></script>
+    <script type="text/javascript">
+	var w,h;
+	function getSrceenWH(){
+		w = $(window).width();
+		h = $(window).height();
+		$('#dialogBg').width(w).height(h);
+	}
+	window.onresize = function(){  
+		getSrceenWH();
+	}
+	
+	$(window).resize();  
+	
+	
+	</script> 
+    <style>
+        #edit-div {
+            flex-direction: column;
+            margin-left: 133px;
+            width:960px;
+            vertical-align: top;
+            margin-top: -26px;
+        }
+    </style>
+</head>
+<body style="height:auto">
+<div class="menus">
+    <div class="menus_r">
+        <div id="con_two_1" style="display: block;">
+            <div class="maps">
+                <i></i>
+                <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; <a href="{:url('Material/articles')}">图文列表</a>&nbsp;>&nbsp; <a href="">图文回复</a></p>
+                <div class="maps_r">
+                    <input type="text"  class="sou_l"/>
+                    <input type="button" class="sou_r" value="搜索" />
+                </div>
+            </div>
+            <!--column end-->
+            <div class="clas_box">
+                <form action="{:url('Material/updateArticleDb')}" method="post">
+                    <div class="class_con">
+                        <label for="title">标题</label>
+                        <input type="text" name="title" id="title" value="{$info.title}"/>
+                        <span>最多支持50字</span>
+                    </div>
+                    <div class="class_con">
+                        <label for="author">作者</label>
+                        <input type="text" name="author" id="author" value="{$info.author}"/>
+                        <span>最多支持50字</span>
+                    </div>
+                    <div class="class_con">
+                        <label for="show_cover_pic">显示封面</label>
+                        <select name="show_cover_pic" id="show_cover_pic" class="l_xiang">
+                            {if condition="$info.show_cover_pic = 1"}
+                            <option value="0" >显示</option>
+                            <option value="1" >不显示</option>
+                            {else/}
+                            <option value="1" >不显示</option>
+                            <option value="0" >显示</option>
+                            {/if}
+
+
+                        </select>
+                    </div>
+                    <div class="class_con">
+                        <label for="thumb_media_id">缩略图名称</label>
+                        <input type="text" name="thumb_media_title" id="thumb_media_title" disabled="disabled" />
+                        <input type="hidden" name="thumb_media_id" id="thumb_media_id" value="{$info.thumb_media_id}"/>
+                        <span>最多支持50字</span>
+                        <a href="javascript:Oclick_ShowBox('image');" class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                    </div>
+                    <div class="class_con">
+                        <label for="digest">简介</label>
+                        <input type="text" name="digest" id="digest" style="width:964px" value="{$info.digest}" />
+                    </div>
+                    <div class="class_con">
+                        <label >正文</label>
+                        <div id="edit-div">
+                            <script id="editor" name="content" type="text/plain" style="width:960px;height:300px;"></script>
+                        </div>
+                    </div>
+
+                    <div class="class_con">
+                        <label for="content_source_url">原文URL</label>
+                        <input type="text" name="content_source_url" id="content_source_url" value="{$info.content_source_url}"/>
+                        <span>图文消息的原文地址，即点击“阅读原文”后的URL。</span>
+                    </div>
+                    <div class="de_y">
+                        <button tyle="submit" class="de_y_l" style="background:#00b6ea">确定</button>
+                        <a href="" class="de_y_r" style="background:#9b8975">返回</a>
+                    </div>
+                    <input type="hidden" name="atr_id" value="{$info.atr_id}">
+                </form>
+                <span class="by">Powered by Ecomma.net</span>
+            </div>
+            <!-- classify end -->
+        </div>
+    </div>
+</div>
+
+<div id="dialogBg" style="display:none;">
+	<div id="dialog">
+    
+		<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+    
+		<div class="menus_r_openwindow" id="div_material_image" style="display:none;  overflow-x: hidden; ">
+        		<input type="hidden" name="PageMaterial_image" id="PageMaterial_image" value="1" autocomplete="off" />
+        		<div class="maps" style="margin-top: 0px; margin-left:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_image"  style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_image">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                            <td class="mid_thr">文件</td>
+                            <td class="mid_thr">标题</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                        
+                    	</tbody>
+                    </table>
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_image" onclick="AjaxMaterialSearchInfo('image')">点击加载更多...</div>
+                    <script type="text/javascript">AjaxMaterialSearchInfo('image');</script>
+                </div>
+        </div>
+        
+	</div>
+</div>   
+
+<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="__STATIC__/admin/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__STATIC__/admin/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__STATIC__/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('editor');
+    ue.ready(function() {
+        ue.setContent('{$info.content}');
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8">-->
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">-->
+    <!--<title>账单</title>-->
+    <!--<link href="__STATIC__/integral/css/user.css" rel="stylesheet" type="text/css"/>-->
+    <!--<link type="text/css" rel="stylesheet" href="__STATIC__/integral/css/common1.css">-->
+    <!--<link  type="text/css" rel="stylesheet" href="__STATIC__/integral/css/billl.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="bill_title">我的账单</div>-->
+<!--<div class="bill_cons">-->
+    <!--<div class="bill_con">-->
+        <!--<div style="text-align: center">-->
+            <!--我的积分:{$invoice_money}-->
+        <!--</div>-->
+        <!--{foreach name="data" id="datas"}-->
+        <!--<a href="javascript:void(0)" class="bill_01">-->
+            <!--<div class="income">-->
+                <!--<div class="income_l fl">-->
+                    <!--<p class="zf">订单:{$datas.order_no}</p>-->
+                    <!--{$datas.integral_type==2?"<img src='__STATIC__/integral/img/fu.png' alt=''>":"<img src='__STATIC__/integral/img/shou.png' alt=''>"}-->
+
+                    <!--<p class="ye">￥<span>{$datas.price}</span></p>-->
+                <!--</div>-->
+                <!--<div class="income_r fr">-->
+                    <!--<span class="year_r">{$datas.create_time|date="Y-m-d H:i:s",###}</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</a>-->
+       <!--{/foreach}-->
+
+    <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<footer class="aui-footer aui-footer-fixed">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a href="{:url('index/index/index')}"  class="aui-tabBar-item">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="aui-tabBar-item-icon">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="icon icon-loan"></i>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span  style="color: #4a4d54" class="aui-tabBar-item-text">首页</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<a href="javascript:;" class="aui-tabBar-item">&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="aui-tabBar-item-icon">&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<i class="icon icon-credit"></i>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="aui-tabBar-item-text">直达</span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</a>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<a href="{:url('integral/index/index')}" class="aui-tabBar-item">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="aui-tabBar-item-icon">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="icon icon-meTo"></i>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span style="color: #4a4d54" class="aui-tabBar-item-text">积分兑换</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<a href="javascript:;" class="aui-tabBar-item">&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="aui-tabBar-item-icon">&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<i class="icon icon-my"></i>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="aui-tabBar-item-text">关注</span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;</a>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<a href="{:url('member/index/index')}" class="aui-tabBar-item ">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="aui-tabBar-item-icon">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="icon icon-find"></i>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span style="color: #4a4d54" class="aui-tabBar-item-text">我的</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</footer>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>收益</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <script src="__STATIC__/integral/js/rem.js" ></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/page.css" />
+    <style>
+        .shouyi .top .two .shang {
+            margin: 0 auto;
+            width: 4.5rem;
+            height: 4.5rem;
+            text-align: center;
+            line-height: 4.5rem;
+            background: url("__STATIC__/integral/img/49.png") center no-repeat;
+            background-size: contain;
+            color: #fff;
+            font-size: .7rem;
+        }
+        .shouyi .top .two .xia span {
+            background: url("__STATIC__/integral/img/12.png")left no-repeat;
+            background-size: .5rem;
+            color: #FF9922;
+            padding-left: .6rem;
+            display: inline-block;
+            margin-left: 4%;
+        }
+    </style>
+</head>
+<body>
+<div class="shouyi clearfloat main">
+    <!-- 收益 star -->
+    <div class="top clearfloat">
+        <div class="one clearfloat box-s">
+
+        </div>
+        <div  class="two clearfloat">
+            <div class="shang clearfloat">
+               剩余: {$invoice_money}
+            </div>
+            <div  class="xia clearfloat">
+                <a href="tixian.html">
+                    <!--账户余额¥20.00-->
+                    <!--<span>提现</span>-->
+                </a>
+            </div>
+        </div>
+        <div class="three clearfloat">
+            <div class="zuo clearfloat fl">
+                <p class="tit">消费总积分</p>
+                <img src="__STATIC__/integral/img/11.png" >
+                <p class="fu-tit">{$x}</p>
+            </div>
+            <span class="fl line"></span>
+            <div class="you clearfloat fl">
+                <p class="tit">获得总积分</p>
+                <img src="__STATIC__/integral/img/10.png">
+                <p class="fu-tit">{$zhong}</p>
+            </div>
+        </div>
+        <div class="four clearfloat box-s">
+            <img src="__STATIC__/integral/img/48.png" >
+
+            资金托管于第三方，已在公安局备案
+        </div>
+    </div>
+    <!-- 收益 end -->
+
+    <!-- paihang star -->
+    <div class="paihang clearfloat">
+        <p class="tit box-s">消费账单</p>
+        <div class="content clearfloat">
+
+
+            {foreach name="data" id="datas"}
+            <div class="list clearfloat fl">
+                <div class="zuo clearfloat fl">
+                    <ul>
+                        <li>{$datas.id}</li>
+                        <li class="tu">
+                            <a href="brcenter.html">
+                                <span></span>
+                                {$datas.integral_type==2?"<img src='__STATIC__/integral/img/fu.png' alt=''>":"<img   src='__STATIC__/integral/img/shou.png' alt=''>"}
+                            </a>
+                        </li>
+                        <li>
+                            {switch name="$datas.integral_type" }
+                            {case value="0" }扫码得积分{/case}
+                            {case value="1"}关注微信得积分{/case}
+                            {default /}对换礼品消费积分
+                            {/switch}
+                        </li>
+                    </ul>
+                </div>
+                <div class="you clearfloat fr">
+                    ￥<span>{$datas.price}</span><span></span>
+                </div>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+    <!-- paihang end -->
+
+    <!--xgtouzi star-->
+    <div class="xgtouzi clearfloat">
+        <div class="top clearfloat">
+            <img src="__STATIC__/integral/img/ewm.jpg" >
+        </div>
+        <div class="bottom clearfloat">
+            长按识别二维码
+        </div>
+        <!-- <div class="list clearfloat">
+            <a href="#">发布计划</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="#">新手课堂</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="#">关于我们</a>
+        </div> -->
+    </div>
+    <!--xgtouzi end-->
+
+</div>
+</body>

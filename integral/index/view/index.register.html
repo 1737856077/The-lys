@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport"
+          content="height=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <title></title>
+    <link rel="stylesheet" href="__STATIC__/integral/css/register.css"/>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<script>
+    function mobile() {
+        var data = $("#mobile").val();
+        alert($("#mobile").val())
+    }
+</script>
+<div class="register">
+    <div class="regTop" style="background: #4a4d54">
+        <span>用户注册</span>
+        <a class="back" style='text-decoration:none;' href="javascript:history.go(-1)">&lt;&nbsp;返回</a>
+    </div>
+    <div class="content">
+        <div class="point">
+        </div>
+        <form class="form1" id="form1">
+            <div class="message">
+                <input type="text" name="username" placeholder="请输入用户名" required/>
+                <input type="hidden" id="token" value="">
+                <input type="tel" class="tel" id="tel" name="moblie" placeholder="输入手机号" pattern="[0-9]{11}" required/>
+                <input type="password" name="pwd" placeholder="请输入6-25位密码" pattern="[0-9A-Za-z]{6,25}" required/>
+                <input type="password" placeholder="请再次输入密码" pattern="[0-9A-Za-z]{6,25}" required/>
+                <input type="text" id="yzm" class="yzm" name="code" onmouseout="fff()" value="" placeholder="输入验证码" required/>
+                <input type="button" style="border: 0px;background: #f9fffe;" id="sendmsg" value="获取验证码">
+            </div>
+            <div class="agree">
+                <p class="tishi" id="tishi"></p>
+            </div>
+            <input class="submit" style="background: #4a4d54" onclick="tishi()" value="提交" type="button">
+        </form>
+        <script>
+            function fff() {
+                var data = $("#yzm").val();
+                var tel = $('#tel').val();
+                var datas = (new Date()).valueOf();
+                $.ajax({
+                    url: "{:url('api/sms/check_code')}",
+                    data: {phone: tel, code: data, 'time': datas},
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data['code'] == 200) {
+                            $("#tishi").html(data['msg'])
+                        } else {
+                            $("#tishi").html(data['msg'])
+                        }
+                    }
+                });
+            }
+        </script>
+        <script>
+            /*-------------------------------------------*/
+            var InterValObj; //timer变量，控制时间
+            var count = 60; //间隔函数，1秒执行
+            var curCount;//当前剩余秒数
+            var code = ""; //验证码
+            var codeLength = 6;//验证码长度
+            $(function () {
+                $('#sendmsg').click(function () {
+                    var tel = $('#tel').val();
+                    var data = (new Date()).valueOf();
+                    $.ajax({
+                        type: "POST",
+                        url: "{:url('api/sms/get_code_by_phone')}",
+                        data: {phone: tel, 'time': data},
+                        success: function (data) {
+                            if (data['code'] == 200) {
+                                curCount = count;
+                                //设置button效果，开始计时
+                                $("#sendmsg").css("background-color", "#f9fffe");
+                                $("#sendmsg").attr("disabled", "true");
+                                $("#sendmsg").val("请在" + curCount + "秒内验证");
+                                InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+                                $("#tishi").html(data['msg'])
+                            } else {
+                                $("#tishi").html(data['msg'])
+                            }
+                        },
+                        dataType: 'json'
+                    });
+                });
+                $('#submit').click(function () {
+                    var yzm = $('#yzm').val();
+                    $.ajax({
+                        url: "{:url('index/check_dx')}",
+                        data: {yzm: yzm},
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data['code'] == 200) {
+                                $("#tishi").html(data['msg'])
+                            } else {
+                                $("#tishi").html(data['msg'])
+                            }
+                        }
+                    });
+                });
+            });
+
+            function SetRemainTime() {
+                if (curCount == 0) {
+                    window.clearInterval(InterValObj);//停止计时器
+                    $("#sendmsg").removeAttr("disabled");//启用按钮
+                    $("#sendmsg").css("background-color", "#f9fffe");
+                    $("#sendmsg").val("重发验证码");
+                    code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
+                }
+                else {
+                    curCount--;
+                    $("#sendmsg").val("请在" + curCount + "秒内验证");
+                }
+            }
+
+            function tishi() {
+                var data = $("#yzm").val();
+                var tel = $('#tel').val();
+                var datas = (new Date()).valueOf();
+                // $.ajax({
+                //     url: "{:url('api/sms/check_code')}",
+                //     data: {phone: tel, code: data, 'time': datas},
+                //     type: "post",
+                //     dataType: "json",
+                //     success: function (data) {
+                //         if (data['code'] == 200) {
+                            $.ajax({
+                                //几个参数需要注意一下
+                                type: "POST",//方法类型
+                                dataType: "json",//预期服务器返回的数据类型
+                                url: "{:url('register/register')}",//url
+                                data: $('#form1').serialize(),
+                                success: function (data) {
+                                    if (data['code'] == 200) {
+                                        $("#tishi").html(data['msg'])
+                                        window.location.href = "__URL__/integral";
+                                    }
+                                    else {
+                                        $("#tishi").html(data['msg'])
+                                    }
+                                }
+                            });
+                        // } else {
+                        //     $("#tishi").html(data['msg'])
+                        // }
+                //     }
+                // });
+
+
+            }
+
+            function rep() {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "{:url('register/rep')}",//url
+                    data: $('#moblie').serialize(),
+                    success: function (result) {
+                        if (result == 200) {
+                            $("#tishi").html("ok")
+                        } else {
+                            $("#tishi").html("手机号已经存在")
+                        }
+                    }
+                });
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>

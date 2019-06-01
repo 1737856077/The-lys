@@ -1,0 +1,88 @@
+.commodity_top{ width: 100%; height: auto; overflow: hidden; background: #fff; padding-top: 10px; padding-bottom: 10px}
+.commodity_top_l{ /* width: 80%; */padding-left: 10px;float: left; }
+.commodity_top_l img{ display: inline-block;/*  width: 15%;  */vertical-align: middle;width: 28%;border-radius: 100%}
+.commodity_top_l span{ font-size: 16px; display: inline-block; vertical-align: middle; color:#666; margin-left: 5px}
+.commodity_top_r{ width:52px; height: 25px; line-height: 25px; font-size: 14px; border:1px solid #f1290e; color:#fff; border-radius: 3px 3px 3px 3px; background: #f1290e; display: inline-block; text-align: center; vertical-align:middle; margin-top:4px;float: right; margin-right: 10px}
+.commodity_banner{ width: 100%; height: auto; overflow: hidden; background: #fff}
+a.commodity_02{ width: 100%; height: auto;}
+a.commodity_02 img{display: block; width: 100%}
+
+a.commodity_03{ width: 100%; height: auto; }
+a.commodity_03 img{display: block; width: 100%;margin-top: 2%}
+.commodity_title{ width: 96%; height: auto; overflow: hidden; margin: 0 auto; padding-top: 10px}
+.commodity_title a{ display: inline-block;}
+.commodity_title a h3{ font-size: 16px; color:#333333; font-weight: normal; display: inline-block;}
+.commodity_title div{ display: inline-block; float: right}
+.commodity_title div span{ display: inline-block; color:#f87301; font-size: 12px}
+.commodity_title div p{ display: inline-block; color:#f87301; font-size: 16px}
+.fugu{width: 96%; line-height: 20px; height: auto;margin: 0 auto; font-size: 13px; color:#8b8b8b; padding-top: 10px; padding-bottom: 10px}
+.help{ width: 100%; height: auto; overflow: hidden; padding: 10px 0;}
+.help ul{ width: 100%}
+.help ul li{ width: 33%; float: left; text-align: center; border-right:1px solid #e1e1e1;}
+.help ul li a{ display: inline-block; }
+.help_01 a .spans_heart{ background: url(../images/star.png) left center no-repeat;  background-size:20px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle;} 
+.help_01 a .span_select{ background: url(../images/star_change.png) left center no-repeat; background-size:20px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle;}
+.help_01 a p{  display: inline-block;height: 20px;vertical-align: top; margin-top: 3px}
+.help_02 a .help_start{ background: url(../images/heart_01.png) left center no-repeat;  background-size:20px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle;  margin-top: 1px;} 
+.help_02 a .help_select{ background: url(../images/heart.png) left center no-repeat;  background-size:20px; width: 21px; height: 20px; display: inline-block;  vertical-align: middle;  margin-top: 1px;}
+.help_02 a p{  display: inline-block;height: 20px;vertical-align: top; margin-top: 2px}
+.help_03 a span{background: url(../images/commodity_013.png) left center no-repeat;  background-size:20px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle;}
+.documentary{ width: 100%; height: auto; overflow: hidden; background: #fff; padding: 10px 0; border-bottom: 1px solid #d9d9d9}
+.documentary_con{ width: 97%;height: auto;overflow: hidden;margin: 0 auto;}
+.documentary ul{ width: 106%;height: auto;overflow: hidden;}
+.documentary ul li{ width: 10%; float: left; margin-right: 2%}
+.documentary ul li a{ display: inline-block; width: 100%}
+.documentary ul li img{ display: block; width: 100%; border-radius: 100%}
+.documentarys{ line-height: 11px; font-size: 13px; color:#f88119; text-align: center;padding-top: 10px}
+.documentarys span{ display: inline-block;}
+.discuss{ width: 100%; height: auto; overflow: hidden; margin-top: 2%;border-top:1px solid #d9d9d9; background: #fff;border-bottom: 1px solid #d9d9d9}
+.discuss_con{ width: 97%; height: auto; overflow: hidden; margin: 0 auto;}
+.discuss_p{ width: 97%; height:auto;  overflow: hidden; margin: 0 auto;border-bottom: 1px solid #d9d9d9}
+.discuss_p p{ display: inline-block; font-size: 16px; float: left; line-height: 40px;color:#767474;}
+.discuss_p span{ float: right; display: inline-block; font-size: 13px; color:#767474; line-height: 40px}
+.discuss_p span b{ font-weight: normal;}
+
+
+.w500{width: 97%;height: auto;margin: 0 auto;overflow: hidden; border-bottom: 1px solid #d8d8d7}
+.list li{padding-top:10px ;overflow: hidden;}
+.list li a{ display: inline-block; width: 100%}
+.con_l{ width: 15%; float: left}
+.con_l img{ display: block; width: 100%;border-radius: 100%}
+.con_r{ width: 82%; float: right;border-bottom:1px solid #ccc; padding-bottom: 12px;}
+.con_user{ width: 100%; height: auto; overflow: hidden;}
+.con_user p{ font-weight: normal; font-size: 14px;color:#97aa03;float: left;  height: 23px;}
+.con_user span{height: 30px; display: inline-block; float: right; line-height: 26px}
+.con_user span i.zan_start{ background: url(../images/commodity_015.png) left center no-repeat;background-size:20px; width: 19px; height: 20px; font-style: normal; float: left;}
+.con_user span i.zan_select{ background: url(../images/commodity_014.png) left center no-repeat;background-size:20px; width: 19px; height: 20px; font-style: normal; float: left;}
+
+
+.plun{ font-size: 13px; color:#535353; line-height: 23px}
+.con_pl{ font-size: 14px;color:#535353;line-height: 23px}
+.p_time{ font-size: 13px; color:#908e8e;}
+.discuss_con a.load{ width: 100%; height: 35px; text-align: center; color:#666; font-size: 13px; line-height: 35px; display: inline-block;}
+
+.send{padding:13px 0;width: 100%; height: auto; background: #fff; margin-top: 2%;border-top: 1px solid #d9d9d9;border-bottom: 1px solid #d9d9d9;}
+.send div{width: 98%; height: auto;margin: 0 auto; }
+
+.send div .send_tex{ float: left; width: 79%;position: relative;}
+.send textarea{ width:100%;border-radius:3px;height: 25px;padding: 5px;border: 1px solid #d9d9d9; resize:none; background: #f9f9f9; font-size: 14px; line-height: 25px; margin-left: 5px;position: relative;}
+.send a.btn{width: 13%;height: 35px;color: #7e7c7c;border-radius:3px;border:1px solid #d9d9d9;text-decoration: none;font-size: 14px;font-weight: bold;vertical-align: top; display: inline-block; text-align: center; line-height: 35px; float: right; padding-right: 1%}
+/* .send a.btn:hover{background: #c53d41;-webkit-transition:all 0.2s linear;-moz-transition:all 0.2s linear;-ms-transition:all 0.2s linear;-o-transition:all 0.2s linear;transition:all 0.2s linear;} */
+.send .faces{width: 20px;height:20px;background-image: url(../images/commodity_016.png) ;margin-right:5px;position: absolute;top:9px;right:-5%; background-size: 20px;}
+.send .on{background-position: left bottom;}
+.face{overflow: hidden;display: none; }
+.face li{width: 22px;height: 22px;margin:4px;float: left;}
+.scon{ width: 100%; height: auto; overflow: hidden; position: relative;}
+.comm_footer{ width: 100%; height: 65px; background: #fff; }
+.comm_footer ul{ width: 100%}
+.comm_f_01,.comm_f_02,.comm_f_03{ width: 15%; padding-left: 15px; padding-top: 12px; height: 35px; display: inline-block; color:#666; font-size: 14px; float: left}
+.comm_f_01 .comm_01_start{background: url(../images/star.png) left center no-repeat;  background-size:20px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle; margin-left: 3px}
+
+.comm_f_01 .comm_01_select{background: url(../images/star.png) left center no-repeat;  background-size:20px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle; margin-left: 3px}
+.comm_f_02 .comm_02_start{background: url(../images/heart_01.png) left center no-repeat;  background-size:20px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle; margin-left: 3px}
+.comm_f_02 .comm_02_select{background: url(../images/heart.png) left center no-repeat;  background-size:20px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle; margin-left: 3px}
+.comm_f_03 span{background: url(../images/commodity_013.png) left center no-repeat;  background-size:18px; width: 19px; height: 20px; display: inline-block;  vertical-align: middle; margin-left: 3px}
+.comm_f_04{ width:37%; display: inline-block; height: 65px; background: #2595c9;font-size: 14px; vertical-align: 
+top; float: right; line-height: 65px; }
+.comm_f_04 a{ width: 100%;height: 65px;display: inline-block;color:#fff; text-align: center; font-size: 15px;}
+

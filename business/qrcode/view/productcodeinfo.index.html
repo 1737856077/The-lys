@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>积分码详细列表</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+</head>
+
+<body>
+<div class="cont_title">　你当前的位置：商家管理 -<a href="{:url('productcode/index')}">积分码列表</a>-积分码详细列表</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <form name="form1" method="post" action="__URL__/index">
+            <input type="hidden" name="product_code_id" value="{$product_code_id}" />
+     	<table class="listtable">
+                    <tr class="tr1">
+                        <td  colspan="7" class="tdlist">查询：
+                            产品码-明码 <input type="text" name="search_code_plain" id="search_code_plain" value="{$search_code_plain}" />　
+                            产品码-暗码 <input type="text" name="search_code_cipher" id="search_code_cipher" value="{$search_code_cipher}" />　
+                            <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" />
+                        </td>
+                        <td  class="tdlist">
+                            <a href="{:url('productcode/index')}"><input type="button" name="" class="buttomorger"  value="返回" /></a>
+                        </td>
+
+                    </tr>
+				</table>
+                 </form> 
+        <form  method="post" action="__URL__/savestatus/action/save?product_code_id={$product_code_id}">
+				<table class="listtable">
+                    <tr class="tr1">
+                        <td colspan="9" class="tit">列表　
+                            <a href="__URL__/index?product_code_id={$product_code_id}">显示全部</a>　
+                            <a href="__URL__/downloadtxt?product_code_id={$product_code_id}&actionType=1" target="_blank">明码下载(TXT)</a>　
+                            <a href="__URL__/downloadtxt?product_code_id={$product_code_id}&actionType=2" target="_blank">暗码下载(TXT)</a>　
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdtit"><input type="checkbox" id="chkAll" name="chkAll" onClick="CheckAll(this.form)" value="checkbox" />序号</td>
+                        <td class="tdtit">产品名称</td>
+                        <td class="tdtit">标题</td>
+                        <td class="tdtit">批次名称</td>
+                        <td class="tdtit">二维码</td>
+                        <td class="tdtit">产品码-明码</td>
+                        <td class="tdtit">产品码-暗码</td>
+                        <td class="tdtit">暗码第一次查询时间</td>
+                        <td class="tdtit">添加时间</td>
+                        <td class="tdtit">开启状态</td>
+                    </tr>
+                   {foreach $list as $value}
+                	<tr class="tr1">
+                    	<td class="tdlist">
+                            <input type="checkbox" name="sqt[]" value="{$value['product_code_info_id']}"
+                                   {if $value['data_status'] eq '1'}disabled{/if}/>{$value['id']}&nbsp;
+                        </td>
+                        <td class="tdlist">{$getoneProduct['title']}&nbsp;</td>
+                        <td class="tdlist">{$getoneProductCode['title']}&nbsp;</td>
+                        <td class="tdlist">{$getoneProductCode['production_batch']}&nbsp;</td>
+                        <td class="tdlist"><img src="{$value['images']}" width="58" height="58" /></td>
+                        <td class="tdlist">{$value['code_plain']}&nbsp;</td>
+                        <td class="tdlist">{$value['code_cipher']}&nbsp;</td>
+                        <td class="tdlist">{if $value['code_cipher_query_time'] neq '0'}{$value['code_cipher_query_time']|date="Y-m-d H:i:s",###}{/if}</td>
+                        <td class="tdlist">
+                            {$value['create_time']|date="Y-m-d H:i:s",###}
+                        </td>
+                        <td class="tdlist">
+                            {if auth('qrcode/productcodeinfo/savestatus') }
+                                {if $value['data_status'] eq 0}
+                                <a href="__URL__/savestatus/action/checkStatus/id/{$value['product_code_info_id']}/Status/1?{$paramUrl}" ><font color="#ff0000">未开启</font></a>
+                                {else}
+                                <font color="#006600">已开启</font>
+                                {/if}
+                            {else}
+                                {if $value['data_status'] eq 0}
+                                <font color="#ff0000">未开启</font>
+                                {else}
+                                <font color="#006600">已开启</font>
+                                {/if}
+                            {/if}
+                        </td>
+                    </tr>
+				    {/foreach}
+
+                {if $count eq 0}
+                    <tr class="tr1">
+                    	<td colspan="9" class="tdlist">暂无相关记录！ </td>
+                    </tr>
+                {/if}
+                    <tr class="tr1">
+                        <td colspan="9" class="tdlist" >
+                            <input type="hidden" name="checkclass" id="checkclass" value="1" />
+                            {if auth('qrcode/productcodeinfo/savestatus') }
+                            <input type="submit"  value="开启二维码" class="buttomorger"  onClick="checkclassfun('31');" />
+                            {/if}
+                        </td>
+                    </tr>
+            </table>
+            <div style="text-align:right; padding-right:40px;">
+            {$page}
+           </div>
+           </form> 
+            
+        </div>
+    
+    </div>
+    
+ 
+</div>
+</body>
+</html>

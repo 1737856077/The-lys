@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>微信消息推送-消息推送</title>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/business/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/MessagePush.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/MessagePushCity.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/PublicMaterialPushAjax.js"></script>
+</head>
+<style type="text/css">
+
+.ErrorRed{ color:#e74649; /* padding-left: 2%; */ font-size: 14px; display: inline-block;}
+</style>
+<script type="text/javascript">
+var w,h;
+function getSrceenWH(){
+	w = $(window).width();
+	h = $(window).height();
+	$('#dialogBg').width(w).height(h);
+}
+window.onresize = function(){  
+	getSrceenWH();
+}
+
+$(window).resize();  
+
+
+</script> 
+<body>
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信消息推送&nbsp;>&nbsp; 消息推送</p>
+  
+                </div>
+				<div class="div_height_15"></div>
+                <!--column end-->    
+
+ <form action="__URL__/insert" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit_add();" autocomplete="off">               
+               
+                 <div class="clas_box" id="div_replay_news" style="margin-top:0px; padding-top:22px; padding-bottom:0px; ">
+                  <div class="tab_cons" style="width:100%; border-bottom:0px;" id="div_groups_id">
+                                <label for="" style=" height:50px;">推送分组</label>
+                                <label for="groups_id_all" style="text-align:left; padding-left:8px; color:#ff6600; " ><input type="checkbox" name="groups_id_all" id="groups_id_all" value="1" onclick="onclick_groups_id_all(this)">&nbsp;&nbsp;所有粉丝</label>
+                                {foreach name="ListMemberGroups" id="value"}
+                                <span class="fit"><label for="groups_id_{$value['member_groups_id']}" style="text-align:left; padding-left:8px;"><input type="checkbox" name="groups_id[]" id="groups_id_{$value['member_groups_id']}" value="{$value['member_groups_id']}" onclick="onclick_groups_id(this)" >&nbsp;&nbsp;{$value['title']}</label></span>
+                                {/foreach}
+                                <span style="color:#F00;" id="span_groups_id"></span>
+                  </div>  
+                <div class="class_con">
+                                    <label for="">推送地区</label>
+                       <select name="province_id" size="10"  class="l_xiang" id="province_id" onChange="GetAreaCityOneID(this.value)" autocomplete="off" style=" height:200px;">
+                           {foreach name="ListCity" id="value"}
+                             <option value="{$value['city_id']}" >{$value['title']}</option>
+                           {/foreach}
+                       </select>
+                       <select name="city_id" size="10" multiple="multiple"  class="l_xiang" id="city_id" autocomplete="off" style=" height:200px;">
+                       </select>
+	  					<label for="" style="text-align:center;"><br /><br />
+                          <button class="a7" type="button" onclick="OnClick_PushAddressAdd()">添加</button><br /><br />
+                          <button class="a7" type="button" onclick="OnClick_PushAddressRemove()">移除</button>
+                       </label>  
+                  <select name="push_address[]" size="10" multiple="multiple"  class="l_xiang" id="push_address" autocomplete="off" style=" height:200px;">
+                                 
+                  </select>  
+                  <span style="color:#F00;" id="span_push_address"></span>   
+                </div>   
+                 <div class="class_con">
+                        <label for="">消息类型</label>
+                        <select name="msgtype" id="msgtype"  class="l_xiang" onchange="SelectMsgType(this.value)" >
+                            <option value="mpnews" selected="selected">图文消息</option>
+                            <!--<option value="music" >音乐消息</option>-->
+                            <option value="video"  >视频消息</option>
+                            <option value="voice" >语音消息</option>
+                            <option value="image" >图片消息</option>
+                            <option value="text" >文本消息</option>
+                            <!--<option value="wxcard" >卡券消息</option>-->
+                        </select>
+                 </div> 
+                	<div class="class_con" id="div_media_id">
+                        <label for="">素材的MediaId</label>
+                         <input type="text" name="media_id" id="media_id" value=""  onblur="onblur_media_id()" />
+                         <a  onclick="Oclick_ShowBox('mpnews')" id="alink_media_id"  class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                         <span style="color:#F00;" id="span_media_id"></span>
+                    </div>
+                    <div class="class_con" id="div_description" style="display:none;">
+                        <label for="">文本</label>
+                         <textarea name="description" id="description" maxlength="500" style="width:528px; height:100px;" onKeyPress="return noStrs(event);" onblur="onblur_description()"></textarea>
+                         <span style="color:#F00;" id="span_description"></span>
+                    </div>
+                
+                <div class="clas_box" style=" margin-top:0px; padding-top:0px;">  
+                    <div class="de_y">
+                    <button type="submit" class="de_y_l" style="background:#00b6ea">确定</button>
+                    </div>
+                </div>
+                <div class="clas_box" style=" margin-top:0px; padding-top:0px;">  
+                	<div class="class_con">
+                    <label for="">备注：</label>
+                    <span>
+                    1、用户每月只能接收4条群发消息，多于4条的群发将对该用户发送失败；<br />
+                    2、如不选择“推送分组”和“推送地区”，将推送给所有用户；<br />
+                    </span>
+                    </div>
+                </div>
+                <!-- classify end -->   
+</form>			
+        </div>
+
+        
+<div id="dialogBg" style="display:none;">
+	<div id="dialog">
+    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+    	<div class="menus_r" id="div_material_mpnews" style="display:block;">
+        		<input type="hidden" name="PageMaterial_news" id="PageMaterial_video" value="2" autocomplete="off" />
+        		<div class="maps" style="margin-left:0px; margin-top:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_news" style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_news">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                        	<td class="mid_thr">标题</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                        {foreach name="ListWechatMaterialArticles" id="value"}
+                        <tr style="border-left:3px solid #cfbba9" class="mid_02">
+                            <td>{$value['title']}</td>
+                            <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
+                        </tr>
+                        {/foreach}
+                        
+                    	</tbody>
+                    </table>
+                    	{if(count($ListWechatMaterialArticles)<=10)}
+                        <div class="interpret" style="margin-left:0px; text-align:center;" id="link_news" > 亲，没有更多了哈...</div>
+                        {else/}
+                        <div class="interpret" style="margin-left:0px; text-align:center;" id="link_news" onclick="AjaxMaterialSearchInfo('news')">点击加载更多...</div>
+                        {/if}
+                </div>
+        </div>
+        <div class="menus_r" id="div_material_image" style="display:none;">
+        		<input type="hidden" name="PageMaterial_image" id="PageMaterial_image" value="1" autocomplete="off" />
+        		<div class="maps" style="margin-top: 0px; margin-left:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_image"  style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_image">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                            <td class="mid_thr">文件</td>
+                            <td class="mid_thr">时间</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                        
+                    	</tbody>
+                    </table>
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_image" onclick="AjaxMaterialSearchInfo('image')">点击加载更多...</div>
+                    <script type="text/javascript">AjaxMaterialSearchInfo('image');</script>
+                </div>
+        </div>
+        <div class="menus_r" id="div_material_video" style="display:none;">
+        		<input type="hidden" name="PageMaterial_video" id="PageMaterial_video" value="2" autocomplete="off" />
+        		<div class="maps" style="margin-top: 0px; margin-left:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_video" style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_video">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                            <td class="mid_thr">文件</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                        {foreach name="ListWechatMaterialVideo" id="value"}
+                        <tr style="border-left:3px solid #cfbba9" class="mid_02">
+                            <td>{$value['title']}</td>
+                            <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
+                        </tr>
+                        {/foreach}	
+                    	</tbody>
+                    </table>
+                    {if(count($ListWechatMaterialVideo)<=10)}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_video" > 亲，没有更多了哈...</div>
+                    {else/}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_video" onclick="AjaxMaterialSearchInfo('video')">点击加载更多...</div>
+                    {/if}
+                </div>
+        </div>
+        <div class="menus_r" id="div_material_voice" style="display:none;">
+        		<input type="hidden" name="PageMaterial_voice" id="PageMaterial_voice" value="2" autocomplete="off" />
+        		<div class="maps" style="margin-top: 0px; margin-left:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_voice" style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_voice">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                            <td class="mid_thr">文件</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                        {foreach name="ListWechatMaterialVoice" id="value"}
+                        <tr style="border-left:3px solid #cfbba9" class="mid_02">
+                            <td>{$value['title']}</td>
+                            <td><a href="javascript:GetWechatMaterial('{$value['media_id']}')">选中使用</a></td>
+                        </tr>
+                        {/foreach}
+                    	</tbody>
+                    </table>
+                    {if(count($ListWechatMaterialVoice)<=10)}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_voice" > 亲，没有更多了哈...</div>
+                    {else/}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_voice" onclick="AjaxMaterialSearchInfo('voice')">点击加载更多...</div>
+                    {/if}
+                </div>
+        </div>
+        
+        
+	</div>
+</div>        
+</body>
+</html>

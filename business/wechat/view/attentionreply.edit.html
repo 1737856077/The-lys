@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>编辑关注回复</title>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/wechat/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/AttentionReply.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/AttentionReplyAdd.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/PublicMaterialAjax.js"></script>
+</head>
+<style type="text/css">
+
+.ErrorRed{ color:#e74649; /* padding-left: 2%; */ font-size: 14px; display: inline-block;}
+</style>
+<script type="text/javascript">
+var w,h;
+function getSrceenWH(){
+	w = $(window).width();
+	h = $(window).height();
+	$('#dialogBg').width(w).height(h);
+}
+window.onresize = function(){  
+	getSrceenWH();
+}
+
+$(window).resize();  
+
+</script> 
+<body>
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; 编辑关注回复</p>
+  
+                </div>
+
+                <!--column end-->    
+                <div class="clas_box" style=" padding-bottom:0px;">
+                    <div class="class_con">
+                        <label for="">消息类型</label>
+                        <select name=""  class="l_xiang" onchange="SelectMsgType(this.value)" autocomplete="off">
+                            <option value="news" {if condition="$getone['msgtype'] eq 'news'"}selected="selected"{/if} >图文消息</option>
+                            <option value="music" {if condition="$getone['msgtype'] eq 'music'"}selected="selected"{/if} >音乐消息</option>
+                            <option value="video" {if condition="$getone['msgtype'] eq 'video'"}selected="selected"{/if} >视频消息</option>
+                            <option value="voice" {if condition="$getone['msgtype'] eq 'voice'"}selected="selected"{/if} >语音消息</option>
+                            <option value="image" {if condition="$getone['msgtype'] eq 'image'"}selected="selected"{/if} >图片消息</option>
+                            <option value="text" {if condition="$getone['msgtype'] eq 'text'"}selected="selected"{/if} >文本消息</option>
+                        </select>
+                    </div>
+                </div>    
+ <form action="__URL__/update" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit_update();" autocomplete="off">               
+ 				<input type="hidden" name="msgtype" id="msgtype" value="{$getone['msgtype']}" />
+                <input type="hidden" name="id" id="id" value="{$getone['id']}" />
+                
+                <div class="clas_box" id="div_replay_news" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'news'"}display:block; {else/}display:none;{/if}">  
+                	<div class="class_con">
+                        <label for="">图片</label>
+                         <input type="text" name="news_link_url" id="news_link_url" value="{$getone['link_url']}" onblur="onblur_news_link_url()" />
+                         <span>图片支持JPG、PNG、GIF格式！</span>
+                         <a href="javascript:Oclick_ShowBox('image');" class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                        <span style="color:#F00;" id="span_news_link_url"></span>
+                    </div>  
+                    <div class="class_con"  style="display:none;">
+                        <label for="">&nbsp;</label>
+                        <input type="file" name="news_images"  id="news_images" class="class_con_inputfile"  style="width:150px;" />　
+                        
+                    </div>  
+                    <div class="class_con">
+                        <label for="">标题</label>
+                         <input type="text" name="news_title" id="news_title" value="{$getone['title']}" maxlength="40" onKeyPress="return noStrs(event);" onblur="onblur_news_title()" />
+                         <span style="color:#F00;" id="span_news_title"></span>
+                    </div>
+                    <div class="class_con">
+                        <label for="">描述</label>
+                         <textarea name="news_description" id="news_description" maxlength="150" style="width:528px; height:100px;" onKeyPress="return noStrs(event);" onblur="onblur_news_description()">{$getone['description']}</textarea>
+                         <span>最多支持150字</span>
+                         <span style="color:#F00;" id="span_news_description"></span>
+                    </div>
+                    
+                    <div class="class_con">
+                        <label for="">URL</label>
+                         <input type="text" name="news_url" id="news_url" value="{$getone['url']}" maxlength="256"  onblur="onblur_news_url()" />
+                         <span>点击图文后的跳转URL地址</span>
+                         <span style="color:#F00;" id="span_news_url"></span>
+                    </div>
+                </div>
+                
+                <div class="clas_box" id="div_replay_music" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'music'"}display:block; {else/}display:none;{/if}">  
+ 
+                    <div class="class_con">
+                        <label for="">标题</label>
+                         <input type="text" name="music_title" id="music_title" value="{$getone['title']}" maxlength="40" onKeyPress="return noStrs(event);" onblur="onblur_music_title()" />
+                         <span style="color:#F00;" id="span_music_title"></span>
+                    </div>
+                    <div class="class_con">
+                        <label for="">描述</label>
+                         <textarea name="music_description" id="music_description" maxlength="150" style="width:528px; height:100px;" onKeyPress="return noStrs(event);" onblur="onblur_music_description()">{$getone['description']}</textarea>
+                         <span>最多支持150字</span>
+                         <span style="color:#F00;" id="span_music_description"></span>
+                    </div>
+                    <div class="class_con">
+                        <label for="">音乐链接</label>
+                        <input type="text" name="music_link_url" id="music_link_url" value="{$getone['link_url']}"  onblur="onblur_music_link_url()" />
+                        <a href="javascript:Oclick_ShowBox('music');" class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                        <span style="color:#F00;" id="span_music_link_url"></span>
+                    </div>
+                    <div class="class_con">
+                        <label for="">高质量音乐链接</label>
+                         <input type="text" name="music_hq_link_url" id="music_hq_link_url" value="{$getone['hq_link_url']}"   />
+                         <span>高质量音乐链接，WIFI环境优先使用该链接播放音乐</span>
+                         <a href="javascript:Oclick_ShowBox('music');" class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                        <span style="color:#F00;" id="span_music_hq_link_url"></span>
+                    </div>
+                    <div class="class_con">
+                        <label for="">缩略图的MediaId</label>
+                        <input type="text" name="music_thumb_media_id" id="music_thumb_media_id" value="{$getone['thumb_media_id']}" onblur="onblur_music_thumb_media_id()" />
+                         <span>缩略图的媒体id，通过上传多媒体文件，得到的id</span>　<a href="javascript:Oclick_ShowBox('image');" class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                        <span style="color:#F00;" id="span_music_thumb_media_id"></span>
+                    </div>
+                </div>
+                
+                <div class="clas_box" id="div_replay_video" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'video'"}display:block; {else/}display:none;{/if}">  
+                    <div class="class_con">
+                        <label for="">视频的MediaId</label>
+                         <input type="text" name="video_media_id" id="video_media_id" value="{$getone['media_id']}" onblur="onblur_video_media_id()" />
+                         <a href="javascript:Oclick_ShowBox('video');" class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                         <span style="color:#F00;" id="span_video_media_id"></span>
+                    </div>
+                    <div class="class_con">
+                        <label for="">标题</label>
+                         <input type="text" name="video_title" id="video_title" value="{$getone['title']}" maxlength="40" onKeyPress="return noStrs(event);" onblur="onblur_video_title()" />
+                         <span style="color:#F00;" id="span_video_title"></span>
+                    </div>
+                    <div class="class_con">
+                        <label for="">描述</label>
+                         <textarea name="video_description" id="video_description" maxlength="150" style="width:528px; height:100px;" onKeyPress="return noStrs(event);" onblur="onblur_video_description()">{$getone['description']}</textarea>
+                         <span>最多支持150字</span>
+                         <span style="color:#F00;" id="span_video_description"></span>
+                    </div>
+                </div>
+                
+                <div class="clas_box" id="div_replay_voice" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'voice'"}display:block; {else/}display:none;{/if}">  
+                    <div class="class_con">
+                        <label for="">语音的MediaId</label>
+                         <input type="text" name="voice_media_id" id="voice_media_id" value="{$getone['media_id']}"  onblur="onblur_voice_media_id()" />
+                         <a href="javascript:Oclick_ShowBox('voice');" class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                         <span style="color:#F00;" id="span_voice_media_id"></span>
+                    </div>
+                </div>
+                
+                <div class="clas_box" id="div_replay_image" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'image'"}display:block; {else/}display:none;{/if}">  
+                	<div class="class_con">
+                        <label for="">图片</label>
+                         <input type="text" name="image_link_url" id="image_link_url" value="{$getone['link_url']}" onKeyPress="return noStrs(event);" onblur="onblur_image_link_url()" />
+                         <input type="hidden" name="image_media_id" id="image_media_id" value="{$getone['media_id']}" />
+                         <span>图片支持JPG、PNG、GIF格式！</span>
+                         <a href="javascript:Oclick_ShowBox('image');" class="class_con_alink_01">点击这里“从素材库选择”</a>　
+                        <span style="color:#F00;" id="span_image_link_url"></span>
+                    </div>  
+                    <div class="class_con"  style="display:none;">
+                        <label for="">&nbsp;</label>
+                        <input type="file" name="image_images"  id="image_images" class="class_con_inputfile"  style="width:150px;" />　
+                        
+                    </div>  
+                </div>
+                
+                <div class="clas_box" id="div_replay_text" style="margin-top:0px; padding-top:0px; padding-bottom:0px; {if condition="$getone['msgtype'] eq 'text'"}display:block; {else/}display:none;{/if}">  
+                    <div class="class_con">
+                        <label for="">文本</label>
+                         <textarea name="text_description" id="text_description" maxlength="150" style="width:528px; height:100px;" onKeyPress="return noStrs(event);" onblur="onblur_text_description()">{$getone['description']}</textarea>
+                         <span>最多支持150字</span>
+                         <span style="color:#F00;" id="span_text_description"></span>
+                    </div>
+                </div>
+                
+                <div class="clas_box" style=" margin-top:0px; padding-top:0px;">  
+                    <div class="de_y">
+                    <button type="submit" class="de_y_l" style="background:#00b6ea">确定</button>
+                    <button type="button" class="de_y_r" style="background:#9b8975" onclick="location.href='__URL__/index';" >返回</button>
+                    </div>
+                    <span class="by">Powered by {:config('WebConfig_VersionName')}</span>
+                </div>
+                <!-- classify end -->   
+</form>			
+        </div>
+        
+        
+<div id="dialogBg" style="display:none;">
+	<div id="dialog">
+    	<input type="hidden" name="InputMaterialUrl" id="InputMaterialUrl" value="{:url('PublicMaterial/AjaxMaterial')}" autocomplete="off" />
+        <input type="hidden" name="InputMaterialMusicUrl" id="InputMaterialMusicUrl" value="{:url('PublicMaterial/AjaxMaterialMusic')}" autocomplete="off" />
+    
+		<div class="menus_r_openwindow" id="div_material_image" style="display:none;  overflow-x: hidden; ">
+        		<input type="hidden" name="PageMaterial_image" id="PageMaterial_image" value="1" autocomplete="off" />
+        		<div class="maps" style="margin-top: 0px; margin-left:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_image"  style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_image">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                            <td class="mid_thr">文件</td>
+                            <td class="mid_thr">时间</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                        
+                    	</tbody>
+                    </table>
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_image" onclick="AjaxMaterialSearchInfo('image')">点击加载更多...</div>
+                    <script type="text/javascript">AjaxMaterialSearchInfo('image');</script>
+                </div>
+        </div>
+        <div class="menus_r_openwindow" id="div_material_video" style="display:none;">
+        		<input type="hidden" name="PageMaterial_video" id="PageMaterial_video" value="2" autocomplete="off" />
+        		<div class="maps" style="margin-top: 0px; margin-left:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_video" style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_video">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                            <td class="mid_thr">文件</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                        {foreach name="ListWechatMaterialVideo" id="value"}
+                        <tr style="border-left:3px solid #cfbba9" class="mid_02">
+                            <td>{$value['title']}</td>
+                            <td><a href="javascript:GetWechatMaterialVideo('{$value['media_id']}')">选中使用</a></td>
+                        </tr>
+                        {/foreach}	
+                    	</tbody>
+                    </table>
+                    {if(count($ListWechatMaterialVideo)<=10)}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_video" > 亲，没有更多了哈...</div>
+                    {else/}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_video" onclick="AjaxMaterialSearchInfo('video')">点击加载更多...</div>
+                    {/if}
+                </div>
+        </div>
+        <div class="menus_r_openwindow" id="div_material_voice" style="display:none;">
+        		<input type="hidden" name="PageMaterial_voice" id="PageMaterial_voice" value="2" autocomplete="off" />
+        		<div class="maps" style="margin-top: 0px; margin-left:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_voice" style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_voice">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                            <td class="mid_thr">文件</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                        {foreach name="ListWechatMaterialVoice" id="value"}
+                        <tr style="border-left:3px solid #cfbba9" class="mid_02">
+                            <td>{$value['title']}</td>
+                            <td><a href="javascript:GetWechatMaterialVoice('{$value['media_id']}')">选中使用</a></td>
+                        </tr>
+                        {/foreach}
+                    	</tbody>
+                    </table>
+                    {if(count($ListWechatMaterialVoice)<=10)}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_voice" > 亲，没有更多了哈...</div>
+                    {else/}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_voice" onclick="AjaxMaterialSearchInfo('voice')">点击加载更多...</div>
+                    {/if}
+                </div>
+        </div>
+        <div class="menus_r" id="div_material_music">
+        		<input type="hidden" name="PageMaterial_music" id="PageMaterial_music" value="2" autocomplete="off" />
+        		<div class="maps" style="margin-top: 0px; margin-left:0px;">
+                     <a href="javascript:Oclick_claseDialogBtn();" style="float:right;">X关闭　</a>
+                </div>
+                <div class="mid" style="margin-left:0px; margin-top:0px;">
+                    <table id="Table_music" style="border-collapse:collapse;margin-left:0px;" class="mid_con">
+                        <tbody id="TableTbody_music">
+                        <tr style="border-left:3px solid #e4e3e3" class="mid_01">
+                            <td class="mid_thr">缩略图</td>
+                            <td class="mid_thr">标题</td>
+                            <td class="mid_thr">选择</td>
+                        </tr>
+                       	{foreach name="ListWechatMaterialMusic" id="value"}
+                        <tr style="border-left:3px solid #cfbba9" class="mid_02">
+                            <td><img src="{$value['thumb_url']}" height="100" width="150" alt="" /></td>
+                            <td>{$value['title']}</td>
+                            <td><a href="javascript:GetWechatMaterialMusic('{$value['url']}','{$value['hd_url']}','{$value['thumb_media_id']}')">选中使用</a></td>
+                        </tr>
+                        {/foreach}
+                    	</tbody>
+                    </table>
+                    {if(count($ListWechatMaterialMusic)<=10)}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_music" > 亲，没有更多了哈...</div>
+                    {else/}
+                    <div class="interpret" style="margin-left:0px; text-align:center;" id="link_music" onclick="AjaxMaterialSearchInfo('music')">点击加载更多...</div>
+                    {/if}
+                </div>
+        </div>
+        
+	</div>
+</div>        
+</body>
+</html>

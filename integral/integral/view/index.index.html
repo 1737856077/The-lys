@@ -1,0 +1,117 @@
+<!doctype html>
+<html class='no-js'>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='description' content=''>
+    <meta name='keywords' content=''>
+    <!-- <meta name='viewport' content='width=device-width, initial-scale=0'>
+    <meta name='viewport' content='width=drvice-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;'> -->
+    <meta name='viewport' content='width=device-width,user-scalable=no, initial-scale=1'>
+    <title>商品中心</title>
+
+    <link rel='icon' type='image/png' href='../qgj_qt/images/favicon.png'>
+
+    <link rel='stylesheet' href='__STATIC__/integral/css/amazeui.min.css'>
+    <link rel='stylesheet' href='__STATIC__/integral/css/swiper.min.css'>
+    <link rel='stylesheet' href='__STATIC__/integral/css/app.css'>
+    <!-- jquery -->
+    <script src='__STATIC__/integral/js/jquery.js'></script>
+    <script src='__STATIC__/integral/js/jquery-1.7.2.min.js'></script>
+    <link href="__STATIC__/integral/css/style1.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<!--热门城市  -->
+<!-- 搜索 -->
+<!-- 搜索框 -->
+<!-- 外框 -->
+<div id='waik'>
+    <!-- 头部 -->
+    <div id='top' style='background:#FF4945;'>
+        <div style='background: #FF4945' class='sos_t sos_t_zy'>
+            <div class='fanh_shang'>
+            </div>
+            <div class='so_input'>
+                <h1 style='color: #f9fffe'>商品分类</h1>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 内容 -->
+    <div class='con'>
+        <div class='category-top'>
+            <header>
+                <section class='search'>
+                    <div class='text-all dis-box j-text-all'>
+                        <div class='box-flex input-text'><a class='a-search-input j-search-input'
+                                                            href='javascript:void(0)'></a>
+                            <input type='text' placeholder='商品搜索'/>
+                            <i class='iconfont icon-guanbi is-null j-is-null'></i></div>
+                    </div>
+                </section>
+            </header>
+        </div>
+        <aside>
+            <div class='menu-left scrollbar-none' id='sidebar'>
+                <ul>
+                    {foreach name='data' id='vo'}
+                    <li><a href='javascript:(0)' onclick="xq(' {$vo.id}')">{$vo.name}</a></li>
+                    {/foreach}
+                </ul>
+            </div>
+        </aside>
+        <section class='menu-right padding-all j-content'>
+            <div class='class_banner'><a href='javascript:(0)'><img src='__STATIC__/integral/img/banner.png'></a></div>
+            <!--标题img-->
+            <ul class='cont'>
+                {foreach name='one' id='da'}
+                <li class='w-3'>
+                    <a href='__URL__/prolist/id/{$vo.id}'>
+                        <img  style='height: 70px' src='__STATIC__/integral/img/num.jpg'/>
+                        <span>
+                        {$da.name}
+                    </span>
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        function xq(data) {
+            var id = data
+            $.ajax({
+                //几个参数需要注意一下
+                type: 'get',//方法类型
+                dataType: 'json',//预期服务器返回的数据类型
+                url: '/integral.php/integral/index/type',//url
+                data: {id: id},
+                success: function (result) {
+                    $('.cont').empty();
+                    for (var i = 0; i < result['data'].length; i++) {
+                        var html = '';
+                        html += "<li class='w-3'>";
+                        html += "<a href='__URL__/prolist/id/"+result['data'][i]['id']+"'  >";
+                        html += "<img src='__STATIC__/integral/img/num.jpg' style='height: 70px'  />";
+                        html += "<span>";
+                        html += result['data'][i]['name'];
+                        html += "</span>";
+                        html += "</a>";
+                        html += "</li>";
+                        $(".cont").append(html);
+                    }
+                },
+            });
+        }
+    </script>
+
+</div>
+
+
+</body>
+</html>

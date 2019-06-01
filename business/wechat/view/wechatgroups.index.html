@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>微信分组管理-微信分组管理</title>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/jquery.js"></script>
+
+</head>
+<body>
+        
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; 微信分组管理
+					</p>   
+                </div>
+                <div class="div_height_15"></div>
+                <!-- add end --> 
+               <div class="Member">
+                    <div class="member_l" style="width:700px;">
+                        <a class="selecs select_f" style="width:100px;" href="__URL__/add/">添加微信分组</a>
+                        <a class="selecs select_f" style="width:100px;" href="__URL__/SyncGroup">同步微信分组</a>
+                    </div>
+
+                </div>
+                <div class="mid">
+                    <table class="mid_con"  style="border-collapse:collapse;">
+                    	<tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                        	<td class="mid_th">分组ID</td>
+                            <td class="mid_th">分组名称</td>
+                            <td class="mid_th">用户数量</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        
+						{foreach name="List" id="value"}
+                            <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                                <td>{$value['id']}</td>
+                                <td>{$value['name']}</td>
+                                <td>{$value['count_member']}</td>
+                                <td>
+                                    <a href="__URL__/edit/id/{$value['id']}">编辑</a>　
+                                    <a href="__URL__/delete/id/{$value['id']}" onClick="javascript:return confirm('确定要删除吗？');">删除</a>
+                                </td>
+                            </tr>
+                        {/foreach}
+                      	{if(!$count)}
+                            <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                                <td colspan="4">暂无相关数据！</td>
+                            </tr>
+                       {/if}
+                    </table>
+                    <div class="interpret">
+                    	<div class="page">{$page}</div>
+                    </div>
+                    <div class="Member">
+                        <div style="width:700px;" class="member_l">
+                            备注：一个公众账号，最多支持创建100个分组。
+                        </div>
+                    </div>
+                    <br /><br />
+                </div>
+                <!-- mid end -->
+		
+        </div>
+</body>
+</html>

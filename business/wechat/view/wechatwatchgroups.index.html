@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>微信分组管理-粉丝分组管理</title>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/jquery.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/myString.js"></script>
+	<script type="text/javascript" src="__STATIC__/javascript/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/PublicUser.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/WechatWatchGroups_Index.js"></script>
+</head>
+<body>
+        
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信分组管理&nbsp;>&nbsp; 粉丝分组管理
+					</p>   
+                </div>
+                <div class="div_height_15"></div>	
+                <!-- add end --> 
+                <form action="__URL__/index" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit_search();" autocomplete="off">
+               <div class="Member">
+                    <div class="member_l">
+                    	<a class="selecs" style="width:100px;" href="__URL__/index">显示全部</a>
+                        <!--<a class="append_j" style="width:100px;" href="javascript:vivo(0)">刷新粉丝</a>-->
+                        <div class="careful"></div>
+                    </div>
+                     <div class="paixu">
+                     	
+                        <input type="text" name="SearchName" id="SearchName" onblur="if (value=='') {value='输入粉丝昵称'}" onfocus="if(value=='输入粉丝昵称') {value=''}" value="{php}if(empty($SearchName)){echo '输入粉丝昵称';}else{ echo $SearchName;}{/php}" class="text_titles">
+                        <input type="submit" class="cast" value="搜索">
+                        <span style="color:#F00;" id="span_SearchName"></span>
+                    </div>
+                </div>
+                </form>
+                 <form action="__URL__/editinfo" method="post" enctype="multipart/form-data" name="form1" id="form1" onSubmit="javascript:return funsubmit_editinfo();" autocomplete="off">   
+                <div class="mid" id="div_wechat_list">
+                    <table class="mid_con"  style="border-collapse:collapse;">
+                    	<tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                        	<td class="mid_one"><input type="checkbox" id="chkAll" name="chkAll" onclick="CheckAll(this.form)" value="checkbox" /></td>
+                        	<td class="mid_one">ID</td>
+                            <td class="mid_th">粉丝昵称</td>
+                            <td class="mid_th">分组名</td>
+                            <td class="mid_th">地区</td>
+                            <td class="mid_th">头像</td>
+                            <td class="mid_th">关注时间</td>
+                            <td class="mid_th">关注</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        
+						{foreach name="List" id="value"}
+                            <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                            	<td><input type="checkbox" name="sqt[]" value="{$value['wechat_openid']}" /></td>
+                                <td>{$value['wechat_watch_id']}</td>
+                                <td>{$value['nickname']}</td>
+                                <td>{$ArrayWechatGroups[$value['wechat_groups_id']]}</td>
+                                <td>{$value['province']} {$value['city']}</td>
+                                <td><img src="{$value['headimgurl']}" width="50" height="50" /></td>
+                                <td>{$value['create_time']|date='Y-m-d',###}</td>
+                                <td>
+                                {if condition="$value['data_status'] =1"><font color="#006600">已关注</font>
+                                {else/}<font color="#999999">已取消</font>
+                                {/if}  
+                                </td>
+                                <td>
+                                    <a href="__URL__/edit/openid/{$value['wechat_openid']}">编辑分组</a>　
+                                </td>
+                            </tr>
+                        {/foreach}
+                      	{if condition="empty($count)"}
+                            <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                                <td colspan="8">暂无相关数据！</td>
+                            </tr>
+                       {/if}
+                    </table>
+                    
+                    <div class="interpret">
+                    	<div class="page">{$page}</div>
+                    </div>
+                    <div class="news_m" style="width:600px;">
+                    		<input type="hidden" name="checkclass" id="checkclass" value="1" />
+                    		<button class="a7" type="submit" style="width:180px; float:left;" onClick="checkclassfun('11');">将选中的粉丝移动到</button>
+                    		<select class="register" name="groups_id" id="groups_id">
+                            	{foreach name="ArrayWechatGroups" id="value" key="key">	
+                                <option value="{$key}">{$value}</option>
+                             	{/foreach}   
+                            </select>
+                            <span style="color:#F00;" id="span_from_submit"></span>
+                    </div>
+                    <br /><br />
+                </div>
+                </form>
+                <!-- mid end -->
+		
+        </div>
+</body>
+</html>

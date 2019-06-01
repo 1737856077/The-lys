@@ -28,19 +28,19 @@ return [
 
     // 服务器地址
 
-    'hostname'        => 'localhost',
+    'hostname'        => '122.114.163.11',
 
     // 数据库名
 
-    'database'        => 'lqy_suyuan',
+    'database'        => 'tzs_sindns_com',
 
     // 用户名
 
-    'username'        => 'root',
+    'username'        => 'tzs_sindns_com',
 
     // 密码
 
-    'password'        => 'root',
+    'password'        => 'kTz3GWKPPrNAW8xn',
 
     // 端口
 

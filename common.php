@@ -475,3 +475,122 @@ function my_getClentType(){
     //其它
     return "other";
 }
+function page_array($count,$page,$array,$order){
+    global $countpage; #定全局变量
+    $page=(empty($page))?'1':$page; #判断当前页面是否为空 如果为空就表示为第一页面
+    $start=($page-1)*$count; #计算每次分页的开始位置
+    if($order==1){
+        $array=array_reverse($array);
+    }
+    $totals=count($array);
+    $countpage=ceil($totals/$count); #计算总页面数
+    \think\Session::delete('page');
+    \think\Session::set('page',$countpage);
+    $pagedata=array();
+    $pagedata=array_slice($array,$start,$count);
+    return $pagedata;  #返回查询数据
+}
+/**
+ * 分页及显示函数
+ * $countpage 全局变量，照写
+ * $url 当前url
+ */
+function show_array($countpage,$url){
+    global $countpage;
+    $page=empty($_GET['page']) ? 1 : $_GET['page'];
+    if($page > 1){
+        $uppage=$page-1;
+
+    }else{
+        $uppage=1;
+    }
+
+    if($page < $countpage){
+        $nextpage=$page+1;
+    }else{
+        $nextpage=$countpage;
+    }
+    $str='<div  style="border:1px ; width:300px; height:30px; color:#9999CC;margin:0 auto;padding-top:-20px;font-size:15px;">';
+    $str.="<span>共  {$countpage}  页 / 第 {$page} 页</span>";
+    if($countpage>1){
+        $str.="<span><a href='$url?page=1'>   首页  </a></span>";
+        $str.="<span><a href='$url?page={$uppage}'> 上一页  </a></span>";
+        $str.="<span><a href='$url?page={$nextpage}'>下一页  </a></span>";
+        $str.="<span><a href='$url?page={$countpage}'>尾页  </a></span>";
+        $str.='</div>';
+    }
+    return $str;
+}
+
+/**
+ * 发送HTTP请求方法
+ * @param  string $url    请求URL
+ * @param  array  $params 请求参数
+ * @param  string $method 请求方法GET/POST
+ * @return array  $data   响应数据
+ */
+function http($url, $params, $method = 'GET', $header = array(), $multi = false){
+    $opts = array(
+        CURLOPT_TIMEOUT        => 30,
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_SSL_VERIFYHOST => false,
+        CURLOPT_HTTPHEADER     => $header
+    );
+    /* 根据请求类型设置特定参数 */
+    switch(strtoupper($method)){
+        case 'GET':
+            $opts[CURLOPT_URL] = $url . '?' . http_build_query($params);
+            break;
+        case 'POST':
+            //判断是否传输文件
+            $params = $multi ? $params : http_build_query($params);
+            $opts[CURLOPT_URL] = $url;
+            $opts[CURLOPT_POST] = 1;
+            $opts[CURLOPT_POSTFIELDS] = $params;
+            break;
+        default:
+            throw new Exception('不支持的请求方式！');
+    }
+    /* 初始化并执行curl请求 */
+    $ch = curl_init();
+    curl_setopt_array($ch, $opts);
+    $data  = curl_exec($ch);
+    $error = curl_error($ch);
+    curl_close($ch);
+    if($error) throw new Exception('请求发生错误：' . $error);
+    return  $data;
+}
+
+/**
+ * api 数据返回
+ * @param  [int] $code [结果码 200:正常/4**数据问题/5**服务器问题]
+ * @param  [string] $msg  [接口要返回的提示信息]
+ * @param  [array]  $data [接口要返回的数据]
+ * @return [string]       [最终的json数据]
+ */
+function return_msg($code, $msg = '', $data = []) {
+    /*********** 组合数据  ***********/
+    $return_data['code'] = $code;
+    $return_data['msg']  = $msg;
+    $return_data['data'] = $data;
+    /*********** 返回信息并终止脚本  ***********/
+    echo json_encode($return_data);die;
+}
+
+/**
+ * 生成随机字符串
+ * @param $length 指定的长度
+ * @return null|string 返回的随机字符串
+ */
+function getRandChar($length)
+{
+    $str = null;
+    $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";//大小写字母以及数字
+    $max = strlen($strPol) - 1;
+
+    for ($i = 0; $i < $length; $i++) {
+        $str .= $strPol[rand(0, $max)];
+    }
+    return $str;
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link href="__STATIC__/integral/css/stylea.css"  rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/layer.css"/>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+    <script language="javascript" src="__STATIC__/integral/js/layer.m.js"  charset="UTF-8"></script>
+    <script>
+        function test1(){
+            layer.open({
+                style: 'width:100%;border:none; background-color:#78BA32; color:#fff;',
+                content:'收货成功',
+                time:2,
+                anim:true,
+                fixed:false,
+                top:50,
+                shade:false
+            })
+        }
+        function test2(){
+            layer.open({
+                style: 'width:100%;border:none; background-color:#FF4945; color:#fff;',
+                content:'请检查',
+                time:2,
+                anim:true,
+                fixed:false,
+                top:50,
+                shade:false
+            })
+        }
+        function test3(){
+            layer.open({
+                style: 'width:100%;border:none; background-color:#78BA32; color:#fff;',
+                content:'订单删除成功',
+                time:2,
+                anim:true,
+                fixed:false,
+                top:50,
+                shade:false
+            })
+        }
+        function test4(){
+            layer.open({
+                style: 'width:100%;border:none; background-color:#FF4945; color:#fff;',
+                content:'订单删除失败',
+                time:2,
+                anim:true,
+                fixed:false,
+                top:50,
+                shade:false
+            })
+        }
+        function deorder(data) {
+            var data = data;
+            $.ajax({
+                type:'get',
+                url:'__URL__/deorder/order_no/'+data,
+                dataType:'json',
+                data:1,
+                success:function (data) {
+                    if (data==1){
+                        test3()
+                        window.location.reload()
+                    }else {
+                        test4()
+                        window.location.reload()
+                    }
+                }
+            })
+        }
+        function affirm(data) {
+            var data = data;
+            $.ajax({
+                type:'get',
+                url:'__URL__/affirm/order_no/'+data,
+                dataType:'json',
+                data:1,
+                success:function (data) {
+                  if (data==1){
+                      test1()
+                      window.location.reload()
+                  }else {
+                      test2()
+                      window.location.reload()
+                  }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+<section class="aui-flexView">
+    <header class="aui-navBar aui-navBar-fixed">
+        <a href="/integral.php/member/index/index" class="aui-navBar-item">
+            <i class="icon icon-return"></i>
+        </a>
+        <div class="aui-center">
+            <span class="aui-center-title">我的订单</span>
+        </div>
+    </header>
+    <section class="aui-scrollView">
+        <div class="aui-tab" data-ydui-tab>
+            <div class="divHeight"></div>
+            <div class="tab-panel">
+                <div class="tab-panel-item tab-active">
+                    {foreach name="data" id="datas"}
+                    <div class="tab-item">
+                        <div class="aui-mail-product">
+                            <a href="javascript:;" class="aui-mail-product-item">
+                                <div class="aui-mail-product-item-hd">
+                                    <img src="/static/uploads/business/{$datas.img}"alt="">
+                                </div>
+                                <div class="aui-mail-product-item-bd">
+                                    <p>{$datas.title}</p>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="javascript:;" class="aui-mail-payment">
+                            <p>
+                                共<em>{$datas.num}</em>
+                                件商品 实付款: ￥<i>{$datas.price_total}</i>
+                            </p>
+                        </a>
+                        <div class="aui-mail-button">
+                            {switch name="$datas.data_order" }
+                            {case value="0"}<a href="javascript:(0)">未确认订单</a>{/case}
+                            {case value="1"}<a href="javascript:(0)">已确认订单</a>{/case}
+                            {case value="2"}<a href="javascript:(0)">待发货</a>{/case}
+                            {case value="3"}<a href="javascript:(0)">已发货</a>{/case}
+                            {case value="4"}<a href="javascript:(0)">已确认收货</a>{/case}
+                            {case value="5"}<a href="javascript:(0)">退款</a>{/case}
+                            {default /}<a href="javascript:(0)">取消</a>
+                            {/switch}
+                            {if condition="$datas.data_order == 4"}
+                            <a href="javascript:(0)" onclick="deorder('{$datas.order_no}')">删除订单</a>
+                            {else/}
+                                {if condition="$datas.data_order >2"}
+                            <a  href="javascript:(0)" onclick="affirm('{$datas.order_no}')">确认收货</a>
+                            {else/}
+                            {/if}
+                            {/if}
+                            <a  href="/integral.php/member/order/orderdetail/order_no/{$datas.order_no}" class="aui-df-color">查看详情</a>
+                        </div>
+                    </div>
+                    {/foreach}
+{$page}
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>

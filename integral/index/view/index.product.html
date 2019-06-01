@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="__STATIC__/integral/css/stylejifen.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<section class="aui-flexView">
+
+    <section class="aui-scrollView">
+        <div class="aui-top-head">
+            <div class="aui-title-bg"></div>
+            <div class="aui-invite-box">
+                <div class="aui-invite-title">
+                    <img src="__STATIC__/integral/img/photo.png" width="30%" />
+                    <h2><i></i><em>{$data.integral_num}</em> <i>积分</i></h2>
+                    <img src="__STATIC__/integral/img/jifen.png" width="50%" />
+                </div>
+
+                <div class="aui-button">
+                    {if condition="empty($Think.session.memberid)"}
+                    <button><a style="color: #f9fffe" href="__URL__/index/compress_code/{$data.compress_code}">登录领取换大奖</a></button>
+                    {else/}
+                    <button><a style="color: #f9fffe" href="__URL__/getIntegral/code/{$data.compress_code}">领取积分</a></button>
+                        {/if}
+                </div>
+            </div>
+
+            <div class="aui-invite-box aui-invite-box-clear">
+                <div class="aui-flex" style="padding:0">
+                    <div class="aui-flex-box">
+                        <h4>扫一扫关注公众号</h4>
+                        <h5>更多活动等你参加</h5>
+
+                    </div>
+                    <div class="aui-gift">
+                        公众号
+                        <img src="__STATIC__/integral/img/ewm.jpg" alt="">
+                    </div>
+                </div>
+                <br />
+                <div style="font-size: 12px;text-align: center;">
+                    <p>活动时间</p>
+                    <p>活动可在公众号中查看</p>
+                </div>
+            </div>
+            <div class="aui-footer-bg">
+
+            </div>
+        </div>
+        </div>
+    </section>
+</section>
+
+</body>
+
+</html>

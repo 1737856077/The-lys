@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link href="__STATIC__/integral/css/style12.css"  rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<section class="aui-flexView">
+    <header class="aui-navBar aui-navBar-fixed">
+        <a href="/integral.php/member/index/index" class="aui-navBar-item">
+            <i class="icon icon-return"></i>
+            订单详情
+
+        </a>
+        <div class="aui-center">
+            <span class="aui-center-title"></span>
+        </div>
+        <a href="javascript:;" class="aui-navBar-item">
+            <i class="icon icon-more"></i>
+        </a>
+    </header>
+    <section class="aui-scrollView">
+        <div class="aui-pay-change">
+            <div class="aui-flex">
+                <div class="aui-flex-box">
+                    <h3>兑换成功</h3>
+                </div>
+                <div class="aui-pay-zfb">
+                    <img src="__STATIC__/integral/img/icon-zfb.png"  alt="">
+                </div>
+            </div>
+        </div>
+        <div class="aui-flex">
+            <div class="aui-flex-add">
+                <img src="__STATIC__/integral/img/icon-add.png"  alt="">
+            </div>
+            <div class="aui-flex-box">
+                <h3>
+                    {$integral.consignee_contacts}  <em>{$integral.consignee_tel}</em>
+                </h3>
+                <p>{$sheng}{$shi}{$qu}{$integral.consignee_address}</p>
+            </div>
+        </div>
+        <div class="divHeight"></div>
+        <!--<div class="aui-flex">-->
+            <!--<div class="aui-shop-item">-->
+                <!--<img src="logo-item.png">-->
+            <!--<div class="aui-shop-item-arrow">京东商城自营旗舰店-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="aui-commodity-bg">
+            <div class="aui-flex">
+                <div class="aui-commodity-img">
+                    <img src="/static/uploads/business/{$product.images}" alt="">    </div>
+                <div class="aui-flex-box">
+                    <h4> {$product.title} </h4>
+                    <p>{$product.content?"$product_content":"暂无描述"}</p>
+                    <!--<span class="aui-barter-time">七天退换</span>-->
+                </div>
+                <div>
+                    <h5>￥{$data.price_total}</h5>
+                    <p class="aui-sml-text">X{$data.num}</p>
+                </div>
+            </div>
+        </div>
+        <div class="aui-cp-edu b-line">
+            <div class="aui-san-sml"></div>
+            <div class="aui-flex aui-flex-ed">
+                <div class="aui-flex-box">
+                    商品总价 <em>￥{$data.price_total}</em>
+                </div>
+            </div>
+            <div class="aui-flex aui-flex-ed">
+                <div class="aui-flex-box">
+                    运费 (快递)  <em>￥0.00</em>
+                </div>
+            </div>
+            <div class="aui-flex aui-flex-ed">
+                <div class="aui-flex-box">
+                    运费险(卖家赠送)  <em>￥0.00</em>
+                </div>
+            </div>
+            <div class="aui-flex aui-flex-ed">
+                <div class="aui-flex-box" style="color:#333; font-size:15px;">
+                    订单总价<em style="color:#333">￥{$data.price_total}</em>
+                </div>
+            </div>
+        </div>
+        <div class="divHeight b-line"></div>
+        <div class="aui-flex aui-flex-text-sml b-line">
+            <div class="aui-flex-box">
+                <p>
+                    <em>订单编号:</em>
+                    {$data.order_no}
+                </p>
+                <p>
+                    <em>下单时间:</em>
+                   {$data.create_time|date="Y-m-d H:i:s",###}
+                </p>
+            </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">[uib-typeahead-popup].dropdown-menu {
+        display: block;
+    }</style>
+    <style type="text/css">.uib-time input {
+        width: 50px;
+    }</style>
+    <style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow, [uib-popover-popup].popover.top-left > .arrow, [uib-popover-popup].popover.top-right > .arrow, [uib-popover-popup].popover.bottom-left > .arrow, [uib-popover-popup].popover.bottom-right > .arrow, [uib-popover-popup].popover.left-top > .arrow, [uib-popover-popup].popover.left-bottom > .arrow, [uib-popover-popup].popover.right-top > .arrow, [uib-popover-popup].popover.right-bottom > .arrow, [uib-popover-html-popup].popover.top-left > .arrow, [uib-popover-html-popup].popover.top-right > .arrow, [uib-popover-html-popup].popover.bottom-left > .arrow, [uib-popover-html-popup].popover.bottom-right > .arrow, [uib-popover-html-popup].popover.left-top > .arrow, [uib-popover-html-popup].popover.left-bottom > .arrow, [uib-popover-html-popup].popover.right-top > .arrow, [uib-popover-html-popup].popover.right-bottom > .arrow, [uib-popover-template-popup].popover.top-left > .arrow, [uib-popover-template-popup].popover.top-right > .arrow, [uib-popover-template-popup].popover.bottom-left > .arrow, [uib-popover-template-popup].popover.bottom-right > .arrow, [uib-popover-template-popup].popover.left-top > .arrow, [uib-popover-template-popup].popover.left-bottom > .arrow, [uib-popover-template-popup].popover.right-top > .arrow, [uib-popover-template-popup].popover.right-bottom > .arrow {
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0;
+    }
+
+    [uib-popover-popup].popover, [uib-popover-html-popup].popover, [uib-popover-template-popup].popover {
+        display: block !important;
+    }</style>
+    <style type="text/css">.uib-datepicker-popup.dropdown-menu {
+        display: block;
+        float: none;
+        margin: 0;
+    }
+
+    .uib-button-bar {
+        padding: 10px 9px 2px;
+    }</style>
+    <style type="text/css">.uib-position-measure {
+        display: block !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .uib-position-scrollbar-measure {
+        position: absolute !important;
+        top: -9999px !important;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: scroll !important;
+    }
+
+    .uib-position-body-scrollbar-measure {
+        overflow: scroll !important;
+    }</style>
+    <style type="text/css">.uib-datepicker .uib-title {
+        width: 100%;
+    }
+
+    .uib-day button, .uib-month button, .uib-year button {
+        min-width: 100%;
+    }
+
+    .uib-left, .uib-right {
+        width: 100%
+    }</style>
+    <style type="text/css">.ng-animate.item:not(.left):not(.right) {
+        -webkit-transition: 0s ease-in-out left;
+        transition: 0s ease-in-out left
+    }</style>
+    <style type="text/css">@charset "UTF-8";
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }
+
+    .ng-animate-shim {
+        visibility: hidden;
+    }
+
+    .ng-anchor {
+        position: absolute;
+    }</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>礼品修改页</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+    <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
+    <link href="__STATIC__/business/css/common.css" rel="stylesheet">
+    <script src="__STATIC__/business/s.txt"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
+    <!--<script type="text/javascript" src="__STATIC__/business/js/require.js"></script>-->
+</head>
+<body>
+<div class="loader" style="display:none">
+    <div class="la-ball-clip-rotate">
+        <div></div>
+    </div>
+</div>
+
+<div class="panel panel-content main-panel-content ">
+    <div class="panel-body clearfix main-panel-body menu-fixed">
+        <div class="right-content" style="min-height: 490px;">
+            <div class="new-keyword">
+                <ol class="breadcrumb we7-breadcrumb">
+                    <a href=""><i
+                            class="wi wi-back-circle"></i> </a>
+                    <li>编辑礼品</li>
+                </ol>
+                <form action="{:url('gift/edit')}?id='{$content.id}'" class="we7-form ng-pristine ng-valid ng-scope" method="post"
+                      id="js-user-create" ng-controller="UserCreate" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">商品名称</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="title" id="title" value="{$content.title}">
+                            <input type="hidden" name="id" value="{$content.id}">
+                            <div class="help-block"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">主图片</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="file" name="images" id="images" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">库存</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="total" id="total" value="{$content.total}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">市场售价</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="market_price" id="market_price" value="{$content.market_price}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">所需积分</label>
+                        <div class="form-controls col-sm-8">
+                            <input type="text" name="integral" id="integral" value="{$content.integral}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" name="img" id="sc" class="sc" value="">
+                        <div id="editor" style="width: 900px;">
+                            <p>{$content2}</p>
+                        </div>
+                        <div style="width: 900px;">
+                            <input type="hidden" name="data_desc" id="data_desc" class="data_desc">
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" id="su" class="btn btn-primary" style="display: none;">
+                    <input type="button" name="submit" value="提交" class="btn btn-primary" onclick="f()" style="padding: 6px 50px;">
+
+                </form>
+            </div>
+            <script type="text/javascript">
+                angular.module('userManageApp').value('config', {
+                    groups: {
+                        "2": {
+                            "id": "2",
+                            "name": "\u9ec4\u91d1\u7528\u6237\u7ec4",
+                            "package": "a:2:{i:0;i:1;i:1;i:-1;}"
+                        },
+                        "3": {
+                            "id": "3",
+                            "name": "\u4f53\u9a8c\u7528\u6237\u7ec4",
+                            "package": "a:1:{i:0;i:1;}"
+                        }
+                    },
+                });
+                angular.bootstrap($('#js-user-create'), ['userManageApp']);
+            </script>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="__STATIC__/admin/js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 关闭粘贴样式的过滤  //官网给的不起作用
+    editor.customConfig.pasteFilterStyle = false
+    // 忽略粘贴内容中的图片
+    editor.customConfig.pasteIgnoreImg = true
+    //绿色部分是对图片的设置，本地上传
+    editor.customConfig.debug = true;
+    editor.customConfig.uploadFileName = 'image';                       //上传的文件名
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.customConfig.uploadImgServer = "saveaddimg";  // 上传图片到服务器
+    editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;         //图片的尺寸
+    editor.customConfig.uploadImgMaxLength = 5;                     //最多上传多少
+    editor.customConfig.uploadImgParams = {
+        type: 'editor'  // 属性值会自动进行 encode ，此处无需 encode
+    };
+
+    // 自定义处理粘贴的文本内容
+    this.editor.customConfig.pasteTextHandle = function (lineContent) {
+        // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
+        if (lineContent == '' && !lineContent) return ''
+        var str = lineContent
+        str = str.replace(/<xml>[\s\S]*?<\/xml>/ig, '')
+        str = str.replace(/<style>[\s\S]*?<\/style>/ig, '')
+        str = str.replace(/<\/?[^>]*>/g, '')
+        str = str.replace(/[ | ]*\n/g, '\n')
+        str = str.replace(/&nbsp;/ig, '')
+        return str
+    }
+    editor.customConfig.uploadImgHooks ={
+        success: function (xhr, editor, result) {
+            $("#sc").val(result['url'])
+        }
+    }
+    var $lineContent = $('#lineContent')
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $lineContent.val(html)
+    }
+    editor.create()
+    function f() {
+        var data =  editor.txt.html()
+        $(".data_desc").val(data)
+        $("#su").click();
+    }
+</script>
+
+
+</body>
+</html>
+

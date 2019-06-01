@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <link href="__STATIC__/admin/lightbox2/dist/css/lightbox.css" rel="stylesheet">
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+    <link href="__STATIC__/admin/remodal/remodal.css" rel="stylesheet">
+    <link href="__STATIC__/admin/remodal/remodal-default-theme.css" rel="stylesheet">
+    <style>
+        .bor_cen tr td {
+            color:#333;
+        }
+        .clip,.clip a{
+            text-align:center;
+            width:200px;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        .remodal{
+            padding:0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="menus_r">
+    <div id="con_two_1" style="display: block;">
+        <div class="maps">
+            <i></i>
+            <p class="current">您当前的位置：<a href="">首页</a>&nbsp;>&nbsp; <a href="">微信素材管理</a>&nbsp;>&nbsp; <a href="">素材列表</a></p>
+            <div class="maps_r">
+                <form action="{:url('Material/index')}" method="post">
+                    <input type="text" name="title"  class="sou_l"/>
+                    <input type="submit" class="sou_r" value="搜索" />
+                </form>
+            </div>
+        </div>
+        <!--column end-->
+        <div class="form_con">
+            <div class="form_xuan">
+                <a href="javascript:void(0)" class="form_qx form_true selectall">全选</a>
+                <a href="javascript:void(0)" class="form_qx from_false unselected">反选</a>
+                <a href="javascript:void(0)" class="form_qx from_q select_f">取消</a>
+                <a href="javascript:void(0)" class="sc from_de">删除</a>
+                <a href="{:url('Material/addMedia')}" class="tjwzhang add_article">添加素材</a>
+                <a href="{:url('Material/SyncAllList')}" class="a5">同步素材</a>
+            </div>
+            <table class="bor_cen"  style="border-collapse:collapse;">
+                <thead>
+                    <tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                        <td class="mid_one" style="border-right:1px solid #e4e3e3"></td>
+                        <td class="mid_t">标题</td>
+                        <td class="mid_one">类型</td>
+                        <td class="mid_f">图文ID</td>
+                        <td class="mid_one">同步</td>
+                        <td class="mid_f">创建时间：</td>
+                        <td class="mid_s">操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {foreach name="info" id="vo"}
+                <tr  class="mid_02" style="border-left:3px solid #cfbba9" data-id="{$vo.media_id}">
+                    <td class="mid_one" style="border-right:1px solid #e4e3e3"><input type="checkbox" /></td>
+                    <td class="mid_t">
+                        <div{$vo.title}
+                            {if condition="$vo.data_type = 'image'">
+                            <a href="{$vo.url}" data-lightbox="roadtrip">{$vo.title}</a>
+                            {elseif condition="$vo.data_type = 'video'"/>
+                            <div class="remodal-bg">
+                                <div id="qunit"></div>
+                                <a href="#" id="video-title" data-remodal-target="modal" data-url="{$vo.local_path}">{$vo.title}</a>
+                            </div>
+                            {elseif condition="$vo.data_type = 'voice'" />
+                            <div class="remodal-bg">
+                                <div id="voice-qunit"></div>
+                                <a href="#" id="voice-title" data-remodal-target="voice-modal" data-url="{$vo.local_path}">{$vo.title}</a>
+                            </div>
+                            <else />
+                            {$vo.title}
+                            {/if}
+                        </div>
+                    </td>
+                    <td class="mid_one" style="text-align:center">{$vo.data_type}</td>
+                    <td class="mid_f">{$vo.id}</td>
+                    <td class="mid_one">
+                        {if condition="$vo.data_status = 1"}
+                        同步
+                        {else/}
+                        未同步
+                        {/if}
+                    </td>
+                    <td class="mid_f" style="text-align:center">{$vo.create_time|date="Y-m-d",###}</td>
+                    <td class="mid_s" style="text-align:center">
+                        <a href="javascript:void(0);" data-id="{$vo.media_id}" class="del">删除</a>
+                    </td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            <div class="interpret">
+                <div class="page">{$page}</div>
+            </div>
+            <span class="powes">Powered by Ecomma.net</span>
+        </div>
+        <!-- form_con end -->
+    </div>
+</div>
+<div class="remodal" data-remodal-id="modal" style="width:340px;height:164px;">
+    <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="340" height="164" data-setup="{}">
+        <source src="Public/Uploads/Multimedia/201508121401518467.mp4" type='video/mp4' />
+    </video>
+</div>
+<div class="remodal" data-remodal-id="voice-modal" style="width:300px;height:30px;">
+    <audio id="voice_player" controls="controls" height="100" width="100">
+        <source  type="audio/mp3" />
+        <embed height="100" width="100" />
+    </audio>
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+<script src="__STATIC__/admin/lightbox2/dist/js/lightbox.min.js"></script>
+<script src="http://vjs.zencdn.net/c/video.js"></script>
+<script src="__STATIC__/admin/remodal/remodal.js"></script>
+<script>
+$(function(){
+    //删除
+    $(".del").on('click',function(){
+        var mediaId = $(this).data('id');
+        if(confirm("您是否确认删除<"+mediaId+">?")){
+                location.href = "{:url('Material/delmedia')}?media_id="+mediaId;
+        }
+    });
+
+    //预览图片插件设置
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+    });
+
+    //全选
+    var attrIn = $(".mid_02 input[type='checkbox']");
+    $(".selectall").click(function(){
+        attrIn.prop("checked",true)
+    });
+
+    //反选
+    $(".unselected").click(function () {
+        $("input[type='checkbox']").each(function () {
+            $(this).prop("checked", !$(this).prop("checked"));
+        });
+    });
+    //取消
+    $(".select_f").click(function(){
+        $("input[type='checkbox']").each(function(){
+            $(this).prop("checked",false)
+        });
+    });
+    //删除
+    $('.from_de').click(function () {
+        if(confirm("您是否确认删除选中的素材?")) {
+            $("input:checked").each(function () {
+                var myself = $(this).parents('tr');
+                var id = myself.data('id');
+                $.post('{:url("Material/delMedia")}', {media_id: id}, function (data) {
+                    //console.log(data);
+                    if (data.status == 1) {
+                        myself.remove();
+                    } else {
+                        alert('"' + id + '" 删除失败');
+                    }
+                });
+            });
+        }
+    });
+    //加载视屏URL
+    $("#video-title").on('click',function(){
+        var url = $(this).data('url');
+        $("#example_video_1_html5_api").attr('src',url);
+    });
+    $("#voice-title").on('click',function(){
+        var url = $(this).data('url');
+        $("#voice_player").attr('src',url);
+        //$("#voice_player embed").attr('src',url);
+    });
+})
+</script>
+</body>
+</html>

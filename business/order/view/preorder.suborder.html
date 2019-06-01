@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提交订单</title>
+</head>
+<body>
+<form name="form1" id="form1" method="post" action="/onlinepay/alipay/pagepay.php">
+    <input type="hidden" name="WIDout_trade_no" id="WIDout_trade_no" value="{$WIDout_trade_no}" />
+    <input type="hidden" name="WIDsubject" id="WIDsubject" value="{$WIDsubject}" />
+    <input type="hidden" name="WIDtotal_amount" id="WIDtotal_amount" value='{$WIDtotal_amount}' />
+    <input type="hidden" name="WIDbody" id="WIDbody" value="{$WIDbody}" />
+    <h1>提交订单</h1>
+    <button type="submit" class="login" id="submitBtn">提交中..</button>&nbsp;<br /><br />
+</form>
+<script type="text/javascript">
+   document.getElementById('form1').submit();
+</script>
+</body>
+</html>

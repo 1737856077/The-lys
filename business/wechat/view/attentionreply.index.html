@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>关注回复</title>
+	<link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/public.css"/>
+    <script type="text/javascript" src="__STATIC__/business/js/wechat/jquery.js"></script>
+
+</head>
+<body>
+        
+        <div class="menus_r">
+        		<div class="maps">
+                    <i></i>
+                    <p class="current">您当前的位置：<a href="{:url('index/index')}">首页</a>&nbsp;>&nbsp; 微信回复管理&nbsp;>&nbsp; 关注回复</p>   
+                       
+                </div>
+                <div class="div_height_15"></div>
+                <!-- add end --> 
+               {if(empty($getoneAutomaticReply))}
+               <div class="Member">
+                    <div class="member_l">
+                    	<a class="selecs" style="width:100px;" href="__URL__/add">添加关注回复</a>
+                        <div class="careful"></div>
+                    </div>
+                </div>	
+                {/if}
+                <div class="mid">
+                	<div class="div_height_15"></div>
+                    <table class="mid_con"  style="border-collapse:collapse;">
+                    	{if condition="$getoneAutomaticReply['msgtype'] eq 'news'"}<!--图文消息-->
+                        <tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                            <td class="mid_th">图片</td>
+                            <td class="mid_th">标题</td>
+                            <td class="mid_th">描述</td>
+                            <td class="mid_th">跳转的url</td>
+                            <td class="mid_th">消息类型</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'music'"/}<!--音乐消息-->
+                        <tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                            <!--<td class="mid_th">缩略图的媒体id</td>-->
+                            <td class="mid_th">音乐</td>
+                            <td class="mid_th">标题</td>
+                            <td class="mid_th">描述</td>
+                            <td class="mid_th">消息类型</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'video'"/}<!--视频消息-->
+                        <tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                            <td class="mid_th">media_id</td>
+                            <td class="mid_th">标题</td>
+                            <td class="mid_th">描述</td>
+                            <td class="mid_th">消息类型</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'voice'"/}<!--语音消息-->
+                        <tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                            <td class="mid_th">media_id</td>
+                            <td class="mid_th">消息类型</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'image'"/}<!--图片消息-->
+                        <tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                            <td class="mid_th">media_id</td>
+                            <td class="mid_th">图片</td>
+                            <td class="mid_th">消息类型</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'text'"/}<!--文本消息-->
+                        <tr class="mid_01" style="border-left:3px solid #e4e3e3">
+                            <td class="mid_th">文本</td>
+                            <td class="mid_th">消息类型</td>
+                            <td class="mid_s">操作</td>
+                        </tr>
+                        {/if}
+                        
+						{if condition="$getoneAutomaticReply['msgtype'] eq 'news'"}<!--图文消息-->
+                        <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                            <td>
+                            	{if condition="$getoneAutomaticReply['link_url'] eq ''"}暂无图片
+                                {else/}<img src="{$getoneAutomaticReply['link_url']}" alt="" width="140" height="100" />
+                                {/if}
+                            </td>
+                            <td>{$getoneAutomaticReply['title']}</td>
+                            <td>{$getoneAutomaticReply['description']}</td>
+                            <td>{$getoneAutomaticReply['url']}</td>
+                            <td>图文消息</td>
+                            <td>
+                            	<a href="__URL__/edit/id/{$getoneAutomaticReply['id']}">编辑</a>
+                            </td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'music'"/}<!--音乐消息-->
+                        <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                            <!--<td>{$getoneAutomaticReply['thumb_media_id']}</td>-->
+                            <td><audio src="{$getoneAutomaticReply['link_url']}"  id="audio_id" controls="controls"  >您的浏览器不支持 audio 标签。</audio></td>
+                            <td>{$getoneAutomaticReply['title']}</td>
+                            <td>{$getoneAutomaticReply['description']}</td>
+                            <td>音乐消息</td>
+                            <td>
+                            	<a href="__URL__/edit/id/{$getoneAutomaticReply['id']}">编辑</a>
+                            </td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'video'"/}<!--视频消息-->
+                         <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                            <td>{$getoneAutomaticReply['media_id']}</td>
+                            <td>{$getoneAutomaticReply['title']}</td>
+                            <td>{$getoneAutomaticReply['description']}</td>
+                            <td>视频消息</td>
+                            <td>
+                            	<a href="__URL__/edit/id/{$getoneAutomaticReply['id']}">编辑</a>
+                            </td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'voice'"/}<!--语音消息-->
+                        <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                            <td>{$getoneAutomaticReply['media_id']}</td>
+                            <td>语音消息</td>
+                            <td>
+                            	<a href="__URL__/edit/id/{$getoneAutomaticReply['id']}">编辑</a>
+                            </td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'image'"/}<!--图片消息-->
+                        <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                        	<td>{$getoneAutomaticReply['media_id']}</td>
+                            <td>
+                            	{if condition="$getoneAutomaticReply['link_url'] eq ''"}暂无图片
+                                {else/}<img src="{$getoneAutomaticReply['link_url']}" alt="" width="140" height="100" />
+                                {/if}
+                            </td>
+                            <td>图片消息</td>
+                            <td>
+                            	<a href="__URL__/edit/id/{$getoneAutomaticReply['id']}">编辑</a>
+                            </td>
+                        </tr>
+                        {elseif condition="$getoneAutomaticReply['msgtype'] eq 'text'"/}<!--文本消息-->
+                        <tr class="mid_02" style="border-left:3px solid #f5da8c;">
+                            <td>{$getoneAutomaticReply['description']}</td>
+                            <td>文本消息</td>
+                            <td>
+                            	<a href="__URL__/edit/id/{$getoneAutomaticReply['id']}">编辑</a>
+                            </td>
+                        </tr>
+                        {/if}
+                      
+                    </table>
+                    <div class="interpret">
+                    	<div class="page"></div>
+                    </div>
+                </div>
+                <!-- mid end -->
+		
+        </div>
+</body>
+</html>

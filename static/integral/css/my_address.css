@@ -1,0 +1,17 @@
+.address_header{ width: 100%; overflow: hidden;border-bottom:1px solid #e5e5e5; background-color: #fff;  height: 35px;font-size: 14px;text-align: center; line-height: 35px;color:#838383;}
+.address_header i{  display: inline-block;width: 13px;height: auto;vertical-align: middle;margin-right: 4px;}
+.address_header i img{  display: block;width: 13px;margin-top: -2px;}
+
+.address_con{ width: 100%; height: auto; overflow:hidden;border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; margin-top: 2%; background-color: #fff;}
+.addUser{ width:94%; height: auto; border-top:1px solid #e5e5e5; padding: 4% 3%; }
+.addUser_l{  width: 20px;display: inline-block;vertical-align: top; margin-top: 4px;}
+.addUser_l input{width: 18px;height: 18px;display: block;background: url("../../../docs/html/web_mobile/images/yy.png") no-repeat;-webkit-appearance: none;background-size: 18px auto;}
+.addUser_l input:checked{background:url("../../../docs/html/web_mobile/images/ture_yes.png") no-repeat;width: 18px; height:18px;background-size:18px auto; }
+.addUser_r{ width:86%; height: auto; display: inline-block; padding-left: 4% }
+.addUsers_l{ display: inline-block;font-size: 16px; color:#333; float: left; line-height: 25px;}
+.addUsers_r{ display: inline-block; font-size: 16px; color:#333; float: right;line-height: 25px;}
+.addUser_r .dz{ font-size: 14px; color:#3d3c3c; text-align: justify;}
+.deletes{ width: 100%; height: 35px; line-height: 35px; color:#fff; text-align: center; font-size: 16px; background: #2595c9; margin: 4% 0 17% 0; margin-bottom: 124px}
+.all_delete{height:40px;line-height: 40px;border-top:1px solid #c6c6c6;position: fixed;left:0;bottom:0;width:100%;background-color: #fff;display: none;  margin-bottom: 67px;}
+.all_delete a{display: block;float:left;width:50%;text-align: center;}
+.all_delete a:first-child{border-right: 1px solid #c6c6c6;box-sizing:border-box;}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">[uib-typeahead-popup].dropdown-menu {
+		display: block;
+	}</style>
+	<style type="text/css">.uib-time input {
+		width: 50px;
+	}</style>
+	<style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow, [uib-popover-popup].popover.top-left > .arrow, [uib-popover-popup].popover.top-right > .arrow, [uib-popover-popup].popover.bottom-left > .arrow, [uib-popover-popup].popover.bottom-right > .arrow, [uib-popover-popup].popover.left-top > .arrow, [uib-popover-popup].popover.left-bottom > .arrow, [uib-popover-popup].popover.right-top > .arrow, [uib-popover-popup].popover.right-bottom > .arrow, [uib-popover-html-popup].popover.top-left > .arrow, [uib-popover-html-popup].popover.top-right > .arrow, [uib-popover-html-popup].popover.bottom-left > .arrow, [uib-popover-html-popup].popover.bottom-right > .arrow, [uib-popover-html-popup].popover.left-top > .arrow, [uib-popover-html-popup].popover.left-bottom > .arrow, [uib-popover-html-popup].popover.right-top > .arrow, [uib-popover-html-popup].popover.right-bottom > .arrow, [uib-popover-template-popup].popover.top-left > .arrow, [uib-popover-template-popup].popover.top-right > .arrow, [uib-popover-template-popup].popover.bottom-left > .arrow, [uib-popover-template-popup].popover.bottom-right > .arrow, [uib-popover-template-popup].popover.left-top > .arrow, [uib-popover-template-popup].popover.left-bottom > .arrow, [uib-popover-template-popup].popover.right-top > .arrow, [uib-popover-template-popup].popover.right-bottom > .arrow {
+		top: auto;
+		bottom: auto;
+		left: auto;
+		right: auto;
+		margin: 0;
+	}
+
+	[uib-popover-popup].popover, [uib-popover-html-popup].popover, [uib-popover-template-popup].popover {
+		display: block !important;
+	}</style>
+	<style type="text/css">.uib-datepicker-popup.dropdown-menu {
+		display: block;
+		float: none;
+		margin: 0;
+	}
+
+	.uib-button-bar {
+		padding: 10px 9px 2px;
+	}</style>
+	<style type="text/css">.uib-position-measure {
+		display: block !important;
+		visibility: hidden !important;
+		position: absolute !important;
+		top: -9999px !important;
+		left: -9999px !important;
+	}
+
+	.uib-position-scrollbar-measure {
+		position: absolute !important;
+		top: -9999px !important;
+		width: 50px !important;
+		height: 50px !important;
+		overflow: scroll !important;
+	}
+
+	.uib-position-body-scrollbar-measure {
+		overflow: scroll !important;
+	}</style>
+	<style type="text/css">.uib-datepicker .uib-title {
+		width: 100%;
+	}
+
+	.uib-day button, .uib-month button, .uib-year button {
+		min-width: 100%;
+	}
+
+	.uib-left, .uib-right {
+		width: 100%
+	}</style>
+	<style type="text/css">.ng-animate.item:not(.left):not(.right) {
+		-webkit-transition: 0s ease-in-out left;
+		transition: 0s ease-in-out left
+	}</style>
+	<style type="text/css">@charset "UTF-8";
+	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+		display: none !important;
+	}
+
+	ng\:form {
+		display: block;
+	}
+
+	.ng-animate-shim {
+		visibility: hidden;
+	}
+
+	.ng-anchor {
+		position: absolute;
+	}</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>商家管理页</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+	<link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
+	<link href="__STATIC__/business/css/common.css" rel="stylesheet">
+	<script src="__STATIC__/business/s.txt"></script>
+	<script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+	<script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+	<script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
+	<script type="text/javascript" src="__STATIC__/business/js/require.js"></script>
+</head>
+<body>
+			<div class="panel panel-content main-panel-content ">
+					<div class="right-content" style="min-height: 490px;">
+						<!--系统管理首页-->
+						<div class="welcome-container js-system-welcome ng-scope" ng-controller="WelcomeCtrl">
+							<div class="ad-img we7-margin-bottom">
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="panel we7-panel account-stat">
+										<div class="panel-heading">微信公众号</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="panel we7-panel account-stat">
+										<div class="panel-heading">积分商城</div>
+									</div>
+								</div>
+								<div id="modal-loading" style="width: 100%; display: none;">
+									<div style="text-align:center;background-color: transparent;">
+										<img style="width:48px; height:48px; margin-top:10px;margin-bottom:10px;"
+											 src="%E6%AC%A2%E8%BF%8E%E9%A1%B5%20-%20%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86_files/loading.gif"
+											 title="正在努力加载...">
+									</div>
+								</div>
+							</div>
+							<!-- ngIf: upgrade_show == 1 -->
+							<div class="panel we7-panel database">
+								<div class="panel-heading">
+									商家授权信息
+								</div>
+								{volist name="list" id="vo"}
+								<div class="panel-body clearfix">
+									<div class="col-sm-9">
+										<p>管理员:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.name}" readonly="readonly" style="border:none;"></p>
+										<p>状态:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.data_status? '正常':'冻结'}" readonly="readonly" style="border:none;"></p>
+										<p>描述:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.data_desc}" readonly="readonly" style="border:none;"></p>
+										<p>有效期:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.expiration_date|date='Y-m-d',###}" readonly="readonly" style="border:none;"></p>
+										<p>公司名称:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.company_title}" readonly="readonly" style="border:none;"></p>
+										<p>最后授权时间:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.last_auth_time}" readonly="readonly" style="border:none;"></p>
+										<p>剩余短信条数:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="{$vo.sms_num}" readonly="readonly" style="border:none;"></p>
+									</div>
+								</div>
+								{/volist}
+							</div>
+							<div class="panel we7-panel apply-list ng-hide" ng-show="not_installed_show == 1">
+								<div class="panel-heading">
+			<span class="pull-right">
+			</span>
+									未安装应用
+								</div>
+								<div class="panel-body">
+								</div>
+							</div>
+						</div>
+						<!--end 系统管理首页-->
+						<script type="text/javascript">
+                            $(function () {
+                                angular.module('systemApp').value('config', {
+                                    notices: null,
+                                    systemUpgradeUrl: "./index.php?c=home&a=welcome&do=get_system_upgrade&",
+                                    upgradeModulesUrl: "./index.php?c=home&a=welcome&do=get_upgrade_modules&",
+                                    moduleStatisticsUrl: "./index.php?c=home&a=welcome&do=get_module_statistics&"
+                                });
+                                angular.bootstrap($('.js-system-welcome'), ['systemApp']);
+                            });
+						</script>
+					</div>
+				</div>
+
+</div>
+
+
+</body>
+</html>

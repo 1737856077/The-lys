@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="height=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <title></title>
+    <link rel="stylesheet" href="__STATIC__/integral/css/register.css"/>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+    <style>
+        .message{
+            background: none;
+            padding-top: 10%;
+        }
+        .message input {
+            width: 83%;
+            margin: 0 4%;
+        }
+        .content form input:not(:nth-child(6)) {
+            border: 0;
+            margin-bottom: 8%;
+        }
+        .message .icons b{
+            top: 14.5%;
+            left: 11%;
+        }
+        .message .icons b:nth-child(2){
+            top: 37%;
+            left: 10%;
+        }
+        .message .icons b:nth-child(3){
+            top: 60%;
+        }
+        .message .icons b:nth-child(4){
+            top: 82%;
+        }
+        .code{
+            top: 33.475%;
+            right: 7.5%;
+            background: #21a9f5;
+            color: #ffffff;
+            padding: 3.635% 5%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    /*-------------------------------------------*/
+    var InterValObj; //timer变量，控制时间
+    var count = 60; //间隔函数，1秒执行
+    var curCount;//当前剩余秒数
+    var code = ""; //验证码
+    var codeLength = 6;//验证码长度
+
+       function jishi() {
+            var tel = $('#tel').val();
+            var data = (new Date()).valueOf();
+            $.ajax({
+                type: "POST",
+                url: "{:url('api/sms/get_code_by_phonewpd')}",
+                data: {phone: tel, 'time': data,'id':1},
+                success: function (data) {
+                    if (data['code'] == 200) {
+                        curCount = count;
+                        //设置button效果，开始计时
+                        $("#sendmsg").css("background-color", "#f9fffe");
+                        $("#sendmsg").attr("disabled", "true");
+                        $("#sendmsg").val("请在" + curCount + "秒内验证");
+                        InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+                        $("#tishi").html(data['msg'])
+                    } else {
+                        $("#tishi").html(data['msg'])
+                    }
+                },
+                dataType: 'json'
+            });
+       }
+
+
+    function SetRemainTime() {
+        if (curCount == 0) {
+            window.clearInterval(InterValObj);//停止计时器
+            $("#sendmsg").removeAttr("disabled");//启用按钮
+            $("#sendmsg").css("background-color", "#f9fffe");
+            $("#sendmsg").val("重发验证码");
+            code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
+        }
+        else {
+            curCount--;
+            $("#sendmsg").val("请在" + curCount + "秒内验证");
+        }
+    }
+    function up() {
+        $.ajax({
+            type:'POST',
+            url:"{:url('index/uppwd')}",
+            data:$("#form1").serialize(),
+            dataType:'json',
+            success:function (data) {
+                if (data['code'] == 200) {
+                    $("#tishi").html(data['msg']);
+                    window.location.href="__URL__/login";
+                } else {
+                    $("#tishi").html(data['msg'])
+                }
+            }
+        })
+    }
+</script>
+<div class="register">
+    <div style="background: #4a4d54" class="regTop">
+        <span>忘记密码</span>
+        <a class="back" href="javascript:history.go(-1)">返回</a>
+    </div>
+    <div class="content">
+        <form id="form1" class="form1" action="">
+            <div class="message">
+                <input type="text" name="mobile" class="tel" id="tel" placeholder="输入手机号" required/>
+                <input type="password" name="pwd" placeholder="请输入新密码"  required/>
+                <input type="password" name="pwds" placeholder="请再次输入密码"  required/>
+
+                <input type="text" id="yzm" class="yzm" name="code" onmouseout="fff()" value="" placeholder="输入验证码" required/>
+                <input type="button" class="code" style="margin-top:-80px;margin-right:-20px;background: #4a4d54;float: right;position:relative;width: 200px;border: 0px;padding-left: 20px"   id="sendmsg" onclick="jishi()" value="获取验证码">
+
+            <p id="tishi" class="tishi"></p>
+            </div>
+            <input class="submit" style="background: #4a4d54" onclick="up()" value="更新密码" type="button">
+        </form>
+    </div>
+</div>
+</body>
+</html>
