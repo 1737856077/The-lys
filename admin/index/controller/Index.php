@@ -78,6 +78,14 @@ class Index extends  Controller
             $role_nodes=explode('|',$role_nodes);
             $role_nodes=json_encode($role_nodes);
 
+            //清楚积分系统的登录信息begin
+            Session::delete('bus_adminid');
+            Session::delete('bus_adminname');
+            Session::delete('bus_adminoskey');
+            Session::delete('bus_admin_data_type');
+            Session::delete('bus_admin_permissions');
+            Session::delete('bus_admin_role_id');
+            //清楚积分系统的登录信息beginend
             Session::delete('adminid');
             Session::delete('adminname');
             Session::delete('adminoskey');
