@@ -19,8 +19,6 @@ class Index extends Controller
     public function _initialize(){
         $name = Session::get('adminname');
         $id = Session::get('adminid');
-//
-//
             $list = Db::name('admin_business')
                 ->alias('b')
                 ->field("a.name,b.*")

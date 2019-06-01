@@ -577,3 +577,20 @@ function return_msg($code, $msg = '', $data = []) {
     /*********** 返回信息并终止脚本  ***********/
     echo json_encode($return_data);die;
 }
+
+/**
+ * 生成随机字符串
+ * @param $length 指定的长度
+ * @return null|string 返回的随机字符串
+ */
+function getRandChar($length)
+{
+    $str = null;
+    $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";//大小写字母以及数字
+    $max = strlen($strPol) - 1;
+
+    for ($i = 0; $i < $length; $i++) {
+        $str .= $strPol[rand(0, $max)];
+    }
+    return $str;
+}

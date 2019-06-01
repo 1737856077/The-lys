@@ -15,6 +15,13 @@ use think\Session;
 
 class Index extends CommonIntegra
 {
+    /**
+     * 测试
+     */
+    public function test()
+    {
+        return $this->fetch();
+    }
     public function index()
     {
         $member_id = Session::get('memberid');
@@ -293,5 +300,34 @@ class Index extends CommonIntegra
         $member_data = Db::name('member')->where('id',$member_id)->find();
         $this->assign('member_data',$member_data);
         return $this->fetch();
+    }
+    /**
+     * 购物车页面渲染
+     */
+    public function shopping()
+    {
+        $data = Db::name('shopping')->where('member_id',Session::get('memberid'))->select();
+        $arr = [];
+        foreach ($data as $k=>$v)
+        {
+            $arr[] = Db::name('product_integral')->where('product_id',$v['product_id'])->find();
+            $arr[$k]['number'] = $v['number'];
+        }
+        $this->assign('data',$arr);
+        return $this->fetch();
+    }
+    /**
+     * 删除商品
+     */
+    public function dproduct()
+    {
+        $param = $this->request->param();
+        $product_id = htmlspecialchars(isset($param['id'])?$param['id']:'');
+        $res = Db::name('shopping')->where('product_id',$product_id)->delete();
+        if ($res){
+            return_msg('200','删除成功');
+        }else{
+            return_msg('400','删除失败');
+        }
     }
 }

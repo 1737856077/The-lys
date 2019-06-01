@@ -1,82 +1,117 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class='no-js'>
 <head>
-    <meta charset="UTF-8">
-    <title>全部商品</title>
-    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
-    <meta content="yes" name="apple-mobile-web-app-capable" />
-    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
-    <meta content="telephone=no" name="format-detection" />
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='description' content=''>
+    <meta name='keywords' content=''>
+    <!-- <meta name='viewport' content='width=device-width, initial-scale=0'>
+    <meta name='viewport' content='width=drvice-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;'> -->
+    <meta name='viewport' content='width=device-width,user-scalable=no, initial-scale=1'>
+    <title>商品中心</title>
+
+    <link rel='icon' type='image/png' href='../qgj_qt/images/favicon.png'>
+
+    <link rel='stylesheet' href='__STATIC__/integral/css/amazeui.min.css'>
+    <link rel='stylesheet' href='__STATIC__/integral/css/swiper.min.css'>
+    <link rel='stylesheet' href='__STATIC__/integral/css/app.css'>
+    <!-- jquery -->
+    <script src='__STATIC__/integral/js/jquery.js'></script>
+    <script src='__STATIC__/integral/js/jquery-1.7.2.min.js'></script>
     <link href="__STATIC__/integral/css/style1.css" rel="stylesheet" type="text/css" />
+
 </head>
+
 <body>
-<section class="aui-flexView">
-    <header class="aui-navBar aui-navBar-fixed">
-        <a href="javascript:;" class="aui-navBar-item">
-            <i class="icon "></i>
-        </a>
-        <div class="aui-center">
-            <span class="aui-center-title">商品中心</span>
-        </div>
-        <a href="javascript:;" class="aui-navBar-item">
-            <i class="icon icon-sys"></i>
-        </a>
-    </header>
-    <section class="aui-scrollView">
-        <div class="divHeight"></div>
-        <div class="aui-back-white">
-            <div class="aui-flex b-line">
-                <div class="aui-flex-box">
-                    <h3> <i class="icon icon-jf"></i>全部商品</h3>
-                </div>
+<!--热门城市  -->
+<!-- 搜索 -->
+<!-- 搜索框 -->
+<!-- 外框 -->
+<div id='waik'>
+    <!-- 头部 -->
+    <div id='top' style='background:#FF4945;'>
+        <div style='background: #FF4945' class='sos_t sos_t_zy'>
+            <div class='fanh_shang'>
             </div>
-            <div class="aui-list-theme">
-                {foreach name="data" id="pdata"}
-                <a href="{:url('integral/index/details',['id'=>$pdata.id])}" class="aui-list-theme-item">
-                    <div class="aui-list-img">
-                        {if condition="empty($pdata.images)"}
-                        <img src="__STATIC__/integral/img/nopic-107.png"   alt="">
-                        {else /}
-                        <img src="__STATIC__/uploads/business/{$pdata.images}" style="height: 150px" alt="">
-                        {/if}
+            <div class='so_input'>
+                <h1 style='color: #f9fffe'>商品分类</h1>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 内容 -->
+    <div class='con'>
+        <div class='category-top'>
+            <header>
+                <section class='search'>
+                    <div class='text-all dis-box j-text-all'>
+                        <div class='box-flex input-text'><a class='a-search-input j-search-input'
+                                                            href='javascript:void(0)'></a>
+                            <input type='text' placeholder='商品搜索'/>
+                            <i class='iconfont icon-guanbi is-null j-is-null'></i></div>
                     </div>
-                    <div class="aui-list-title">
-                        <h3>{$pdata.title}</h3>
-                        <div class="aui-list-spell">
-                            <span>{$pdata.integral} <em>积分</em></span>
-                        </div>
-                        <button>立即兑换</button>
-                    </div>
-                </a>
+                </section>
+            </header>
+        </div>
+        <aside>
+            <div class='menu-left scrollbar-none' id='sidebar'>
+                <ul>
+                    {foreach name='data' id='vo'}
+                    <li><a href='javascript:(0)' onclick="xq(' {$vo.id}')">{$vo.name}</a></li>
+                    {/foreach}
+                </ul>
+            </div>
+        </aside>
+        <section class='menu-right padding-all j-content'>
+            <div class='class_banner'><a href='javascript:(0)'><img src='__STATIC__/integral/img/banner.png'></a></div>
+            <!--标题img-->
+            <ul class='cont'>
+                {foreach name='one' id='da'}
+                <li class='w-3'>
+                    <a href='__URL__/prolist/id/{$vo.id}'>
+                        <img  style='height: 70px' src='__STATIC__/integral/img/num.jpg'/>
+                        <span>
+                        {$da.name}
+                    </span>
+                    </a>
+                </li>
                 {/foreach}
-            </div>
-        </div>
-        <div class="divHeight"></div>
-    </section>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        function xq(data) {
+            var id = data
+            $.ajax({
+                //几个参数需要注意一下
+                type: 'get',//方法类型
+                dataType: 'json',//预期服务器返回的数据类型
+                url: '/integral.php/integral/index/type',//url
+                data: {id: id},
+                success: function (result) {
+                    $('.cont').empty();
+                    for (var i = 0; i < result['data'].length; i++) {
+                        var html = '';
+                        html += "<li class='w-3'>";
+                        html += "<a href='__URL__/prolist/id/"+result['data'][i]['id']+"'  >";
+                        html += "<img src='__STATIC__/integral/img/num.jpg' style='height: 70px'  />";
+                        html += "<span>";
+                        html += result['data'][i]['name'];
+                        html += "</span>";
+                        html += "</a>";
+                        html += "</li>";
+                        $(".cont").append(html);
+                    }
+                },
+            });
+        }
+    </script>
+
+</div>
 
 
-    <footer class="aui-footer aui-footer-fixed">
-        <a href="{:url('index/index/index')}"  class="aui-tabBar-item">
-                    <span class="aui-tabBar-item-icon">
-                        <i class="icon icon-loan"></i>
-                    </span>
-            <span  style="color: #4a4d54" class="aui-tabBar-item-text">首页</span>
-        </a>
-        <a href="{:url('integral/index/index')}" class="aui-tabBar-item">
-                    <span class="aui-tabBar-item-icon">
-                        <i class="icon icon-meTo"></i>
-                    </span>
-            <span style="color: #4a4d54" class="aui-tabBar-item-text">积分兑换</span>
-        </a>
-        <a href="{:url('member/index/index')}" class="aui-tabBar-item ">
-                    <span class="aui-tabBar-item-icon">
-                        <i class="icon icon-find"></i>
-                    </span>
-            <span style="color: #4a4d54" class="aui-tabBar-item-text">我的</span>
-        </a>
-    </footer>
-</section>
 </body>
-
 </html>

@@ -159,7 +159,7 @@ class Product extends CommonBase
             'create_time'=>$gettime,
             'update_time'=>$gettime,
         );
-        $ReturnID=$ModelProduct->insert($data);
+        $ReturnID=$ModelProduct->insertGetId($data);
         if($ReturnID){
             $this->success("操作成功",url("product/index"),3);
         }else{
