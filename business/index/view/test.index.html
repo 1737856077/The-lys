@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="javascript" src="__STATIC__/integral/js/layer.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=dwYeelh9zPA3lLhUP6qyba22OOg5GKnQ"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<input type="text" value="" id="lingqu" class="lingqu">
+<script>
+
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(r){
+            var adds =r.point;
+            var latitude = adds.lat,
+                longitude  = adds.lng;
+            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                $.ajax({
+                    url:'http://api.map.baidu.com/geocoder/v2/?ak=dwYeelh9zPA3lLhUP6qyba22OOg5GKnQ&location=' + latitude + ',' + longitude + '&output=json&pois=1',
+                    dataType: 'jsonp',
+                    callback: 'BMap._rd._cbk43398',
+                    success: function(res) {
+
+                        $("#lingqu").val(res['result']['addressComponent']['adcode'])
+                    }
+                });
+            }
+            else {
+                $(ev.currentTarget).text('定位失败');
+            }
+        },{enableHighAccuracy: true})//指示浏览器获取高精度的位置，默认false
+
+</script>
+</body>
+</html>

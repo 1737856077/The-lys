@@ -6,8 +6,58 @@ use think\Session;
 
 class Option extends Controller
 {
+
     public function getBaseInfo()
     {
+        /**
+         * 查询是否在合理的地区范围
+         */
+        $param = $this->request->param();
+        $code = htmlspecialchars(isset($param['code'])?$param['code']:'');
+        $code_info_id = htmlspecialchars(isset($param['code_info_id'])?$param['code_info_id']:'');
+        if (!$code){
+//            return_msg(400,'领取失败请同意获取地址');
+        return $this->error('领取失败请同意获取地址');
+        }
+
+        //查询产品码
+        $product_code_id = Db::name('product_code_info')->where('compress_code',$code_info_id)->find()['product_code_id'];
+        //查询字段产品详情
+        $product_code_data = Db::name('product_code')->where('product_code_id',$product_code_id)->find();
+        if (!empty($product_code_data['listing_district'])){
+            $data = Db::name('region')->where('area_parent_id',$product_code_data['listing_district'])->field('area_code')->select();
+            $arr = [];
+            foreach ($data as $k=>$v){
+                $arr[] = $v['area_code'];
+            }
+            if (!in_array($code,$arr)){
+//                return_msg(400,'不在规定地段领取');
+                return $this->error('不在规定地段领取');
+            }
+        }elseif (!empty($product_code_data['listing_city'])){
+            $data = Db::name('region')->where('area_parent_id',$product_code_data['listing_city'])->field('area_code')->select();
+            $arr = [];
+            foreach ($data as $k=>$v){
+                $arr[] = $v['area_code'];
+            }
+            if (!in_array($code,$arr)){
+              //  return_msg(400,'不在规定地段领取');
+                return $this->error('不在规定地段领取');
+            }
+
+        }elseif (!empty($product_code_data['listing_province'])){
+            $data = Db::name('region')->where('area_parent_id',$product_code_data['listing_province'])->field('area_code')->select();
+            $arr = [];
+            foreach ($data as $k=>$v){
+                $arr[] = $v['area_code'];
+            }
+            if (!in_array($code,$arr)){
+                return $this->error('不在规定地段领取');
+                // return_msg(400,'不在规定地段领取');
+            }
+        }else{
+
+        }
         /**
          * 获取code
          */

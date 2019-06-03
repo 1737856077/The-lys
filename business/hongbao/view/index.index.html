@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/lxs_index.css"/>
     <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/lxsHeadFoot.css">
     <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/layer.css"/>
-    <script language="javascript" src="__STATIC__/integral/js/layer.m.js" charset="UTF-8"></script>
+    <script language="javascript" src="__STATIC__/integral/js/layer.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=dwYeelh9zPA3lLhUP6qyba22OOg5GKnQ"></script>
 
 </head>
 
@@ -37,7 +38,7 @@
                 </div>
 
                 <div class="aui-button">
-                    <button><a style="color: #f9fffe" href="{:url('option/getBaseInfo')}">领取红包</a> </button>
+                    <button><a id="lingqu" class="lingqu" style="color: #f9fffe" href="">领取红包</a> </button>
                     <p style="color: black;font-size: 20px;">先关注微信公众号才可以领取红包哦</p>
                 </div>
             </div>
@@ -61,5 +62,42 @@
     </section>
 </section>
 </body>
-
+<script>
+    layer.confirm('请求获取当前位置', {
+        btn: ['取消','获取']
+    }, function(){
+        cancel()
+    }, function(){
+        data()
+    });
+</script>
+<script>
+    function cancel() {
+        var url = "/business.php/hongbao/option/getBaseInfo"
+        $("#lingqu").attr('href',url)
+        layer.msg('取消');
+    }
+    function data() {
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(r){
+            var adds =r.point;
+            var latitude = adds.lat,
+                longitude  = adds.lng;
+            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                $.ajax({
+                    url:'http://api.map.baidu.com/geocoder/v2/?ak=dwYeelh9zPA3lLhUP6qyba22OOg5GKnQ&location=' + latitude + ',' + longitude + '&output=json&pois=1',
+                    dataType: 'jsonp',
+                    callback: 'BMap._rd._cbk43398',
+                    success: function(res) {
+                        var url = "/business.php/hongbao/option/getBaseInfo/code/"+res['result']['addressComponent']['adcode']+"/code_info_id/"+"{$code_info_id}"
+                        $("#lingqu").attr('href',url)
+                    }
+                });
+            }
+            else {
+                $(ev.currentTarget).text('定位失败');
+            }
+        },{enableHighAccuracy: true})//指示浏览器获取高精度的位置，默认false
+    }
+</script>
 </html>
