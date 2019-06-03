@@ -15,6 +15,7 @@ class Index extends Controller
         $data = Db::name('product_code_info')->where('compress_code', $code_info_id)->field('integral_num')->find();
         $money = implode(',',$data);
         Session::set('money',$money);
+        $this->assign('code_info_id',$code_info_id);
         return $this->fetch();
     }
 }
