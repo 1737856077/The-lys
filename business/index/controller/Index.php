@@ -18,8 +18,8 @@ class Index extends Controller
 {
 
     public function _initialize(){
-        $name = Session::get('bus_adminname');
-        $id = Session::get('bus_adminid');
+        $name = Session::get('adminname');
+        $id = Session::get('adminid');
             $list = Db::name('admin_business')
                 ->alias('b')
                 ->field("a.name,b.*")
@@ -44,7 +44,7 @@ class Index extends Controller
     public function index()
     {
 
-        if(Session::has('bus_adminname')){
+        if(Session::has('adminname')){
             return $this->fetch(); }else{
             $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
         }
@@ -56,7 +56,7 @@ class Index extends Controller
      */
     public function login(){
 
-        if(Session::has('bus_adminname')){
+        if(Session::has('adminname')){
             //$this->redirect("","",1,"已登录，1称后自动跳转");
             echo "<script language=\"javascript\">window.open('".url('index/index')."','_top');</script>";
         }else{
@@ -99,14 +99,14 @@ class Index extends Controller
             Session::delete('admin_permissions');
             Session::delete('admin_role_id');
             //清楚后台系统的登录信息end
-            Session::delete('bus_adminid');
-            Session::delete('bus_adminname');
+            Session::delete('adminid');
+            Session::delete('adminname');
             Session::delete('bus_adminoskey');
             Session::delete('bus_admin_data_type');
             Session::delete('bus_admin_permissions');
             Session::delete('bus_admin_role_id');
-            Session::set('bus_adminid', $getoneAdmin["admin_id"]);
-            Session::set('bus_adminname', $getoneAdmin["name"]);
+            Session::set('adminid', $getoneAdmin["admin_id"]);
+            Session::set('adminname', $getoneAdmin["name"]);
             Session::set('bus_adminoskey', $getoneAdmin["oskey"]);
             Session::set('bus_admin_data_type',$getoneAdmin["data_type"]);
             Session::set('bus_admin_permissions', $role_nodes);
@@ -115,7 +115,7 @@ class Index extends Controller
             $_content=$getoneAdmin['name'].'登录网站后台管理系统。';
             $ModelAdminOperateLog=Db::name('admin_operate_log');
             $dataAdminOperateLog=array("content"=>$_content,
-                "admin_id"=>Session::get('bus_adminid'),
+                "admin_id"=>Session::get('adminid'),
                 "create_ip"=>$_SERVER["REMOTE_ADDR"],
                 "create_time"=>time(),
             );
@@ -133,17 +133,17 @@ class Index extends Controller
     public function unlogin(){
         //Session::clear();
         //添加日志 begin
-        $_content=Session::get('bus_adminname').'退出网站后台管理系统。';
+        $_content=Session::get('adminname').'退出网站后台管理系统。';
         $ModelAdminOperateLog=Db::name('admin_operate_log');
         $dataAdminOperateLog=array("content"=>$_content,
-            "admin_id"=>Session::get('bus_adminid'),
+            "admin_id"=>Session::get('adminid'),
             "create_ip"=>$_SERVER["REMOTE_ADDR"],
             "create_time"=>time(),
         );
         $ModelAdminOperateLog->insert($dataAdminOperateLog);
         //添加日志 end
-        Session::delete('bus_adminid');
-        Session::delete('bus_adminname');
+        Session::delete('adminid');
+        Session::delete('adminname');
         Session::delete('bus_adminoskey');
         Session::delete('bus_admin_data_type');
         Session::delete('bus_admin_permissions');
