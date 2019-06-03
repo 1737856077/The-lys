@@ -1,5 +1,5 @@
 
-/*===×·¼Ó×Ö¶Î 2019-03-07==*/
+/*===×·ï¿½ï¿½ï¿½Ö¶ï¿½ 2019-03-07==*/
 ALTER TABLE  `sy_region` ADD  `lng` VARCHAR( 16 ) NULL AFTER  `area_type` ,
 ADD  `lat` VARCHAR( 16 ) NULL AFTER  `lng`;
 ALTER TABLE  `sy_product_code` ADD  `listing_nation` VARCHAR( 64 ) NULL AFTER  `product_code_num` ,
@@ -10,7 +10,7 @@ ADD  `listing_district` VARCHAR( 64 ) NULL AFTER  `listing_city`;
 ALTER TABLE  `sy_product_code_info_query_record` ADD  `sn` VARCHAR( 32 ) NULL AFTER  `query_system`;
 ALTER TABLE `sy_product_code_info_visit_record` ADD `is_listing_area` TINYINT(1) NULL DEFAULT '0' AFTER `sn`; 
 
-/*===×·¼Ó×Ö¶Î 2019-03-10==*/
+/*===×·ï¿½ï¿½ï¿½Ö¶ï¿½ 2019-03-10==*/
 ALTER TABLE `sy_product_code` ADD `manufacture_date` INT NULL DEFAULT '0' AFTER `title`; 
 
 /*=== 2019-03-11==*/
@@ -46,6 +46,18 @@ CREATE TABLE IF NOT EXISTS `sy_domain_access_record` (
   PRIMARY KEY (`access_record_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+/*=== 2019-05-22==*/
+ALTER TABLE `sy_product_content` ADD `generic_name` VARCHAR(64) NULL AFTER `is_image`; 
+ALTER TABLE `sy_product_content` ADD `identification_code` VARCHAR(32) NULL AFTER `is_image`; 
+ALTER TABLE `sy_product_content` ADD `registration_information` VARCHAR(64) NULL AFTER `generic_name`; 
+ALTER TABLE `sy_product_content` ADD `batch_number` VARCHAR(64) NULL AFTER `registration_information`; 
+ALTER TABLE `sy_product_content` ADD `inspection_information` VARCHAR(64) NULL AFTER `batch_number`; 
+ALTER TABLE `sy_product_content` ADD `manufacturing_enterprise` VARCHAR(64) NULL AFTER `inspection_information`; 
+ALTER TABLE `sy_product_content` ADD `business_enterprise` VARCHAR(64) NULL AFTER `manufacturing_enterprise`; 
+ALTER TABLE `sy_product_content` ADD `technical_guidance` VARCHAR(64) NULL AFTER `business_enterprise`; 
+ALTER TABLE `sy_product_content` ADD `hotline` VARCHAR(64) NULL AFTER `technical_guidance`; 
+ALTER TABLE `sy_news_class` ADD `class_type` TINYINT(1) NULL DEFAULT '0' AFTER `product_template_id`; 
+
 /*=== 2019-05-07==*/
 CREATE TABLE IF NOT EXISTS `sy_sms_send_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -65,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `sy_sms_send_log` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `sy_sms_send_log_1`
+-- ï¿½ï¿½Ä½á¹¹ `sy_sms_send_log_1`
 --
 
 CREATE TABLE IF NOT EXISTS `sy_sms_send_log_1` (
@@ -86,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `sy_sms_send_log_1` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `sy_sms_send_monitor`
+-- ï¿½ï¿½Ä½á¹¹ `sy_sms_send_monitor`
 --
 
 CREATE TABLE IF NOT EXISTS `sy_sms_send_monitor` (
@@ -105,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `sy_sms_send_monitor` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `sy_sms_send_monitor_1`
+-- ï¿½ï¿½Ä½á¹¹ `sy_sms_send_monitor_1`
 --
 
 CREATE TABLE IF NOT EXISTS `sy_sms_send_monitor_1` (
@@ -124,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `sy_sms_send_monitor_1` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `sy_sms_template`
+-- ï¿½ï¿½Ä½á¹¹ `sy_sms_template`
 --
 
 CREATE TABLE IF NOT EXISTS `sy_sms_template` (
@@ -144,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `sy_sms_template` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `sy_wechat_watch`
+-- ï¿½ï¿½Ä½á¹¹ `sy_wechat_watch`
 --
 
 CREATE TABLE IF NOT EXISTS `sy_wechat_watch` (
@@ -175,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `sy_wechat_watch` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `sy_wechat_watch_1`
+-- ï¿½ï¿½Ä½á¹¹ `sy_wechat_watch_1`
 --
 
 CREATE TABLE IF NOT EXISTS `sy_wechat_watch_1` (
@@ -331,8 +343,8 @@ CREATE TABLE IF NOT EXISTS `sy_wechat_watch_send_info` (
   `update_time` int(11) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `sy_sms_template` VALUES ('1', 'ÊÖ»úºÅ°ó¶¨ÑéÖ¤Âë¶ÌÐÅ', 'ÑéÖ¤Âë£º{$code}£¬ÓÐÐ§Ê±¼ä{$time}·ÖÖÓ,Èç²»ÊÇ±¾ÈË²Ù×÷£¬ÇëºöÂÔ£¡','',0, '0', '1', '0', '0');
-INSERT INTO `sy_sms_template` VALUES ('2', '×¢²á³É¹¦¶ÌÐÅ', 'Ç×°®µÄ¡°{$username}¡±»áÔ±£¬¹§Ï²Äú³ÉÎªòòò½ËÝÔ´µÄ»áÔ±¡£', '',0, '0', '1', '0', '0');
+INSERT INTO `sy_sms_template` VALUES ('1', 'ï¿½Ö»ï¿½ï¿½Å°ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½Ö¤ï¿½ë£º{$code}ï¿½ï¿½ï¿½ï¿½Ð§Ê±ï¿½ï¿½{$time}ï¿½ï¿½ï¿½ï¿½,ï¿½ç²»ï¿½Ç±ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½','',0, '0', '1', '0', '0');
+INSERT INTO `sy_sms_template` VALUES ('2', '×¢ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½×°ï¿½ï¿½Ä¡ï¿½{$username}ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½Ä»ï¿½Ô±ï¿½ï¿½', '',0, '0', '1', '0', '0');
 
 /*=== 2019-05-09==*/
 CREATE TABLE `sy_automatic_reply` (
@@ -357,8 +369,8 @@ CREATE TABLE `sy_automatic_reply` (
 -- ----------------------------
 -- Records of sy_automatic_reply
 -- ----------------------------
-INSERT INTO `sy_automatic_reply` VALUES ('1', 'text', null, '»¶Ó­¹Ø×¢', 'ÖÕÓÚµÈµ½Ç×À²£¡\r\n', '»¶Ó­¹Ø×¢', 'http://hai.w.suixin.com/Public/home/images/hot.jpg', '', 'JNUnx8UY9mMOYvEyK5PFDxtKVKTZlBZF8pUb4Gc-jus', 'OhiFD9XFbtcF1DUS1nX14R4mCGfXTWVxnSezZhsq6_0', 'http://hai.w.suixin.com/index.php', '0', '1', '0', '1447751369');
-INSERT INTO `sy_automatic_reply` VALUES ('29', 'text', '111', null, 'ÖÕÓÚµÈµ½Ç×À²£¡\r\n', null, null, null, null, null, null, '1', '1', '1442884043', '1442884043');
+INSERT INTO `sy_automatic_reply` VALUES ('1', 'text', null, 'ï¿½ï¿½Ó­ï¿½ï¿½×¢', 'ï¿½ï¿½ï¿½ÚµÈµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n', 'ï¿½ï¿½Ó­ï¿½ï¿½×¢', 'http://hai.w.suixin.com/Public/home/images/hot.jpg', '', 'JNUnx8UY9mMOYvEyK5PFDxtKVKTZlBZF8pUb4Gc-jus', 'OhiFD9XFbtcF1DUS1nX14R4mCGfXTWVxnSezZhsq6_0', 'http://hai.w.suixin.com/index.php', '0', '1', '0', '1447751369');
+INSERT INTO `sy_automatic_reply` VALUES ('29', 'text', '111', null, 'ï¿½ï¿½ï¿½ÚµÈµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n', null, null, null, null, null, null, '1', '1', '1442884043', '1442884043');
 
 
 CREATE TABLE `sy_member_groups` (
@@ -371,3 +383,5 @@ CREATE TABLE `sy_member_groups` (
   `update_time` int(11) DEFAULT '0',
   PRIMARY KEY (`member_groups_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+

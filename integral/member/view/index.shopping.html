@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>购物城</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/shopcar.css">
+    <script type="text/javascript" src="__STATIC__/integral/js/auto-size.js" ></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.8.3.min.js"></script>
+	<script src="__STATIC__/integral/js/jquery.js"></script>
+	<script src="__STATIC__/integral/js/layer.js"></script>
+</head>
+<style>
+	.lb .check .xz{
+		width: 0.4rem;
+		height: 0.4rem;
+		margin-top: 0.8rem;
+		margin-left: 0.2rem;
+		display: block;
+		background-image: url("__STATIC__/integral/img/check.jpg")/*tpa=http://www.17sucai.com/preview/420578/2017-07-24/%E9%80%89%E6%8B%A9%E5%88%A0%E9%99%A4%E8%AE%A1%E7%AE%97%E8%B4%AD%E7%89%A9%E8%BD%A6/images/check.jpg*/;
+		background-size: 0.4rem 0.4rem;
+	}
+	#qx{
+		width: 0.4rem;
+		height: 0.4rem;
+		margin-top: 0.8rem;
+		margin-left: 0.2rem;
+		display: block;
+		background-image: url("__STATIC__/integral/img/check.jpg")/*tpa=http://www.17sucai.com/preview/420578/2017-07-24/%E9%80%89%E6%8B%A9%E5%88%A0%E9%99%A4%E8%AE%A1%E7%AE%97%E8%B4%AD%E7%89%A9%E8%BD%A6/images/check.jpg*/;
+		background-size: 0.4rem 0.4rem;
+		float: left;
+		margin-left: 0.2rem;
+		margin-top: 0.2rem;
+		line-height: 0.8rem;
+	}
+</style>
+<body>
+	<div class="fix_head">
+		<a href="javascript:history.go(-1);" class="back">
+			<img src="__STATIC__/integral/img/back.jpg">
+		</a>
+		<p>购物车</p>
+		<a href="" class="home">
+			<img src="__STATIC__/integral/img/home.jpg" >
+		</a>
+	</div>
+	<div class="sc_h"></div>
+	{foreach name="data" id="data"}
+	<div class="lb">
+		<div class="check">
+			<div class="xz" data="0"></div>
+		</div>
+		<img src="__STATIC__/uploads/business/{$data.images}"  class="spt">
+		<div class="mid">
+			<p class="name">{$data.title}</p>
+			<p class="color">颜色:白色</p>
+			<div class="jj">
+				<span class="jia">-</span>
+				<input class="num" value="{$data.number}">
+				<span class="jian">+</span>
+			</div>
+		</div>
+		<div class="jgq">
+			<div class="price"><p>￥<span class="pri">{$data.integral}</span></p></div>
+			<div class="price_de"><p><del>￥3{$data.integral}</del></p></div>
+			<a href="javascript:(0)" onclick="sc('{$data.product_id}')"><img src="__STATIC__/integral/img/del.jpg" class="del"></a>
+		</div>
+	</div>
+	{/foreach}
+	<div class="fix_bottom">
+		<div id="qx" data="0"></div><span style="float:left;line-height:0.8rem;">全选</span>
+		<div class="zjq">
+		<p class="p1">合计:￥
+		<span id="zj" >0</span>
+		</p>
+		<p>含运费</p>
+		</div>
+		<a id="js">结算(<span id="zsl">0</span>)</a>
+	</div>
+	<script>
+		function sc(data)
+		{
+		    var data = data;
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "__URL__/dproduct" ,//url
+                data: {'id':data},
+                success: function (result) {
+                    layer.msg(result['msg']);
+                    window.location.reload()
+                }
+            })
+		}
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			js();
+			$(".xz").click(function(){
+				var a = $(this).attr("data");
+				if (a==0) {
+					$(this).css("background-image","url(__STATIC__/integral/img/check_on.jpg)");
+					$(this).attr("data",1)
+				}else{
+					$(this).css("background-image","url(__STATIC__/integral/img/check.jpg)");
+					$(this).attr("data",0)
+					$("#qx").attr("data",0);
+					$("#qx").css("background-image","url(__STATIC__/integral/img/check.jpg)");
+				}
+				js();				
+				
+			})
+			$("#qx").click(function(){
+				var a = $(this).attr("data");
+				if (a==0) {
+					$(".xz").attr("data",1);
+				$(this).css("background-image","url(__STATIC__/integral/img/check_on.jpg)");
+				$(".xz").css("background-image","url(__STATIC__/integral/img/check_on.jpg)");
+				$(this).attr("data",1);
+				}else{
+					$(".xz").attr("data",0);
+				$(this).css("background-image","url(__STATIC__/integral/img/check.jpg)");
+				$(".xz").css("background-image","url(__STATIC__/integral/img/check.jpg)");
+					$(this).attr("data",0);
+				}
+				js();
+			})
+			$(".jian").click(function(){
+				var a = $(this).prev().val();
+				a++;
+				$(this).prev().val(a);
+				js();
+
+			})
+			$(".jia").click(function(){
+				var a = $(this).next().val();
+				a--;
+				$(this).next().val(a);
+				var a = $(".xz").attr("data");
+				if(a==1){
+					js();
+				}
+			})
+			$(".del").click(function(){
+				$(this).parent().parent().remove();
+				js(); 
+			})
+			/*function js(){
+
+				var num=0;
+				var conut=0;
+
+				$(".num").each(function(){
+
+		    			var b=$(this).val()
+		    		var jg=$(this).parent().parent().next().find(".pri").text();
+
+		    		conut+=parseInt(b);
+		    		num+=b*jg;
+		    	
+		  		});
+		  		$('#zj').html(num)
+			}*/
+			 function js(){
+
+				var num=0;
+				var conut=0;
+				$(".xz").each(function(){
+					if ($(this).attr("data")==1) {
+						var b = $(this).parent().next().next().find(".num").val();
+						var jg = $(this).parent().next().next().next().find(".pri").text();
+						conut+=parseInt(b);
+		    			num+=b*jg;
+					}
+				})
+				
+		  		$('#zj').html(num);
+		  		$('#zsl').html(conut);
+			}
+		})
+			
+	</script>
+</body>
+</html>

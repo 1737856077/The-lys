@@ -289,4 +289,11 @@ return [
     'SMS_UID'				=>'22222',
     'SMS_USERNAME'			=>'蝌蚪溯源',
     'SMS_PWD'				=>'fdsfds',
+    //红包
+    'wx'=>[
+        'mch_billno'=>date('YmdHis') . rand(1000, 9999),
+        'mch_id'=>'1452483602',
+        'key'=>'e3aedffe336958d1e2ce8e6e4c28eaf3',
+        'app_id'=>'wxb8d7d0f77e16a9fe',
+    ]
 ];
