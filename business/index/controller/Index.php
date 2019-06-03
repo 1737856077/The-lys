@@ -33,7 +33,7 @@ class Index extends Controller
 
     }
     public function admin()
-    {if(Session::has('adminname')){
+    {if(Session::has('bus_adminname')){
         return $this->fetch(); }else{
     $this->redirect('login',"",1,"请登录，1称后自动跳转到登录页面");
     }
