@@ -29,7 +29,7 @@ class Productcode extends CommonBase
         $this->assign("SearchTitle",$SearchTitle);
 
         $ModelProduct=Db::name('product');
-        $ModelProductCode=Db::name('product_code');
+        $ModelProductCode=Db::name('red_envelopes');
         $ModelAdmin=Db::name('admin');
 
         //加入权限 begin
@@ -44,46 +44,21 @@ class Productcode extends CommonBase
         }
         //加入权限 end
         $_where="1";
-        if(!empty($SearchTitle)){
-            $listProduct=$ModelProduct->where(" title LIKE '%".urldecode($SearchTitle)."%'")->select();
-            $ProductIDS=array();
-            foreach ($listProduct as $k=>$v){
-                $ProductIDS[]=$v['product_id'];
-            }
-            if(count($ProductIDS)){
-                $_where .= " AND product_id IN('".implode("','",$ProductIDS)."') ";
-            }else {
-                $_where .= " AND 0 ";
-            }
-        }
-
         if($_where=='1'){$_where='';}
         $count = $ModelProduct->where($_where)
             ->where($_whereIn)
             ->count();
 
-        $resultArr=array();
+
         $List=$ModelProductCode->where($_where)
             ->where($_whereIn)
             ->where('admin_id',$id)
             ->order('create_time DESC')
             ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
         $show=$List->render();
-
-        foreach($List as $key=>$value){
-            //模版名称
-            $getoneProduct=$ModelProduct->where("product_id='$value[product_id]'")->find();
-            $value["product_title"]=$getoneProduct['title'];
-
-            //公司名称
-            $getoneAdmin=$ModelAdmin->where("admin_id='$value[admin_id]'")->find();
-            $value["admin_name"]=$getoneAdmin['name'];
-
-            $resultArr[]=$value;
-        }
-
+//        dump($List);die;
         $this->assign("count",$count);
-        $this->assign("List",$resultArr);
+        $this->assign("List",$List);
         $this->assign("page",$show);
         $this->assign('paramUrl',$paramUrl);
         return $this->fetch();

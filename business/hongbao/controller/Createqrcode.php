@@ -62,30 +62,27 @@ class Createqrcode extends CommonBase
         set_time_limit(0);
         $param = $this->request->post();
         $ModelProduct=Db::name('product');
-        $ModelProductCode=Db::name('product_code');
-        $ModelProductCodeInfo=Db::name('product_code_info');
+        $ModelProductCode=Db::name('red_envelopes');
+        $ModelProductCodeInfo=Db::name('red_envelopes_info');
         $ModelAdmin=Db::name('admin');
 
-        $product_id=htmlspecialchars(isset($param['product_id']) ? trim($param['product_id']) : '');
-        $integral_num=htmlspecialchars(isset($param['integral_num']) ? trim($param['integral_num']) : '');
-        $title=htmlspecialchars(isset($param['title']) ? trim($param['title']) : '');
+        $price_total=htmlspecialchars(isset($param['price_total']) ? trim($param['price_total']) : '');
+        $price_max=htmlspecialchars(isset($param['price_max']) ? trim($param['price_max']) : '');
+        $price_min=htmlspecialchars(isset($param['price_min']) ? trim($param['price_min']) : '');
         $level=htmlspecialchars(isset($param['level']) ? trim($param['level']) : 'L');
         $size=htmlspecialchars(isset($param['size']) ? intval($param['size']) : 1);
         $product_code_num=htmlspecialchars(isset($param['product_code_num']) ? intval($param['product_code_num']) : 1);
-        $market_time=isset($param['market_time']) ? trim($param['market_time']) : date('Y-m-d');
+        $begin_time=isset($param['begin_time']) ? trim($param['begin_time']) : date('Y-m-d');
+        $begin_end=isset($param['begin_end']) ? trim($param['begin_end']) : date('Y-m-d');
         $data_desc=htmlspecialchars(isset($param['data_desc']) ? trim($param['data_desc']) : '');
         $listing_province=htmlspecialchars(isset($param['sheng']) ? trim($param['sheng']) : '');
         $listing_city=htmlspecialchars(isset($param['city']) ? trim($param['city']) : '');
         $listing_district=htmlspecialchars(isset($param['qu']) ? trim($param['qu']) : '');
         $listing_nation=empty($listing_province) ? '' : '1';
-        $manufacture_date=isset($param['manufacture_date']) ? strtotime($param['manufacture_date']) : '0';
-        $production_batch=htmlspecialchars(isset($param['production_batch']) ? trim($param['production_batch']) : '');
-        $business_enterprise=htmlspecialchars(isset($param['business_enterprise']) ? trim($param['business_enterprise']) : '');
-        $contacts=htmlspecialchars(isset($param['contacts']) ? trim($param['contacts']) : '');
-        $tel=htmlspecialchars(isset($param['tel']) ? trim($param['tel']) : '');
         $gettime=time();
         $admin_id=Session::get('adminid') ;
-        $market_time=strtotime($market_time);
+        $begin_time=strtotime($begin_time);
+        $begin_end=strtotime($begin_end);
         //提交类型(0:普通提交；1：生成并下载(TXT)；)
         $actionType=isset($param['actionType']) ? intval($param['actionType']) : 0;
         if($actionType == 1 or $actionType == 2){
@@ -93,23 +90,17 @@ class Createqrcode extends CommonBase
             Header("Accept-Ranges: bytes");
         }
 
-        if(empty($product_id) or empty($title)
-        ){
-            echo '<script language="javascript">alert("必填项不能为空！");history.go(-1);</script>';
-            exit;
-        }
-
         //二维码生成处理  begin
         //临时图片的存放目录
         $_dateYMD=date('Ymd');
-        $PNG_TEMP_DIR=config('upload_config.upload_root').'qrcode/'.$product_id.'/';
+        $PNG_TEMP_DIR=config('upload_config.upload_root').'qrcode/'.'/';
         //创建目录
         if (!file_exists($PNG_TEMP_DIR)) {  mkdir($PNG_TEMP_DIR);  }
         $PNG_TEMP_DIR=$PNG_TEMP_DIR.$_dateYMD.'/';
         if (!file_exists($PNG_TEMP_DIR)) {  mkdir($PNG_TEMP_DIR);  }
 
         //目录
-        $PNG_WEB_DIR = config('upload_config.upload_root').'qrcode/'.$product_id.'/'.$_dateYMD.'/';
+        $PNG_WEB_DIR = config('upload_config.upload_root').'qrcode/'.'/'.$_dateYMD.'/';
         include_once './extend/lib/qrcode/qrlib.php';
 
         // 开启事务
@@ -123,31 +114,23 @@ class Createqrcode extends CommonBase
         $matrixPointSize = min(max((int)$size, 1), 10);
 
         //积分码的总积分
-        $num = $product_code_num*$integral_num;
-        $product_code_id=my_returnUUID();
+        $red_envelopes_info_id=my_returnUUID();
         $data=array(
-            'product_code_id'=>$product_code_id,
-            'product_id'=>$product_id,
-            'title'=>$title,
-            'manufacture_date'=>$manufacture_date,
-            'production_batch'=>$production_batch,
-            'market_time'=>$market_time,
-            'product_code_begin'=>1,
-            'product_code_end'=>$product_code_num,
+            'red_envelopes_id'=>$red_envelopes_info_id,
+            'price_total'=>$price_total,
+            'price_max'=>$price_max,
+            'price_min'=>$price_min,
+            'begin_time'=>$begin_time,
+            'begin_end'=>$begin_end,
             'product_code_num'=>$product_code_num,
             'listing_nation'=>$listing_nation,
             'listing_province'=>$listing_province,
             'listing_city'=>$listing_city,
             'listing_district'=>$listing_district,
-            'business_enterprise'=>$business_enterprise,
-            'contacts'=>$contacts,
-            'tel'=>$tel,
             'admin_id'=>$admin_id,
             'data_desc'=>$data_desc,
             'create_time'=>$gettime,
             'update_time'=>$gettime,
-            'integral_num'=>$integral_num,
-            'num'=>$num,
         );
         $ReturnID=$ModelProductCode->insert($data);
         if(!$ReturnID){
@@ -166,23 +149,16 @@ class Createqrcode extends CommonBase
             $filename = $PNG_TEMP_DIR.'sy'.md5($_qrurl_data.'|'.$errorCorrectionLevel.'|'.$matrixPointSize).'.png';
 
             //产品暗码(16位，大写)
-            $_code_cipher=substr(md5($product_id.my_returnUUID()),8,16);
+            $_code_cipher=substr(md5(my_returnUUID()),8,16);
             $_code_cipher=strtoupper($_code_cipher);
             $data_product_code_info=array(
-                'product_code_info_id'=>$_product_code_info_id,
-                'product_code_id'=>$product_code_id,
-                'product_id'=>$product_id,
-                'images'=>substr($filename,1),
-                'code_plain'=>$i,
-                'code_cipher'=>$_code_cipher,
+                'red_envelopes_info_id'=>$_product_code_info_id,
+                'red_envelopes_id'=>$red_envelopes_info_id,
+                'price'=>$price_total,
                 'admin_id'=>$admin_id,
-                'qr_level'=>$errorCorrectionLevel,
-                'qr_size'=>$matrixPointSize,
-                'compress_code'=>$_compress_code,
+                'data_desc'=>$data_desc,
                 'create_time'=>$gettime,
                 'update_time'=>$gettime,
-                'integral_num'=>$integral_num,
-                'num'=>$num,
             );
             $data_product_code_info['images']='';
             if($actionType == 1) {
@@ -213,7 +189,7 @@ class Createqrcode extends CommonBase
         //二维码生成处理 end
         Db::commit();//提交事务
         if($actionType == 1 or $actionType == 2) {
-            $filename = $title . '_' . $product_code_num . ".txt";
+            $filename = '_' . $product_code_num . ".txt";
             $encoded_filename = urlencode($filename);
             $encoded_filename = str_replace("+", "%20", $encoded_filename);
             if (preg_match("/MSIE/", $_SERVER['HTTP_USER_AGENT'])) {
