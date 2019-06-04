@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>红包领取列表</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/images/style.css"/>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/css/page.css"/>
+	<script type="text/javascript" src="__STATIC__/admin/js/myString.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/function.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/PublicUser.js"></script>
+</head>
+
+<body>
+    <div class="cont_title">　你当前的位置：商家管理 -红包领取列表</div>
+    
+    <div class="con">
+    
+    	<div class="conlist">
+        <form  method="post" action="">
+				<table class="listtable">
+                    <tr class="tr1">
+                        <td colspan="9" class="tit">列表　<a href="">显示全部</a>　</td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdtit">ID</td>
+                        <td class="tdtit">会员用户名</td>
+                        <td class="tdtit">领取金额</td>
+                        <td class="tdtit">账户剩余金额</td>
+                    </tr>
+                   {foreach $list as $value}
+                	<tr class="tr1">
+                    	<td class="tdlist">{$value['id']}&nbsp;</td>
+                        <td class="tdlist">{$value['name']}&nbsp;</td>
+                        <td class="tdlist">{$value['money']}&nbsp;</td>
+                        <td class="tdlist">{$surplus_money}&nbsp;</td>
+                    </tr>
+				    {/foreach}
+                
+                {if $count eq 0}
+                    <tr class="tr1">
+                    	<td colspan="9" class="tdlist">暂无相关记录！ </td>
+                    </tr>
+                {/if}
+                
+            </table>
+            <div style="text-align:right; padding-right:40px;">
+                {$list->render()}
+           </div>
+           </form> 
+            
+        </div>
+    
+    </div>
+    
+ 
+</div>
+</body>
+</html>

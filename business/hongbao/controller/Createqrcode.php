@@ -157,6 +157,9 @@ class Createqrcode extends CommonBase
                 'price'=>$price_total,
                 'admin_id'=>$admin_id,
                 'data_desc'=>$data_desc,
+                'price_max'=>$price_max,
+                'price_min'=>$price_min,
+                'compress_code'=>$_compress_code,
                 'create_time'=>$gettime,
                 'update_time'=>$gettime,
             );

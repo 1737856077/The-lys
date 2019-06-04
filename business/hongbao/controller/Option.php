@@ -104,22 +104,34 @@ class Option extends Controller
          * 获取用户内容
          */
         $uid = $ress['openid'];
+        $name = $ress['nickname'];
+        $money = Session::get('money');
+        $adminid = Session::get('adminid');
         $data = [
           'openid'=> $uid,
+          'name'=> $name,
+          'money'=> $money,
+          'admin_id'=> $adminid,
         ];
         //获取微信用户的openid 存入数据库
-        Db::name('openid')->insert($data);
+        $list = Db::name('openid')->where('openid',$uid)->field('openid')->select();
+        if(empty($list)){
+            Db::name('openid')->insert($data);
+        }
         /**
          * 获取红包码区域
          */
         //判断用户只能领取一次
-        $list = Db::name('openid')->where('openid',$uid)->field('openid')->select();
         $num = count($list);
         if($num >1){
             return $this->error('抱歉亲，一个账号只能领取一次哦');
             die;
         }else{
-            $money = Session::get('money');
+            $surplus = Session::get('surplus');
+            if($surplus == 0){
+                return $this->error('抱歉亲，奖品已经发放完毕，尽请期待下次活动');
+                die;
+            }
             $this->assign('openid',$uid);
             $this->assign('money',$money);
             return $this->fetch();
