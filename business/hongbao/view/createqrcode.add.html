@@ -44,43 +44,40 @@
                         <td colspan="2" class="tit">生成红包码</td>
                     </tr>
                     <tr class="tr1">
-                    <td class="tdl">产品:<span style="color:#f00;">*</span></td>
-                    <td class="tdr" style="padding-top:5px;">
-                        <select name="product_id">
-                            {foreach $listProduct as $value}
-                            <option value="{$value['product_id']}">{$value['title']}</option>
-                            {/foreach}
-                        </select>
-                        <span id="span_product_id" style="color:#f00;"></span>
-                    </td>
-                </tr>
-                    <tr class="tr1">
-                        <td class="tdl">红包金额:<span style="color:#f00;">*</span></td>
+                        <td class="tdl">红包总金额:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="integral_num" placeholder="请输入对应红包金额(分)" style="height: 30px;">
-                            <span id="integral_num" style="color:#f00;">（金额不能小于100，大于2000）</span>
+                            <input type="text" name="price_total" placeholder="请输入红包总金额" style="height: 30px;">
+                            <span id="price_total" style="color:#f00;"></span>
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td class="tdl">标题:<span style="color:#f00;">*</span></td>
+                        <td class="tdl">最小金额:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="title" id="title" size="60" maxlength="32"
-                                   onKeyPress="return noStrs(event);" onBlur="onBlur_title()"/>
-                            <span id="span_title" style="color:#f00;"></span>
+                            <input type="text" name="price_max" id="price_max" size="60" maxlength="32"
+                                   onKeyPress="return noStrs(event);" onBlur="onBlur_title()" style="height: 30px;width: 170px;"/>
+                            <span style="color:#f00;">（金额不能小于100，大于2000）</span>
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td class="tdl">生产批次:</td>
+                        <td class="tdl">最大金额:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="production_batch" id="production_batch" size="60" maxlength="32"
-                                   onKeyPress="return noStrs(event);"  />
-                            <span id="span_production_batch" style="color:#f00;"></span>
+                            <input type="text" name="price_min" id="price_min" size="60" maxlength="32"
+                                   onKeyPress="return noStrs(event);" onBlur="onBlur_title()" style="height: 30px;width: 170px;"/>
+                            <span style="color:#f00;">（金额不能小于100，大于2000）</span>
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td class="tdl">生产日期：</td>
+                        <td class="tdl">开始时间：</td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="manufacture_date" id="manufacture_date" size="20" maxlength="10"
+                            <input type="text" name="begin_time" id="begin_time" size="20" maxlength="10"
+                                   value="{:date('Y-m-d')}" class="Wdate"
+                                   onClick="WdatePicker()"/>
+                        </td>
+                    </tr>
+                    <tr class="tr1">
+                        <td class="tdl">结束时间：</td>
+                        <td class="tdr" style="padding-top:5px;">
+                            <input type="text" name="begin_end" id="begin_end" size="20" maxlength="10"
                                    value="{:date('Y-m-d')}" class="Wdate"
                                    onClick="WdatePicker()"/>
                         </td>
@@ -97,17 +94,7 @@
                         </td>
                     </tr>
                     <tr class="tr1">
-                        <td class="tdl">尺寸:</td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <select name="size">
-                                {for start="1" end="10" step="1"}
-                                <option value="{$i}">{$i} ({$i*29}px X {$i*29}px)</option>
-                                {/for}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">积分码数量：</td>
+                        <td class="tdl">红包码数量：</td>
                         <td class="tdr" style="padding-top:5px;">
                             <input type="text" name="product_code_num" id="product_code_num" size="8"
                                    maxlength="12" onkeypress="return noNumbers(event);"
@@ -115,15 +102,6 @@
                             说明：当数量小于等0时， 自动处理为1
                         </td>
 
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">上市时间：</td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="market_time" id="market_time" size="20" maxlength="10"
-                                   value="{:date('Y-m-d')}" class="Wdate"
-                                   onClick="WdatePicker()"/>
-                            说明：当上市时间为空，默认为生成二维码的日期
-                        </td>
                     </tr>
                     <tr class="tr1">
                         <td class="td1">上市区域：</td>
@@ -143,30 +121,6 @@
                             <select id="jie"  name="jie" style="display: none;">
                                 <option value="">请选择街道</option>
                             </select>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">经营企业:</td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="business_enterprise" id="business_enterprise" size="60" maxlength="128"
-                                   onKeyPress="return noStrs(event);" />
-                            <span id="span_business_enterprise" style="color:#f00;"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">联系人:</td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="contacts" id="contacts" size="60" maxlength="32"
-                                   onKeyPress="return noStrs(event);" />
-                            <span id="span_contacts" style="color:#f00;"></span>
-                        </td>
-                    </tr>
-                    <tr class="tr1">
-                        <td class="tdl">联系电话:</td>
-                        <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="tel" id="tel" size="60" maxlength="32"
-                                   onKeyPress="return noStrs(event);" />
-                            <span id="span_tel" style="color:#f00;"></span>
                         </td>
                     </tr>
                     <tr class="tr1">

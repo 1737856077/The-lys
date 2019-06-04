@@ -101,25 +101,53 @@ class Option extends Controller
          */
         $ress =json_decode( curl_exec($cd),true);
         /**
+         * 判断活动开始结束时间
+         */
+        $red_envelopes_id = Session::get('red_envelopes_id');
+        $begin_time = Db::name('red_envelopes')->where('red_envelopes_id',$red_envelopes_id)->field('begin_time')->find();
+        $begin_time1 = implode(',',$begin_time);
+        $begin_end = Db::name('red_envelopes')->where('red_envelopes_id',$red_envelopes_id)->field('begin_end')->find();
+        $begin_end1 = implode(',',$begin_end);
+        $now = time();
+        if($now < $begin_time1){
+            return $this->error('抱歉亲，该活动还未开始');
+            die;
+        }elseif ($now > $begin_end1){
+            return $this->error('抱歉亲，该活动已经结束');
+            die;
+        }
+        /**
          * 获取用户内容
          */
         $uid = $ress['openid'];
+        $name = $ress['nickname'];
+        $money = Session::get('money');
+        $adminid = Session::get('adminid');
         $data = [
           'openid'=> $uid,
+          'name'=> $name,
+          'money'=> $money,
+          'admin_id'=> $adminid,
         ];
         //获取微信用户的openid 存入数据库
-        Db::name('openid')->insert($data);
+        $list = Db::name('openid')->where('openid',$uid)->field('openid')->select();
+        if(empty($list)){
+            Db::name('openid')->insert($data);
+        }
         /**
          * 获取红包码区域
          */
         //判断用户只能领取一次
-        $list = Db::name('openid')->where('openid',$uid)->field('openid')->select();
         $num = count($list);
         if($num >1){
             return $this->error('抱歉亲，一个账号只能领取一次哦');
             die;
         }else{
-            $money = Session::get('money');
+            $surplus = Session::get('surplus');
+            if($surplus == 0){
+                return $this->error('抱歉亲，奖品已经发放完毕，尽请期待下次活动');
+                die;
+            }
             $this->assign('openid',$uid);
             $this->assign('money',$money);
             return $this->fetch();

@@ -38,7 +38,8 @@ class Test extends Controller
                 }
             }
             $res[]=  $data;
-            return_msg(200,'ok',$res);
+            $money =  array_rand($res);
+            dump($res[$money]);
         }else{
            return_msg(400,'红包最小金额错误');
         }

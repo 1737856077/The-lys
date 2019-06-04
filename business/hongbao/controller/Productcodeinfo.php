@@ -30,34 +30,31 @@ class Productcodeinfo extends CommonBase
     public function index(){
         $param = $this->request->param();
         //查询
-        $product_code_id = isset($param['product_code_id']) ? trim(htmlspecialchars(urldecode($param['product_code_id']))) : '' ;
+        $product_code_id = isset($param['red_envelopes_id']) ? trim(htmlspecialchars(urldecode($param['red_envelopes_id']))) : '' ;
         $search_code_plain = isset($param['search_code_plain']) ? trim(htmlspecialchars(urldecode($param['search_code_plain']))) : '' ;
         $search_code_cipher = isset($param['search_code_cipher']) ? trim(htmlspecialchars(urldecode($param['search_code_cipher']))) : '' ;
         $search_code_cipher=strtoupper($search_code_cipher);
         if(empty($product_code_id)){echo 'param error!';exit;}
 
         $paramUrl='';
-        $this->assign("product_code_id",$product_code_id);
+        $this->assign("red_envelopes_id",$product_code_id);
         $this->assign("search_code_plain",$search_code_plain);
         $this->assign("search_code_cipher",$search_code_cipher);
 
         $ModelProduct=Db::name('product');
-        $ModelProductCode=Db::name('product_code');
-        $ModelProductCodeInfo=Db::name('product_code_info');
+        $ModelProductCode=Db::name('red_envelopes');
+        $ModelProductCodeInfo=Db::name('red_envelopes_info');
         $ModelAdmin=Db::name('admin');
 
         //查询产品码信息
-        $getoneProductCode=$ModelProductCode->where("product_code_id='$product_code_id'")->find();
+        $getoneProductCode=$ModelProductCode->where("red_envelopes_id='$product_code_id'")->find();
         $this->assign("getoneProductCode",$getoneProductCode);
         if(empty($getoneProductCode)){echo 'param error!';exit;}
 
         //查询产品信息
-        $getoneProduct=$ModelProduct->where("product_id='$getoneProductCode[product_id]'")->find();
-        $this->assign("getoneProduct",$getoneProduct);
-        if(empty($getoneProduct)){echo 'param error!';exit;}
 
         $_where="1";
-        $_where .= " AND product_code_id='$product_code_id' ";
+        $_where .= " AND red_envelopes_id='$product_code_id' ";
         if(!empty($search_code_plain)){  $_where .= " AND code_plain='$search_code_plain' ";    }
         if(!empty($search_code_cipher)){  $_where .= " AND code_cipher='$search_code_cipher' ";    }
 
@@ -74,14 +71,14 @@ class Productcodeinfo extends CommonBase
         //二维码生成处理  begin
         //临时图片的存放目录
         $_dateYMD=date('Ymd');
-        $PNG_TEMP_DIR=config('upload_config.upload_root').'qrcode/'.$getoneProductCode['product_id'].'/';
+        $PNG_TEMP_DIR=config('upload_config.upload_root').'qrcode/'.$getoneProductCode['red_envelopes_id'].'/';
         //创建目录
         if (!file_exists($PNG_TEMP_DIR)) {  mkdir($PNG_TEMP_DIR);  }
         $PNG_TEMP_DIR=$PNG_TEMP_DIR.$_dateYMD.'/';
         if (!file_exists($PNG_TEMP_DIR)) {  mkdir($PNG_TEMP_DIR);  }
 
         //目录
-        $PNG_WEB_DIR = config('upload_config.upload_root').'qrcode/'.$getoneProductCode['product_id'].'/'.$_dateYMD.'/';
+        $PNG_WEB_DIR = config('upload_config.upload_root').'qrcode/'.$getoneProductCode['red_envelopes_id'].'/'.$_dateYMD.'/';
         include_once './extend/lib/qrcode/qrlib.php';
 
         $qrurl_data=$this->ConfigQrData['web_host'].'business.php/hongbao/index/index?code_info_id=';
@@ -97,7 +94,7 @@ class Productcodeinfo extends CommonBase
                 $_msg=QRcode::png($_qrurl_data, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
                 //更新images内容
                 $_images = substr($filename,1);
-                $ModelProductCodeInfo->where("product_code_info_id='$value[product_code_info_id]'")->update(array('images'=>$_images));
+                $ModelProductCodeInfo->where("red_envelopes_info_id='$value[red_envelopes_info_id]'")->update(array('images'=>$_images));
                 $value['images']=$_images;
             }
             $_List[]=$value;
