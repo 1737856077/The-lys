@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link href="__STATIC__/integral/css/style12.css"  rel="stylesheet" type="text/css"/>
+    <style>
+        /* 购买成功 */
+        .buySucceedBox{
+            width: 100%;
+            text-align: center;
+            margin-top: 70px;
+        }
+        .buySucceedBox strong{
+            display: inline-block;
+            font-size: 16px;
+            color: #333;
+            margin-top: 18px;
+            width: 100%;
+            text-align: center;
+        }
+        .buySucceedBox p{
+            text-align: center;
+            color: #7d7d7d;
+            font-size: 14px;
+            margin-top: 22px;
+        }
+        /* 返回 */
+        .back-disk-console{
+            text-align: center;
+            margin-top: 22px;
+        }
+        .back-disk-console span{
+            display: inline-block;
+            width: 120px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background: #1574ff;
+            color: #fff;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .back-disk-console span:hover{
+            background: #064eb7;
+        }
+
+    </style>
+</head>
+<body>
+<section class="aui-flexView">
+    <header class="aui-navBar aui-navBar-fixed">
+        <a href="/integral.php/member/index/index" class="aui-navBar-item">
+            <i class="icon icon-return"></i>
+            订单详情
+
+        </a>
+        <div class="aui-center">
+            <span class="aui-center-title"></span>
+        </div>
+        <a href="javascript:;" class="aui-navBar-item">
+            <i class="icon icon-more"></i>
+        </a>
+    </header>
+    <section class="aui-scrollView">
+        <div class="aui-pay-change">
+            <div class="aui-flex">
+                <div class="aui-flex-box">
+                    <h3>兑换成功</h3>
+                    <p><span class="js-wait"></span>请前往订单详情页面查看订单</p>
+                    <div class="back-disk-console">
+                        <span ><a href="/integral.php/member/index/index">返回</a></span>
+                    </div>
+                </div>
+                <div class="aui-pay-zfb">
+                    <img src="__STATIC__/integral/img/icon-zfb.png"  alt="">
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+</section>
+</body>
+</html>

@@ -22,10 +22,10 @@ class Index extends CommonIntegra
         //查询基本信息
         $id = htmlspecialchars(isset($param['id']) ? $param['id'] : '');
         $poduct_id = htmlspecialchars(isset($param['product_id']) ? $param['product_id'] : '');
-        $admin_id = htmlspecialchars(isset($param['admin_id']) ? $param['admin_id'] : '');
+        $admin_id = Session::get('admin_id');
         $appid = htmlspecialchars(isset($param['appid']) ? $param['appid'] : '');
         $memberid = Session::get('memberid');
-        if (empty($id) or empty($poduct_id) or empty($admin_id) ) {
+        if (empty($id) or empty($poduct_id)) {
             echo '请求错误';
             exit();
         }
@@ -33,7 +33,7 @@ class Index extends CommonIntegra
         $meber_data = $member_mode->where('id', $memberid)->find();
         $uid = isset($meber_data['uid']) ? $meber_data['uid'] : '';
         if (empty($uid)) {
-            echo '请求错误';
+            echo '请求错误1';
             exit();
         }
         //查询商品信息

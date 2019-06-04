@@ -30,6 +30,7 @@ class Test extends Controller
                     if($mx>$max/2){
                         $mx = $mx/2;
                     }
+                    
                 }
                 $r = mt_rand($min,$mx);
                 if ($r>100){
