@@ -101,6 +101,22 @@ class Option extends Controller
          */
         $ress =json_decode( curl_exec($cd),true);
         /**
+         * 判断活动开始结束时间
+         */
+        $red_envelopes_id = Session::get('red_envelopes_id');
+        $begin_time = Db::name('red_envelopes')->where('red_envelopes_id',$red_envelopes_id)->field('begin_time')->find();
+        $begin_time1 = implode(',',$begin_time);
+        $begin_end = Db::name('red_envelopes')->where('red_envelopes_id',$red_envelopes_id)->field('begin_end')->find();
+        $begin_end1 = implode(',',$begin_end);
+        $now = time();
+        if($now < $begin_time1){
+            return $this->error('抱歉亲，该活动还未开始');
+            die;
+        }elseif ($now > $begin_end1){
+            return $this->error('抱歉亲，该活动已经结束');
+            die;
+        }
+        /**
          * 获取用户内容
          */
         $uid = $ress['openid'];

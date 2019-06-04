@@ -14,8 +14,12 @@ class Index extends Controller
         $code_info_id = htmlspecialchars(isset($param['code_info_id']) ? $param['code_info_id'] : '');
         $data = Db::name('red_envelopes_info')->where('compress_code', $code_info_id)->field('price_max')->find();
         $data1 = Db::name('red_envelopes_info')->where('compress_code', $code_info_id)->field('price_min')->find();
+        $data2 = Db::name('red_envelopes_info')->where('compress_code', $code_info_id)->field('red_envelopes_id')->find();
         $price_max = implode(',',$data);
         $price_min = implode(',',$data1);
+        //红包的red_envelopes_id存入session
+        $red_envelopes_id = implode(',',$data2);
+        Session::set('red_envelopes_id',$red_envelopes_id);
         //获取随机金额
         if ($price_max<$price_min){
             $data = mt_rand($price_max,$price_min);//基数红包//用于最小值除外的基数
@@ -50,12 +54,11 @@ class Index extends Controller
         $list = Db::name('openid')->where('admin_id',$id)->order('id','desc')->paginate(5);
         $con = count($list);
         //查询出商家账户剩余金额
-        $business_money = Db::name('red_envelopes')->where('admin_id',$id)->field('price_total')->find();
-        $business_money1 = implode(',',$business_money);
+        $business_money = Db::name('red_envelopes')->where('admin_id',$id)->sum('price_total');
         //查询出用户领取总金额
         $user_money = Db::name('openid')->where('admin_id',$id)->sum('money');
         //计算剩余金额
-        $surplus = $business_money1-$user_money;
+        $surplus = $business_money-$user_money;
         Session::set('surplus',$surplus);
 //        dump($Surplus);die;
         $this->assign('list',$list);

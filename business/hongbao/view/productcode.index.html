@@ -73,25 +73,10 @@
                                     {/if}
                                 {/if}
                             {/if}
-                            {if $value['data_type'] neq 2}
-                                {if auth('qrcode/productcode/edit') }
-                                    {if $value['is_batch_open'] eq 0}
-
-                                    {else}
-
-                                    {/if}
-                                {/if}
-                            {/if}
                         </td>
                     </tr>
 				    {/foreach}
-                
-                {if $count eq 0}
-                    <tr class="tr1">
-                    	<td colspan="9" class="tdlist">暂无相关记录！ </td>
-                    </tr>
-                {/if}
-                
+
             </table>
             <div style="text-align:right; padding-right:40px;">
             {$page}
