@@ -20,7 +20,7 @@ class Order extends Controller
      */
     public function index()
     {
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $list = Db::name('integral_order')
             ->alias('i')
             ->join('product_integral p','i.product_id = p.product_id')
@@ -38,7 +38,7 @@ class Order extends Controller
      */
     public function details()
     {
-        $name = Session::get('adminname');
+        $name = Session::get('bus_adminname');
         $param = $this->request->param();
         //根据订单id查询
         $id = htmlspecialchars(intval(isset($param['id']) ? $param['id'] : ''));

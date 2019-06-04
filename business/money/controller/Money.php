@@ -21,7 +21,7 @@ class Money extends Controller
     public function index()
     {
         //获取当前用户表的 余额
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $money = Db::name('admin_business')->where('id',$id)->field('account')->find();
         $this->assign('money',$money);
         return $this->fetch();
@@ -33,7 +33,7 @@ class Money extends Controller
     public function consumption()
     {
         //查询当前商家下的用户
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $mon = Db::name('order')->where('admin_id',$id)->paginate(5);
         $this->assign('list',$mon);
         return $this->fetch();
@@ -67,7 +67,7 @@ class Money extends Controller
     public function time()
     {
         //获取该商家续费年数
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $year = Db::name('order')->where('admin_id',$id)->field('num')->find();
         $num = implode(',',$year);
         //获取商家到期时间
@@ -130,7 +130,7 @@ class Money extends Controller
 
         }else{
             //获取该商家 消费金额总数
-            $id = Session::get('adminid');
+            $id = Session::get('bus_adminid');
             $num = Db::name('order')->where('admin_id',$id)->sum('amount');
             $this->assign('num',$num);
             return $this->fetch();
@@ -144,7 +144,7 @@ class Money extends Controller
     public function invoice_list()
     {
         //查询发票申请列表
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $list = Db::name('business_invoice')->where('admin_id',$id)->order('id','desc')->paginate(5);
         $this->assign('list',$list);
         return $this->fetch();

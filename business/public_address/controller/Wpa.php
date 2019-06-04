@@ -19,7 +19,7 @@ class Wpa extends Controller
     public function index()
     {
         //查询已有公众号
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $weChap = Db::name('wechat_menu')->where('admin_id',$id)->select();
         $this->assign('weChap',$weChap);
         return $this->fetch();

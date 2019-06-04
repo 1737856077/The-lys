@@ -50,7 +50,7 @@ class Index extends Controller
     public function indexList()
     {
         //遍历领取数据
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $list = Db::name('openid')->where('admin_id',$id)->order('id','desc')->paginate(5);
         $con = count($list);
         //查询出商家账户剩余金额

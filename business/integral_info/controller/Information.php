@@ -20,7 +20,7 @@ class Information extends Controller
     public function index()
     {
         //获取生码总积分
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $num = Db::name('product_code')->where('admin_id',$id)->field('num')->select();
         $integral = '';
         foreach ($num as $k=>$v){

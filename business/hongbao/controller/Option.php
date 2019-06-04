@@ -122,7 +122,7 @@ class Option extends Controller
         $uid = $ress['openid'];
         $name = $ress['nickname'];
         $money = Session::get('money');
-        $adminid = Session::get('adminid');
+        $adminid = Session::get('bus_adminid');
         $data = [
           'openid'=> $uid,
           'name'=> $name,

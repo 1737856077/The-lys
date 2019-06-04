@@ -18,7 +18,7 @@ class Data extends Controller
      */
     public function index()
     {
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         //查询扫码记录
         /*$product = Db::name('product ')
             ->alias('a')
@@ -30,7 +30,6 @@ class Data extends Controller
         $count = count($product);
 //        dump($count);die; 
         //兑换的产品数量数据
-        $id = Session::get('adminid');
         $con = Db::name('integral_order')->where('admin_id',$id)->field('order_no')->select();
         $count2 = count($con);
 //        dump($count2);die;

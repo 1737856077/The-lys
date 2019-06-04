@@ -21,7 +21,7 @@ class Gift extends Controller
      */
     public function gift()
     {
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $list = Db::name('product_integral')
             ->alias('p')
             ->join('class c','p.class_id = c.id')
@@ -61,7 +61,7 @@ class Gift extends Controller
      */
     public function add()
     {
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         if (Request::instance()->isPost()) {
             //提交逻辑
             $title = input('post.title');

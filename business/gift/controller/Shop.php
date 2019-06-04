@@ -22,7 +22,7 @@ class Shop extends Controller
     public function index()
     {
         //查询所有类
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $list = Db::name('class')->where('admin_id', $id)->select();
         $list1 = [];
         //遍历查询出分类
@@ -39,7 +39,7 @@ class Shop extends Controller
      */
     public function add()
     {
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         if(Request::instance()->isPost()){
             //获取添加数据
             $name = input('post.name');

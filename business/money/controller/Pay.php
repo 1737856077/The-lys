@@ -24,7 +24,7 @@ class Pay extends Controller
         $WIDsubject = $param['WIDsubject'];
         $WIDtotal_amount = $param['WIDtotal_amount'];
         //获取到商家现在的有效期
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $year1 = Db::name('admin_business')->where('admin_id',$id)->field('expiration_date')->find();
         $num = implode(',',$year1);
         if($WIDsubject == 1){

@@ -87,7 +87,6 @@
     <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
     <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
     <link href="__STATIC__/business/css/common.css" rel="stylesheet">
-    <script src="__STATIC__/business/s.txt"></script>
     <script type="text/javascript">
         if (navigator.appName == 'Microsoft Internet Explorer') {
             if (navigator.userAgent.indexOf("MSIE 5.0") > 0 || navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0) {
@@ -109,13 +108,8 @@
         };
     </script>
     <script>var require = {urlArgs: 'v=20170915'};</script>
-    <!--<script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>-->
-    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/util.js"></script>
     <script type="text/javascript" src="__STATIC__/business/js/echarts.common.min.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/common.js"></script>
-    <script type="text/javascript" src="__STATIC__/business/js/jquery.js"></script>
-    <!--<script type="text/javascript" src="__STATIC__/business/js/require.js"></script>-->
     <script src="https://echarts.baidu.com/examples/vendors/echarts/echarts.min.js?_v_=1553896255267"></script>
     <script src="https://api.map.baidu.com/api?v=2.0&ak=vNUoBXKEGEDead0HRrxd6BkR8SgDxrVF"></script>
     <script src="https://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1553896255267"></script>
@@ -128,21 +122,6 @@
     </div>
 </div>
 <div data-skin="default" class="skin-default ">
-    <!--<div class="head">-->
-        <!--<nav class="navbar navbar-default" role="navigation">-->
-            <!--<div class="container ">-->
-                <!--<div class="navbar-header">-->
-                    <!--<a class="navbar-brand" href="https://weixin.zijiahei.com/">-->
-                        <!--<img src="__STATIC__/business/img/logo.png" class="pull-left" width="110px" height="35px">-->
-                        <!--<span class="version hidden">1.6.7</span>-->
-                    <!--</a>-->
-                <!--</div>-->
-
-            <!--</div>-->
-        <!--</nav>-->
-    <!--</div>-->
-
-
             <div class="panel panel-content main-panel-content ">
 
                     <div class="right-content" style="min-height: 490px; margin-left: 0px;">
@@ -171,17 +150,10 @@
                                         </td>
                                         <td class="text-right"></td>
                                     </tr>
-                                    <!--<tr>
-                                        <td class="table-label">已兑换礼品：</td>
-                                        <td colspan="2" class="ng-binding">
-                                            <input type="text" name="" value="{$count2}" style="border:none;" readonly="readonly">
-                                            （数量）
-                                        </td>
-                                    </tr>-->
                                     </tbody>
                                 </form>
                             </table>
-                            <div id="main2" style="width: 900px; height:620px; float: right; padding-top: 0px;"></div>
+                            <div id="main2" style="width: 900px; height:620px; float: right; padding-top: 1%;"></div>
                                 <div id="main" style="width:400px; height: 300px;"></div>
                                 <div id="exchang" style="width: 300px; height: 300px;"></div>
 
@@ -252,7 +224,7 @@
             var ratio = [];
             ajax({
                 type:"GET",
-                url:"http://suyuan.localhost/admin.php/sinterface/Hotcommodity/index",
+                url:"http://tzs.sindns.com/admin.php/sinterface/Hotcommodity/index",
                 dataType: "json",
                 beforeSend:function(){
                     //some js code
