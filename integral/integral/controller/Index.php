@@ -63,7 +63,7 @@ class Index extends CommonIntegra
         $title = htmlspecialchars(isset($param['title']) ? $param['title'] : '');
         $product_id = htmlspecialchars(isset($param['product_id']) ? $param['product_id'] : '');
         $number = htmlspecialchars(isset($param['number']) ? $param['number'] : '');
-        $nn = Db::name('shopping')->where('product_id', $product_id)->find();
+        $nn = Db::name('shopping')->where('member_id',Session::get('memberid'))->where('product_id', $product_id)->find();
         if (empty($nn)) {
             $data = [
                 'title' => $title,

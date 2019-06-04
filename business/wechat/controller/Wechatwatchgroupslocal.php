@@ -32,7 +32,6 @@ class Wechatwatchgroupslocal extends UserCommon{
 		$_where = '1';
 		$_where.=" AND data_status=1";
 		if(!empty($SearchName)){$_where.=" AND nickname LIKE '%".$SearchName."%'";}
-
         if($_where=='1'){$_where='';}
 		$count = $ModelWechatWatch->where($_where)->count();
 		//import("ORG.Util.Page");
