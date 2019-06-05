@@ -26,8 +26,8 @@ class CommonAdmin extends CommonBase
     public function _initialize(){
         parent::_initialize();
 
-        if(!Session::has('adminname') ){
-            echo "<script language=\"javascript\">window.open('/admin.php','_top');</script>";
+        if(!Session::has('bus_adminname') ){
+            echo "<script language=\"javascript\">window.open('/business.php','_top');</script>";
             exit;
         }
     }

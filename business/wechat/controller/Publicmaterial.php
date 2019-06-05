@@ -15,8 +15,8 @@ use think\model;
 use think\Paginator;
 use think\File;
 use think\Image;
-use \app\wechat\controller\CommonBaseHome;
-class Publicmaterial extends CommonBaseHome{
+// use \app\wechat\controller\HomeCommonAction;
+class Publicmaterial extends Controller{
 	
 	/**
 	 * @描述：查询除了音乐之外的所有素材

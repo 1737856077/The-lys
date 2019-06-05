@@ -15,8 +15,8 @@ use think\model;
 use think\Paginator;
 use think\File;
 use think\Image;
-use \app\common\controller\CommonBase;
-class UserCommon extends CommonBase{
+use \app\common\controller\CommonAdmin;
+class UserCommon extends CommonAdmin{
 	/**
 	 * @描述：初始方法
 	 */
