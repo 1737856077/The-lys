@@ -72,9 +72,11 @@ class Index extends Controller
         $map['pwd']=array('eq',md5($adminpwd));
         $ModelAdmin=Db::name('admin');
         $getoneAdmin=$ModelAdmin->where($map)->find();
-
+        $data_type = $ModelAdmin->where($map)->field('data_type')->find();
         if(empty($getoneAdmin)){
             $this->error('用户名或密码错误!');
+        }elseif ($data_type['data_type'] != 2){
+            $this->error('此用户没有登录权限!');
         }else{
             //取得权限信息
             $ModelSystemRoleAuth=Db::name('system_role_auth');

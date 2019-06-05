@@ -32,4 +32,8 @@ class Api extends HomeCommonAction
         //echo $_xml;
         //推送欢迎信息 end
     }
+    public function weixin()
+    {
+        return $this->fetch();
+    }
 }

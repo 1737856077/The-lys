@@ -90,7 +90,7 @@ class Money extends Controller
             //申请逻辑
             $param = $this->request->param();
             //验证信息
-            $validate = new Validate(
+            $validate =(
                 [
                     'price' => 'require',
                     'title' => 'require',
@@ -105,9 +105,16 @@ class Money extends Controller
                 'express_address' => $param['express_address'],
                 'phone' => $param['phone'],
             ]);
-            if (!$validate->check($data1)) {
-                $this->error($validate->getError(),'money/invoice');
-            }
+            $message = ([
+                'price.require'=>'金额不能为空',
+                'title.require'=>'发票头不能为空',
+                'taxpayer_number.require'=>'纳税人识别号不能为空',
+                'express_address.require'=>'邮寄地址不能为空',
+                'phone.require'=>'手机号不能为空',
+            ]);
+            $this->error($this->validate($data1,$validate,$message),'money/invoice');
+//            return $this->validate($data1,$validate,$message);
+
             //添加数据
             $data = [
                 'price' => $param['price'],

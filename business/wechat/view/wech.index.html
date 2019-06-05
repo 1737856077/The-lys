@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">[uib-typeahead-popup].dropdown-menu {
+        display: block;
+    }</style>
+    <style type="text/css">.uib-time input {
+        width: 50px;
+    }</style>
+    <style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow, [uib-popover-popup].popover.top-left > .arrow, [uib-popover-popup].popover.top-right > .arrow, [uib-popover-popup].popover.bottom-left > .arrow, [uib-popover-popup].popover.bottom-right > .arrow, [uib-popover-popup].popover.left-top > .arrow, [uib-popover-popup].popover.left-bottom > .arrow, [uib-popover-popup].popover.right-top > .arrow, [uib-popover-popup].popover.right-bottom > .arrow, [uib-popover-html-popup].popover.top-left > .arrow, [uib-popover-html-popup].popover.top-right > .arrow, [uib-popover-html-popup].popover.bottom-left > .arrow, [uib-popover-html-popup].popover.bottom-right > .arrow, [uib-popover-html-popup].popover.left-top > .arrow, [uib-popover-html-popup].popover.left-bottom > .arrow, [uib-popover-html-popup].popover.right-top > .arrow, [uib-popover-html-popup].popover.right-bottom > .arrow, [uib-popover-template-popup].popover.top-left > .arrow, [uib-popover-template-popup].popover.top-right > .arrow, [uib-popover-template-popup].popover.bottom-left > .arrow, [uib-popover-template-popup].popover.bottom-right > .arrow, [uib-popover-template-popup].popover.left-top > .arrow, [uib-popover-template-popup].popover.left-bottom > .arrow, [uib-popover-template-popup].popover.right-top > .arrow, [uib-popover-template-popup].popover.right-bottom > .arrow {
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0;
+    }
+
+    [uib-popover-popup].popover, [uib-popover-html-popup].popover, [uib-popover-template-popup].popover {
+        display: block !important;
+    }</style>
+    <style type="text/css">.uib-datepicker-popup.dropdown-menu {
+        display: block;
+        float: none;
+        margin: 0;
+    }
+
+    .uib-button-bar {
+        padding: 10px 9px 2px;
+    }</style>
+    <style type="text/css">.uib-position-measure {
+        display: block !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .uib-position-scrollbar-measure {
+        position: absolute !important;
+        top: -9999px !important;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: scroll !important;
+    }
+
+    .uib-position-body-scrollbar-measure {
+        overflow: scroll !important;
+    }</style>
+    <style type="text/css">.uib-datepicker .uib-title {
+        width: 100%;
+    }
+
+    .uib-day button, .uib-month button, .uib-year button {
+        min-width: 100%;
+    }
+
+    .uib-left, .uib-right {
+        width: 100%
+    }</style>
+    <style type="text/css">.ng-animate.item:not(.left):not(.right) {
+        -webkit-transition: 0s ease-in-out left;
+        transition: 0s ease-in-out left
+    }</style>
+    <style type="text/css">@charset "UTF-8";
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }
+
+    .ng-animate-shim {
+        visibility: hidden;
+    }
+
+    .ng-anchor {
+        position: absolute;
+    }</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公众号 - 我的公众号</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+    <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
+    <link href="__STATIC__/business/css/common.css" rel="stylesheet">
+    <script type="text/javascript">
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            if (navigator.userAgent.indexOf("MSIE 5.0") > 0 || navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0) {
+                alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+            }
+        }
+        window.sysinfo = {
+            'uid': '1', 'isfounder': 1,
+            'family': 'x',
+            'siteroot': 'https://weixin.zijiahei.com/',
+            'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=user&a=profile&do=bind',
+            'attachurl': 'https://weixin.zijiahei.com/attachment/',
+            'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
+            'attachurl_remote': '',
+            'module': {'url': '', 'name': ''},
+            'cookie': {'pre': '1b74_'},
+            'account': null,
+            'server': {'php': '5.4.45'},
+        };
+    </script>
+    <script>var require = {urlArgs: 'v=20170915'};</script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="loader" style="display:none">
+    <div class="la-ball-clip-rotate">
+        <div></div>
+    </div>
+</div>
+<div data-skin="default" class="skin-default ">
+    <div class="head">
+
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <div class="panel panel-content main-panel-content ">
+                <div class="panel-body clearfix main-panel-body menu-fixed">
+                    <div class="right-content" style="min-height: 490px;">
+                        <div class="we7-page-title">公众号管理</div>
+                        <ul class="we7-page-tab">
+                            <li class="active"><a
+                                    href="">公众号列表</a>
+                            </li>
+                        </ul>
+                        <div class="clearfix we7-margin-bottom">
+                            <div class="pull-right">
+                                <a href="{:url('wech/add')}"
+                                   class="btn btn-primary we7-padding-horizontal">添加公众号</a>
+                            </div>
+
+                        </div>
+                        <table class="table we7-table table-hover vertical-middle table-manage ng-scope"
+                               id="js-system-account-display" ng-controller="SystemAccountDisplay">
+                            <colgroup>
+                                <col width="120px">
+                                <col>
+                                <col width="200px">
+                                <col width="100px">
+                                <col width="260px">
+                            </colgroup>
+                            <tbody>
+                            <!--<tr>
+                                <th colspan="5" class="text-left filter">
+                                    <div class="dropdown dropdown-toggle we7-dropdown">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            时间排序
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                            <li>
+                                                <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1&amp;order=asc&amp;page=1"
+                                                   class="active">创建时间正序</a></li>
+                                            <li>
+                                                <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1&amp;order=desc&amp;page=1">创建时间倒序</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown dropdown-toggle we7-dropdown">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            公众号筛选
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                            <li>
+                                                <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1&amp;type=all&amp;page=1"
+                                                   class="active">全部公众号</a></li>
+                                            <li>
+                                                <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1&amp;type=expire&amp;page=1"
+                                                   class="active">公众号已到期</a></li>
+                                            <li>
+                                                <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;account_type=1&amp;type=noconnect&amp;page=1"
+                                                   class="active">未接入公众号</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                            </tr>-->
+                            <tr>
+                                <th colspan="2" class="text-left">帐号</th>
+                                <th>有效期</th>
+                                <th>短信数(条)</th>
+                                <th class="text-right">操作</th>
+                            </tr>
+                            <!-- ngRepeat: list in lists -->
+                            {volist name="list" id="vo"}
+                            <tr class="color-gray ng-scope" ng-repeat="list in lists">
+                                <td class="text-left td-link">
+                                    <a ng-href="./index.php?c=account&amp;a=post&amp;&amp;acid=16&amp;uniacid=16&amp;account_type=1"
+                                       href=""></a>
+                                    <img ng-src=""
+                                         class="img-responsive icon" src="">
+                                </td>
+                                <td class="text-left">
+                                    <p class="color-dark ng-binding" ng-bind="list.name">{$vo.wechat_name}</p>
+                                    <span class="color-gray ng-scope"
+                                          ng-if="list.level == 4"
+                                          title="认证服务号/认证媒体/政府订阅号">类型：认证服务号</span>
+                                    <span class="color-green ng-scope"
+                                          ng-if="list.isconnect == 1"><i
+                                            class="wi wi-right-sign"></i>已接入</span>
+                                </td>
+                                <td>
+                                    <p ng-bind="list.end" class="ng-binding">永久</p>
+                                </td>
+                                <td><p ng-bind="list.sms" class="ng-binding">0</p></td>
+                                <td class="vertical-middle table-manage-td">
+                                    <div class="link-group">
+                                        <a ng-href="./index.php?c=account&amp;a=display&amp;do=switch&amp;uniacid=16"
+                                           href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=display&amp;do=switch&amp;uniacid=16">进入公众号</a>
+
+                                        <a ng-href="./index.php?c=account&amp;a=post&amp;&amp;acid=16&amp;uniacid=16&amp;account_type=1"
+                                           ng-show="list.role == 'manager' || list.role == 'owner' || list.role == 'founder'|| list.role == 'vice_founder'"
+                                           class=""
+                                           href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=post&amp;&amp;acid=16&amp;uniacid=16&amp;account_type=1">管理设置</a>
+
+
+                                    </div>
+                                    <div class="manage-option text-right">
+                                        <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=post&amp;&amp;acid=16&amp;uniacid=16&amp;account_type=1">基础信息</a>
+                                        <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=post&amp;&amp;do=sms&amp;uniacid=16&amp;acid=16&amp;account_type=1">短信信息</a>
+                                        <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=post-user&amp;&amp;do=edit&amp;uniacid=16&amp;acid=16&amp;account_type=1">使用者管理</a>
+                                        <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=post&amp;&amp;do=modules_tpl&amp;uniacid=16&amp;acid=16&amp;account_type=1">可用应用模板/模块</a>
+
+                                        <a ng-href="./index.php?c=account&amp;a=manage&amp;do=delete&amp;&amp;acid=16&amp;uniacid=16"
+                                           ng-show="list.role == 'owner' || list.role == 'founder' || list.role == 'vice_founder'"
+                                           onclick="if(!confirm('确认放入回收站吗？')) return false;" class="del"
+                                           href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;do=delete&amp;&amp;acid=16&amp;uniacid=16">停用</a>
+
+
+                                    </div>
+                                </td>
+                            </tr>
+                            {/volist}
+                            {if condition="$count eq 0"}
+                            <tr>
+                                <td class="text-left" colspan="5">暂没有接入公众号</td>
+                            </tr>
+                            {/if}
+                            </tbody>
+                        </table>
+                        <div class="text-right">
+                        </div>
+                        <script>
+                            $(function () {
+                                $('[data-toggle="tooltip"]').tooltip();
+                            });
+                            switch_url = "./index.php?c=account&a=display&do=switch&";
+                            angular.module('accountApp').value('config', {
+                                lists: {
+                                    "16": {
+                                        "acid": "16",
+                                        "uniacid": "16",
+                                        "token": "junhfs2trsfn5hosw2gzpcwrd4ldui01",
+                                        "access_token": "",
+                                        "encodingaeskey": "ihFK0OPzUGyVTSXP0PVoNd7PVnItmDkOKNdxrvq7KiN",
+                                        "level": "4",
+                                        "name": "\u7d2b\u52a0\u9ed1\u73af\u4fdd\u79d1\u6280",
+                                        "account": "zijiahei666",
+                                        "original": "gh_6f2fdafd8c35",
+                                        "signature": "",
+                                        "country": "",
+                                        "province": "",
+                                        "city": "",
+                                        "username": "",
+                                        "password": "",
+                                        "lastupdate": "0",
+                                        "key": "wx1b76da2035d63a71",
+                                        "secret": "71275a614ea92c03ad51fde351060011",
+                                        "styleid": "0",
+                                        "subscribeurl": "",
+                                        "auth_refresh_token": "",
+                                        "encrypt_key": "wx1b76da2035d63a71",
+                                        "type": "1",
+                                        "isconnect": "1",
+                                        "isdeleted": "0",
+                                        "endtime": "0",
+                                        "uid": "1",
+                                        "starttime": "0",
+                                        "groups": {
+                                            "7": {
+                                                "groupid": "7",
+                                                "uniacid": "16",
+                                                "title": "\u9ed8\u8ba4\u4f1a\u5458\u7ec4",
+                                                "credit": "0",
+                                                "orderlist": "0",
+                                                "isdefault": "1"
+                                            }
+                                        },
+                                        "setting": {
+                                            "uniacid": "16",
+                                            "passport": {
+                                                "focusreg": "1",
+                                                "item": "random",
+                                                "audit": "0",
+                                                "type": "password"
+                                            },
+                                            "oauth": {"account": "16", "host": ""},
+                                            "jsauth_acid": "0",
+                                            "uc": "",
+                                            "notify": "",
+                                            "creditnames": {
+                                                "credit1": {"title": "\u79ef\u5206", "enabled": 1},
+                                                "credit2": {"title": "\u4f59\u989d", "enabled": 1}
+                                            },
+                                            "creditbehaviors": {"activity": "credit1", "currency": "credit2"},
+                                            "welcome": "",
+                                            "default": "",
+                                            "default_message": "",
+                                            "shortcuts": "",
+                                            "payment": "",
+                                            "stat": "",
+                                            "menuset": "",
+                                            "default_site": "7",
+                                            "sync": "0",
+                                            "recharge": "",
+                                            "tplnotice": "",
+                                            "grouplevel": "0",
+                                            "mcplugin": "",
+                                            "exchange_enable": "0",
+                                            "coupon_type": "0",
+                                            "statistics": "",
+                                            "bind_domain": ""
+                                        },
+                                        "grouplevel": "0",
+                                        "logo": "https:\/\/weixin.zijiahei.com\/attachment\/headimg_16.jpg?time=1555332943",
+                                        "qrcode": "https:\/\/weixin.zijiahei.com\/attachment\/qrcode_16.jpg?time=1555332943",
+                                        "switchurl": ".\/index.php?c=account&a=display&do=switch&uniacid=16",
+                                        "sms": 0,
+                                        "setmeal": {
+                                            "uid": -1,
+                                            "username": "\u521b\u59cb\u4eba",
+                                            "timelimit": "\u672a\u8bbe\u7f6e",
+                                            "groupid": "-1",
+                                            "groupname": "\u6240\u6709\u670d\u52a1"
+                                        },
+                                        "end": "\u6c38\u4e45",
+                                        "role": "founder"
+                                    }
+                                },
+                                links: {
+                                    switch: switch_url,
+                                    post: "./index.php?c=account&a=post&",
+                                    postUser: "./index.php?c=account&a=post-user&",
+                                    del: "./index.php?c=account&a=manage&do=delete&",
+                                }
+                            });
+                            angular.bootstrap($('#js-system-account-display'), ['accountApp']);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
