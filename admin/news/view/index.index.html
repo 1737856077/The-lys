@@ -21,13 +21,23 @@
             <table class="listtable">
                 <tr class="tr1">
                     <td  colspan="7" class="tdlist">查询：
-                        分类名称 <input type="text" name="value" id="SearchTitle" value="" />　
+                        分类名称 <input type="text" name="value" id="SearchTitle" value="{$value? $value : ''}" />　
                         状态 <select name="data_type" id="SearchStatus">
-                            <option value="0">新闻列表</option>
-                            <option value="1">图片新闻</option>
-                            <option value="2">单篇图文</option>
+                            {if condition="!empty($data_type)"}
+                                {switch name="$data_type"}
+                                {case value="0"} <option value="1">新闻列表</option>{/case}
+                                {case value="1"}  <option value="2">图片新闻</option>{/case}
+                                {case value="2"}  <option value="3">单篇图文</option>{/case}
+                                {default /}
+                                {/switch}
+                            {/if}
+                            <option value="-1">全部</option>
+
+                            <option value="1">新闻列表</option>
+                            <option value="2">图片新闻</option>
+                            <option value="3">单篇图文</option>
                         </select>
-                        <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
+                        <input type="submit"  class="buttomgray"  value="查询" /></td>
 
                     <td   class="tdlist">
                         <a href="__URL__/add"><input type="button" name="" class="buttomorger"  value="添加" /></a>

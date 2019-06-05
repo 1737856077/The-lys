@@ -54,18 +54,21 @@ class Index extends CommonBase
             $value = htmlspecialchars(isset($param['value'])?$param['value']:'');
             $data_type = htmlspecialchars(trim(isset($param['data_type'])?$param['data_type']:''));
             $where['title'] = ['like', '%' . $value . '%'];
-            if ($value){
-                $res = Db::name('news_class')->where($where)->where('data_type',$data_type)->select();
+                if ($data_type>0){
+                    $res = Db::name('news_class')->where($where)->where('data_type',$data_type-1)->select();
+                }else{
+                    $res = Db::name('news_class')->where($where)->select();
+                }
+
                 $news_class_datas = [];
                 foreach ($res as $k=>$v){
                     $v['father']=Db::name('news_class')->where('class_id',$v['father_id'])->field('title')->find()['title'];
                     $news_class_datas[] = $v;
                 }
                 $this->assign('data',$news_class_datas);
+                $this->assign('value',$value);
+                $this->assign('data_type',$data_type-1);
                 return $this->fetch();
-            }else{
-                echo '请输入查询内容';
-            }
         }
     }
     /**

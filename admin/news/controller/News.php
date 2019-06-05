@@ -37,9 +37,12 @@ class News extends CommonBase
                 //添加所属分类
                 $news_class_datas = [];
                 foreach ($news_class_data as $k=>$v){
+
                     $v['father']=Db::name('news_class')->where('class_id',$v['class_id'])->field('title')->find()['title'];
                     $news_class_datas[] = $v;
                 }
+                $class = Db::name('news_class')->select();
+                $this->assign('class',$class);
                 $this->assign('data',$news_class_datas);
                 return $this->fetch();
             }else{
@@ -49,18 +52,24 @@ class News extends CommonBase
         }else{
             $value = htmlspecialchars(isset($param['value'])?$param['value']:'');
             $where['title'] = array('like','%'.$value.'%');
-            if ($value){
+            $class_id = htmlspecialchars(isset($param['class_id'])?$param['class_id']:'');
+            if (!empty($class_id)){
+                $res = Db::name('news')->where('class_id',$class_id)->where($where)->select();
+            }else{
                 $res = Db::name('news')->where($where)->select();
+            }
+
                 $news_class_datas = [];
                 foreach ($res as $k=>$v){
                     $v['father']=Db::name('news_class')->where('class_id',$v['class_id'])->field('title')->find()['title'];
                     $news_class_datas[] = $v;
                 }
+                $class = Db::name('news_class')->select();
+                $this->assign('class',$class);
+                $this->assign('value',$value);
                 $this->assign('data',$news_class_datas);
                 return $this->fetch();
-            }else{
-                echo '请输入查询内容';
-            }
+
         }
     }
     /**

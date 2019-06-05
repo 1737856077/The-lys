@@ -23,8 +23,14 @@
 
                 <tr class="tr1">
                     <td  colspan="7" class="tdlist">查询：
-                        新闻标题 <input type="text" name="value" id="SearchTitle" value=""/>　
-                        <input type="submit" name="ordersearchsubmit" class="buttomgray"  value="查询" /></td>
+                        新闻标题 <input type="text" name="value" id="SearchTitle" value="{$value? $value : ''}"/>　
+                        <select name="class_id" id="SearchStatus">  <option value="">全部</option>
+                            {foreach name="class" id="vo"}
+
+                            <option value="{$vo.class_id}">{$vo.title}</option>
+                            {/foreach}
+                        </select>
+                        <input type="submit"  class="buttomgray"  value="查询" /></td>
 
                     <td   class="tdlist">
                         <a href="__URL__/add"><input type="button" name="" class="buttomorger"  value="添加" /></a>
@@ -44,7 +50,7 @@
                     <td class="tdtit">发布者</td>
                     <td class="tdtit">关键字</td>
                     <td class="tdtit">首页推荐</td>
-                    <td class="tdtit">类型</td>
+                    <td class="tdtit">分类</td>
                     <td class="tdtit">状态</td>
                     <td class="tdtit">操作</td>
                 </tr>
@@ -65,11 +71,7 @@
                         {/if}
                     </td>
                     <td class="tdlist">
-                        {switch name="$vo.data_type"}
-                        {case value="1"}图片新闻{/case}
-                        {case value="2"}单篇图文{/case}
-                        {default /}新闻列表
-                        {/switch}
+                       {$vo.father}
                     </td>
                     <td class="tdlist">
                         {if condition="$vo.data_status eq 1"}
