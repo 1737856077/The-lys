@@ -24,7 +24,12 @@
                 <tr class="tr1">
                     <td  colspan="7" class="tdlist">查询：
                         新闻标题 <input type="text" name="value" id="SearchTitle" value="{$value? $value : ''}"/>　
-                        <select name="class_id" id="SearchStatus">  <option value="">全部</option>
+                        <select name="class_id" id="SearchStatus">
+                            {if condition="!empty($class_id)"}
+                            <option value="{$class_id.class_id}">{$class_id.title}</option>
+                            {/if}
+                            <option value="">全部</option>
+
                             {foreach name="class" id="vo"}
 
                             <option value="{$vo.class_id}">{$vo.title}</option>

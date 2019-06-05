@@ -55,6 +55,8 @@ class News extends CommonBase
             $class_id = htmlspecialchars(isset($param['class_id'])?$param['class_id']:'');
             if (!empty($class_id)){
                 $res = Db::name('news')->where('class_id',$class_id)->where($where)->select();
+                $dd = Db::name('news_class')->where('class_id',$class_id)->find();
+                $this->assign('class_id',$dd);
             }else{
                 $res = Db::name('news')->where($where)->select();
             }
@@ -67,6 +69,7 @@ class News extends CommonBase
                 $class = Db::name('news_class')->select();
                 $this->assign('class',$class);
                 $this->assign('value',$value);
+
                 $this->assign('data',$news_class_datas);
                 return $this->fetch();
 
