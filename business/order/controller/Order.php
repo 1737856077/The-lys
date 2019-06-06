@@ -27,8 +27,10 @@ class Order extends Controller
             ->field('i.*,p.images')
             ->where('i.admin_id', $id)
             ->order('id','desc')
-            ->paginate(3);
+            ->paginate(5);
 //        dump($list);die;
+        $count = count($list);
+        $this->assign('count', $count);
         $this->assign('list', $list);
         return $this->fetch();
     }

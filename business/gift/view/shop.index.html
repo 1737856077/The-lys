@@ -167,6 +167,11 @@
                     </td>
                 </tr>
                 {/volist}
+                {if condition="$count eq 0"}
+                <tr>
+                    <td colspan="4">暂没有分类信息</td>
+                </tr>
+                {/if}
                 </tbody>
             </table>
             <div class="text-right">

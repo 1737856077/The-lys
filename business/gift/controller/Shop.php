@@ -24,6 +24,7 @@ class Shop extends Controller
         //查询所有类
         $id = Session::get('bus_adminid');
         $list = Db::name('class')->where('admin_id', $id)->select();
+        $count = count($list);
         $list1 = [];
         //遍历查询出分类
         foreach ($list as $k=>$v){
@@ -31,6 +32,7 @@ class Shop extends Controller
             $list1[] = $v;
         }
         $this->assign('list', $list1);
+        $this->assign('count', $count);
         return $this->fetch();
     }
 

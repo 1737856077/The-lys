@@ -26,11 +26,13 @@ class Gift extends Controller
             ->alias('p')
             ->join('class c','p.class_id = c.id')
             ->field('p.*,c.name')
-            ->where('p.admin_id', $id)
+            ->where('p.admin_id',$id)
             ->order('p.id','desc')
             ->paginate(3);
 //        dump($list);die;
+        $count = count($list);
         $this->assign('list', $list);
+        $this->assign('count', $count);
         return $this->fetch();
     }
 
@@ -73,26 +75,32 @@ class Gift extends Controller
             $request = Request::instance();
             $file = $request->file('images');
             $product_id = my_returnUUID();
-            $validate = new Validate(
-                [
-                    'title' => 'require',
+            $validate = new Validate([
                     'class_id' => 'require',
-                    'total' => 'require',
-                    'integral' => 'require',
-                    'data_desc' => 'require',
-                    'market_price' => 'require',
+                    'title' => 'require',
+                    'total' => 'require|number',
+                    'integral' => 'require|number',
+                    'market_price' => 'require|number',
                 ]);
             $data1 = ([
-                'title' => $title,
                 'class_id' => $class_id,
+                'title' => $title,
                 'total' => $total,
                 'integral' => $integral,
-                'data_desc' => $data_desc,
                 'market_price' => $price,
             ]);
+            /*$message = ([
+                'class_id.require'=>'类别名称不能为空',
+                'title.require'=>'礼品名称不能为空',
+                'total.require'=>'礼品库存量不能为空',
+                'total.number'=>'礼品库存量必须为数字',
+                'integral.require'=>'兑换所需积分不能为空',
+                'integral.number'=>'兑换所需积分必须为数字',
+                'market_price.require'=>'市场销售价不能为空',
+                'market_price.number'=>'市场销售价必须为数字',
+            ]);*/
             if (!$validate->check($data1)) {
                 $this->error($validate->getError(),'gift/add');
-//                dump($validate->getError());
             }
             if ($file) {
                 $info = $file->validate([
@@ -141,37 +149,38 @@ class Gift extends Controller
             $title = input('post.title');
             $total = input('post.total');
             $integral = input('post.integral');
+            $price = input('post.market_price');
             $data_desc = input('post.data_desc');
             $request = Request::instance();
             $file = $request->file('images');
             //验证信息
             $validate = new Validate(
-                [
-                    'title' => 'require',
-                    'total' => 'require',
-                    'integral' => 'require',
-                    'data_desc' => 'require',
-                ]);
+            [
+                'title' => 'require',
+                'total' => 'require|number',
+                'integral' => 'require|number',
+                'market_price' => 'require|number',
+            ]);
             $data1 = ([
                 'title' => $title,
                 'total' => $total,
                 'integral' => $integral,
-                'data_desc' => $data_desc,
+                'market_price' => $price,
             ]);
             if (!$validate->check($data1)) {
-                $this->error($validate->getError(),'gift/edit');
+                $this->error($validate->getError(),"gift/edit?id=$id");
             }
             if ($file) {
                 $info = $file->validate([
                     'size' => (1024 * 1024) * 1,
                     'ext' => 'jpeg,jpg,png,bmp'
                 ])->move("static/uploads/business/");
-                $data = [];
                 if ($info) {
                     $data = [
                         'title' => $title,
                         'total' => $total,
                         'integral' => $integral,
+                        'market_price' => $price,
                         'data_desc' => $data_desc,
                         'images' => $info->getSaveName(),
                         'updata_time' => time(),

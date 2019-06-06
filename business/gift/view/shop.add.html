@@ -126,18 +126,29 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">分类名称</label>
+                        <label for="" class="control-label col-sm-2">分类名称&nbsp;<span style="color: red;">*</span></label>
                         <div class="form-controls col-sm-8">
                             <input type="text" name="name" id="name" placeholder="请输入分类名称">
+                            <sapn id="lei" style="color: red;"></sapn>
                             <div class="help-block"></div>
                         </div>
                     </div>
 
                     <input type="submit" name="submit" class="btn btn-primary" value="添加">
+                    <a href="{:url('shop/index')}" class="btn btn-primary">返回</a>
                 </form>
             </div>
         </div>
     </div>
+    <script>
+        $("#name").blur(function(){
+            var name = document.getElementById('name').value;
+            if(name == ""){
+                $('#lei').html('分类名称不能为空');
+            }
+            return false;
+        });
+    </script>
 </div>
 </body>
 </html>

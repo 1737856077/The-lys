@@ -46,8 +46,9 @@
                     <tr class="tr1">
                         <td class="tdl">红包总金额:<span style="color:#f00;">*</span></td>
                         <td class="tdr" style="padding-top:5px;">
-                            <input type="text" name="price_total" placeholder="请输入红包总金额" style="height: 30px;">
+                            <input type="text" name="price_total" placeholder="请输入红包总金额" style="height: 30px;" id="total">
                             <span id="price_total" style="color:#f00;"></span>
+                            <sapn id="prc" style="color: red;"></sapn>
                         </td>
                     </tr>
                     <tr class="tr1">
@@ -55,7 +56,8 @@
                         <td class="tdr" style="padding-top:5px;">
                             <input type="text" name="price_max" id="price_max" size="60" maxlength="32"
                                    onKeyPress="return noStrs(event);" onBlur="onBlur_title()" style="height: 30px;width: 170px;"/>
-                            <span style="color:#f00;">（金额不能小于100，大于2000）</span>
+                            <span style="color:#f00;">（金额不能小于100分，大于2000分）</span>
+                            <sapn id="prc_max" style="color: red;"></sapn>
                         </td>
                     </tr>
                     <tr class="tr1">
@@ -63,7 +65,8 @@
                         <td class="tdr" style="padding-top:5px;">
                             <input type="text" name="price_min" id="price_min" size="60" maxlength="32"
                                    onKeyPress="return noStrs(event);" onBlur="onBlur_title()" style="height: 30px;width: 170px;"/>
-                            <span style="color:#f00;">（金额不能小于100，大于2000）</span>
+                            <span style="color:#f00;">（金额不能小于100分，大于2000分）</span>
+                            <sapn id="prc_min" style="color: red;"></sapn>
                         </td>
                     </tr>
                     <tr class="tr1">
@@ -155,10 +158,30 @@
 
             </form>
         </div>
-
     </div>
-
-
+    <script>
+        $("#total").blur(function(){
+            var total = document.getElementById('total').value;
+            if(total == ""){
+                $('#prc').html('红包总金额不能为空');
+            }
+            return false;
+        });
+        $("#price_max").blur(function(){
+            var price_max = document.getElementById('price_max').value;
+            if(price_max == ""){
+                $('#prc_max').html('红包最小金额不能为空');
+            }
+            return false;
+        });
+        $("#price_min").blur(function(){
+            var price_min = document.getElementById('price_min').value;
+            if(price_min == ""){
+                $('#prc_min').html('红包最大金额不能为空');
+            }
+            return false;
+        });
+    </script>
 </div>
 <script>
 

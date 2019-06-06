@@ -22,6 +22,7 @@ class Information extends Controller
         //获取生码总积分
         $id = Session::get('bus_adminid');
         $num = Db::name('product_code')->where('admin_id',$id)->field('num')->select();
+        $count = count($num);
         $integral = '';
         foreach ($num as $k=>$v){
             $integral += $v['num'];
@@ -37,6 +38,7 @@ class Information extends Controller
         $this->assign('integral1',$integral1);
         $this->assign('integral2',$integral2);
         $this->assign('integral3',$integral3);
+        $this->assign('count', $count);
         return $this->fetch();
     }
 }

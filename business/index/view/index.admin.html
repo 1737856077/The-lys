@@ -119,6 +119,13 @@
                 <div class="panel-heading">
                     商家授权信息
                 </div>
+                {if condition="$count eq 0"}
+                <div class="panel-body clearfix">
+                    <div class="col-sm-9">
+                        <p>暂没有商家信息</p>
+                    </div>
+                </div>
+                {else /}
                 {volist name="list" id="vo"}
                 <div class="panel-body clearfix">
                     <div class="col-sm-9">
@@ -132,6 +139,7 @@
                     </div>
                 </div>
                 {/volist}
+                {/if}
             </div>
             <div class="panel we7-panel apply-list ng-hide" ng-show="not_installed_show == 1">
                 <div class="panel-heading">
