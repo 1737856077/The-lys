@@ -56,7 +56,7 @@
                         <div class="slogon"></div>
                     </div>
                 </section>
-                <section id="s-price"><span class="mui-price big"> <i class="mui-price-rmb">&yen;</i> <span
+                <section id="s-price"><span class="mui-price big"> <i class="mui-price-rmb">积分</i> <span
                         class="mui-price-integer">{$data.integral} - {$data.integral}</span> <span
                         class="mui-price-decimal"></span> </span></section>
                 <section id="s-adds"></section>
@@ -69,34 +69,34 @@
                 <section id="s-rate" data-spm=""></section>
                 <ul class="table-view">
                     <li class="table-view-cell"
-                        style="padding: 11px 6px 11px 15px;font-size: 18px;font-style:bold;color:#333;">规格选择 <span
+                        style="padding: 11px 6px 11px 15px;font-size: 18px;font-style:bold;color:#333;">购买数量 <span
                             style="float: right;margin-right:10px;" class=" clickwn"></span></li>
                 </ul>
 
                 <ul class="table-view">
                     <li class="table-view-cell"
                         style="padding: 11px 6px 11px 15px;font-size: 18px;font-style:bold;color:#333;">数量<span
-                            style="float: right;margin-right:10px;" class=" clickwn"><input onchange="sl()" type="text" id="sl" class="sl" value="1"></span></li>
+                            style="float: right;margin-right:10px;" class=" clickwn"><input oninput="sl()" type="text" id="sl" class="sl" value=""></span></li>
                 </ul>
                 <script>
                 function sl() {
                var member = $("#sl").val();
-               $("#num").val(member)
+               $(".num").val(member)
 
                 }
             </script>
-                <ul class="table-view" style="margin-top: 10px;">
-                    <li class="table-view-cell media"><a class=""> <img class="media-object pull-left" src=""/>
-                        <div class="media-body"> 店铺名字
-                            <p>店铺描述 </p>
-                        </div>
-                    </a></li>
-                </ul>
-                <ul class="table-view" style="margin-top:10px;">
-                    <li class="table-view-cell"><a class="navigate-right"
-                                                   style="font-size: 18px;font-style:bold;color:#666;"> <span
-                            class="badge">共1485条</span> 用户评价 </a></li>
-                </ul>
+                <!--<ul class="table-view" style="margin-top: 10px;">-->
+                    <!--<li class="table-view-cell media"><a class=""> <img class="media-object pull-left" src=""/>-->
+                        <!--<div class="media-body"> 店铺名字-->
+                            <!--<p>店铺描述 </p>-->
+                        <!--</div>-->
+                    <!--</a></li>-->
+                <!--</ul>-->
+                <!--<ul class="table-view" style="margin-top:10px;">-->
+                    <!--<li class="table-view-cell"><a class="navigate-right"-->
+                                                   <!--style="font-size: 18px;font-style:bold;color:#666;"> <span-->
+                            <!--class="badge">共1485条</span> 用户评价 </a></li>-->
+                <!--</ul>-->
                 <div class="ipo">
                     <ul class="table-view">
                         <li class="table-view-cell media"><a class="">

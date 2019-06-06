@@ -23,6 +23,7 @@ class Index extends CommonIntegra
         $id = htmlspecialchars(isset($param['id']) ? $param['id'] : '');
         $poduct_id = htmlspecialchars(isset($param['product_id']) ? $param['product_id'] : '');
         $admin_id = Session::get('admin_id');
+        $number = htmlspecialchars(isset($param['number'])?$param['number']:'');
         $appid = htmlspecialchars(isset($param['appid']) ? $param['appid'] : '');
         $memberid = Session::get('memberid');
         if (empty($id) or empty($poduct_id)) {
@@ -38,10 +39,13 @@ class Index extends CommonIntegra
         }
         //查询商品信息
         $product_integral_data = Db::name('product_integral')->where('product_id', $poduct_id)->where('data_status',1)->find();
+        $jine = $product_integral_data['integral']*$number;
 //        dump($product_integral_data);die();
         //查询收货地址默认注册没有收货地址请添加
         $member_rceiving_address_data = Db::name('rceiving_address')->where('uid',$uid)->where('data_type',1)->find();
         $this->assign([
+            'jine'=>$jine,
+            'number'=>$number,
             'rceiving_address'=>$member_rceiving_address_data,
             'member_data'=>$meber_data,
             'product_data' => $product_integral_data,

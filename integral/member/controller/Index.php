@@ -349,7 +349,9 @@ class Index extends CommonIntegra
         $memberid = Session::get('memberid');
         $rr = isset($param['product_id']) ? $param['product_id'] : '';
         if (!$rr) {
-            return_msg(400, '没有订单！', '');
+//            return_msg(400, '没有订单！', '');
+//            return $this->redirect('member/index/shopping',['msg'=>'没有选择订单']);
+            echo "<script>alert('请选择要购买的订单!');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
         }
         //分割提交订单
         $data = [];
@@ -362,6 +364,11 @@ class Index extends CommonIntegra
 
             $product_id = Db::name('shopping')->where('id', $v[0])->find()['product_id'];
             $data = Db::name('product_integral')->where('product_id', $product_id)->find();
+            if ($data['total']<$v[1]){
+                $title = $data['title'];
+                $num = $data['total'];
+                echo "<script>alert('".$title."的最大数量不能超过".$num."');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
+            }
             $data['num'] = $v[1];
             $data['money'] = round($data['integral'] * $data['num'], 4);
             $data['shopping'] = $v[0];

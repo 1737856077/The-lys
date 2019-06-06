@@ -92,9 +92,18 @@
             </dl>
             <dl>
                 <dt>购买数量</dt>
-                <input style="border: 1px solid" id="num" class="num" type="text" value="" name="num"></dd>
+                <input style="border: 1px solid" id="num" class="num" type="text" oninput="jss()" value="{$number}" name="num"></dd>
+                <input type="hidden" class="ji" id="ji" value="{$product_data.integral}">
             </dl>
         </div>
+        <script>
+            function jss() {
+                var number = $(".num").val();
+                var integral = $(".ji").val();
+                var money = number*integral;
+                $(".integral").text(money);
+            }
+        </script>
         <div class="txt txt2 J_baoxian">
         </div>
         <script type="text" id="j_baoxian_con">
@@ -137,13 +146,13 @@
             <dl>
                 <dt>
                     <div class="price">
-                        订单总额 <em>￥<em class="integral"></em></em>
+                        订单总额 <em>积分<em id="integral" class="integral">{$jine}</em></em>
                     </div>
                 </dt>
                 <input type="hidden" name="product_id" value="{$product_data.product_id}">
                 <input type="hidden" name="uid" value="{$member_data.uid}">
                 <input type="hidden" name="integral" value="{$product_data.integral}">
-                <input type="hidden" class="num" name="num" value="">
+                <input type="hidden" class="num" name="num" value="{$number}">
                 <input type="hidden" name="appid" value="{$product_data.appid}">
                 <input type="hidden" name="admin_id" value="{$product_data.admin_id}">
                 <input type="hidden" name="rceiving_address_id" value="{$rceiving_address.rceiving_address_id}">

@@ -60,16 +60,16 @@
         <p class="color">颜色:白色</p>
         <div class="jj">
             <span class="jia">-</span>
-            <input class="num" value="{$data.number}">
+            <input class="num"  id="num" value="{$data.number}">
             <span class="jian">+</span>
         </div>
     </div>
     <div class="jgq">
         <input type="hidden" class="product" id="product" name="product_id" value="{$data.id}">
-        <div class="price"><p>￥<span class="pri">{$data.integral}</span></p></div>
+        <div class="price"><p>积分<span class="pri">{$data.integral}</span></p></div>
         <div class="price_de">
             <p>
-                <del>￥3{$data.integral}</del>
+                <del>积分3{$data.integral}</del>
             </p>
         </div>
         <a href="javascript:(0)" onclick="sc('{$data.product_id}')"><img src="__STATIC__/integral/img/del.jpg"
@@ -81,7 +81,7 @@
     <div id="qx" data="0"></div>
     <span style="float:left;line-height:0.8rem;">全选</span>
     <div class="zjq">
-        <p class="p1">合计:￥
+        <p class="p1">合计:积分
             <span id="zj">0</span>
         </p>
         <p>含运费</p>
