@@ -200,12 +200,12 @@ class order extends CommonIntegra
         foreach ($data as $k => $v) {
             $product_id = Db::name('shopping')->where('id', $v[0])->find()['product_id'];
             $data = Db::name('product_integral')->where('product_id', $product_id)->find();
-
+            $order_no = date('ymdhis').mt_rand(1000,9999).substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
             $data['num'] = $v[1];
             $data['money'] = round($data['integral'] * $data['num'], 4);
             $data['shopping'] = $v[0];
             $arr = [
-                'order_no' => date('ymdhis').mt_rand(1000,9999).substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8),
+                'order_no' =>$order_no ,
                 'product_id' => $data['product_id'],
                 'uid' => $member_data['uid'],
                 'price' => $data['integral'],
@@ -230,7 +230,7 @@ class order extends CommonIntegra
             $rceiving_address_data = $rceiving_address_model->where('rceiving_address_id',$rceiving_address_id)->find();
 
             $data_detail = [
-                'order_no'=>date('ymdhis').mt_rand(1000,9999).substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8),
+                'order_no'=>$order_no,
                 'consignee_contacts'=>$rceiving_address_data['name'],
                 'consignee_tel'=>$rceiving_address_data['tel'],
                 'consignee_province_id'=>$rceiving_address_data['province_id'],
@@ -250,7 +250,7 @@ class order extends CommonIntegra
                 'integral_record_id' => my_returnUUID(),
                 'uid'=>$uid,
                 'price'=>$data['money'],
-                'order_no'=>date('ymdhis').mt_rand(1000,9999).substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8),
+                'order_no'=>$order_no,
                 'integral_type'=>2,
                 'admin_id'=>Session::get('admin_id'),
                 'data_type'=>1,

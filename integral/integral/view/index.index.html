@@ -15,11 +15,17 @@
     <link rel='stylesheet' href='__STATIC__/integral/css/amazeui.min.css'>
     <link rel='stylesheet' href='__STATIC__/integral/css/swiper.min.css'>
     <link rel='stylesheet' href='__STATIC__/integral/css/app.css'>
-    <!-- jquery -->
-    <script src='__STATIC__/integral/js/jquery.js'></script>
-    <script src='__STATIC__/integral/js/jquery-1.7.2.min.js'></script>
-    <link href="__STATIC__/integral/css/style1.css" rel="stylesheet" type="text/css" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link href="__STATIC__/integral/css/user.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery.js"></script>
+    <script type="text/javascript" src="__STATIC__/integral/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/layer.css"/>
+    <script language="javascript" src="__STATIC__/integral/js/layer.m.js"  charset="UTF-8"></script>
 
+    <link rel="stylesheet" type="text/css" href="__STATIC__/integral/css/shopcar.css">
 </head>
 
 <body>
@@ -29,17 +35,14 @@
 <!-- 外框 -->
 <div id='waik'>
     <!-- 头部 -->
-    <div id='top' style='background:#FF4945;'>
-        <div style='background: #FF4945' class='sos_t sos_t_zy'>
-            <div class='fanh_shang'>
-            </div>
-            <div class='so_input'>
-                <h1 style='color: #f9fffe'>商品分类</h1>
-            </div>
-            <div>
-
-            </div>
-        </div>
+    <div class="fix_head">
+        <a href="javascript:history.go(-1);" class="back">
+            <img src="__STATIC__/integral/img/back.jpg">
+        </a>
+        <p>商品中心</p>
+        <a href="/integral.php/member/index/index" class="home">
+            <img src="__STATIC__/integral/img/home.jpg">
+        </a>
     </div>
     <!-- 内容 -->
     <div class='con'>
@@ -49,7 +52,7 @@
                     <div class='text-all dis-box j-text-all'>
                         <div class='box-flex input-text'><a class='a-search-input j-search-input'
                                                             href='javascript:void(0)'></a>
-                            <input type='text' placeholder='商品搜索'/>
+
                             <i class='iconfont icon-guanbi is-null j-is-null'></i></div>
                     </div>
                 </section>
@@ -109,6 +112,26 @@
             });
         }
     </script>
+    <footer style="height: 50px;width: 100%" class="aui-footer aui-footer-fixed">
+    <a href="/integral.php/index/index/index"  class="aui-tabBar-item">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-loan"></i>
+                    </span>
+        <span  style="color: #4a4d54;font-size: 10px" class="aui-tabBar-item-text">首页</span>
+    </a>
+    <a href="{:url('integral/index/index')}" class="aui-tabBar-item">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-meTo"></i>
+                    </span>
+        <span style="color: #4a4d54;font-size: 10px" class="aui-tabBar-item-text">积分兑换</span>
+    </a>
+    <a href="{:url('member/index/index')}" class="aui-tabBar-item ">
+                    <span style="width: 20px;height: 20px" class="aui-tabBar-item-icon">
+                        <i class="icon icon-find"></i>
+                    </span>
+        <span style="color: #4a4d54;font-size: 10px" class="aui-tabBar-item-text">我的</span>
+    </a>
+</footer>
 
 </div>
 
