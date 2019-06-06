@@ -23,7 +23,7 @@ class Index extends Controller
     }
 
     /**
-     * 显示商家商品未登录
+     * 积分界面显示
      */
     public function product()
     {
@@ -33,14 +33,21 @@ class Index extends Controller
             echo '参数错误';
             die();
         }
+        // 0  null true
         $data = Db::name('product_code_info')->where('compress_code', $code_info_id)->find();
-        if ($data) {
-            if ($data['code_status'] == 1) {
-                echo "<script language=\"javascript\">alert('无效二维码');</script>";
+
+            if ($data['code_status']==null){
+                //判断二维码是否失效 二维码是否开启
+                if ($data['code_status']===1 or $data['data_status']==0 ) {
+                    return  $this->login();
+                }else{
+                    $this->assign('data', $data);
+                    return $this->fetch();
+                }
+            }else{
+                return "不是本产品码";die;
             }
-        }
-        $this->assign('data', $data);
-        return $this->fetch();
+
     }
 
     /**
@@ -55,10 +62,7 @@ class Index extends Controller
             $memberid = Session::get('memberid');
             $MemberData = Db::name('member')->where('id', $memberid)->field('uid')->find();
             $uid = $MemberData['uid'];
-            //当前用户积分总和
-//            $MemberIntegral = Db::name('member_integral_record')->where([
-//                'uid'=>$uid
-//            ])->sum('price');a
+
             $MemberIntegral = Db::name('member')->where([
                 'uid' => $uid
             ])->field('invoice_money')->find();
@@ -71,7 +75,7 @@ class Index extends Controller
             $productData = Db::name('product_integral')->where('admin_id', Session::get('admin_id'))->where('data_status', 1)->limit(6)->select();
             $this->assign('data', $productData);
             $this->assign('integral', $data);
-            return $this->fetch();
+            return $this->fetch("index");
         } else {
             $param = $this->request->param();
             //测试默认值 admin为传过来的为商家管理员的id
@@ -148,12 +152,11 @@ class Index extends Controller
      */
     public function login()
     {
-
         if (Session::has('memberid')) {
             //$this->redirect("","",1,"已登录，1称后自动跳转");
             echo "<script language=\"javascript\">window.open('" . url('index/index') . "','_top');</script>";
         } else {
-            return $this->fetch();
+            return $this->fetch("login");
         }
     }
 
@@ -195,7 +198,7 @@ class Index extends Controller
         $data = Db::name('product_code_info')->where('compress_code', Session::get('compress_code'))->find();
         if ($data) {
             if ($data['code_status'] == 1) {
-                echo "<script language=\"javascript\">alert('无效二维码');</script>";
+                $this->redirect('index/index');
             }
         }
         $member_data = Db::name('member')->where('id', Session::get('memberid'))->find();
