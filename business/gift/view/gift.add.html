@@ -110,50 +110,55 @@
                 <form action="{:url('gift/add')}" class="we7-form ng-pristine ng-valid ng-scope" method="post"
                       id="js-user-create" ng-controller="UserCreate" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">所属分类</label>
+                        <label for="" class="control-label col-sm-2">所属分类&nbsp;<span style="color: red;">*</span></label>
                         <div class="form-controls col-sm-8">
                             <select name="pid" >
                                 {if condition="!empty($name)"}
-                                <option value='0'>顶级分类</option>
+                                <option value='1'>顶级分类</option>
                                 {volist name="name" id="vo"}
                                 <option value="{$vo.id}">{$vo.name}</option>
                                 {/volist}
                                 {else/}
-                                <option value='0'>顶级分类</option>
+                                <option value='1'>顶级分类</option>
                                 {/if}
                             </select>
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">商品名称</label>
+                        <label for="" class="control-label col-sm-2">商品名称&nbsp;<span style="color: red;">*</span></label>
                         <div class="form-controls col-sm-8">
-                            <input type="text" name="title" id="title" placeholder="请输入商品名称">
+                            <input type="text" name="title" id="title" placeholder="请输入商品名称" onblur="checkTitle">
+                            <sapn id="na" style="color: red;"></sapn>
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">主图片</label>
+                        <label for="" class="control-label col-sm-2">主图片&nbsp;<span style="color: red;">*</span></label>
                         <div class="form-controls col-sm-8">
                             <input type="file" name="images" id="images">
+                            <sapn id="img" style="color: red;"></sapn>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">库存</label>
+                        <label for="" class="control-label col-sm-2">库存&nbsp;<span style="color: red;">*</span></label>
                         <div class="form-controls col-sm-8">
                             <input type="text" name="total" id="total" placeholder="请输入库存量">
+                            <sapn id="ku" style="color: red;"></sapn>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">市场售价</label>
+                        <label for="" class="control-label col-sm-2">市场售价&nbsp;<span style="color: red;">*</span></label>
                         <div class="form-controls col-sm-8">
                             <input type="text" name="market_price" id="market_price" placeholder="请输入商品市场价格">
+                            <sapn id="prc" style="color: red;"></sapn>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label col-sm-2">所需积分</label>
+                        <label for="" class="control-label col-sm-2">所需积分&nbsp;<span style="color: red;">*</span></label>
                         <div class="form-controls col-sm-8">
                             <input type="text" name="integral" id="integral" placeholder="请输入商品所需积分">
+                            <sapn id="jifen" style="color: red;"></sapn>
                         </div>
                     </div>
                     <div class="form-group">
@@ -169,11 +174,49 @@
                     </div>
                     <input type="submit" name="submit" id="su" class="btn btn-primary" style="display: none;">
                     <input type="button" name="submit" value="提交" class="btn btn-primary" onclick="f()" style="padding: 6px 50px;">
+                    <a href="{:url('gift/gift')}" class="btn btn-primary">返回</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $("#title").blur(function(){
+        var title = document.getElementById('title').value;
+        if(title == ""){
+            $('#na').html('礼品名称不能为空');
+        }
+        return false;
+    });
+    $("#images").blur(function(){
+        var images = document.getElementById('images').value;
+        if(images == ""){
+            $('#img').html('礼品图片不能为空');
+        }
+        return false;
+    });
+    $("#total").blur(function(){
+        var total = document.getElementById('title').value;
+        if(total == ""){
+            $('#ku').html('礼品库存量不能为空且必须为数字');
+        }
+        return false;
+    });
+    $("#market_price").blur(function(){
+        var market_price = document.getElementById('market_price').value;
+        if(market_price == ""){
+            $('#prc').html('市场销售价不能为空且必须为数字');
+        }
+        return false;
+    });
+    $("#integral").blur(function(){
+        var integral = document.getElementById('integral').value;
+        if(integral == ""){
+            $('#jifen').html('兑换所需积分不能为空且必须为数字');
+        }
+        return false;
+    });
+</script>
 <script type="text/javascript" src="__STATIC__/admin/js/wangEditor.min.js"></script>
 <script type="text/javascript">
     var E = window.wangEditor;

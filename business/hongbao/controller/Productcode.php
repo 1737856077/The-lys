@@ -55,11 +55,13 @@ class Productcode extends CommonBase
             ->where('admin_id',$id)
             ->order('create_time DESC')
             ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
+        $con = count($List);
         $show=$List->render();
 //        dump($List);die;
         $this->assign("count",$count);
         $this->assign("List",$List);
         $this->assign("page",$show);
+        $this->assign("con",$con);
         $this->assign('paramUrl',$paramUrl);
         return $this->fetch();
     }

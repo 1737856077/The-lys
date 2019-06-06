@@ -66,10 +66,11 @@ class Productcode extends CommonBase
         $List=$ModelProductCode->where($_where)
             ->where($_whereIn)
             ->where('admin_id',$id)
+            ->where('qr_code_type',1)
             ->order('create_time DESC')
             ->paginate(config('paginate.list_rows'),false,['query' => $this->request->get('', '', 'urlencode')]);
         $show=$List->render();
-
+        $con = count($List);
         foreach($List as $key=>$value){
             //模版名称
             $getoneProduct=$ModelProduct->where("product_id='$value[product_id]'")->find();
@@ -83,6 +84,7 @@ class Productcode extends CommonBase
         }
 
         $this->assign("count",$count);
+        $this->assign("con",$con);
         $this->assign("List",$resultArr);
         $this->assign("page",$show);
         $this->assign('paramUrl',$paramUrl);

@@ -146,6 +146,11 @@
                     <td class="color-default ng-binding" ng-bind="user.maxwxapp">{$integral2}</td>
                     <td class="color-default ng-binding" ng-bind="user.maxwebapp">{$integral3}</td>
                 </tr>
+                {if condition="$count eq 0"}
+                <tr>
+                    <td colspan="4">暂没有积分信息</td>
+                </tr>
+                {/if}
                 </tbody>
             </table>
             <div class="text-right" style="width: 100px;">

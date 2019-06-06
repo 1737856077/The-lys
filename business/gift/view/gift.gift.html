@@ -190,6 +190,11 @@
                     </td>
                 </tr>
                 {/volist}
+                {if condition="$count eq 0"}
+                <tr>
+                    <td colspan="8">暂没有礼品</td>
+                </tr>
+                {/if}
                 </tbody>
             </table>
             </form>

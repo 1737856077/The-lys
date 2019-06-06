@@ -38,7 +38,10 @@
         <div class="right-content" style="min-height: 490px;">
             <ul class="we7-page-tab">
                 <li class="active"><a
-                        href="https://weixin.zijiahei.com/web/index.php?c=user&amp;a=display&amp;">发票申请列表</a>
+                        href="">发票申请列表</a>
+                </li>
+                <li class="active"><a
+                        href="{:url('money/index')}">返回</a>
                 </li>
 
             </ul>
@@ -100,6 +103,11 @@
                     <td class="color-default ng-binding" ng-bind="user.maxaccount">{$vo.create_time |date="Y-m-d",### }</td>
                 </tr>
                 {/foreach}
+                {if condition="$count eq 0"}
+                <tr>
+                    <td colspan="8">暂没有礼品</td>
+                </tr>
+                {/if}
                 </tbody>
             </table>
             <div class="text-right">

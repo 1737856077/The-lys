@@ -73,7 +73,7 @@ class Pay extends Controller
         $this->assign("WIDsubject",$WIDsubject);
         $this->assign("WIDtotal_amount",$WIDtotal_amount);
         $this->assign("WIDbody",'描述');
-        $this->assign("adminid",Session::get('adminid'));
+        $this->assign("adminid",Session::get('bus_adminid'));
         return $this->fetch('preorder/suborder');
     }
 

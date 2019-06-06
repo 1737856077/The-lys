@@ -26,10 +26,11 @@ class Index extends Controller
                 ->join('admin a','b.admin_id = a.admin_id')
                 ->where('b.admin_id',$id)
                 ->select();
+            $count = count($list);
+            $this->assign('count',$count);
             $this->assign('list',$list);
             $this->assign('name',$name);
 //            return $this->fetch();
-//
 
     }
     public function admin()

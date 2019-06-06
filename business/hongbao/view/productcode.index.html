@@ -76,7 +76,11 @@
                         </td>
                     </tr>
 				    {/foreach}
-
+                    {if condition="$con eq 0"}
+                    <tr>
+                        <td colspan="7">暂没有红包码</td>
+                    </tr>
+                    {/if}
             </table>
             <div style="text-align:right; padding-right:40px;">
             {$page}

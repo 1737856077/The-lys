@@ -90,7 +90,7 @@ class Money extends Controller
             //申请逻辑
             $param = $this->request->param();
             //验证信息
-            $validate =(
+            $validate = new Validate(
                 [
                     'price' => 'require',
                     'title' => 'require',
@@ -105,15 +105,9 @@ class Money extends Controller
                 'express_address' => $param['express_address'],
                 'phone' => $param['phone'],
             ]);
-            $message = ([
-                'price.require'=>'金额不能为空',
-                'title.require'=>'发票头不能为空',
-                'taxpayer_number.require'=>'纳税人识别号不能为空',
-                'express_address.require'=>'邮寄地址不能为空',
-                'phone.require'=>'手机号不能为空',
-            ]);
-            $this->error($this->validate($data1,$validate,$message),'money/invoice');
-//            return $this->validate($data1,$validate,$message);
+            if (!$validate->check($data1)) {
+                $this->error($validate->getError(),'money/invoice');
+            }
 
             //添加数据
             $data = [
@@ -153,6 +147,8 @@ class Money extends Controller
         //查询发票申请列表
         $id = Session::get('bus_adminid');
         $list = Db::name('business_invoice')->where('admin_id',$id)->order('id','desc')->paginate(5);
+        $count = count($list);
+        $this->assign('count',$count);
         $this->assign('list',$list);
         return $this->fetch();
     }
