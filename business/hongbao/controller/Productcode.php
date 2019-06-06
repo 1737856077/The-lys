@@ -20,7 +20,7 @@ class Productcode extends CommonBase
      * @描述：信息列表页面
      */
     public function  index(){
-        $id = Session::get('adminid');
+        $id = Session::get('bus_adminid');
         $param = $this->request->param();
         //查询
         $SearchTitle = isset($param['SearchTitle']) ? trim(htmlspecialchars(urldecode($param['SearchTitle']))) : '' ;

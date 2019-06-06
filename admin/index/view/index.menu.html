@@ -137,15 +137,17 @@
                 <hr>
             </li>
             {/if}
-
+            {if auth('invoice/invoice/index')}
             <li class="tab">
                 <div class="list_cd list_back"><i></i><a href="javascript:vivo(0)">财务管理</a><em></em></div>
                 <ul class="ct" style="display:none;">
+                    {if auth('invoice/invoice/index')}
                     <li><a href="__ROOT__/admin.php/invoice/invoice/index" target="mainframe">发票管理</a></li>
+                    {/if}
                 </ul>
                 <hr>
             </li>
-
+            {/if}
         </ul>
     </div>
 

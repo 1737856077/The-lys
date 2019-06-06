@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">[uib-typeahead-popup].dropdown-menu {
+        display: block;
+    }</style>
+    <style type="text/css">.uib-time input {
+        width: 50px;
+    }</style>
+    <style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow, [uib-popover-popup].popover.top-left > .arrow, [uib-popover-popup].popover.top-right > .arrow, [uib-popover-popup].popover.bottom-left > .arrow, [uib-popover-popup].popover.bottom-right > .arrow, [uib-popover-popup].popover.left-top > .arrow, [uib-popover-popup].popover.left-bottom > .arrow, [uib-popover-popup].popover.right-top > .arrow, [uib-popover-popup].popover.right-bottom > .arrow, [uib-popover-html-popup].popover.top-left > .arrow, [uib-popover-html-popup].popover.top-right > .arrow, [uib-popover-html-popup].popover.bottom-left > .arrow, [uib-popover-html-popup].popover.bottom-right > .arrow, [uib-popover-html-popup].popover.left-top > .arrow, [uib-popover-html-popup].popover.left-bottom > .arrow, [uib-popover-html-popup].popover.right-top > .arrow, [uib-popover-html-popup].popover.right-bottom > .arrow, [uib-popover-template-popup].popover.top-left > .arrow, [uib-popover-template-popup].popover.top-right > .arrow, [uib-popover-template-popup].popover.bottom-left > .arrow, [uib-popover-template-popup].popover.bottom-right > .arrow, [uib-popover-template-popup].popover.left-top > .arrow, [uib-popover-template-popup].popover.left-bottom > .arrow, [uib-popover-template-popup].popover.right-top > .arrow, [uib-popover-template-popup].popover.right-bottom > .arrow {
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0;
+    }
+
+    [uib-popover-popup].popover, [uib-popover-html-popup].popover, [uib-popover-template-popup].popover {
+        display: block !important;
+    }</style>
+    <style type="text/css">.uib-datepicker-popup.dropdown-menu {
+        display: block;
+        float: none;
+        margin: 0;
+    }
+
+    .uib-button-bar {
+        padding: 10px 9px 2px;
+    }</style>
+    <style type="text/css">.uib-position-measure {
+        display: block !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .uib-position-scrollbar-measure {
+        position: absolute !important;
+        top: -9999px !important;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: scroll !important;
+    }
+
+    .uib-position-body-scrollbar-measure {
+        overflow: scroll !important;
+    }</style>
+    <style type="text/css">.uib-datepicker .uib-title {
+        width: 100%;
+    }
+
+    .uib-day button, .uib-month button, .uib-year button {
+        min-width: 100%;
+    }
+
+    .uib-left, .uib-right {
+        width: 100%
+    }</style>
+    <style type="text/css">.ng-animate.item:not(.left):not(.right) {
+        -webkit-transition: 0s ease-in-out left;
+        transition: 0s ease-in-out left
+    }</style>
+    <style type="text/css">@charset "UTF-8";
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }
+
+    .ng-animate-shim {
+        visibility: hidden;
+    }
+
+    .ng-anchor {
+        position: absolute;
+    }</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公众号 - 我的公众号 - 添加公众号</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="https://weixin.zijiahei.com/web/resource/images/favicon.ico">
+    <link href="__STATIC__/business/css/bootstrap.css" rel="stylesheet">
+    <link href="__STATIC__/business/css/common.css" rel="stylesheet">
+    </script>
+    <script type="text/javascript">
+        if (navigator.appName == 'Microsoft Internet Explorer') {
+            if (navigator.userAgent.indexOf("MSIE 5.0") > 0 || navigator.userAgent.indexOf("MSIE 6.0") > 0 || navigator.userAgent.indexOf("MSIE 7.0") > 0) {
+                alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+            }
+        }
+        window.sysinfo = {
+            'uid': '1', 'isfounder': 1,
+            'family': 'x',
+            'siteroot': 'https://weixin.zijiahei.com/',
+            'siteurl': 'https://weixin.zijiahei.com/web/index.php?c=user&a=profile&do=bind',
+            'attachurl': 'https://weixin.zijiahei.com/attachment/',
+            'attachurl_local': 'https://weixin.zijiahei.com/attachment/',
+            'attachurl_remote': '',
+            'module': {'url': '', 'name': ''},
+            'cookie': {'pre': '1b74_'},
+            'account': null,
+            'server': {'php': '5.4.45'},
+        };
+    </script>
+    <script>var require = {urlArgs: 'v=20170915'};</script>
+    <script type="text/javascript" src="__STATIC__/business/js/jquery-1.js"></script>
+    <script type="text/javascript" src="__STATIC__/business/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="loader" style="display:none">
+    <div class="la-ball-clip-rotate">
+        <div></div>
+    </div>
+</div>
+<div data-skin="default" class="skin-default ">
+    <div class="main">
+        <div class="container">
+            <div class="panel panel-content main-panel-content ">
+
+                <div class="panel-body clearfix main-panel-body menu-fixed">
+                    <div class="right-content" style="min-height: 490px; margin-left: 0px;">
+                        <div class="account-list-add-step">
+                            <ol class="breadcrumb we7-breadcrumb">
+                                <a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;"><i
+                                        class="wi wi-back-circle"></i> </a>
+                                <li><a href="https://weixin.zijiahei.com/web/index.php?c=account&amp;a=manage&amp;">公众号列表</a>
+                                </li>
+                                <li>新建公众号</li>
+                            </ol>
+                            <div class="we7-step">
+                                <ul>
+                                    <li class="active">1 设置公众号信息</li>
+                                    <li>2 设置权限</li>
+                                    <li>3 引导页面</li>
+                                </ul>
+                            </div>
+                            <form action="" method="post" class="we7-form ng-pristine ng-valid ng-scope"
+                                  enctype="multipart/form-data" id="js-account-post-step2"
+                                  ng-controller="AccountPostStepTwo">
+                                <input type="hidden" name="step" value="2">
+                                <!--第二步:基本信息-->
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">公众号名称</label>
+                                    <div class="form-controls col-sm-8">
+                                        <input type="text" name="cname"
+                                               class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               ng-model="account.name" autocomplete="off">
+                                        <span class="help-block">填写公众号的账号名称</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">描述</label>
+                                    <div class="form-controls col-sm-8">
+                                        <textarea style="height: 80px;" class="form-control ng-binding"
+                                                  name="description" ng-bind="account.description"></textarea>
+                                        <span class="help-block">用于说明此公众号的功能及用途。</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">公众号账号</label>
+                                    <div class="form-controls col-sm-8">
+                                        <input type="text" name="account"
+                                               class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               ng-model="account.account" autocomplete="off">
+                                        <span class="help-block">填写公众号的账号,一般为英文账号</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">原始ID</label>
+                                    <div class="form-controls col-sm-8">
+                                        <input type="text" name="original"
+                                               class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               ng-model="account.original" autocomplete="off">
+                                        <span class="help-block">原始ID不能修改,请谨慎填写</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">类型</label>
+                                    <div class="form-controls col-sm-8">
+                                        <select name="level" class="we7-select">
+                                            <option value="1" ng-selected="account.level == 1" selected="selected">
+                                                普通订阅号
+                                            </option>
+                                            <option value="2" ng-selected="account.level == 2">普通服务号</option>
+                                            <option value="3" ng-selected="account.level == 3">认证订阅号</option>
+                                            <option value="4" ng-selected="account.level == 4">认证服务号/认证媒体/政府订阅号</option>
+                                        </select>
+                                        <span class="help-block">注意:即使公众平台显示为“未认证”, 但只要【公众号设置】/【账号详情】下【认证情况】显示资质审核通过, 即可认定为认证号.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">AppId</label>
+                                    <div class="form-controls col-sm-8">
+                                        <input type="text" name="key"
+                                               class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               ng-model="account.key" autocomplete="off">
+                                        <span class="help-block">请填写微信公众平台后台的AppId</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">AppSecret</label>
+                                    <div class="form-controls col-sm-8">
+                                        <input type="text" name="secret"
+                                               class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               ng-model="account.secret" autocomplete="off">
+                                        <span class="help-block">请填写微信公众平台后台的AppSecret</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Oauth 2.0</label>
+                                    <div class="form-controls col-sm-8">
+                                        <p class="form-control-static">在微信公众号请求用户网页授权之前，开发者需要先到公众平台网站的【开发者中心】<b>网页服务</b>中配置授权回调域名。<a
+                                                href="http://www.we7.cc/manual/dev:v0.6:qa:mobile_redirect_url_error"
+                                                class="color-default" target="_black">查看详情</a></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">头像</label>
+                                    <div class="form-controls col-sm-8">
+                                        <div class="input-more we7-input-img" ng-class="{'active': account.headimg}">
+                                            <!-- ngIf: account.headimg -->
+                                            <a href="javascript:;" class="input-addon"
+                                               ng-click="uploadMultiImage('headimg')"
+                                               ng-hide="account.headimg"><span>+</span></a>
+                                            <input type="text" name="headimg" ng-model="account.headimg"
+                                                   ng-style="{'display' : 'none'}"
+                                                   class="ng-pristine ng-untouched ng-valid ng-empty"
+                                                   style="display: none;">
+                                            <div class="cover-dark">
+                                                <a href="javascript:;" class="cut"
+                                                   ng-click="uploadMultiImage('headimg')">更换</a>
+                                                <a href="javascript:;" class="del"
+                                                   ng-click="delMultiImage('headimg')"><i
+                                                        class="fa fa-times text-danger"></i></a>
+                                            </div>
+                                        </div>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2">二维码</label>
+                                    <div class="form-controls col-sm-8">
+                                        <div class="input-more we7-input-img" ng-class="{'active': account.qrcode}">
+                                            <!-- ngIf: account.qrcode -->
+                                            <a href="javascript:;" class="input-addon"
+                                               ng-click="uploadMultiImage('qrcode')"
+                                               ng-hide="account.qrcode"><span>+</span></a>
+                                            <input type="text" name="qrcode" ng-model="account.qrcode"
+                                                   ng-style="{'display' : 'none'}"
+                                                   class="ng-pristine ng-untouched ng-valid ng-empty"
+                                                   style="display: none;">
+                                            <div class="cover-dark">
+                                                <a href="javascript:;" class="cut"
+                                                   ng-click="uploadMultiImage('qrcode')">更换</a>
+                                                <a href="javascript:;" class="del" ng-click="delMultiImage('qrcode')"><i
+                                                        class="fa fa-times text-danger"></i></a>
+                                            </div>
+                                        </div>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btn btn-primary btn-submit" value="下一步">
+                                    <input type="hidden" name="token" value="6fdd4b2a">
+                                </div>
+                            </form>
+                        </div>
+                        <script type="text/javascript">
+                            angular.module('accountApp').value('config', {});
+                            angular.bootstrap($('#js-account-post-step2'), ['accountApp']);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -84,7 +84,7 @@ class Createqrcode extends CommonBase
         $contacts=htmlspecialchars(isset($param['contacts']) ? trim($param['contacts']) : '');
         $tel=htmlspecialchars(isset($param['tel']) ? trim($param['tel']) : '');
         $gettime=time();
-        $admin_id=Session::get('adminid') ;
+        $admin_id=Session::get('bus_adminid') ;
         $market_time=strtotime($market_time);
         //提交类型(0:普通提交；1：生成并下载(TXT)；)
         $actionType=isset($param['actionType']) ? intval($param['actionType']) : 0;
