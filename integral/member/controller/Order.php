@@ -195,19 +195,17 @@ class order extends CommonIntegra
         foreach ($param['product_id'] as $k => $v) {
             $data[] = explode('.', $v);
         }
-        $order_no = date("ymdhis").mt_rand(1000,9999);
-        //查询订单数据
+       //查询订单数据
         $res = [];
         foreach ($data as $k => $v) {
-
             $product_id = Db::name('shopping')->where('id', $v[0])->find()['product_id'];
             $data = Db::name('product_integral')->where('product_id', $product_id)->find();
-
+            $order_no = date('ymdhis').mt_rand(1000,9999).substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
             $data['num'] = $v[1];
             $data['money'] = round($data['integral'] * $data['num'], 4);
             $data['shopping'] = $v[0];
             $arr = [
-                'order_no' => $order_no,
+                'order_no' =>$order_no ,
                 'product_id' => $data['product_id'],
                 'uid' => $member_data['uid'],
                 'price' => $data['integral'],
