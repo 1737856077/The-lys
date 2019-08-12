@@ -1,0 +1,242 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+/*----------------------------   登录   -------------------------*/
+.login_bar{ width:100%; height:100%;}
+.login_logo{ height:2.6rem; margin:.4rem auto;}
+.login_con{ padding:0px .42666rem; width:100%;}
+.login_con .jui_public_btn{ padding:0rem;}
+.login_link{ padding-bottom:1.1733rem;}
+
+.login_con .jui_public_btn input{ height:1.333rem;
+background: -webkit-linear-gradient(top,#56defe,#35bffd);
+background: -o-linear-gradient(top,#56defe,#35bffd);
+background: -moz-linear-gradient(top,#56defe,#35bffd);
+background: linear-gradient(top,#56defe,#35bffd);
+}
+.zhuce_btn{ width:80%; border:2px solid #5b6c94; color:#5b6c94; height:1.333rem; margin-bottom:1.06rem;}
+
+
+/*----------------------------   注册   -------------------------*/
+.login_con h1{ font-size:.5333rem; font-weight:normal; padding:1.3rem 0px;}
+.reg_yzm{ height:.6rem; line-height:.6rem!important; font-size:.32rem!important; text-align:center;
+	-webkit-flex:0 0 2.4rem;
+	-moz-flex:0 0 2.4rem;
+	-ms-flex:0 0 2.4rem;
+	flex:0 0 2.4rem;
+}
+
+/*----------------------------   推荐注册   -------------------------*/
+.tjreg_con{ padding:0px 1.3rem; width:100%;}
+.tjreg_con .jui_public_list{ background:#fff; margin-bottom:.4266rem; border:1px solid #eee;}
+.tjreg_con .jui_public_list input{ line-height:1.1rem; font-size:.37333rem;}
+.tjreg_con .reg_yzm{ border:none; height:.8rem; line-height:.8rem; background:#099be3; width:1.8rem; text-align:center; color:#fff; margin-right:.4266rem;}
+
+.tjreg_con .jui_public_btn{ padding:0rem;}
+.tjreg_con .jui_public_btn input{ background:#099be3; -webkit-border-radius:0px; border-radius:0px;}
+
+
+
+/*----------------------------   下载提示   -------------------------*/
+.down_zy{ position:absolute; z-index:5; top:-15px; right:.12rem; width:.5866rem;}
+.down_tishi{ background:#000; padding:.42666rem; padding-right:.8rem;}
+.down_btn{ width:60%; margin:0px auto; height:1.333rem;}
+.down_icon{ width:.77rem; height:.77rem; margin-right:.32rem;}
+
+
+/*----------------------------   首页   -------------------------*/
+/* 轮播图 */
+.banner_bar{ height:1.4rem;}
+.banner_con{ position:relative;}
+.swiper-container{ overflow:hidden;}
+.swiper-slide img{ width:100%;}
+
+/*近期还款*/
+.sy_hk_bar{ padding:0rem .42666rem; padding-bottom:.16rem; position:relative; margin-top:.48rem;}
+.sy_hk_tit{ background:center url(../icons/tit_bg.png) no-repeat; background-size:100%; position:absolute; left:50%; margin-left:-1.38rem; top:-0.32rem; color:#fff; width:2.76rem; height:.96rem; text-align:center; line-height:.96rem;}
+.sy_hk_con{ padding:.32rem; padding-top:.9rem; background:#434c85;}
+
+
+/*特色产品*/
+.sy_tscp_list{ background:#fff; margin-bottom:.32rem; height:2.3rem;}
+.sy_tscP_left{ font-size:.48rem; color:#fff;
+	-webkit-flex:0 0 3.33rem;
+	-moz-flex:0 0 3.33rem;
+	-ms-flex:0 0 3.33rem;
+	flex:0 0 3.33rem;
+}
+.sy_tscp_img{ width: 3.33rem; height: 2.3rem;}
+.tscp_bg01{
+background: -webkit-linear-gradient(left bottom,#58e0ff,#35bffd);
+background: -o-linear-gradient(left bottom,#58e0ff,#35bffd);
+background: -moz-linear-gradient(left bottom,#58e0ff,#35bffd);
+background: linear-gradient(left bottom,#58e0ff,#35bffd);
+}
+.tscp_bg02{
+background: -webkit-linear-gradient(left bottom,#ffe080,#ff995b);
+background: -o-linear-gradient(left bottom,#ffe080,#ff995b);
+background: -moz-linear-gradient(left bottom,#ffe080,#ff995b);
+background: linear-gradient(left bottom,#ffe080,#ff995b);
+}
+.tscp_bg03{
+background: -webkit-linear-gradient(left bottom,#b8cbfe,#7e94e8);
+background: -o-linear-gradient(left bottom,#b8cbfe,#7e94e8);
+background: -moz-linear-gradient(left bottom,#b8cbfe,#7e94e8);
+background: linear-gradient(left bottom,#b8cbfe,#7e94e8);
+}
+.tscp_bg04{
+background: -webkit-linear-gradient(left bottom,#ffc099,#ff7c5e);
+background: -o-linear-gradient(left bottom,#ffc099,#ff7c5e);
+background: -moz-linear-gradient(left bottom,#ffc099,#ff7c5e);
+background: linear-gradient(left bottom,#ffc099,#ff7c5e);
+}
+
+/*趣还学院*/
+.sy_qhxy_bar{ padding:0rem .2666rem;}
+.sy_qhxy_list{ padding:0rem .16rem; padding-bottom:.32rem;}
+.sy_qhxy_img{ width:100%; height:100%;}
+.sy_qhxy_img img{ width:100%; height:100%;}
+
+
+
+/*-----------------     学院详情页     -----------------*/
+.newscon_tit{ border-bottom:1px solid #eee; padding:.32rem .42666rem;}
+.newscon_tit h2{ font-size:.42666rem!important; color:#000; font-weight:normal; padding-bottom:5px;}
+.newscon_tit span{ font-size:.32rem; color:#999;}
+.newscon_zt{ padding:.42666rem; font-size:.37333rem;}
+.newscon_zt p{ font-size:.37333rem; line-height:.58666rem;}
+.newscon_zt img{ width:100%;}
+
+
+/*----------------------------   计划   -------------------------*/
+ul.plan_tit{ width:7.733rem; height:1.17333rem; line-height:1.17333rem; background:none; margin:0px auto; border:2px solid #35bffd;}
+ul.plan_tit li{ text-align:center; color:#35bffd;}
+ul.plan_tit li.plan_tit_hover{ background:#35bffd; color:#2d3464; border-radius:5px;}
+/*众筹计划*/
+.plan_zcjh_con,.plan_zcjh_list{ padding:.2133rem;}
+.plan_zcjh_list .jui_grid_list{ height:2rem;}
+.plan_zcjh_icon{ width:.24rem; height:.24rem;}
+
+.plan_jihuo{ padding:.32rem .4266rem; padding-top:0px;}
+.plan_jh_icon{ width:.48rem; height:.48rem; margin-left:.24rem;}
+
+
+/*还款计划*/
+.plan_hkjh_titicon{ width:.37333rem; height:.37333rem;}
+.plan_con .jui_public_list{ border:none;}
+
+.jui_progress_bar{ height:0.26rem; background:#fff; border-radius:.13rem; overflow:hidden;}
+.jui_progress_bar span{ display:block; height:.26rem; background:#35b4f1; position:relative; z-index:2; border-radius:.13rem;}
+.plan_hkjh_mony{ text-align:right;
+	-webkit-flex:0 0 2.8rem;
+	-moz-flex:0 0 2.8rem;
+	-ms-flex:0 0 2.8rem;
+	flex:0 0 2.8rem;
+}
+
+
+
+/*----------------------------   收款详情   -------------------------*/
+.jihuo_ewm{ width:4rem;}
+#jihuo_fukuan{ display:inline-block; width:4rem;}
+#jihuo_fukuan img{ width:100%;}
+
+
+/*----------------------------   录入债务   -------------------------*/
+#zhaiwu{ display:inline-block; width:4rem; min-height:4rem;}
+#zhaiwu img{ width:100%; height:100%;}
+
+
+/*----------------------------   激活列表/付款人列表   -------------------------*/
+.jhry_con .jui_public_list2,.fkr_con .jui_public_list2{ border:none;}
+
+
+
+/*----------------------------   我的团队   -------------------------*/
+.team_list{ padding:.37333rem 0rem; border-bottom:1px solid #222957;}
+.team_tx{ width:1.17333rem; height:1.17333rem; margin-right:.32rem;}
+.team_tx img{ width:100%; height:100%;}
+
+.td_con .jui_public_list{ border-bottom:1px solid #222957;}
+
+
+/*----------------------------   个人中心   -------------------------*/
+.my_tx{ width:1.76rem; height:1.76rem; margin-right:.32rem;}
+.my_tx img{ width:100%; height:100%;}
+
+.my_icon{ width:.3733rem; height:.3733rem; margin-right:.2666rem;}
+.my_con .jui_public_list{ border-bottom: 1px solid #2d3464;}
+
+
+
+/*----------------------------   实名认证   -------------------------*/
+.smrz_inpubar{ border:none; margin-bottom:.4266rem; padding:0px .32rem;}
+
+.smrz_con input{ font-size:.4rem; color:#000;}
+.smrz_img_bar{ width:6.666rem; height:4.2rem; background:center url(../icons/smrz_bg.png) no-repeat #2d3464; background-size:4.6rem auto;}
+.smrz_img_bar #jui_preview,.smrz_img_bar #jui_preview2{ display:inline-block;}
+.smrz_img_bar #jui_preview,.smrz_img_bar #jui_preview2{ width:4rem; height:2.52rem;}
+#jui_preview img,#jui_preview2 img{ width:100%; height:100%;}
+
+
+/*----------------------------   收款方式   -------------------------*/
+.skfs_icon{ width:.8rem; height:.8rem; margin-right:.32rem;}
+.skfs_edit{ font-size:.32rem; color:#999; border-left:1px solid #eee; padding-left:.42666rem;}
+.skfs_list{ border:none; margin-bottom:.32rem;}
+.skfs_add_icon{ width:.48rem; height:.48rem; margin-right:8px;}
+
+
+/*----------------------------   添加收款方式   -------------------------*/
+.skfs_inpubar{ background:#343c6d; border:none; margin-bottom:.4266rem; padding:0px .32rem;}
+#shoukuan{ display:inline-block; width:4rem;}
+#shoukuan img{ width:100%;}
+
+
+/*----------------------------   我的验证码   -------------------------*/
+.yzm_bar{ padding:.8rem .4266rem;}
+.yzm_img{ width:3.6rem; height:3.6rem; border:1px solid #eee;}
+.yzm_img img{ width:100%; height:100%;}
+.yzm_btn{ height:1.0666rem; width:3.7333rem; margin:0rem .24rem; color:#fff;
+    display: box;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items:center;
+	-moz-align-items:center;
+	-ms-align-items:center;
+	align-items:center;
+	-webkit-justify-content:center;
+	-moz-justify-content:center;
+	-ms-justify-content:center;
+	justify-content:center;
+}
+
+
+/*----------------------------   保存为图片，推广海报   -------------------------*/
+.hb_bg{ background:center bottom url(../images/hb_bg.jpg) no-repeat #2d3563; background-size:100%; width:100%; height:100%;}
+.hb_bg img{ position:relative; top:0px; left:0px; width:100%;}
+.hb_ewm{ width:3.5rem; height:3.5rem;}
+.hb_ewm img{ width:100%; height:100%;}
+
+
+/*----------------------------   申请代理   -------------------------*/
+.dl_zt{ padding-bottom:2.8rem;}
+.dl_zt img{ width:100%;}
+.dl_foot{ position:fixed; left:0px; bottom:0px; width:100%;}
+
+
+.dlsq_upimg{ display:inline-block; width:4rem;}
+.dlsq_upimg img{ width:100%;}
+
+ul.dlsq_tit{ width:100%; height:1.17333rem; line-height:1.17333rem; background:none; margin:0px auto; border:2px solid #35bffd;}
+ul.dlsq_tit li{ text-align:center; color:#35bffd; cursor:pointer; border-left:2px solid #35bffd;}
+ul.dlsq_tit li.dlsq_tit_hover{ background:#35bffd; color:#2d3464;}
+ul.dlsq_tit li:first-child{ border:none;}
+
+
+/*----------------------------   我的钱包   -------------------------*/
+.wallet_tx_btn{ height:.64rem; line-height:.64rem; width:1.33rem; text-align:center; color:#fff;}

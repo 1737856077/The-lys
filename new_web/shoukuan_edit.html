@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+<style>
+#radio{
+    -webkit-appearance:radio !important;
+    appearance:radio !important;
+}</style>
+</head>
+<body class="jui_bg_grey">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">编辑收款方式</div>
+     <div class="jui_top_right jui_fc_lightblue" id="del">删除</div>
+</div>
+<!-- 头部end -->
+<div class="jui_h16"></div>
+<!-- 主体 -->
+<form action="">
+<div class="jui_pad_l16 jui_pad_r16">
+      <div class="jui_public_list jui_bor_rad_5 skfs_inpubar">
+           <div class="jui_fc_666 jui_pad_r12">收款渠道</div>
+           <select class="jui_flex1" id="p_type">
+                 <option value="1">微信</option>
+                 <option value="2">支付宝</option>
+           </select>
+           <img class="jui_arrow_rimg" src="icons/jt_right.png">
+      </div>
+      <div class="jui_public_list jui_bor_rad_5 skfs_inpubar">
+           <div class="jui_fc_666 jui_pad_r12">收款账号</div>
+           <input class="jui_flex1 jui_fc_000" type="text" value="15890059482" placeholder="请输入收款账号" id="p_num">
+      </div>
+      <div class="jui_bg_fff jui_flex_col_center jui_pad_20 jui_bor_rad_5">
+           <div id="shoukuan">
+                <img id="imghead" border="0"   onclick="return false;">
+           </div>
+           <div class="jui_h12"></div>
+           <p class="jui_fc_999">点击上传收款码</p>
+      </div>
+      <div class="jui_h16"></div>
+      <div class="jui_public_list jui_flex_justify_between jui_bor_rad_5 skfs_inpubar jui_mar_bnone" style="margin-top:2vw;align-items:center;">
+        <div style="font-size: .37333rem;color:#999;">是否设置为默认收款方式: </div>
+        <label for="" style="display:flex;align-items:center;"><input type="radio" id="radio" style="width:.5rem;height:.5rem;-webkit-appearance:normal;appearance:normal;margin-right:.2rem;" value="1" /><span style="line-height:.6rem;">是</span></label>
+      </div>
+</div>
+<div class="jui_public_btn"><input type="button" value="保存" id="btn"></div>
+</form>
+<!-- 主体end -->
+</body>
+<script>
+//倒计时  不需要jquery库
+  $(function() {
+    var p_id = window.location.search.split('=')[1];
+    var req0 = {uid: localStorage.getItem('h_uid'), token : localStorage.getItem('h_token')}
+    var code = {};
+    var p_img = null;
+    $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=pay_list', data: req0, async: false, success: function(data) {
+      data = JSON.parse(data);
+      if(data.code != 200) {
+        layer.open({
+          skin: 'msg',
+          content: '获取收款信息失败',
+          time: 1
+        })
+        return;
+      }
+      code = data.data.find(item=> {
+        return item.p_id == p_id;
+      })
+      p_img = code.p_img.replace(/^(http|https)[\w\.\:\/]*(?=\/static\/)/, '.');
+      console.log(p_img);
+      $("#p_type").val(code.p_type);
+      $("#p_num").val(code.p_num);
+      $("#imghead").attr('src', code.p_img);
+      if(code.p_status == 1) {
+        $("#radio").attr('checked', true);
+      }
+    }})
+    $("#shoukuan").on('click', function() {
+      var input = document.createElement('input');
+      input.type = 'file';
+      input.onchange = function() {
+        var file = this.files[0];
+        if(!/(jpg|png|jpeg)$/.test(file.name)) {
+          layer.open({
+            content: '仅支持png,jpg格式图片',
+            time: 1,
+            skin: 'msg'
+          })
+          input = null;
+          return;
+        }
+        p_img = file;
+        $("#imghead").attr('src', URL.createObjectURL(file));
+        input = null;
+      }
+      input.click();
+    })
+    $("#btn").on('click', function() {
+      if(!$("#p_num").val()) {
+        layer.open({
+          content: '收款账号不能为空',
+          skin: 'msg',
+          time: 1
+        })
+        return ;
+      }
+      if(!p_img) {
+        layer.open({
+          content: '收款码不能为空',
+          skin: 'msg',
+          time: 1
+        })
+        return ;
+      }
+      var req = {
+        uid: localStorage.getItem('h_uid'),
+        token: localStorage.getItem('h_token'),
+        p_type: $("#p_type").val(),
+        p_status: $("input:checked").length,
+        p_num: $("#p_num").val(),
+        p_img,
+        p_id,
+      }
+      var formdata = new FormData();
+      for(let attr in req) {
+        formdata.append(attr, req[attr])
+      }
+      $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=pay_edit', contentType: false, data: formdata, processData: false, success: function(data) {
+        data = JSON.parse(data);
+        if(data.code == 200) {
+          setTimeout(()=> {
+            window.location.href = 'shoukuan.html';
+          }, 1000)
+          layer.open({
+            content: '编辑成功',
+            skin: 'msg',
+            time: 1
+          })
+        }else {
+          layer.open({
+            content: data.msg,
+            skin: 'msg',
+            time: 1
+          })
+        }
+      }})
+    })
+    $("#del").on('click', function() {
+    var req = {uid: localStorage.getItem('h_uid'), token : localStorage.getItem('h_token'), p_id: window.location.search.split('=')[1]}
+      $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=pay_del', data: req, success: function(data) {
+        data = JSON.parse(data);
+        layer.open({
+          content: data.msg,
+          time: 1,
+          skin: 'msg'
+        })
+        if(data.code != 200) {
+          return;
+        }
+        setTimeout(()=> {
+          window.location.href = 'shoukuan.html';
+        }, 1000)
+      }})
+    })
+  })
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+    <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">好友列表</div>
+    <a href="tuandui.html" class="jui_top_right jui_fc_fff">我的团队</a>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<!-- 主体 -->
+ <div class="jui_pad_l16 jui_pad_r16" id="area">
+</div>
+<!-- 主体end -->
+</div>
+<script type="text/javascript">
+$(function() {
+  var req0 = {uid: localStorage.getItem('h_uid'), token : localStorage.getItem('h_token')}
+  $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=teams', data: req0, success: function(data) {
+    data = JSON.parse(data);
+    if(data.code != 200) {
+      layer.open({
+        content: data.msg,
+        time: 1,
+        skin: 'msg'
+      })
+      if(data.code == 600) {
+        setTimeout(()=> {
+          window.location.href = "login.html?id=1";
+        },1000)
+      }
+      return;
+    }
+    var str = "";
+    data.teams_info.forEach((item)=> {
+      str += `<div class="jui_flex_row_center team_list">
+                 <div class="jui_bor_rad_50 team_tx"><img src="${item.m_avatar}" alt="${item.m_name}" onerror="this.src = 'icons/tx01.jpg'"></div>
+                 <div class="jui_flex1 jui_flex_col">
+                     <p class="jui_fc_fff">${item.m_phone}</p>
+               </div>
+               <div class="jui_fc_lightzs">${item.m_regtime}</div>
+                 <!--
+                 <div class="jui_flex_col">
+                       <p class="jui_fc_fff"><span class="jui_pad_r8">${item.m_name}</span>${item.m_phone}</p>
+                       <p class="jui_fs12 jui_fc_fff">时间：${item.m_regtime}</p>
+                 </div>-->
+           </div>`
+    })
+    $("#area").html(str);
+  }})
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+[TYPE]: MYSQL
+[SQL]: UPDATE `w_config` SET `w_name`='创客新零售',`w_logo`='./static/upload/201904251556183452586.png',`w_color1`='rgba(30, 159, 255, 1)',`w_color2`='#ffffff',`w_temp`='3',`w_shenhe`='1',`w_reg`='2',`w_user`='10672',`w_user2`='10672',`w_hour`='0',`w_notice`='滚动公告',`w_words`='',`w_level`='9',`w_frame`='1',`w_hualuo`='1',`w_huanum`='3',`w_hlevel`='0',`w_xinyu`='1',`w_xinyu1`='80',`w_xinyu2`='100',`w_ping1`='1',`w_ping2`='0',`w_ping3`='-1',`w_ping`='1',`click_save_user`='on',`w_online`='1',`w_lineurl`='http://www.baidu.com',`w_kefu`='在线客服',`w_tel`='18888888888',`w_linecode`='./static/upload/201904261556270761967.png',`w_icon`='./static/upload/201904261556265191067.jpg',`w_down1`='',`w_down2`='' where `id`='1' and 1
+[TIME]: 2019-05-24 12:52:07
+[URI]: /admin.php?m=config&c=basic
+

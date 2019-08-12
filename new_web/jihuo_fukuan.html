@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">收款详情</div>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<!-- 主体 -->
+<div class="jui_public_tit jui_fc_lightzs">借款人信息</div>
+<div class="jui_pad_l16 jui_pad_r16">
+     <div class="jui_bg_ztqian jui_pad_1216 jui_bor_rad_5 jui_line_h14">
+          <p class="jui_fc_lightzs">姓名：<span id="m_name"></span></p>
+          <p class="jui_fc_lightzs">手机号：<span id="m_phone"></span></p>
+     </div>
+     <div class="jui_h16"></div>
+     <div class="jui_bg_ztqian jui_pad_20 jui_bor_rad_5 jui_flex_col_center jui_line_h15">
+          <img class="jihuo_ewm" src="" alt="" id="p_img"  onclick="return false;">
+          <p class="jui_fc_lightzs"><span class="p_status"></span>二维码</p>
+          <p class="jui_fc_lightzs"><span class="p_status"></span>账号：<span class="jui_fc_lan" id="p_num"></span></p>
+          <p class="jui_fc_lightzs">付款金额：<span class="jui_fc_lan" id="price"></span>元</p>
+     </div>
+     <div class="jui_h16"></div>
+     <div class="jui_text_center jui_fc_lightzs">
+          <p>请使用<span class="p_status"></span>APP扫描以上二维码付款<span id="price"></span>元</p>
+          <p>备注您的姓名+2059，如：李帅2059</p>
+     </div>
+     <div class="jui_h16"></div>
+      <div class="jui_bg_ztqian jui_flex_col_center jui_pad_20 jui_bor_rad_5">
+           <div id="jihuo_fukuan">
+                <img id="l_pay_img" border="0" src="icons/add_img.png" onclick="return false;">
+           </div>
+           <div class="jui_h12"></div>
+           <p class="jui_fc_lightzs">点击上传付款截图</p>
+      </div>
+</div>
+<div class="jui_public_btn"><input type="button" value="提交付款信息" id="btn"></div>
+<!-- 主体end -->
+</div>
+</body>
+<script>
+//倒计时  不需要jquery库
+var input = document.createElement('input');
+input.type = 'file';
+input.accept = 'image/*';
+	function settime(num){
+		var yzm_input=document.getElementById("jui_form_yzm"); //如果用getElementsByClassName获取类，获取的为数组，下面的yzm_input要改为yzm_input[0]
+		var num;
+		if( num==0 ){
+			yzm_input.value="重新发送";
+			yzm_input.removeAttribute("disabled");
+			yzm_input.setAttribute("class","jui_fc_zhuse")
+			return false; //直到倒计时0时停止执行函数
+			}else{
+				yzm_input.setAttribute("disabled","disabled");
+				yzm_input.setAttribute("class","jui_fc_999")
+				yzm_input.value=num+"s后重发";
+				num--;
+				}
+		 //setTimeout(function(){settime(num)},1000);
+		 setTimeout("settime("+num+")", 1000); //num为变量，所以要用“+”链接
+	}
+
+$(function() {
+  var reg = /^(http|https)[\w\.\:\/]*(?=\/static\/)/;
+  var req = {
+    uid: localStorage.getItem('h_uid'),
+    token: localStorage.getItem('h_token'),
+    up_id: window.location.search.split('=')[1],
+    l_pay_img: null
+  }
+  var dreq = {
+    uid: localStorage.getItem('h_uid'),
+    token: localStorage.getItem('h_token'),
+    up_id: window.location.search.split('=')[1],
+  }
+  $.ajax({type: 'post', url: baseURL +'/index.php?m=plan&c=user_order_info', data: dreq, success: function(data) {
+    data = JSON.parse(data);
+    var order = data;
+    if(data.code != 200 ) {
+      layer.open({
+        content:data.msg,
+        skin: 'msg',
+        time: 1
+      })
+      setTimeout(()=> {
+        window.history.back(-1);
+      }, 1000)
+      return;
+    }
+    $("#m_name").html(order.s_user.m_name);
+    $("#m_phone").html(order.s_user.m_phone);
+    $("#p_img").attr('src', order.w_pay.p_img);
+    $("#p_num").html(order.w_pay.p_num);
+    $("#price").html(order.order_desc.price);
+    if(order.order_desc.status == 2) {
+      $("#btn").css({display: 'none'});
+    }
+    if(order.order_desc.l_pay_img) {
+     $("#l_pay_img").attr('src', order.order_desc.l_pay_img )
+    }
+    req.l_pay_img = order.order_desc.l_pay_img?order.order_desc.l_pay_img.replace(reg, '.'):null;
+    if(order.w_pay.p_status == '1') {
+      $(".p_status").html('支付宝')
+    } else {
+      $(".p_status").html('微信')
+    }
+  }})
+  //图片上传
+  $("#jihuo_fukuan").on('click', function() {
+     input.files[0] = null;
+     var reader = new FileReader();
+     input.onchange = function() {
+       var file = this.files[0];
+       console.log(file.name);
+       if(!/(jpg|png|jpeg)$/.test(file.name)) {
+         layer.open({
+           content: '仅支持png,jpg格式图片',
+           time: 1,
+           skin: 'msg'
+         })
+         return;
+       }
+       reader.readAsDataURL(file);
+       reader.onload = function() {
+         $("#l_pay_img").attr('src', this.result);
+         req.l_pay_img = file;
+       }
+       input = document.createElement('input');
+       input.type = 'file';
+       input.accept = 'image/*';
+     }
+     input.click();
+ })
+  $("#btn").on('click', function() {
+    if(!req.l_pay_img) {
+      layer.open({
+        content: '仅支持png,jpg格式图片',
+        time: 1,
+        skin: 'msg'
+      })
+      return;
+    }
+    var formdata = new FormData();
+    for(let attr in req) {
+      formdata.append(attr, req[attr])
+    }
+    $.ajax({type: 'post', url: baseURL + '/index.php?m=plan&c=up_pay', contentType: false, processData: false, data: formdata , success: function(data) {
+      data = JSON.parse(data);
+      layer.open({
+        content: data.msg,
+        time: 1,
+        skin: 'msg'
+      })
+      if(data.code != 200) {
+        return;
+      }
+      setTimeout(()=> {
+        window.location.href = 'plan.html';
+      }, 1000)
+
+    }})
+  })
+})
+function previewImage(file)
+{
+
+}
+function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+
+}
+</script>
+</html>

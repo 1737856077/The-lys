@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_grey">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">收款方式</div>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<div class="jui_h12"></div>
+<!-- 主体 -->
+<div style="height:auto" id="wrapper"></div>
+<!-- <div class="jui_bg_fff jui_public_list2 skfs_list">
+     <img class="skfs_icon" src="icons/weixin.png">
+     <div class="jui_flex1 jui_flex_col">
+           <div class="jui_flex_row_center">
+                <div class="jui_tag jui_bg_orange jui_mar_r8">默认</div>
+                <p>微信收款</p>
+           </div>
+           <p>账号：15890059482</p>
+     </div>
+     <a href="shoukuan_edit.html" class="skfs_edit">编辑</a>
+</div>
+<div class="jui_bg_fff jui_public_list2 skfs_list">
+     <img class="skfs_icon" src="icons/weixin.png">
+     <div class="jui_flex1 jui_flex_col">
+           <div class="jui_flex_row_center">
+                <div class="jui_tag jui_bg_orange jui_mar_r8">默认</div>
+                <p>微信收款</p>
+           </div>
+           <p>账号：15890059482</p>
+     </div>
+     <a href="shoukuan_edit.html" class="skfs_edit">编辑</a>
+</div> -->
+<!-- 主体end -->
+</div>
+<a href="shoukuan_add.html" class="jui_footer jui_bg_zhuse jui_flex_justify_center">
+     <img class="skfs_add_icon" src="icons/add_icon.png">
+     <p class="jui_fs15 jui_fc_fff">添加收款方式</p>
+</a>
+<script type="text/javascript">
+ $(function() {
+   var req = {uid: localStorage.getItem('h_uid'), token: localStorage.getItem('h_token')};
+   $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=pay_list', data: req, success:function(data) {
+     data = JSON.parse(data);
+     if(data.code != 200) {
+       layer.open({
+         content: data.msg,
+         time: 1,
+         skin: 'msg'
+       })
+       return;
+     }
+     var str = "";
+     var arr = ['收款方式', '微信收款', '支付宝收款'];
+     data.data.forEach((item,i)=>{
+       var temp = "";
+        temp = `<div class="jui_bg_fff jui_public_list2 skfs_list">
+            <img class="skfs_icon" src="${item.p_type==1?'icons/weixin.png':'icons/zhifubao.png'}">
+            <div class="jui_flex1 jui_flex_col">
+                  <div class="jui_flex_row_center">`;
+        if(item.p_status == 1) {
+        temp += `<div class="jui_tag jui_bg_orange jui_mar_r8">默认</div>`;
+        }
+        temp += `<p>${arr[item.p_type]}</p></div><p>账号：${item.p_num}</p></div><a href="shoukuan_edit.html?id=${item.p_id}" class="skfs_edit">编辑</a></div>`;
+        str += temp;
+     })
+     console.log(str);
+     $("#wrapper").html(str);
+   }})
+ })
+</script>
+</body>
+</html>

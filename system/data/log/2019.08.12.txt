@@ -1,0 +1,240 @@
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=0
+[TIME]: 2019-08-12 08:40:40
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565570440 and `s_dtime`<1566175240
+[TIME]: 2019-08-12 08:40:40
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_hot`=1 and `s_dtime`>1565570440
+[TIME]: 2019-08-12 08:40:40
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565570440
+[TIME]: 2019-08-12 08:40:40
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=0
+[TIME]: 2019-08-12 08:56:31
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565571391 and `s_dtime`<1566176191
+[TIME]: 2019-08-12 08:56:31
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_hot`=1 and `s_dtime`>1565571391
+[TIME]: 2019-08-12 08:56:31
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565571391
+[TIME]: 2019-08-12 08:56:31
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=0
+[TIME]: 2019-08-12 09:43:41
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565574221 and `s_dtime`<1566179021
+[TIME]: 2019-08-12 09:43:41
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_hot`=1 and `s_dtime`>1565574221
+[TIME]: 2019-08-12 09:43:41
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565574221
+[TIME]: 2019-08-12 09:43:41
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select * from w_cash where `c_status`=1 c_uid=10685
+[TIME]: 2019-08-12 09:54:13
+[URI]: /admin.php?m=user&c=shen_jihua
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:26
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:26
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:31
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:31
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:35
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:35
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:37
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:38
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:40
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:54:40
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:56:04
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:56:04
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:57:19
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 09:57:19
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select * from w_cash where `c_status`=1 c_uid=10672
+[TIME]: 2019-08-12 10:00:43
+[URI]: /admin.php?m=user&c=shen_jihua
+
+[TYPE]: MYSQL
+[SQL]: select * from w_cash where `c_status`=1 c_uid=10686
+[TIME]: 2019-08-12 10:06:12
+[URI]: /admin.php?m=user&c=shen_jihua
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10685
+[TIME]: 2019-08-12 10:06:25
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 10:06:25
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10685
+[TIME]: 2019-08-12 10:06:38
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 10:06:38
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select * from w_cash where `c_status`=1 c_uid=10687
+[TIME]: 2019-08-12 11:57:38
+[URI]: /admin.php?m=user&c=shen_jihua
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10685
+[TIME]: 2019-08-12 11:58:17
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 11:58:17
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10685
+[TIME]: 2019-08-12 11:58:22
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 11:58:22
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10685
+[TIME]: 2019-08-12 11:58:34
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 11:58:34
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select * from w_cash where `c_status`=1 c_uid=10688
+[TIME]: 2019-08-12 14:08:39
+[URI]: /admin.php?m=user&c=shen_jihua
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10685
+[TIME]: 2019-08-12 14:08:46
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 14:08:46
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10685
+[TIME]: 2019-08-12 14:08:57
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 14:08:57
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 14:09:47
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 14:09:47
+[URI]: /index.php?m=plan&c=user_order
+
+[TYPE]: MYSQL
+[SQL]: select id,m_r from w_users where id=10672
+[TIME]: 2019-08-12 14:09:47
+[URI]: /index.php?m=plan&c=user_order
+

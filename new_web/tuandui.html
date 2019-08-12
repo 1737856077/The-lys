@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">我的团队</div>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<!-- 主体 -->
+<div class="jui_h12"></div>
+<div class="jui_bg_ztqian td_con">
+    <div class="jui_public_list">
+         <div class="jui_grid_w25 jui_fc_fff">推荐层级</div>
+         <div class="jui_grid_w35 jui_fc_fff">团队（已激活）</div>
+         <div class="jui_grid_w20 jui_fc_fff">已收订单</div>
+         <div class="jui_grid_w20 jui_fc_fff jui_text_right">漏单</div>
+    </div>
+    <div id="wrapper">
+      <!-- <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第一层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div>
+      <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第二层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div>
+      <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第三层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div>
+      <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第四层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div>
+      <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第五层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div>
+      <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第六层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div>
+      <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第七层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div>
+      <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第八层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div>
+      <div class="jui_public_list">
+           <div class="jui_grid_w25 jui_fc_lightzs">第九层</div>
+           <div class="jui_grid_w35 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs">0</div>
+           <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">0</div>
+      </div> -->
+    </div>
+</div>
+<!-- 主体end -->
+</div>
+<script type="text/javascript">
+  $(function() {
+    var req = {uid: localStorage.getItem('h_uid'), token: localStorage.getItem('h_token')};
+    $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=teams_ass', data: req, success: function(data) {
+      data = JSON.parse(data);
+      if(data.code == 200) {
+        var str = ""
+        for(let num in data.t_nums) {
+          str += `<div class="jui_public_list">
+                   <div class="jui_grid_w25 jui_fc_lightzs">${data.t_nums[num].t_name}</div>
+                   <div class="jui_grid_w35 jui_fc_lightzs">${data.t_nums[num].t_num}</div>
+                   <div class="jui_grid_w20 jui_fc_lightzs">${data.t_nums[num].y_order}</div>
+                   <div class="jui_grid_w20 jui_fc_lightzs jui_text_right">${data.t_nums[num].w_order}</div>
+              </div>`;
+        }
+        $("#wrapper").html(str);
+      }else{
+        layer.open({
+          skin:'msg',
+          time: 1,
+          content: data.msg
+        })
+        setTimeout(()=> {
+          window.history.back(-1);
+        },1000)
+      }
+    }})
+  })
+</script>
+</body>
+</html>

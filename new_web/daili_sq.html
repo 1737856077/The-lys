@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">升级</div>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<!-- 主体 -->
+<div class="jui_bg_zhuse jui_pad_16">
+     <div class="jui_bg_ztqian jui_bor_rad_5 jui_pad_16">
+             <p class="jui_fc_lightzs">原会员等级：普通会员</p>
+             <p class="jui_fc_lightzs jui_pad_t5">升级为：城市代理</p>
+     </div>
+     <div class="jui_h16"></div>
+     <div class="jui_bg_ztqian jui_bor_rad_5 jui_pad_16 jui_flex_col_center">
+           <ul class="jui_flex_row_center dlsq_tit">
+                <li class="jui_flex1 dlsq_tit_hover">微信支付</li>
+                <li class="jui_flex1">支付宝</li>
+                <li class="jui_flex1">账户余额</li>
+           </ul>
+           <div class="jui_h20"></div>
+           <div class="dlsq_upimg">
+                <img id="imghead" border="0" src="icons/add_img2.png"  onclick="return false;">
+           </div>
+           <div class="jui_h12"></div>
+           <div class="jui_fc_lightzs">付款金额：<span class="jui_fc_lan">0.00</span>元</div>
+           <div class="jui_h12"></div>
+     </div>
+     <div class="jui_h16"></div>
+     <div class="jui_text_center jui_fc_lightzs">
+          <p>请使用另一个手机的--扫码支付</p>
+          <p>付款后会自动激活信用卡，请勿重复支付</p>
+     </div>
+</div>
+<div class="jui_public_btn"><input type="button" value="保存二维码"></div>
+<!-- 主体end -->
+</div>
+</body>
+<script>
+    $(document).ready(function(){
+		/*可用多个tab */
+        $(".dlsq_tit li").click(function(){
+            $(this).siblings().removeClass("dlsq_tit_hover");
+            $(this).addClass("dlsq_tit_hover");
+        });
+
+
+		box_timer("有钱还：暂未开放申请");
+		$(document).on("click",".dlsq_tit li",function(){
+			box_timer("有钱还：暂未开放申请");
+		});
+    });
+</script>
+</html>

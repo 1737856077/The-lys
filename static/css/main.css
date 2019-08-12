@@ -1,0 +1,44 @@
+.layui-layout-admin .layui-logo{padding-left:10px;color:#fff;text-align:left;font-size:1.5rem}
+.layui-body{background-color:#e6e9ee}
+.layui-icon{margin-right:5px}
+.layuiadmin-card-list p.layuiadmin-big-font{overflow:hidden;padding:5px 0 10px;color:#666;text-overflow:ellipsis;white-space:nowrap;font-size:36px;line-height:36px;word-break:break-all}
+.layuiadmin-badge,.layuiadmin-btn-group,.layuiadmin-span-color{position:absolute;right:15px}
+.layuiadmin-badge{top:50%;margin-top:-9px;color:#01AAED}
+.layui-body{padding:0}
+.layadmin-iframe{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}
+#lay-pass{display:none}
+.alone-items{margin-top:50px;width:1100px}
+.alone-items .layui-elem-field{margin:0 auto 50px;width:300px;text-align:center}
+.alone-items .layui-elem-field legend{padding:0 15px}
+.alone-version-desc{position:relative;padding:30px 50px 50px;border-top:5px solid #ddd;border-radius:0;background-color:#fff;text-align:center;-webkit-transition:all .3s;transition:all .3s}
+.alone-version-desc:hover{background-color:#f8f8f8}
+.alone-version-desc:hover h2{color:#000}
+.alone-version-desc h2{padding-bottom:15px;font-size:18px}
+.alone-badge{position:relative;display:inline-block;padding:0 15px;border:1px solid #e6e6e6;border-radius:2px;line-height:28px}
+.alone-tips{position:absolute;top:1px;right:-35px;color:#999;font-size:20px;cursor:pointer}
+.alone-version-desc ul{margin-top:15px;height:330px;text-align:left}
+.alone-buy{position:relative;text-align:center}
+.alone-buy .layui-btn{width:100%}
+.alone-preview{padding:50px 10px 30px;background-color:#252630}
+.alone-preview img{max-width:100%}
+.alone-preview-title{position:relative;top:-20px;padding-bottom:10px;color:#fff}
+.alone-preview-title span{display:none}
+.qa-main{font-size:16px;line-height:26px}
+.qa-main dt{padding-bottom:10px;color:#000}
+.qa-main dd{margin-bottom:30px;color:#767d85;font-weight:300}
+#lay-charge{ padding:6px 10px;}
+#lay-charge .layui-layer-input{display:block;margin:0 auto;padding-left:10px;width:315px;height:36px;border:1px solid #e6e6e6;color:#333;line-height:30px}
+#lay-charge textarea.layui-layer-input{width:315px;height:50px;line-height:20px}
+#lay-charge div.form-line{ margin-bottom: 5px;}
+#lay-charge div.form-line:last-child{ text-align: right;}
+.layui-anim-rl {-webkit-animation-name: layui-rl;animation-name: layui-rl;}
+.layui-anim { -webkit-animation-duration: .3s;animation-duration: .3s;-webkit-animation-fill-mode: both;animation-fill-mode: both;}
+.layui-layer-adminRight {top: 0px!important;bottom: 0px;box-shadow: 1px 1px 10px rgba(0,0,0,.1);border-radius: 0;overflow: auto;}
+.layui-layer {-webkit-overflow-scrolling: touch;top: 150px;left: 0;margin: 0;padding: 0;background-color: #fff;-webkit-background-clip: content;border-radius: 2px;	box-shadow: 1px 1px 50px rgba(0,0,0,.3);}
+.search_ul{ width:100%;padding: 10px 0px;}
+.search_ul li{ width:50%;float: left; height: 40px;}
+.search_ul li span{cursor: pointer;}
+.search_ul li .layui-input{height:30px;}
+.layui-form-item.cols .layui-input-inline{ width:80px;}
+.layui-form-item.cols .layui-form-label-col{ float:left;}
+.layui-form-label-col{ float:left; font-size:12px; color:#FF0000;}

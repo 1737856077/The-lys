@@ -1,0 +1,10 @@
+[TYPE]: MYSQL
+[SQL]: select * from WHERE `id`='10672'
+[TIME]: 2019-04-30 10:26:48
+[URI]: /?m=index&c=helpreg
+
+[TYPE]: MYSQL
+[SQL]: select * from WHERE `id`='10672'
+[TIME]: 2019-04-30 10:27:26
+[URI]: /?m=index&c=helpreg
+

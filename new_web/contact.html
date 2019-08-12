@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_grey">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">联系我们</div>
+</div>
+<!-- 头部end -->
+<!-- 主体 -->
+<div class="jui_pad_16">
+     <div class="jui_bg_fff jui_bor_rad_5 jui_flex_col_center yzm_bar">
+          <div class="yzm_img jui_mar_b8"><img src="" id='w_linecode'></div>
+          <div class="jui_fs15 jui_fc_zhuse jui_pad_b5"><span id="w_kefu"></span></div>
+          <div class="jui_fs15 jui_fc_zhuse">QQ：<span id="w_tel"></span></div>
+     </div>
+</div>
+<!-- 主体end -->
+<script type="text/javascript">
+  $(function() {
+    $.ajax({
+      type: 'get',
+      url: baseURL + '/index.php?m=index&c=get_servers',
+      data:{},
+      success: function(data) {
+        data = JSON.parse(data);
+        if(data.code != 200 ) {
+          layer.open({
+            content: '数据加载失败',
+            time: 1,
+            skin: 'msg'
+          })
+          return;
+        }
+        $("#w_kefu").html(data.w_kefu);
+        $("#w_tel").html(data.w_tel);
+        $("#w_linecode").attr('src', data.w_linecode);
+      }
+    })
+  })
+</script>
+</body>
+</html>

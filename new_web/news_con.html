@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle n_title" ></div>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<!-- 主体 -->
+<div class="newscon_zt" id="n_content" style="color:#fff">
+
+</div>
+<!-- 主体end -->
+</div>
+</body>
+<script>
+$(document).ready(function(){
+	/*如果富文本上传的图片，去掉一些行内样式*/
+	$(".procon_ztcon img").removeAttr("width");
+	$(".procon_ztcon img").removeAttr("height");
+	$(".procon_ztcon img").removeAttr("alt");
+	$(".procon_ztcon img").removeAttr("width");
+	$(".procon_ztcon img").removeAttr("style");
+	$(".procon_ztcon img").removeAttr("title");
+});
+$(function() {
+  var n_id = window.location.search.split('=')[1];
+  $.ajax({type: 'post', url: baseURL + '/index.php?m=index&c=news_info', data: {n_id}, success: function(data) {
+    data = JSON.parse(data);
+    if(data.code != 200) {
+      layer.open({
+        skin: 'msg',
+        time: 1,
+        content: data.msg
+      });
+      setTimeout(()=> {
+        window.history.back(-1)
+      }, 1000)
+      return;
+    }
+    $(".n_title").html(data.news.n_title);
+    $("#n_time").html(data.news.n_time);
+    $("#n_read").html(data.news.n_read);
+    $("#n_content").html( data.news.n_content);
+    setTimeout(()=>{
+      $("#n_content").find('img').each(function() {
+        var src = $(this).attr('src');
+        $(this).attr('src', baseURL + src);
+      })
+    })
+  }})
+})
+</script>
+</html>

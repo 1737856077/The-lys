@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册有钱还</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<style>
+input[placeholder], [placeholder], *[placeholder],textarea[placeholder]{color:#999;}
+</style>
+</head>
+<body class="jui_bg_fff">
+<!-- 主体 -->
+<form class="jui_flex_col_center jui_flex_justify_between login_bar">
+     <div class="tjreg_con">
+           <div class="jui_h20"></div>
+           <img class="login_logo" src="images/logo.png">
+           <div class="jui_h20"></div>
+           <div class="jui_public_list jui_bor_rad_5">
+                 <input class="jui_flex1 jui_fc_000" type="tel" placeholder="请输入您的手机号">
+           </div>
+           <div class="jui_public_list jui_bor_rad_5 jui_flex_justify_between jui_pad_rnone">
+                 <input class="jui_fc_000" style="width:3rem;" type="tel" placeholder="请输入验证码">
+                 <input id="jui_form_yzm" class="reg_yzm" type="button" value="发送验证码" onclick="settime(60);">
+           </div>
+           <div class="jui_public_list jui_bor_rad_5">
+                 <input class="jui_flex1 jui_fc_000" type="password" placeholder="请输入密码">
+           </div>
+           <div class="jui_public_list jui_bor_rad_5">
+                 <input class="jui_flex1 jui_fc_000" type="text" placeholder="请输入邀请码">
+           </div>
+           <div class="jui_public_btn"><input type="button" value="立即注册"></div>
+     </div>
+</form>
+<!-- 主体end -->
+</body>
+<script>
+//倒计时  不需要jquery库  
+	function settime(num){
+	 组，下面的yzm_input要改为yzm_input[0]
+		var num;
+		if( num==0 ){
+			yzm_input.value="重新发送";
+			yzm_input.removeAttribute("disabled");
+			yzm_input.setAttribute("class","reg_yzm")
+			return false; //直到倒计时0时停止执行函数
+			}else{
+				yzm_input.setAttribute("disabled","disabled");
+				yzm_input.setAttribute("class","reg_yzm jui_bg_ccc")
+				yzm_input.value=num+"s后重发";
+				num--;
+				}
+		 //setTimeout(function(){settime(num)},1000);
+		 setTimeout("settime("+num+")", 1000); //num为变量，所以要用“+”链接
+	}
+</script>
+</html>

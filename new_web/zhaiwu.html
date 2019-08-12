@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/public.js"></script>
+<script src="js/upload_img2.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">录入债务</div>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<div class="jui_h16"></div>
+<!-- 主体 -->
+<form action="">
+<div class="jui_pad_l16 jui_pad_r16">
+      <div class="jui_public_list jui_bor_rad_5 skfs_inpubar">
+           <div class="jui_fc_lightzs jui_pad_r12">债务类型：</div>
+           <div class="jui_fc_lightzs" id='zwType'>信用卡账单</div>
+      </div>
+      <div class="jui_public_list jui_bor_rad_5 skfs_inpubar">
+           <div class="jui_fc_lightzs jui_pad_r12">债务金额：</div>
+           <input class="jui_flex1" type="number" id='je' value="" placeholder="请输入债务金额">
+      </div>
+      <div class="jui_bg_ztqian jui_flex_col_center jui_pad_20 jui_bor_rad_5">
+           <div id="shoukuan">
+                <img id="imghead" border="0" src="icons/add_img2.png"   onclick="return false;">
+           </div>
+           <div class="jui_h12"></div>
+           <p class="jui_fc_lightzs">上传债务凭证</p>
+      </div>
+</div>
+<div class="jui_public_btn"><input type="button" value="提交审核" id='send'></div>
+</form>
+<!-- 主体end -->
+</div>
+</body>
+<script>
+//倒计时  不需要jquery库
+var    input = document.createElement('input');
+       input.type = 'file';
+       input.accept = 'image/*';
+  $(function() {
+    isLogin ();
+    var m_carimg1 = null;
+  var type = (location.search).split("=")[1];
+  if(type==1){
+    $('#zwType').html('信用卡账单')
+  }else if(type==2){
+     $('#zwType').html('房贷账单')
+  }else if(type==3){
+    $('#zwType').html('车贷账单')
+  }else{
+    $('#zwType').html('其他账单')
+  }
+  $("#shoukuan").on('click', function() {
+     var reader = new FileReader();
+     input.onchange = function() {
+       var file = this.files[0];
+       console.log(file.name);
+       if(!/(jpg|png|jpeg)$/.test(file.name)) {
+         layer.open({
+           content: '仅支持png,jpg格式图片',
+           time: 1,
+           skin: 'msg'
+         })
+         return;
+       }
+       reader.readAsDataURL(file);
+       reader.onload = function() {
+         $("#imghead").attr('src', this.result);
+         m_carimg1 = file;
+       }
+       input = document.createElement('input');
+       input.type = 'file';
+       input.accept = 'image/*';
+     }
+     input.click();
+ })
+   $('#send').on('click',function(){
+        if($('#je').val() == ''){
+          layer.open({
+            content: '请输入债务金额',
+            time: 1,
+            skin: 'msg'
+          });
+          return;
+        }else if(!m_carimg1){
+           layer.open({
+            content: '请上传债务凭证',
+            time: 1,
+            skin: 'msg'
+          });
+          return;
+        }else{
+          loading();
+          var data = {uid: localStorage.getItem('h_uid'), token : localStorage.getItem('h_token'),j_price:$('#je').val(),j_bor_img:m_carimg1,j_type:type}
+          var formdata = new FormData();
+          for(let attr in data) {
+            formdata.append(attr, data[attr])
+          }
+          $.ajax({type: 'post', url: baseURL + '/index.php?m=plan&c=plan_add',data: formdata, contentType: false, processData: false,success: function(data) {
+            layer.closeAll();
+            data = JSON.parse(data);
+            layer.open({
+              content: data.msg,
+              time: 1,
+              skin: 'msg'
+            })
+            if(data.code == 200) {
+              setTimeout(()=> {
+                window.history.back();
+              },1000)
+            }
+          }, fail: function(data) {
+            layer.closeAll();
+            layer.open({
+              content: '获取信息失败',
+              time: 1,
+              skin: 'msg'
+            })
+          }
+        })
+      }
+   })
+  function submit(){
+
+    }
+  })
+</script>
+</html>

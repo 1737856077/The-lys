@@ -1,0 +1,5 @@
+[TYPE]: MYSQL
+[SQL]: select * from `w_auth` where `a_pid`='0'
+[TIME]: 2019-06-03 17:19:20
+[URI]: /admin.php?m=index&c=auth_add
+

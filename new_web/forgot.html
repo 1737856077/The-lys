@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 主体 -->
+<form class="jui_flex_col_center jui_flex_justify_between login_bar">
+     <div class="login_con">
+         <img class="login_logo" id="logo" src="">
+         <div class="jui_bg_fff jui_bor_rad_5 jui_pad_16">
+             <div class="jui_fs20 jui_fc_zhuse jui_pad_b12">忘记密码</div>
+           <div class="jui_public_list jui_bor_rad_5">
+                 <input class="jui_flex1" type="tel" placeholder="请输入您的手机号" id="m_phone">
+           </div>
+           <div class="jui_public_list jui_bor_rad_5 jui_flex_justify_between jui_pad_rnone">
+                 <input style="width:3rem;" type="tel" placeholder="请输入验证码" id="forget_code">
+                 <input id="jui_form_yzm" class="reg_yzm" type="button" value="获取验证码">
+           </div>
+           <div class="jui_public_list jui_bor_rad_5">
+                 <input class="jui_flex1" type="password" placeholder="请输入新密码" id="m_pass1">
+           </div>
+           <div class="jui_public_list jui_bor_rad_5">
+                 <input class="jui_flex1" type="password" placeholder="请确认新密码" id="m_pass2">
+           </div>
+             <div class="jui_h16"></div>
+           <div class="jui_public_btn"><input type="button" value="重置密码" id="btn"></div>
+         </div>
+     </div>
+    <a href="login.html?id=1" class="jui_flex_row_center jui_flex_justify_center jui_bor_rad_5 jui_fs15 zhuce_btn">快速登录</a>
+</form>
+<!-- 主体end -->
+</body>
+<script>
+var url = "/index.php?m=index&c=forget_pwd";
+var regcode = true;
+//倒计时  不需要jquery库
+	function settime(num){
+		var yzm_input=document.getElementById("jui_form_yzm"); //如果用getElementsByClassName获取类，获取的为数组，下面的yzm_input要改为yzm_input[0]
+		var num;
+		if( num==0 ){
+      regcode =  true;
+			yzm_input.value="重新发送";
+			yzm_input.removeAttribute("disabled");
+			yzm_input.setAttribute("class","reg_yzm")
+			return false; //直到倒计时0时停止执行函数
+			}else{
+				yzm_input.setAttribute("disabled","disabled");
+				yzm_input.setAttribute("class","reg_yzm jui_disable")
+				yzm_input.value=num+"s后重发";
+				num--;
+				}
+		 //setTimeout(function(){settime(num)},1000);
+		 setTimeout("settime("+num+")", 1000); //num为变量，所以要用“+”链接
+	}
+  $(function() {
+    $.ajax({type:'post', url: baseURL + '?m=index&c=config_info',  success: function(data) {
+      data = JSON.parse(data);
+      $("#logo").attr('src', data.data.w_logo)
+    }})
+    $("#jui_form_yzm").on('click', function() {
+      if(!regcode) {
+        return ;
+      }
+      if(!$("#m_phone").val()) {
+        layer.open({
+          content: '请填写正确的手机号',
+          skin: 'msg',
+          time: 1,
+        })
+        return;
+      }
+      $.ajax({type: 'post', url: baseURL + '/index.php?m=index&c=forget_smscode', data: {m_phone: $("#m_phone").val()}, success: function(data) {
+        data = JSON.parse(data);
+        if(data.code == 200) {
+          regcode = false;
+          settime(60);
+        }
+          layer.open({
+            content: data.msg,
+            skin: 'msg',
+            time: 1,
+          })
+      }})
+
+    })
+    $("#btn").on('click', function() {
+      if($("#m_pass1").val() != $("#m_pass2").val()) {
+        layer.open({
+          content: '两次密码输入不一致',
+          skin: 'msg',
+          time: 1,
+        })
+        return;
+      }
+      var data = {
+        m_phone: $("#m_phone").val(),
+        new_pass1: $("#m_pass1").val(),
+        new_pass2: $("#m_pass2").val(),
+        forget_code: $("#forget_code").val()
+      }
+      $.ajax({type: 'post', url: baseURL + '/index.php?m=index&c=forget_pwd', data, success: function(data) {
+        data = JSON.parse(data);
+        if(data.code == 200) {
+          setTimeout(()=> {
+            window.location.href = 'login.html';
+          }, 1000)
+          layer.open({
+            content: '修改成功',
+            skin: 'msg',
+            time: 1,
+          })
+          return;
+        } else {
+          layer.open({
+            content: data.msg,
+            skin: 'msg',
+            time: 1,
+          })
+        }
+      }})
+    })
+  })
+</script>
+</html>

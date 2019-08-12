@@ -1,0 +1,45 @@
+  body {
+    width: 100%;
+    margin: 0 auto;
+  }
+  body .wrapper {
+    width: 100%;
+  }
+  body .wrapper header {
+    padding: 30px 0 20px;
+  }
+  body .wrapper header h1 {
+    background-size: 200px auto;
+    background-position: 50px 0;
+    padding-top: 90px;
+    height: 45px;
+  }
+  body .wrapper header h1 a {
+    background-size: 160px auto;
+    background-position: 10px 0;
+  }
+  body .wrapper header p.desc {
+    font-size: 16px;
+  }
+  body .wrapper footer {
+    margin: 20px 0;
+  }
+  body .wrapper #page-demo {
+    width: 96%;
+    margin: 0 2%;
+  }
+  body .wrapper #link-fork {
+    z-index: -1;
+    width: 80px;
+    height: auto;
+  }
+  body .wrapper #link-fork img {
+    max-width: 80px;
+    height: auto;
+  }
+
+  nav {
+    display: none;
+  }
+.simditor .simditor-body { padding:0px;}
+.simditor .simditor-body img{max-width: 100%; height: auto; margin:0px;}

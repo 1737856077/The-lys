@@ -1,0 +1,15 @@
+[TYPE]: MYSQL
+[SQL]: select * from w_level order by id asc
+[TIME]: 2019-04-28 15:49:29
+[URI]: /
+
+[TYPE]: MYSQL
+[SQL]: select * from w_agent order by a_level asc
+[TIME]: 2019-04-28 15:49:29
+[URI]: /
+
+[TYPE]: MYSQL
+[SQL]: select * from w_users where id=10672
+[TIME]: 2019-04-28 15:49:29
+[URI]: /
+

@@ -1,0 +1,271 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*--------------   登录   --------------*/
+.login_topimg{ width:100%; height:5.8rem;}
+.login_bar{}
+.login_con{ background:#fff; margin:0rem .72rem; position:relative; top:-0.64rem; overflow:inherit;}
+.logo_img{position:absolute; left:50%; margin-left:-1.33rem; top:-1.33rem; width:2.66rem; height:2.66rem;}
+
+.login_tit{ font-weight:normal; color:#3e4a59; font-size:.64rem;}
+.login_con > .jui_public_list{ border-bottom:1px solid #d3dfef; margin-bottom:.32rem; padding:0rem .64rem;}
+.login_con > .jui_public_list > input{ width:5.6rem;}
+.login_icon,.reg_icon,.reg_xz{
+	-webkit-flex:0 0 1rem;
+	-moz-flex:0 0 1rem;
+	-ms-flex:0 0 1rem;
+	flex:0 0 1rem;
+}
+.login_icon img,.reg_icon img{width:.48rem; height:.48rem;}
+.login_btn{ padding:0px; position:absolute; left:.6rem; right:.6rem; bottom:-0.5866rem;}
+.login_btn input{-webkit-border-radius:.58666rem; border-radius:.58666rem;
+background: -webkit-linear-gradient(left,#f2e946,#eb6c35); 
+background: -o-linear-gradient(left,#f2e946,#eb6c35); 
+background: -moz-linear-gradient(left,#f2e946,#eb6c35); 
+background: linear-gradient(left,#f2e946,#eb6c35);
+}
+
+.login_dl_titbar{ position:relative;}
+.login_dl_titline{ height:1px; width:100%; border-bottom:1px solid #e8e8ea;}
+.login_dl_tittext{ position:absolute; left:50%; margin-left:-1.5rem; top:-0.25rem; width:3rem; background:#f7f6fa; text-align:center;}
+
+.login_dl_icon{ margin:0px .4rem;}
+.login_dl_icon img{ width:1.306rem;}
+
+
+
+/*--------------   注册   --------------*/
+.reg_con{ padding:.72rem;}
+.reg_con > .jui_public_list{ border:none; margin-bottom:.42666rem; padding:0rem .32rem; background:#fff;}
+.reg_input{ width:5.8rem; border-left:1px solid #eee; line-height:.6rem!important; padding-left:.32rem;}
+.reg_con > .jui_public_list > .reg_yzm{ border:none;}
+.reg_arrow{ width:.3rem;}
+.reg_yzm{ height:.8rem; line-height:.74rem!important; color:#f3bc2f; border:1px solid #f3bc2f!important; -webkit-border-radius:.4rem; border-radius:.4rem; width:2.4rem;}
+.reg_con .jui_form_check{ border:1px solid #fff; background:none; width:.48rem; height:.48rem;}
+.reg_con .jui_form_check:checked{ background:url(../icons/checked.png) center no-repeat; background-size:.34rem auto;}
+.reg_btn{ padding:0px;}
+.reg_btn input{-webkit-border-radius:.58666rem; border-radius:.58666rem; background:#f3bc2f;}
+
+
+
+/*--------------   首页   --------------*/
+.banner_con{}
+.swiper-container{ overflow:hidden;}
+.swiper-slide img{ width:100%;}
+
+/*特色产品*/
+.sy_tit_icon{ width:6px; background:#ff5a4b; height:.48rem; -webkit-border-radius:3px; border-radius:3px;}
+.sy_tscp_list{ padding:.32rem; margin-bottom:.24rem; box-shadow:0px 0px 8px #e5e5e5;}
+.sy_tscp_img img{ height:1.266rem; margin-right:.32rem;
+	-webkit-flex:0 0 1.266rem;
+	-moz-flex:0 0 1.266rem;
+	-ms-flex:0 0 1.266rem;
+	flex:0 0 1.266rem;
+}
+
+/*趣还学院*/
+.sy_qhxy_bar{}
+.sy_qhxy_list{ padding:0rem .21333rem; padding-bottom:.32rem;}
+.sy_qhxy_listcon{box-shadow:0px 0px 8px #e5e5e5;}
+.sy_qhxy_img{ width:100%;}
+.sy_qhxy_img img{ width:100%; height:100%;}
+.sy_qhxy_text{ text-align:center; padding:.24rem 5px; font-size:.32rem;}
+
+
+
+
+
+/*--------------   新闻详情   --------------*/
+.newscon_tit{ border-bottom:1px solid #eee; padding:.32rem .42666rem;}
+.newscon_tit h2{ font-size:.42666rem!important; color:#000; font-weight:normal; padding-bottom:5px;}
+
+.newscon_zt{ padding:.42666rem; font-size:.37333rem;}
+.newscon_zt p{ font-size:.37333rem; line-height:.58666rem;}
+.newscon_zt img{ max-width:100%;}
+
+
+
+/*--------------   钱包   --------------*/
+.wallet_top_bar{ height:2.4rem;}
+.wallet_bar,.tixian_bar{ position:relative; z-index:3; margin-top:-1.8rem; padding:0rem .4266rem;}
+.wallet_list{ background:#fff; box-shadow:0px 0px 8px #fdc3b0; padding:0px .24rem; margin-bottom:.4266rem;}
+.wallet_icon{ width:.64rem; height:.64rem; margin-right:.32rem;}
+.wallet_tit{ letter-spacing:5px; color:#000; font-size:.4rem;}
+.wallet_tx_btn{ height:.64rem; line-height:.64rem; width:1.33rem; background:#f8b551; font-size:.42666rem; text-align:center; color:#fff;}
+
+
+
+/*--------------   提现   --------------*/
+.tixian_bar{}
+.tixian_con{box-shadow:0px 0px 8px #fdc3b0;}
+.tixian_textarea{ width:100%; height:1.6rem; border:1px solid #eee; padding:.24rem;}
+
+
+/*--------------   计划   --------------*/
+.plan_top_bar{ height:1.46rem;}
+.plan_bar{ position:relative; margin-top:-.8rem;}
+ul.plan_tit{ height:1.1733rem; background:#fff;}
+ul.plan_tit li{ font-size:.4rem; color:#000; position:relative; text-align:center; height:.6rem; border-left:1px solid #fdc8c2;}
+ul.plan_tit li span{ position:absolute; left:50%; bottom:-.28rem; width:0px; height:2px;}
+ul.plan_tit li.plan_tit_hover{ color:#fb6839;}
+ul.plan_tit li.plan_tit_hover span{  width:1.7rem; margin-left:-0.85rem;  background:#f92a15;}
+
+/*众筹计划*/
+.plan_zcjh_con,.plan_zcjh_list{ padding:.2133rem;}
+.plan_zcjh_list .jui_grid_list{ height:1.8rem;}
+.plan_zcjh_icon{ width:.24rem; height:.24rem;}
+.plan_zcjh_list .jui_grid_list p{ color:#fff; text-align:center;}
+.plan_jbbg1,.plan_jbbg2,.plan_jbbg3,.plan_jbbg4{-webkit-border-radius:15px 8px 15px 8px; border-radius:15px 8px 15px 8px;}
+.plan_jbbg1{ box-shadow:0 5px 15px #ffa8aa;
+background: -webkit-linear-gradient(#ff9866,#ff6262); 
+background: -o-linear-gradient(#ff9866,#ff6262); 
+background: -moz-linear-gradient(#ff9866,#ff6262); 
+background: linear-gradient(#ff9866,#ff6262);
+}
+.plan_jbbg2{box-shadow:0 5px 15px #ae91f2;
+background: -webkit-linear-gradient(#c8b4f8,#865dec); 
+background: -o-linear-gradient(#c8b4f8,#865dec); 
+background: -moz-linear-gradient(#c8b4f8,#865dec); 
+background: linear-gradient(#c8b4f8,#865dec);
+}
+.plan_jbbg3{box-shadow:0 5px 15px #8ab8f5;
+background: -webkit-linear-gradient(#55caf2,#3081ed); 
+background: -o-linear-gradient(#55caf2,#3081ed); 
+background: -moz-linear-gradient(#55caf2,#3081ed); 
+background: linear-gradient(#55caf2,#3081ed);
+}
+.plan_jbbg4{box-shadow:0 5px 15px #fbc681;
+background: -webkit-linear-gradient(#ffd101,#f99e2b); 
+background: -o-linear-gradient(#ffd101,#f99e2b); 
+background: -moz-linear-gradient(#ffd101,#f99e2b); 
+background: linear-gradient(#ffd101,#f99e2b);
+}
+.plan_jh_btn{ height:.64rem; line-height:.64rem; width:1.6rem; background:#f8b551; font-size:.42666rem; text-align:center; color:#fff;}
+
+.jui_progress_bar{ height:10px; background:#eee; border-radius:5px; overflow:hidden;}
+.jui_progress_bar span{ display:block; height:10px; position:relative; z-index:2; border-radius:5px;
+background: -webkit-linear-gradient(left,#fcd464,#fb9508); 
+background: -o-linear-gradient(left,#fcd464,#fb9508); 
+background: -moz-linear-gradient(left,#fcd464,#fb9508); 
+background: linear-gradient(left,#fcd464,#fb9508);
+}
+.plan_hkjh_mony{ word-break:break-all; word-wrap:break-word;
+	-webkit-flex:0 0 2.8rem;
+	-moz-flex:0 0 2.8rem;
+	-ms-flex:0 0 2.8rem;
+	flex:0 0 2.8rem;
+}
+.plan_btn{ width:1.6rem; height:.64rem; border:2px solid #fb6839; color:#fb6839; border-radius:5px;
+	display: box;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items:center;
+	-moz-align-items:center;
+	-ms-align-items:center;
+	align-items:center;
+	-webkit-justify-content:center;
+	-moz-justify-content:center;
+	-ms-justify-content:center;
+	justify-content:center;
+}
+
+
+
+
+/*--------------   收款人   --------------*/
+.jh_list_bar{ margin-bottom:.5333rem; background:#fff;}
+.jh_list_btn{ min-width:2.26rem; height:.8533rem; background:#fb6839; text-align:center; line-height:.85333rem; color:#fff; padding:0px .32rem;}
+
+
+/*----------------------------   上传债务   -------------------------*/
+.zw_list{ background:#fff; border:none; margin-bottom:.4266rem; padding:0px .32rem;}
+
+
+/*----------------------------   激活添加收款凭证   -------------------------*/
+.jihuo_ewm{ width:4rem;}
+
+
+
+/*----------------------------   收款人列表/好友列表   -------------------------*/
+.team_list{ padding:.37333rem 0rem; border-bottom:1px solid #222957;}
+.team_tx{ width:1.17333rem; height:1.17333rem; margin-right:.24rem; border:1px solid #eee;}
+.team_tx img{ width:100%; height:100%;}
+
+/*我的团队*/
+.td_con .jui_public_list{ border-bottom:1px solid #eee;}
+
+
+
+
+/*--------------   我的   --------------*/
+/*头部*/
+.my_top_con{ height:5.4rem; background:center bottom url(../icons/my_topbg.jpg) no-repeat; background-size:100% auto;}
+.my_tx{ width:2rem; height:2rem;}
+.my_tx img{ width:100%; height:100%;}
+.my_dl_btn{ width:2.4rem; height:.64rem; border:1px solid #ffff00; color:#ffff00; border-radius:5px;}
+.my_dl_btn img{ width:.4rem; margin-right:5px;}
+.my_dl_btn p{ color:#ffff00;}
+
+.my_icon{ width:.5333rem; height:.5333rem; margin-right:.2666rem;}
+
+
+
+/*----------------------------   申请代理   -------------------------*/
+.dl_zt{ padding-bottom:2.8rem;}
+.dl_zt img{ width:100%;}
+.dl_foot{ position:fixed; left:0px; bottom:0px; width:100%;}
+
+
+.dlsq_upimg{ display:inline-block; width:4rem;}
+.dlsq_upimg img{ width:100%;}
+
+ul.dlsq_tit{ width:100%; height:1.17333rem; line-height:1.17333rem; background:none; margin:0px auto; border:2px solid #fb6839;}
+ul.dlsq_tit li{ text-align:center; color:#fb6839; cursor:pointer; border-left:2px solid #fb6839;}
+ul.dlsq_tit li.dlsq_tit_hover{ background:#fb6839; color:#fff;}
+ul.dlsq_tit li:first-child{ border:none;}
+
+
+
+/*----------------------------   我的邀请码   -------------------------*/
+.yqm_bar{ padding:.8rem .4266rem;}
+.yqm_img{ width:3.6rem; height:3.6rem; border:1px solid #eee;}
+.yqm_img img{ width:100%; height:100%;}
+.yqm_btn{ height:1.0666rem; width:3.7333rem; margin:0rem .24rem; background:#f3bc2f; color:#fff;
+    display: box;              
+	display: -webkit-box;    
+	display: -moz-box;         
+	display: -ms-flexbox;    
+	display: -webkit-flex;   
+	display: flex;   
+	-webkit-align-items:center; 
+	-moz-align-items:center;
+	-ms-align-items:center;
+	align-items:center;
+	-webkit-justify-content:center;
+	-moz-justify-content:center;
+	-ms-justify-content:center;
+	justify-content:center;
+}
+
+
+/*----------------------------   添加收款方式   -------------------------*/
+.skfs_inpubar{ background:#fff; border:none; margin-bottom:.4266rem; padding:0px .32rem;}
+.skfs_img{ display:inline-block; width:4rem;}
+.skfs_img img{ width:100%;}
+
+
+/*----------------------------   实名认证   -------------------------*/
+.smrz_bar{ padding:0px .5rem; width:100%;}
+.smrz_img_bar{ width:4.266rem; height:3.9066rem; border-radius:10px; overflow:hidden;}
+.smrz_img_bar #jui_preview, .smrz_img_bar #jui_preview2{ width:4.266rem; height:3rem;}
+.smrz_img_bar #jui_preview img,.smrz_img_bar #jui_preview2 img{ width:100%; height:100%;}
+.smrz_img_input{ height:.9066rem; text-align:center; background:#f3bc2f; position:relative;}
+.smrz_img_input p{ line-height:.90666rem;}
+.smrz_img_input input{ position:absolute; left:0px; top:0px; width:100%; height:.90666rem; opacity:0; z-index:5;}
+
+
+
+

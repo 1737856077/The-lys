@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+<script src="js/clipboard.js"></script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">我的邀请码</div>
+     <a href="team.html" class="jui_top_right jui_fc_fff">好友列表</a>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<!-- 主体 -->
+<div class="jui_pad_16">
+     <div class="jui_bg_ztqian jui_bor_rad_5 jui_flex_col_center yzm_bar">
+          <div class="yzm_img jui_mar_b8"><img src="" style="display:none" id="qr"></div>
+          <div class="jui_h30"></div>
+          <div class="jui_flex_row_center">
+                <div class="yzm_btn jui_bg_jblan jui_bor_rad_5" id="copy">复制邀请链接</div>
+                <div class="yzm_btn jui_bor_rad_5" style="background:#7489ac;" id="savePic">保存为图片</div>
+          </div>
+     </div>
+     <div class="jui_h16"></div>
+     <div class="jui_line_h14 jui_fc_lightzs">
+     </div>
+</div>
+<!-- 主体end -->
+</div>
+
+
+<div class="jui_box_bar" style="display:none;" id="area">
+     <div class="jui_box_conbar">
+           <div class="jui_box_con jui_bg_ztqian">
+               <div class="jui_h20"></div>
+               <div class="jui_box_pub_middle jui_fc_fff">确认要保存图片吗？</div>
+                 <div class="jui_h20"></div>
+                 <div class="jui_box_btnbar jui_flex_row_center jui_flex_justify_center">
+                       <div class="jui_box_btn jui_bor_rad_5 jui_fc_lan" id="close">取消</div>
+                       <a href="#" class="jui_box_btn jui_bor_rad_5 jui_bor_none jui_bg_lan jui_fc_fff" id="reg">保存</a>
+                 </div>
+                 <div class="jui_h20"></div>
+           </div>
+     </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    var req = {uid: localStorage.getItem('h_uid'), token: localStorage.getItem('h_token'), get_type: 1};
+    /*保存图片*/
+    $("#savePic").on('click', function() {
+      $("#area").fadeIn('fast');
+    })
+    $("#close").on('click', function() {
+      $("#area").fadeOut('fast');
+    })
+    $("#reg").on('click', function() {
+      if(!window.plus) {
+        layer.open({skin: 'msg', time: 1, content: '浏览器请长按图片保存'});
+        $("#area").fadeOut('fast');
+        return;
+      }
+      var task = window.plus.downloader.createDownload($("#qr").attr('data-src'), {}, function(file, status) {
+        if(status == 200) {
+          window.plus.gallery.save(file.filename, function() {
+            layer.open({skin: 'msg', time: 1, content: '保存成功'})
+          }, function() {
+            layer.open({skin: 'msg', time: 1, content: '保存失败'})
+          })
+        }
+      })
+      task.start();
+      $("#area").fadeOut('fast');
+    })
+    $("#qr").on('error', function() {
+      layer.open({
+        content: '图片加载失败',
+        skin: 'msg',
+        time: 1
+      })
+    })
+    $("#qr").on('load', function() {
+      $(this).css({display: 'block'});
+    })
+          $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=invite_user', data: req, success: function(data) {
+            data = JSON.parse(data);
+            if(data.code == 200) {
+              $("#qr").attr('src', data.qr_code).attr('data-src', data.path);
+              $("#code").html(data.user.id);
+              $("#copy").attr('data-clipboard-text',data.url);
+              var dom = $("#copy")[0];
+              var clipboard = new ClipboardJS(dom);
+              clipboard.on('success', function() {
+                layer.open({
+                  content: '复制成功',
+                  skin: 'msg',
+                  time: 1
+                })
+              })
+            }else {
+              setTimeout(()=> {
+          window.location.href = "center.html";
+              }, 1000)
+              layer.open({
+                content: '获取用户信息失败',
+                skin: 'msg',
+                time: 1
+              })
+            }
+          }})
+  })
+</script>
+</body>
+</html>

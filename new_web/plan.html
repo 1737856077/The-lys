@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <div class="jui_top_left"></div>
+     <div class="jui_top_middle">计划</div>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<!-- 主体 -->
+<div class="plan_bar">
+    <div class="jui_bg_zhuse jui_pad_t12 jui_pad_b12">
+         <ul class="jui_flex_row_center jui_bor_rad_5 plan_tit">
+              <li class="jui_flex1 plan_tit_hover">众筹计划</li>
+              <li class="jui_flex1">还款计划</li>
+         </ul>
+    </div>
+    <!-- 众筹计划 -->
+    <div class="plan_con">
+         <div class="jui_flex jui_flex_wrap plan_zcjh_con" id="j_area" style="display:none">
+               <a class="plan_zcjh_list jui_grid_w25" href="#" id="a_1">
+                    <div class="jui_bg_ztqian jui_bor_rad_5 jui_grid_list">
+                         <p class="jui_fs15 jui_fc_fff" id="plan_1"></p>
+                         <img class="plan_zcjh_icon" src="icons/jia.png" id="pimg_1">
+                         <div class="jui_fc_lightzs jui_pad_t5"><p style="text-align:center;">信用卡</p> <p id="ps_1">(审核中)</p></div>
+                    </div>
+               </a>
+               <a class="plan_zcjh_list jui_grid_w25" id="a_2" href="#">
+                    <div class="jui_bg_ztqian jui_bor_rad_5 jui_grid_list">
+                        <img class="plan_zcjh_icon" src="icons/jia.png" id="pimg_2">
+                         <p class="jui_fs15 jui_fc_fff" id="plan_2"></p>
+                         <div class="jui_fc_lightzs jui_pad_t5"><p style="text-align:center;">房贷</p> <p id="ps_2">(审核中)</p></div>
+                    </div>
+               </a>
+               <a class="plan_zcjh_list jui_grid_w25" id="a_3" href="#">
+                    <div class="jui_bg_ztqian jui_bor_rad_5 jui_grid_list">
+                         <img class="plan_zcjh_icon" src="icons/jia.png" id="pimg_3">
+                         <p class="jui_fs15 jui_fc_fff" id="plan_3"></p>
+                         <div class="jui_fc_lightzs jui_pad_t5" ><p style="text-align:center;">车贷</p> <p id="ps_3">(审核中)</p></div>
+                    </div>
+               </a>
+               <a href="#" class="plan_zcjh_list jui_grid_w25" id="a_4">
+                    <div class="jui_bg_ztqian jui_bor_rad_5 jui_grid_list">
+                         <img class="plan_zcjh_icon" src="icons/jia.png" id="pimg_4"/>
+                         <p class="jui_fs15 jui_fc_fff" id="plan_4"></p>
+                         <div class="jui_fc_lightzs jui_pad_t5" ><p style="text-align:center;">其他</p> <p id="ps_4">(审核中)</p></div>
+                    </div>
+               </a>
+         </div>
+         <div class="plan_jihuo">
+             <div class="jui_bg_ztqian jui_bor_rad_5 jui_public_list2 jui_flex_justify_between">
+               <div class="jui_flex1 jui_flex_row_center">
+                   <div class="jui_fc_lightzs">可还款总额：<span class="jui_fc_lan" id="cap">0.00</span></div>
+                   <img class="plan_jh_icon" src="icons/level_icon.png" alt="可还款总额" onerror="this.src = 'icons/level_icon.png'" id="level">
+               </div>
+                   <div class="jui_fc_lan" id="jihuo"></div>
+             </div>
+         </div>
+        <div class="jui_public_tit jui_fc_lightzs">还款计划</div>
+        <div id="wrapper">
+        </div>
+    </div>
+    <!-- 众筹计划end -->
+    <!-- 还款计划 -->
+    <div class="plan_con jui_none">
+         <!--<div class="jui_h16"></div>
+         <div class="plan_jihuo">
+             <div class="jui_bg_zhuse jui_bor_rad_5 jui_public_list2 jui_flex_justify_between">
+                   <div class="jui_fc_lightzs">可还款总额：<span class="jui_fc_orange">￥<span id="ap">0.00</span></span></div>
+                   <div class="jui_fc_lan" id="jihuo2">激活</div>
+             </div>
+         </div>-->
+        <div class="jui_none_bar">
+            <img src="icons/none_icon.png" alt="">
+            <p>暂无数据</p>
+        </div>
+
+    </div>
+    <!-- 还款计划end -->
+</div>
+<!-- 主体end -->
+</div>
+<!-- 固定底部 -->
+<div class="jui_footer">
+     <a href="index.html" class="jui_foot_list">
+         <b class="foot_index"></b>
+         <p>首页</p>
+     </a>
+     <a href="plan.html" class="jui_foot_list jui_hover">
+         <b class="foot_plan"></b>
+         <p>计划</p>
+     </a>
+     <a href="wallet.html" class="jui_foot_list">
+         <b class="foot_team"></b>
+         <p>钱包</p>
+     </a>
+     <a href="center.html" class="jui_foot_list">
+         <b class="foot_my"></b>
+         <p>我的</p>
+     </a>
+</div>
+<!-- 固定底部end -->
+<!-- 提示 -->
+<div class="jui_box_bar" style="display:none;" id="area">
+     <div class="jui_box_conbar">
+           <div class="jui_box_con jui_bg_ztqian">
+               <div class="jui_h20"></div>
+               <div class="jui_box_pub_middle jui_fc_fff">是否要确认激活债务？</div>
+                 <div class="jui_h20"></div>
+                 <div class="jui_box_btnbar jui_flex_row_center jui_flex_justify_center">
+                       <div class="jui_box_btn jui_bor_rad_5 jui_fc_lan" id="close">取消</div>
+                       <a href="#" class="jui_box_btn jui_bor_rad_5 jui_bor_none jui_bg_lan jui_fc_fff" id="reg">激活</a>
+                 </div>
+                 <div class="jui_h20"></div>
+           </div>
+     </div>
+</div>
+<!-- 提示end -->
+</body>
+<script>
+    $(document).ready(function(){
+		/*可用多个tab */
+    var a1,a2 = false;
+    var status = 0;
+    var m_layer = 0;
+    var jihuo = ['激活', '激活完毕', '激活中']
+    var req0 = {uid: localStorage.getItem('h_uid'), token : localStorage.getItem('h_token')};
+    var c_id = "";
+    $("#jihuo2").on('click', function() {
+      if(status == 0) {
+            $("#area").fadeIn('fast')
+      } else {
+        window.location.href = "jihuo_list.html";
+      }
+    })
+    $("#jihuo").on('click', function() {
+      if(status == 0) {
+            $("#area").fadeIn('fast')
+      } else {
+        window.location.href = "jihuo_list.html";
+      }
+    })
+    /*获取用户星级*/
+  //    $.ajax({type: 'post', url: baseURL + '/index.php?m=index&c=get_info',async: false, data: req0, success: function(data) {
+  //   data = JSON.parse(data);
+  //   if(data.code == 200) {
+  //   $("#level").attr('src', `icons/icon_Lv${data.user.m_level}.png`);
+  //   m_layer = data.user.m_layer;
+  //   } else {
+  //     layer.open({
+  //       content: data.msg,
+  //       skin: 'msg',
+  //       time: 1
+  //     })
+  //     setTimeout(()=> {
+  //       window.location.href="login.html?id=1";
+  //     }, 1000)
+  //   }
+  // }})
+    $.ajax({
+      type: 'post',
+      url: baseURL + '/index.php?m=plan&c=crowd_funding',
+      data: req0,
+      success: function(data) {
+        data = JSON.parse(data);
+        if(data.code != 200) {
+          console.log(data.code);
+          if(data.code == 600) {
+            setTimeout(()=> {
+              window.location.href="login.html?id=1";
+            },1000)
+          }
+          if(data.code == 404) {
+            layer.open({
+              content: data.msg,
+              skin: 'msg',
+              time: 1
+            })
+          }
+          return;
+        }
+        if(data.cash.c_status == '1') {
+          $("#jihuo2").remove();
+        }
+        $("#ap").html(data.cash.c_num);
+        var length = data.stage_arr.length;
+        if(data.stage_arr[0] == 0) {
+          $("#wrapper").css({display: 'none'});
+        }
+        var arr = [];
+        data.stage_arr.forEach((item)=> {
+        	arr.push(0)
+        })
+        arr.forEach(function(item) {
+        	data.alr_arr.push(item);
+        })
+        var brr = data.alr_arr;
+        var str = "";
+        var progress = ['第一阶段', '第二阶段', '第三阶段', '第四阶段','第五阶段', '第六阶段', '第七阶段', '第八阶段', '第九阶段'];
+        data.stage_arr.forEach((item, i)=> {
+          console.log((brr[i]/data.stage_arr[i]).toFixed(2));
+          console.log(brr[i])
+            str += `         <a href="fukuan.html" class="jui_flex_row_center jui_public_list">
+                          <div class="jui_fc_lightzs jui_pad_r12">${progress[i]}</div>
+                          <div class="jui_flex1 jui_progress_bar"><span style="width:${((brr[i]*100)/data.stage_arr[i]).toFixed(2)}%;"></span></div>
+                          <div class="plan_hkjh_mony jui_fc_lightzs"><span>${brr[i]}</span>/${data.stage_arr[i]}</div>
+                           </a>`
+        })
+        $("#wrapper").html(str);
+      }
+    })
+    /*借款计划*/
+    $.ajax({
+      type: 'post',
+      url : baseURL + '/index.php?m=plan&c=plan_index',
+      data: req0,
+      success: function(data) {
+        data = JSON.parse(data);
+        if(data.code != 200) {
+          layer.open({
+            content: data.msg,
+            skin: 'msg',
+            time: '1'
+          })
+          setTimeout(()=> {
+            window.location.href="login.html?id=1";
+          }, 1000)
+          return;
+        }
+        for(let i = 1; i < 5; i++) {
+          if(data[`ps_${i}`] == '0') {
+            $(`#ps_${i}`).remove();
+          }
+          if(data[`plan_${i}`] == 0) {
+            $(`#plan_${i}`).css({display: 'none'})
+          } else {
+            $(`#pimg_${i}`).css({display: 'none'})
+            $(`#plan_${i}`).html(data[`plan_${i}`])
+          }
+          $(`#a_${i}`).attr('href', `zhaiwu.html?id=${i}`)
+        }
+        $("#j_area").css({display: 'flex'});
+        $("#cap").html(Number(data.cash_price).toFixed(2));
+        status = data.is_jh;
+        c_id = data.c_id + " ";
+        $.ajax({type: 'post', url: baseURL + '/index.php?m=index&c=get_info', data: req0, success: function(data1) {
+        data1 = JSON.parse(data1);
+        if(data1.code == 200) {
+          m_layer = data1.user.m_layer;
+        $("#level").attr('src', `icons/icon_Lv${data1.user.m_level}.png`);
+        } else {
+          layer.open({
+            content: data1.msg,
+            skin: 'msg',
+            time: 1
+          })
+          setTimeout(()=> {
+            window.location.href="login.html?id=1";
+          }, 1000)
+        }
+        }})
+        if(status == 0 && m_layer > 0) {
+        $("#jihuo, #jihuo2").html('升级');
+        } else {
+        	$("#jihuo, #jihuo2").html(jihuo[status]);
+        }
+      }
+    })
+        $(".plan_tit li").click(function(){
+            $(this).siblings().removeClass("plan_tit_hover");
+            $(this).addClass("plan_tit_hover");
+            hIndex=$(this).index();
+			hparent=$(this).parents(".plan_bar");
+			hparent.children(".plan_con").addClass("jui_none");
+            hparent.children(".plan_con").eq(hIndex).removeClass("jui_none");
+        });
+
+		$("#close").on('click',function(){
+		   	$("#area").fadeOut('fast');
+		})
+    $("#reg").on('click', function() {
+      $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=is_setup', data: req0, success: function(data) {
+        data = JSON.parse(data);
+        if(data.code == 200 &&  data.is_rz == 1 && data.is_pay == 1){
+          if(c_id) {
+            if(status == 0) {
+              $.ajax({type: 'post', url: baseURL + '/index.php?m=plan&c=setup_debt', data: {uid: localStorage.getItem('h_uid'), token : localStorage.getItem('h_token'),c_id,}, success: function(data) {
+                data = JSON.parse(data);
+                layer.open({content: data.msg, time: 1, skin: 'msg'})
+                if(data.code == 200) {
+                  setTimeout(()=>{
+                    window.location.href = 'jihuo_list.html'
+                  }, 1000)
+                }
+              }})
+            } else {
+              window.location.href = "jihuo_list.html"
+            }
+          } else {
+          layer.open({content:'没有债务,无法激活', time: 1, skin: 'msg'})
+          }
+        } else if (data.is_rz == 2) {
+          layer.open({content:'实名信息审核中', time: 1, skin: 'msg'})
+        } else if (data.is_rz == 0){
+          layer.open({content:'请先去个人中心实名认证', time: 1, skin: 'msg'})
+        } else if(data.is_rz == 1 && data.is_pay == 0){
+          layer.open({content: '请先去个人中心设置收款方式', time: 1, skin: 'msg'})
+        }
+        $("#area").fadeOut("fast");
+      }})
+    })
+
+    });
+
+</script>
+</html>

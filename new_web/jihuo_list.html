@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <a class="jui_top_left" href="javascript:history.back(-1)"><img src="icons/back_111.png"></a>
+     <div class="jui_top_middle">激活债务</div>
+</div>
+<!-- 头部end -->
+<div class="jui_main">
+<!-- 主体 -->
+<div class="jui_public_tit jui_fc_lightzs"></div>
+<div class="jui_bg_ztqian jhry_con" id="area">
+
+</div>
+<!-- 主体end -->
+</div>
+<script type="text/javascript">
+$(function() {
+  var list=[]
+  var data = {uid: localStorage.getItem('h_uid'), token : localStorage.getItem('h_token')}
+  $.ajax({type: 'post', url: baseURL + '/index.php?m=plan&c=user_order', data:data,success: function(data) {
+    data = JSON.parse(data);
+    if(data.code != 200) {
+      layer.open({
+        content: data.msg,
+        time: 1,
+        skin: 'msg'
+      })
+      if(data.code == 600) {
+        setTimeout(()=>{
+          window.location.href = "login.html?id=1"
+        },1000)
+      }
+      return;
+    }
+    var str = "";
+    data.order.forEach((item)=> {
+      if(item.status == 2){
+        list.push(item.status);
+      };
+      $('.jui_public_tit').html('激活任务（'+list.length+'/'+data.order.length+'）')
+      str += `<a href="jihuo_fukuan.html?id=${item.id}" class="jui_public_list2">
+           <div class="jui_bor_rad_50 team_tx"><img src="${item.m_avatar}" onerror = "this.src = 'icons/tx01.jpg'" ></div>
+           <div class="jui_flex_col jui_fc_lightzs">
+                 <p>${item.m_name}</p>
+                 <p>${item.m_phone}</p>
+           </div>
+           <div class="jui_flex1 jui_text_center jui_fc_lan">￥${item.price}</div>
+           <div class="jui_fs12 jui_pad_r5 jui_fc_lightzs">${item.s_desc}</div>
+           <img class="jui_arrow_rimg" src="icons/jt_right.png">
+        </a>`
+    })
+    $("#area").html(str);
+  }})
+})
+</script>
+</body>
+</html>

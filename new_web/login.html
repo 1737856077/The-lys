@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+</head>
+<body class="jui_bg_zhuse">
+<!-- 主体 -->
+<form class="jui_flex_col_center jui_flex_justify_between login_bar">
+     <div class="login_con">
+           <img class="login_logo" id="logo">
+         <div class="jui_bg_fff jui_bor_rad_5 jui_pad_16">
+             <div class="jui_fs20 jui_fc_zhuse jui_pad_b12">登录</div>
+               <div class="jui_public_list jui_bor_rad_5">
+                     <input class="jui_flex1" type="tel" placeholder="请输入手机号" id="m_phone">
+               </div>
+               <div class="jui_public_list jui_bor_rad_5">
+                     <input class="jui_flex1" type="password" placeholder="请输入密码" id="m_password">
+               </div>
+             <div class="jui_h12"></div>
+             <a href="forgot.html" class="jui_block jui_text_right jui_fc_lan">忘记密码？</a>
+             <div class="jui_h16"></div>
+               <div class="jui_public_btn"><input type="button" value="登录" id="login"></div>
+         </div>
+     </div>
+    <a href="register.html" class="jui_flex_row_center jui_flex_justify_center jui_bor_rad_5 jui_fs15 zhuce_btn">快速注册</a>
+</form>
+<!-- 主体end -->
+<script type="text/javascript">
+var brr = window.location.search.split('=');
+if(localStorage.getItem('h_uid') && brr.length < 2) {
+  window.location.href = "index.html";
+}
+  $(function() {
+    $.ajax({type:'post', url: baseURL + '?m=index&c=config_info',  success: function(data) {
+      data = JSON.parse(data);
+      $("#logo").attr('src', data.data.w_logo)
+    }})
+    $("#login").on('click', function() {
+      var data = {
+        m_phone: $("#m_phone").val(),
+        m_password: $("#m_password").val()
+      }
+      if(!$("#m_phone").val()) {
+        layer.open({
+          content: '请输入正确手机号'
+          ,skin: 'msg'
+          ,time: 1 //2秒后自动关闭
+        });
+        return;
+      }
+      if(!$("#m_password").val()) {
+        layer.open({
+          content: '密码不能为空'
+          ,skin: 'msg'
+          ,time: 1 //2秒后自动关闭
+        });
+        return;
+      }
+      loading();
+      $.ajax({type: 'post', url: baseURL + '/index.php?m=index&c=login', data:  data, success: function(data) {
+        layer.closeAll();
+        data = JSON.parse(data);
+        if(data.code == 200) {
+          localStorage.setItem('h_token', data.token);
+          localStorage.setItem('h_uid', data.uid);
+          setTimeout(()=> {
+            window.location.href = './index.html'
+          },1000)
+          layer.open({
+            content: '登录成功'
+            ,skin: 'msg'
+            ,time: 1 //2秒后自动关闭
+          });
+        } else {
+          layer.open({
+            content: data.msg
+            ,skin: 'msg'
+            ,time: 1 //2秒后自动关闭
+          });
+        }
+      }, fail: function() {
+        layer.closeAll();
+        layer.open({
+          content: '访问服务器失败'
+          ,skin: 'msg'
+          ,time: 1 //2秒后自动关闭
+        });
+      }})
+    })
+  })
+</script>
+</body>
+</html>

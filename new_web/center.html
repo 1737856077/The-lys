@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript">
+  isLogin();
+</script>
+</head>
+<body class="jui_bg_zhuse">
+<div class="jui_main">
+<!-- 头部 -->
+<div class="jui_bg_ztqian jui_flex_row_center jui_pad_16">
+     <div class="my_tx jui_bor_rad_50"><img src="icons/tx01.jpg" id="tx" onerror="this.src = 'icons/tx01.jpg'"></div>
+     <div class="jui_flex_col">
+<!--          <div class="jui_fc_fff jui_fs15 jui_pad_b5" id="m_name"></div>-->
+          <div class="jui_fc_lightzs jui_fs12" id="m_phone"></div>
+         <a href="daili.html" class="jui_fc_lan jui_block jui_pad_t5">申请代理</a>
+     </div>
+</div>
+<!-- 头部end -->
+<div class="jui_h12"></div>
+<!-- 主体 -->
+<div class="jui_bg_ztqian my_con">
+     <a href="renzheng.html" class="jui_public_list">
+           <img class="my_icon" src="icons/my_icon01.png">
+           <p class="jui_fc_lightzs jui_flex1">实名认证</p>
+           <div class="jui_flex_row_center">
+               <div class="jui_fc_lightzs jui_fs12 jui_pad_r8" id="rz"></div>
+               <img class="jui_arrow_rimg" src="icons/jt_right.png">
+           </div>
+     </a>
+    <div class="jui_public_list kfts">
+        <img class="my_icon" src="icons/my_icon02.png">
+        <p class="jui_fc_lightzs jui_flex1">我的信用卡</p>
+        <img class="jui_arrow_rimg" src="icons/jt_right.png">
+    </div>
+    <div class="jui_public_list kfts">
+        <img class="my_icon" src="icons/my_icon03.png">
+        <p class="jui_fc_lightzs jui_flex1">我的储蓄卡</p>
+        <img class="jui_arrow_rimg" src="icons/jt_right.png">
+    </div>
+     <a href="#" class="jui_public_list" id="sk">
+           <img class="my_icon" src="icons/my_icon04.png">
+           <p class="jui_fc_lightzs jui_flex1">收款方式</p>
+           <div class="jui_flex_row_center">
+               <div class="jui_fc_lightzs jui_fs12 jui_pad_r8" id="sz"></div>
+               <img class="jui_arrow_rimg" src="icons/jt_right.png">
+           </div>
+     </a>
+     <div class="jui_public_list" id="yq" onclick="window.location.href='yqm.html'">
+           <img class="my_icon" src="icons/my_icon05.png">
+           <p class="jui_fc_lightzs jui_flex1">我的好友</p>
+           <img class="jui_arrow_rimg" src="icons/jt_right.png">
+     </div>
+    <div class="jui_public_list" id="huancun">
+        <img class="my_icon" src="icons/my_icon06.png">
+        <p class="jui_fc_lightzs jui_flex1">清除缓存</p>
+        <div class="jui_flex_row_center">
+            <div class="jui_fc_lightzs jui_fs12 jui_pad_r8"></div>
+            <img class="jui_arrow_rimg" src="icons/jt_right.png">
+        </div>
+    </div>
+     <a href="contact.html" class="jui_public_list">
+           <img class="my_icon" src="icons/my_icon07.png">
+           <p class="jui_fc_lightzs jui_flex1">联系我们</p>
+           <img class="jui_arrow_rimg" src="icons/jt_right.png">
+     </a>
+</div>
+<!-- 主体end -->
+    <div class="jui_public_btn" id="out"><input type="button" value="退出登录"></div>
+</div>
+<!-- 固定底部 -->
+<div class="jui_footer">
+     <a href="index.html" class="jui_foot_list">
+         <b class="foot_index"></b>
+         <p>首页</p>
+     </a>
+     <a href="plan.html" class="jui_foot_list">
+         <b class="foot_plan"></b>
+         <p>计划</p>
+     </a>
+     <a href="wallet.html" class="jui_foot_list">
+         <b class="foot_team"></b>
+         <p>钱包</p>
+     </a>
+     <a href="center.html" class="jui_foot_list jui_hover">
+         <b class="foot_my"></b>
+         <p>我的</p>
+     </a>
+</div>
+<!-- 固定底部end -->
+<!-- 弹出框提示 -->
+<div class="jui_box_bar" style="display:none;" id="dialog2">
+     <div class="jui_box_conbar">
+           <div class="jui_box_con jui_bg_ztqian">
+               <div class="jui_h20"></div>
+               <div class="jui_box_pub_middle jui_fc_fff">确认退出吗</div>
+                 <div class="jui_h20"></div>
+                 <div class="jui_box_btnbar jui_flex_row_center jui_flex_justify_center">
+                       <div class="jui_box_btn jui_bor_rad_5 jui_fc_lan" id="hide2">取消</div>
+                       <a href="#" class="jui_box_btn jui_bor_rad_5 jui_bor_none jui_bg_lan jui_fc_fff" id="out2">退出</a>
+                 </div>
+                 <div class="jui_h20"></div>
+           </div>
+     </div>
+</div>
+<!-- 弹出框提示end -->
+<script type="text/javascript">
+    $(document).on("click",".kfts",function(){
+        box_timer("有钱还：正在努力开发中...");
+    });
+
+    $(function() {
+      var renzheng = ['未认证', '已认证', '认证中'];
+      $("#out").on('click', function() {
+        $("#dialog2").fadeIn('fast');
+      })
+      $("#hide2").on('click', function() {
+        $("#dialog2").fadeOut('fast')
+      })
+      $("#out2").on('click', function() {
+        localStorage.removeItem('h_uid');
+        localStorage.removeItem('h_token');
+        window.location.href = "login.html?id=1";
+      })
+      var req = {
+        uid: localStorage.getItem('h_uid'),
+        token: localStorage.getItem('h_token')
+      };
+      function hide() {
+        $("#dialog").fadeOut('fast');
+      }
+      function show() {
+          $("#dialog").fadeIn('fast');
+      }
+      function canEnter() {
+        $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=is_setup', data: req, success: function(data) {
+          data = JSON.parse(data);
+          if(data.code == 200) {
+            if(data.is_yq == 0) {
+              show();
+            } else if (data.is_yq == 1){
+              window.location.href = 'yqm.html'
+            }
+          }else {
+            layer.open({
+              content: '获取用户信息失败',
+              skin: 'msg',
+              time: 1
+            })
+            localStorage.removeItem('h_uid');
+            localStorage.removeItem('h_token');
+            setTimeout(()=> {
+              window.location.href="login.html?id=1";
+            })
+          }
+        }})
+      }
+      $.ajax({type: 'post', url: baseURL + '/index.php?m=user&c=is_setup', data: req, success: function(data) {
+        data = JSON.parse(data);
+        if(data.code == 200) {
+          $("#rz").html(renzheng[data.is_rz]);
+          if(data.is_pay == '1') {
+            $("#sz").html('已设置')
+          }else {
+            $("#sz").html('未设置')
+          }
+        }
+      }})
+      $("#huancun").on('click', function() {
+        layer.open({
+          content: '清除成功',
+          skin: 'msg',
+          time: 1
+        })
+      })
+      $("#yq").on('click', canEnter);
+      $("#hide").on('click', hide);
+      loading()
+      $.ajax({type: 'post', url: baseURL + '/index.php?m=index&c=get_info', data: req, success: function(data) {
+        data = JSON.parse(data);
+        if(data.code == 200) {
+          $("#tx").attr('src', data.user.m_avatar)
+//        $("#m_name").html(data.user.m_name)
+          if(data.user.m_rz == 0) {
+          	$("#m_phone").html(data.user.m_phone);
+          } else{
+          	$("#m_phone").html(data.user.m_name);
+          }
+          $("#sk").attr('href', 'shoukuan_add.html?phone='+data.user.m_phone);
+          layer.closeAll()
+        } else {
+          layer.open({
+            content: data.msg,
+            skin: 'msg',
+            time: 1
+          })
+          setTimeout(()=> {
+            window.location.href="login.html?id=1";
+          }, 1000)
+        }
+      }})
+    })
+</script>
+</body>
+</html>

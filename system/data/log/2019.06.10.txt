@@ -1,0 +1,10 @@
+[TYPE]: MYSQL
+[SQL]: select * from `w_auth` WHERE `id`<> and '1'`a_ctl` = 'index' and `a_fun` = 'index'
+[TIME]: 2019-06-10 11:38:16
+[URI]: /admin.php?m=index&c=auth_edit&id=1
+
+[TYPE]: MYSQL
+[SQL]: UPDATE `w_admin` SET `a_name`='后台首页',`a_ctl`='index',`a_fun`='index',`a_addtime`='1560137896' where `id`='1' and 1
+[TIME]: 2019-06-10 11:38:16
+[URI]: /admin.php?m=index&c=auth_edit&id=1
+

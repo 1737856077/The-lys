@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/flexible.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+</head>
+<body class="jui_bg_grey">
+<!-- 头部 -->
+<div class="jui_top_bar">
+     <div class="jui_top_left"><img src="icons/xiaoxi_icon.png" alt="消息"></div>
+     <div class="jui_top_middle title"></div>
+     <div class="jui_top_right"><img src="icons/kefu_icon.png" alt="客服" onclick="window.location.href = 'contact.html'"></div>
+</div>
+<!-- 头部end -->
+<!-- 轮播图 -->
+<div class="banner_bar jui_bg_zhuse"></div>
+<div class="jui_pad_16 banner_con">
+    <div class="swiper-container jui_bor_rad_5">
+        <div class="swiper-wrapper" id="swipe">
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<script src="js/swiper.min.js"></script>
+<script type="text/javascript">
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: 2500,
+            pagination: '.swiper-pagination',
+            autoplayDisableOnInteraction: false,
+            loop: true,
+            paginationType: 'bullets',
+            paginationClickable: true,
+            observer: true,
+        })
+</script>
+<!-- 轮播图end -->
+<!-- 近期还款 -->
+<div class="sy_hk_bar">
+    <div class="sy_hk_tit">近期还款</div>
+    <div class="jui_bg_fff jui_box_shadow jui_flex sy_hk_con">
+         <div class="" id="m_phone"></div>
+         <div class="jui_flex1 jui_text_center">成功还款<span class="jui_fc_red" id="m_price"></span>元</div>
+         <a href="plan.html" class="jui_pad_l16 jui_fc_zhuse jui_fs12">更多></a>
+    </div>
+</div>
+<!-- 近期还款 end -->
+<!-- 特色产品 -->
+<div class="jui_public_tit">
+      <img class="plan_hkjh_titicon" src="icons/tit_01.png">
+      <div class="jui_fc_zhuse jui_pad_l8">特色产品</div>
+</div>
+<div class="jui_pad_l16 jui_pad_r16" id="wrapper">
+</div>
+<!-- 特色产品 end -->
+<!-- 趣还学院 -->
+<div class="jui_public_tit">
+      <img class="plan_hkjh_titicon" src="icons/tit_02.png">
+      <div class="jui_fc_zhuse jui_pad_l8"><span class="title"></span>学院<span class="jui_fc_lightzs jui_pad_l8">学习更多还卡知识摆脱卡奴</span></div>
+</div>
+<div class="jui_flex jui_flex_wrap sy_qhxy_bar" id="area">
+     <!-- <a href="#" class="sy_qhxy_list jui_grid_w50">
+           <div class="jui_bg_fff jui_bor_rad_5">
+                 <div class="sy_qhxy_img"><img src="images/xueyuan02.png" alt=""></div>
+                 <div class="jui_pad_8">担保金如何获取？</div>
+           </div>
+     </a>
+     <a href="#" class="sy_qhxy_list jui_grid_w50">
+           <div class="jui_bg_fff jui_bor_rad_5">
+                 <div class="sy_qhxy_img"><img src="images/xueyuan03.png" alt=""></div>
+                 <div class="jui_pad_8">如何帮他人还款赚利息</div>
+           </div>
+     </a>
+     <a href="#" class="sy_qhxy_list jui_grid_w50">
+           <div class="jui_bg_fff jui_bor_rad_5">
+                 <div class="sy_qhxy_img"><img src="images/xueyuan04.png" alt=""></div>
+                 <div class="jui_pad_8">借款人不还钱怎么办？</div>
+           </div>
+     </a> -->
+</div>
+<!-- 趣还学院 end -->
+<div class="jui_h60"></div>
+<!-- 固定底部 -->
+<div class="jui_footer">
+     <a href="index.html" class="jui_foot_list jui_hover">
+         <b class="foot_index"></b>
+         <p>首页</p>
+     </a>
+     <a href="plan.html" class="jui_foot_list">
+         <b class="foot_plan"></b>
+         <p>计划</p>
+     </a>
+     <a href="team.html" class="jui_foot_list">
+         <b class="foot_team"></b>
+         <p>团队</p>
+     </a>
+     <a href="center.html" class="jui_foot_list">
+         <b class="foot_my"></b>
+         <p>我的</p>
+     </a>
+</div>
+<!-- 固定底部end -->
+<script type="text/javascript">
+  $(function() {
+    $.ajax({type: 'get', url: baseURL + '/index.php?m=index&c=index', success: function(data) {
+      data = JSON.parse(data);
+      if(data.code != 200) {
+        layer.open({
+          content: '加载信息失败',
+          time: 1,
+          skin: 'msg'
+        })
+        return;
+      }
+      var banner = "";
+      data.banner.forEach(item=> {
+        banner += `<div class="swiper-slide"><img src="${item.b_img}"></div>`
+      })
+      var news = "";
+      data.news.forEach(item=> {
+        news += `     <a href="news_con.html?id=${item.id}" class="sy_qhxy_list jui_grid_w50">
+                   <div class="jui_bg_fff jui_bor_rad_5">
+                         <div class="sy_qhxy_img"><img src="${item.n_img}" alt=""></div>
+                         <div class="jui_pad_8  jui_ellipsis_1">${item.n_title}</div>
+                   </div>
+             </a>`
+      })
+      $("#swipe").html(banner);
+      $("#area").html(news);
+      $("#m_phone").html(data.price_data.m_phone);
+      $("#m_price").html(data.price_data.m_price);
+      var product  = "";
+      data.notice.forEach((item)=> {
+        product += `<div class="jui_flex jui_bor_rad_5 sy_tscp_list">
+
+                    <img class="sy_tscp_img" src="${item.n_img}">
+                    <div class=" jui_flex1 jui_flex_col jui_flex_justify_center jui_pad_l16 jui_pad_r16">
+                          <div class="jui_fs16 jui_pad_b5">${item.n_title}</div>
+                          <div class="jui_fc_lightzs jui_fs12">3-${item.n_desc}</div>
+                    </div>
+              </div>`
+      })
+      $("#wrapper").html(product);
+      //控制图片尺寸
+           $('.sy_qhxy_img').height($('.sy_qhxy_img').width());
+           $('.sy_qhxy_img').each(function(){
+             var img_w = $(this).find('img').width();
+             var img_h = $(this).find('img').height();
+             if( img_w>img_h ){
+              $(this).find('img').css('height','100%');
+              }else{
+               $(this).find('img').css('width','100%');
+               }
+            })
+    }})
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+[TYPE]: MYSQL
+[SQL]: select * from `w_goods` where `g_shop`= order by g_addtime desc
+[TIME]: 2019-04-26 09:19:50
+[URI]: /?m=shop&c=myshop
+
+[TYPE]: MYSQL
+[SQL]: select * from `w_goods` where `g_shop`= order by g_addtime desc
+[TIME]: 2019-04-26 09:19:52
+[URI]: /?m=shop&c=myshop
+
+[TYPE]: MYSQL
+[SQL]: select * from `w_goods` where `g_shop`= order by g_addtime desc
+[TIME]: 2019-04-26 09:19:55
+[URI]: /?m=shop&c=myshop
+
+[TYPE]: MYSQL
+[SQL]: select * from `w_goods` where `g_shop`= order by g_addtime desc
+[TIME]: 2019-04-26 09:25:45
+[URI]: /?m=shop&c=myshop
+
+[TYPE]: MYSQL
+[SQL]: select * from `w_goods` where `g_shop`= order by g_addtime desc
+[TIME]: 2019-04-26 09:26:54
+[URI]: /?m=shop&c=myshop
+
+[TYPE]: MYSQL
+[SQL]: select * from `w_goods` where `g_shop`= order by g_addtime desc
+[TIME]: 2019-04-26 11:27:10
+[URI]: /?m=shop&c=myshop
+
+[TYPE]: MYSQL
+[SQL]: select * from `w_goods` where `g_shop`= order by g_addtime desc
+[TIME]: 2019-04-26 11:27:17
+[URI]: /?m=shop&c=myshop
+
+[TYPE]: MYSQL
+[SQL]: select * from `w_goods` where `g_shop`= order by g_addtime desc
+[TIME]: 2019-04-26 11:30:47
+[URI]: /?m=shop&c=myshop
+
