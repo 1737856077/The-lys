@@ -59,47 +59,7 @@
 </body>
 <scrript>
 </scrript>
-<script>
-    $("#Register").click(function () {
-        var phone = $("#phone").val();
-        var code = $("#Code").val();
-        var pwd = $("#pwd").val();
-        var pwd2 = $("#pwd2").val();
-        var invite = $("#invite").val();
-        if (phone.length==0){
-            layer.msg('手机号为空')
-            return;
-        }
-        if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))) {
-            layer.msg('请输入正确的手机号')
-            return false;
-        }
-            if (pwd == pwd2){}else {
-                layer.msg('两次密码不一致');
-                return false;
-            }
-        if (code.length==0){
-            layer.msg('验证码为空')
-            return;
-        }
-        if (invite.length==0){
-            layer.msg('邀请码为空')
-            return;
-        }
 
-        $.post("?m=index&c=register",
-            {invite_code:invite,m_phone:phone,reg_code:code,m_password:pwd},
-            function (data) {
-            layer.msg(data.msg())
-            if (data.code == 200){
-                setTimeout(function () {
-                    window.location.href = 'index.php?m=index&c=index'
-                },1000)
-            }
-        })
-    })
-
-</script>
 <script>
 //倒计时  不需要jquery库  
 	function settime(num){
@@ -121,7 +81,6 @@
 	}
 $("#jui_form_yzm").click(function () {
     var m_phone = $('#phone').val();
-
     if(m_phone.length==0){
         layer.msg('请输入手机号');
         return;
@@ -130,11 +89,49 @@ $("#jui_form_yzm").click(function () {
         layer.msg('请输入正确的手机号')
         return;
     }
-
     settime(60);
     $.post("?m=index&c=reg_smscode",{m_phone:m_phone},function (res) {
         layer.msg(res.msg)
     })
 })
+</script>
+<script>
+    $("#Register").click(function () {
+        var phone = $("#phone").val();
+        var code = $("#Code").val();
+        var pwd = $("#pwd").val();
+        var pwd2 = $("#pwd2").val();
+        var invite = $("#invite").val();
+        if (phone.length==0){
+            layer.msg('手机号为空')
+            return;
+        }
+        if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))) {
+            layer.msg('请输入正确的手机号')
+            return false;
+        }
+        if (pwd == pwd2){}else {
+            layer.msg('两次密码不一致');
+            return false;
+        }
+        if (code.length==0){
+            layer.msg('验证码为空')
+            return;
+        }
+        if (invite.length==0){
+            layer.msg('邀请码为空')
+            return;
+        }
+        $.post("?m=index&c=register",{invite_code:invite,m_phone:phone,reg_code:code,m_password:pwd},
+            function (data) {
+                layer.msg(data.msg())
+                if (data.code == 200){
+                    setTimeout(function () {
+                        window.location.href = 'index.php?m=index&c=index'
+                    },1000)
+                }
+            })
+    })
+
 </script>
 </html>
