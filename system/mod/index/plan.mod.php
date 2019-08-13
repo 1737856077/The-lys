@@ -2,7 +2,40 @@
 
 class mod_plan extends mod
 {
-    public function plan_index()
+    public function plan_index(){
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('plan');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
+
+    public function wallet()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display("wallet");
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
+    /**
+     * @渲染添加债务页面
+     */
+    public function debt()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display("zhaiwu");
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
+    public function plan_index1()
     {
         if ($this->post) {
             $fields = $this->SafeFilter($_POST);
@@ -72,7 +105,10 @@ class mod_plan extends mod
             exit();
         }
     }
-
+    public function plan_vi()
+    {
+        $this->display('plan');
+    }
     public function plan_add()
     {
         if ($this->post) {

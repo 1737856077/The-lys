@@ -82,17 +82,20 @@
 $("#jui_form_yzm").click(function () {
     var m_phone = $('#phone').val();
     if(m_phone.length==0){
-        layer.msg('请输入手机号');
-        return;
+        layer.msg("请输入手机号")
+        return false;
     }
-    if(!(/^1[3456789]\d{9}$/.test(m_phone))){
-        layer.msg('请输入正确的手机号')
-        return;
+    if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(m_phone))){
+        layer.msg("请输入正确的手机号")
+        return false;
     }
     settime(60);
     $.post("?m=index&c=reg_smscode",{m_phone:m_phone},function (res) {
-        layer.msg(res.msg)
+
     })
+    // $.post("?m=index&c=reg_smscode",{m_phone:m_phone},function (res) {
+    //     layer.msg(res.msg)
+    // })
 })
 </script>
 <script>
@@ -104,33 +107,41 @@ $("#jui_form_yzm").click(function () {
         var invite = $("#invite").val();
         if (phone.length==0){
             layer.msg('手机号为空')
-            return;
+            return false;
         }
         if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))) {
             layer.msg('请输入正确的手机号')
             return false;
         }
-        if (pwd == pwd2){}else {
-            layer.msg('两次密码不一致');
+        if ($("#pwd2").val() != $("#pwd").val()){
+           layer.msg('确保两次的密码一致')
             return false;
         }
-        if (code.length==0){
+        if ($("#pwd").val().length==0){
+            layer.msg('请输入账号密码')
+            return false;
+        }
+        if ($("#pwd").val().length<6){
+            layer.msg('确保账号密码大于6位')
+            return false;
+        }
+        if(code == null || code == "" || code == "undefined" || code == undefined || code == "null"){
             layer.msg('验证码为空')
-            return;
+            return false;
         }
-        if (invite.length==0){
+        if(invite == null || invite == "" || invite == "undefined" || invite == undefined || invite == "null"){
             layer.msg('邀请码为空')
-            return;
+            return false;
         }
-        $.post("?m=index&c=register",{invite_code:invite,m_phone:phone,reg_code:code,m_password:pwd},
-            function (data) {
-                layer.msg(data.msg())
-                if (data.code == 200){
-                    setTimeout(function () {
-                        window.location.href = 'index.php?m=index&c=index'
-                    },1000)
-                }
-            })
+        $.post("?m=index&c=register",{invite_code:invite,m_phone:phone,reg_code:code,m_password:pwd},function (res) {
+            data = JSON.parse(res);
+            layer.msg(data.msg)
+            if (data.code == 200){
+                setTimeout(function () {
+                    window.location.href = '?m=index&c=index'
+                },1000)
+            }
+        })
     })
 
 </script>

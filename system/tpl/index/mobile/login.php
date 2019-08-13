@@ -53,6 +53,18 @@
     $('#ClickLogin').click(function () {
         var m_phone = $('#phone').val();
         var m_pass = $('#pwd').val();
+        if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(m_phone))){
+           layer.msg("请输入正确的手机号")
+            return false;
+        }
+        if (m_pass.length==0){
+            layer.msg('请输入账号密码')
+            return false;
+        }
+        if (m_pass.length<6){
+            layer.msg('确保账号密码大于6位')
+            return false;
+        }
         $.post("?m=index&c=login",{m_phone:m_phone,m_password:m_pass},function (res) {
            layer.msg(res.msg)
            if (res.code == 200){

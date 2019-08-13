@@ -414,8 +414,32 @@ class mod
         return '昵称：' . $members['m_name'] . ' 手机号：' . $members['m_phone'];
     }
 
-
-
+    protected function unlogin()
+    {
+        unset($_SESSION['uid']);
+        unset($_SESSION['token']);
+        if (!$_SESSION["uid"]){
+            header('Location:index.php?m=index&c=login');
+        }
+    }
+    protected function checkUserVi()
+    {
+        $url_login = 'index.php?m=index&c=login';
+        if (isset($_SESSION['admin_id']) && $_SESSION['admin_id'] != ''){
+            $userUid = intval($_SESSION['uid']);
+            $sql = "select * from w_users where id=".$userUid;
+            $user = $this->db->query($sql,2);
+            if ($user){
+                return true;
+            }else{
+                header('Location: ' . $url_login);
+                exit;
+            }
+        }else{
+            header('Location: ' . $url_login);
+            exit;
+        }
+    }
     protected function checkadmin()
     {
         $url_login = 'admin.php?m=index&c=login';
@@ -817,5 +841,6 @@ class mod
     public function SetupUser($uid,$m_name){
         $this->db->update('w_users', array('m_name' => $m_name), array('id' => $uid));
     }
+
 
 }

@@ -46,20 +46,6 @@
            <div class="jui_public_btn reg_btn"><input type="button" onclick="Forgot()"  value="重置密码"></div>
 </div>
 </form>
-<!-- 主体end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 <script>
@@ -68,14 +54,47 @@
         var pwd2 = $("#pwdd").val();
         var m_phone = $('#phone').val();
         var code = $("#ValiData").val();
-        $.post("index.php?m=index&c=forget_pwd",{m_phone:m_phone,forget_code:code,new_pass1:pwd1,new_pass2:pwd2},function (res) {
-            layer.msg(res.msg())
-            if (res.code == 200){
+        if (m_phone.length==0){
+            layer.msg('手机号为空')
+            return false;
+        }
+        if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(m_phone))) {
+            layer.msg('请输入正确的手机号')
+            return false;
+        }
+        if ($("#pwd").val() != $("#pwdd").val()){
+            layer.msg('确保两次的密码一致')
+            return false;
+        }
+        if ($("#pwd").val().length==0){
+            layer.msg('请输入账号密码')
+            return false;
+        }
+        if ($("#pwd").val().length<6){
+            layer.msg('确保账号密码大于6位')
+            return false;
+        }
+        if(code == null || code == "" || code == "undefined" || code == undefined || code == "null"){
+            layer.msg('验证码为空')
+            return false;
+        }
+        $.post("?m=index&c=forget_pwd",{m_phone:m_phone,forget_code:code,new_pass1:pwd1,new_pass2:pwd2},function (res) {
+            data = JSON.parse(res);
+            layer.msg(data.msg)
+            if (data.code == 200){
                 setTimeout(function () {
                     window.location.href = '?m=index&c=login'
                 },1000)
             }
         })
+        // $.post("index.php?m=index&c=forget_pwd",{m_phone:m_phone,forget_code:code,new_pass1:pwd1,new_pass2:pwd2},function (res) {
+        //     layer.msg(res.msg())
+        //     if (res.code == 200){
+        //         setTimeout(function () {
+        //             window.location.href = '?m=index&c=login'
+        //         },1000)
+        //     }
+        // })
     }
 </script>
 <script>
@@ -93,7 +112,8 @@
 
         settime(60);
         $.post("index.php?m=index&c=forget_smscode",{m_phone:m_phone},function (res) {
-            layer.msg(res.msg())
+            data = JSON.parse(res);
+            layer.msg(data.msg)
             if (res.code == 200){
                 setTimeout(function () {
                     window.location.href = '?m=index&c=index'

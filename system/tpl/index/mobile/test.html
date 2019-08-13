@@ -1,0 +1,16 @@
+<input type="hidden" id="uid" value="<?php echo $_SESSION['uid']?>">
+<input type="hidden" id="token" value="<?php echo $_SESSION['token']?>">
+<script>
+    var   uid = $("#uid").val();
+    var   token= $("#token").val();
+    $.post('index.php?m=index&c=get_info',{uid:uid,token:token},function (res) {
+        data = JSON.parse(res);
+        if (data.code==200){
+            $("#tx").attr('src', data.user.m_avatar)
+            $("#name").html('src', data.user.m_name)
+        }else {
+            // layer.msg(data.msg)
+            window.location.href="?m=index&c=login";
+        }
+    })
+</script>

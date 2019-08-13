@@ -77,7 +77,7 @@ class mod_index extends mod
                 echo json_encode(array('code' => 404, 'msg' => '登录手机号不能为空'));
                 exit();
             }
-            if ($fields['m_password'] == '') {
+                if ($fields['m_password'] == '') {
                 echo json_encode(array('code' => 404, 'msg' => '登录密码不能为空'));
                 exit();
             }
@@ -89,7 +89,11 @@ class mod_index extends mod
                     echo json_encode(array('code' => 403, 'msg' => '账号已锁定,请联系客服处理'));
                     exit();
                 }
+
                 $token = $this->api_key($user['id']);
+//                $this->display('index',array('uid'=>$user['id'],));
+                $_SESSION['uid']=$user['id'];
+                $_SESSION['token']=$token;
                 echo json_encode(array('code' => 200, 'msg' => '登录成功', 'uid' => $user['id'], 'token' => $token));
                 exit();
             } else {
@@ -311,6 +315,7 @@ class mod_index extends mod
         if ($this->post){
             $fields = $this->SafeFilter($_POST);
             $user   = $this->checkuser($fields);
+
             if(!empty($user)){
                 $user['m_name']     = $user['m_zsxm'];
                 $user['m_avatar']   = $this->setup_img($this->config['w_logo']);

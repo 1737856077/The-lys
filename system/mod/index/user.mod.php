@@ -3,6 +3,15 @@
 class mod_user extends mod
 {
     //实名认证
+    public function user()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('center');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+    }
     public function real_name(){
         if($this->post){
             $fields = $this->SafeFilter($_POST);
@@ -32,8 +41,26 @@ class mod_user extends mod
             }
         }
     }
+    public function daili()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('daili');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
 
+    }
+    public function daili_con()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('daili_con');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
 
+    }
     public function real_info(){
         if($this->post){
             $fields = $this->SafeFilter($_POST);
@@ -59,7 +86,76 @@ class mod_user extends mod
             exit();
         }
     }
+    public function shiming()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('shiming');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
 
+    }
+    public function ulogin()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->unlogin();
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
+    public function skfs()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('skfs');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
+    public function yqm()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('yqm');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
+    public function team()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('team');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
+    public function tuandui()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('tuandui');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
+    public function contact()
+    {
+        $data = $this->checkUserVi();
+        if ($data==true){
+            $this->display('contact');
+        }else{
+            header('Location:index.php?m=index&c=login ');
+        }
+
+    }
     public function pay_list(){
         if($this->post){
             $fields = $this->SafeFilter($_POST);
@@ -79,7 +175,6 @@ class mod_user extends mod
             exit();
         }
     }
-
     public function pay_info(){
         if($this->post){
             $fields = $this->SafeFilter($_POST);
