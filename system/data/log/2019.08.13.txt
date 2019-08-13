@@ -18,3 +18,83 @@
 [TIME]: 2019-08-13 13:48:57
 [URI]: /admin.php?m=index&c=main
 
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=0
+[TIME]: 2019-08-13 19:15:19
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565694919 and `s_dtime`<1566299719
+[TIME]: 2019-08-13 19:15:19
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_hot`=1 and `s_dtime`>1565694919
+[TIME]: 2019-08-13 19:15:19
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565694919
+[TIME]: 2019-08-13 19:15:19
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=0
+[TIME]: 2019-08-13 19:15:48
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565694948 and `s_dtime`<1566299748
+[TIME]: 2019-08-13 19:15:48
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_hot`=1 and `s_dtime`>1565694948
+[TIME]: 2019-08-13 19:15:48
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565694948
+[TIME]: 2019-08-13 19:15:48
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=0
+[TIME]: 2019-08-13 19:50:29
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565697029 and `s_dtime`<1566301829
+[TIME]: 2019-08-13 19:50:29
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_hot`=1 and `s_dtime`>1565697029
+[TIME]: 2019-08-13 19:50:29
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565697029
+[TIME]: 2019-08-13 19:50:29
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=0
+[TIME]: 2019-08-13 19:50:34
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565697034 and `s_dtime`<1566301834
+[TIME]: 2019-08-13 19:50:34
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_hot`=1 and `s_dtime`>1565697034
+[TIME]: 2019-08-13 19:50:34
+[URI]: /admin.php?m=index&c=main
+
+[TYPE]: MYSQL
+[SQL]: select count(id) as tnum from w_shops where `s_status`=1 AND `s_dtime`>1565697034
+[TIME]: 2019-08-13 19:50:34
+[URI]: /admin.php?m=index&c=main
+

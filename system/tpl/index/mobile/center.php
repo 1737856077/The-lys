@@ -48,7 +48,9 @@
          <a href="?m=user&c=shiming" class="jui_public_list">
                <img class="my_icon" src="/public/qyh/icons/my_icon01.png">
                <p class="jui_fc_000 jui_fs15 jui_flex1">实名认证</p>
-               <div class="jui_fc_999 jui_fs12 jui_pad_r8 jui_flex_no">未认证</div>
+               <div class="jui_fc_999 jui_fs12 jui_pad_r8 jui_flex_no">
+
+                   未认证</div>
                <img class="jui_arrow_rimg" src="/public/qyh/icons/jt_right.png">
          </a>
          <a href="?m=user&c=skfs" class="jui_public_list">

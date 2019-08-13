@@ -129,6 +129,7 @@ var reqxq = {
       if(!regcode){
         return;
       }
+      console.log(p_phone)
       $.ajax({type: 'post', url: baseURL + '/index.php?m=index&c=setpay_smscode', data:{m_phone: p_phone}, success: function(data) {
         data = JSON.parse(data);
         if(data.code == 200) {

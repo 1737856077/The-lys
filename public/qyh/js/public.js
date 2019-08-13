@@ -37,7 +37,7 @@ $(document).ready(function(){
 function box_timer(text) {
 	var oDiv = document.createElement('div');
 	oDiv.className = 'jui_box_point_bg';
-	oDiv.innerHTML += "<div class='jui_box_point_bar'>"+text+"</div>";
+	oDiv.innerHTML += "<div class='jui_box_point_bar'><p class='jui_line_h14'>"+text+"</p></div>";
 	document.body.appendChild(oDiv);
 	setTimeout(function(){
 		oDiv.remove();

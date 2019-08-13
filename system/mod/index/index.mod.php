@@ -94,6 +94,7 @@ class mod_index extends mod
 //                $this->display('index',array('uid'=>$user['id'],));
                 $_SESSION['uid']=$user['id'];
                 $_SESSION['token']=$token;
+                $_SESSION['m_phone'] = $user['m_phone'];
                 echo json_encode(array('code' => 200, 'msg' => '登录成功', 'uid' => $user['id'], 'token' => $token));
                 exit();
             } else {

@@ -418,6 +418,7 @@ class mod
     {
         unset($_SESSION['uid']);
         unset($_SESSION['token']);
+        unset($_SESSION['m_phone']);
         if (!$_SESSION["uid"]){
             header('Location:index.php?m=index&c=login');
         }
@@ -425,7 +426,7 @@ class mod
     protected function checkUserVi()
     {
         $url_login = 'index.php?m=index&c=login';
-        if (isset($_SESSION['admin_id']) && $_SESSION['admin_id'] != ''){
+        if (isset($_SESSION['uid']) && $_SESSION['uid'] != ''){
             $userUid = intval($_SESSION['uid']);
             $sql = "select * from w_users where id=".$userUid;
             $user = $this->db->query($sql,2);
